@@ -32,6 +32,12 @@
 			<artifactId>uxerp-ofbiz</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>uxerp-party</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 
