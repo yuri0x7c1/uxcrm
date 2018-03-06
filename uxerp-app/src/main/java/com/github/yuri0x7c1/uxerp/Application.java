@@ -10,16 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.github.yuri0x7c1.uxcrm", "org.apache.ofbiz"})
+@SpringBootApplication(scanBasePackages = {"com.github.yuri0x7c1.uxerp", "org.apache.ofbiz"})
 public class Application implements CommandLineRunner {
-
-	public static final String TEST_USERNAME = "admin";
-	public static final String TEST_PASSWORD = "ofbiz";
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
 
 	@Autowired
 	Delegator delegator;
