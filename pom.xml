@@ -22,7 +22,6 @@
     	<module>uxerp-common</module>
     	<module>uxerp-ofbiz</module>
     	<module>uxerp-entity</module>
-		<module>uxerp-party</module>
 		<module>uxerp-app</module>
     </modules>
 
