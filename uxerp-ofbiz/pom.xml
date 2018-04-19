@@ -3,17 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>com.github.yuri0x7c1.uxerp</groupId>
+		<artifactId>uxerp-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.github.yuri0x7c1.uxerp</groupId>
 	<artifactId>uxerp-ofbiz</artifactId>
 	<packaging>jar</packaging>
 
 	<name>uxerp-ofbiz</name>
-
-	<parent>
-		<groupId>org.github.yuri0x7c1.uxerp</groupId>
-		<artifactId>uxerp-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
 
 	<properties>
 	</properties>
@@ -21,23 +21,20 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-common</artifactId>
+			<artifactId>framework</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache</groupId>
-			<artifactId>ofbiz</artifactId>
-			<version>1</version>
-			<scope>system</scope>
-			<systemPath>/home/user/Work/common/projects/uxerp.pro/apache-ofbiz-16.11.03/build/libs/ofbiz.jar</systemPath>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>applications</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.geronimo.components</groupId>
-			<artifactId>geronimo-transaction</artifactId>
-			<version>3.1.1</version>
-			<scope>compile</scope>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>uxerp-common</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>

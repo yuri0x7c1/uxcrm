@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.ofbiz.base.component.ComponentConfig;
 import org.apache.ofbiz.base.start.Config;
 import org.apache.ofbiz.base.start.Start;
@@ -12,8 +14,8 @@ import org.apache.ofbiz.base.start.StartupCommand;
 import org.apache.ofbiz.base.start.StartupCommandUtil.StartupOption;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.DelegatorFactory;
+import org.apache.ofbiz.service.GenericDispatcherFactory;
 import org.apache.ofbiz.service.LocalDispatcher;
-import org.apache.ofbiz.service.ServiceContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,28 +34,17 @@ public class OfbizConfig {
 	public Delegator delegator() throws Exception {
 		final String DELEGATOR_NAME = "default";
 		log.info("Setup Entity Engine Delegator with name: {}", DELEGATOR_NAME);
-
-		forceOfbizStartConfig();
-
-		// DelegatorContainer delegatorContainer = new DelegatorContainer();
-		// delegatorContainer.init(null, "delegator-container", "framework/entity/ofbiz-component.xml");
-
 		return DelegatorFactory.getDelegator(DELEGATOR_NAME);
 	}
 
 	@Bean
 	public LocalDispatcher dispatcher() throws Exception {
-		final String DISPATCHER_NAME = "uxcrm";
+		final String DISPATCHER_NAME = "default";
 		log.info("Setup Service Engine Dispatcher with name: {}", DISPATCHER_NAME);
-
-		ServiceContainer serviceContainer = new ServiceContainer();
-		serviceContainer.init(null, "service-container", "framework/service/ofbiz-component.xml");
-
-		// return ServiceContainer.getLocalDispatcher(DISPATCHER_NAME, delegator());
-		return serviceContainer.getLocalDispatcher(DISPATCHER_NAME, delegator());
-		// return null;
+		return new GenericDispatcherFactory().createLocalDispatcher("default", delegator());
 	}
 
+	@PostConstruct
 	private void forceOfbizStartConfig() throws Exception {
 		log.info("Start :{}", Start.getInstance());
 
@@ -75,8 +66,6 @@ public class OfbizConfig {
 
 		log.info("Start.getConfig(): {}", Start.getInstance().getConfig());
 
-
-
 		String ofbizHome = env.getProperty("ofbiz.home");
 		log.info("ofbiz home: {}", ofbizHome);
 
@@ -94,7 +83,6 @@ public class OfbizConfig {
 		    <load-component component-location="widget"/>
 		    <load-component component-location="testtools"/>
 		    <load-component component-location="webtools"/>
-		    <load-component component-location="images"/>
 		*/
 
 		ComponentConfig.getComponentConfig("base", ofbizHome + "/framework/base");
@@ -110,7 +98,6 @@ public class OfbizConfig {
 		ComponentConfig.getComponentConfig("widget", ofbizHome + "/framework/widget");
 		ComponentConfig.getComponentConfig("testtools", ofbizHome + "/framework/testtools");
 		ComponentConfig.getComponentConfig("webtools", ofbizHome + "/framework/webtools");
-		ComponentConfig.getComponentConfig("images", ofbizHome + "/framework/images");
 		/*
 		    <load-component component-location="datamodel"/>
 		    <load-component component-location="party"/>
@@ -127,7 +114,7 @@ public class OfbizConfig {
 		    <load-component component-location="commonext"/>
 		*/
 
-		ComponentConfig.getComponentConfig("accounting", ofbizHome + "/applications/datamodel");
+		ComponentConfig.getComponentConfig("datamodel", ofbizHome + "/applications/datamodel");
 		ComponentConfig.getComponentConfig("party", ofbizHome + "/applications/party");
 		ComponentConfig.getComponentConfig("securityext", ofbizHome + "/applications/securityext");
 		ComponentConfig.getComponentConfig("content", ofbizHome + "/applications/content");
@@ -139,6 +126,5 @@ public class OfbizConfig {
 		ComponentConfig.getComponentConfig("order", ofbizHome + "/applications/order");
 		ComponentConfig.getComponentConfig("marketing", ofbizHome + "/applications/marketing");
 		ComponentConfig.getComponentConfig("commonext", ofbizHome + "/applications/commonext");
-
 	}
 }

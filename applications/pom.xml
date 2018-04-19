@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	    <groupId>com.github.yuri0x7c1.uxerp</groupId>
+	    <artifactId>uxerp-parent</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>applications</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>accounting/src/main/java</source>
+								<source>commonext/src/main/java</source>
+								<source>content/src/main/java</source>
+								<source>datamodel/src/main/java</source>
+								<source>humanres/src/main/java</source>
+								<source>manufacturing/src/main/java</source>
+								<source>marketing/src/main/java</source>
+								<source>order/src/main/java</source>
+								<source>party/src/main/java</source>
+								<source>product/src/main/java</source>
+								<source>securityext/src/main/java</source>
+								<source>workeffort/src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/cybersource/IcsPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/ideal/IdealEvents.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/ideal/IdealPaymentServiceTest.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/orbital/OrbitalPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/paypal/PayPalServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/securepay/SecurePayPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/securepay/SecurePayServiceTest.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/verisign/PayflowPro.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareException.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareServices.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareUTL.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
