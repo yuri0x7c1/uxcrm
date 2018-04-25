@@ -41,7 +41,7 @@ public class OfbizConfig {
 	public LocalDispatcher dispatcher() throws Exception {
 		final String DISPATCHER_NAME = "default";
 		log.info("Setup Service Engine Dispatcher with name: {}", DISPATCHER_NAME);
-		return new GenericDispatcherFactory().createLocalDispatcher("default", delegator());
+		return new GenericDispatcherFactory().createLocalDispatcher(DISPATCHER_NAME, delegator());
 	}
 
 	@PostConstruct
