@@ -9,14 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.github.yuri0x7c1.uxerp</groupId>
-	<artifactId>uxerp-ofbiz</artifactId>
-	<packaging>jar</packaging>
-
-	<name>uxerp-ofbiz</name>
-
-	<properties>
-	</properties>
+	<artifactId>uxerp-service</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -33,7 +26,7 @@
 
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-common</artifactId>
+			<artifactId>uxerp-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

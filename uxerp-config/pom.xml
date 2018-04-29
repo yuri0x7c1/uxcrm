@@ -9,5 +9,19 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>uxerp-common</artifactId>
+	<artifactId>uxerp-config</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>applications</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

@@ -9,41 +9,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.github.yuri0x7c1.uxerp</groupId>
 	<artifactId>uxerp-entity</artifactId>
-	<packaging>jar</packaging>
-
-	<name>uxerp-entity</name>
-
-	<properties>
-	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-common</artifactId>
+			<artifactId>uxerp-config</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-ofbiz</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache</groupId>
-			<artifactId>ofbiz</artifactId>
-			<version>1</version>
-			<scope>system</scope>
-			<systemPath>/home/user/Work/common/projects/uxerp.pro/apache-ofbiz-16.11.03/build/libs/ofbiz.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.geronimo.components</groupId>
-			<artifactId>geronimo-transaction</artifactId>
-			<version>3.1.1</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 </project>

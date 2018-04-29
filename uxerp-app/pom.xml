@@ -9,11 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.github.yuri0x7c1.uxerp</groupId>
 	<artifactId>uxerp-app</artifactId>
-	<packaging>jar</packaging>
-
-	<name>uxerp-app</name>
 
 	<dependencies>
 		<dependency>
@@ -29,7 +25,19 @@
 
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-ofbiz</artifactId>
+			<artifactId>uxerp-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>uxerp-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>uxerp-entity</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
@@ -91,5 +99,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
