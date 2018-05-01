@@ -13,11 +13,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
 			<artifactId>uxerp-common</artifactId>
 			<version>${project.version}</version>
@@ -46,29 +41,29 @@
 		<resources>
 			<!-- base component resources -->
 			<resource>
-				<directory>${project.basedir}/../framework/base/config</directory>
+				<directory>../framework/base/config</directory>
 			</resource>
 
 			<resource>
-				<directory>${project.basedir}/../framework/base/dtd</directory>
+				<directory>../framework/base/dtd</directory>
 			</resource>
 
 			<!-- entity component resources -->
 			<resource>
-				<directory>${project.basedir}/../framework/entity/config</directory>
+				<directory>../framework/entity/config</directory>
 			</resource>
 
 			<resource>
-				<directory>${project.basedir}/../framework/entity/dtd</directory>
+				<directory>../framework/entity/dtd</directory>
 			</resource>
 
 			<!-- service component resources -->
 			<resource>
-				<directory>${project.basedir}/../framework/service/config</directory>
+				<directory>../framework/service/config</directory>
 			</resource>
 
 			<resource>
-				<directory>${project.basedir}/../framework/service/dtd</directory>
+				<directory>../framework/service/dtd</directory>
 			</resource>
 		</resources>
 		<plugins>

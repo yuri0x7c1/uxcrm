@@ -13,6 +13,12 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<!--  start resources -->
+			<resource>
+				<directory>start/src/main/java</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
