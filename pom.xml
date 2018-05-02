@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.yuri0x7c1.uxerp</groupId>
-    <artifactId>uxerp-parent</artifactId>
+    <artifactId>uxerp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
