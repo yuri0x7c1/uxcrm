@@ -10,21 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.github.yuri0x7c1.uxerp", "org.apache.ofbiz"})
-public class Application implements CommandLineRunner {
+@SpringBootApplication
+public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-	}
-
-	@Autowired
-	Delegator delegator;
-
-	@Autowired
-	LocalDispatcher dispatcher;
-
-	@Override
-	public void run(String... arg0) throws Exception {
-		log.info("{}", dispatcher.getDispatchContext().getAllServiceNames());
 	}
 }

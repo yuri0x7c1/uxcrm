@@ -1607,2002 +1607,1073 @@ div.v-layout.v-horizontal.v-widget {
 	vertical-align: top;
 }
 
-/**
- * Flexbox for Vaadin
- */
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-hybrid app-header app-toolbar paper-icon-button#toggle, .app-layout-behaviour-left-responsive-hybrid app-header-layout app-toolbar paper-icon-button#toggle {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-bar-content {
-		left: 10px !important;
-	}
+.mytheme .hybridMenu {
+	z-index: 1;
 }
 
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-	.app-layout-behaviour-left-responsive-hybrid {
-		--app-drawer-width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid app-drawer[persistent].app-drawer-1 {
-		width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-bar-application-content {
-		left: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button-badge {
-		background: #197de1;
-		color: transparent !important;
-		height: 5px !important;
-		width: 5px;
-		border-radius: 100% !important;
-		padding: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button span.v-button-caption {
-		opacity: 0;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-round-image {
-		width: 64px !important;
-		height: 64px !important;
-		padding: 7px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button {
-		font-size: 20px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button .v-icon {
-		width: 100%;
-		text-align: center;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button .v-button-caption {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-expanding-menu-container-button:after {
-		opacity: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-bar-application-content {
-		margin-bottom: -64px !important;
-		padding-bottom: 64px !important;
-		margin-right: -64px !important;
-		padding-right: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid .app-layout-submenu-container {
-		padding-left: 0px !important;
-	}
+.mytheme .hybridMenu .v-slot-hideDesignSettings {
+	position: fixed !important;
+	right: 0 !important;
+	top: 0 !important;
+	width: 0px !important;
+	height: 0px !important;
+	overflow: hidden !important;
+	display: block !important;
 }
 
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar {
-		display: none !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-	}
+.mytheme .hybridMenu .menuButton:focus {
+	outline: none;
 }
 
-@media only screen and (max-width: 640px) {
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .drawer-content {
-		margin-top: 64px;
-		box-sizing: border-box;
-		height: 100%;
-		margin-bottom: -64px;
-		padding-bottom: 64px;
-	}
+.mytheme .hybridMenu .v-slot-contentBox {
+	overflow: auto;
 }
 
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar {
-		--app-drawer-width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent].app-drawer-1 {
-		width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
-		left: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button-badge {
-		background: #197de1;
-		color: transparent !important;
-		height: 5px !important;
-		width: 5px;
-		border-radius: 100% !important;
-		padding: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button span.v-button-caption {
-		opacity: 0;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
-		width: 64px !important;
-		height: 64px !important;
-		padding: 7px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button {
-		font-size: 20px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button .v-icon {
-		width: 100%;
-		text-align: center;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button .v-button-caption {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-expanding-menu-container-button:after {
-		opacity: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-		margin-right: -64px !important;
-		padding-right: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-submenu-container {
-		padding-left: 0px !important;
-	}
+.mytheme .hybridMenu .contentBox {
+	padding: 15px !important;
 }
 
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar {
-		display: none !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-		margin-right: -256px !important;
-		padding-right: 256px !important;
-	}
+.mytheme .hybridMenu .v-slot-notificationList {
+	position: fixed !important;
+	right: 0 !important;
+	top: 0 !important;
+	width: auto !important;
+	height: auto !important;
+	overflow: auto !important;
+	max-height: 100%;
 }
 
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar {
-		--app-drawer-width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent].app-drawer-1 {
-		width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
-		left: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button-badge {
-		background: #197de1;
-		color: transparent !important;
-		height: 5px !important;
-		width: 5px;
-		border-radius: 100% !important;
-		padding: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button span.v-button-caption {
-		opacity: 0;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
-		width: 64px !important;
-		height: 64px !important;
-		padding: 7px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button {
-		font-size: 20px;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button .v-icon {
-		width: 100%;
-		text-align: center;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button .v-button-caption {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-expanding-menu-container-button:after {
-		opacity: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-		margin-right: -64px !important;
-		padding-right: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-submenu-container {
-		padding-left: 0px !important;
-	}
+.mytheme .hybridMenu .v-slot-notificationList > .notificationList {
+	max-height: 280px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-@media only screen and (max-width: 640px) {
-	.app-layout-behaviour-left-responsive-overlay .drawer-content {
-		margin-top: 0px !important;
-	}
+.mytheme .hybridMenu .topMenu .v-slot-notificationList {
+	top: 50px !important;
+	max-height: calc(100% - 50px) !important;
+	margin: 8px 0 0;
 }
 
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-overlay .app-bar-application-content {
-		margin-bottom: -64px !important;
-		padding-bottom: 64px !important;
-		margin-right: -256px !important;
-		padding-right: 256px !important;
-	}
-}
-
-@media only screen and (max-width: 640px) {
-	.app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-application-content {
-		margin-bottom: -64px !important;
-		padding-bottom: 64px !important;
-		margin-right: 0px !important;
-		padding-right: 0px !important;
-	}
-}
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-		margin-right: -256px !important;
-		padding-right: 256px !important;
-	}
-}
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-small {
-		--app-drawer-width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small app-drawer[persistent].app-drawer-1 {
-		width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small .app-bar-application-content {
-		left: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small app-header app-toolbar paper-icon-button#toggle {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small .app-bar-content {
-		left: 10px !important;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-button-badge {
-		background: #197de1;
-		color: transparent !important;
-		height: 5px !important;
-		width: 5px;
-		border-radius: 100% !important;
-		padding: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-button span.v-button-caption {
-		opacity: 0;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-round-image {
-		width: 64px !important;
-		height: 64px !important;
-		padding: 7px;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-button {
-		font-size: 20px;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-button .v-icon {
-		width: 100%;
-		text-align: center;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-menu-button .v-button-caption {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small .app-layout-expanding-menu-container-button:after {
-		opacity: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-small .app-bar-application-content {
-		margin-bottom: -64px !important;
-		padding-bottom: 64px !important;
-		margin-right: -64px !important;
-		padding-right: 64px !important;
-	}
-}
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-left-responsive-small-no-app-bar {
-		--app-drawer-width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent].app-drawer-1 {
-		width: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-application-content {
-		left: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar {
-		display: none !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-application-content {
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-		margin-right: -64px !important;
-		padding-right: 64px !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button-badge {
-		background: #197de1;
-		color: transparent !important;
-		height: 5px !important;
-		width: 5px;
-		border-radius: 100% !important;
-		padding: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button span.v-button-caption {
-		opacity: 0;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-round-image {
-		width: 64px !important;
-		height: 64px !important;
-		padding: 7px;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-bar-element .app-layout-menu-header-title {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button {
-		font-size: 20px;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button .v-icon {
-		width: 100%;
-		text-align: center;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button .v-button-caption {
-		display: none;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-expanding-menu-container-button:after {
-		opacity: 0 !important;
-	}
-	.app-layout-behaviour-left-responsive-small-no-app-bar .drawer-content {
-		margin-top: 0px !important;
-		margin-bottom: 0px !important;
-		padding-bottom: 0px !important;
-	}
-}
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-top app-toolbar paper-icon-button#toggle {
-		opacity: 0;
-		pointer-events: none;
-	}
-	.app-layout-behaviour-top .app-bar-content {
-		left: 10px !important;
-	}
-	.app-layout-behaviour-top app-drawer {
-		display: none;
-	}
-	.app-layout-behaviour-top .app-layout-bar-menu-holder {
-		display: flex !important;
-	}
-}
-
-@media only screen and (min-width: 641px) {
-	.app-layout-behaviour-top-large {
-		--app-bar-height: 128px !important;
-	}
-	.app-layout-behaviour-top-large app-toolbar paper-icon-button#toggle {
-		opacity: 0;
-		pointer-events: none;
-	}
-	.app-layout-behaviour-top-large .app-bar-content {
-		left: 10px !important;
-	}
-	.app-layout-behaviour-top-large .app-bar-menu-content {
-		left: 64px;
-		position: absolute;
-		top: 64px !important;
-		right: 0px;
-		bottom: 0px;
-	}
-	.app-layout-behaviour-top-large app-drawer {
-		display: none;
-	}
-	.app-layout-behaviour-top-large .app-bar-menu-content {
-		opacity: 1 !important;
-		pointer-events: auto !important;
-	}
-	.app-layout-behaviour-top-large .app-bar-application-content {
-		box-sizing: border-box;
-		height: 100vh;
-		margin-bottom: -128px !important;
-		padding-bottom: 128px !important;
-	}
-	.app-layout-behaviour-top-large .app-toolbar-1 {
-		height: 128px;
-	}
-}
-
-.mytheme paper-icon-button {
-	width: 44px;
-	height: 44px;
-	margin: 10px;
-	padding: 6px;
-}
-
-.mytheme .app-bar-application-content {
-	position: fixed;
-	width: 100%;
-	box-sizing: border-box;
-	height: 100%;
-	transition: margin 0.2s ease, padding 0.2s ease;
-}
-
-.mytheme app-drawer[opened][persistent] + .app-bar-application-content, .mytheme app-drawer[opened][persistent] + #contentContainer .app-bar-application-content {
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	margin-right: -256px;
-	padding-right: 256px;
-}
-
-.mytheme app-header-layout.small app-drawer[opened] + .app-bar-application-content, .mytheme app-header-layout.small app-drawer[opened] + #contentContainer .app-bar-application-content {
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	margin-right: -64px;
-	padding-right: 64px;
-}
-
-.mytheme .app-bar-application-content {
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	margin-right: 0px;
-	padding-right: 0px;
-}
-
-.mytheme .app-layout-menu-bar-element {
-	padding-left: 16px;
-	padding-right: 16px;
-}
-
-.mytheme .v-absolutelayout-wrapper-app-layout-menu-button-badge {
-	pointer-events: none;
-}
-
-.mytheme app-drawer:not([persistent]):not([opened]) .drawer-content * {
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem {
+	transform: scale(0);
+	transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin 0.5s ease-in-out;
+	height: 0;
+	opacity: 0;
+	width: 300px;
 	overflow: hidden;
+	margin: 0 15px;
 }
 
-.mytheme .app-layout-default-design .app-layout-menu-button-badge {
-	padding: 0 10px;
-	background: #197de1;
-	color: white;
-	font-size: 13px;
-	height: 20px;
-	line-height: 20px;
-	margin: 15px 5px;
-	margin-left: -50px;
-	text-align: center;
-	border-radius: 10px;
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem .notificationItem.notificationItemWithIcon {
+	padding-left: 43px !important;
 }
 
-.mytheme .app-layout-default-design .v-absolutelayout-wrapper-app-bar-badge {
-	pointer-events: none;
-}
-
-.mytheme .app-layout-default-design .app-bar-badge {
-	background: #197de1;
-	color: #c8dbed;
-	font-size: 11px;
-	min-width: 18px;
-	min-height: 18px;
-	text-align: center;
-	line-height: 18px;
-	margin: 7px;
-	padding-right: 4px;
-	padding-left: 3px;
-	border-radius: 17px;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-button {
-	text-align: left !important;
-	transition: background 0.3s ease, color 0.3s ease;
-	border-radius: 0px;
-	transition: border 0.5s;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-button .v-icon + .v-captiontext, .mytheme .app-layout-default-design .app-layout-menu-button .v-icon + span {
-	margin-left: 16px;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-badge-button {
-	padding-right: 55px;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-element {
-	border-left: 5px transparent solid !important;
-	position: relative;
-	transition: border 0.3s;
-	position: relative;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-element:after {
-	position: absolute;
-	margin-left: -5px;
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem .notificationItem.notificationItemWithIcon:before {
 	content: "";
-	left: 0px;
-	top: 0px !important;
-	bottom: 0px !important;
-	width: 5px;
-	box-shadow: 0px 0px 20px 4px rgba(25, 125, 225, 0);
-	transition: box-shadow 0.3s;
-	overflow: visible;
+	position: absolute;
+	border-left: 1px solid;
+	height: calc(100% - 10px);
 }
 
-.mytheme .app-layout-default-design .app-layout-menu-element-active {
-	color: #197de1 !important;
-	border-left: 5px #197de1 solid !important;
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem > .v-widget:not(.v-csslayout) {
+	display: block !important;
 }
 
-.mytheme .app-layout-default-design .app-layout-menu-element-active:after {
-	box-shadow: 0px 0px 20px 4px rgba(25, 125, 225, 0.3);
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem > .v-widget:not(.v-csslayout) > .v-caption {
+	position: absolute;
+	z-index: 10001;
+	font-size: 23px;
+	padding: 15px 10px;
 }
 
-.mytheme .app-layout-default-design .app-layout-menu-button:after {
-	box-shadow: none !important;
-	border-left: none;
+.mytheme .hybridMenu .topMenu .v-slot-notificationList .v-slot-notificationItem.v-slot-notificationItemShow {
+	opacity: 1;
+	transform: scale(1);
+	height: 83px;
+	margin: 7px 15px;
 }
 
-.mytheme .app-layout-default-design.app-layout-behaviour-top .app-layout-menu-element-active, .mytheme .app-layout-default-design.app-layout-behaviour-top-large .app-layout-menu-element-active {
-	border-bottom: 2px solid #d3dff3;
-}
-
-.mytheme .app-layout-default-design.app-layout-behaviour-top .app-layout-menu-element-active .app-layout-menu-button, .mytheme .app-layout-default-design.app-layout-behaviour-top-large .app-layout-menu-element-active .app-layout-menu-button {
-	background: rgba(70, 70, 70, 0) !important;
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-default-design .app-layout-round-image {
-	border-radius: 100%;
-}
-
-.mytheme .app-layout-default-design .app-layout-menu-bar-element {
-	padding-left: 21px;
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-button-badge {
-	padding: 0 10px;
-	background: #197de1;
-	color: white;
-	font-size: 13px;
-	height: 20px;
-	line-height: 20px;
-	margin: 15px 15px;
-	margin-left: -50px;
-	text-align: center;
-	border-radius: 10px;
-}
-
-.mytheme .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-button-badge, .mytheme .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-button-badge {
-	margin: 15px 5px;
-	margin-left: -40px;
-}
-
-.mytheme .app-layout-material-design .v-absolutelayout-wrapper-app-bar-badge {
-	pointer-events: none;
-}
-
-.mytheme .app-layout-material-design .app-bar-badge {
-	background: #197de1;
-	color: #c8dbed;
-	font-size: 13px;
-	min-width: 18px;
-	min-height: 18px;
-	text-align: center;
-	line-height: 18px;
-	margin: 7px;
-	padding-right: 4px;
-	padding-left: 3px;
-	border-radius: 17px;
-	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-button {
-	text-align: left !important;
-	transition: background 0.3s ease, color 0.3s ease;
-	border-radius: 0px;
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-button .v-icon + .v-captiontext, .mytheme .app-layout-material-design .app-layout-menu-button .v-icon + span {
-	margin-left: 16px;
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-badge-button {
-	padding-right: 50px;
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-element-active .app-layout-menu-button {
-	background: rgba(71, 71, 71, 0.1) !important;
-	color: #197de1 !important;
-}
-
-.mytheme .app-layout-material-design .app-layout-menu-button:after {
-	box-shadow: none !important;
-	border-left: none;
-}
-
-.mytheme .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-element-active, .mytheme .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-element-active {
-	border-bottom: 2px solid #d3dff3;
-}
-
-.mytheme .app-layout-material-design.app-layout-behaviour-top .app-layout-menu-element-active .app-layout-menu-button, .mytheme .app-layout-material-design.app-layout-behaviour-top-large .app-layout-menu-element-active .app-layout-menu-button {
-	background: rgba(70, 70, 70, 0) !important;
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-material-design .app-layout-round-image {
-	border-radius: 100%;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-button-badge {
-	padding: 0 10px;
-	background: #197de1;
-	color: white;
-	height: 20px;
-	line-height: 20px;
-	margin: 15px;
-	text-align: center;
-	border-radius: 10px;
-}
-
-.mytheme .app-layout-custom-design .v-absolutelayout-wrapper-app-bar-badge {
-	pointer-events: none;
-}
-
-.mytheme .app-layout-custom-design .app-bar-badge {
-	background: #197de1;
-	color: transparent;
-	height: 5px;
-	width: 5px;
-	margin: 11px;
-	border-radius: 100%;
-	padding: 0;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-button {
-	text-align: left !important;
-	transition: background 0.3s ease, color 0.3s ease;
-	border-radius: 0px;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-button .v-icon + .v-captiontext, .mytheme .app-layout-custom-design .app-layout-menu-button .v-icon + span {
-	margin-left: 16px;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-button-active {
-	background: rgba(71, 71, 71, 0.1) !important;
-	color: #197de1 !important;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-button:after {
-	box-shadow: none !important;
-	border-left: none;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-round-button img.v-icon {
-	width: 100%;
-	height: 100%;
-	border-radius: 100%;
-	vertical-align: unset !important;
-}
-
-.mytheme .app-layout-custom-design .app-layout-menu-section {
-	padding-left: 14px;
-}
-
-.mytheme .app-layout-notification-window .v-margin-left {
-	padding-left: 10px !important;
-}
-
-.mytheme .app-layout-notification-window .v-margin-bottom {
-	padding-bottom: 10px !important;
-}
-
-.mytheme .app-layout-notification-window .v-margin-right {
-	padding-right: 10px !important;
-}
-
-.mytheme .app-layout-notification-window .v-margin-top {
-	padding-top: 10px !important;
-}
-
-.mytheme .v-window .v-window-outerheader:after {
-	border-top: 1px solid transparent;
-}
-
-.mytheme .v-window-contents > .v-scrollable:before {
-	border-top: 1px solid transparent !important;
-}
-
-.mytheme .v-window.translucent {
-	background-color: transparent;
-	box-shadow: none;
-	overflow: visible !important;
-}
-
-.mytheme .v-window.translucent * :not(.app-layout-notification):not(.v-panel-content) {
-	background-color: transparent !important;
-	overflow: visible !important;
-}
-
-.mytheme .v-window.translucent .app-layout-notification {
-	transition: border 0.3s ease;
-	box-shadow: 0px 5px 11px -1px rgba(0, 0, 0, 0.4);
+.mytheme .hybridMenu .notificationItem {
+	padding: 5px;
+	display: block;
 	border-radius: 3px;
-}
-
-.mytheme .v-window.translucent .app-layout-notification .app-layout-notification-time {
 	position: relative;
-	font-size: 12px;
-	line-height: 24px;
-	margin-left: 4px;
+	width: calc(100% - 10px);
 }
 
-.mytheme .v-window.translucent .app-layout-notification .app-layout-notification-time::before {
-	content: "\2022";
-	font-size: 17px;
-	line-height: 24px;
-	left: -11px;
-	color: #197de1;
+.mytheme .hybridMenu .notificationItem .v-caption {
+	display: block;
+}
+
+.mytheme .hybridMenu .notificationItem .v-caption .v-captiontext {
+	font-size: 18px;
+	margin: 0 0 0 7px;
+}
+
+.mytheme .hybridMenu .notificationItem .v-caption .v-captiontext p.timeAgo {
+	display: inline-block;
+	margin: 6px 0 0 7px;
+	font-size: 10px;
 	position: absolute;
 }
 
-.mytheme .v-window.translucent .app-layout-notification .app-layout-notification-title {
-	font-weight: 500;
-	color: #197de1;
+.mytheme .hybridMenu .notificationItem .v-caption .v-captiontext p.timeAgo:before {
+	content: "";
+	display: inline-block;
+	border-radius: 50%;
+	height: 4px;
+	width: 4px;
+	margin: 0 7px 1px 0;
 }
 
-.mytheme .v-window.translucent .app-layout-notification .app-layout-notification-subtitle {
+.mytheme .hybridMenu .notificationItem .v-label {
+	display: block;
+	margin: 0 7px 3px;
 	font-size: 14px;
 	text-overflow: ellipsis;
-	overflow: hidden !important;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high {
-	background: #197de1 !important;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high:not(.app-layout-notification-read) {
-	border-left: 3px solid white;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high.app-layout-notification-read {
-	border-left: 3px solid transparent;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-subtitle {
-	color: #d9e5f1;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-title {
-	font-weight: 500;
-	color: white;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-time {
-	color: #c4d8ec;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-high .app-layout-notification-time::before {
-	color: white;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium {
-	background: white !important;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium:not(.app-layout-notification-read) {
-	border-left: 3px solid #197de1;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium.app-layout-notification-read {
-	border-left: 3px solid transparent;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium .app-layout-notification-subtitle {
-	color: #333333;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-medium .app-layout-notification-time {
-	color: #4d4d4d;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-low {
-	background: #f5f5f5 !important;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-low:not(.app-layout-notification-read) {
-	border-left: 3px solid #c4c4c4;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-low.app-layout-notification-read {
-	border-left: 3px solid transparent;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-low .app-layout-notification-subtitle {
-	color: #313131;
-}
-
-.mytheme .v-window.translucent .app-layout-notification.app-layout-notification-priority-low .app-layout-notification-time {
-	color: #494949;
-}
-
-.mytheme .v-window.translucent .v-window-contents {
-	animation: valo-animate-in-fade 0.4s;
-}
-
-.mytheme .app-layout-expanding-menu-container {
-	transition: max-height 0.4s;
 	overflow: hidden;
-	max-height: 48px;
 }
 
-.mytheme .app-layout-expanding-menu-container-open {
-	max-height: 999px;
-}
-
-.mytheme .app-layout-expanding-menu-container-button {
-	position: relative;
-}
-
-.mytheme .app-layout-expanding-menu-container-button:after {
+.mytheme .hybridMenu .notificationItem .notificationItemCloseButton {
 	position: absolute;
-	content: "\E967";
-	font-family: "Vaadin-Icons";
-	line-height: 48px;
+	top: 0;
+	right: 0;
+	font-size: 12px;
+	height: 20px;
+	width: 25px;
+	cursor: pointer;
+	border-radius: 0 3px 0 3px;
+}
+
+.mytheme .hybridMenu .notificationItem .notificationItemCloseButton span.v-icon {
+	padding: 6px;
+	transition: color 0.3s ease-in-out;
+	border-radius: 0 3px 0 3px;
+}
+
+.mytheme .hybridMenu .notificationItem .notificationItemCloseButton span.notificationItemCloseButton-caption {
+	display: none !important;
+}
+
+.mytheme .hybridMenu .leftMenu {
+	padding: 0 !important;
+	z-index: 100;
+	position: relative;
+	-webkit-transition: width 0.75s ease-in-out;
+	-moz-transition: width 0.75s ease-in-out;
+	-ms-transition: width 0.75s ease-in-out;
+	-o-transition: width 0.75s ease-in-out;
+	transition: width 0.75s ease-in-out;
+}
+
+.mytheme .hybridMenu .leftMenu .v-slot {
+	height: auto !important;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton {
+	background: transparent;
+	display: block;
+	cursor: pointer;
+	-webkit-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-moz-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-ms-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	-o-transition: background 0.3s, border-left 0.3s, height 0.5s;
+	transition: background 0.3s, border-left 0.3s, height 0.5s;
+	border-left: 0 solid transparent;
+	overflow: hidden;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton.active {
+	border-left-width: 3px;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton:hover, .mytheme .hybridMenu .leftMenu .menuButton.active:hover {
+	border-left-width: 5px;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton-wrap {
+	display: block;
+	transition: border 0.3s;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton-wrap .v-icon {
+	margin-left: 10px;
+	width: 25px;
 	text-align: center;
-	width: 48px;
-	right: 0px;
-	top: 0px;
-	bottom: 0px;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton-wrap .menuButton-caption {
+	font-size: 17px;
+}
+
+.mytheme .hybridMenu .leftMenu .menuButton.subMenuButton .menuButton-caption .v-icon {
+	position: absolute;
+	right: 5px;
+	margin: 0;
+	height: 30px;
+	width: 30px;
+	-webkit-transition: transform 0.3s ease-in-out;
+	-moz-transition: transform 0.3s ease-in-out;
+	-ms-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
 	transform: rotate(0deg);
-	transition: opacity 0.3s, transform 0.3s !important;
-	pointer-events: none;
 }
 
-.mytheme .app-layout-expanding-menu-container-open > div > .app-layout-expanding-menu-container-button:after {
-	transform: rotate(90deg);
+.mytheme .hybridMenu .leftMenu .menuButton.subMenuButton.active .menuButton-caption .v-icon {
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 
-.mytheme .app-layout-submenu-container {
-	background: rgba(71, 71, 71, 0.05);
-	padding-left: 0px;
-}
-
-.mytheme .app-layout-top-menu.v-menubar * {
-	color: #d3dff3 !important;
-}
-
-.mytheme .v-csslayout.flex-row {
-	display: -webkit-box;
-	display: -moz-box;
-	display: box;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-moz-box-orient: horizontal;
-	box-orient: horizontal;
-	-webkit-flex-direction: row;
-	-moz-flex-direction: row;
-	flex-direction: row;
-	-ms-flex-direction: row;
-}
-
-.mytheme .v-csslayout.flex-column {
-	display: -webkit-box;
-	display: -moz-box;
-	display: box;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	box-orient: vertical;
-	-webkit-flex-direction: column;
-	-moz-flex-direction: column;
-	flex-direction: column;
-	-ms-flex-direction: column;
-}
-
-.mytheme .v-csslayout.flex-row.overflow-auto {
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.mytheme .v-csslayout.flex-column.overflow-auto {
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.mytheme .v-csslayout.flex-row :not(.shrink):not(.grow), .mytheme .v-csslayout.flex-column :not(.shrink):not(.grow) {
-	-webkit-flex-grow: 0;
-	-moz-flex-grow: 0;
-	flex-grow: 0;
-	-ms-flex-positive: 0;
-	-webkit-flex-shrink: 0;
-	-moz-flex-shrink: 0;
-	flex-shrink: 0;
-	-ms-flex-negative: 0;
-}
-
-.mytheme .v-csslayout.flex-row .grow:not(.shrink), .mytheme .v-csslayout.flex-column .grow:not(.shrink) {
-	-webkit-flex-grow: 1;
-	-moz-flex-grow: 1;
-	flex-grow: 1;
-	-ms-flex-positive: 1;
-}
-
-.mytheme .v-csslayout.flex-row .shrink:not(.grow), .mytheme .v-csslayout.flex-column .shrink:not(.grow) {
-	-webkit-flex-shrink: 1;
-	-moz-flex-shrink: 1;
-	flex-shrink: 1;
-	-ms-flex-negative: 1;
-	overflow: auto;
-}
-
-.mytheme .v-csslayout.flex-row .grow.shrink, .mytheme .v-csslayout.flex-column .grow.shrink {
-	-webkit-flex-grow: 1;
-	-moz-flex-grow: 1;
-	flex-grow: 1;
-	-ms-flex-positive: 1;
-	-webkit-flex-shrink: 1;
-	-moz-flex-shrink: 1;
-	flex-shrink: 1;
-	-ms-flex-negative: 1;
-	overflow: auto;
-}
-
-.mytheme .v-csslayout.flex-row.justify-flex-start, .mytheme .v-csslayout.flex-column.justify-flex-start {
-	justify-content: flex-start;
-}
-
-.mytheme .v-csslayout.flex-row.justify-center, .mytheme .v-csslayout.flex-column.justify-center {
-	justify-content: center;
-}
-
-.mytheme .v-csslayout.flex-row.justify-flex-end, .mytheme .v-csslayout.flex-column.justify-flex-end {
-	justify-content: flex-end;
-}
-
-.mytheme .v-csslayout.flex-row.justify-space-between, .mytheme .v-csslayout.flex-column.justify-space-between {
-	justify-content: space-between;
-}
-
-.mytheme .v-csslayout.flex-row.justify-space-around, .mytheme .v-csslayout.flex-column.justify-space-around {
-	justify-content: space-around;
-}
-
-.mytheme .v-csslayout.flex-row.align-flex-start, .mytheme .v-csslayout.flex-column.align-flex-start {
-	align-items: flex-start;
-}
-
-.mytheme .v-csslayout.flex-row.align-flex-end, .mytheme .v-csslayout.flex-column.align-flex-end {
-	align-items: flex-end;
-}
-
-.mytheme .v-csslayout.flex-row.align-center, .mytheme .v-csslayout.flex-column.align-center {
-	align-items: center;
-}
-
-.mytheme .v-csslayout.flex-row.align-baseline, .mytheme .v-csslayout.flex-column.align-baseline {
-	align-items: baseline;
-}
-
-.mytheme .v-csslayout.flex-row.align-stretch, .mytheme .v-csslayout.flex-column.align-stretch {
-	align-items: stretch;
-}
-
-.mytheme .app-layout-behaviour-left {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	position: relative;
-	z-index: 11;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left app-drawer {
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left app-drawer[opened] {
+.mytheme .hybridMenu .leftMenu .hybridMenu .centralContent .v-expand {
+	-webkit-transition: padding-left 0.75s ease-in-out;
+	-moz-transition: padding-left 0.75s ease-in-out;
+	-ms-transition: padding-left 0.75s ease-in-out;
+	-o-transition: padding-left 0.75s ease-in-out;
+	transition: padding-left 0.75s ease-in-out;
 	z-index: 10;
 }
 
-.mytheme .app-layout-behaviour-left .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
+.mytheme .hybridMenu .leftMenu .hybridMenu .centralContent .v-expand .v-expand {
+	transition: unset;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
+.mytheme .hybridMenu .leftMenu .hybridMenu .v-slot-leftMenu {
+	-webkit-transition: margin-left 0.75s ease-in-out;
+	-moz-transition: margin-left 0.75s ease-in-out;
+	-ms-transition: margin-left 0.75s ease-in-out;
+	-o-transition: margin-left 0.75s ease-in-out;
+	transition: margin-left 0.75s ease-in-out;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .app-layout-menu-button span.v-button-caption, .mytheme .app-layout-behaviour-left-hybrid .app-layout-expanding-menu-container-button:after {
-	opacity: 1;
-	transition: opacity 0.3s;
+.mytheme .hybridMenu .leftMenu .menuSubMenuContent {
+	border-left: 1px solid transparent;
+	margin-left: 24px;
+	width: calc(100% - 24px) !important;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .app-layout-round-image {
-	transition: width 0.3s, height 0.3s;
+.mytheme .hybridMenu .leftMenu .v-slot-menuSubMenuContent {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	max-height: 0;
+	-webkit-transition: max-height 0.5s ease-in-out;
+	-moz-transition: max-height 0.5s ease-in-out;
+	-ms-transition: max-height 0.5s ease-in-out;
+	-o-transition: max-height 0.5s ease-in-out;
+	transition: max-height 0.5s ease-in-out;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .app-layout-menu-button {
-	transition: font-size 0.3s;
+.mytheme .hybridMenu .leftMenu .v-slot-menuSubMenuContent.v-slot-open {
+	max-height: 1000px;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .app-layout-menu-button-badge {
-	transition: color 0.3s, height 0.2s, width 0.3s;
+.mytheme .hybridMenu .leftMenu:not(.minimal) {
+	overflow: auto;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small {
-	--app-drawer-width: 64px;
+.mytheme .hybridMenu .leftMenu.minimal .menuButton {
+	overflow: unset !important;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small app-drawer[persistent].app-drawer-1 {
-	width: 64px !important;
+.mytheme .hybridMenu .leftMenu.minimal .menuButton .v-icon {
+	width: 100% !important;
+	margin: 0 !important;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-bar-application-content {
-	left: 64px !important;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-button-badge {
-	background: #197de1;
-	color: transparent;
-	height: 5px;
-	width: 5px;
-	border-radius: 100%;
-	padding: 0;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-button span.v-button-caption {
+.mytheme .hybridMenu .leftMenu.minimal .menuButton-caption {
+	position: absolute;
+	padding: 12px;
+	margin: -12px 0 0 -100%;
+	height: 26px;
+	pointer-events: none;
 	opacity: 0;
+	transition: opacity 0.5s, margin-left 0.5s;
+	white-space: nowrap;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-bar-element {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-bar-element .app-layout-round-image {
-	width: 64px !important;
-	height: 64px !important;
-	padding: 7px;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-bar-element .app-layout-menu-header-title {
+.mytheme .hybridMenu .leftMenu.minimal .menuButton-caption .v-icon {
 	display: none;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-bar-element .app-layout-menu-header-title {
-	display: none;
+.mytheme .hybridMenu .leftMenu.minimal .menuButton:hover .menuButton-caption {
+	opacity: 1;
+	margin-left: 0;
+	pointer-events: auto;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-button {
-	font-size: 20px;
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-menuSubMenuContent {
+	max-height: 1000px !important;
+	overflow: unset !important;
+	position: absolute !important;
+	opacity: 0;
+	margin: 0;
+	pointer-events: none;
+	width: auto !important;
+	transition: visibility 0s 0.5s, opacity 0.5s, margin-left 0.5s;
+	visibility: hidden;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-button .v-icon {
-	width: 100%;
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenuContent {
+	border-left: 0 !important;
+	margin-left: 0 !important;
+	width: auto !important;
+}
+
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenu:hover > .v-slot-subMenuButton .menuButton-caption {
+	opacity: 1;
+	margin-left: 0;
+	pointer-events: auto;
+}
+
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenu .v-slot-subMenuButton:hover ~ .v-slot-menuSubMenuContent, .mytheme .hybridMenu .leftMenu.minimal .menuSubMenu > .v-slot-menuSubMenuContent:hover {
+	margin-left: 61px;
+	pointer-events: auto;
+	opacity: 1;
+	visibility: visible;
+	transition-delay: 0s;
+}
+
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-slot, .mytheme .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton {
+	width: auto !important;
+	display: block !important;
+}
+
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenuContent .v-icon {
+	margin-left: 10px !important;
+	width: 25px !important;
+	position: absolute !important;
+	z-index: 102;
+}
+
+.mytheme .hybridMenu .leftMenu.minimal .menuSubMenuContent .menuButton-caption {
+	position: relative !important;
+	pointer-events: auto !important;
+	opacity: 1 !important;
+	margin: 0 !important;
+	padding: 0 10px 0 35px !important;
+	z-index: 101;
+	background: transparent !important;
+}
+
+.mytheme .hybridMenu .v-slot-topMenu {
+	position: relative;
+	z-index: 101;
+}
+
+.mytheme .hybridMenu .topMenu {
+	z-index: 1000;
+}
+
+.mytheme .hybridMenu .topMenu .v-expand {
+	white-space: unset !important;
+	box-sizing: unset !important;
+}
+
+.mytheme .hybridMenu .topMenu .v-slot.v-align-middle {
+	width: auto !important;
+	display: inline-block;
+}
+
+.mytheme .hybridMenu .topMenu .v-slot.v-align-right.v-align-middle {
+	float: right;
+}
+
+.mytheme .hybridMenu .topMenu .menuLabel.labelTitle {
+	padding: 0 15px;
+	width: 250px;
 	text-align: center;
+	font-size: 18px;
+	outline: 0 !important;
+	cursor: pointer !important;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-menu-button .v-button-caption {
-	display: none;
+.mytheme .hybridMenu .topMenu .menuLabel.labelTitle img {
+	max-height: 23px;
 }
 
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-expanding-menu-container-button:after {
+.mytheme .hybridMenu .topMenu .menuSubMenu {
+	position: relative;
+	height: 100%;
+	display: inline-block;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	border-top: 1px solid transparent;
+	padding: 0;
 	opacity: 0;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .small .app-layout-submenu-container {
-	padding-left: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 11;
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-hybrid .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-hybrid app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
+	z-index: -1;
+	margin-top: -100%;
+	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
 	pointer-events: none;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .v-slot {
+	height: auto;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button span.v-button-caption, .mytheme .app-layout-behaviour-left-responsive-hybrid .app-layout-expanding-menu-container-button:after {
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuLabel {
+	display: block;
+	opacity: 0.75;
+	padding: 5px 10px 5px 15px;
+	font-size: 12px;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton {
+	display: block;
+	padding: 4px 10px 3px 15px;
+	font-size: 14px;
+	cursor: pointer;
+	background: transparent;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr {
+	height: 1px;
+	margin: 6px 0;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox {
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 200px;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent .messageBox .v-slot-created {
+	position: absolute;
+	bottom: 1px;
+	left: 75px;
+	font-size: 9px;
+}
+
+.mytheme .hybridMenu .topMenu .menuSubMenu .menuSubMenuContent.open {
+	pointer-events: auto;
+	margin-top: 0;
 	opacity: 1;
-	transition: opacity 0.3s;
+	z-index: 100;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid .app-layout-round-image {
-	transition: width 0.3s, height 0.3s;
+.mytheme .hybridMenu .topMenu .menuButton {
+	height: 100%;
+	cursor: pointer;
+	padding: 0 12px;
+	background: transparent;
+	-webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button {
-	transition: font-size 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid .app-layout-menu-button-badge {
-	transition: color 0.3s, height 0.2s, width 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] + app-toolbar, .mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] + #contentContainer app-toolbar {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+.mytheme .hybridMenu .topMenu .menuButton-wrap {
+	display: block;
 	position: relative;
-	z-index: 11;
-	padding: 0px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
+.mytheme .hybridMenu .topMenu .menuButton.iconRight .v-icon {
+	float: right;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
+.mytheme .hybridMenu .topMenu .menuButton.iconRight .menuButton-caption {
+	margin-right: 7px;
+	margin-left: 0;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
+.mytheme .hybridMenu .topMenu .menuButton.profilView .v-icon {
+	max-height: 23px;
+	border-radius: 50%;
+	margin-left: 5px;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
+.mytheme .hybridMenu .topMenu .menuButton.captionOutside .menuButton-wrap {
+	top: 0;
 	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
+	transform: unset;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button span.v-button-caption, .mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-expanding-menu-container-button:after {
-	opacity: 1;
-	transition: opacity 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-round-image {
-	transition: width 0.3s, height 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button {
-	transition: font-size 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-layout-menu-button-badge {
-	transition: color 0.3s, height 0.2s, width 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] + app-toolbar, .mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+.mytheme .hybridMenu .topMenu .menuButton.captionOutside .v-icon {
+	display: block;
+	transition: border 0.3s;
 	position: relative;
-	z-index: 11;
-	padding: 0px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar .drawer-content {
-	height: 100%;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-no-app-bar app-drawer[persistent] .drawer-content:after {
+.mytheme .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
 	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
+	z-index: 100;
+	font-size: 10px;
+	line-height: 12px;
+	padding: 2px 5px;
+	border-radius: 6px;
+	top: 8px;
 }
 
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button span.v-button-caption, .mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-expanding-menu-container-button:after {
-	opacity: 1;
-	transition: opacity 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-round-image {
-	transition: width 0.3s, height 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button {
-	transition: font-size 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-layout-menu-button-badge {
-	transition: color 0.3s, height 0.2s, width 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] + app-toolbar, .mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .app-bar-content {
-	left: 64px;
+.mytheme .hybridMenu .topMenu .menuButton.captionOutside .menuButton-caption .caption {
 	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 9;
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-toolbar paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar .drawer-content {
-	height: 100%;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-hybrid-overlay-no-app-bar app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-overlay {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-overlay .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-overlay app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-overlay app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-overlay app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-overlay .drawer-content {
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	height: 100%;
-	margin-top: 0px !important;
-	overflow: visible;
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 11;
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-responsive .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + app-toolbar paper-icon-button, .mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + #contentContainer app-toolbar paper-icon-button {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer + app-toolbar .app-bar-content, .mytheme .app-layout-behaviour-left-responsive-overlay app-drawer + #contentContainer app-toolbar .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + app-toolbar .app-bar-content, .mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] + #contentContainer app-toolbar .app-bar-content {
-	left: 16px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay .drawer-content {
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	height: 100%;
-	overflow: visible;
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] + app-toolbar, .mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar .drawer-content {
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	height: 100%;
-	overflow: visible;
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[persistent] .drawer-content {
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-}
-
-.mytheme .app-layout-behaviour-left-responsive-overlay-no-app-bar app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 11;
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100vh;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small .app-layout-submenu-container {
-	padding-left: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button span.v-button-caption, .mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-expanding-menu-container-button:after {
-	opacity: 1;
-	transition: opacity 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-round-image {
-	transition: width 0.3s, height 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button {
-	transition: font-size 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-menu-button-badge {
-	transition: color 0.3s, height 0.2s, width 0.3s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] + app-toolbar, .mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] + #contentContainer app-toolbar {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 11;
-	padding: 0px;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-header app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-header paper-icon-button {
-	--paper-icon-button-ink-color: #fff;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer-layout {
-	--app-drawer-layout-content-transition: margin 0.2s;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer {
-	--app-drawer-content-container-background-color: #eee;
-	transition: all 0.5s;
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] .drawer-content {
-	box-shadow: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar app-drawer[persistent] .drawer-content:after {
-	position: absolute;
-	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-	content: "";
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	pointer-events: none;
-}
-
-.mytheme .app-layout-behaviour-left-responsive-small-no-app-bar .app-layout-submenu-container {
-	padding-left: 0px;
-}
-
-.mytheme .app-layout-behaviour-top {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-top .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	transition: left 0.3s;
-}
-
-.mytheme .app-layout-behaviour-top .app-bar-content .app-layout-menu-bar-element {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-top .app-layout-bar-menu-holder {
-	padding-left: 10px;
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-top app-toolbar paper-icon-button {
-	transition: opacity 0.3s;
-	opacity: 1;
-	position: absolute;
-	top: 0px;
-}
-
-.mytheme .app-layout-behaviour-top app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	position: relative;
-	z-index: 11;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-	transition: height 0.3s ease;
-}
-
-.mytheme .app-layout-behaviour-top app-toolbar .v-button {
-	color: #d3dff3 !important;
-}
-
-.mytheme .app-layout-behaviour-top app-drawer {
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
-}
-
-.mytheme .app-layout-behaviour-top app-drawer[opened] {
-	z-index: 10;
-}
-
-.mytheme .app-layout-behaviour-top .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
-}
-
-.mytheme .app-layout-behaviour-top-large {
-	--app-drawer-width: 256px;
-	--app-bar-height: 64px;
-}
-
-.mytheme .app-layout-behaviour-top-large .app-bar-content {
-	left: 64px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 64px;
-	transition: left 0.3s;
-}
-
-.mytheme .app-layout-behaviour-top-large .app-bar-menu-content .app-layout-menu-bar-element {
-	display: none;
-}
-
-.mytheme .app-layout-behaviour-top-large app-toolbar paper-icon-button {
-	transition: opacity 0.3s;
-	opacity: 1;
-	position: absolute;
-	top: 0px;
-}
-
-.mytheme .app-layout-behaviour-top-large .app-bar-menu-content {
+	top: 100%;
+	right: -12px;
+	border-top: 1px solid transparent;
+	padding: 5px 15px 7px;
 	opacity: 0;
+	z-index: -1;
+	margin-top: -100%;
+	white-space: nowrap;
+	-webkit-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-moz-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-ms-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	-o-transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
+	transition: margin-top 0.3s ease-in-out, opacity 0.3s ease-in-out, z-index 0.3s ease-in-out;
 	pointer-events: none;
-	transition: opacity 0.3s ease;
 }
 
-.mytheme .app-layout-behaviour-top-large app-toolbar {
-	background-color: #4285f4;
-	color: #d3dff3;
-	position: relative;
-	z-index: 11;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-	padding: 0px;
-	transition: height 0.3s ease;
+.mytheme .hybridMenu .topMenu .menuButton.captionOutside:hover .menuButton-caption .caption {
+	margin-top: 0;
+	opacity: 1;
+	z-index: 100;
 }
 
-.mytheme .app-layout-behaviour-top-large app-toolbar .v-button {
-	color: #d3dff3 !important;
+.mytheme .hybridMenu.design_white {
+	background: #f5f5f5;
+	color: #424242;
 }
 
-.mytheme .app-layout-behaviour-top-large app-drawer {
-	--app-drawer-scrim-background: rgba(0, 0, 100, 0);
+.mytheme .hybridMenu.design_white .notificationItem.notificationItemWithIcon:before {
+	color: rgba(66, 66, 66, 0.15);
 }
 
-.mytheme .app-layout-behaviour-top-large app-drawer[opened] {
-	z-index: 10;
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
 }
 
-.mytheme .app-layout-behaviour-top-large .drawer-content {
-	margin-top: 64px;
-	box-sizing: border-box;
-	height: 100%;
-	margin-bottom: -64px;
-	padding-bottom: 64px;
-	overflow: visible;
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-	background: white;
-	color: #474747 !important;
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_white .v-caption-notificationItem.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .v-caption-notificationItem.v-caption-notificationPriorityMedium.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .v-caption-notificationItem.v-caption-notificationPriorityHigh.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #de1e1e !important;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityLow {
+	background: #e0e0e0;
+	color: #424242;
+	box-shadow: 0px 6px 7px -3px rgba(224, 224, 224, 0.7);
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityLow .v-caption .v-captiontext {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo:before {
+	background: #424242;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityLow .notificationItemCloseButton span.v-icon {
+	color: rgba(66, 66, 66, 0.5);
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white .leftMenu {
+	background: #eeeeee;
+	color: #424242;
+	box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.4);
+}
+
+.mytheme .hybridMenu.design_white .leftMenu .menuButton.active {
+	border-left-color: #33691e;
+	background: rgba(245, 245, 245, 0.5);
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .leftMenu .menuButton:hover {
+	border-left-color: #1976d2;
+	background: rgba(224, 224, 224, 0.5);
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .leftMenu .menuButton.active:hover {
+	border-left-color: #33691e;
+}
+
+.mytheme .hybridMenu.design_white .leftMenu .menuSubMenuContent {
+	border-left-color: #e0e0e0;
+}
+
+.mytheme .hybridMenu.design_white .leftMenu.minimal .menuButton-caption {
+	background: #eeeeee;
+}
+
+.mytheme .hybridMenu.design_white .leftMenu.minimal .v-slot-menuSubMenuContent {
+	background: rgba(238, 238, 238, 0.5);
+}
+
+.mytheme .hybridMenu.design_white .contentBox {
+	background: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white .topMenu {
+	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.4);
+	background: #e0e0e0;
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .caption, .mytheme .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #64dd17;
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .topMenu .menuButton.active {
+	background: #2e7d32;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .topMenu .menuButton:hover {
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #1976d2;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .mytheme .hybridMenu.design_white .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue {
+	background: #f5f5f5;
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationItemWithIcon:before {
+	color: rgba(66, 66, 66, 0.15);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_white_blue .v-caption-notificationItem.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .v-caption-notificationItem.v-caption-notificationPriorityMedium.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .v-caption-notificationItem.v-caption-notificationPriorityHigh.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #de1e1e !important;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityLow {
+	background: #e0e0e0;
+	color: #424242;
+	box-shadow: 0px 6px 7px -3px rgba(224, 224, 224, 0.7);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityLow .v-caption .v-captiontext {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo {
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo:before {
+	background: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityLow .notificationItemCloseButton span.v-icon {
+	color: rgba(66, 66, 66, 0.5);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu {
+	background: #eeeeee;
+	color: #424242;
+	box-shadow: 1px -1px 7px 0px rgba(189, 189, 189, 0.4);
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu .menuButton.active {
+	border-left-color: #33691e;
+	background: rgba(245, 245, 245, 0.5);
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu .menuButton:hover {
+	border-left-color: #1976d2;
+	background: rgba(224, 224, 224, 0.5);
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu .menuButton.active:hover {
+	border-left-color: #33691e;
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu .menuSubMenuContent {
+	border-left-color: #e0e0e0;
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu.minimal .menuButton-caption {
+	background: #eeeeee;
+}
+
+.mytheme .hybridMenu.design_white_blue .leftMenu.minimal .v-slot-menuSubMenuContent {
+	background: rgba(238, 238, 238, 0.5);
+}
+
+.mytheme .hybridMenu.design_white_blue .contentBox {
+	background: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu {
+	box-shadow: 0px 6px 7px -3px rgba(189, 189, 189, 0.4);
+	background: #1976d2;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .caption, .mytheme .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #64dd17;
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu .menuButton.active {
+	background: #2e7d32;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu .menuButton:hover {
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #f5f5f5;
+	color: #424242;
+}
+
+.mytheme .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .mytheme .hybridMenu.design_white_blue .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark {
+	background: #535353;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh.notificationItemWithIcon:before {
+	color: rgba(245, 245, 245, 0.15);
+}
+
+.mytheme .hybridMenu.design_dark .v-caption-notificationItem.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .v-caption-notificationItem.v-caption-notificationPriorityMedium.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .v-caption-notificationItem.v-caption-notificationPriorityHigh.v-caption-notificationItemShow.v-caption-notificationItemWithIcon {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem .notificationItemCloseButton span.v-icon:hover {
+	color: #de1e1e !important;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityLow {
+	background: #353535;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(53, 53, 53, 0.7);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityLow .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityLow .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityLow .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium {
+	background: #006064;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(0, 96, 100, 0.7);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityMedium .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh {
+	background: #bf360c;
+	color: #f5f5f5;
+	box-shadow: 0px 6px 7px -3px rgba(191, 54, 12, 0.7);
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo {
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .v-caption .v-captiontext p.timeAgo:before {
+	background: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .notificationItem.notificationPriorityHigh .notificationItemCloseButton span.v-icon {
+	color: rgba(245, 245, 245, 0.5);
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu {
+	background: #353535;
+	color: #f5f5f5;
+	box-shadow: 1px -1px 7px 0px rgba(0, 0, 0, 0.4);
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu .menuButton.active {
+	border-left-color: #33691e;
+	background: rgba(83, 83, 83, 0.5);
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu .menuButton:hover {
+	border-left-color: #1976d2;
+	background: rgba(33, 33, 33, 0.5);
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu .menuButton.active:hover {
+	border-left-color: #33691e;
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu .menuSubMenuContent {
+	border-left-color: #535353;
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu.minimal .menuButton-caption {
+	background: #353535;
+}
+
+.mytheme .hybridMenu.design_dark .leftMenu.minimal .v-slot-menuSubMenuContent {
+	background: rgba(53, 53, 53, 0.5);
+}
+
+.mytheme .hybridMenu.design_dark .contentBox {
+	background: rgba(83, 83, 83, 0.5);
+}
+
+.mytheme .hybridMenu.design_dark .topMenu {
+	box-shadow: 0px 6px 7px -3px rgba(0, 0, 0, 0.4);
+	background: #212121;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .caption, .mytheme .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent {
+	border-top-color: #64dd17;
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .topMenu .menuButton.active {
+	background: #2e7d32;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .topMenu .menuButton:hover {
+	background: #33691e;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .topMenu .menuButton.captionOutside .menuButton-caption .toolTop {
+	background: #1976d2;
+	color: #f5f5f5;
+}
+
+.mytheme .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuHr, .mytheme .hybridMenu.design_dark .topMenu .menuSubMenu .menuSubMenuContent .menuSubMenuButton:hover {
+	background: #535353;
 }
 
 .mytheme.v-app, .mytheme.v-app-loading {

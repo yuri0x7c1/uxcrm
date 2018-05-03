@@ -20,6 +20,18 @@
 
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
+			<artifactId>applications</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxerp</groupId>
 			<artifactId>uxerp-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -39,6 +51,10 @@
 
 	<build>
 		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+
 			<!-- base component resources -->
 			<resource>
 				<directory>../framework/base/config</directory>
