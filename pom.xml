@@ -95,40 +95,8 @@
 
 		<!--  vaadin4spring -->
 		<dependency>
-			<groupId>org.vaadin.spring.extensions</groupId>
-			<artifactId>vaadin-spring-ext-boot</artifactId>
-			<version>${vaadin4spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.vaadin.spring.extensions</groupId>
-			<artifactId>vaadin-spring-ext-core</artifactId>
-			<version>${vaadin4spring.version}</version>
-		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>org.vaadin.spring.extensions</groupId>
-			<artifactId>vaadin-spring-ext-security</artifactId>
-			<version>${vaadin4spring.version}</version>
-		</dependency>
-		-->
-
-		<dependency>
-			<groupId>org.vaadin.spring.extensions</groupId>
-			<artifactId>vaadin-spring-ext-test</artifactId>
-			<version>${vaadin4spring.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.vaadin.spring.addons</groupId>
 			<artifactId>vaadin-spring-addon-eventbus</artifactId>
-			<version>${vaadin4spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.vaadin.spring.addons</groupId>
-			<artifactId>vaadin-spring-addon-sidebar</artifactId>
 			<version>${vaadin4spring.version}</version>
 		</dependency>
 

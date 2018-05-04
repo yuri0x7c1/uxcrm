@@ -3,7 +3,6 @@ package com.github.yuri0x7c1.uxerp.ui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.i18n.I18N;
-import org.vaadin.spring.sidebar.SideBarUtils;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.CommonMenu;
 import com.github.yuri0x7c1.uxerp.common.ui.view.ErrorView;
@@ -37,9 +36,6 @@ public class MainUI extends UI {
 
     @Autowired
     I18N i18n;
-
-    @Autowired
-    private SideBarUtils sideBarUtils;
 
 	@Override
 	protected void init(VaadinRequest request) {
