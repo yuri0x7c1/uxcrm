@@ -19,10 +19,8 @@
 	</properties>
 
     <modules>
-        <module>framework</module>
-        <module>applications</module>
     	<module>uxerp-common</module>
-    	<module>uxerp-config</module>
+    	<module>uxerp-ofbiz</module>
     	<module>uxerp-service</module>
     	<module>uxerp-entity</module>
 		<module>uxerp-app</module>

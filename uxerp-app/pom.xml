@@ -20,19 +20,7 @@
 
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>framework</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>applications</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-config</artifactId>
+			<artifactId>uxerp-ofbiz</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
@@ -57,29 +45,29 @@
 
 			<!-- base component resources -->
 			<resource>
-				<directory>../framework/base/config</directory>
+				<directory>../uxerp-ofbiz/framework/base/config</directory>
 			</resource>
 
 			<resource>
-				<directory>../framework/base/dtd</directory>
+				<directory>../uxerp-ofbiz/framework/base/dtd</directory>
 			</resource>
 
 			<!-- entity component resources -->
 			<resource>
-				<directory>../framework/entity/config</directory>
+				<directory>../uxerp-ofbiz/framework/entity/config</directory>
 			</resource>
 
 			<resource>
-				<directory>../framework/entity/dtd</directory>
+				<directory>../uxerp-ofbiz/framework/entity/dtd</directory>
 			</resource>
 
 			<!-- service component resources -->
 			<resource>
-				<directory>../framework/service/config</directory>
+				<directory>../uxerp-ofbiz/framework/service/config</directory>
 			</resource>
 
 			<resource>
-				<directory>../framework/service/dtd</directory>
+				<directory>../uxerp-ofbiz/framework/service/dtd</directory>
 			</resource>
 		</resources>
 		<plugins>

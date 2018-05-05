@@ -14,7 +14,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
-			<artifactId>uxerp-config</artifactId>
+			<artifactId>uxerp-ofbiz</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
