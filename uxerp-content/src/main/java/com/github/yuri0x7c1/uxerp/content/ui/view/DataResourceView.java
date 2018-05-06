@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 // @VaadinFontIcon(VaadinIcons.EDIT)
-@MenuItem(sectionId = CmsSections.CMS, caption=DataResourceView.NAME, order = 3)
+@MenuItem(categoryId = CmsSections.CMS, caption=DataResourceView.NAME, order = 3)
 @UIScope
 @SpringView(name =  DataResourceView.NAME)
 public class DataResourceView extends CommonView implements View {

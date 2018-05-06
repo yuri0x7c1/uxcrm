@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 // @VaadinFontIcon(VaadinIcons.EDIT)
-@MenuItem(sectionId = CmsSections.CMS, caption=ContentView.NAME, order = 2)
+@MenuItem(categoryId = CmsSections.CMS, caption=ContentView.NAME, order = 2)
 @UIScope
 @SpringView(name = ContentView.NAME)
 public class ContentView extends CommonView implements View {

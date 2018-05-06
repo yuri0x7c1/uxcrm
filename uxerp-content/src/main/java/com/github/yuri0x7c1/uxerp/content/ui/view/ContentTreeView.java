@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @SuppressWarnings("unchecked")
 @Slf4j
 // @VaadinFontIcon(VaadinIcons.EDIT)
-@MenuItem(sectionId = CmsSections.CMS, caption=ContentTreeView.NAME, order = 2)
+@MenuItem(categoryId = CmsSections.CMS, caption=ContentTreeView.NAME, order = 2)
 @UIScope
 @SpringView(name = ContentTreeView.NAME)
 public class ContentTreeView  extends CommonView implements View {

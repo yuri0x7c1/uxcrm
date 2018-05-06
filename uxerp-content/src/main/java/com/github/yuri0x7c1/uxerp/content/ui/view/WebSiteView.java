@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 // @VaadinFontIcon(VaadinIcons.EDIT)
-@MenuItem(sectionId = CmsSections.CMS, caption=WebSiteView.NAME, order = 1)
+@MenuItem(categoryId = CmsSections.CMS, caption=WebSiteView.NAME, order = 1)
 @UIScope
 @SpringView(name =  WebSiteView.NAME)
 public class WebSiteView extends CommonView implements View {
