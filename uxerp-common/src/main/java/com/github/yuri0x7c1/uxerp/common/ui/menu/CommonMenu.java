@@ -38,7 +38,7 @@ public class CommonMenu extends HybridMenu {
 		MenuConfig config = new MenuConfig();
 		config.setDesignItem(DesignItem.getWhiteBlueDesign());
 		setContent(content);
-		setMenuComponent(EMenuComponents.ONLY_LEFT);
+		setMenuComponent(EMenuComponents.LEFT_WITH_TOP);
 		setConfig(config);
 		build();
 	}
