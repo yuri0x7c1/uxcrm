@@ -5,13 +5,13 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.i18n.I18N;
+import org.vaadin.viritin.layouts.MCssLayout;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.vaadin.navigator.View;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
-import com.vaadin.ui.CssLayout;
 
 import kaesdingeling.hybridmenu.HybridMenu;
 import kaesdingeling.hybridmenu.data.DesignItem;
@@ -34,7 +34,7 @@ public class CommonMenu extends HybridMenu {
 	public CommonMenu() {
 		super();
 
-		CssLayout content = new CssLayout();
+		MCssLayout content = new MCssLayout().withFullHeight();
 		MenuConfig config = new MenuConfig();
 		config.setDesignItem(DesignItem.getWhiteBlueDesign());
 		setContent(content);
