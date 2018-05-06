@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.i18n.I18N;
 
-import com.github.yuri0x7c1.uxerp.common.ui.menu.CommonMenu;
+import com.github.yuri0x7c1.uxerp.common.ui.menu.component.CommonMenu;
 import com.github.yuri0x7c1.uxerp.common.ui.view.ErrorView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;

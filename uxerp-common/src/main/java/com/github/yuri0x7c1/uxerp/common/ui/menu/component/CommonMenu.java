@@ -1,4 +1,4 @@
-package com.github.yuri0x7c1.uxerp.common.ui.menu;
+package com.github.yuri0x7c1.uxerp.common.ui.menu.component;
 
 import javax.annotation.PostConstruct;
 

@@ -24,7 +24,7 @@ import com.vaadin.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(sectionId = PartyCategories.PARTY, caption=PartyView.NAME, icon=VaadinIcons.GROUP, order = 1)
+@MenuItem(categoryId = PartyCategories.PARTY, caption=PartyView.NAME, icon=VaadinIcons.GROUP, order = 1)
 @UIScope
 @SpringView(name =  PartyView.NAME)
 public class PartyView extends CommonView implements View {
