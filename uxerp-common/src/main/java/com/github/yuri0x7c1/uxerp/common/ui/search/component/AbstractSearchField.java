@@ -1,4 +1,4 @@
-package com.github.yuri0x7c1.uxerp.common.ui.component.search;
+package com.github.yuri0x7c1.uxerp.common.ui.search.component;
 
 import org.vaadin.viritin.fields.EnumSelect;
 import org.vaadin.viritin.fields.MCheckBox;

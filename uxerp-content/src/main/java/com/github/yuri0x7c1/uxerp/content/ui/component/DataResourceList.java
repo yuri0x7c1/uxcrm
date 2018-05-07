@@ -13,8 +13,7 @@ import org.vaadin.viritin.LazyList;
 import org.vaadin.viritin.layouts.MVerticalLayout;
 import org.vaadin.viritinv7.fields.MTable;
 
-import com.github.yuri0x7c1.uxerp.common.test.Constants;
-import com.github.yuri0x7c1.uxerp.common.ui.component.search.CommonSearchForm;
+import com.github.yuri0x7c1.uxerp.common.ui.search.component.CommonSearchForm;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 
