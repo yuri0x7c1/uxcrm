@@ -23,6 +23,7 @@
     	<module>uxerp-ofbiz</module>
     	<module>uxerp-service</module>
     	<module>uxerp-entity</module>
+    	<module>uxerp-devtools</module>
 		<module>uxerp-app</module>
     </modules>
 
