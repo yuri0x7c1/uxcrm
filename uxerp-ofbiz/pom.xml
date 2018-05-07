@@ -41,36 +41,36 @@
 						<configuration>
 							<sources>
 								<!-- framework sources -->
-								<source>base/src/main/java</source>
-								<source>catalina/src/main/java</source>
-								<source>common/src/main/java</source>
-								<source>datafile/src/main/java</source>
-								<source>documents/src/main/java</source>
-								<source>entity/src/main/java</source>
-								<source>entityext/src/main/java</source>
-								<source>minilang/src/main/java</source>
-								<source>resources/src/main/java</source>
-								<source>security/src/main/java</source>
-								<source>service/src/main/java</source>
-								<source>start/src/main/java</source>
-								<source>testtools/src/main/java</source>
-								<source>webapp/src/main/java</source>
-								<source>webtools/src/main/java</source>
-								<source>widget/src/main/java</source>
+								<source>framework/base/src/main/java</source>
+								<source>framework/catalina/src/main/java</source>
+								<source>framework/common/src/main/java</source>
+								<source>framework/datafile/src/main/java</source>
+								<source>framework/documents/src/main/java</source>
+								<source>framework/entity/src/main/java</source>
+								<source>framework/entityext/src/main/java</source>
+								<source>framework/minilang/src/main/java</source>
+								<source>framework/resources/src/main/java</source>
+								<source>framework/security/src/main/java</source>
+								<source>framework/service/src/main/java</source>
+								<source>framework/start/src/main/java</source>
+								<source>framework/testtools/src/main/java</source>
+								<source>framework/webapp/src/main/java</source>
+								<source>framework/webtools/src/main/java</source>
+								<source>framework/widget/src/main/java</source>
 
 								<!-- applications sources -->
-								<source>accounting/src/main/java</source>
-								<source>commonext/src/main/java</source>
-								<source>content/src/main/java</source>
-								<source>datamodel/src/main/java</source>
-								<source>humanres/src/main/java</source>
-								<source>manufacturing/src/main/java</source>
-								<source>marketing/src/main/java</source>
-								<source>order/src/main/java</source>
-								<source>party/src/main/java</source>
-								<source>product/src/main/java</source>
-								<source>securityext/src/main/java</source>
-								<source>workeffort/src/main/java</source>
+								<source>applications/accounting/src/main/java</source>
+								<source>applications/commonext/src/main/java</source>
+								<source>applications/content/src/main/java</source>
+								<source>applications/datamodel/src/main/java</source>
+								<source>applications/humanres/src/main/java</source>
+								<source>applications/manufacturing/src/main/java</source>
+								<source>applications/marketing/src/main/java</source>
+								<source>applications/order/src/main/java</source>
+								<source>applications/party/src/main/java</source>
+								<source>applications/product/src/main/java</source>
+								<source>applications/securityext/src/main/java</source>
+								<source>applications/workeffort/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>
