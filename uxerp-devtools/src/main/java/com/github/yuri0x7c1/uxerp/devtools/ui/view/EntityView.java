@@ -1,21 +1,17 @@
 package com.github.yuri0x7c1.uxerp.devtools.ui.view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import javax.annotation.PostConstruct;
 
-import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.model.ModelEntity;
-import org.apache.ofbiz.entity.model.ModelReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.gridutil.cell.GridCellFilter;
 import org.vaadin.spring.i18n.I18N;
 import org.vaadin.viritin.grid.MGrid;
 import org.vaadin.viritin.label.MLabel;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
+import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -30,13 +26,22 @@ public class EntityView extends CommonView implements View {
 	private I18N i18n;
 
 	@Autowired
-	private Delegator delegator;
+	private ModelOfbiz ofbiz;
 
 	private MGrid<ModelEntity> entityGrid = new MGrid<>(ModelEntity.class)
-			.withProperties("entityName")
+			.withProperties("entityName", "description")
 			.withFullSize();
 
+	private GridCellFilter<ModelEntity> entityGridFilter;
+
 	public static final String NAME = "Entities";
+
+	public EntityView() {
+		setHeight(100.0f, Unit.PERCENTAGE);
+		entityGrid.setHeight(100.0f, Unit.PERCENTAGE);
+		addComponent(entityGrid);
+		setExpandRatio(entityGrid, 1.0f);
+	}
 
 	@PostConstruct
     public void init() throws Exception {
@@ -44,18 +49,12 @@ public class EntityView extends CommonView implements View {
 
 		MLabel entityLabel = new MLabel();
 
-		ModelReader modelReader = delegator.getModelReader();
+		entityGrid.setItems(ofbiz.getEntities().values());
 
-		Set<String> entityNames = modelReader.getEntityNames();
-		List<ModelEntity> entities = new ArrayList<>();
-		for (String entityName : entityNames) {
-			entities.add(modelReader.getModelEntity(entityName));
-		}
-
-		entityGrid.setItems(entities);
-
-		addComponent(entityGrid);
-
+		// init filters
+		entityGridFilter = new GridCellFilter<>(entityGrid, ModelEntity.class);
+		entityGridFilter.setTextFilter("entityName", true, false);
+		entityGridFilter.setTextFilter("description", true, false);
     }
 
     @Override
