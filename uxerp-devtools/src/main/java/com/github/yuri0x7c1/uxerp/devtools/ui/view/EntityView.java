@@ -21,6 +21,9 @@ import com.vaadin.ui.Grid;
 @SpringView(name = EntityView.NAME)
 public class EntityView extends CommonView implements View {
 
+	private static final String ENTITY_NAME_COL_ID = "entityName";
+	private static final String ENTITY_DESCRIPTION_COL_ID = "description";
+
 	@Autowired
 	private I18N i18n;
 
@@ -46,19 +49,19 @@ public class EntityView extends CommonView implements View {
 		setHeaderText(i18n.get(NAME));
 
 		entityGrid.addColumn(ModelEntity::getEntityName)
-			.setId("entityName")
+			.setId(ENTITY_NAME_COL_ID)
 			.setCaption("Entity Name");
 
 		entityGrid.addColumn(entity -> entity.getDescription().equals("None") ? "" : entity.getDescription())
-			.setId("description")
+			.setId(ENTITY_DESCRIPTION_COL_ID)
 			.setCaption("Description");
 
 		entityGrid.setItems(ofbiz.getEntities().values());
 
 		// init filters
 		entityGridFilter = new GridCellFilter<>(entityGrid, ModelEntity.class);
-		entityGridFilter.setTextFilter("entityName", true, false);
-		entityGridFilter.setTextFilter("description", true, false);
+		entityGridFilter.setTextFilter(ENTITY_NAME_COL_ID, true, false);
+		entityGridFilter.setTextFilter(ENTITY_DESCRIPTION_COL_ID, true, false);
     }
 
     @Override
