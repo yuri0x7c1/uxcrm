@@ -58,6 +58,9 @@ public class DevtoolsConfiguration {
 
 		// get all services
 		Map<String, ModelService> services = new TreeMap<>();
+		for (String serviceName : dispatcher.getDispatchContext().getAllServiceNames()) {
+			services.put(serviceName, dispatcher.getDispatchContext().getModelService(serviceName));
+		}
 
 		ModelOfbiz modelOfbiz = new ModelOfbiz(entities, services);
 		return modelOfbiz;
