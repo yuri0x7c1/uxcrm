@@ -1,4 +1,4 @@
-package com.github.yuri0x7c1.uxerp.devtools.ui.view;
+package com.github.yuri0x7c1.uxerp.devtools.entity.ui.view;
 
 import javax.annotation.PostConstruct;
 
