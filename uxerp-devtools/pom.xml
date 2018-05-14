@@ -11,7 +11,29 @@
 
 	<artifactId>uxerp-devtools</artifactId>
 
+	<properties>
+		<version.roaster>2.20.1.Final</version.roaster>
+	</properties>
+
 	<dependencies>
+		<dependency>
+		    <groupId>org.atteo</groupId>
+		    <artifactId>evo-inflector</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.forge.roaster</groupId>
+			<artifactId>roaster-api</artifactId>
+			<version>${version.roaster}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.forge.roaster</groupId>
+			<artifactId>roaster-jdt</artifactId>
+			<version>${version.roaster}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxerp</groupId>
 			<artifactId>uxerp-common</artifactId>
