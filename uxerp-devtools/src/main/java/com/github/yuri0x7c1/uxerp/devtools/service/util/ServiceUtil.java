@@ -110,29 +110,14 @@ public class ServiceUtil {
 		return "Object";
 	}
 
-	public boolean isJavaLangType(String type) {
-		if (type.equals("Object") ||
-				type.equals("String") ||
-				type.equals("Integer") ||
-				type.equals("Long") ||
-				type.equals("Float") ||
-				type.equals("Char") ||
-				type.equals("Double") ||
-				type.equals("Boolean")
-			) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isTextType(String typeName) {
+	public static boolean isTextType(String typeName) {
 		if (typeName.equals("String")) {
 			return true;
 		}
 		return false;
 	}
 
-	public  boolean isNumericType(String typeName) {
+	public static boolean isNumericType(String typeName) {
 		String javaType = typeName;
 		if (javaType.equals("Integer") || javaType.equals("Long") || javaType.equals("Double") ||
 				javaType.equals("Float") || javaType.equals("java.math.BigDecimal")) {
@@ -141,25 +126,25 @@ public class ServiceUtil {
 		return false;
 	}
 
-	public boolean isBooleanType(String typeName) {
+	public static boolean isBooleanType(String typeName) {
 		if (typeName.equals("Boolean")) {
 			return true;
 		}
 		return false;
 	}
 
-	public boolean isTemporalType(String typeName) {
+	public static boolean isTemporalType(String typeName) {
 		if (typeName.equals("java.sql.Timestamp")) {
 			return true;
 		}
 		return false;
 	}
 
-	public String getterFieldName(String fieldName) {
+	public static String getterFieldName(String fieldName) {
 		return "get" + StringUtils.capitalize(fieldName);
 	}
 
-	public String setteFieldrName(String fieldName) {
+	public static String setterFieldName(String fieldName) {
 		return "set" + StringUtils.capitalize(fieldName);
 	}
 }

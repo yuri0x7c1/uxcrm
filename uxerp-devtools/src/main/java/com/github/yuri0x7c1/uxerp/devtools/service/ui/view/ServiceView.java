@@ -11,6 +11,7 @@ import org.vaadin.spring.i18n.I18N;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceFormGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
@@ -43,6 +44,9 @@ public class ServiceView extends CommonView implements View {
 
 	@Autowired
 	private ServiceGenerator serviceGenerator;
+
+	@Autowired
+	private ServiceFormGenerator serviceFormGenerator;
 
 	private Grid<ModelService> serviceGrid = new Grid<>();
 
@@ -79,7 +83,7 @@ public class ServiceView extends CommonView implements View {
 
 				try {
 					serviceGenerator.generate(service);
-					// serviceFormGenerator.generate(service);
+					serviceFormGenerator.generate(service);
 					String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
 					log.info(msg);
 					new Notification(msg,

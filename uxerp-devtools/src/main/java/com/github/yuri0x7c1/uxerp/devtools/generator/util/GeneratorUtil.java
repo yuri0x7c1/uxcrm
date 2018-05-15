@@ -58,4 +58,19 @@ public class GeneratorUtil {
 		}
 		return phrase.toString();
 	}
+
+	public static boolean isJavaLangType(String type) {
+		if (type.equals("Object") ||
+				type.equals("String") ||
+				type.equals("Integer") ||
+				type.equals("Long") ||
+				type.equals("Float") ||
+				type.equals("Char") ||
+				type.equals("Double") ||
+				type.equals("Boolean")
+			) {
+			return true;
+		}
+		return false;
+	}
 }
