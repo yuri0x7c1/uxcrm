@@ -14,6 +14,7 @@ import org.vaadin.spring.i18n.I18N;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityBaseServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
@@ -48,6 +49,9 @@ public class EntityView extends CommonView implements View {
 
 	@Autowired
 	private EntityGenerator entityGenerator;
+
+	@Autowired
+	private EntityBaseServiceGenerator entityBaseServiceGenerator;
 
 	private Button generateAllButton = new Button("Generate all");
 
@@ -127,6 +131,29 @@ public class EntityView extends CommonView implements View {
 				}
 				catch (Exception e) {
 					String msg = String.format("Generate entity %s failed", entity.getEntityName());
+					log.error(msg, e);
+					new Notification(msg,
+					    Notification.Type.ERROR_MESSAGE)
+					    .show(Page.getCurrent());
+				}
+		    }));
+
+		entityGrid.addColumn(entity -> i18n.get("Generate base service"), // generate entity button
+			new ButtonRenderer<ModelEntity>(clickEvent -> {
+
+				ModelEntity entity = clickEvent.getItem();
+				log.debug("Entity name : {}", entity.getEntityName());
+
+				try {
+					entityBaseServiceGenerator.generate(entity);
+					String msg = String.format("Entity %s base service generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
+					log.info(msg);
+					new Notification(msg,
+						Notification.Type.HUMANIZED_MESSAGE)
+						.show(Page.getCurrent());
+				}
+				catch (Exception e) {
+					String msg = String.format("Generate entity base service %s failed", entity.getEntityName());
 					log.error(msg, e);
 					new Notification(msg,
 					    Notification.Type.ERROR_MESSAGE)
