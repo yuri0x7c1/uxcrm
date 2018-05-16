@@ -31,7 +31,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(categoryId=DevtoolsCategories.DEVTOOLS, caption=EntityView.NAME, icon=VaadinIcons.DATABASE)
+@MenuItem(parentId=DevtoolsCategories.DEVTOOLS, caption=EntityView.NAME, icon=VaadinIcons.DATABASE)
 @SpringView(name = EntityView.NAME)
 public class EntityView extends CommonView implements View {
 

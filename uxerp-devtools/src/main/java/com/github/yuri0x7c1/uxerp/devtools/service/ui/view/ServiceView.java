@@ -26,7 +26,7 @@ import com.vaadin.ui.renderers.ButtonRenderer;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(categoryId=DevtoolsCategories.DEVTOOLS, caption=ServiceView.NAME, icon=VaadinIcons.COG)
+@MenuItem(parentId=DevtoolsCategories.DEVTOOLS, caption=ServiceView.NAME, icon=VaadinIcons.COG)
 @SpringView(name = ServiceView.NAME)
 public class ServiceView extends CommonView implements View {
 

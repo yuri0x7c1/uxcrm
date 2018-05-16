@@ -12,7 +12,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 
-@MenuItem(categoryId=CommonCategories.COMMON, caption=HomeView.NAME)
+@MenuItem(parentId=CommonCategories.COMMON, caption=HomeView.NAME)
 @SpringView(name = HomeView.NAME)
 public class HomeView extends CommonView implements View {
 

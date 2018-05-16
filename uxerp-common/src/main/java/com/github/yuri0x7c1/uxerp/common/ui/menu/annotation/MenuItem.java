@@ -11,7 +11,9 @@ import com.vaadin.icons.VaadinIcons;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MenuItem {
-	String categoryId() default CommonCategories.ROOT;
+    String id() default "";
+
+    String parentId() default CommonCategories.ROOT;
 
     String caption() default "";
 
@@ -20,4 +22,6 @@ public @interface MenuItem {
     VaadinIcons icon() default VaadinIcons.QUESTION;
 
     int order() default Integer.MAX_VALUE;
+
+	boolean category() default false;
 }
