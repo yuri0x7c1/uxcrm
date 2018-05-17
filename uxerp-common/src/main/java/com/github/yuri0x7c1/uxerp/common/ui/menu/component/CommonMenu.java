@@ -2,7 +2,6 @@ package com.github.yuri0x7c1.uxerp.common.ui.menu.component;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.collections4.MultiMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.i18n.I18N;
@@ -59,13 +58,7 @@ public class CommonMenu extends HybridMenu {
 		log.debug("tree:\n{}", tree);
 
 		for (MenuNode node : tree.getNodes()) {
-			Component subtree = buildSubTree(node);
-			if (subtree instanceof MenuSubMenu) {
-				addLeftMenuSubMenu((MenuSubMenu) subtree);
-			}
-			else if(subtree instanceof MenuButton) {
-				addLeftMenuButton((MenuButton) subtree);
-			}
+			buildSubTree(node, this);
 		}
 
 	}
@@ -91,37 +84,38 @@ public class CommonMenu extends HybridMenu {
 		}
 	}
 
-	private Component buildSubTree(MenuNode node) {
-		// log.debug("Adding menu item for node [{}]", node);
+	private void buildSubTree(MenuNode node, Component parentComponent) {
+		if (node.isCategory()) {
+			MenuSubMenu subMenu = LeftMenuSubMenuBuilder.get()
+				.setCaption(node.getCaption())
+				.setIcon(node.getIcon())
+				.build();
 
-		for (MenuNode n : node.getChildNodes()) {
-			if (n.isCategory()) {
-				MenuSubMenu subMenu = LeftMenuSubMenuBuilder.get()
-					.setCaption(n.getCaption())
-					.setIcon(n.getIcon())
-					.build();
-
-				Component c = buildSubTree(n);
-				if (c instanceof MenuSubMenu) {
-					subMenu.addLeftMenuSubMenu((MenuSubMenu) c);
-				}
-				else if(c instanceof MenuButton) {
-					subMenu.addLeftMenuButton((MenuButton) c);
-				}
-				return subMenu;
-
+			if (parentComponent instanceof HybridMenu) {
+				((HybridMenu) parentComponent).addLeftMenuSubMenu(subMenu);
 			}
-			else {
-				SpringView springViewAnnotaion = n.getBeanType().getAnnotation(SpringView.class);
-				MenuButton menuButton = LeftMenuButtonBuilder.get()
-					.setCaption(n.getCaption())
-					.setIcon(n.getIcon())
-					.navigateTo(springViewAnnotaion.name())
-					.build();
-				return menuButton;
+			else if (parentComponent instanceof MenuSubMenu) {
+				((MenuSubMenu) parentComponent).addLeftMenuSubMenu(subMenu);
+			}
+
+			for (MenuNode n : node.getChildNodes()) {
+				buildSubTree(n, subMenu);
 			}
 		}
+		else {
+			SpringView springViewAnnotaion = node.getBeanType().getAnnotation(SpringView.class);
+			MenuButton menuButton = LeftMenuButtonBuilder.get()
+				.setCaption(node.getCaption())
+				.setIcon(node.getIcon())
+				.navigateTo(springViewAnnotaion.name())
+				.build();
 
-		return null;
+			if (parentComponent instanceof HybridMenu) {
+				((HybridMenu) parentComponent).addLeftMenuButton(menuButton);
+			}
+			else if (parentComponent instanceof MenuSubMenu) {
+				((MenuSubMenu) parentComponent).addLeftMenuButton(menuButton);
+			}
+		}
 	}
 }
