@@ -100,7 +100,7 @@ public class EntityGenerator {
 			.setFinal(true);
 
 		// create columns
-		for (ModelField field : entity.getPkFieldsUnmodifiable()) {
+		for (ModelField field : entity.getFieldsUnmodifiable()) {
 			Class<?> fieldJavaType = FieldType.find(field).getJavaType();
 			FieldSource<JavaClassSource> entityField = entityClass.addField()
 				.setName(field.getName())
