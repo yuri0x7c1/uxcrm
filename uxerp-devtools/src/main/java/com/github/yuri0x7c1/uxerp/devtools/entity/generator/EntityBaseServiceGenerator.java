@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class EntityBaseServiceGenerator {
+public class EntityBaseServiceGenerator implements IEntityGenerator {
 
 	public static final String TYPE_ONE = "one";
 	public static final String TYPE_ONE_NOFK = "one-nofk";
