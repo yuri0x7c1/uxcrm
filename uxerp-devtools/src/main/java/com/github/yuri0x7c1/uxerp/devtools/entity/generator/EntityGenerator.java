@@ -25,7 +25,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorHelper;
 import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorUtil;
 
 import lombok.AllArgsConstructor;
@@ -44,7 +43,7 @@ public class EntityGenerator implements IEntityGenerator {
 	private Environment env;
 
 	@Autowired
-	private GeneratorHelper helper;
+	private GeneratorUtil generatorUtil;
 
 	public String getRelationFieldName(ModelRelation relation) {
 		StringBuilder name = new StringBuilder();
@@ -74,7 +73,7 @@ public class EntityGenerator implements IEntityGenerator {
 	private JavaClassSource createEntityClass(ModelEntity entity) {
 		// create entity class
 		final JavaClassSource entityClass = Roaster.create(JavaClassSource.class);
-		entityClass.setPackage(helper.getPackageName(entity))
+		entityClass.setPackage(generatorUtil.getPackageName(entity))
 			.setName(entity.getEntityName());
 
 		// comment
@@ -258,7 +257,7 @@ public class EntityGenerator implements IEntityGenerator {
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
-		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(helper.getPackageName(entity))), entity.getEntityName() + ".java");
+		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))), entity.getEntityName() + ".java");
 
 		FileUtils.writeStringToFile(src,  entityClass.toString());
 

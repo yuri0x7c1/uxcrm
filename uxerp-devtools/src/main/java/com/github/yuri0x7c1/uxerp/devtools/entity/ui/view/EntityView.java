@@ -2,6 +2,7 @@ package com.github.yuri0x7c1.uxerp.devtools.entity.ui.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -14,8 +15,8 @@ import org.vaadin.spring.i18n.I18N;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityBaseServiceGenerator;
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorUtil;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -48,10 +49,7 @@ public class EntityView extends CommonView implements View {
 	private ModelOfbiz ofbiz;
 
 	@Autowired
-	private EntityGenerator entityGenerator;
-
-	@Autowired
-	private EntityBaseServiceGenerator entityBaseServiceGenerator;
+	private GeneratorUtil generatorUtil;
 
 	private Button generateAllButton = new Button("Generate all");
 
@@ -60,6 +58,8 @@ public class EntityView extends CommonView implements View {
 	private GridCellFilter<ModelEntity> entityGridFilter;
 
 	public static final String NAME = "Entities";
+
+	public Map<String, IEntityGenerator> entityGenerators;
 
 	public EntityView() {
 		setHeight(100.0f, Unit.PERCENTAGE);
@@ -76,21 +76,26 @@ public class EntityView extends CommonView implements View {
     public void init() throws Exception {
 		setHeaderText(i18n.get(NAME));
 
+		// get all entity generators
+		entityGenerators = generatorUtil.getAllEntityGenerators();
+
 		// generate all button
 		generateAllButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
 		generateAllButton.addClickListener(event -> {
 			List<String> errorEntities = new ArrayList<>();
 			log.info("Generating all entities");
 			for (ModelEntity entity : ofbiz.getEntities().values()) {
-				try {
-					entityGenerator.generate(entity);
-					String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
-					log.info(msg);
-				}
-				catch (Exception e) {
-					errorEntities.add(entity.getEntityName());
-					String msg = String.format("Generate entity %s failed", entity.getEntityName());
-					log.error(msg, e);
+				for (IEntityGenerator entityGenerator : entityGenerators.values()) {
+					try {
+						entityGenerator.generate(entity);
+						String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
+						log.info(msg);
+					}
+					catch (Exception e) {
+						errorEntities.add(entity.getEntityName());
+						String msg = String.format("Generate entity %s failed", entity.getEntityName());
+						log.error(msg, e);
+					}
 				}
 			}
 
@@ -106,7 +111,6 @@ public class EntityView extends CommonView implements View {
 			}
 		});
 
-
 		entityGrid.addColumn(ModelEntity::getEntityName)
 			.setId(ENTITY_NAME_COL_ID)
 			.setCaption("Entity Name");
@@ -115,51 +119,32 @@ public class EntityView extends CommonView implements View {
 			.setId(ENTITY_DESCRIPTION_COL_ID)
 			.setCaption("Description");
 
-		entityGrid.addColumn(entity -> i18n.get("Generate"), // generate entity button
-			new ButtonRenderer<ModelEntity>(clickEvent -> {
+		for (String entityGeneratorName : entityGenerators.keySet()) {
+			entityGrid.addColumn(entity -> entityGeneratorName,
+				new ButtonRenderer<ModelEntity>(clickEvent -> {
 
-				ModelEntity entity = clickEvent.getItem();
-				log.debug("Entity name : {}", entity.getEntityName());
+					IEntityGenerator entityGenerator = entityGenerators.get(entityGeneratorName);
 
-				try {
-					entityGenerator.generate(entity);
-					String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
-					log.info(msg);
-					new Notification(msg,
-						Notification.Type.HUMANIZED_MESSAGE)
-						.show(Page.getCurrent());
-				}
-				catch (Exception e) {
-					String msg = String.format("Generate entity %s failed", entity.getEntityName());
-					log.error(msg, e);
-					new Notification(msg,
-					    Notification.Type.ERROR_MESSAGE)
-					    .show(Page.getCurrent());
-				}
-		    }));
+					ModelEntity entity = clickEvent.getItem();
+					log.debug("Entity name : {}", entity.getEntityName());
 
-		entityGrid.addColumn(entity -> i18n.get("Generate base service"), // generate entity button
-			new ButtonRenderer<ModelEntity>(clickEvent -> {
-
-				ModelEntity entity = clickEvent.getItem();
-				log.debug("Entity name : {}", entity.getEntityName());
-
-				try {
-					entityBaseServiceGenerator.generate(entity);
-					String msg = String.format("Entity %s base service generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
-					log.info(msg);
-					new Notification(msg,
-						Notification.Type.HUMANIZED_MESSAGE)
-						.show(Page.getCurrent());
-				}
-				catch (Exception e) {
-					String msg = String.format("Generate entity base service %s failed", entity.getEntityName());
-					log.error(msg, e);
-					new Notification(msg,
-					    Notification.Type.ERROR_MESSAGE)
-					    .show(Page.getCurrent());
-				}
-		    }));
+					try {
+						entityGenerator.generate(entity);
+						String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
+						log.info(msg);
+						new Notification(msg,
+							Notification.Type.HUMANIZED_MESSAGE)
+							.show(Page.getCurrent());
+					}
+					catch (Exception e) {
+						String msg = String.format("Generate entity %s failed", entity.getEntityName());
+						log.error(msg, e);
+						new Notification(msg,
+						    Notification.Type.ERROR_MESSAGE)
+						    .show(Page.getCurrent());
+					}
+			    }));
+		}
 
 		entityGrid.setItems(ofbiz.getEntities().values());
 

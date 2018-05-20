@@ -21,7 +21,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorHelper;
 import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +44,7 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 	private Environment env;
 
 	@Autowired
-	private GeneratorHelper helper;
+	private GeneratorUtil generatorUtil;
 
 	private JavaClassSource createServiceClass(ModelEntity entity) {
 		JavaClassSource serviceClass = Roaster.create(JavaClassSource.class)
@@ -174,14 +173,14 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 				log.error("\tError get relation object for entity {}. Skipping relation.", relation.getRelEntityName());
 			}
 			else {
-				String relationType = helper.getPackageName(relationEntity) + "." + relationEntity.getEntityName();
+				String relationType = generatorUtil.getPackageName(relationEntity) + "." + relationEntity.getEntityName();
 				serviceClass.addImport(relationType);
 
 				if (TYPE_ONE.equals(relation.getType()) ||
 						TYPE_ONE_NOFK.equals(relation.getType())) {
 
 					MethodSource<JavaClassSource> getOneRelationMethod = serviceClass.addMethod()
-							.setName("get" + StringUtils.capitalize(helper.getRelationFieldName(relation)))
+							.setName("get" + StringUtils.capitalize(generatorUtil.getRelationFieldName(relation)))
 							.setPublic()
 							.setReturnType(relationType);
 
@@ -217,7 +216,7 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 				}
 				else if(TYPE_MANY.equals(relation.getType())) {
 					MethodSource<JavaClassSource> getManyRelationMethod = serviceClass.addMethod()
-							.setName("get" + StringUtils.capitalize(English.plural(helper.getRelationFieldName(relation))))
+							.setName("get" + StringUtils.capitalize(English.plural(generatorUtil.getRelationFieldName(relation))))
 							.setPublic()
 							.setReturnType("List<" + relationType + ">");
 
@@ -284,7 +283,7 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 		serviceClass.addImport("com.github.yuri0x7c1.uxerp.common.find.util.FindUtil");
 		serviceClass.addImport("com.github.yuri0x7c1.uxerp.common.find.util.InputFieldBuilder");
 
-		serviceClass.addImport(helper.getPackageName(entity) + "." + entity.getEntityName());
+		serviceClass.addImport(generatorUtil.getPackageName(entity) + "." + entity.getEntityName());
 
 		// create find method
 		createFindMethod(entity, serviceClass);
@@ -300,7 +299,7 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
-		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(helper.getPackageName(entity))), serviceClass.getName() + ".java");
+		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))), serviceClass.getName() + ".java");
 
 		FileUtils.writeStringToFile(src,  serviceClass.toString());
 
