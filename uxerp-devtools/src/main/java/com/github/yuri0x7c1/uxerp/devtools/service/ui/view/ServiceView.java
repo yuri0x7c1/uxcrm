@@ -1,7 +1,12 @@
 package com.github.yuri0x7c1.uxerp.devtools.service.ui.view;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 
+import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -11,17 +16,19 @@ import org.vaadin.spring.i18n.I18N;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceFormGenerator;
-import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.renderers.ButtonRenderer;
+import com.vaadin.ui.themes.ValoTheme;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,10 +50,9 @@ public class ServiceView extends CommonView implements View {
 	private ModelOfbiz ofbiz;
 
 	@Autowired
-	private ServiceGenerator serviceGenerator;
+	private Map<String, IServiceGenerator> serviceGenerators;
 
-	@Autowired
-	private ServiceFormGenerator serviceFormGenerator;
+	private Button generateAllButton = new Button("Generate all");
 
 	private Grid<ModelService> serviceGrid = new Grid<>();
 
@@ -56,6 +62,9 @@ public class ServiceView extends CommonView implements View {
 
 	public ServiceView() {
 		setHeight(100.0f, Unit.PERCENTAGE);
+
+		addHeaderComponent(generateAllButton);
+
 		serviceGrid.setWidth(100.f, Unit.PERCENTAGE);
 		serviceGrid.setHeight(100.0f, Unit.PERCENTAGE);
 		addComponent(serviceGrid);
@@ -66,38 +75,63 @@ public class ServiceView extends CommonView implements View {
     public void init() {
 		setHeaderText(i18n.get(NAME));
 
+		// generate all services button
+		generateAllButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+		generateAllButton.addClickListener(event -> {
+			List<String> errorEntities = new ArrayList<>();
+			log.info("Generating all services");
+			for (ModelService service : ofbiz.getServices().values()) {
+				for (IServiceGenerator entityGenerator : serviceGenerators.values()) {
+					try {
+						entityGenerator.generate(service);
+						String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
+						log.info(msg);
+					}
+					catch (Exception e) {
+						errorEntities.add(service.name);
+						String msg = String.format("Generate service %s failed", service.name);
+						log.error(msg, e);
+					}
+				}
+			}
+		});
+
+		// add service name column
 		serviceGrid.addColumn(service -> service.name)
 			.setId(SERVICE_NAME_COL_ID)
 			.setCaption("Name");
 
+		// add service description column
 		serviceGrid.addColumn(service -> service.description.equals("None") ? "" : service.description)
 			.setId(SERVICE_DESCRIPTION_COL_ID)
 			.setCaption("Description");
 
-		serviceGrid.addColumn(entity -> i18n.get("Generate"),
-			new ButtonRenderer<ModelService>(clickEvent -> {
+		// add button for every generator
+		for (String serviceGeneratorName : serviceGenerators.keySet()) {
+			serviceGrid.addColumn(entity -> serviceGeneratorName,
+				new ButtonRenderer<ModelService>(clickEvent -> {
 
-				ModelService service = clickEvent.getItem();
-				log.debug("Service name : {}", service.name);
+					ModelService service = clickEvent.getItem();
+					log.debug("Service name : {}", service.name);
 
 
-				try {
-					serviceGenerator.generate(service);
-					serviceFormGenerator.generate(service);
-					String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
-					log.info(msg);
-					new Notification(msg,
-						Notification.Type.HUMANIZED_MESSAGE)
-						.show(Page.getCurrent());
-				}
-				catch (Exception e) {
-					String msg = String.format("Generate service %s failed", service.name);
-					log.error(msg, e);
-					new Notification(msg,
-					    Notification.Type.ERROR_MESSAGE)
-					    .show(Page.getCurrent());
-				}
-		    }));
+					try {
+						serviceGenerators.get(serviceGeneratorName).generate(service);
+						String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
+						log.info(msg);
+						new Notification(msg,
+							Notification.Type.HUMANIZED_MESSAGE)
+							.show(Page.getCurrent());
+					}
+					catch (Exception e) {
+						String msg = String.format("Generate service %s failed", service.name);
+						log.error(msg, e);
+						new Notification(msg,
+						    Notification.Type.ERROR_MESSAGE)
+						    .show(Page.getCurrent());
+					}
+			    }));
+		}
 
 		serviceGrid.setItems(ofbiz.getServices().values());
 

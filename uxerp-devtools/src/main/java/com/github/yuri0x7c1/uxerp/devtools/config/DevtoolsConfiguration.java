@@ -11,14 +11,21 @@ import org.apache.ofbiz.entity.model.ModelReader;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
 public class DevtoolsConfiguration {
+
+	@Autowired
+	ApplicationContext applicationContext;
 
 	@Autowired
 	Delegator delegator;
@@ -64,5 +71,15 @@ public class DevtoolsConfiguration {
 
 		ModelOfbiz modelOfbiz = new ModelOfbiz(entities, services);
 		return modelOfbiz;
+	}
+
+	@Bean
+	public Map<String, IEntityGenerator> entityGenerators() {
+		return applicationContext.getBeansOfType(IEntityGenerator.class);
+	}
+
+	@Bean
+	public Map<String, IServiceGenerator> serviceGenerators() {
+		return applicationContext.getBeansOfType(IServiceGenerator.class);
 	}
 }
