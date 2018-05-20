@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
 
 @Component
 public class GeneratorUtil {
@@ -64,6 +65,10 @@ public class GeneratorUtil {
 
 	public Map<String, IEntityGenerator> getAllEntityGenerators() {
 		return applicationContext.getBeansOfType(IEntityGenerator.class);
+	}
+
+	public Map<String, IServiceGenerator> getAllServiceGenerators() {
+		return applicationContext.getBeansOfType(IServiceGenerator.class);
 	}
 
 	public static String underscoredFromCamelCaseLower(String camelCaseString) {

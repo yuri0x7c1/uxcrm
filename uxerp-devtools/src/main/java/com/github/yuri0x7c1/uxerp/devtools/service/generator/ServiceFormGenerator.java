@@ -10,7 +10,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ofbiz.service.ModelParam;
 import org.apache.ofbiz.service.ModelService;
-import org.apache.sis.internal.jaxb.metadata.replace.ServiceParameter;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.FieldSource;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
@@ -36,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class ServiceFormGenerator {
+public class ServiceFormGenerator implements IServiceGenerator {
 
 	public static final String SUBPACKAGE_NAME = "ui.form";
 	public static final String TYPE_NAME_PART = "ServiceForm";
