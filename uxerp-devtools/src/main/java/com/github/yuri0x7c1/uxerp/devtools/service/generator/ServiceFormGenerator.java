@@ -182,4 +182,10 @@ public class ServiceFormGenerator implements IServiceGenerator {
 
 		return serviceFormSource.toString();
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "ServiceForm";
+	}
 }

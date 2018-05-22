@@ -305,4 +305,10 @@ public class EntityBaseServiceGenerator implements IEntityGenerator {
 
 		return serviceClass.toString();
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "EntityBaseService";
+	}
 }

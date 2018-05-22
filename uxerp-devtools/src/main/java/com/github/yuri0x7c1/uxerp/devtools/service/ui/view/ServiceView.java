@@ -1,22 +1,23 @@
 package com.github.yuri0x7c1.uxerp.devtools.service.ui.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
-import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.vaadin.gridutil.cell.GridCellFilter;
 import org.vaadin.spring.i18n.I18N;
+import org.vaadin.viritin.fields.MCheckBox;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
@@ -49,8 +50,10 @@ public class ServiceView extends CommonView implements View {
 	@Autowired
 	private ModelOfbiz ofbiz;
 
-	@Autowired
+	@Resource
 	private Map<String, IServiceGenerator> serviceGenerators;
+
+	private Map<String, MCheckBox> availableGenerators = new HashMap<>();
 
 	private Button generateAllButton = new Button("Generate all");
 
@@ -75,22 +78,29 @@ public class ServiceView extends CommonView implements View {
     public void init() {
 		setHeaderText(i18n.get(NAME));
 
+		// init available generators map
+		for (String serviceGeneratorName : serviceGenerators.keySet()) {
+			availableGenerators.put(serviceGeneratorName, new MCheckBox(serviceGeneratorName));
+		}
+
 		// generate all services button
 		generateAllButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
 		generateAllButton.addClickListener(event -> {
 			List<String> errorEntities = new ArrayList<>();
 			log.info("Generating all services");
 			for (ModelService service : ofbiz.getServices().values()) {
-				for (IServiceGenerator entityGenerator : serviceGenerators.values()) {
-					try {
-						entityGenerator.generate(service);
-						String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
-						log.info(msg);
-					}
-					catch (Exception e) {
-						errorEntities.add(service.name);
-						String msg = String.format("Generate service %s failed", service.name);
-						log.error(msg, e);
+				for (IServiceGenerator serviceGenerator : serviceGenerators.values()) {
+					if (availableGenerators.get(serviceGenerator.getName()).getValue()) {
+						try {
+							serviceGenerator.generate(service);
+							String msg = String.format("Service %s generated successfully to %s", service.name, env.getProperty("generator.destination_path"));
+							log.info(msg);
+						}
+						catch (Exception e) {
+							errorEntities.add(service.name);
+							String msg = String.format("Generate service %s failed", service.name);
+							log.error(msg, e);
+						}
 					}
 				}
 			}
@@ -104,16 +114,15 @@ public class ServiceView extends CommonView implements View {
 		// add service description column
 		serviceGrid.addColumn(service -> service.description.equals("None") ? "" : service.description)
 			.setId(SERVICE_DESCRIPTION_COL_ID)
-			.setCaption("Description");
+			.setCaption("Description")
+			.setWidth(200.0);
 
 		// add button for every generator
 		for (String serviceGeneratorName : serviceGenerators.keySet()) {
 			serviceGrid.addColumn(entity -> serviceGeneratorName,
 				new ButtonRenderer<ModelService>(clickEvent -> {
-
 					ModelService service = clickEvent.getItem();
 					log.debug("Service name : {}", service.name);
-
 
 					try {
 						serviceGenerators.get(serviceGeneratorName).generate(service);
@@ -130,10 +139,17 @@ public class ServiceView extends CommonView implements View {
 						    Notification.Type.ERROR_MESSAGE)
 						    .show(Page.getCurrent());
 					}
-			    }));
+			    })).setId(serviceGeneratorName);
+
+			serviceGrid.getDefaultHeaderRow()
+				.getCell(serviceGeneratorName)
+				.setComponent(availableGenerators.get(serviceGeneratorName));
 		}
 
 		serviceGrid.setItems(ofbiz.getServices().values());
+
+
+
 
 		// init filters
 		serviceGridFilter = new GridCellFilter<>(serviceGrid, ModelService.class);

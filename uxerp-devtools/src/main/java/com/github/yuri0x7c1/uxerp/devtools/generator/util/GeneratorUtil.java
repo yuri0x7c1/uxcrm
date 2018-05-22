@@ -63,6 +63,7 @@ public class GeneratorUtil {
 		return StringUtils.uncapitalize(name.toString());
 	}
 
+	/*
 	public Map<String, IEntityGenerator> getAllEntityGenerators() {
 		return applicationContext.getBeansOfType(IEntityGenerator.class);
 	}
@@ -70,6 +71,7 @@ public class GeneratorUtil {
 	public Map<String, IServiceGenerator> getAllServiceGenerators() {
 		return applicationContext.getBeansOfType(IServiceGenerator.class);
 	}
+	*/
 
 	public static String underscoredFromCamelCaseLower(String camelCaseString) {
 		String[] words = StringUtils.splitByCharacterTypeCamelCase(camelCaseString);

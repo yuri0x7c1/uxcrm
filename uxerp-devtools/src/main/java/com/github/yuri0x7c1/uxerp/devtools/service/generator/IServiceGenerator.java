@@ -2,6 +2,8 @@ package com.github.yuri0x7c1.uxerp.devtools.service.generator;
 
 import org.apache.ofbiz.service.ModelService;
 
-public interface IServiceGenerator {
+import com.github.yuri0x7c1.uxerp.devtools.generator.util.Generator;
+
+public interface IServiceGenerator extends Generator {
 	String generate(ModelService service) throws Exception;
 }

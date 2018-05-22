@@ -293,4 +293,10 @@ public class ServiceGenerator implements IServiceGenerator {
 
 		return serviceSource.toString();
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Service";
+	}
 }
