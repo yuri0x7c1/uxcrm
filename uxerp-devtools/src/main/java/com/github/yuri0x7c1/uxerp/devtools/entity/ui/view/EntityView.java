@@ -1,16 +1,19 @@
 package com.github.yuri0x7c1.uxerp.devtools.entity.ui.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.apache.ofbiz.entity.model.ModelEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.vaadin.gridutil.cell.GridCellFilter;
 import org.vaadin.spring.i18n.I18N;
+import org.vaadin.viritin.fields.MCheckBox;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
@@ -47,8 +50,10 @@ public class EntityView extends CommonView implements View {
 	@Autowired
 	private ModelOfbiz ofbiz;
 
-	@Autowired
+	@Resource
 	public Map<String, IEntityGenerator> entityGenerators;
+
+	private Map<String, MCheckBox> availableGenerators = new HashMap<>();
 
 	private Button generateAllButton = new Button("Generate all");
 
@@ -73,6 +78,11 @@ public class EntityView extends CommonView implements View {
     public void init() throws Exception {
 		setHeaderText(i18n.get(NAME));
 
+		// init available generators map
+		for (String entityGeneratorName : entityGenerators.keySet()) {
+			availableGenerators.put(entityGeneratorName, new MCheckBox(entityGeneratorName));
+		}
+
 		// generate all button
 		generateAllButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
 		generateAllButton.addClickListener(event -> {
@@ -80,15 +90,17 @@ public class EntityView extends CommonView implements View {
 			log.info("Generating all entities");
 			for (ModelEntity entity : ofbiz.getEntities().values()) {
 				for (IEntityGenerator entityGenerator : entityGenerators.values()) {
-					try {
-						entityGenerator.generate(entity);
-						String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
-						log.info(msg);
-					}
-					catch (Exception e) {
-						errorEntities.add(entity.getEntityName());
-						String msg = String.format("Generate entity %s failed", entity.getEntityName());
-						log.error(msg, e);
+					if (availableGenerators.get(entityGenerator.getName()).getValue()) {
+						try {
+							entityGenerator.generate(entity);
+							String msg = String.format("Entity %s generated successfully to %s", entity.getEntityName(), env.getProperty("generator.destination_path"));
+							log.info(msg);
+						}
+						catch (Exception e) {
+							errorEntities.add(entity.getEntityName());
+							String msg = String.format("Generate entity %s failed", entity.getEntityName());
+							log.error(msg, e);
+						}
 					}
 				}
 			}
@@ -137,7 +149,12 @@ public class EntityView extends CommonView implements View {
 						    Notification.Type.ERROR_MESSAGE)
 						    .show(Page.getCurrent());
 					}
-			    }));
+			    })).setId(entityGeneratorName);
+
+			// add generator checkbox
+			entityGrid.getDefaultHeaderRow()
+				.getCell(entityGeneratorName)
+				.setComponent(availableGenerators.get(entityGeneratorName));
 		}
 
 		entityGrid.setItems(ofbiz.getEntities().values());

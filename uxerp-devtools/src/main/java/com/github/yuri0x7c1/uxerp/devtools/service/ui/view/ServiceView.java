@@ -141,6 +141,7 @@ public class ServiceView extends CommonView implements View {
 					}
 			    })).setId(serviceGeneratorName);
 
+			// add generator checkbox
 			serviceGrid.getDefaultHeaderRow()
 				.getCell(serviceGeneratorName)
 				.setComponent(availableGenerators.get(serviceGeneratorName));

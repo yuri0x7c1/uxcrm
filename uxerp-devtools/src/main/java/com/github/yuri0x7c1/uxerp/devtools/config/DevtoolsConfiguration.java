@@ -78,7 +78,12 @@ public class DevtoolsConfiguration {
 
 	@Bean
 	public Map<String, IEntityGenerator> entityGenerators() {
-		return applicationContext.getBeansOfType(IEntityGenerator.class);
+		Map<String, IEntityGenerator> entityGenerators = new HashMap<>();
+		for (IEntityGenerator entityGenerator : applicationContext.getBeansOfType(IEntityGenerator.class).values()) {
+			entityGenerators.put(entityGenerator.getName(), entityGenerator);
+		}
+		log.debug("!!! Available entity generators : {}", entityGenerators);
+		return entityGenerators;
 	}
 
 	@Bean
