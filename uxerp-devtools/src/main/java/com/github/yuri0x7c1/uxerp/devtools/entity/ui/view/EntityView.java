@@ -16,7 +16,6 @@ import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
-import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorUtil;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -49,7 +48,7 @@ public class EntityView extends CommonView implements View {
 	private ModelOfbiz ofbiz;
 
 	@Autowired
-	private GeneratorUtil generatorUtil;
+	public Map<String, IEntityGenerator> entityGenerators;
 
 	private Button generateAllButton = new Button("Generate all");
 
@@ -58,8 +57,6 @@ public class EntityView extends CommonView implements View {
 	private GridCellFilter<ModelEntity> entityGridFilter;
 
 	public static final String NAME = "Entities";
-
-	public Map<String, IEntityGenerator> entityGenerators;
 
 	public EntityView() {
 		setHeight(100.0f, Unit.PERCENTAGE);
@@ -75,9 +72,6 @@ public class EntityView extends CommonView implements View {
 	@PostConstruct
     public void init() throws Exception {
 		setHeaderText(i18n.get(NAME));
-
-		// get all entity generators
-		entityGenerators = generatorUtil.getAllEntityGenerators();
 
 		// generate all button
 		generateAllButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
