@@ -11,8 +11,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
-import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
 
 @Component
 public class GeneratorUtil {

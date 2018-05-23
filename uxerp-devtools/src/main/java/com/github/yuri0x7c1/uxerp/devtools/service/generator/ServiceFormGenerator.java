@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class ServiceFormGenerator implements IServiceGenerator {
+public class ServiceFormGenerator implements ServiceGenerator {
 
 	public static final String SUBPACKAGE_NAME = "ui.form";
 	public static final String TYPE_NAME_PART = "ServiceForm";
@@ -48,7 +48,7 @@ public class ServiceFormGenerator implements IServiceGenerator {
 	private ServiceUtil serviceUtil;
 
 	@Autowired
-	private ServiceGenerator serviceGenerator;
+	private ServiceWrapperGenerator serviceGenerator;
 
 	@Autowired
 	private Environment env;

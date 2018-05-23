@@ -16,8 +16,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
-import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -77,9 +77,9 @@ public class DevtoolsConfiguration {
 	}
 
 	@Bean
-	public Map<String, IEntityGenerator> entityGenerators() {
-		Map<String, IEntityGenerator> entityGenerators = new HashMap<>();
-		for (IEntityGenerator entityGenerator : applicationContext.getBeansOfType(IEntityGenerator.class).values()) {
+	public Map<String, EntityGenerator> entityGenerators() {
+		Map<String, EntityGenerator> entityGenerators = new HashMap<>();
+		for (EntityGenerator entityGenerator : applicationContext.getBeansOfType(EntityGenerator.class).values()) {
 			entityGenerators.put(entityGenerator.getName(), entityGenerator);
 		}
 		log.debug("!!! Available entity generators : {}", entityGenerators);
@@ -87,9 +87,9 @@ public class DevtoolsConfiguration {
 	}
 
 	@Bean
-	public Map<String, IServiceGenerator> serviceGenerators() {
-		Map<String, IServiceGenerator> serviceGenerators = new HashMap<>();
-		for (IServiceGenerator serviceGenerator : applicationContext.getBeansOfType(IServiceGenerator.class).values()) {
+	public Map<String, ServiceGenerator> serviceGenerators() {
+		Map<String, ServiceGenerator> serviceGenerators = new HashMap<>();
+		for (ServiceGenerator serviceGenerator : applicationContext.getBeansOfType(ServiceGenerator.class).values()) {
 			serviceGenerators.put(serviceGenerator.getName(), serviceGenerator);
 		}
 		log.debug("!!! Available service generators : {}", serviceGenerators);

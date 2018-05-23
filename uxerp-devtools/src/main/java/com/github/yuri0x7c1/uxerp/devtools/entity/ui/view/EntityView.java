@@ -18,7 +18,7 @@ import org.vaadin.viritin.fields.MCheckBox;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.entity.generator.IEntityGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.entity.generator.EntityGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -51,7 +51,7 @@ public class EntityView extends CommonView implements View {
 	private ModelOfbiz ofbiz;
 
 	@Resource
-	public Map<String, IEntityGenerator> entityGenerators;
+	public Map<String, EntityGenerator> entityGenerators;
 
 	private Map<String, MCheckBox> availableGenerators = new HashMap<>();
 
@@ -89,7 +89,7 @@ public class EntityView extends CommonView implements View {
 			List<String> errorEntities = new ArrayList<>();
 			log.info("Generating all entities");
 			for (ModelEntity entity : ofbiz.getEntities().values()) {
-				for (IEntityGenerator entityGenerator : entityGenerators.values()) {
+				for (EntityGenerator entityGenerator : entityGenerators.values()) {
 					if (availableGenerators.get(entityGenerator.getName()).getValue()) {
 						try {
 							entityGenerator.generate(entity);
@@ -129,7 +129,7 @@ public class EntityView extends CommonView implements View {
 			entityGrid.addColumn(entity -> entityGeneratorName,
 				new ButtonRenderer<ModelEntity>(clickEvent -> {
 
-					IEntityGenerator entityGenerator = entityGenerators.get(entityGeneratorName);
+					EntityGenerator entityGenerator = entityGenerators.get(entityGeneratorName);
 
 					ModelEntity entity = clickEvent.getItem();
 					log.debug("Entity name : {}", entity.getEntityName());

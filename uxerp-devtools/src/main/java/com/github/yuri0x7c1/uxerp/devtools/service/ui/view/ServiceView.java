@@ -18,7 +18,7 @@ import org.vaadin.viritin.fields.MCheckBox;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxerp.devtools.service.generator.IServiceGenerator;
+import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -51,7 +51,7 @@ public class ServiceView extends CommonView implements View {
 	private ModelOfbiz ofbiz;
 
 	@Resource
-	private Map<String, IServiceGenerator> serviceGenerators;
+	private Map<String, ServiceGenerator> serviceGenerators;
 
 	private Map<String, MCheckBox> availableGenerators = new HashMap<>();
 
@@ -89,7 +89,7 @@ public class ServiceView extends CommonView implements View {
 			List<String> errorEntities = new ArrayList<>();
 			log.info("Generating all services");
 			for (ModelService service : ofbiz.getServices().values()) {
-				for (IServiceGenerator serviceGenerator : serviceGenerators.values()) {
+				for (ServiceGenerator serviceGenerator : serviceGenerators.values()) {
 					if (availableGenerators.get(serviceGenerator.getName()).getValue()) {
 						try {
 							serviceGenerator.generate(service);
