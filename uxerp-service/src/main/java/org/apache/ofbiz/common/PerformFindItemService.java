@@ -1,4 +1,4 @@
-package org.apache.ofbiz.common.service;
+package org.apache.ofbiz.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,19 +16,17 @@ import java.util.List;
 import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import org.apache.commons.collections.MapUtils;
 import org.apache.ofbiz.entity.GenericValue;
 
 /**
- * Perform Find List
+ * Perform Find Item
  */
 @Component
 @Slf4j
-public class PerformFindListService implements Serializable {
+public class PerformFindItemService implements Serializable {
 
-	public static final long serialVersionUID = 3769828294724243456L;
-	public static final String NAME = "performFindList";
+	public static final long serialVersionUID = 7459215564334252032L;
+	public static final String NAME = "performFindItem";
 	@Autowired
 	private LocalDispatcher dispatcher;
 
@@ -55,12 +53,6 @@ public class PerformFindListService implements Serializable {
 		@Setter
 		private String orderBy;
 		/**
-		 * No Condition Find
-		 */
-		@Getter
-		@Setter
-		private String noConditionFind;
-		/**
 		 * Filter By Date
 		 */
 		@Getter
@@ -72,18 +64,6 @@ public class PerformFindListService implements Serializable {
 		@Getter
 		@Setter
 		private Timestamp filterByDateValue;
-		/**
-		 * View Index
-		 */
-		@Getter
-		@Setter
-		private Integer viewIndex;
-		/**
-		 * View Size
-		 */
-		@Getter
-		@Setter
-		private Integer viewSize;
 		/**
 		 * Locale
 		 */
@@ -120,11 +100,8 @@ public class PerformFindListService implements Serializable {
 			map.put("entityName", entityName);
 			map.put("inputFields", inputFields);
 			map.put("orderBy", orderBy);
-			map.put("noConditionFind", noConditionFind);
 			map.put("filterByDate", filterByDate);
 			map.put("filterByDateValue", filterByDateValue);
-			map.put("viewIndex", viewIndex);
-			map.put("viewSize", viewSize);
 			map.put("locale", locale);
 			map.put("login.password", loginPassword);
 			map.put("login.username", loginUsername);
@@ -137,12 +114,9 @@ public class PerformFindListService implements Serializable {
 			entityName = (String) map.get("entityName");
 			inputFields = (java.util.Map) map.get("inputFields");
 			orderBy = (String) map.get("orderBy");
-			noConditionFind = (String) map.get("noConditionFind");
 			filterByDate = (String) map.get("filterByDate");
 			filterByDateValue = (java.sql.Timestamp) map
 					.get("filterByDateValue");
-			viewIndex = (Integer) map.get("viewIndex");
-			viewSize = (Integer) map.get("viewSize");
 			locale = (java.util.Locale) map.get("locale");
 			loginPassword = (String) map.get("login.password");
 			loginUsername = (String) map.get("login.username");
@@ -159,17 +133,11 @@ public class PerformFindListService implements Serializable {
 	@NoArgsConstructor
 	public static class Out {
 		/**
-		 * List
+		 * Item
 		 */
 		@Getter
 		@Setter
-		private List list;
-		/**
-		 * List Size
-		 */
-		@Getter
-		@Setter
-		private Integer listSize;
+		private GenericValue item;
 		/**
 		 * Query String
 		 */
@@ -215,8 +183,7 @@ public class PerformFindListService implements Serializable {
 
 		public Map<String, Object> toMap() {
 			Map<String, Object> map = new HashMap<>();
-			map.put("list", list);
-			map.put("listSize", listSize);
+			map.put("item", item);
 			map.put("queryString", queryString);
 			map.put("queryStringMap", queryStringMap);
 			map.put("errorMessage", errorMessage);
@@ -228,10 +195,8 @@ public class PerformFindListService implements Serializable {
 		}
 
 		public void fromMap(Map<String, Object> map) {
-			if (map.get("list") != null) {
-				list = (java.util.List) map.get("list");
-			}
-			listSize = (Integer) map.get("listSize");
+			Out result = new Out();
+			item = (org.apache.ofbiz.entity.GenericValue) map.get("item");
 			queryString = (String) map.get("queryString");
 			queryStringMap = (java.util.Map) map.get("queryStringMap");
 			errorMessage = (String) map.get("errorMessage");

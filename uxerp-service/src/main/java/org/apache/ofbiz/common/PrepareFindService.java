@@ -1,7 +1,5 @@
-package org.apache.ofbiz.common.service;
+package org.apache.ofbiz.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -14,24 +12,24 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.sql.Timestamp;
+import org.apache.ofbiz.entity.GenericValue;
 import java.util.Locale;
 import java.util.TimeZone;
-import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.widget.renderer.VisualTheme;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
 
 /**
- * Perform Find Item
+ * Prepare Find
  */
 @Component
 @Slf4j
-public class PerformFindItemService implements Serializable {
+public class PrepareFindService implements Serializable {
 
-	public static final long serialVersionUID = 7459215564334252032L;
-	public static final String NAME = "performFindItem";
+	public static final long serialVersionUID = 895520504585652224L;
+	public static final String NAME = "prepareFind";
 	@Autowired
 	private LocalDispatcher dispatcher;
 
-	@Builder
-	@AllArgsConstructor
 	@NoArgsConstructor
 	public static class In {
 		/**
@@ -53,6 +51,12 @@ public class PerformFindItemService implements Serializable {
 		@Setter
 		private String orderBy;
 		/**
+		 * No Condition Find
+		 */
+		@Getter
+		@Setter
+		private String noConditionFind;
+		/**
 		 * Filter By Date
 		 */
 		@Getter
@@ -65,17 +69,23 @@ public class PerformFindItemService implements Serializable {
 		@Setter
 		private Timestamp filterByDateValue;
 		/**
-		 * Locale
+		 * From Date Name
 		 */
 		@Getter
 		@Setter
-		private Locale locale;
+		private String fromDateName;
 		/**
-		 * Login . Password
+		 * Thru Date Name
 		 */
 		@Getter
 		@Setter
-		private String loginPassword;
+		private String thruDateName;
+		/**
+		 * User Login
+		 */
+		@Getter
+		@Setter
+		private GenericValue userLogin;
 		/**
 		 * Login . Username
 		 */
@@ -83,30 +93,46 @@ public class PerformFindItemService implements Serializable {
 		@Setter
 		private String loginUsername;
 		/**
+		 * Login . Password
+		 */
+		@Getter
+		@Setter
+		private String loginPassword;
+		/**
+		 * Locale
+		 */
+		@Getter
+		@Setter
+		private Locale locale;
+		/**
 		 * Time Zone
 		 */
 		@Getter
 		@Setter
 		private TimeZone timeZone;
 		/**
-		 * User Login
+		 * Visual Theme
 		 */
 		@Getter
 		@Setter
-		private GenericValue userLogin;
+		private VisualTheme visualTheme;
 
 		public Map<String, Object> toMap() {
 			Map<String, Object> map = new HashMap<>();
 			map.put("entityName", entityName);
 			map.put("inputFields", inputFields);
 			map.put("orderBy", orderBy);
+			map.put("noConditionFind", noConditionFind);
 			map.put("filterByDate", filterByDate);
 			map.put("filterByDateValue", filterByDateValue);
-			map.put("locale", locale);
-			map.put("login.password", loginPassword);
-			map.put("login.username", loginUsername);
-			map.put("timeZone", timeZone);
+			map.put("fromDateName", fromDateName);
+			map.put("thruDateName", thruDateName);
 			map.put("userLogin", userLogin);
+			map.put("login.username", loginUsername);
+			map.put("login.password", loginPassword);
+			map.put("locale", locale);
+			map.put("timeZone", timeZone);
+			map.put("visualTheme", visualTheme);
 			return map;
 		}
 
@@ -114,15 +140,20 @@ public class PerformFindItemService implements Serializable {
 			entityName = (String) map.get("entityName");
 			inputFields = (java.util.Map) map.get("inputFields");
 			orderBy = (String) map.get("orderBy");
+			noConditionFind = (String) map.get("noConditionFind");
 			filterByDate = (String) map.get("filterByDate");
 			filterByDateValue = (java.sql.Timestamp) map
 					.get("filterByDateValue");
-			locale = (java.util.Locale) map.get("locale");
-			loginPassword = (String) map.get("login.password");
-			loginUsername = (String) map.get("login.username");
-			timeZone = (java.util.TimeZone) map.get("timeZone");
+			fromDateName = (String) map.get("fromDateName");
+			thruDateName = (String) map.get("thruDateName");
 			userLogin = (org.apache.ofbiz.entity.GenericValue) map
 					.get("userLogin");
+			loginUsername = (String) map.get("login.username");
+			loginPassword = (String) map.get("login.password");
+			locale = (java.util.Locale) map.get("locale");
+			timeZone = (java.util.TimeZone) map.get("timeZone");
+			visualTheme = (org.apache.ofbiz.widget.renderer.VisualTheme) map
+					.get("visualTheme");
 		}
 
 		public In(Map<String, Object> map) {
@@ -133,11 +164,35 @@ public class PerformFindItemService implements Serializable {
 	@NoArgsConstructor
 	public static class Out {
 		/**
-		 * Item
+		 * Entity Condition List
 		 */
 		@Getter
 		@Setter
-		private GenericValue item;
+		private EntityConditionList entityConditionList;
+		/**
+		 * Error Message
+		 */
+		@Getter
+		@Setter
+		private String errorMessage;
+		/**
+		 * Error Message List
+		 */
+		@Getter
+		@Setter
+		private List errorMessageList;
+		/**
+		 * Locale
+		 */
+		@Getter
+		@Setter
+		private Locale locale;
+		/**
+		 * Order By List
+		 */
+		@Getter
+		@Setter
+		private List orderByList;
 		/**
 		 * Query String
 		 */
@@ -150,18 +205,6 @@ public class PerformFindItemService implements Serializable {
 		@Getter
 		@Setter
 		private Map queryStringMap;
-		/**
-		 * Error Message
-		 */
-		@Getter
-		@Setter
-		private String errorMessage;
-		/**
-		 * Error Message List
-		 */
-		@Getter
-		@Setter
-		private List<String> errorMessageList;
 		/**
 		 * Response Message
 		 */
@@ -179,31 +222,62 @@ public class PerformFindItemService implements Serializable {
 		 */
 		@Getter
 		@Setter
-		private List<String> successMessageList;
+		private List successMessageList;
+		/**
+		 * Time Zone
+		 */
+		@Getter
+		@Setter
+		private TimeZone timeZone;
+		/**
+		 * User Login
+		 */
+		@Getter
+		@Setter
+		private GenericValue userLogin;
+		/**
+		 * Visual Theme
+		 */
+		@Getter
+		@Setter
+		private VisualTheme visualTheme;
 
 		public Map<String, Object> toMap() {
 			Map<String, Object> map = new HashMap<>();
-			map.put("item", item);
-			map.put("queryString", queryString);
-			map.put("queryStringMap", queryStringMap);
+			map.put("entityConditionList", entityConditionList);
 			map.put("errorMessage", errorMessage);
 			map.put("errorMessageList", errorMessageList);
+			map.put("locale", locale);
+			map.put("orderByList", orderByList);
+			map.put("queryString", queryString);
+			map.put("queryStringMap", queryStringMap);
 			map.put("responseMessage", responseMessage);
 			map.put("successMessage", successMessage);
 			map.put("successMessageList", successMessageList);
+			map.put("timeZone", timeZone);
+			map.put("userLogin", userLogin);
+			map.put("visualTheme", visualTheme);
 			return map;
 		}
 
 		public void fromMap(Map<String, Object> map) {
 			Out result = new Out();
-			item = (org.apache.ofbiz.entity.GenericValue) map.get("item");
+			entityConditionList = (org.apache.ofbiz.entity.condition.EntityConditionList) map
+					.get("entityConditionList");
+			errorMessage = (String) map.get("errorMessage");
+			errorMessageList = (java.util.List) map.get("errorMessageList");
+			locale = (java.util.Locale) map.get("locale");
+			orderByList = (java.util.List) map.get("orderByList");
 			queryString = (String) map.get("queryString");
 			queryStringMap = (java.util.Map) map.get("queryStringMap");
-			errorMessage = (String) map.get("errorMessage");
-			errorMessageList = (List<String>) map.get("errorMessageList");
 			responseMessage = (String) map.get("responseMessage");
 			successMessage = (String) map.get("successMessage");
-			successMessageList = (List<String>) map.get("successMessageList");
+			successMessageList = (java.util.List) map.get("successMessageList");
+			timeZone = (java.util.TimeZone) map.get("timeZone");
+			userLogin = (org.apache.ofbiz.entity.GenericValue) map
+					.get("userLogin");
+			visualTheme = (org.apache.ofbiz.widget.renderer.VisualTheme) map
+					.get("visualTheme");
 		}
 
 		public Out(Map<String, Object> map) {
