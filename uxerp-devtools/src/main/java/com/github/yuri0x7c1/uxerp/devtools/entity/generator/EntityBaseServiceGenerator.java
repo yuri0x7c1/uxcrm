@@ -89,6 +89,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		findMethod.setBody(String.format("	List<%s> entityList = new ArrayList<>();" +
 				"		In in = new In();" +
 				"		in.setEntityName(%s.NAME);" +
+				"		in.setOrderByList(orderBy);" +
 				"		if (conditions == null) {" +
 				"			in.setNoConditionFind(FindUtil.Y);" +
 				"		}" +
