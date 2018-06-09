@@ -34,7 +34,8 @@ public class PartyView extends CommonView implements View {
 	@Autowired
 	private PartyBaseService partyBaseService;
 
-	private MTable<Party> partyTable = new MTable<>(Party.class).withProperties("partyId")
+	private MTable<Party> partyTable = new MTable<>(Party.class)
+		.withProperties("partyId")
 		.withFullWidth()
 		.withFullHeight();
 
@@ -50,7 +51,7 @@ public class PartyView extends CommonView implements View {
 		partyTable.lazyLoadFrom(
 			(firstRow, sortAscending, property) -> {
 				List<Party> parties = partyBaseService.find(
-						Integer.valueOf(firstRow / LazyList.DEFAULT_PAGE_SIZE),
+						Integer.valueOf(firstRow),
 						Integer.valueOf(LazyList.DEFAULT_PAGE_SIZE),
 						property != null ? Collections.singletonList(property + " " + (sortAscending ? "ASC" : "DESC")) : null,
 						null);
