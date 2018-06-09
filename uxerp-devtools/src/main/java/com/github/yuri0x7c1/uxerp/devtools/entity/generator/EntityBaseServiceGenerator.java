@@ -2,16 +2,18 @@ package com.github.yuri0x7c1.uxerp.devtools.entity.generator;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ofbiz.common.ExecuteFindService;
+import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
+import org.apache.ofbiz.entity.condition.EntityExpr;
+import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.entity.model.ModelKeyMap;
 import org.apache.ofbiz.entity.model.ModelRelation;
@@ -47,9 +49,15 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 
 	private JavaClassSource createServiceClass(ModelEntity entity) {
 		JavaClassSource serviceClass = Roaster.create(JavaClassSource.class)
+				.setPackage(generatorUtil.getPackageName(entity))
 				.setName(entity.getEntityName() + "BaseService");
 
+		serviceClass.addAnnotation(Slf4j.class);
+		serviceClass.addAnnotation(Component.class);
 		serviceClass.addAnnotation(SuppressWarnings.class).setStringValue("unchecked");
+
+		serviceClass.addImport(ExecuteFindService.class.getName() + "." + ExecuteFindService.In.class.getSimpleName());
+		serviceClass.addImport(ExecuteFindService.class.getName() + "." + ExecuteFindService.Out.class.getSimpleName());
 
 		serviceClass.addField()
 			.setName("executeFindService")
@@ -75,23 +83,28 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 
 		findMethod.addParameter("Integer", "start");
 		findMethod.addParameter("Integer", "number");
-		findMethod.addParameter("String", "orderBy");
-		findMethod.addParameter(EntityConditionList.class.getName(), "conditions");
+		findMethod.addParameter("List<String>", "orderBy");
+		findMethod.addParameter(EntityConditionList.class.getSimpleName(), "conditions");
 
 		findMethod.setBody(String.format("	List<%s> entityList = new ArrayList<>();" +
 				"		In in = new In();" +
-				"		in.setEntityName(entityName);" +
-				"		in.setNoConditionFind(conditions == null ? FindUtil.Y : FindUtil.N);" +
+				"		in.setEntityName(%s.NAME);" +
+				"		if (conditions == null) {" +
+				"			in.setNoConditionFind(FindUtil.Y);" +
+				"		}" +
+				"		else {" +
+				"			in.setEntityConditionList(conditions);" +
+				"		}" +
 				"		Out out = executeFindService.runSync(in);" +
 				"		try {" +
 				"			if (out.getListIt() != null) {" +
-				"				return out.getListIt().getPartialList(start, number);" +
+				"				return %s.fromValues(out.getListIt().getPartialList(start, number));" +
 				"			}" +
 				"		}" +
 				"		catch (GenericEntityException e) {" +
 				"			log.error(e.getMessage(), e);" +
 				"		}" +
-				"		return %s.fromValues(entityList);",
+				"		return entityList;",
 				entity.getEntityName(),
 				entity.getEntityName(),
 				entity.getEntityName()
@@ -111,17 +124,18 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType(Integer.class);
 
-		countMethod.addParameter("Map<String, String>", "inputFields");
+		countMethod.addParameter(EntityConditionList.class.getSimpleName(), "conditions");
 
-		countMethod.setBody(String.format("		return performFindListService.runSync(\n" +
-				"			PerformFindListService.In.builder()\n" +
-				"				.entityName(%s.NAME)\n" +
-				"				.viewIndex(1)\n" +
-				"				.viewSize(1)\n" +
-				"				.inputFields(inputFields != null ? inputFields : Collections.EMPTY_MAP)\n" +
-				"				.noConditionFind(MapUtils.isNotEmpty(inputFields) ? FindUtil.N : FindUtil.Y)\n" +
-				"				.build()\n" +
-				"			).getListSize();", entity.getEntityName()));
+		countMethod.setBody(String.format("		In in = new In();" +
+				"		in.setEntityName(%s.NAME);" +
+				"		if (conditions == null) {" +
+				"			in.setNoConditionFind(FindUtil.Y);" +
+				"		}" +
+				"		else {" +
+				"			in.setEntityConditionList(conditions);" +
+				"		}" +
+				"		Out out = executeFindService.runSync(in);\n" +
+				"		return out.getListSize();", entity.getEntityName()));
 		return countMethod;
 	}
 
@@ -293,19 +307,25 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		final JavaClassSource serviceClass = createServiceClass(entity);
 
 		// add some imports
-		serviceClass.addImport(Collections.class);
+		serviceClass.addImport(Arrays.class);
+		serviceClass.addImport(ArrayList.class);
 		serviceClass.addImport(List.class);
-		serviceClass.addImport(Map.class);
-		serviceClass.addImport(MapUtils.class);
+		serviceClass.addImport(CollectionUtils.class);
+
+		serviceClass.addImport(GenericEntityException.class);
+		serviceClass.addImport(EntityConditionList.class);
+		serviceClass.addImport(EntityExpr.class);
+		serviceClass.addImport(EntityOperator.class);
+
 		serviceClass.addImport("com.github.yuri0x7c1.uxerp.common.find.util.FindUtil");
 
 		serviceClass.addImport(generatorUtil.getPackageName(entity) + "." + entity.getEntityName());
 
+		// create count method
+		createCountMethod(entity, serviceClass);
+
 		// create find method
 		createFindMethod(entity, serviceClass);
-
-		// create count method
-		// createCountMethod(entity, serviceClass);
 
 		// create find one method
 		createFindOneMethod(entity, serviceClass);
