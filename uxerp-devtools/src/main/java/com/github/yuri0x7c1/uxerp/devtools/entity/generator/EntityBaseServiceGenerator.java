@@ -1,6 +1,7 @@
 package com.github.yuri0x7c1.uxerp.devtools.entity.generator;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,8 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ofbiz.common.ExecuteFindService;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.entity.model.ModelKeyMap;
 import org.apache.ofbiz.entity.model.ModelRelation;
@@ -33,10 +36,6 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 	public static final String TYPE_ONE_NOFK = "one-nofk";
 	public static final String TYPE_MANY = "many";
 
-	public static final String PERFORM_FIND_LIST_SERVICE_NAME = "org.apache.ofbiz.common.service.PerformFindListService";
-
-	public static final String PERFORM_FIND_ITEM_SERVICE_NAME = "org.apache.ofbiz.common.service.PerformFindItemService";
-
 	@Autowired
 	private ModelOfbiz ofbizInstance;
 
@@ -53,14 +52,8 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		serviceClass.addAnnotation(SuppressWarnings.class).setStringValue("unchecked");
 
 		serviceClass.addField()
-			.setName("performFindListService")
-			.setType("PerformFindListService")
-			.setPrivate()
-			.addAnnotation(Autowired.class);
-
-		serviceClass.addField()
-			.setName("performFindItemService")
-			.setType("PerformFindItemService")
+			.setName("executeFindService")
+			.setType(ExecuteFindService.class.getName())
 			.setPrivate()
 			.addAnnotation(Autowired.class);
 
@@ -80,22 +73,29 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType("List<" + entity.getEntityName() + ">");
 
-		findMethod.addParameter("Integer", "viewIndex");
-		findMethod.addParameter("Integer", "viewSize");
+		findMethod.addParameter("Integer", "start");
+		findMethod.addParameter("Integer", "number");
 		findMethod.addParameter("String", "orderBy");
-		findMethod.addParameter("Map<String, String>", "inputFields");
+		findMethod.addParameter(EntityConditionList.class.getName(), "conditions");
 
-		findMethod.setBody(String.format("		return %s.fromValues(\n" +
-				"			performFindListService.runSync(\n" +
-				"				PerformFindListService.In.builder()\n" +
-				"					.entityName(%s.NAME)\n" +
-				"					.viewIndex(viewIndex)\n" +
-				"					.viewSize(viewSize)\n" +
-				"					.inputFields(inputFields != null ? inputFields : Collections.EMPTY_MAP)\n" +
-				"					.noConditionFind(MapUtils.isNotEmpty(inputFields) ? FindUtil.N : FindUtil.Y)\n" +
-				"					.build()\n" +
-				"			).getList()\n" +
-				"		);", entity.getEntityName(), entity.getEntityName()));
+		findMethod.setBody(String.format("	List<%s> entityList = new ArrayList<>();" +
+				"		In in = new In();" +
+				"		in.setEntityName(entityName);" +
+				"		in.setNoConditionFind(conditions == null ? FindUtil.Y : FindUtil.N);" +
+				"		Out out = executeFindService.runSync(in);" +
+				"		try {" +
+				"			if (out.getListIt() != null) {" +
+				"				return out.getListIt().getPartialList(start, number);" +
+				"			}" +
+				"		}" +
+				"		catch (GenericEntityException e) {" +
+				"			log.error(e.getMessage(), e);" +
+				"		}" +
+				"		return %s.fromValues(entityList);",
+				entity.getEntityName(),
+				entity.getEntityName(),
+				entity.getEntityName()
+		));
 		return findMethod;
 	}
 
@@ -137,26 +137,45 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType(entity.getEntityName());
 
-		StringBuilder inputFields = new StringBuilder("");
+		List<String> conditionList = new ArrayList<>();
 
 		for (String pkName : entity.getPkFieldNames()) {
+			// add method param
 			findOneMethod.addParameter("String", pkName);
 
-			inputFields.append(String.format(".addInputField(%s.Fields.%s.name(), FindUtil.OPTION_EQUALS, false, %s)\n",
-					entity.getEntityName(), pkName, pkName));
+			// create conditions
+			conditionList.add(String.format("new EntityExpr(\"%s\", EntityOperator.EQUALS, %s)", pkName, pkName));
 		}
 
-		findOneMethod.setBody(String.format("		return %s.fromValue(\n" +
-				"			performFindItemService.runSync(\n" +
-				"				PerformFindItemService.In.builder()\n" +
-				"					.entityName(%s.NAME)\n" +
-				"					.inputFields(\n" +
-				"						new InputFieldBuilder()\n" +
-				"							%s\n" +
-				"							.build()\n" +
-				"					).build()\n" +
-				"			).getItem()\n" +
-				"		);", entity.getEntityName(), entity.getEntityName(), inputFields));
+		String conditions = "Arrays.asList(" + StringUtils.join(conditionList, ", ") + ")";
+
+		findOneMethod.setBody(String.format("List<%s> entityList = null;" +
+				"		In in = new In();" +
+				"		in.setEntityName(%s.NAME);" +
+				"		in.setEntityConditionList(" +
+				"			new EntityConditionList<>(" +
+				"				%s," +
+				"				EntityOperator.AND" +
+				"			)" +
+				"		);" +
+				"		Out out = executeFindService.runSync(in);" +
+				"		try {" +
+				"			if (out.getListIt() != null) {" +
+				"				entityList = %s.fromValues(out.getListIt().getCompleteList());" +
+				"			}" +
+				"		} catch (GenericEntityException e) {" +
+				"			log.error(e.getMessage(), e);" +
+				"		}" +
+				"		if (CollectionUtils.isNotEmpty(entityList)) {" +
+				"			return entityList.get(0);" +
+				"		}" +
+				"		return null;",
+				entity.getEntityName(),
+				entity.getEntityName(),
+				conditions,
+				entity.getEntityName()
+		));
+
 		return findOneMethod;
 	}
 
@@ -278,10 +297,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		serviceClass.addImport(List.class);
 		serviceClass.addImport(Map.class);
 		serviceClass.addImport(MapUtils.class);
-		serviceClass.addImport(PERFORM_FIND_LIST_SERVICE_NAME);
-		serviceClass.addImport(PERFORM_FIND_ITEM_SERVICE_NAME);
 		serviceClass.addImport("com.github.yuri0x7c1.uxerp.common.find.util.FindUtil");
-		serviceClass.addImport("com.github.yuri0x7c1.uxerp.common.find.util.InputFieldBuilder");
 
 		serviceClass.addImport(generatorUtil.getPackageName(entity) + "." + entity.getEntityName());
 
@@ -289,13 +305,13 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		createFindMethod(entity, serviceClass);
 
 		// create count method
-		createCountMethod(entity, serviceClass);
+		// createCountMethod(entity, serviceClass);
 
 		// create find one method
 		createFindOneMethod(entity, serviceClass);
 
 		// create relations methods
-		createRelationMethods(entity, serviceClass);
+		// createRelationMethods(entity, serviceClass);
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
