@@ -1,5 +1,6 @@
 package com.github.yuri0x7c1.uxerp.party.ui.view;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,7 @@ import org.apache.ofbiz.party.party.Party;
 import org.apache.ofbiz.party.party.PartyBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.viritin.LazyList;
+import org.vaadin.viritin.button.MButton;
 import org.vaadin.viritinv7.fields.MTable;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
@@ -47,13 +49,11 @@ public class PartyView extends CommonView implements View {
     public void init() throws Exception {
 		partyTable.lazyLoadFrom(
 			(firstRow, sortAscending, property) -> {
-				if (property != null) {
-					String sortField = property + " " + (sortAscending ? "ASC" : "DESC");
-				}
-
 				List<Party> parties = partyBaseService.find(
 						Integer.valueOf(firstRow / LazyList.DEFAULT_PAGE_SIZE),
-						Integer.valueOf(LazyList.DEFAULT_PAGE_SIZE), null, null);
+						Integer.valueOf(LazyList.DEFAULT_PAGE_SIZE),
+						property != null ? Collections.singletonList(property + " " + (sortAscending ? "ASC" : "DESC")) : null,
+						null);
 
 				return parties;
 			},
