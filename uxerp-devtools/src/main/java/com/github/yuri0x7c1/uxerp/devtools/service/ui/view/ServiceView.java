@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -18,6 +19,7 @@ import org.vaadin.viritin.fields.MCheckBox;
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxerp.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
+import com.github.yuri0x7c1.uxerp.devtools.entity.ui.view.EntityDetailView;
 import com.github.yuri0x7c1.uxerp.devtools.service.generator.ServiceGenerator;
 import com.github.yuri0x7c1.uxerp.devtools.ui.menu.category.DevtoolsCategories;
 import com.vaadin.icons.VaadinIcons;
@@ -105,6 +107,13 @@ public class ServiceView extends CommonView implements View {
 				}
 			}
 		});
+
+		// add view button column
+		serviceGrid.addColumn(service -> "View",
+			new ButtonRenderer<ModelService>(clickEvent -> {
+				getUI().getNavigator().navigateTo(ServiceDetailView.NAME + "/" + clickEvent.getItem().name);
+		    })
+		);
 
 		// add service name column
 		serviceGrid.addColumn(service -> service.name)
