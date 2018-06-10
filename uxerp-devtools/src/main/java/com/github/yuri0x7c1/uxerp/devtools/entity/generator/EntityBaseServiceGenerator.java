@@ -109,7 +109,8 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				"		Out out = executeFindService.runSync(in);" +
 				"		try {" +
 				"			if (out.getListIt() != null) {" +
-				"				return %s.fromValues(out.getListIt().getPartialList(start, number));" +
+				"				entityList = %s.fromValues(out.getListIt().getPartialList(start, number));" +
+				"				out.getListIt().close();" +
 				"			}" +
 				"		}" +
 				"		catch (GenericEntityException e) {" +
@@ -198,6 +199,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 			"		try {" +
 			"			if (out.getListIt() != null) {" +
 			"				entityList = %s.fromValues(out.getListIt().getCompleteList());" +
+			"				out.getListIt().close();" +
 			"			}" +
 			"		} catch (GenericEntityException e) {" +
 			"			log.error(e.getMessage(), e);" +
