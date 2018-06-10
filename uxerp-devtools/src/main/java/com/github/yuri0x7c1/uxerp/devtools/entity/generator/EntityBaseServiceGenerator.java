@@ -22,6 +22,7 @@ import org.atteo.evo.inflector.English;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 import org.jboss.forge.roaster.model.source.MethodSource;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -52,9 +53,15 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 	@Autowired
 	private ServiceUtil serviceUtil;
 
+	public static final String ENTITY_BASE_SERVICE_SUBPACKAGE = "service.base";
+
+	public String getBaseServicePackageName(ModelEntity entity) {
+		return generatorUtil.getPackageName(entity) + "." + ENTITY_BASE_SERVICE_SUBPACKAGE;
+	}
+
 	private JavaClassSource createServiceClass(ModelEntity entity) {
 		JavaClassSource serviceClass = Roaster.create(JavaClassSource.class)
-				.setPackage(generatorUtil.getPackageName(entity))
+				.setPackage(getBaseServicePackageName(entity))
 				.setName(entity.getEntityName() + "BaseService");
 
 		serviceClass.addAnnotation(Slf4j.class);
@@ -65,12 +72,32 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		serviceClass.addImport(ExecuteFindService.class.getName() + "." + ExecuteFindService.Out.class.getSimpleName());
 
 		serviceClass.addField()
-			.setName("executeFindService")
+			.setName(StringUtils.uncapitalize(ExecuteFindService.class.getSimpleName()))
 			.setType(ExecuteFindService.class.getName())
-			.setPrivate()
-			.addAnnotation(Autowired.class);
+			.setProtected();
 
 		return serviceClass;
+	}
+
+	/**
+	 * Create constructor
+	 * @param entity
+	 * @param serviceClass
+	 * @return
+	 */
+	private MethodSource<JavaClassSource> createConstructor(ModelEntity entity, JavaClassSource serviceClass) {
+		MethodSource<JavaClassSource> constructor = serviceClass.addMethod()
+				.setConstructor(true)
+				.setPublic();
+
+		String findServiceVariableName = StringUtils.uncapitalize(ExecuteFindService.class.getSimpleName());
+
+		constructor.addAnnotation(Autowired.class);
+		constructor.addParameter(ExecuteFindService.class.getSimpleName(), findServiceVariableName);
+
+		constructor.setBody(String.format("this.%s = %s;", findServiceVariableName, findServiceVariableName));
+
+		return constructor;
 	}
 
 	/**
@@ -366,6 +393,9 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 
 		serviceClass.addImport(generatorUtil.getPackageName(entity) + "." + entity.getEntityName());
 
+		// create constructor
+		createConstructor(entity, serviceClass);
+
 		// create count method
 		createCountMethod(entity, serviceClass);
 
@@ -380,7 +410,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
-		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))), serviceClass.getName() + ".java");
+		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(getBaseServicePackageName(entity))), serviceClass.getName() + ".java");
 
 		FileUtils.writeStringToFile(src, serviceClass.toString());
 
