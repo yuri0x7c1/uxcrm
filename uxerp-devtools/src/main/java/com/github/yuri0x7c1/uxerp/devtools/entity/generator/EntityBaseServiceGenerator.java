@@ -15,6 +15,7 @@ import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.model.ModelEntity;
+import org.apache.ofbiz.entity.model.ModelField;
 import org.apache.ofbiz.entity.model.ModelKeyMap;
 import org.apache.ofbiz.entity.model.ModelRelation;
 import org.atteo.evo.inflector.English;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Component;
 
 import com.github.yuri0x7c1.uxerp.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxerp.devtools.generator.util.GeneratorUtil;
+import com.github.yuri0x7c1.uxerp.devtools.service.util.ServiceUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,6 +48,9 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 
 	@Autowired
 	private GeneratorUtil generatorUtil;
+
+	@Autowired
+	private ServiceUtil serviceUtil;
 
 	private JavaClassSource createServiceClass(ModelEntity entity) {
 		JavaClassSource serviceClass = Roaster.create(JavaClassSource.class)
@@ -68,6 +73,56 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		return serviceClass;
 	}
 
+	/**
+	 * Create find method body
+	 * @param entityName
+	 * @param conditionString
+	 * @return
+	 */
+	private String createFindMethodBody(String entityName, String conditionString) {
+		String conditions = null;
+		if (conditionString == null) {
+			conditions =
+					"		if (conditions == null) {" +
+					"			in.setNoConditionFind(FindUtil.Y);" +
+					"		}" +
+					"		else {" +
+					"			in.setEntityConditionList(conditions);" +
+					"		}";
+		}
+		else {
+			conditions = String.format(
+			"		in.setEntityConditionList(" +
+			"			new EntityConditionList<>(" +
+			"				%s," +
+			"				EntityOperator.AND" +
+			"			)" +
+			"		);", conditionString);
+		}
+
+		return String.format(
+				"		List<%s> entityList = new ArrayList<>();" +
+				"		In in = new In();" +
+				"		in.setEntityName(%s.NAME);" +
+				"		in.setOrderByList(orderBy);" +
+				"%s" +
+				"		Out out = executeFindService.runSync(in);" +
+				"		try {" +
+				"			if (out.getListIt() != null) {" +
+				"				return %s.fromValues(out.getListIt().getPartialList(start, number));" +
+				"			}" +
+				"		}" +
+				"		catch (GenericEntityException e) {" +
+				"			log.error(e.getMessage(), e);" +
+				"		}" +
+				"		return entityList;",
+				entityName,
+				entityName,
+				conditions,
+				entityName
+		);
+	}
+
 
 	/**
 	 * Create find method
@@ -81,35 +136,14 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType("List<" + entity.getEntityName() + ">");
 
+		findMethod.getJavaDoc().setFullText("Fine " + English.plural(entity.getEntityName()));
+
 		findMethod.addParameter("Integer", "start");
 		findMethod.addParameter("Integer", "number");
 		findMethod.addParameter("List<String>", "orderBy");
 		findMethod.addParameter(EntityConditionList.class.getSimpleName(), "conditions");
 
-		findMethod.setBody(String.format("	List<%s> entityList = new ArrayList<>();" +
-				"		In in = new In();" +
-				"		in.setEntityName(%s.NAME);" +
-				"		in.setOrderByList(orderBy);" +
-				"		if (conditions == null) {" +
-				"			in.setNoConditionFind(FindUtil.Y);" +
-				"		}" +
-				"		else {" +
-				"			in.setEntityConditionList(conditions);" +
-				"		}" +
-				"		Out out = executeFindService.runSync(in);" +
-				"		try {" +
-				"			if (out.getListIt() != null) {" +
-				"				return %s.fromValues(out.getListIt().getPartialList(start, number));" +
-				"			}" +
-				"		}" +
-				"		catch (GenericEntityException e) {" +
-				"			log.error(e.getMessage(), e);" +
-				"		}" +
-				"		return entityList;",
-				entity.getEntityName(),
-				entity.getEntityName(),
-				entity.getEntityName()
-		));
+		findMethod.setBody(createFindMethodBody(entity.getEntityName(), null));
 		return findMethod;
 	}
 
@@ -125,9 +159,12 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType(Integer.class);
 
+		countMethod.getJavaDoc().setFullText("Count " + English.plural(entity.getEntityName()));
+
 		countMethod.addParameter(EntityConditionList.class.getSimpleName(), "conditions");
 
-		countMethod.setBody(String.format("		In in = new In();" +
+		countMethod.setBody(String.format(
+				"		In in = new In();" +
 				"		in.setEntityName(%s.NAME);" +
 				"		if (conditions == null) {" +
 				"			in.setNoConditionFind(FindUtil.Y);" +
@@ -138,6 +175,42 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				"		Out out = executeFindService.runSync(in);\n" +
 				"		return out.getListSize();", entity.getEntityName()));
 		return countMethod;
+	}
+
+	/**
+	 * Create findOne method body
+	 * @param entityName
+	 * @param conditions
+	 * @return
+	 */
+	private String createFindOneMethodBody(String entityName, String conditions) {
+		return String.format(
+			"		List<%s> entityList = null;" +
+			"		In in = new In();" +
+			"		in.setEntityName(%s.NAME);" +
+			"		in.setEntityConditionList(" +
+			"			new EntityConditionList<>(" +
+			"				%s," +
+			"				EntityOperator.AND" +
+			"			)" +
+			"		);" +
+			"		Out out = executeFindService.runSync(in);" +
+			"		try {" +
+			"			if (out.getListIt() != null) {" +
+			"				entityList = %s.fromValues(out.getListIt().getCompleteList());" +
+			"			}" +
+			"		} catch (GenericEntityException e) {" +
+			"			log.error(e.getMessage(), e);" +
+			"		}" +
+			"		if (CollectionUtils.isNotEmpty(entityList)) {" +
+			"			return entityList.get(0);" +
+			"		}" +
+			"		return null;",
+			entityName,
+			entityName,
+			conditions,
+			entityName
+		);
 	}
 
 	/**
@@ -152,44 +225,24 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType(entity.getEntityName());
 
+		findOneMethod.getJavaDoc().setFullText("Fine one " + entity.getEntityName());
+
 		List<String> conditionList = new ArrayList<>();
-
-		for (String pkName : entity.getPkFieldNames()) {
+		for (ModelField pkField : entity.getPkFields()) {
 			// add method param
-			findOneMethod.addParameter("String", pkName);
+			findOneMethod.addParameter(serviceUtil.getParamJavaTypeName(pkField.getType()), pkField.getName());
 
-			// create conditions
-			conditionList.add(String.format("new EntityExpr(\"%s\", EntityOperator.EQUALS, %s)", pkName, pkName));
+			// add condition
+			conditionList.add(String.format(
+				"new EntityExpr(\"%s\", EntityOperator.EQUALS, %s)",
+				pkField.getName(),
+				pkField.getName()
+			));
 		}
-
 		String conditions = "Arrays.asList(" + StringUtils.join(conditionList, ", ") + ")";
 
-		findOneMethod.setBody(String.format("List<%s> entityList = null;" +
-				"		In in = new In();" +
-				"		in.setEntityName(%s.NAME);" +
-				"		in.setEntityConditionList(" +
-				"			new EntityConditionList<>(" +
-				"				%s," +
-				"				EntityOperator.AND" +
-				"			)" +
-				"		);" +
-				"		Out out = executeFindService.runSync(in);" +
-				"		try {" +
-				"			if (out.getListIt() != null) {" +
-				"				entityList = %s.fromValues(out.getListIt().getCompleteList());" +
-				"			}" +
-				"		} catch (GenericEntityException e) {" +
-				"			log.error(e.getMessage(), e);" +
-				"		}" +
-				"		if (CollectionUtils.isNotEmpty(entityList)) {" +
-				"			return entityList.get(0);" +
-				"		}" +
-				"		return null;",
-				entity.getEntityName(),
-				entity.getEntityName(),
-				conditions,
-				entity.getEntityName()
-		));
+		// create method body
+		findOneMethod.setBody(createFindOneMethodBody(entity.getEntityName(), conditions));
 
 		return findOneMethod;
 	}
@@ -213,83 +266,72 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				if (TYPE_ONE.equals(relation.getType()) ||
 						TYPE_ONE_NOFK.equals(relation.getType())) {
 
+					String methodName = "get" + StringUtils.capitalize(generatorUtil.getRelationFieldName(relation));
+
+					// create method
 					MethodSource<JavaClassSource> getOneRelationMethod = serviceClass.addMethod()
-							.setName("get" + StringUtils.capitalize(generatorUtil.getRelationFieldName(relation)))
+							.setName(methodName)
 							.setPublic()
 							.setReturnType(relationType);
+
+					// set javadoc
+					getOneRelationMethod.getJavaDoc().setFullText(StringUtils.capitalize(generatorUtil.createPhraseFromCamelCase(methodName)));
 
 					String entityVariableName = StringUtils.uncapitalize(entity.getEntityName());
 					getOneRelationMethod.addParameter(entity.getEntityName(), entityVariableName);
 
-					StringBuilder inputFields = new StringBuilder("");
+					List<String> conditionList = new ArrayList<>();
 
 					for (ModelKeyMap keyMap : relation.getKeyMaps()) {
 						String fieldName = keyMap.getFieldName();
 						String relFieldName = keyMap.getRelFieldName() != null ? keyMap.getRelFieldName() : fieldName;
-						inputFields.append(
-							String.format(
-								".addInputField(%s.Fields.%s.name(), FindUtil.OPTION_EQUALS, false, %s)\n",
-								relationEntity.getEntityName(),
-								relFieldName,
-								entityVariableName + ".get" + StringUtils.capitalize(fieldName) + "()"
-							)
-						);
 
-						getOneRelationMethod.setBody(String.format("		return %s.fromValue(\n" +
-								"			performFindItemService.runSync(\n" +
-								"				PerformFindItemService.In.builder()\n" +
-								"					.entityName(%s.NAME)\n" +
-								"					.inputFields(\n" +
-								"						new InputFieldBuilder()\n" +
-								"							%s\n" +
-								"							.build()\n" +
-								"					).build()\n" +
-								"			).getItem()\n" +
-								"		);", relationEntity.getEntityName(), relationEntity.getEntityName(), inputFields));
+						// add condition
+						conditionList.add(String.format(
+							"new EntityExpr(\"%s\", EntityOperator.EQUALS, %s)",
+							relFieldName,
+							entityVariableName + ".get" + StringUtils.capitalize(fieldName) + "()"
+						));
 					}
+					String conditions = "Arrays.asList(" + StringUtils.join(conditionList, ", ") + ")";
+					getOneRelationMethod.setBody(createFindOneMethodBody(relation.getRelEntityName(), conditions));
 				}
 				else if(TYPE_MANY.equals(relation.getType())) {
+					String methodName = "get" + StringUtils.capitalize(English.plural(generatorUtil.getRelationFieldName(relation)));
+
+					// create method
 					MethodSource<JavaClassSource> getManyRelationMethod = serviceClass.addMethod()
-							.setName("get" + StringUtils.capitalize(English.plural(generatorUtil.getRelationFieldName(relation))))
+							.setName(methodName)
 							.setPublic()
 							.setReturnType("List<" + relationType + ">");
 
+					// add javadoc
+					getManyRelationMethod.getJavaDoc().setFullText(StringUtils.capitalize(generatorUtil.createPhraseFromCamelCase(methodName)));
+
 					String entityVariableName = StringUtils.uncapitalize(entity.getEntityName());
 					getManyRelationMethod.addParameter(entity.getEntityName(), entityVariableName);
-					getManyRelationMethod.addParameter("Integer", "viewIndex");
-					getManyRelationMethod.addParameter("Integer", "viewSize");
-					getManyRelationMethod.addParameter("String", "orderBy");
+					getManyRelationMethod.addParameter("Integer", "start");
+					getManyRelationMethod.addParameter("Integer", "number");
+					getManyRelationMethod.addParameter("List<String>", "orderBy");
 
 					StringBuilder inputFields = new StringBuilder("");
+
+					List<String> conditionList = new ArrayList<>();
 
 					for (ModelKeyMap keyMap : relation.getKeyMaps()) {
 						String fieldName = keyMap.getFieldName();
 						String relFieldName = keyMap.getRelFieldName() != null ? keyMap.getRelFieldName() : fieldName;
-						inputFields.append(
-							String.format(
-								".addInputField(%s.Fields.%s.name(), FindUtil.OPTION_EQUALS, false, %s)\n",
-								relationEntity.getEntityName(),
-								relFieldName,
-								entityVariableName + ".get" + StringUtils.capitalize(fieldName) + "()"
-							)
-						);
 
-						getManyRelationMethod.setBody(String.format("		return %s.fromValues(\n" +
-								"			performFindListService.runSync(\n" +
-								"				PerformFindListService.In.builder()\n" +
-								"				.viewIndex(viewIndex)\n" +
-								"				.viewSize(viewSize)\n" +
-								"					.inputFields(\n" +
-								"						new InputFieldBuilder()\n" +
-								"							%s\n" +
-								"							.build()\n" +
-								"				).build()\n" +
-								"			).getList()\n" +
-								"		);", relationEntity.getEntityName(), inputFields, relationEntity.getEntityName()));
-
-						// getManyRelationMethod.setBody("return null;");
+						// add condition
+						conditionList.add(String.format(
+							"new EntityExpr(\"%s\", EntityOperator.EQUALS, %s)",
+							relFieldName,
+							entityVariableName + ".get" + StringUtils.capitalize(fieldName) + "()"
+						));
 					}
+					String conditions = "Arrays.asList(" + StringUtils.join(conditionList, ", ") + ")";
 
+					getManyRelationMethod.setBody(createFindMethodBody(relation.getRelEntityName(), conditions));
 				}
 			}
 		}
@@ -332,20 +374,19 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		createFindOneMethod(entity, serviceClass);
 
 		// create relations methods
-		// createRelationMethods(entity, serviceClass);
+		createRelationMethods(entity, serviceClass);
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
 		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))), serviceClass.getName() + ".java");
 
-		FileUtils.writeStringToFile(src,  serviceClass.toString());
+		FileUtils.writeStringToFile(src, serviceClass.toString());
 
 		return serviceClass.toString();
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "EntityBaseService";
 	}
 }
