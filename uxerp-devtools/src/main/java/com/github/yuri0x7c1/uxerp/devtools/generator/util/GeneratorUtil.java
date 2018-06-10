@@ -53,12 +53,14 @@ public class GeneratorUtil {
 			name.append(relation.getRelEntityName());
 		}
 
+		/* this was necessary for jpa generator ?
 		name.setCharAt(0, Character.toLowerCase(name.charAt(0)));
 		if (relation.getKeyMaps().size() == 1) {
 			if (name.toString().equals(relation.getKeyMaps().get(0).getFieldName())) {
 				name.append("Relation");
 			}
 		}
+		*/
 
 		return StringUtils.uncapitalize(name.toString());
 	}

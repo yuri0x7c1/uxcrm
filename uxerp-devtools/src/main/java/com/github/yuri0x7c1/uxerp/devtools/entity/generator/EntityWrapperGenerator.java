@@ -45,26 +45,6 @@ public class EntityWrapperGenerator implements EntityGenerator {
 	@Autowired
 	private GeneratorUtil generatorUtil;
 
-	public String getRelationFieldName(ModelRelation relation) {
-		StringBuilder name = new StringBuilder();
-		if (!StringUtils.isBlank(relation.getTitle())) {
-			name.append(relation.getTitle())
-				.append(relation.getRelEntityName());
-		}
-		else {
-			name.append(relation.getRelEntityName());
-		}
-
-		name.setCharAt(0, Character.toLowerCase(name.charAt(0)));
-		if (relation.getKeyMaps().size() == 1) {
-			if (name.toString().equals(relation.getKeyMaps().get(0).getFieldName())) {
-				name.append("Relation");
-			}
-		}
-
-		return StringUtils.uncapitalize(name.toString());
-	}
-
 	/**
 	 * Create entity class
 	 * @param entity
