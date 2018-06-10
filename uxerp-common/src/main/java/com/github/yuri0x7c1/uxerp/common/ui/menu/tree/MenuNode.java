@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
+import com.github.yuri0x7c1.uxerp.common.ui.menu.tree.MenuTree.OrderComparator;
 import com.vaadin.icons.VaadinIcons;
 
 import edu.emory.mathcs.backport.java.util.Collections;
@@ -25,6 +26,11 @@ public class MenuNode {
 	}
 
 	private List<MenuNode> childNodes = new LinkedList<>();
+
+	public List<MenuNode> sortChildNodes() {
+		childNodes.sort(new OrderComparator());
+		return Collections.unmodifiableList(childNodes);
+	}
 
 	public List<MenuNode> getChildNodes() {
 		return Collections.unmodifiableList(childNodes);
@@ -61,10 +67,12 @@ public class MenuNode {
 	public void addNode(MenuNode node) {
 		if (getId().equals(node.getParentId())) {
 			childNodes.add(node);
+			sortChildNodes();
 		}
 		else {
 			for (MenuNode n : childNodes) {
 				n.addNode(node);
+				n.sortChildNodes();
 			}
 		}
 	}

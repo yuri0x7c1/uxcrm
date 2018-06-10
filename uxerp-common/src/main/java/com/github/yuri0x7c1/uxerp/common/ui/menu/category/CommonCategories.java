@@ -7,7 +7,7 @@ import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItems;
 
 @Component
 @MenuItems({
-    @MenuItem(id = CommonCategories.COMMON, caption = "Common", category = true),
+    @MenuItem(id = CommonCategories.COMMON, caption = "Common", category = true, order=100),
 })
 public class CommonCategories {
 	public static final String ROOT = "root";

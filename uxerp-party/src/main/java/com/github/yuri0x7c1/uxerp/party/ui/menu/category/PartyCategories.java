@@ -7,7 +7,7 @@ import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItems;
 
 @Component
 @MenuItems({
-    @MenuItem(id = PartyCategories.PARTY, caption = "Party", category=true),
+    @MenuItem(id = PartyCategories.PARTY, caption = "Party", category=true, order=200),
 })
 public class PartyCategories {
     public static final String PARTY = "party";
