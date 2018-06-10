@@ -26,6 +26,7 @@
     	<module>uxerp-entity-service</module>
     	<module>uxerp-devtools</module>
     	<module>uxerp-party</module>
+    	<module>uxerp-content</module>
 		<module>uxerp-app</module>
     </modules>
 
