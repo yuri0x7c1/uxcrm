@@ -136,7 +136,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType("List<" + entity.getEntityName() + ">");
 
-		findMethod.getJavaDoc().setFullText("Fine " + English.plural(entity.getEntityName()));
+		findMethod.getJavaDoc().setFullText("Find " + English.plural(entity.getEntityName()));
 
 		findMethod.addParameter("Integer", "start");
 		findMethod.addParameter("Integer", "number");
