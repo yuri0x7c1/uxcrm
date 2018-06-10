@@ -117,13 +117,23 @@ public class EntityView extends CommonView implements View {
 			}
 		});
 
+		// view button column
+		entityGrid.addColumn(entity -> "View",
+			new ButtonRenderer<ModelEntity>(clickEvent -> {
+				getUI().getNavigator().navigateTo(EntityDetailView.NAME + "/" + clickEvent.getItem().getEntityName());
+		    })
+		);
+
+		// entity name column
 		entityGrid.addColumn(ModelEntity::getEntityName)
 			.setId(ENTITY_NAME_COL_ID)
 			.setCaption("Entity Name");
 
+		// description column
 		entityGrid.addColumn(entity -> entity.getDescription().equals("None") ? "" : entity.getDescription())
 			.setId(ENTITY_DESCRIPTION_COL_ID)
 			.setCaption("Description");
+
 
 		for (String entityGeneratorName : entityGenerators.keySet()) {
 			entityGrid.addColumn(entity -> entityGeneratorName,
