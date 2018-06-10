@@ -6,10 +6,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.apache.ofbiz.party.party.Party;
-import org.apache.ofbiz.party.party.PartyBaseService;
+import org.apache.ofbiz.party.party.PartyGroup;
+import org.apache.ofbiz.party.party.Person;
+import org.apache.ofbiz.party.party.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.viritin.LazyList;
-import org.vaadin.viritin.button.MButton;
 import org.vaadin.viritinv7.fields.MTable;
 
 import com.github.yuri0x7c1.uxerp.common.ui.menu.annotation.MenuItem;
@@ -31,8 +32,12 @@ public class PartyView extends CommonView implements View {
 
 	public static final String NAME = "Parties";
 
+	public static final String PARTY_TYPE_ID_PARTY_GROUP = "PARTY_GROUP";
+
+	public static final String PARTY_TYPE_ID_PERSON = "PERSON";
+
 	@Autowired
-	private PartyBaseService partyBaseService;
+	private PartyService partyService;
 
 	private MTable<Party> partyTable = new MTable<>(Party.class)
 		.withProperties("partyId")
@@ -50,7 +55,7 @@ public class PartyView extends CommonView implements View {
     public void init() throws Exception {
 		partyTable.lazyLoadFrom(
 			(firstRow, sortAscending, property) -> {
-				List<Party> parties = partyBaseService.find(
+				List<Party> parties = partyService.find(
 						Integer.valueOf(firstRow),
 						Integer.valueOf(LazyList.DEFAULT_PAGE_SIZE),
 						property != null ? Collections.singletonList(property + " " + (sortAscending ? "ASC" : "DESC")) : null,
@@ -59,9 +64,24 @@ public class PartyView extends CommonView implements View {
 				return parties;
 			},
 			() -> {
-				return partyBaseService.count(null);
+				return partyService.count(null);
 			}
 		)
+		.withGeneratedColumn("Party Name", party -> {
+			if (PARTY_TYPE_ID_PARTY_GROUP.equals(party.getPartyTypeId())) {
+				PartyGroup partyGroup = partyService.getPartyGroup(party);
+				if (partyGroup != null) {
+					return partyGroup.getGroupName();
+				}
+			}
+			else if (PARTY_TYPE_ID_PERSON.equals(party.getPartyTypeId())) {
+				Person person = partyService.getPerson(party);
+				if (person != null) {
+					return person.getFirstName() + " " + person.getLastName();
+				}
+			}
+			return "";
+		})
 		.sort(new Object[] {"partyId"}, new boolean[] {true});
     }
 

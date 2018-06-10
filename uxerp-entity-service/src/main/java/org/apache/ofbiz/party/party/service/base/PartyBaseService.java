@@ -1,4 +1,4 @@
-package org.apache.ofbiz.party.party;
+package org.apache.ofbiz.party.party.service.base;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -179,8 +179,12 @@ import org.apache.ofbiz.workeffort.workeffort.WorkEffortPartyAssignment;
 @SuppressWarnings("unchecked")
 public class PartyBaseService {
 
+	protected ExecuteFindService executeFindService;
+
 	@Autowired
-	private ExecuteFindService executeFindService;
+	public PartyBaseService(ExecuteFindService executeFindService) {
+		this.executeFindService = executeFindService;
+	}
 
 	/**
 	 * Count Parties
@@ -214,8 +218,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Party.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Party.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -238,6 +243,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = Party
 						.fromValues(out.getListIt().getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -263,6 +269,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = PartyType.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -288,6 +295,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = UserLogin.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -314,6 +322,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = UserLogin.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -338,6 +347,7 @@ public class PartyBaseService {
 		try {
 			if (out.getListIt() != null) {
 				entityList = Uom.fromValues(out.getListIt().getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -363,6 +373,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = StatusItem.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -388,8 +399,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyTypeAttr.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyTypeAttr.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -412,6 +424,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = DataSource.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -437,8 +450,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return AcctgTrans.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = AcctgTrans.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -461,8 +475,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return AcctgTransEntry.fromValues(out.getListIt()
+				entityList = AcctgTransEntry.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -485,6 +500,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = Affiliate.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -510,8 +526,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Agreement.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Agreement.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -534,8 +551,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Agreement.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Agreement.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -558,8 +576,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return AgreementPartyApplic.fromValues(out.getListIt()
+				entityList = AgreementPartyApplic.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -582,8 +601,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return AgreementRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = AgreementRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -606,8 +626,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return BillingAccountRole.fromValues(out.getListIt()
+				entityList = BillingAccountRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -630,8 +651,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return BudgetReview.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = BudgetReview.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -654,8 +676,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return BudgetRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = BudgetRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -678,8 +701,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CarrierShipmentBoxType.fromValues(out.getListIt()
+				entityList = CarrierShipmentBoxType.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -702,8 +726,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CarrierShipmentMethod.fromValues(out.getListIt()
+				entityList = CarrierShipmentMethod.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -726,8 +751,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CommunicationEvent.fromValues(out.getListIt()
+				entityList = CommunicationEvent.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -750,8 +776,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CommunicationEvent.fromValues(out.getListIt()
+				entityList = CommunicationEvent.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -774,8 +801,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CommunicationEventRole.fromValues(out.getListIt()
+				entityList = CommunicationEventRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -798,8 +826,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContactList.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ContactList.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -822,8 +851,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContactListCommStatus.fromValues(out.getListIt()
+				entityList = ContactListCommStatus.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -846,8 +876,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContactListParty.fromValues(out.getListIt()
+				entityList = ContactListParty.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -870,8 +901,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContentApproval.fromValues(out.getListIt()
+				entityList = ContentApproval.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -895,8 +927,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContentRevision.fromValues(out.getListIt()
+				entityList = ContentRevision.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -919,8 +952,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ContentRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ContentRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -943,8 +977,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CostComponent.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = CostComponent.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -967,8 +1002,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CustRequest.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = CustRequest.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -991,8 +1027,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CustRequestParty.fromValues(out.getListIt()
+				entityList = CustRequestParty.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1015,8 +1052,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CustRequestType.fromValues(out.getListIt()
+				entityList = CustRequestType.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1040,8 +1078,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return CustomTimePeriod.fromValues(out.getListIt()
+				entityList = CustomTimePeriod.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1064,8 +1103,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return DataResourceRole.fromValues(out.getListIt()
+				entityList = DataResourceRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1088,8 +1128,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmplLeave.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmplLeave.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1113,8 +1154,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmplLeave.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmplLeave.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1137,8 +1179,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmplPosition.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmplPosition.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1161,8 +1204,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmplPositionFulfillment.fromValues(out.getListIt()
+				entityList = EmplPositionFulfillment.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1185,8 +1229,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Employment.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Employment.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1209,8 +1254,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Employment.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Employment.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1234,8 +1280,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmploymentApp.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmploymentApp.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1259,8 +1306,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmploymentApp.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmploymentApp.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1284,8 +1332,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return EmploymentApp.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = EmploymentApp.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1308,8 +1357,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Facility.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Facility.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1332,8 +1382,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FacilityCarrierShipment.fromValues(out.getListIt()
+				entityList = FacilityCarrierShipment.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1356,8 +1407,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FacilityGroupRole.fromValues(out.getListIt()
+				entityList = FacilityGroupRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1380,8 +1432,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FacilityParty.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = FacilityParty.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1405,8 +1458,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccount.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = FinAccount.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1429,8 +1483,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccount.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = FinAccount.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1453,8 +1508,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccountRole.fromValues(out.getListIt()
+				entityList = FinAccountRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1477,8 +1533,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccountTrans.fromValues(out.getListIt()
+				entityList = FinAccountTrans.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1502,8 +1559,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccountTrans.fromValues(out.getListIt()
+				entityList = FinAccountTrans.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1527,8 +1585,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FinAccountTypeGlAccount.fromValues(out.getListIt()
+				entityList = FinAccountTypeGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1551,8 +1610,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FixedAsset.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = FixedAsset.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1576,8 +1636,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FixedAssetRegistration.fromValues(out.getListIt()
+				entityList = FixedAssetRegistration.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1601,8 +1662,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return FixedAssetTypeGlAccount.fromValues(out.getListIt()
+				entityList = FixedAssetTypeGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1625,8 +1687,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GiftCardFulfillment.fromValues(out.getListIt()
+				entityList = GiftCardFulfillment.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1650,8 +1713,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlAccountHistory.fromValues(out.getListIt()
+				entityList = GlAccountHistory.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1675,8 +1739,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlAccountOrganization.fromValues(out.getListIt()
+				entityList = GlAccountOrganization.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1699,8 +1764,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlAccountRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = GlAccountRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1724,8 +1790,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlAccountTypeDefault.fromValues(out.getListIt()
+				entityList = GlAccountTypeDefault.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1749,8 +1816,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlJournal.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = GlJournal.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1774,8 +1842,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return GlReconciliation.fromValues(out.getListIt()
+				entityList = GlReconciliation.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1798,8 +1867,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InventoryItem.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = InventoryItem.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1822,8 +1892,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InventoryItem.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = InventoryItem.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1846,8 +1917,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Invoice.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Invoice.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1870,8 +1942,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Invoice.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Invoice.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1894,8 +1967,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceItem.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = InvoiceItem.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1919,8 +1993,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceItem.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = InvoiceItem.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1943,8 +2018,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceItemAssoc.fromValues(out.getListIt()
+				entityList = InvoiceItemAssoc.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1967,8 +2043,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceItemAssoc.fromValues(out.getListIt()
+				entityList = InvoiceItemAssoc.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -1992,8 +2069,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceItemTypeGlAccount.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = InvoiceItemTypeGlAccount.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2016,8 +2094,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return InvoiceRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = InvoiceRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2040,8 +2119,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ItemIssuanceRole.fromValues(out.getListIt()
+				entityList = ItemIssuanceRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2065,8 +2145,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return JobInterview.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = JobInterview.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2090,8 +2171,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return JobInterview.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = JobInterview.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2114,8 +2196,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return MarketingCampaignRole.fromValues(out.getListIt()
+				entityList = MarketingCampaignRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2138,8 +2221,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return NoteData.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = NoteData.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2162,8 +2246,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return OrderItemRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = OrderItemRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2187,8 +2272,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return OrderItemShipGroup.fromValues(out.getListIt()
+				entityList = OrderItemShipGroup.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2211,8 +2297,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return OrderItemShipGroup.fromValues(out.getListIt()
+				entityList = OrderItemShipGroup.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2235,8 +2322,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return OrderItemShipGroup.fromValues(out.getListIt()
+				entityList = OrderItemShipGroup.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2259,8 +2347,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return OrderRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = OrderRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2283,6 +2372,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = PartyAcctgPreference.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2308,8 +2398,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyAttribute.fromValues(out.getListIt()
+				entityList = PartyAttribute.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2332,8 +2423,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyBenefit.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyBenefit.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2356,8 +2448,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyBenefit.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyBenefit.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2380,8 +2473,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyCarrierAccount.fromValues(out.getListIt()
+				entityList = PartyCarrierAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2404,8 +2498,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyCarrierAccount.fromValues(out.getListIt()
+				entityList = PartyCarrierAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2428,8 +2523,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyClassification.fromValues(out.getListIt()
+				entityList = PartyClassification.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2452,8 +2548,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyContactMech.fromValues(out.getListIt()
+				entityList = PartyContactMech.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2476,8 +2573,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyContactMechPurpose.fromValues(out.getListIt()
+				entityList = PartyContactMechPurpose.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2500,8 +2598,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyContent.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyContent.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2524,8 +2623,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyDataSource.fromValues(out.getListIt()
+				entityList = PartyDataSource.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2548,8 +2648,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyFixedAssetAssignment.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = PartyFixedAssetAssignment.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2572,8 +2673,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyGeoPoint.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyGeoPoint.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2597,8 +2699,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyGlAccount.fromValues(out.getListIt()
+				entityList = PartyGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2621,8 +2724,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyGlAccount.fromValues(out.getListIt()
+				entityList = PartyGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2645,6 +2749,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = PartyGroup.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2670,6 +2775,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = PartyIcsAvsOverride.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2695,8 +2801,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyIdentification.fromValues(out.getListIt()
+				entityList = PartyIdentification.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2719,8 +2826,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyInvitation.fromValues(out.getListIt()
+				entityList = PartyInvitation.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2743,8 +2851,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyInvitationGroupAssoc.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = PartyInvitationGroupAssoc.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2767,8 +2876,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyNameHistory.fromValues(out.getListIt()
+				entityList = PartyNameHistory.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2791,8 +2901,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyNeed.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyNeed.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2815,8 +2926,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyNote.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyNote.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2839,8 +2951,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyPrefDocTypeTpl.fromValues(out.getListIt()
+				entityList = PartyPrefDocTypeTpl.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2863,8 +2976,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyProfileDefault.fromValues(out.getListIt()
+				entityList = PartyProfileDefault.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2887,8 +3001,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyQual.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyQual.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2911,8 +3026,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyRate.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyRate.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2935,8 +3051,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyRelationship.fromValues(out.getListIt()
+				entityList = PartyRelationship.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2959,8 +3076,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyRelationship.fromValues(out.getListIt()
+				entityList = PartyRelationship.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -2983,8 +3101,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyResume.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyResume.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3007,8 +3126,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3031,8 +3151,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartySkill.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartySkill.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3055,8 +3176,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyStatus.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PartyStatus.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3079,8 +3201,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PartyTaxAuthInfo.fromValues(out.getListIt()
+				entityList = PartyTaxAuthInfo.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3103,8 +3226,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Payment.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Payment.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3127,8 +3251,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Payment.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Payment.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3152,8 +3277,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PaymentGlAccountTypeMap.fromValues(out.getListIt()
+				entityList = PaymentGlAccountTypeMap.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3176,8 +3302,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PaymentMethod.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PaymentMethod.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3201,8 +3328,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PaymentMethodTypeGlAccount.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = PaymentMethodTypeGlAccount.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3225,8 +3353,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PayrollPreference.fromValues(out.getListIt()
+				entityList = PayrollPreference.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3250,8 +3379,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PerfReview.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PerfReview.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3274,8 +3404,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PerfReview.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = PerfReview.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3299,8 +3430,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PerfReviewItem.fromValues(out.getListIt()
+				entityList = PerfReviewItem.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3323,8 +3455,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PerformanceNote.fromValues(out.getListIt()
+				entityList = PerformanceNote.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3347,6 +3480,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = Person.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3372,8 +3506,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return PersonTraining.fromValues(out.getListIt()
+				entityList = PersonTraining.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3396,8 +3531,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProdCatalogRole.fromValues(out.getListIt()
+				entityList = ProdCatalogRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3421,8 +3557,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductAverageCost.fromValues(out.getListIt()
+				entityList = ProductAverageCost.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3446,8 +3583,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductCategoryGlAccount.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = ProductCategoryGlAccount.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3470,8 +3608,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductCategoryRole.fromValues(out.getListIt()
+				entityList = ProductCategoryRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3495,8 +3634,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductGlAccount.fromValues(out.getListIt()
+				entityList = ProductGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3519,8 +3659,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductPrice.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ProductPrice.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3544,8 +3685,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductPromo.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ProductPromo.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3568,8 +3710,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductPromoCodeParty.fromValues(out.getListIt()
+				entityList = ProductPromoCodeParty.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3592,8 +3735,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductPromoUse.fromValues(out.getListIt()
+				entityList = ProductPromoUse.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3616,8 +3760,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ProductRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3640,8 +3785,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStore.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ProductStore.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3664,8 +3810,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreGroupRole.fromValues(out.getListIt()
+				entityList = ProductStoreGroupRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3688,8 +3835,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreRole.fromValues(out.getListIt()
+				entityList = ProductStoreRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3712,8 +3860,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreShipmentMeth.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = ProductStoreShipmentMeth.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3736,8 +3885,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreVendorPayment.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = ProductStoreVendorPayment.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3760,8 +3910,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreVendorShipment.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = ProductStoreVendorShipment.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3784,8 +3935,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ProductStoreVendorShipment.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = ProductStoreVendorShipment.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3808,8 +3960,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Quote.fromValues(out.getListIt().getPartialList(start,
-						number));
+				entityList = Quote.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3832,8 +3985,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return QuoteRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = QuoteRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3856,8 +4010,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return RateAmount.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = RateAmount.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3880,8 +4035,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ReorderGuideline.fromValues(out.getListIt()
+				entityList = ReorderGuideline.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3904,8 +4060,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return RequirementRole.fromValues(out.getListIt()
+				entityList = RequirementRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3928,8 +4085,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return RespondingParty.fromValues(out.getListIt()
+				entityList = RespondingParty.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3952,8 +4110,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ReturnHeader.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ReturnHeader.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -3976,8 +4135,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ReturnHeader.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ReturnHeader.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4001,8 +4161,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SalesForecast.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = SalesForecast.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4026,8 +4187,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SalesForecast.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = SalesForecast.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4051,8 +4213,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SalesForecastHistory.fromValues(out.getListIt()
+				entityList = SalesForecastHistory.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4076,8 +4239,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SalesForecastHistory.fromValues(out.getListIt()
+				entityList = SalesForecastHistory.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4100,8 +4264,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SalesOpportunityRole.fromValues(out.getListIt()
+				entityList = SalesOpportunityRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4124,8 +4289,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SegmentGroupRole.fromValues(out.getListIt()
+				entityList = SegmentGroupRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4148,8 +4314,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ServerHit.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ServerHit.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4172,8 +4339,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Shipment.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Shipment.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4196,8 +4364,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Shipment.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Shipment.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4220,8 +4389,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ShipmentCostEstimate.fromValues(out.getListIt()
+				entityList = ShipmentCostEstimate.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4244,8 +4414,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ShipmentReceiptRole.fromValues(out.getListIt()
+				entityList = ShipmentReceiptRole.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4268,8 +4439,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ShipmentRouteSegment.fromValues(out.getListIt()
+				entityList = ShipmentRouteSegment.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4292,8 +4464,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return ShoppingList.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = ShoppingList.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4316,8 +4489,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Subscription.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Subscription.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4341,8 +4515,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Subscription.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Subscription.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4365,8 +4540,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SupplierProduct.fromValues(out.getListIt()
+				entityList = SupplierProduct.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4389,8 +4565,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SupplierProductFeature.fromValues(out.getListIt()
+				entityList = SupplierProductFeature.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4413,8 +4590,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return SurveyResponse.fromValues(out.getListIt()
+				entityList = SurveyResponse.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4437,8 +4615,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return TaxAuthority.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = TaxAuthority.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4462,8 +4641,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return TaxAuthorityGlAccount.fromValues(out.getListIt()
+				entityList = TaxAuthorityGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4486,8 +4666,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return TimeEntry.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = TimeEntry.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4510,8 +4691,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Timesheet.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Timesheet.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4534,8 +4716,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return Timesheet.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = Timesheet.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4558,8 +4741,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return TimesheetRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = TimesheetRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4582,8 +4766,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return UserLogin.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = UserLogin.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4606,8 +4791,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return UserLoginHistory.fromValues(out.getListIt()
+				entityList = UserLoginHistory.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4631,8 +4817,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return VarianceReasonGlAccount.fromValues(out.getListIt()
+				entityList = VarianceReasonGlAccount.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4655,6 +4842,7 @@ public class PartyBaseService {
 			if (out.getListIt() != null) {
 				entityList = Vendor.fromValues(out.getListIt()
 						.getCompleteList());
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4680,8 +4868,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return VendorProduct.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = VendorProduct.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4704,8 +4893,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return WebSiteRole.fromValues(out.getListIt().getPartialList(
-						start, number));
+				entityList = WebSiteRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4728,8 +4918,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return WebUserPreference.fromValues(out.getListIt()
+				entityList = WebUserPreference.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4752,8 +4943,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return WorkEffortEventReminder.fromValues(out.getListIt()
+				entityList = WorkEffortEventReminder.fromValues(out.getListIt()
 						.getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
@@ -4776,8 +4968,9 @@ public class PartyBaseService {
 		Out out = executeFindService.runSync(in);
 		try {
 			if (out.getListIt() != null) {
-				return WorkEffortPartyAssignment.fromValues(out.getListIt()
-						.getPartialList(start, number));
+				entityList = WorkEffortPartyAssignment.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
 			}
 		} catch (GenericEntityException e) {
 			log.error(e.getMessage(), e);
