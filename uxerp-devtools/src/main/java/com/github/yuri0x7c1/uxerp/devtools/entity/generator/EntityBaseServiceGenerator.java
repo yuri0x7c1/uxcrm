@@ -225,7 +225,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				.setPublic()
 				.setReturnType(entity.getEntityName());
 
-		findOneMethod.getJavaDoc().setFullText("Fine one " + entity.getEntityName());
+		findOneMethod.getJavaDoc().setFullText("Find one " + entity.getEntityName());
 
 		List<String> conditionList = new ArrayList<>();
 		for (ModelField pkField : entity.getPkFields()) {
