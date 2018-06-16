@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+		<artifactId>uxcrm</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>uxcrm-app</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-ofbiz</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-entity</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-entity-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-devtools</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-party</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-content</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+
+			<!-- base component resources -->
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/base/config</directory>
+			</resource>
+
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/base/dtd</directory>
+			</resource>
+
+			<!-- entity component resources -->
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/entity/config</directory>
+			</resource>
+
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/entity/dtd</directory>
+			</resource>
+
+			<!-- service component resources -->
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/service/config</directory>
+			</resource>
+
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/service/dtd</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-maven-plugin</artifactId>
+				<version>${vaadin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>clean</goal>
+							<goal>resources</goal>
+							<goal>update-theme</goal>
+							<goal>update-widgetset</goal>
+							<goal>compile-theme</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--<widgetsetMode>cdn</widgetsetMode> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

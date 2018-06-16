@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+		<artifactId>uxcrm</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>uxcrm-ofbiz</artifactId>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<!-- framework sources -->
+								<source>framework/base/src/main/java</source>
+								<source>framework/catalina/src/main/java</source>
+								<source>framework/common/src/main/java</source>
+								<source>framework/datafile/src/main/java</source>
+								<source>framework/documents/src/main/java</source>
+								<source>framework/entity/src/main/java</source>
+								<source>framework/entityext/src/main/java</source>
+								<source>framework/minilang/src/main/java</source>
+								<source>framework/resources/src/main/java</source>
+								<source>framework/security/src/main/java</source>
+								<source>framework/service/src/main/java</source>
+								<source>framework/start/src/main/java</source>
+								<source>framework/testtools/src/main/java</source>
+								<source>framework/webapp/src/main/java</source>
+								<source>framework/webtools/src/main/java</source>
+								<source>framework/widget/src/main/java</source>
+
+								<!-- applications sources -->
+								<source>applications/accounting/src/main/java</source>
+								<source>applications/commonext/src/main/java</source>
+								<source>applications/content/src/main/java</source>
+								<source>applications/datamodel/src/main/java</source>
+								<source>applications/humanres/src/main/java</source>
+								<source>applications/manufacturing/src/main/java</source>
+								<source>applications/marketing/src/main/java</source>
+								<source>applications/order/src/main/java</source>
+								<source>applications/party/src/main/java</source>
+								<source>applications/product/src/main/java</source>
+								<source>applications/securityext/src/main/java</source>
+								<source>applications/workeffort/src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<!-- applications excludes -->
+						<exclude>org/apache/ofbiz/accounting/thirdparty/cybersource/IcsPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/ideal/IdealEvents.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/ideal/IdealPaymentServiceTest.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/orbital/OrbitalPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/paypal/PayPalServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/securepay/SecurePayPaymentServices.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/securepay/SecurePayServiceTest.java</exclude>
+						<exclude>org/apache/ofbiz/accounting/thirdparty/verisign/PayflowPro.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareException.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareServices.java</exclude>
+						<exclude>org/apache/ofbiz/order/thirdparty/taxware/TaxwareUTL.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

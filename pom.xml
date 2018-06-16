@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.yuri0x7c1.uxerp</groupId>
-    <artifactId>uxerp</artifactId>
+    <groupId>com.github.yuri0x7c1.uxcrm</groupId>
+    <artifactId>uxcrm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -19,15 +19,15 @@
 	</properties>
 
     <modules>
-    	<module>uxerp-common</module>
-    	<module>uxerp-ofbiz</module>
-    	<module>uxerp-service</module>
-    	<module>uxerp-entity</module>
-    	<module>uxerp-entity-service</module>
-    	<module>uxerp-devtools</module>
-    	<module>uxerp-party</module>
-    	<module>uxerp-content</module>
-		<module>uxerp-app</module>
+    	<module>uxcrm-common</module>
+    	<module>uxcrm-ofbiz</module>
+    	<module>uxcrm-service</module>
+    	<module>uxcrm-entity</module>
+    	<module>uxcrm-entity-service</module>
+    	<module>uxcrm-devtools</module>
+    	<module>uxcrm-party</module>
+    	<module>uxcrm-content</module>
+		<module>uxcrm-app</module>
     </modules>
 
     <repositories>
