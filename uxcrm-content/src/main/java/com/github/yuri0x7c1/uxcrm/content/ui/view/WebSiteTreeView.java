@@ -34,12 +34,12 @@ import com.vaadin.ui.Tree;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(parentId = ContentCategories.CONTENT, caption=ContentTreeView.NAME, icon=VaadinIcons.FILE_TREE, order = 1)
+@MenuItem(parentId = ContentCategories.CONTENT, caption=WebSiteTreeView.NAME, icon=VaadinIcons.FILE_TREE, order = 1)
 @UIScope
-@SpringView(name =  ContentTreeView.NAME)
-public class ContentTreeView extends CommonView implements View {
+@SpringView(name =  WebSiteTreeView.NAME)
+public class WebSiteTreeView extends CommonView implements View {
 
-	public static final String NAME = "Content Tree";
+	public static final String NAME = "Web Site Tree";
 
 	@Autowired
 	I18N i18n;
@@ -60,7 +60,7 @@ public class ContentTreeView extends CommonView implements View {
 	@PostConstruct
 	public void init() {
 
-		setHeaderText(ContentTreeView.NAME);
+		setHeaderText(WebSiteTreeView.NAME);
 
 		List<WebSite> webSites = webSiteService.find(0, 1000, null, null);
 
