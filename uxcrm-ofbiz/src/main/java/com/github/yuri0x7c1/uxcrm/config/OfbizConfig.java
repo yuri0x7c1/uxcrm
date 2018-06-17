@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.ofbiz.base.component.ComponentConfig;
 import org.apache.ofbiz.base.start.Config;
 import org.apache.ofbiz.base.start.Start;
@@ -16,6 +17,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.DelegatorFactory;
 import org.apache.ofbiz.service.GenericDispatcherFactory;
 import org.apache.ofbiz.service.LocalDispatcher;
+import org.apache.ofbiz.service.ServiceContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,8 +68,12 @@ public class OfbizConfig {
 
 		log.info("Start.getConfig(): {}", Start.getInstance().getConfig());
 
+		// check ofbiz.home
 		String ofbizHome = env.getProperty("ofbiz.home");
 		log.info("ofbiz home: {}", ofbizHome);
+
+		// initialize ServiceContainer
+		new ServiceContainer().init(ofbizCommands, "service-container", FilenameUtils.concat(ofbizHome, "framework/service/ofbiz-component.xml"));
 
 		/*
 		    <load-component component-location="base"/>
