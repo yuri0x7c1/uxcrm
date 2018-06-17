@@ -18,10 +18,10 @@ import org.apache.ofbiz.webapp.website.service.WebSiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.spring.i18n.I18N;
 
-import com.github.yuri0x7c1.uxcrm.content.ui.menu.category.ContentCategories;
 import com.github.yuri0x7c1.uxcrm.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxcrm.common.ui.tree.StringTreeNode;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
+import com.github.yuri0x7c1.uxcrm.content.ui.menu.category.ContentCategories;
 import com.vaadin.data.TreeData;
 import com.vaadin.data.provider.TreeDataProvider;
 import com.vaadin.icons.VaadinIcons;
@@ -74,7 +74,7 @@ public class ContentView extends CommonView implements View {
 				1000,
 				null,
 				new EntityConditionList<EntityCondition>(
-					Arrays.asList(new EntityExpr(WebSiteContent.Fields.webSiteId, EntityOperator.EQUALS, webSite.getWebSiteId())),
+					Arrays.asList(new EntityExpr(WebSiteContent.Fields.webSiteId.name(), EntityOperator.EQUALS, webSite.getWebSiteId())),
 					EntityOperator.AND
 				)
 			);
@@ -87,7 +87,6 @@ public class ContentView extends CommonView implements View {
 					contentNode
 				);
 
-				/*
 				List<Content> subContents = contentService.getSubContents(content);
 				for (Content subContent : subContents) {
 					treeData.addItem(
@@ -95,7 +94,6 @@ public class ContentView extends CommonView implements View {
 						new StringTreeNode(subContent.getContentName() + "[" + subContent.getContentId() + "]")
 					);
 				}
-				*/
 			}
 		}
 
