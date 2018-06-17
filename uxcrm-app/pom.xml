@@ -76,6 +76,11 @@
 				<directory>../uxcrm-ofbiz/framework/base/dtd</directory>
 			</resource>
 
+			<!-- common component resources -->
+			<resource>
+				<directory>../uxcrm-ofbiz/framework/common/config</directory>
+			</resource>
+
 			<!-- entity component resources -->
 			<resource>
 				<directory>../uxcrm-ofbiz/framework/entity/config</directory>
