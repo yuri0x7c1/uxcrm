@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.apache.ofbiz.content.content.Content;
 import org.apache.ofbiz.content.content.ContentAssocDataResourceViewFrom;
 import org.apache.ofbiz.content.content.service.ContentAssocDataResourceViewFromService;
 import org.apache.ofbiz.content.content.service.ContentService;
@@ -22,6 +21,7 @@ import com.vaadin.data.provider.AbstractBackEndHierarchicalDataProvider;
 import com.vaadin.data.provider.HierarchicalQuery;
 
 public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProvider<WebSiteTreeNode, WebSiteTreeFilter> {
+	private final String webSiteId;
 
 	private final WebSiteService webSiteService;
 
@@ -31,10 +31,12 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 
 	private final ContentAssocDataResourceViewFromService contentAssocDataResourceViewFromService;
 
-	public WebSiteTreeDataProvider(WebSiteService webSiteService, WebSiteContentService webSiteContentService,
+	public WebSiteTreeDataProvider(String webSiteId,
+			WebSiteService webSiteService, WebSiteContentService webSiteContentService,
 			ContentService contentService,
 			ContentAssocDataResourceViewFromService contentAssocDataResourceViewFromService) {
 		super();
+		this.webSiteId = webSiteId;
 		this.webSiteService = webSiteService;
 		this.webSiteContentService = webSiteContentService;
 		this.contentService = contentService;
@@ -52,41 +54,19 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 		List<WebSiteTreeNode> nodes = new ArrayList<>();
 
 		if (parent == null) {
-			List<WebSite> webSites = webSiteService.find(0, 1000, Arrays.asList(WebSite.Fields.siteName.name()), null);
-			for (WebSite webSite : webSites) {
-				nodes.add(WebSiteTreeNode.builder()
-					.type(WebSiteTreeNode.TYPE_WEB_SITE)
-					.webSiteId(webSite.getWebSiteId())
-					.webSiteName(webSite.getSiteName())
-					.build()
-				);
-			}
-		}
-		else if (WebSiteTreeNode.TYPE_WEB_SITE.equals(parent.getType())) {
-			List<WebSiteContent> webSiteContents = webSiteContentService.find(
-				0, 1000, null,
-				new EntityConditionList<EntityCondition>(
-					Arrays.asList(new EntityExpr(WebSiteContent.Fields.webSiteId.name(), EntityOperator.EQUALS, parent.getWebSiteId())),
-					EntityOperator.AND
-				)
-			);
-
+			List<WebSiteContent> webSiteContents = webSiteContentService.find(0, 1000, Arrays.asList(WebSite.Fields.webSiteId.name()), null);
 			for (WebSiteContent webSiteContent : webSiteContents) {
-				Content content = contentService.findOne(webSiteContent.getContentId());
 				nodes.add(WebSiteTreeNode.builder()
-					.type(WebSiteTreeNode.TYPE_CONTENT)
-					.contentId(content.getContentId())
-					.contentName(content.getContentName())
+					.contentId(webSiteContent.getContentId())
 					.build()
 				);
 			}
 		}
-		else if (WebSiteTreeNode.TYPE_CONTENT.equals(parent.getType())) {
+		else {
 			List<ContentAssocDataResourceViewFrom> views = findChildContent(parent);
 
 			views.forEach(view -> {
 				nodes.add(WebSiteTreeNode.builder()
-					.type(WebSiteTreeNode.TYPE_CONTENT)
 					.contentId(view.getContentId())
 					.contentName(view.getContentName())
 					.build()
@@ -98,18 +78,7 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 
 	@Override
 	public boolean hasChildren(WebSiteTreeNode item) {
-		if (WebSiteTreeNode.TYPE_WEB_SITE.equals(item.getType())) {
-			int c = webSiteContentService.count(new EntityConditionList<EntityCondition>(
-				Arrays.asList(new EntityExpr(WebSiteContent.Fields.webSiteId.name(), EntityOperator.EQUALS, item.getWebSiteId())),
-				EntityOperator.AND
-			));
-
-			return c != 0;
-		}
-		else if (WebSiteTreeNode.TYPE_CONTENT.equals(item.getType())) {
-			return !findChildContent(item).isEmpty();
-		}
-		return false;
+		return !findChildContent(item).isEmpty();
 	}
 
 	/**

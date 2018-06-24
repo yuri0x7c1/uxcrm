@@ -6,8 +6,6 @@ import lombok.Setter;
 
 @Builder
 public class WebSiteTreeNode {
-	public static final String TYPE_WEB_SITE = "WEB_SITE";
-	public static final String TYPE_CONTENT = "CONTENT";
 
 	@Getter
 	@Setter
@@ -35,13 +33,6 @@ public class WebSiteTreeNode {
 
 	@Override
 	public String toString() {
-		if (TYPE_WEB_SITE.equals(type)) {
-			return webSiteName + "[" + webSiteId + "]";
-		}
-		else if (TYPE_CONTENT.equals(type)) {
-			return contentName + "[" + contentId + "]";
-		}
-
-		return "";
+		return contentName + "[" + contentId + "]";
 	}
 }

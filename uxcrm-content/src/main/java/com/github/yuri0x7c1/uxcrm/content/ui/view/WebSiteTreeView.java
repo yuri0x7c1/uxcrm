@@ -13,6 +13,7 @@ import com.github.yuri0x7c1.uxcrm.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxcrm.content.data.WebSiteTreeDataProvider;
 import com.github.yuri0x7c1.uxcrm.content.data.WebSiteTreeNode;
+import com.github.yuri0x7c1.uxcrm.content.ui.component.WebSiteTree;
 import com.github.yuri0x7c1.uxcrm.content.ui.menu.category.ContentCategories;
 import com.vaadin.data.TreeData;
 import com.vaadin.icons.VaadinIcons;
@@ -36,29 +37,12 @@ public class WebSiteTreeView extends CommonView implements View {
 	I18N i18n;
 
 	@Autowired
-	WebSiteService webSiteService;
-
-	@Autowired
-	WebSiteContentService webSiteContentService;
-
-	@Autowired
-	ContentService contentService;
-
-	@Autowired
-	ContentAssocDataResourceViewFromService contentAssocDataResourceViewFromService;
-
-	private Tree<WebSiteTreeNode> tree = new Tree<>();
-
-	private final TreeData<WebSiteTreeNode> treeData = new TreeData<>();
+	WebSiteTree tree;
 
 	@PostConstruct
 	public void init() {
 
 		setHeaderText(WebSiteTreeView.NAME);
-
-		tree.setDataProvider(new WebSiteTreeDataProvider(
-			webSiteService, webSiteContentService, contentService, contentAssocDataResourceViewFromService)
-		);
 
 		addComponent(tree);
 	}
