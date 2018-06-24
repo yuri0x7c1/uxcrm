@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.apache.ofbiz.content.content.Content;
 import org.apache.ofbiz.content.content.ContentAssocDataResourceViewFrom;
 import org.apache.ofbiz.content.content.service.ContentAssocDataResourceViewFromService;
 import org.apache.ofbiz.content.content.service.ContentService;
 import org.apache.ofbiz.content.website.WebSiteContent;
-import org.apache.ofbiz.content.website.service.WebSiteContentService;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
@@ -21,24 +21,22 @@ import com.vaadin.data.provider.AbstractBackEndHierarchicalDataProvider;
 import com.vaadin.data.provider.HierarchicalQuery;
 
 public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProvider<WebSiteTreeNode, WebSiteTreeFilter> {
-	private final String webSiteId;
+	private final WebSite webSite;
 
 	private final WebSiteService webSiteService;
-
-	private final WebSiteContentService webSiteContentService;
 
 	private final ContentService contentService;
 
 	private final ContentAssocDataResourceViewFromService contentAssocDataResourceViewFromService;
 
-	public WebSiteTreeDataProvider(String webSiteId,
-			WebSiteService webSiteService, WebSiteContentService webSiteContentService,
+	public WebSiteTreeDataProvider(
+			WebSite webSite,
+			WebSiteService webSiteService,
 			ContentService contentService,
 			ContentAssocDataResourceViewFromService contentAssocDataResourceViewFromService) {
 		super();
-		this.webSiteId = webSiteId;
+		this.webSite = webSite;
 		this.webSiteService = webSiteService;
-		this.webSiteContentService = webSiteContentService;
 		this.contentService = contentService;
 		this.contentAssocDataResourceViewFromService = contentAssocDataResourceViewFromService;
 	}
@@ -54,10 +52,14 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 		List<WebSiteTreeNode> nodes = new ArrayList<>();
 
 		if (parent == null) {
-			List<WebSiteContent> webSiteContents = webSiteContentService.find(0, 1000, Arrays.asList(WebSite.Fields.webSiteId.name()), null);
+			List<WebSiteContent> webSiteContents = webSiteService.getWebSiteContents(webSite, 0, 1000, null);
 			for (WebSiteContent webSiteContent : webSiteContents) {
+				Content content = contentService.findOne(webSiteContent.getContentId());
+
 				nodes.add(WebSiteTreeNode.builder()
-					.contentId(webSiteContent.getContentId())
+					.contentId(content.getContentId())
+					.contentName(content.getContentName())
+					.contentTypeId(content.getContentTypeId())
 					.build()
 				);
 			}

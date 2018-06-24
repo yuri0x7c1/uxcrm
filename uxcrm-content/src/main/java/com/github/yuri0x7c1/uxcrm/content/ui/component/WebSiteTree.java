@@ -52,13 +52,14 @@ public class WebSiteTree extends VerticalLayout {
 		select.setItems(webSiteService.find(0, 1000, Arrays.asList(new String[]{WebSite.Fields.webSiteId.name()}), null));
 
 		select.addSelectionListener(event -> {
-			tree.setDataProvider(new WebSiteTreeDataProvider(
-				event.getValue().getWebSiteId(),
-				webSiteService,
-				webSiteContentService,
-				contentService,
-				contentAssocDataResourceViewFromService
-			));
+			if (event.getValue() != null) {
+				tree.setDataProvider(new WebSiteTreeDataProvider(
+					event.getValue(),
+					webSiteService,
+					contentService,
+					contentAssocDataResourceViewFromService
+				));
+			}
 		});
 
 		addComponent(select);
