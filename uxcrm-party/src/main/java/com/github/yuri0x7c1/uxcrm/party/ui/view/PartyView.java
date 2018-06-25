@@ -10,12 +10,13 @@ import org.apache.ofbiz.party.party.PartyGroup;
 import org.apache.ofbiz.party.party.Person;
 import org.apache.ofbiz.party.party.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.spring.sidebar.annotation.SideBarItem;
+import org.vaadin.spring.sidebar.annotation.VaadinFontIcon;
 import org.vaadin.viritin.LazyList;
 import org.vaadin.viritinv7.fields.MTable;
 
-import com.github.yuri0x7c1.uxcrm.party.ui.menu.category.PartyCategories;
-import com.github.yuri0x7c1.uxcrm.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
+import com.github.yuri0x7c1.uxcrm.party.ui.menu.category.PartyCategories;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -25,7 +26,8 @@ import com.vaadin.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(parentId = PartyCategories.PARTY, caption=PartyView.NAME, icon=VaadinIcons.GROUP, order = 1)
+@VaadinFontIcon(VaadinIcons.GROUP)
+@SideBarItem(sectionId=PartyCategories.PARTY, caption=PartyView.NAME, order = 1)
 @UIScope
 @SpringView(name =  PartyView.NAME)
 public class PartyView extends CommonView implements View {

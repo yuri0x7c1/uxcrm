@@ -5,14 +5,14 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.ofbiz.content.content.Content;
 import org.apache.ofbiz.content.content.ContentDataResourceView;
 import org.apache.ofbiz.content.content.service.base.ContentDataResourceViewBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.spring.sidebar.annotation.SideBarItem;
+import org.vaadin.spring.sidebar.annotation.VaadinFontIcon;
 import org.vaadin.viritin.LazyList;
 import org.vaadin.viritinv7.fields.MTable;
 
-import com.github.yuri0x7c1.uxcrm.common.ui.menu.annotation.MenuItem;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxcrm.content.ui.menu.category.ContentCategories;
 import com.vaadin.icons.VaadinIcons;
@@ -24,7 +24,8 @@ import com.vaadin.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(parentId = ContentCategories.CONTENT, caption=ContentView.NAME, icon=VaadinIcons.BOOK, order = 3)
+@VaadinFontIcon(VaadinIcons.BOOK)
+@SideBarItem(sectionId=ContentCategories.CONTENT, caption=ContentView.NAME, order = 3)
 @UIScope
 @SpringView(name =  ContentView.NAME)
 public class ContentView extends CommonView implements View {

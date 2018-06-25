@@ -33,4 +33,9 @@ $v-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 @mixin mytheme {
   @include valo;
+
+  // Insert your own theme rules here
+  .view-container {
+  	overflow: auto;
+  }
 }

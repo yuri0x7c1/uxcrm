@@ -8,25 +8,25 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.vaadin.gridutil.cell.GridCellFilter;
 import org.vaadin.spring.i18n.I18N;
+import org.vaadin.spring.sidebar.annotation.SideBarItem;
+import org.vaadin.spring.sidebar.annotation.VaadinFontIcon;
 import org.vaadin.viritin.fields.MCheckBox;
 
+import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
 import com.github.yuri0x7c1.uxcrm.devtools.config.DevtoolsConfiguration.ModelOfbiz;
-import com.github.yuri0x7c1.uxcrm.devtools.entity.ui.view.EntityDetailView;
 import com.github.yuri0x7c1.uxcrm.devtools.service.generator.ServiceGenerator;
 import com.github.yuri0x7c1.uxcrm.devtools.ui.menu.category.DevtoolsCategories;
-import com.github.yuri0x7c1.uxcrm.common.ui.menu.annotation.MenuItem;
-import com.github.yuri0x7c1.uxcrm.common.ui.view.CommonView;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Notification;
@@ -36,7 +36,9 @@ import com.vaadin.ui.themes.ValoTheme;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@MenuItem(parentId=DevtoolsCategories.DEVTOOLS, caption=ServiceView.NAME, icon=VaadinIcons.COG)
+@VaadinFontIcon(VaadinIcons.COG)
+@SideBarItem(sectionId=DevtoolsCategories.DEVTOOLS, caption=ServiceView.NAME)
+@UIScope
 @SpringView(name = ServiceView.NAME)
 public class ServiceView extends CommonView implements View {
 
