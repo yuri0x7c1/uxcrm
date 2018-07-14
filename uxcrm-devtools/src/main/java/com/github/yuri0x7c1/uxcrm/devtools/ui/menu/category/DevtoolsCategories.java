@@ -6,7 +6,7 @@ import org.vaadin.spring.sidebar.annotation.SideBarSections;
 
 @Component
 @SideBarSections({
-    @SideBarSection(id = DevtoolsCategories.DEVTOOLS, caption = "Devtools"),
+    @SideBarSection(id = DevtoolsCategories.DEVTOOLS, caption = "Devtools", order=1000),
 })
 public class DevtoolsCategories {
 	public static final String DEVTOOLS = "devtools";
