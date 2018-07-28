@@ -446,6 +446,11 @@
 								<source>applications/product/src/main/java</source>
 								<source>applications/securityext/src/main/java</source>
 								<source>applications/workeffort/src/main/java</source>
+								
+								<!-- generated sources -->
+								<source>generated-entity/src/main/java</source>
+								<source>generated-entity-service/src/main/java</source>
+								<source>generated-service/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>
