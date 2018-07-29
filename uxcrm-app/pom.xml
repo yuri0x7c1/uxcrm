@@ -32,18 +32,6 @@
 
 		<dependency>
 			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
-			<artifactId>uxcrm-entity</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
-			<artifactId>uxcrm-entity-service</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
 			<artifactId>uxcrm-devtools</artifactId>
 			<version>${project.version}</version>
 		</dependency>

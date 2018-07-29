@@ -45,17 +45,5 @@
 			<artifactId>uxcrm-ofbiz</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
-			<artifactId>uxcrm-service</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
-			<artifactId>uxcrm-entity</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 </project>
