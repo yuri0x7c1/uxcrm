@@ -48,10 +48,6 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-	
-	<properties>
-		<path.to.ofbiz>/home/user/Work/common/projects/uxerp.pro/apache-ofbiz-16.11.04</path.to.ofbiz>
-	</properties>
 
 	<build>
 		<resources>
@@ -61,41 +57,41 @@
 			
 			<!-- start component resources -->
 			<resource>
-				<directory>${path.to.ofbiz}/framework/start/src/main/java/org/apache/ofbiz/base/start</directory>
+				<directory>${ofbiz.path}/framework/start/src/main/java/org/apache/ofbiz/base/start</directory>
 				<targetPath>org/apache/ofbiz/base/start</targetPath>
 			</resource>
 
 			<!-- base component resources -->
 			<resource>
-				<directory>${path.to.ofbiz}/framework/base/config</directory>
+				<directory>${ofbiz.path}/framework/base/config</directory>
 			</resource>
 
 			<resource>
-				<directory>${path.to.ofbiz}/framework/base/dtd</directory>
+				<directory>${ofbiz.path}/framework/base/dtd</directory>
 			</resource>
 
 			<!-- common component resources -->
 			<resource>
-				<directory>${path.to.ofbiz}/framework/common/config</directory>
+				<directory>${ofbiz.path}/framework/common/config</directory>
 			</resource>
 
 			<!-- entity component resources -->
 			<resource>
-				<directory>${path.to.ofbiz}/framework/entity/config</directory>
+				<directory>${ofbiz.path}/framework/entity/config</directory>
 				<targetPath>framework/entity/config</targetPath>
 			</resource>
 
 			<resource>
-				<directory>${path.to.ofbiz}/framework/entity/dtd</directory>
+				<directory>${ofbiz.path}/framework/entity/dtd</directory>
 			</resource>
 
 			<!-- service component resources -->
 			<resource>
-				<directory>${path.to.ofbiz}/framework/service/config</directory>
+				<directory>${ofbiz.path}/framework/service/config</directory>
 			</resource>
 
 			<resource>
-				<directory>${path.to.ofbiz}/framework/service/dtd</directory>
+				<directory>${ofbiz.path}/framework/service/dtd</directory>
 			</resource>
 		</resources>
 		<plugins>

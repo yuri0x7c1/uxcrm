@@ -12,6 +12,14 @@
 	<artifactId>uxcrm-ofbiz</artifactId>
 
 	<dependencies>
+		<!-- OFBiz dependencies -->
+		<dependency>
+			<groupId>org.ofbiz</groupId>
+			<artifactId>service</artifactId>
+			<version>1</version>
+			<scope>system</scope>
+			<systemPath>${ofbiz.path}/build/libs/ofbiz.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>

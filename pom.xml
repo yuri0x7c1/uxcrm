@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <ofbiz.path>/path/to/ofbiz</ofbiz.path>
 		<vaadin.version>8.4.5</vaadin.version>
 		<vaadin4spring.version>2.0.0.RELEASE</vaadin4spring.version>
 	</properties>
@@ -165,16 +166,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
 			<version>4.1</version>
-		</dependency>
-		
-		<!-- OFBiz dependencies -->
-		
-		<dependency>
-			<groupId>org.ofbiz</groupId>
-			<artifactId>service</artifactId>
-			<version>1</version>
-			<scope>system</scope>
-			<systemPath>/home/user/Work/common/projects/uxerp.pro/apache-ofbiz-16.11.04/build/libs/ofbiz.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
