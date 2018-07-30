@@ -1,22 +1,23 @@
 package org.apache.ofbiz.common;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
-import lombok.extern.slf4j.Slf4j;
 import java.io.Serializable;
-import org.apache.ofbiz.service.LocalDispatcher;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import org.apache.ofbiz.entity.condition.EntityConditionList;
-import org.apache.ofbiz.entity.GenericValue;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
-import org.apache.ofbiz.widget.renderer.VisualTheme;
+
+import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.util.EntityListIterator;
+import org.apache.ofbiz.service.LocalDispatcher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Execute Find
@@ -104,12 +105,6 @@ public class ExecuteFindService implements Serializable {
 		@Getter
 		@Setter
 		private TimeZone timeZone;
-		/**
-		 * Visual Theme
-		 */
-		@Getter
-		@Setter
-		private VisualTheme visualTheme;
 
 		public Map<String, Object> toMap() {
 			Map<String, Object> map = new HashMap<>();
@@ -125,7 +120,6 @@ public class ExecuteFindService implements Serializable {
 			map.put("login.password", loginPassword);
 			map.put("locale", locale);
 			map.put("timeZone", timeZone);
-			map.put("visualTheme", visualTheme);
 			return map;
 		}
 
@@ -144,8 +138,6 @@ public class ExecuteFindService implements Serializable {
 			loginPassword = (String) map.get("login.password");
 			locale = (java.util.Locale) map.get("locale");
 			timeZone = (java.util.TimeZone) map.get("timeZone");
-			visualTheme = (org.apache.ofbiz.widget.renderer.VisualTheme) map
-					.get("visualTheme");
 		}
 
 		public In(Map<String, Object> map) {
@@ -215,12 +207,6 @@ public class ExecuteFindService implements Serializable {
 		@Getter
 		@Setter
 		private GenericValue userLogin;
-		/**
-		 * Visual Theme
-		 */
-		@Getter
-		@Setter
-		private VisualTheme visualTheme;
 
 		public Map<String, Object> toMap() {
 			Map<String, Object> map = new HashMap<>();
@@ -234,7 +220,6 @@ public class ExecuteFindService implements Serializable {
 			map.put("successMessageList", successMessageList);
 			map.put("timeZone", timeZone);
 			map.put("userLogin", userLogin);
-			map.put("visualTheme", visualTheme);
 			return map;
 		}
 
@@ -252,8 +237,6 @@ public class ExecuteFindService implements Serializable {
 			timeZone = (java.util.TimeZone) map.get("timeZone");
 			userLogin = (org.apache.ofbiz.entity.GenericValue) map
 					.get("userLogin");
-			visualTheme = (org.apache.ofbiz.widget.renderer.VisualTheme) map
-					.get("visualTheme");
 		}
 
 		public Out(Map<String, Object> map) {
