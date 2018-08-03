@@ -310,7 +310,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 					MethodSource<JavaClassSource> getOneRelationMethod = serviceClass.addMethod()
 							.setName(methodName)
 							.setPublic()
-							.setReturnType(relationType);
+							.setReturnType("Optional<" + relationType + ">");
 
 					// set javadoc
 					getOneRelationMethod.getJavaDoc().setFullText(StringUtils.capitalize(generatorUtil.createPhraseFromCamelCase(methodName)));
