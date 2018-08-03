@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>uxcrm-app</artifactId>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
@@ -50,50 +51,6 @@
 	</dependencies>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			
-			<!-- start component resources -->
-			<resource>
-				<directory>${ofbiz.path}/framework/start/src/main/java/org/apache/ofbiz/base/start</directory>
-				<targetPath>org/apache/ofbiz/base/start</targetPath>
-			</resource>
-
-			<!-- base component resources -->
-			<resource>
-				<directory>${ofbiz.path}/framework/base/config</directory>
-			</resource>
-
-			<resource>
-				<directory>${ofbiz.path}/framework/base/dtd</directory>
-			</resource>
-
-			<!-- common component resources -->
-			<resource>
-				<directory>${ofbiz.path}/framework/common/config</directory>
-			</resource>
-
-			<!-- entity component resources -->
-			<resource>
-				<directory>${ofbiz.path}/framework/entity/config</directory>
-				<targetPath>framework/entity/config</targetPath>
-			</resource>
-
-			<resource>
-				<directory>${ofbiz.path}/framework/entity/dtd</directory>
-			</resource>
-
-			<!-- service component resources -->
-			<resource>
-				<directory>${ofbiz.path}/framework/service/config</directory>
-			</resource>
-
-			<resource>
-				<directory>${ofbiz.path}/framework/service/dtd</directory>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
