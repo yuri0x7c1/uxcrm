@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FixedAssetDepMethod implements Serializable {
 
-	public static final long serialVersionUID = 7881660494839129088L;
+	public static final long serialVersionUID = 8698219862726417408L;
 	public static final String NAME = "FixedAssetDepMethod";
 	/**
 	 * Depreciation Custom Method Id

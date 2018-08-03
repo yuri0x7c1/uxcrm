@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PhysicalInventoryAndVariance implements Serializable {
 
-	public static final long serialVersionUID = 3123534743354867712L;
+	public static final long serialVersionUID = 4263826910247188480L;
 	public static final String NAME = "PhysicalInventoryAndVariance";
 	/**
 	 * Physical Inventory Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderHeaderAndRoles implements Serializable {
 
-	public static final long serialVersionUID = 6263393277653940224L;
+	public static final long serialVersionUID = 2700713938870801408L;
 	public static final String NAME = "OrderHeaderAndRoles";
 	/**
 	 * Role Type Id
@@ -76,12 +76,6 @@ public class OrderHeaderAndRoles implements Serializable {
 	@Getter
 	@Setter
 	private String visitId;
-	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
 	/**
 	 * Product Store Id
 	 */
@@ -210,7 +204,7 @@ public class OrderHeaderAndRoles implements Serializable {
 	private String internalCode;
 
 	public enum Fields {
-		roleTypeId, orderId, partyId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, agreementId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
+		roleTypeId, orderId, partyId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
 	}
 
 	public OrderHeaderAndRoles(GenericValue value) {
@@ -226,7 +220,6 @@ public class OrderHeaderAndRoles implements Serializable {
 		terminalId = (String) value.get(Fields.terminalId.name());
 		isViewed = (String) value.get(Fields.isViewed.name());
 		visitId = (String) value.get(Fields.visitId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
 		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
 				.name());

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CustRequestItem implements Serializable {
 
-	public static final long serialVersionUID = 5570217833227646976L;
+	public static final long serialVersionUID = 1736375770122734592L;
 	public static final String NAME = "CustRequestItem";
 	/**
 	 * Cust Request Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GlAccountGroup implements Serializable {
 
-	public static final long serialVersionUID = 8667354141898663936L;
+	public static final long serialVersionUID = 4456942937568028672L;
 	public static final String NAME = "GlAccountGroup";
 	/**
 	 * Gl Account Group Id

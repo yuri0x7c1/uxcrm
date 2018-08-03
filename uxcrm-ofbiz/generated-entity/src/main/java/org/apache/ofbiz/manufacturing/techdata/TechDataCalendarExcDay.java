@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class TechDataCalendarExcDay implements Serializable {
 
-	public static final long serialVersionUID = 7942204197974564864L;
+	public static final long serialVersionUID = 8465648657360612352L;
 	public static final String NAME = "TechDataCalendarExcDay";
 	/**
 	 * Calendar Id

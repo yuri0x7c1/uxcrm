@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContainerGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 6451476920925377536L;
+	public static final long serialVersionUID = 2900775510628182016L;
 	public static final String NAME = "ContainerGeoPoint";
 	/**
 	 * Container Id

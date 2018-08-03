@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Visitor implements Serializable {
 
-	public static final long serialVersionUID = 974254220184097792L;
+	public static final long serialVersionUID = 8373255069994338304L;
 	public static final String NAME = "Visitor";
 	/**
 	 * Visitor Id

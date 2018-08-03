@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentAssoc implements Serializable {
 
-	public static final long serialVersionUID = 3230106607517374464L;
+	public static final long serialVersionUID = 6944908344955868160L;
 	public static final String NAME = "ContentAssoc";
 	/**
 	 * Content Id

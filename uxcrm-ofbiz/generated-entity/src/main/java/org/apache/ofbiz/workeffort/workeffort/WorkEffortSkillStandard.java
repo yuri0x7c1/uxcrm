@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortSkillStandard implements Serializable {
 
-	public static final long serialVersionUID = 1017647829027600384L;
+	public static final long serialVersionUID = 2566920956600371200L;
 	public static final String NAME = "WorkEffortSkillStandard";
 	/**
 	 * Work Effort Id

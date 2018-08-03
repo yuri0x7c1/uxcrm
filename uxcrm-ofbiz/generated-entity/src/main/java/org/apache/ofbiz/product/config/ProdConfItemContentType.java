@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProdConfItemContentType implements Serializable {
 
-	public static final long serialVersionUID = 2279699001674905600L;
+	public static final long serialVersionUID = 7271283202647937024L;
 	public static final String NAME = "ProdConfItemContentType";
 	/**
 	 * Conf Item Content Type Id

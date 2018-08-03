@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AgreementTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 1787796650552107008L;
+	public static final long serialVersionUID = 378456683327566848L;
 	public static final String NAME = "AgreementTypeAttr";
 	/**
 	 * Agreement Type Id

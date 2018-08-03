@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GlXbrlClass implements Serializable {
 
-	public static final long serialVersionUID = 2892958218691007488L;
+	public static final long serialVersionUID = 67897438855521280L;
 	public static final String NAME = "GlXbrlClass";
 	/**
 	 * Gl Xbrl Class Id

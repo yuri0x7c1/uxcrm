@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SystemProperty implements Serializable {
 
-	public static final long serialVersionUID = 9002069445887006720L;
+	public static final long serialVersionUID = 2929001762177190912L;
 	public static final String NAME = "SystemProperty";
 	/**
 	 * System Resource Id

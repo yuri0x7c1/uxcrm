@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderShipment implements Serializable {
 
-	public static final long serialVersionUID = 3378525710364585984L;
+	public static final long serialVersionUID = 8257354596245356544L;
 	public static final String NAME = "OrderShipment";
 	/**
 	 * Order Id

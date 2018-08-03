@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortFixedAssetAssign implements Serializable {
 
-	public static final long serialVersionUID = 1880207969092851712L;
+	public static final long serialVersionUID = 5737797728400950272L;
 	public static final String NAME = "WorkEffortFixedAssetAssign";
 	/**
 	 * Work Effort Id

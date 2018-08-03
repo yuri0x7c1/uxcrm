@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ImageDataResource implements Serializable {
 
-	public static final long serialVersionUID = 6399789933047115776L;
+	public static final long serialVersionUID = 6718880281572409344L;
 	public static final String NAME = "ImageDataResource";
 	/**
 	 * Data Resource Id

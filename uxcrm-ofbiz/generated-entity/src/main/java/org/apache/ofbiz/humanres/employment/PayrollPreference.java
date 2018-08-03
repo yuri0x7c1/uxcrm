@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PayrollPreference implements Serializable {
 
-	public static final long serialVersionUID = 7710589266770385920L;
+	public static final long serialVersionUID = 6104061497365367808L;
 	public static final String NAME = "PayrollPreference";
 	/**
 	 * Party Id

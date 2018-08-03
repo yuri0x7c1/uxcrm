@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ApplicationSandbox implements Serializable {
 
-	public static final long serialVersionUID = 8795539691078739968L;
+	public static final long serialVersionUID = 7619589215205330944L;
 	public static final String NAME = "ApplicationSandbox";
 	/**
 	 * Application Id

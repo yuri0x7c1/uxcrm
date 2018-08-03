@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProductFeaturePrice implements Serializable {
 
-	public static final long serialVersionUID = 3768281884726134784L;
+	public static final long serialVersionUID = 248156508309502976L;
 	public static final String NAME = "ProductFeaturePrice";
 	/**
 	 * Product Feature Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SurveyMultiResp implements Serializable {
 
-	public static final long serialVersionUID = 5430464728065295360L;
+	public static final long serialVersionUID = 5803511925935817728L;
 	public static final String NAME = "SurveyMultiResp";
 	/**
 	 * Survey Id

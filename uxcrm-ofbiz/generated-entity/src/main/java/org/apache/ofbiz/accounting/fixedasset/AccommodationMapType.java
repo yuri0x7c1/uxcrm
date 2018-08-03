@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AccommodationMapType implements Serializable {
 
-	public static final long serialVersionUID = 6558288392576017408L;
+	public static final long serialVersionUID = 5192299286253268992L;
 	public static final String NAME = "AccommodationMapType";
 	/**
 	 * Accommodation Map Type Id

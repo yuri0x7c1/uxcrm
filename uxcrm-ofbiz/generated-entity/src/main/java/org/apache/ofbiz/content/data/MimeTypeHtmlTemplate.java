@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MimeTypeHtmlTemplate implements Serializable {
 
-	public static final long serialVersionUID = 3965479336975152128L;
+	public static final long serialVersionUID = 3846394364927775744L;
 	public static final String NAME = "MimeTypeHtmlTemplate";
 	/**
 	 * Mime Type Id

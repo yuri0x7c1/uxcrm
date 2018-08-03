@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderItemAndProductContentInfo implements Serializable {
 
-	public static final long serialVersionUID = 1076985945452605440L;
+	public static final long serialVersionUID = 8220120567952384L;
 	public static final String NAME = "OrderItemAndProductContentInfo";
 	/**
 	 * Content Status Id
@@ -593,6 +593,12 @@ public class OrderItemAndProductContentInfo implements Serializable {
 	@Setter
 	private BigDecimal productRating;
 	/**
+	 * Manufacturer Party Id
+	 */
+	@Getter
+	@Setter
+	private String manufacturerPartyId;
+	/**
 	 * Brand Name
 	 */
 	@Getter
@@ -870,7 +876,7 @@ public class OrderItemAndProductContentInfo implements Serializable {
 	private String requirementMethodEnumId;
 
 	public enum Fields {
-		contentStatusId, orderId, deploymentId, cancelBackOrderDate, itemDescription, selectedAmount, orderItemSeqId, unitPrice, productId, unitRecurringPrice, isItemGroupPrimary, autoCancelDate, productFeatureId, overrideGlAccountId, budgetId, supplierProductId, estimatedDeliveryDate, quoteId, statusId, syncStatusId, estimatedShipDate, shoppingListItemSeqId, subscriptionId, salesOpportunityId, dontCancelSetUserLogin, isPromo, isModifiedPrice, shipBeforeDate, productCategoryId, shoppingListId, unitListPrice, unitAverageCost, orderItemTypeId, dontCancelSetDate, quantity, recurringFreqUomId, orderItemGroupSeqId, quoteItemSeqId, externalId, fromInventoryItemId, budgetItemSeqId, correspondingPoId, cancelQuantity, shipAfterDate, changeByUserLoginId, prodCatalogId, purchaseFromDate, useTimeUomId, sequenceNum, contentId, useCountLimit, productContentTypeId, thruDate, fromDate, useRoleTypeId, useTime, purchaseThruDate, ownerContentId, contentTypeId, description, mimeTypeId, childLeafCount, privilegeEnumId, dataSourceId, lastModifiedByUserLogin, dataResourceId, createdByUserLogin, templateDataResourceId, lastModifiedDate, instanceOfContentId, serviceName, customMethodId, characterSetId, contentName, createdDate, localeString, decoratorContentId, childBranchCount, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, comments, releaseDate, productHeight, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, isVariant, largeImageUrl, requirementMethodEnumId
+		contentStatusId, orderId, deploymentId, cancelBackOrderDate, itemDescription, selectedAmount, orderItemSeqId, unitPrice, productId, unitRecurringPrice, isItemGroupPrimary, autoCancelDate, productFeatureId, overrideGlAccountId, budgetId, supplierProductId, estimatedDeliveryDate, quoteId, statusId, syncStatusId, estimatedShipDate, shoppingListItemSeqId, subscriptionId, salesOpportunityId, dontCancelSetUserLogin, isPromo, isModifiedPrice, shipBeforeDate, productCategoryId, shoppingListId, unitListPrice, unitAverageCost, orderItemTypeId, dontCancelSetDate, quantity, recurringFreqUomId, orderItemGroupSeqId, quoteItemSeqId, externalId, fromInventoryItemId, budgetItemSeqId, correspondingPoId, cancelQuantity, shipAfterDate, changeByUserLoginId, prodCatalogId, purchaseFromDate, useTimeUomId, sequenceNum, contentId, useCountLimit, productContentTypeId, thruDate, fromDate, useRoleTypeId, useTime, purchaseThruDate, ownerContentId, contentTypeId, description, mimeTypeId, childLeafCount, privilegeEnumId, dataSourceId, lastModifiedByUserLogin, dataResourceId, createdByUserLogin, templateDataResourceId, lastModifiedDate, instanceOfContentId, serviceName, customMethodId, characterSetId, contentName, createdDate, localeString, decoratorContentId, childBranchCount, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, manufacturerPartyId, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, comments, releaseDate, productHeight, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, isVariant, largeImageUrl, requirementMethodEnumId
 	}
 
 	public OrderItemAndProductContentInfo(GenericValue value) {
@@ -997,6 +1003,8 @@ public class OrderItemAndProductContentInfo implements Serializable {
 				.name());
 		lotIdFilledIn = (String) value.get(Fields.lotIdFilledIn.name());
 		productRating = (BigDecimal) value.get(Fields.productRating.name());
+		manufacturerPartyId = (String) value.get(Fields.manufacturerPartyId
+				.name());
 		brandName = (String) value.get(Fields.brandName.name());
 		requireAmount = (String) value.get(Fields.requireAmount.name());
 		smallImageUrl = (String) value.get(Fields.smallImageUrl.name());

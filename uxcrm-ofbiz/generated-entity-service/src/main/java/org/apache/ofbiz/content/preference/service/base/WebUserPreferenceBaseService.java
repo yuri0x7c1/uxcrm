@@ -1,0 +1,196 @@
+package org.apache.ofbiz.content.preference.service.base;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.apache.ofbiz.common.ExecuteFindService.In;
+import org.apache.ofbiz.common.ExecuteFindService.Out;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
+import org.apache.ofbiz.entity.GenericEntityException;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
+import org.apache.ofbiz.entity.condition.EntityExpr;
+import org.apache.ofbiz.entity.condition.EntityOperator;
+import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
+import org.apache.ofbiz.content.preference.WebUserPreference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.content.preference.WebPreferenceType;
+import org.apache.ofbiz.security.login.UserLogin;
+import org.apache.ofbiz.party.party.Party;
+
+@Slf4j
+@Component
+@SuppressWarnings("unchecked")
+public class WebUserPreferenceBaseService {
+
+	protected ExecuteFindService executeFindService;
+
+	@Autowired
+	public WebUserPreferenceBaseService(ExecuteFindService executeFindService) {
+		this.executeFindService = executeFindService;
+	}
+
+	/**
+	 * Count WebUserPreferences
+	 */
+	public Integer count(EntityConditionList conditions) {
+		In in = new In();
+		in.setEntityName(WebUserPreference.NAME);
+		if (conditions == null) {
+			in.setNoConditionFind(OfbizUtil.Y);
+		} else {
+			in.setEntityConditionList(conditions);
+		}
+		Out out = executeFindService.runSync(in);
+		return out.getListSize();
+	}
+
+	/**
+	 * Find WebUserPreferences
+	 */
+	public List<WebUserPreference> find(Integer start, Integer number,
+			List<String> orderBy, EntityConditionList conditions) {
+		List<WebUserPreference> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(WebUserPreference.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		if (conditions == null) {
+			in.setNoConditionFind(OfbizUtil.Y);
+		} else {
+			in.setEntityConditionList(conditions);
+		}
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = WebUserPreference.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Find one WebUserPreference
+	 */
+	public Optional<WebUserPreference> findOne(Object userLoginId,
+			Object partyId, Object visitId, Object webPreferenceTypeId) {
+		List<WebUserPreference> entityList = null;
+		In in = new In();
+		in.setEntityName(WebUserPreference.NAME);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays.asList(
+				new EntityExpr("userLoginId", EntityOperator.EQUALS,
+						userLoginId), new EntityExpr("partyId",
+						EntityOperator.EQUALS, partyId), new EntityExpr(
+						"visitId", EntityOperator.EQUALS, visitId),
+				new EntityExpr("webPreferenceTypeId", EntityOperator.EQUALS,
+						webPreferenceTypeId)), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = WebUserPreference.fromValues(out.getListIt()
+						.getCompleteList());
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		if (CollectionUtils.isNotEmpty(entityList)) {
+			return Optional.of(entityList.get(0));
+		}
+		return Optional.empty();
+	}
+
+	/**
+	 * Get web preference type
+	 */
+	public Optional<WebPreferenceType> getWebPreferenceType(
+			WebUserPreference webUserPreference) {
+		List<WebPreferenceType> entityList = null;
+		In in = new In();
+		in.setEntityName(WebPreferenceType.NAME);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("webPreferenceTypeId",
+						EntityOperator.EQUALS, webUserPreference
+								.getWebPreferenceTypeId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = WebPreferenceType.fromValues(out.getListIt()
+						.getCompleteList());
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		if (CollectionUtils.isNotEmpty(entityList)) {
+			return Optional.of(entityList.get(0));
+		}
+		return Optional.empty();
+	}
+
+	/**
+	 * Get user login
+	 */
+	public Optional<UserLogin> getUserLogin(WebUserPreference webUserPreference) {
+		List<UserLogin> entityList = null;
+		In in = new In();
+		in.setEntityName(UserLogin.NAME);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("userLoginId", EntityOperator.EQUALS,
+						webUserPreference.getUserLoginId())),
+				EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = UserLogin.fromValues(out.getListIt()
+						.getCompleteList());
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		if (CollectionUtils.isNotEmpty(entityList)) {
+			return Optional.of(entityList.get(0));
+		}
+		return Optional.empty();
+	}
+
+	/**
+	 * Get party
+	 */
+	public Optional<Party> getParty(WebUserPreference webUserPreference) {
+		List<Party> entityList = null;
+		In in = new In();
+		in.setEntityName(Party.NAME);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS,
+						webUserPreference.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = Party
+						.fromValues(out.getListIt().getCompleteList());
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		if (CollectionUtils.isNotEmpty(entityList)) {
+			return Optional.of(entityList.get(0));
+		}
+		return Optional.empty();
+	}
+}

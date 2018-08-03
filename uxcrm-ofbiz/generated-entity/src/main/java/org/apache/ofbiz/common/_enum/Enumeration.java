@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Enumeration implements Serializable {
 
-	public static final long serialVersionUID = 4094057670015996928L;
+	public static final long serialVersionUID = 1328348875544300544L;
 	public static final String NAME = "Enumeration";
 	/**
 	 * Enum Id

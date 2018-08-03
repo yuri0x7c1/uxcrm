@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PaymentAndTypeAndCreditCard implements Serializable {
 
-	public static final long serialVersionUID = 8247489816470602752L;
+	public static final long serialVersionUID = 2848621904327748608L;
 	public static final String NAME = "PaymentAndTypeAndCreditCard";
 	/**
 	 * Role Type Id To

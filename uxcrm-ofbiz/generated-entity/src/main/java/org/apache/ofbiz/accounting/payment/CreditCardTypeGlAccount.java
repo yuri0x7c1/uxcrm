@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CreditCardTypeGlAccount implements Serializable {
 
-	public static final long serialVersionUID = 676585786475663360L;
+	public static final long serialVersionUID = 956953203732491264L;
 	public static final String NAME = "CreditCardTypeGlAccount";
 	/**
 	 * Card Type

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PmtGrpMembrPaymentAndFinAcctTrans implements Serializable {
 
-	public static final long serialVersionUID = 1926238681687417856L;
+	public static final long serialVersionUID = 5237764627050360832L;
 	public static final String NAME = "PmtGrpMembrPaymentAndFinAcctTrans";
 	/**
 	 * Fin Account Id

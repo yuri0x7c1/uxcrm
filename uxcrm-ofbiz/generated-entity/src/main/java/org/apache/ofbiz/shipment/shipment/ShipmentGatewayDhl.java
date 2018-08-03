@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ShipmentGatewayDhl implements Serializable {
 
-	public static final long serialVersionUID = 8193076847504640000L;
+	public static final long serialVersionUID = 716292823933722624L;
 	public static final String NAME = "ShipmentGatewayDhl";
 	/**
 	 * Shipment Gateway Config Id

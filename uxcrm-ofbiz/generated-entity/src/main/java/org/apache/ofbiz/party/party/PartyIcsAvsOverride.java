@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyIcsAvsOverride implements Serializable {
 
-	public static final long serialVersionUID = 4453983138790634496L;
+	public static final long serialVersionUID = 523905727000507392L;
 	public static final String NAME = "PartyIcsAvsOverride";
 	/**
 	 * Party Id

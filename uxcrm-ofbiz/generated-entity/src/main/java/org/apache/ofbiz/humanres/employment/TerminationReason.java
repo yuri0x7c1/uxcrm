@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TerminationReason implements Serializable {
 
-	public static final long serialVersionUID = 2944455587243610112L;
+	public static final long serialVersionUID = 5752753386113513472L;
 	public static final String NAME = "TerminationReason";
 	/**
 	 * Termination Reason Id

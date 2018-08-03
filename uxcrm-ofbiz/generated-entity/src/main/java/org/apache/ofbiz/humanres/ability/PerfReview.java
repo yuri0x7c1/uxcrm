@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PerfReview implements Serializable {
 
-	public static final long serialVersionUID = 5208930675853396992L;
+	public static final long serialVersionUID = 8146864030491736064L;
 	public static final String NAME = "PerfReview";
 	/**
 	 * Employee Party Id

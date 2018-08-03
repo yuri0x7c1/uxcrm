@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class FixedAssetMaintWorkEffort implements Serializable {
 
-	public static final long serialVersionUID = 4743353890200307712L;
+	public static final long serialVersionUID = 4896947162301066240L;
 	public static final String NAME = "FixedAssetMaintWorkEffort";
 	/**
 	 * Date Next Service

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentRole implements Serializable {
 
-	public static final long serialVersionUID = 4464625808463184896L;
+	public static final long serialVersionUID = 5569528715186453504L;
 	public static final String NAME = "ContentRole";
 	/**
 	 * Content Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemTempRes implements Serializable {
 
-	public static final long serialVersionUID = 828266601276401664L;
+	public static final long serialVersionUID = 3450633337786070016L;
 	public static final String NAME = "InventoryItemTempRes";
 	/**
 	 * Visit Id

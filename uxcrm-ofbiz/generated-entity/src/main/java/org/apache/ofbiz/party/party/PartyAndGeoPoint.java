@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PartyAndGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 6893202177614931968L;
+	public static final long serialVersionUID = 298511995930160128L;
 	public static final String NAME = "PartyAndGeoPoint";
 	/**
 	 * Party Id

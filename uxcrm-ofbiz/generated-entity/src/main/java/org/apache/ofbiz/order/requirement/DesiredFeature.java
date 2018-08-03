@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DesiredFeature implements Serializable {
 
-	public static final long serialVersionUID = 4047920501017101312L;
+	public static final long serialVersionUID = 661778416724460544L;
 	public static final String NAME = "DesiredFeature";
 	/**
 	 * Desired Feature Id

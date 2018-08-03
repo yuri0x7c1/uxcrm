@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContactMechTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 791203802342935552L;
+	public static final long serialVersionUID = 5873080273345929216L;
 	public static final String NAME = "ContactMechTypeAttr";
 	/**
 	 * Contact Mech Type Id

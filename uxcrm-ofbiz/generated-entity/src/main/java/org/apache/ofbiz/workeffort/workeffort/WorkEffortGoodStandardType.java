@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortGoodStandardType implements Serializable {
 
-	public static final long serialVersionUID = 3470240821038651392L;
+	public static final long serialVersionUID = 2200400911053599744L;
 	public static final String NAME = "WorkEffortGoodStandardType";
 	/**
 	 * Work Effort Good Std Type Id

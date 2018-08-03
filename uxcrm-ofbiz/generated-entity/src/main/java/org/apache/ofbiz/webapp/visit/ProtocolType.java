@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProtocolType implements Serializable {
 
-	public static final long serialVersionUID = 2335387864775567360L;
+	public static final long serialVersionUID = 4526242496392299520L;
 	public static final String NAME = "ProtocolType";
 	/**
 	 * Protocol Type Id

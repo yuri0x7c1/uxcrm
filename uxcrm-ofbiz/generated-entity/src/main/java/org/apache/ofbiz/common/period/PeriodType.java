@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PeriodType implements Serializable {
 
-	public static final long serialVersionUID = 5208498848886172672L;
+	public static final long serialVersionUID = 4591603473257613312L;
 	public static final String NAME = "PeriodType";
 	/**
 	 * Period Type Id

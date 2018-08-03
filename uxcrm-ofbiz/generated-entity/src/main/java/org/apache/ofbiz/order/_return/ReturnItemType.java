@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ReturnItemType implements Serializable {
 
-	public static final long serialVersionUID = 6506337417267103744L;
+	public static final long serialVersionUID = 6130129070666372096L;
 	public static final String NAME = "ReturnItemType";
 	/**
 	 * Return Item Type Id

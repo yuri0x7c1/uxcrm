@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemAndLocation implements Serializable {
 
-	public static final long serialVersionUID = 2980972697025768448L;
+	public static final long serialVersionUID = 426131255548827648L;
 	public static final String NAME = "InventoryItemAndLocation";
 	/**
 	 * Soft Identifier
@@ -292,6 +292,12 @@ public class InventoryItemAndLocation implements Serializable {
 	@Getter
 	@Setter
 	private String createdByUserLogin;
+	/**
+	 * Manufacturer Party Id
+	 */
+	@Getter
+	@Setter
+	private String manufacturerPartyId;
 	/**
 	 * Brand Name
 	 */
@@ -624,7 +630,7 @@ public class InventoryItemAndLocation implements Serializable {
 	private String locationTypeEnumId;
 
 	public enum Fields {
-		softIdentifier, binNumber, oldAvailableToPromise, quantityOnHandTotal, datetimeManufactured, expireDate, oldQuantityOnHand, partyId, containerId, availableToPromiseTotal, inventoryItemTypeId, locationSeqId, facilityId, serialNumber, productId, lotId, uomId, accountingQuantityTotal, inventoryItemId, ownerPartyId, activationValidThru, activationNumber, currencyUomId, statusId, unitCost, fixedAssetId, datetimeReceived, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, piecesIncluded, productDepth, comments, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId, sectionId, aisleId, areaId, positionId, levelId, geoPointId, locationTypeEnumId
+		softIdentifier, binNumber, oldAvailableToPromise, quantityOnHandTotal, datetimeManufactured, expireDate, oldQuantityOnHand, partyId, containerId, availableToPromiseTotal, inventoryItemTypeId, locationSeqId, facilityId, serialNumber, productId, lotId, uomId, accountingQuantityTotal, inventoryItemId, ownerPartyId, activationValidThru, activationNumber, currencyUomId, statusId, unitCost, fixedAssetId, datetimeReceived, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, manufacturerPartyId, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, piecesIncluded, productDepth, comments, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId, sectionId, aisleId, areaId, positionId, levelId, geoPointId, locationTypeEnumId
 	}
 
 	public InventoryItemAndLocation(GenericValue value) {
@@ -687,6 +693,8 @@ public class InventoryItemAndLocation implements Serializable {
 		lotIdFilledIn = (String) value.get(Fields.lotIdFilledIn.name());
 		productRating = (BigDecimal) value.get(Fields.productRating.name());
 		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
+				.name());
+		manufacturerPartyId = (String) value.get(Fields.manufacturerPartyId
 				.name());
 		brandName = (String) value.get(Fields.brandName.name());
 		requireAmount = (String) value.get(Fields.requireAmount.name());

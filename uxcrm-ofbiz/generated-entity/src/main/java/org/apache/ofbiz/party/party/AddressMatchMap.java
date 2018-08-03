@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AddressMatchMap implements Serializable {
 
-	public static final long serialVersionUID = 7185672156052303872L;
+	public static final long serialVersionUID = 6357681513234683904L;
 	public static final String NAME = "AddressMatchMap";
 	/**
 	 * Map Key

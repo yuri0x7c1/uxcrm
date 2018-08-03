@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Uom implements Serializable {
 
-	public static final long serialVersionUID = 3594940533092597760L;
+	public static final long serialVersionUID = 3004287400618603520L;
 	public static final String NAME = "Uom";
 	/**
 	 * Uom Id
@@ -33,12 +33,6 @@ public class Uom implements Serializable {
 	@Getter
 	@Setter
 	private String abbreviation;
-	/**
-	 * Numeric Code
-	 */
-	@Getter
-	@Setter
-	private Long numericCode;
 	/**
 	 * Description
 	 */
@@ -71,14 +65,13 @@ public class Uom implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		uomId, uomTypeId, abbreviation, numericCode, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		uomId, uomTypeId, abbreviation, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public Uom(GenericValue value) {
 		uomId = (String) value.get(Fields.uomId.name());
 		uomTypeId = (String) value.get(Fields.uomTypeId.name());
 		abbreviation = (String) value.get(Fields.abbreviation.name());
-		numericCode = (Long) value.get(Fields.numericCode.name());
 		description = (String) value.get(Fields.description.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());

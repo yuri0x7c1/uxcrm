@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductGeo implements Serializable {
 
-	public static final long serialVersionUID = 8379558624904905728L;
+	public static final long serialVersionUID = 3658841463186074624L;
 	public static final String NAME = "ProductGeo";
 	/**
 	 * Product Id

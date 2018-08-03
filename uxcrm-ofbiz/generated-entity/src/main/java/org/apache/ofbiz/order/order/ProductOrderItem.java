@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductOrderItem implements Serializable {
 
-	public static final long serialVersionUID = 8352131501005002752L;
+	public static final long serialVersionUID = 7040185936410250240L;
 	public static final String NAME = "ProductOrderItem";
 	/**
 	 * Order Id

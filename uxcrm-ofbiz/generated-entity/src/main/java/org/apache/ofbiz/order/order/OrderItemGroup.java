@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderItemGroup implements Serializable {
 
-	public static final long serialVersionUID = 1393515444303501312L;
+	public static final long serialVersionUID = 1268881242710306816L;
 	public static final String NAME = "OrderItemGroup";
 	/**
 	 * Order Id

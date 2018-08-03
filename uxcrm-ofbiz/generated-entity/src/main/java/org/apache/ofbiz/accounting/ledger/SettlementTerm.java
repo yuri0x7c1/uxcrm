@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SettlementTerm implements Serializable {
 
-	public static final long serialVersionUID = 1386046452620190720L;
+	public static final long serialVersionUID = 5629520214356361216L;
 	public static final String NAME = "SettlementTerm";
 	/**
 	 * Settlement Term Id

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class MaxRevisionItemView implements Serializable {
 
-	public static final long serialVersionUID = 7507304849789033472L;
+	public static final long serialVersionUID = 869208799517752320L;
 	public static final String NAME = "MaxRevisionItemView";
 	/**
 	 * Root Revision Content Id

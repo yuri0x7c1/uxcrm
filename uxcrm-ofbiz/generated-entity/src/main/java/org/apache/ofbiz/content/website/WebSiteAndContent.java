@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebSiteAndContent implements Serializable {
 
-	public static final long serialVersionUID = 3521989449713922048L;
+	public static final long serialVersionUID = 6883731441837245440L;
 	public static final String NAME = "WebSiteAndContent";
 	/**
 	 * Secure Content Prefix
@@ -69,12 +69,6 @@ public class WebSiteAndContent implements Serializable {
 	@Getter
 	@Setter
 	private String isDefault;
-	/**
-	 * Webapp Path
-	 */
-	@Getter
-	@Setter
-	private String webappPath;
 	/**
 	 * Display Maintenance Page
 	 */
@@ -143,7 +137,7 @@ public class WebSiteAndContent implements Serializable {
 	private Timestamp thruDate;
 
 	public enum Fields {
-		secureContentPrefix, standardContentPrefix, httpPort, siteName, httpsHost, httpsPort, allowProductStoreChange, cookieDomain, isDefault, webappPath, displayMaintenancePage, enableHttps, httpHost, productStoreId, visualThemeSetId, hostedPathAlias, webSiteId, fromDate, webSiteContentTypeId, contentId, thruDate
+		secureContentPrefix, standardContentPrefix, httpPort, siteName, httpsHost, httpsPort, allowProductStoreChange, cookieDomain, isDefault, displayMaintenancePage, enableHttps, httpHost, productStoreId, visualThemeSetId, hostedPathAlias, webSiteId, fromDate, webSiteContentTypeId, contentId, thruDate
 	}
 
 	public WebSiteAndContent(GenericValue value) {
@@ -159,7 +153,6 @@ public class WebSiteAndContent implements Serializable {
 				.get(Fields.allowProductStoreChange.name());
 		cookieDomain = (String) value.get(Fields.cookieDomain.name());
 		isDefault = (String) value.get(Fields.isDefault.name());
-		webappPath = (String) value.get(Fields.webappPath.name());
 		displayMaintenancePage = (String) value
 				.get(Fields.displayMaintenancePage.name());
 		enableHttps = (String) value.get(Fields.enableHttps.name());

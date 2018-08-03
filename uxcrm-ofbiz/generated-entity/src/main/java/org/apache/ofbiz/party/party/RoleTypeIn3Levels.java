@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class RoleTypeIn3Levels implements Serializable {
 
-	public static final long serialVersionUID = 8483652806571377664L;
+	public static final long serialVersionUID = 2344960432316356608L;
 	public static final String NAME = "RoleTypeIn3Levels";
 	/**
 	 * Top Role Type Id

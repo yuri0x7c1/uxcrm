@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GoodIdentificationAndProduct implements Serializable {
 
-	public static final long serialVersionUID = 1324599978672305152L;
+	public static final long serialVersionUID = 410092744484987904L;
 	public static final String NAME = "GoodIdentificationAndProduct";
 	/**
 	 * Product Id
@@ -148,6 +148,12 @@ public class GoodIdentificationAndProduct implements Serializable {
 	@Getter
 	@Setter
 	private String createdByUserLogin;
+	/**
+	 * Manufacturer Party Id
+	 */
+	@Getter
+	@Setter
+	private String manufacturerPartyId;
 	/**
 	 * Brand Name
 	 */
@@ -450,7 +456,7 @@ public class GoodIdentificationAndProduct implements Serializable {
 	private String requirementMethodEnumId;
 
 	public enum Fields {
-		productId, goodIdentificationTypeId, idValue, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, comments, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId
+		productId, goodIdentificationTypeId, idValue, originGeoId, detailScreen, requireInventory, quantityUomId, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, manufacturerPartyId, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, comments, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId
 	}
 
 	public GoodIdentificationAndProduct(GenericValue value) {
@@ -481,6 +487,8 @@ public class GoodIdentificationAndProduct implements Serializable {
 		lotIdFilledIn = (String) value.get(Fields.lotIdFilledIn.name());
 		productRating = (BigDecimal) value.get(Fields.productRating.name());
 		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
+				.name());
+		manufacturerPartyId = (String) value.get(Fields.manufacturerPartyId
 				.name());
 		brandName = (String) value.get(Fields.brandName.name());
 		requireAmount = (String) value.get(Fields.requireAmount.name());

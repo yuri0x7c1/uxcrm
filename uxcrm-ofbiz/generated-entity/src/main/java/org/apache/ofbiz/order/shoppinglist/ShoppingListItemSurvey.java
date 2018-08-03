@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ShoppingListItemSurvey implements Serializable {
 
-	public static final long serialVersionUID = 2745538366657100800L;
+	public static final long serialVersionUID = 1137997101004449792L;
 	public static final String NAME = "ShoppingListItemSurvey";
 	/**
 	 * Shopping List Id

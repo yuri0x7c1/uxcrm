@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PaymentType implements Serializable {
 
-	public static final long serialVersionUID = 668582830071796736L;
+	public static final long serialVersionUID = 8102191577785187328L;
 	public static final String NAME = "PaymentType";
 	/**
 	 * Payment Type Id

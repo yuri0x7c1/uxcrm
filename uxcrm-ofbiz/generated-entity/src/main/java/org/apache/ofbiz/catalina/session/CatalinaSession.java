@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CatalinaSession implements Serializable {
 
-	public static final long serialVersionUID = 3227904876399953920L;
+	public static final long serialVersionUID = 7053614840895516672L;
 	public static final String NAME = "CatalinaSession";
 	/**
 	 * Session Id

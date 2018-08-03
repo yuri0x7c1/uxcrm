@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GlFiscalType implements Serializable {
 
-	public static final long serialVersionUID = 7067037816463111168L;
+	public static final long serialVersionUID = 3360459845197957120L;
 	public static final String NAME = "GlFiscalType";
 	/**
 	 * Gl Fiscal Type Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProductStoreShipmentMeth implements Serializable {
 
-	public static final long serialVersionUID = 753387412635247616L;
+	public static final long serialVersionUID = 454590541822922752L;
 	public static final String NAME = "ProductStoreShipmentMeth";
 	/**
 	 * Product Store Ship Meth Id

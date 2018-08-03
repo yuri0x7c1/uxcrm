@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PartyBenefit implements Serializable {
 
-	public static final long serialVersionUID = 1320164316028545024L;
+	public static final long serialVersionUID = 3113800050308005888L;
 	public static final String NAME = "PartyBenefit";
 	/**
 	 * Role Type Id From

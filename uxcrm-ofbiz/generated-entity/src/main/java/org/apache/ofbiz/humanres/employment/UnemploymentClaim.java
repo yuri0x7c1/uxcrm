@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UnemploymentClaim implements Serializable {
 
-	public static final long serialVersionUID = 450427429485436928L;
+	public static final long serialVersionUID = 1132986542027769856L;
 	public static final String NAME = "UnemploymentClaim";
 	/**
 	 * Unemployment Claim Id

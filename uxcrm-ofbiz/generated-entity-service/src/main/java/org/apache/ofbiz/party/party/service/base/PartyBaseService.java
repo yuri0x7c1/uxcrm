@@ -1,12 +1,63 @@
 package org.apache.ofbiz.party.party.service.base;
 
-import java.util.ArrayList;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.apache.ofbiz.common.ExecuteFindService.In;
+import org.apache.ofbiz.common.ExecuteFindService.Out;
+import org.apache.ofbiz.common.ExecuteFindService;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Collections;
 import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
+import org.apache.ofbiz.entity.GenericEntityException;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
+import org.apache.ofbiz.entity.condition.EntityExpr;
+import org.apache.ofbiz.entity.condition.EntityOperator;
+import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
+import org.apache.ofbiz.party.party.Party;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.party.party.PartyType;
+import org.apache.ofbiz.security.login.UserLogin;
+import org.apache.ofbiz.common.uom.Uom;
+import org.apache.ofbiz.common.status.StatusItem;
+import org.apache.ofbiz.party.party.PartyTypeAttr;
+import org.apache.ofbiz.common.datasource.DataSource;
+import org.apache.ofbiz.accounting.ledger.AcctgTrans;
+import org.apache.ofbiz.accounting.ledger.AcctgTransEntry;
+import org.apache.ofbiz.party.party.Affiliate;
+import org.apache.ofbiz.party.agreement.Agreement;
+import org.apache.ofbiz.party.agreement.AgreementPartyApplic;
+import org.apache.ofbiz.party.agreement.AgreementRole;
+import org.apache.ofbiz.accounting.payment.BillingAccountRole;
 import org.apache.ofbiz.accounting.budget.BudgetReview;
 import org.apache.ofbiz.accounting.budget.BudgetRole;
+import org.apache.ofbiz.shipment.shipment.CarrierShipmentBoxType;
+import org.apache.ofbiz.shipment.shipment.CarrierShipmentMethod;
+import org.apache.ofbiz.party.communication.CommunicationEvent;
+import org.apache.ofbiz.party.communication.CommunicationEventRole;
+import org.apache.ofbiz.marketing.contact.ContactList;
+import org.apache.ofbiz.marketing.contact.ContactListCommStatus;
+import org.apache.ofbiz.marketing.contact.ContactListParty;
+import org.apache.ofbiz.content.content.ContentApproval;
+import org.apache.ofbiz.content.content.ContentRevision;
+import org.apache.ofbiz.content.content.ContentRole;
+import org.apache.ofbiz.product.cost.CostComponent;
+import org.apache.ofbiz.order.request.CustRequest;
+import org.apache.ofbiz.order.request.CustRequestParty;
+import org.apache.ofbiz.order.request.CustRequestType;
+import org.apache.ofbiz.common.period.CustomTimePeriod;
+import org.apache.ofbiz.content.data.DataResourceRole;
+import org.apache.ofbiz.humanres.employment.EmplLeave;
+import org.apache.ofbiz.humanres.position.EmplPosition;
+import org.apache.ofbiz.humanres.position.EmplPositionFulfillment;
+import org.apache.ofbiz.humanres.employment.Employment;
+import org.apache.ofbiz.humanres.employment.EmploymentApp;
+import org.apache.ofbiz.product.facility.Facility;
+import org.apache.ofbiz.product.facility.FacilityCarrierShipment;
+import org.apache.ofbiz.product.facility.FacilityGroupRole;
+import org.apache.ofbiz.product.facility.FacilityParty;
 import org.apache.ofbiz.accounting.finaccount.FinAccount;
 import org.apache.ofbiz.accounting.finaccount.FinAccountRole;
 import org.apache.ofbiz.accounting.finaccount.FinAccountTrans;
@@ -14,168 +65,123 @@ import org.apache.ofbiz.accounting.finaccount.FinAccountTypeGlAccount;
 import org.apache.ofbiz.accounting.fixedasset.FixedAsset;
 import org.apache.ofbiz.accounting.fixedasset.FixedAssetRegistration;
 import org.apache.ofbiz.accounting.fixedasset.FixedAssetTypeGlAccount;
-import org.apache.ofbiz.accounting.fixedasset.PartyFixedAssetAssignment;
-import org.apache.ofbiz.accounting.invoice.Invoice;
-import org.apache.ofbiz.accounting.invoice.InvoiceItem;
-import org.apache.ofbiz.accounting.invoice.InvoiceItemAssoc;
-import org.apache.ofbiz.accounting.invoice.InvoiceItemTypeGlAccount;
-import org.apache.ofbiz.accounting.invoice.InvoiceRole;
-import org.apache.ofbiz.accounting.ledger.AcctgTrans;
-import org.apache.ofbiz.accounting.ledger.AcctgTransEntry;
+import org.apache.ofbiz.accounting.payment.GiftCardFulfillment;
 import org.apache.ofbiz.accounting.ledger.GlAccountHistory;
 import org.apache.ofbiz.accounting.ledger.GlAccountOrganization;
 import org.apache.ofbiz.accounting.ledger.GlAccountRole;
 import org.apache.ofbiz.accounting.ledger.GlAccountTypeDefault;
 import org.apache.ofbiz.accounting.ledger.GlJournal;
 import org.apache.ofbiz.accounting.ledger.GlReconciliation;
-import org.apache.ofbiz.accounting.ledger.PartyAcctgPreference;
-import org.apache.ofbiz.accounting.ledger.PartyGlAccount;
-import org.apache.ofbiz.accounting.ledger.PartyPrefDocTypeTpl;
-import org.apache.ofbiz.accounting.ledger.ProductAverageCost;
-import org.apache.ofbiz.accounting.ledger.VarianceReasonGlAccount;
-import org.apache.ofbiz.accounting.payment.BillingAccountRole;
-import org.apache.ofbiz.accounting.payment.GiftCardFulfillment;
-import org.apache.ofbiz.accounting.payment.Payment;
-import org.apache.ofbiz.accounting.payment.PaymentGlAccountTypeMap;
-import org.apache.ofbiz.accounting.payment.PaymentMethod;
-import org.apache.ofbiz.accounting.payment.PaymentMethodTypeGlAccount;
-import org.apache.ofbiz.accounting.rate.PartyRate;
-import org.apache.ofbiz.accounting.rate.RateAmount;
-import org.apache.ofbiz.accounting.tax.PartyTaxAuthInfo;
-import org.apache.ofbiz.accounting.tax.TaxAuthority;
-import org.apache.ofbiz.accounting.tax.TaxAuthorityGlAccount;
-import org.apache.ofbiz.common.ExecuteFindService;
-import org.apache.ofbiz.common.ExecuteFindService.In;
-import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.common.datasource.DataSource;
-import org.apache.ofbiz.common.note.NoteData;
-import org.apache.ofbiz.common.period.CustomTimePeriod;
-import org.apache.ofbiz.common.status.StatusItem;
-import org.apache.ofbiz.common.uom.Uom;
-import org.apache.ofbiz.content.content.ContentApproval;
-import org.apache.ofbiz.content.content.ContentRevision;
-import org.apache.ofbiz.content.content.ContentRole;
-import org.apache.ofbiz.content.data.DataResourceRole;
-import org.apache.ofbiz.content.preference.WebUserPreference;
-import org.apache.ofbiz.content.survey.SurveyResponse;
-import org.apache.ofbiz.entity.GenericEntityException;
-import org.apache.ofbiz.entity.condition.EntityConditionList;
-import org.apache.ofbiz.entity.condition.EntityExpr;
-import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.apache.ofbiz.humanres.ability.PartyQual;
-import org.apache.ofbiz.humanres.ability.PartyResume;
-import org.apache.ofbiz.humanres.ability.PartySkill;
-import org.apache.ofbiz.humanres.ability.PerfReview;
-import org.apache.ofbiz.humanres.ability.PerfReviewItem;
-import org.apache.ofbiz.humanres.ability.PerformanceNote;
-import org.apache.ofbiz.humanres.ability.PersonTraining;
-import org.apache.ofbiz.humanres.employment.EmplLeave;
-import org.apache.ofbiz.humanres.employment.Employment;
-import org.apache.ofbiz.humanres.employment.EmploymentApp;
-import org.apache.ofbiz.humanres.employment.PartyBenefit;
-import org.apache.ofbiz.humanres.employment.PayrollPreference;
-import org.apache.ofbiz.humanres.position.EmplPosition;
-import org.apache.ofbiz.humanres.position.EmplPositionFulfillment;
+import org.apache.ofbiz.product.inventory.InventoryItem;
+import org.apache.ofbiz.accounting.invoice.Invoice;
+import org.apache.ofbiz.accounting.invoice.InvoiceItem;
+import org.apache.ofbiz.accounting.invoice.InvoiceItemAssoc;
+import org.apache.ofbiz.accounting.invoice.InvoiceItemTypeGlAccount;
+import org.apache.ofbiz.accounting.invoice.InvoiceRole;
+import org.apache.ofbiz.shipment.issuance.ItemIssuanceRole;
 import org.apache.ofbiz.humanres.recruitment.JobInterview;
 import org.apache.ofbiz.marketing.campaign.MarketingCampaignRole;
-import org.apache.ofbiz.marketing.contact.ContactList;
-import org.apache.ofbiz.marketing.contact.ContactListCommStatus;
-import org.apache.ofbiz.marketing.contact.ContactListParty;
-import org.apache.ofbiz.marketing.opportunity.SalesForecast;
-import org.apache.ofbiz.marketing.opportunity.SalesForecastHistory;
-import org.apache.ofbiz.marketing.opportunity.SalesOpportunityRole;
-import org.apache.ofbiz.marketing.segment.SegmentGroupRole;
-import org.apache.ofbiz.order._return.ReturnHeader;
+import org.apache.ofbiz.common.note.NoteData;
+import org.apache.ofbiz.order.request.OldCustRequestRole;
+import org.apache.ofbiz.product.facility.OldFacilityRole;
+import org.apache.ofbiz.order.order.OldOrderShipmentPreference;
+import org.apache.ofbiz.workeffort.timesheet.OldPartyRate;
+import org.apache.ofbiz.party.party.OldPartyTaxInfo;
+import org.apache.ofbiz.accounting.payment.OldValueLinkFulfillment;
+import org.apache.ofbiz.workeffort.timesheet.OldWorkEffortAssignmentRate;
 import org.apache.ofbiz.order.order.OrderItemRole;
 import org.apache.ofbiz.order.order.OrderItemShipGroup;
 import org.apache.ofbiz.order.order.OrderRole;
-import org.apache.ofbiz.order.quote.Quote;
-import org.apache.ofbiz.order.quote.QuoteRole;
-import org.apache.ofbiz.order.request.CustRequest;
-import org.apache.ofbiz.order.request.CustRequestParty;
-import org.apache.ofbiz.order.request.CustRequestType;
-import org.apache.ofbiz.order.request.RespondingParty;
-import org.apache.ofbiz.order.requirement.RequirementRole;
-import org.apache.ofbiz.order.shoppinglist.ShoppingList;
-import org.apache.ofbiz.party.agreement.Agreement;
-import org.apache.ofbiz.party.agreement.AgreementPartyApplic;
-import org.apache.ofbiz.party.agreement.AgreementRole;
-import org.apache.ofbiz.party.communication.CommunicationEvent;
-import org.apache.ofbiz.party.communication.CommunicationEventRole;
-import org.apache.ofbiz.party.contact.PartyContactMech;
-import org.apache.ofbiz.party.contact.PartyContactMechPurpose;
-import org.apache.ofbiz.party.need.PartyNeed;
-import org.apache.ofbiz.party.party.Affiliate;
-import org.apache.ofbiz.party.party.Party;
+import org.apache.ofbiz.accounting.ledger.PartyAcctgPreference;
 import org.apache.ofbiz.party.party.PartyAttribute;
+import org.apache.ofbiz.humanres.employment.PartyBenefit;
 import org.apache.ofbiz.party.party.PartyCarrierAccount;
 import org.apache.ofbiz.party.party.PartyClassification;
+import org.apache.ofbiz.party.contact.PartyContactMech;
+import org.apache.ofbiz.party.contact.PartyContactMechPurpose;
 import org.apache.ofbiz.party.party.PartyContent;
 import org.apache.ofbiz.party.party.PartyDataSource;
+import org.apache.ofbiz.accounting.fixedasset.PartyFixedAssetAssignment;
 import org.apache.ofbiz.party.party.PartyGeoPoint;
+import org.apache.ofbiz.accounting.ledger.PartyGlAccount;
 import org.apache.ofbiz.party.party.PartyGroup;
 import org.apache.ofbiz.party.party.PartyIcsAvsOverride;
 import org.apache.ofbiz.party.party.PartyIdentification;
 import org.apache.ofbiz.party.party.PartyInvitation;
 import org.apache.ofbiz.party.party.PartyInvitationGroupAssoc;
 import org.apache.ofbiz.party.party.PartyNameHistory;
+import org.apache.ofbiz.party.need.PartyNeed;
 import org.apache.ofbiz.party.party.PartyNote;
 import org.apache.ofbiz.party.party.PartyProfileDefault;
+import org.apache.ofbiz.humanres.ability.PartyQual;
+import org.apache.ofbiz.accounting.rate.PartyRate;
 import org.apache.ofbiz.party.party.PartyRelationship;
+import org.apache.ofbiz.humanres.ability.PartyResume;
 import org.apache.ofbiz.party.party.PartyRole;
+import org.apache.ofbiz.humanres.ability.PartySkill;
 import org.apache.ofbiz.party.party.PartyStatus;
-import org.apache.ofbiz.party.party.PartyType;
-import org.apache.ofbiz.party.party.PartyTypeAttr;
+import org.apache.ofbiz.accounting.tax.PartyTaxAuthInfo;
+import org.apache.ofbiz.accounting.payment.Payment;
+import org.apache.ofbiz.accounting.payment.PaymentGlAccountTypeMap;
+import org.apache.ofbiz.accounting.payment.PaymentMethod;
+import org.apache.ofbiz.accounting.payment.PaymentMethodTypeGlAccount;
+import org.apache.ofbiz.humanres.employment.PayrollPreference;
+import org.apache.ofbiz.humanres.ability.PerfReview;
+import org.apache.ofbiz.humanres.ability.PerfReviewItem;
+import org.apache.ofbiz.humanres.ability.PerformanceNote;
 import org.apache.ofbiz.party.party.Person;
-import org.apache.ofbiz.party.party.Vendor;
-import org.apache.ofbiz.party.party.WebSiteRole;
+import org.apache.ofbiz.humanres.ability.PersonTraining;
 import org.apache.ofbiz.product.catalog.ProdCatalogRole;
+import org.apache.ofbiz.product.product.Product;
+import org.apache.ofbiz.accounting.ledger.ProductAverageCost;
 import org.apache.ofbiz.product.category.ProductCategoryGlAccount;
 import org.apache.ofbiz.product.category.ProductCategoryRole;
-import org.apache.ofbiz.product.cost.CostComponent;
-import org.apache.ofbiz.product.facility.Facility;
-import org.apache.ofbiz.product.facility.FacilityCarrierShipment;
-import org.apache.ofbiz.product.facility.FacilityGroupRole;
-import org.apache.ofbiz.product.facility.FacilityParty;
-import org.apache.ofbiz.product.inventory.InventoryItem;
-import org.apache.ofbiz.product.price.ProductPrice;
 import org.apache.ofbiz.product.product.ProductGlAccount;
-import org.apache.ofbiz.product.product.ProductRole;
-import org.apache.ofbiz.product.product.VendorProduct;
+import org.apache.ofbiz.product.price.ProductPrice;
 import org.apache.ofbiz.product.promo.ProductPromo;
 import org.apache.ofbiz.product.promo.ProductPromoCodeParty;
 import org.apache.ofbiz.product.promo.ProductPromoUse;
+import org.apache.ofbiz.product.product.ProductRole;
 import org.apache.ofbiz.product.store.ProductStore;
 import org.apache.ofbiz.product.store.ProductStoreGroupRole;
 import org.apache.ofbiz.product.store.ProductStoreRole;
 import org.apache.ofbiz.product.store.ProductStoreShipmentMeth;
 import org.apache.ofbiz.product.store.ProductStoreVendorPayment;
 import org.apache.ofbiz.product.store.ProductStoreVendorShipment;
-import org.apache.ofbiz.product.subscription.Subscription;
+import org.apache.ofbiz.order.quote.Quote;
+import org.apache.ofbiz.order.quote.QuoteRole;
+import org.apache.ofbiz.accounting.rate.RateAmount;
 import org.apache.ofbiz.product.supplier.ReorderGuideline;
-import org.apache.ofbiz.product.supplier.SupplierProduct;
-import org.apache.ofbiz.product.supplier.SupplierProductFeature;
-import org.apache.ofbiz.security.login.UserLogin;
-import org.apache.ofbiz.security.login.UserLoginHistory;
-import org.apache.ofbiz.shipment.issuance.ItemIssuanceRole;
-import org.apache.ofbiz.shipment.receipt.ShipmentReceiptRole;
-import org.apache.ofbiz.shipment.shipment.CarrierShipmentBoxType;
-import org.apache.ofbiz.shipment.shipment.CarrierShipmentMethod;
+import org.apache.ofbiz.order.requirement.RequirementRole;
+import org.apache.ofbiz.order.request.RespondingParty;
+import org.apache.ofbiz.order._return.ReturnHeader;
+import org.apache.ofbiz.marketing.opportunity.SalesForecast;
+import org.apache.ofbiz.marketing.opportunity.SalesForecastHistory;
+import org.apache.ofbiz.marketing.opportunity.SalesOpportunityRole;
+import org.apache.ofbiz.marketing.segment.SegmentGroupRole;
+import org.apache.ofbiz.webapp.visit.ServerHit;
 import org.apache.ofbiz.shipment.shipment.Shipment;
 import org.apache.ofbiz.shipment.shipment.ShipmentCostEstimate;
+import org.apache.ofbiz.shipment.receipt.ShipmentReceiptRole;
 import org.apache.ofbiz.shipment.shipment.ShipmentRouteSegment;
-import org.apache.ofbiz.webapp.visit.ServerHit;
+import org.apache.ofbiz.order.shoppinglist.ShoppingList;
+import org.apache.ofbiz.product.subscription.Subscription;
+import org.apache.ofbiz.product.supplier.SupplierProduct;
+import org.apache.ofbiz.product.supplier.SupplierProductFeature;
+import org.apache.ofbiz.content.survey.SurveyResponse;
+import org.apache.ofbiz.accounting.tax.TaxAuthority;
+import org.apache.ofbiz.accounting.tax.TaxAuthorityGlAccount;
 import org.apache.ofbiz.workeffort.timesheet.TimeEntry;
 import org.apache.ofbiz.workeffort.timesheet.Timesheet;
 import org.apache.ofbiz.workeffort.timesheet.TimesheetRole;
+import org.apache.ofbiz.security.login.UserLoginHistory;
+import org.apache.ofbiz.accounting.ledger.VarianceReasonGlAccount;
+import org.apache.ofbiz.party.party.Vendor;
+import org.apache.ofbiz.product.product.VendorProduct;
+import org.apache.ofbiz.party.party.WebSiteRole;
+import org.apache.ofbiz.content.preference.WebUserPreference;
 import org.apache.ofbiz.workeffort.workeffort.WorkEffortEventReminder;
 import org.apache.ofbiz.workeffort.workeffort.WorkEffortPartyAssignment;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
@@ -209,9 +215,15 @@ public class PartyBaseService {
 	 */
 	public List<Party> find(Integer start, Integer number,
 			List<String> orderBy, EntityConditionList conditions) {
-		List<Party> entityList = new ArrayList<>();
+		List<Party> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Party.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -234,7 +246,7 @@ public class PartyBaseService {
 	/**
 	 * Find one Party
 	 */
-	public Party findOne(Object partyId) {
+	public Optional<Party> findOne(Object partyId) {
 		List<Party> entityList = null;
 		In in = new In();
 		in.setEntityName(Party.NAME);
@@ -252,15 +264,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get party type
 	 */
-	public PartyType getPartyType(Party party) {
+	public Optional<PartyType> getPartyType(Party party) {
 		List<PartyType> entityList = null;
 		In in = new In();
 		in.setEntityName(PartyType.NAME);
@@ -278,15 +290,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get created by user login
 	 */
-	public UserLogin getCreatedByUserLogin(Party party) {
+	public Optional<UserLogin> getCreatedByUserLogin(Party party) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -304,15 +316,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get last modified by user login
 	 */
-	public UserLogin getLastModifiedByUserLogin(Party party) {
+	public Optional<UserLogin> getLastModifiedByUserLogin(Party party) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -331,15 +343,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get uom
 	 */
-	public Uom getUom(Party party) {
+	public Optional<Uom> getUom(Party party) {
 		List<Uom> entityList = null;
 		In in = new In();
 		in.setEntityName(Uom.NAME);
@@ -356,15 +368,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get status item
 	 */
-	public StatusItem getStatusItem(Party party) {
+	public Optional<StatusItem> getStatusItem(Party party) {
 		List<StatusItem> entityList = null;
 		In in = new In();
 		in.setEntityName(StatusItem.NAME);
@@ -382,9 +394,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -392,9 +404,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyTypeAttr> getPartyTypeAttrs(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyTypeAttr> entityList = new ArrayList<>();
+		List<PartyTypeAttr> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyTypeAttr.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyTypeId", EntityOperator.EQUALS,
@@ -415,7 +433,7 @@ public class PartyBaseService {
 	/**
 	 * Get data source
 	 */
-	public DataSource getDataSource(Party party) {
+	public Optional<DataSource> getDataSource(Party party) {
 		List<DataSource> entityList = null;
 		In in = new In();
 		in.setEntityName(DataSource.NAME);
@@ -433,9 +451,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -443,9 +461,15 @@ public class PartyBaseService {
 	 */
 	public List<AcctgTrans> getAcctgTranses(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<AcctgTrans> entityList = new ArrayList<>();
+		List<AcctgTrans> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(AcctgTrans.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -468,9 +492,15 @@ public class PartyBaseService {
 	 */
 	public List<AcctgTransEntry> getAcctgTransEntries(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<AcctgTransEntry> entityList = new ArrayList<>();
+		List<AcctgTransEntry> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(AcctgTransEntry.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -491,7 +521,7 @@ public class PartyBaseService {
 	/**
 	 * Get affiliate
 	 */
-	public Affiliate getAffiliate(Party party) {
+	public Optional<Affiliate> getAffiliate(Party party) {
 		List<Affiliate> entityList = null;
 		In in = new In();
 		in.setEntityName(Affiliate.NAME);
@@ -509,9 +539,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -519,9 +549,15 @@ public class PartyBaseService {
 	 */
 	public List<Agreement> getFromAgreements(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Agreement> entityList = new ArrayList<>();
+		List<Agreement> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Agreement.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -544,9 +580,15 @@ public class PartyBaseService {
 	 */
 	public List<Agreement> getToAgreements(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Agreement> entityList = new ArrayList<>();
+		List<Agreement> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Agreement.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -569,9 +611,15 @@ public class PartyBaseService {
 	 */
 	public List<AgreementPartyApplic> getAgreementPartyApplics(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<AgreementPartyApplic> entityList = new ArrayList<>();
+		List<AgreementPartyApplic> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(AgreementPartyApplic.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -594,9 +642,15 @@ public class PartyBaseService {
 	 */
 	public List<AgreementRole> getAgreementRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<AgreementRole> entityList = new ArrayList<>();
+		List<AgreementRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(AgreementRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -619,9 +673,15 @@ public class PartyBaseService {
 	 */
 	public List<BillingAccountRole> getBillingAccountRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<BillingAccountRole> entityList = new ArrayList<>();
+		List<BillingAccountRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(BillingAccountRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -644,9 +704,15 @@ public class PartyBaseService {
 	 */
 	public List<BudgetReview> getBudgetReviews(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<BudgetReview> entityList = new ArrayList<>();
+		List<BudgetReview> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(BudgetReview.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -669,9 +735,15 @@ public class PartyBaseService {
 	 */
 	public List<BudgetRole> getBudgetRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<BudgetRole> entityList = new ArrayList<>();
+		List<BudgetRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(BudgetRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -694,9 +766,15 @@ public class PartyBaseService {
 	 */
 	public List<CarrierShipmentBoxType> getCarrierShipmentBoxTypes(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CarrierShipmentBoxType> entityList = new ArrayList<>();
+		List<CarrierShipmentBoxType> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CarrierShipmentBoxType.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -719,9 +797,15 @@ public class PartyBaseService {
 	 */
 	public List<CarrierShipmentMethod> getCarrierShipmentMethods(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CarrierShipmentMethod> entityList = new ArrayList<>();
+		List<CarrierShipmentMethod> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CarrierShipmentMethod.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -744,9 +828,15 @@ public class PartyBaseService {
 	 */
 	public List<CommunicationEvent> getToCommunicationEvents(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CommunicationEvent> entityList = new ArrayList<>();
+		List<CommunicationEvent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CommunicationEvent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -769,9 +859,15 @@ public class PartyBaseService {
 	 */
 	public List<CommunicationEvent> getFromCommunicationEvents(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CommunicationEvent> entityList = new ArrayList<>();
+		List<CommunicationEvent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CommunicationEvent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -794,9 +890,15 @@ public class PartyBaseService {
 	 */
 	public List<CommunicationEventRole> getCommunicationEventRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CommunicationEventRole> entityList = new ArrayList<>();
+		List<CommunicationEventRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CommunicationEventRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -819,9 +921,15 @@ public class PartyBaseService {
 	 */
 	public List<ContactList> getOwnerContactLists(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ContactList> entityList = new ArrayList<>();
+		List<ContactList> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContactList.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("ownerPartyId", EntityOperator.EQUALS,
@@ -844,9 +952,15 @@ public class PartyBaseService {
 	 */
 	public List<ContactListCommStatus> getContactListCommStatuses(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContactListCommStatus> entityList = new ArrayList<>();
+		List<ContactListCommStatus> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContactListCommStatus.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -869,9 +983,15 @@ public class PartyBaseService {
 	 */
 	public List<ContactListParty> getContactListParties(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContactListParty> entityList = new ArrayList<>();
+		List<ContactListParty> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContactListParty.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -894,9 +1014,15 @@ public class PartyBaseService {
 	 */
 	public List<ContentApproval> getContentApprovals(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentApproval> entityList = new ArrayList<>();
+		List<ContentApproval> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentApproval.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -919,9 +1045,15 @@ public class PartyBaseService {
 	 */
 	public List<ContentRevision> getCommittedByContentRevisions(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentRevision> entityList = new ArrayList<>();
+		List<ContentRevision> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentRevision.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("committedByPartyId",
@@ -945,9 +1077,15 @@ public class PartyBaseService {
 	 */
 	public List<ContentRole> getContentRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ContentRole> entityList = new ArrayList<>();
+		List<ContentRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -970,9 +1108,15 @@ public class PartyBaseService {
 	 */
 	public List<CostComponent> getCostComponents(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<CostComponent> entityList = new ArrayList<>();
+		List<CostComponent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CostComponent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -995,9 +1139,15 @@ public class PartyBaseService {
 	 */
 	public List<CustRequest> getFromCustRequests(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<CustRequest> entityList = new ArrayList<>();
+		List<CustRequest> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CustRequest.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("fromPartyId", EntityOperator.EQUALS,
@@ -1020,9 +1170,15 @@ public class PartyBaseService {
 	 */
 	public List<CustRequestParty> getCustRequestParties(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CustRequestParty> entityList = new ArrayList<>();
+		List<CustRequestParty> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CustRequestParty.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1045,9 +1201,15 @@ public class PartyBaseService {
 	 */
 	public List<CustRequestType> getCustRequestTypes(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CustRequestType> entityList = new ArrayList<>();
+		List<CustRequestType> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CustRequestType.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1070,9 +1232,15 @@ public class PartyBaseService {
 	 */
 	public List<CustomTimePeriod> getOrganizationCustomTimePeriods(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CustomTimePeriod> entityList = new ArrayList<>();
+		List<CustomTimePeriod> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CustomTimePeriod.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1096,9 +1264,15 @@ public class PartyBaseService {
 	 */
 	public List<DataResourceRole> getDataResourceRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<DataResourceRole> entityList = new ArrayList<>();
+		List<DataResourceRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(DataResourceRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1121,9 +1295,15 @@ public class PartyBaseService {
 	 */
 	public List<EmplLeave> getEmplLeaves(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<EmplLeave> entityList = new ArrayList<>();
+		List<EmplLeave> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmplLeave.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1146,9 +1326,15 @@ public class PartyBaseService {
 	 */
 	public List<EmplLeave> getApproverEmplLeaves(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<EmplLeave> entityList = new ArrayList<>();
+		List<EmplLeave> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmplLeave.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("approverPartyId",
@@ -1172,9 +1358,15 @@ public class PartyBaseService {
 	 */
 	public List<EmplPosition> getEmplPositions(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<EmplPosition> entityList = new ArrayList<>();
+		List<EmplPosition> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmplPosition.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1197,9 +1389,15 @@ public class PartyBaseService {
 	 */
 	public List<EmplPositionFulfillment> getEmplPositionFulfillments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<EmplPositionFulfillment> entityList = new ArrayList<>();
+		List<EmplPositionFulfillment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmplPositionFulfillment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1222,9 +1420,15 @@ public class PartyBaseService {
 	 */
 	public List<Employment> getToEmployments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Employment> entityList = new ArrayList<>();
+		List<Employment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Employment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -1247,9 +1451,15 @@ public class PartyBaseService {
 	 */
 	public List<Employment> getFromEmployments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Employment> entityList = new ArrayList<>();
+		List<Employment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Employment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -1272,9 +1482,15 @@ public class PartyBaseService {
 	 */
 	public List<EmploymentApp> getApplyingEmploymentApps(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<EmploymentApp> entityList = new ArrayList<>();
+		List<EmploymentApp> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmploymentApp.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("applyingPartyId",
@@ -1298,9 +1514,15 @@ public class PartyBaseService {
 	 */
 	public List<EmploymentApp> getReferredByEmploymentApps(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<EmploymentApp> entityList = new ArrayList<>();
+		List<EmploymentApp> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmploymentApp.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("referredByPartyId",
@@ -1324,9 +1546,15 @@ public class PartyBaseService {
 	 */
 	public List<EmploymentApp> getApproverEmploymentApps(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<EmploymentApp> entityList = new ArrayList<>();
+		List<EmploymentApp> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(EmploymentApp.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("approverPartyId",
@@ -1350,9 +1578,15 @@ public class PartyBaseService {
 	 */
 	public List<Facility> getOwnerFacilities(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Facility> entityList = new ArrayList<>();
+		List<Facility> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Facility.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("ownerPartyId", EntityOperator.EQUALS,
@@ -1375,9 +1609,15 @@ public class PartyBaseService {
 	 */
 	public List<FacilityCarrierShipment> getFacilityCarrierShipments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<FacilityCarrierShipment> entityList = new ArrayList<>();
+		List<FacilityCarrierShipment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FacilityCarrierShipment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1400,9 +1640,15 @@ public class PartyBaseService {
 	 */
 	public List<FacilityGroupRole> getFacilityGroupRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<FacilityGroupRole> entityList = new ArrayList<>();
+		List<FacilityGroupRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FacilityGroupRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1425,9 +1671,15 @@ public class PartyBaseService {
 	 */
 	public List<FacilityParty> getFacilityParties(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<FacilityParty> entityList = new ArrayList<>();
+		List<FacilityParty> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FacilityParty.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1450,9 +1702,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccount> getOrganizationFinAccounts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<FinAccount> entityList = new ArrayList<>();
+		List<FinAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1476,9 +1734,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccount> getOwnerFinAccounts(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<FinAccount> entityList = new ArrayList<>();
+		List<FinAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("ownerPartyId", EntityOperator.EQUALS,
@@ -1501,9 +1765,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccountRole> getFinAccountRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<FinAccountRole> entityList = new ArrayList<>();
+		List<FinAccountRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccountRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1526,9 +1796,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccountTrans> getFinAccountTranses(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<FinAccountTrans> entityList = new ArrayList<>();
+		List<FinAccountTrans> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccountTrans.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1551,9 +1827,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccountTrans> getPerformedByFinAccountTranses(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<FinAccountTrans> entityList = new ArrayList<>();
+		List<FinAccountTrans> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccountTrans.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("performedByPartyId",
@@ -1577,9 +1859,15 @@ public class PartyBaseService {
 	 */
 	public List<FinAccountTypeGlAccount> getOrganizationFinAccountTypeGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<FinAccountTypeGlAccount> entityList = new ArrayList<>();
+		List<FinAccountTypeGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FinAccountTypeGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1603,9 +1891,15 @@ public class PartyBaseService {
 	 */
 	public List<FixedAsset> getFixedAssets(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<FixedAsset> entityList = new ArrayList<>();
+		List<FixedAsset> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FixedAsset.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1628,9 +1922,15 @@ public class PartyBaseService {
 	 */
 	public List<FixedAssetRegistration> getGovAgencyFixedAssetRegistrations(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<FixedAssetRegistration> entityList = new ArrayList<>();
+		List<FixedAssetRegistration> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FixedAssetRegistration.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("govAgencyPartyId",
@@ -1654,9 +1954,15 @@ public class PartyBaseService {
 	 */
 	public List<FixedAssetTypeGlAccount> getFixedAssetTypeGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<FixedAssetTypeGlAccount> entityList = new ArrayList<>();
+		List<FixedAssetTypeGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FixedAssetTypeGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1680,9 +1986,15 @@ public class PartyBaseService {
 	 */
 	public List<GiftCardFulfillment> getGiftCardFulfillments(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<GiftCardFulfillment> entityList = new ArrayList<>();
+		List<GiftCardFulfillment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GiftCardFulfillment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1705,9 +2017,15 @@ public class PartyBaseService {
 	 */
 	public List<GlAccountHistory> getGlAccountHistories(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<GlAccountHistory> entityList = new ArrayList<>();
+		List<GlAccountHistory> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlAccountHistory.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1731,9 +2049,15 @@ public class PartyBaseService {
 	 */
 	public List<GlAccountOrganization> getGlAccountOrganizations(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<GlAccountOrganization> entityList = new ArrayList<>();
+		List<GlAccountOrganization> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlAccountOrganization.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1757,9 +2081,15 @@ public class PartyBaseService {
 	 */
 	public List<GlAccountRole> getGlAccountRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<GlAccountRole> entityList = new ArrayList<>();
+		List<GlAccountRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlAccountRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1782,9 +2112,15 @@ public class PartyBaseService {
 	 */
 	public List<GlAccountTypeDefault> getOrganizationGlAccountTypeDefaults(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<GlAccountTypeDefault> entityList = new ArrayList<>();
+		List<GlAccountTypeDefault> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlAccountTypeDefault.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1808,9 +2144,15 @@ public class PartyBaseService {
 	 */
 	public List<GlJournal> getGlJournals(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<GlJournal> entityList = new ArrayList<>();
+		List<GlJournal> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlJournal.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1834,9 +2176,15 @@ public class PartyBaseService {
 	 */
 	public List<GlReconciliation> getGlReconciliations(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<GlReconciliation> entityList = new ArrayList<>();
+		List<GlReconciliation> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(GlReconciliation.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -1860,9 +2208,15 @@ public class PartyBaseService {
 	 */
 	public List<InventoryItem> getInventoryItems(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<InventoryItem> entityList = new ArrayList<>();
+		List<InventoryItem> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InventoryItem.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1885,9 +2239,15 @@ public class PartyBaseService {
 	 */
 	public List<InventoryItem> getOwnerInventoryItems(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InventoryItem> entityList = new ArrayList<>();
+		List<InventoryItem> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InventoryItem.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("ownerPartyId", EntityOperator.EQUALS,
@@ -1910,9 +2270,15 @@ public class PartyBaseService {
 	 */
 	public List<Invoice> getFromInvoices(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Invoice> entityList = new ArrayList<>();
+		List<Invoice> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Invoice.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -1935,9 +2301,15 @@ public class PartyBaseService {
 	 */
 	public List<Invoice> getInvoices(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Invoice> entityList = new ArrayList<>();
+		List<Invoice> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Invoice.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -1960,9 +2332,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceItem> getTaxAuthorityInvoiceItems(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceItem> entityList = new ArrayList<>();
+		List<InvoiceItem> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceItem.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("taxAuthPartyId", EntityOperator.EQUALS,
@@ -1985,9 +2363,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceItem> getOverrideOrgInvoiceItems(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceItem> entityList = new ArrayList<>();
+		List<InvoiceItem> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceItem.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("overrideOrgPartyId",
@@ -2011,9 +2395,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceItemAssoc> getFromInvoiceItemAssocs(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceItemAssoc> entityList = new ArrayList<>();
+		List<InvoiceItemAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceItemAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -2036,9 +2426,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceItemAssoc> getToInvoiceItemAssocs(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceItemAssoc> entityList = new ArrayList<>();
+		List<InvoiceItemAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceItemAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -2061,9 +2457,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceItemTypeGlAccount> getOrganizationInvoiceItemTypeGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceItemTypeGlAccount> entityList = new ArrayList<>();
+		List<InvoiceItemTypeGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceItemTypeGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -2087,9 +2489,15 @@ public class PartyBaseService {
 	 */
 	public List<InvoiceRole> getInvoiceRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<InvoiceRole> entityList = new ArrayList<>();
+		List<InvoiceRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2112,9 +2520,15 @@ public class PartyBaseService {
 	 */
 	public List<ItemIssuanceRole> getItemIssuanceRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ItemIssuanceRole> entityList = new ArrayList<>();
+		List<ItemIssuanceRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ItemIssuanceRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2137,9 +2551,15 @@ public class PartyBaseService {
 	 */
 	public List<JobInterview> getIntervieweeJobInterviews(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<JobInterview> entityList = new ArrayList<>();
+		List<JobInterview> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(JobInterview.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("jobIntervieweePartyId",
@@ -2163,9 +2583,15 @@ public class PartyBaseService {
 	 */
 	public List<JobInterview> getInterviewerJobInterviews(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<JobInterview> entityList = new ArrayList<>();
+		List<JobInterview> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(JobInterview.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("jobInterviewerPartyId",
@@ -2189,9 +2615,15 @@ public class PartyBaseService {
 	 */
 	public List<MarketingCampaignRole> getMarketingCampaignRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<MarketingCampaignRole> entityList = new ArrayList<>();
+		List<MarketingCampaignRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(MarketingCampaignRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2214,9 +2646,15 @@ public class PartyBaseService {
 	 */
 	public List<NoteData> getNoteNoteDatas(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<NoteData> entityList = new ArrayList<>();
+		List<NoteData> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(NoteData.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("noteParty", EntityOperator.EQUALS,
@@ -2235,13 +2673,236 @@ public class PartyBaseService {
 	}
 
 	/**
+	 * Get old cust request roles
+	 */
+	public List<OldCustRequestRole> getOldCustRequestRoles(Party party,
+			Integer start, Integer number, List<String> orderBy) {
+		List<OldCustRequestRole> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldCustRequestRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldCustRequestRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get old facility roles
+	 */
+	public List<OldFacilityRole> getOldFacilityRoles(Party party,
+			Integer start, Integer number, List<String> orderBy) {
+		List<OldFacilityRole> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldFacilityRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldFacilityRole.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get carrier old order shipment preferences
+	 */
+	public List<OldOrderShipmentPreference> getCarrierOldOrderShipmentPreferences(
+			Party party, Integer start, Integer number, List<String> orderBy) {
+		List<OldOrderShipmentPreference> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldOrderShipmentPreference.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("carrierPartyId", EntityOperator.EQUALS,
+						party.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldOrderShipmentPreference.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get old party rates
+	 */
+	public List<OldPartyRate> getOldPartyRates(Party party, Integer start,
+			Integer number, List<String> orderBy) {
+		List<OldPartyRate> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldPartyRate.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldPartyRate.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get old party tax infoes
+	 */
+	public List<OldPartyTaxInfo> getOldPartyTaxInfoes(Party party,
+			Integer start, Integer number, List<String> orderBy) {
+		List<OldPartyTaxInfo> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldPartyTaxInfo.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldPartyTaxInfo.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get old value link fulfillments
+	 */
+	public List<OldValueLinkFulfillment> getOldValueLinkFulfillments(
+			Party party, Integer start, Integer number, List<String> orderBy) {
+		List<OldValueLinkFulfillment> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldValueLinkFulfillment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldValueLinkFulfillment.fromValues(out.getListIt()
+						.getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
+	 * Get old work effort assignment rates
+	 */
+	public List<OldWorkEffortAssignmentRate> getOldWorkEffortAssignmentRates(
+			Party party, Integer start, Integer number, List<String> orderBy) {
+		List<OldWorkEffortAssignmentRate> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(OldWorkEffortAssignmentRate.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
+						.getPartyId())), EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = OldWorkEffortAssignmentRate.fromValues(out
+						.getListIt().getPartialList(start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
 	 * Get order item roles
 	 */
 	public List<OrderItemRole> getOrderItemRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<OrderItemRole> entityList = new ArrayList<>();
+		List<OrderItemRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderItemRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2264,9 +2925,15 @@ public class PartyBaseService {
 	 */
 	public List<OrderItemShipGroup> getSupplierOrderItemShipGroups(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<OrderItemShipGroup> entityList = new ArrayList<>();
+		List<OrderItemShipGroup> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderItemShipGroup.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("supplierPartyId",
@@ -2290,9 +2957,15 @@ public class PartyBaseService {
 	 */
 	public List<OrderItemShipGroup> getVendorOrderItemShipGroups(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<OrderItemShipGroup> entityList = new ArrayList<>();
+		List<OrderItemShipGroup> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderItemShipGroup.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("vendorPartyId", EntityOperator.EQUALS,
@@ -2315,9 +2988,15 @@ public class PartyBaseService {
 	 */
 	public List<OrderItemShipGroup> getCarrierOrderItemShipGroups(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<OrderItemShipGroup> entityList = new ArrayList<>();
+		List<OrderItemShipGroup> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderItemShipGroup.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("carrierPartyId", EntityOperator.EQUALS,
@@ -2340,9 +3019,15 @@ public class PartyBaseService {
 	 */
 	public List<OrderRole> getOrderRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<OrderRole> entityList = new ArrayList<>();
+		List<OrderRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2363,7 +3048,7 @@ public class PartyBaseService {
 	/**
 	 * Get party acctg preference
 	 */
-	public PartyAcctgPreference getPartyAcctgPreference(Party party) {
+	public Optional<PartyAcctgPreference> getPartyAcctgPreference(Party party) {
 		List<PartyAcctgPreference> entityList = null;
 		In in = new In();
 		in.setEntityName(PartyAcctgPreference.NAME);
@@ -2381,9 +3066,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -2391,9 +3076,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyAttribute> getPartyAttributes(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyAttribute> entityList = new ArrayList<>();
+		List<PartyAttribute> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyAttribute.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2416,9 +3107,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyBenefit> getToPartyBenefits(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyBenefit> entityList = new ArrayList<>();
+		List<PartyBenefit> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyBenefit.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -2441,9 +3138,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyBenefit> getFromPartyBenefits(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyBenefit> entityList = new ArrayList<>();
+		List<PartyBenefit> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyBenefit.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -2466,9 +3169,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyCarrierAccount> getPartyCarrierAccounts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyCarrierAccount> entityList = new ArrayList<>();
+		List<PartyCarrierAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyCarrierAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2491,9 +3200,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyCarrierAccount> getCarrierPartyCarrierAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PartyCarrierAccount> entityList = new ArrayList<>();
+		List<PartyCarrierAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyCarrierAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("carrierPartyId", EntityOperator.EQUALS,
@@ -2516,9 +3231,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyClassification> getPartyClassifications(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyClassification> entityList = new ArrayList<>();
+		List<PartyClassification> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyClassification.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2541,9 +3262,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyContactMech> getPartyContactMeches(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyContactMech> entityList = new ArrayList<>();
+		List<PartyContactMech> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyContactMech.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2566,9 +3293,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyContactMechPurpose> getPartyContactMechPurposes(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PartyContactMechPurpose> entityList = new ArrayList<>();
+		List<PartyContactMechPurpose> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyContactMechPurpose.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2591,9 +3324,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyContent> getPartyContents(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyContent> entityList = new ArrayList<>();
+		List<PartyContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2616,9 +3355,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyDataSource> getPartyDataSources(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyDataSource> entityList = new ArrayList<>();
+		List<PartyDataSource> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyDataSource.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2641,9 +3386,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyFixedAssetAssignment> getPartyFixedAssetAssignments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PartyFixedAssetAssignment> entityList = new ArrayList<>();
+		List<PartyFixedAssetAssignment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyFixedAssetAssignment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2666,9 +3417,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyGeoPoint> getPartyGeoPoints(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyGeoPoint> entityList = new ArrayList<>();
+		List<PartyGeoPoint> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyGeoPoint.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2691,9 +3448,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyGlAccount> getOrganizationPartyGlAccounts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyGlAccount> entityList = new ArrayList<>();
+		List<PartyGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -2717,9 +3480,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyGlAccount> getPartyGlAccounts(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyGlAccount> entityList = new ArrayList<>();
+		List<PartyGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2740,7 +3509,7 @@ public class PartyBaseService {
 	/**
 	 * Get party group
 	 */
-	public PartyGroup getPartyGroup(Party party) {
+	public Optional<PartyGroup> getPartyGroup(Party party) {
 		List<PartyGroup> entityList = null;
 		In in = new In();
 		in.setEntityName(PartyGroup.NAME);
@@ -2758,15 +3527,15 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get party ics avs override
 	 */
-	public PartyIcsAvsOverride getPartyIcsAvsOverride(Party party) {
+	public Optional<PartyIcsAvsOverride> getPartyIcsAvsOverride(Party party) {
 		List<PartyIcsAvsOverride> entityList = null;
 		In in = new In();
 		in.setEntityName(PartyIcsAvsOverride.NAME);
@@ -2784,9 +3553,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -2794,9 +3563,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyIdentification> getPartyIdentifications(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyIdentification> entityList = new ArrayList<>();
+		List<PartyIdentification> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyIdentification.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2819,9 +3594,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyInvitation> getPartyInvitations(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyInvitation> entityList = new ArrayList<>();
+		List<PartyInvitation> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyInvitation.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -2844,9 +3625,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyInvitationGroupAssoc> getToPartyInvitationGroupAssocs(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PartyInvitationGroupAssoc> entityList = new ArrayList<>();
+		List<PartyInvitationGroupAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyInvitationGroupAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -2869,9 +3656,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyNameHistory> getPartyNameHistories(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyNameHistory> entityList = new ArrayList<>();
+		List<PartyNameHistory> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyNameHistory.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2894,9 +3687,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyNeed> getPartyNeeds(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyNeed> entityList = new ArrayList<>();
+		List<PartyNeed> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyNeed.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2919,9 +3718,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyNote> getPartyNotes(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyNote> entityList = new ArrayList<>();
+		List<PartyNote> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyNote.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2940,38 +3745,19 @@ public class PartyBaseService {
 	}
 
 	/**
-	 * Get party pref doc type tpls
-	 */
-	public List<PartyPrefDocTypeTpl> getPartyPrefDocTypeTpls(Party party,
-			Integer start, Integer number, List<String> orderBy) {
-		List<PartyPrefDocTypeTpl> entityList = new ArrayList<>();
-		In in = new In();
-		in.setEntityName(PartyPrefDocTypeTpl.NAME);
-		in.setOrderByList(orderBy);
-		in.setEntityConditionList(new EntityConditionList<>(Arrays
-				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
-						.getPartyId())), EntityOperator.AND));
-		Out out = executeFindService.runSync(in);
-		try {
-			if (out.getListIt() != null) {
-				entityList = PartyPrefDocTypeTpl.fromValues(out.getListIt()
-						.getPartialList(start, number));
-				out.getListIt().close();
-			}
-		} catch (GenericEntityException e) {
-			log.error(e.getMessage(), e);
-		}
-		return entityList;
-	}
-
-	/**
 	 * Get party profile defaults
 	 */
 	public List<PartyProfileDefault> getPartyProfileDefaults(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyProfileDefault> entityList = new ArrayList<>();
+		List<PartyProfileDefault> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyProfileDefault.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -2994,9 +3780,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyQual> getPartyQuals(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyQual> entityList = new ArrayList<>();
+		List<PartyQual> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyQual.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3019,9 +3811,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyRate> getPartyRates(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyRate> entityList = new ArrayList<>();
+		List<PartyRate> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyRate.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3044,9 +3842,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyRelationship> getFromPartyRelationships(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyRelationship> entityList = new ArrayList<>();
+		List<PartyRelationship> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyRelationship.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -3069,9 +3873,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyRelationship> getToPartyRelationships(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyRelationship> entityList = new ArrayList<>();
+		List<PartyRelationship> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyRelationship.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -3094,9 +3904,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyResume> getPartyResumes(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyResume> entityList = new ArrayList<>();
+		List<PartyResume> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyResume.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3119,9 +3935,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyRole> getPartyRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyRole> entityList = new ArrayList<>();
+		List<PartyRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3144,9 +3966,15 @@ public class PartyBaseService {
 	 */
 	public List<PartySkill> getPartySkills(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartySkill> entityList = new ArrayList<>();
+		List<PartySkill> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartySkill.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3169,9 +3997,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyStatus> getPartyStatuses(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyStatus> entityList = new ArrayList<>();
+		List<PartyStatus> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyStatus.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3194,9 +4028,15 @@ public class PartyBaseService {
 	 */
 	public List<PartyTaxAuthInfo> getPartyTaxAuthInfoes(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PartyTaxAuthInfo> entityList = new ArrayList<>();
+		List<PartyTaxAuthInfo> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyTaxAuthInfo.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3219,9 +4059,15 @@ public class PartyBaseService {
 	 */
 	public List<Payment> getFromPayments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Payment> entityList = new ArrayList<>();
+		List<Payment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Payment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -3244,9 +4090,15 @@ public class PartyBaseService {
 	 */
 	public List<Payment> getToPayments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Payment> entityList = new ArrayList<>();
+		List<Payment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Payment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -3269,9 +4121,15 @@ public class PartyBaseService {
 	 */
 	public List<PaymentGlAccountTypeMap> getPaymentGlAccountTypeMaps(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PaymentGlAccountTypeMap> entityList = new ArrayList<>();
+		List<PaymentGlAccountTypeMap> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PaymentGlAccountTypeMap.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -3295,9 +4153,15 @@ public class PartyBaseService {
 	 */
 	public List<PaymentMethod> getPaymentMethods(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PaymentMethod> entityList = new ArrayList<>();
+		List<PaymentMethod> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PaymentMethod.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3320,9 +4184,15 @@ public class PartyBaseService {
 	 */
 	public List<PaymentMethodTypeGlAccount> getOrganizationPaymentMethodTypeGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<PaymentMethodTypeGlAccount> entityList = new ArrayList<>();
+		List<PaymentMethodTypeGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PaymentMethodTypeGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -3346,9 +4216,15 @@ public class PartyBaseService {
 	 */
 	public List<PayrollPreference> getPayrollPreferences(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PayrollPreference> entityList = new ArrayList<>();
+		List<PayrollPreference> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PayrollPreference.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3371,9 +4247,15 @@ public class PartyBaseService {
 	 */
 	public List<PerfReview> getEmployeePerfReviews(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PerfReview> entityList = new ArrayList<>();
+		List<PerfReview> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PerfReview.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("employeePartyId",
@@ -3397,9 +4279,15 @@ public class PartyBaseService {
 	 */
 	public List<PerfReview> getManagerPerfReviews(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PerfReview> entityList = new ArrayList<>();
+		List<PerfReview> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PerfReview.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("managerPartyId", EntityOperator.EQUALS,
@@ -3422,9 +4310,15 @@ public class PartyBaseService {
 	 */
 	public List<PerfReviewItem> getEmployeePerfReviewItems(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PerfReviewItem> entityList = new ArrayList<>();
+		List<PerfReviewItem> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PerfReviewItem.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("employeePartyId",
@@ -3448,9 +4342,15 @@ public class PartyBaseService {
 	 */
 	public List<PerformanceNote> getPerformanceNotes(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PerformanceNote> entityList = new ArrayList<>();
+		List<PerformanceNote> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PerformanceNote.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3471,7 +4371,7 @@ public class PartyBaseService {
 	/**
 	 * Get person
 	 */
-	public Person getPerson(Party party) {
+	public Optional<Person> getPerson(Party party) {
 		List<Person> entityList = null;
 		In in = new In();
 		in.setEntityName(Person.NAME);
@@ -3489,9 +4389,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -3499,9 +4399,15 @@ public class PartyBaseService {
 	 */
 	public List<PersonTraining> getPersonTrainings(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PersonTraining> entityList = new ArrayList<>();
+		List<PersonTraining> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PersonTraining.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3524,9 +4430,15 @@ public class PartyBaseService {
 	 */
 	public List<ProdCatalogRole> getProdCatalogRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProdCatalogRole> entityList = new ArrayList<>();
+		List<ProdCatalogRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProdCatalogRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3545,13 +4457,51 @@ public class PartyBaseService {
 	}
 
 	/**
+	 * Get manufacturer products
+	 */
+	public List<Product> getManufacturerProducts(Party party, Integer start,
+			Integer number, List<String> orderBy) {
+		List<Product> entityList = Collections.emptyList();
+		In in = new In();
+		in.setEntityName(Product.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
+		in.setOrderByList(orderBy);
+		in.setEntityConditionList(new EntityConditionList<>(Arrays
+				.asList(new EntityExpr("manufacturerPartyId",
+						EntityOperator.EQUALS, party.getPartyId())),
+				EntityOperator.AND));
+		Out out = executeFindService.runSync(in);
+		try {
+			if (out.getListIt() != null) {
+				entityList = Product.fromValues(out.getListIt().getPartialList(
+						start, number));
+				out.getListIt().close();
+			}
+		} catch (GenericEntityException e) {
+			log.error(e.getMessage(), e);
+		}
+		return entityList;
+	}
+
+	/**
 	 * Get product average costs
 	 */
 	public List<ProductAverageCost> getProductAverageCosts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductAverageCost> entityList = new ArrayList<>();
+		List<ProductAverageCost> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductAverageCost.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -3575,9 +4525,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductCategoryGlAccount> getProductCategoryGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ProductCategoryGlAccount> entityList = new ArrayList<>();
+		List<ProductCategoryGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductCategoryGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -3601,9 +4557,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductCategoryRole> getProductCategoryRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductCategoryRole> entityList = new ArrayList<>();
+		List<ProductCategoryRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductCategoryRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3626,9 +4588,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductGlAccount> getProductGlAccounts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductGlAccount> entityList = new ArrayList<>();
+		List<ProductGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -3652,9 +4620,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductPrice> getTaxAuthorityProductPrices(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductPrice> entityList = new ArrayList<>();
+		List<ProductPrice> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductPrice.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("taxAuthPartyId", EntityOperator.EQUALS,
@@ -3677,9 +4651,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductPromo> getProductPromoes(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ProductPromo> entityList = new ArrayList<>();
+		List<ProductPromo> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductPromo.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("overrideOrgPartyId",
@@ -3703,9 +4683,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductPromoCodeParty> getProductPromoCodeParties(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductPromoCodeParty> entityList = new ArrayList<>();
+		List<ProductPromoCodeParty> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductPromoCodeParty.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3728,9 +4714,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductPromoUse> getProductPromice(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ProductPromoUse> entityList = new ArrayList<>();
+		List<ProductPromoUse> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductPromoUse.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3753,9 +4745,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductRole> getProductRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ProductRole> entityList = new ArrayList<>();
+		List<ProductRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3778,9 +4776,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStore> getProductStores(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ProductStore> entityList = new ArrayList<>();
+		List<ProductStore> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStore.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("payToPartyId", EntityOperator.EQUALS,
@@ -3803,9 +4807,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreGroupRole> getProductStoreGroupRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreGroupRole> entityList = new ArrayList<>();
+		List<ProductStoreGroupRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreGroupRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3828,9 +4838,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreRole> getProductStoreRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreRole> entityList = new ArrayList<>();
+		List<ProductStoreRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3853,9 +4869,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreShipmentMeth> getProductStoreShipmentMeths(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreShipmentMeth> entityList = new ArrayList<>();
+		List<ProductStoreShipmentMeth> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreShipmentMeth.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("companyPartyId", EntityOperator.EQUALS,
@@ -3878,9 +4900,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreVendorPayment> getVendorProductStoreVendorPayments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreVendorPayment> entityList = new ArrayList<>();
+		List<ProductStoreVendorPayment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreVendorPayment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("vendorPartyId", EntityOperator.EQUALS,
@@ -3903,9 +4931,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreVendorShipment> getVendorProductStoreVendorShipments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreVendorShipment> entityList = new ArrayList<>();
+		List<ProductStoreVendorShipment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreVendorShipment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("vendorPartyId", EntityOperator.EQUALS,
@@ -3928,9 +4962,15 @@ public class PartyBaseService {
 	 */
 	public List<ProductStoreVendorShipment> getCarrierProductStoreVendorShipments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ProductStoreVendorShipment> entityList = new ArrayList<>();
+		List<ProductStoreVendorShipment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductStoreVendorShipment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("carrierPartyId", EntityOperator.EQUALS,
@@ -3953,9 +4993,15 @@ public class PartyBaseService {
 	 */
 	public List<Quote> getQuotes(Party party, Integer start, Integer number,
 			List<String> orderBy) {
-		List<Quote> entityList = new ArrayList<>();
+		List<Quote> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Quote.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -3978,9 +5024,15 @@ public class PartyBaseService {
 	 */
 	public List<QuoteRole> getQuoteRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<QuoteRole> entityList = new ArrayList<>();
+		List<QuoteRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(QuoteRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4003,9 +5055,15 @@ public class PartyBaseService {
 	 */
 	public List<RateAmount> getRateAmounts(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<RateAmount> entityList = new ArrayList<>();
+		List<RateAmount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(RateAmount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4028,9 +5086,15 @@ public class PartyBaseService {
 	 */
 	public List<ReorderGuideline> getReorderGuidelines(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ReorderGuideline> entityList = new ArrayList<>();
+		List<ReorderGuideline> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ReorderGuideline.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4053,9 +5117,15 @@ public class PartyBaseService {
 	 */
 	public List<RequirementRole> getRequirementRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<RequirementRole> entityList = new ArrayList<>();
+		List<RequirementRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(RequirementRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4078,9 +5148,15 @@ public class PartyBaseService {
 	 */
 	public List<RespondingParty> getRespondingParties(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<RespondingParty> entityList = new ArrayList<>();
+		List<RespondingParty> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(RespondingParty.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4103,9 +5179,15 @@ public class PartyBaseService {
 	 */
 	public List<ReturnHeader> getReturnHeaders(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ReturnHeader> entityList = new ArrayList<>();
+		List<ReturnHeader> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ReturnHeader.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("fromPartyId", EntityOperator.EQUALS,
@@ -4128,9 +5210,15 @@ public class PartyBaseService {
 	 */
 	public List<ReturnHeader> getToReturnHeaders(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ReturnHeader> entityList = new ArrayList<>();
+		List<ReturnHeader> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ReturnHeader.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("toPartyId", EntityOperator.EQUALS,
@@ -4153,9 +5241,15 @@ public class PartyBaseService {
 	 */
 	public List<SalesForecast> getOrganizationSalesForecasts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SalesForecast> entityList = new ArrayList<>();
+		List<SalesForecast> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SalesForecast.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -4179,9 +5273,15 @@ public class PartyBaseService {
 	 */
 	public List<SalesForecast> getInternalSalesForecasts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SalesForecast> entityList = new ArrayList<>();
+		List<SalesForecast> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SalesForecast.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("internalPartyId",
@@ -4205,9 +5305,15 @@ public class PartyBaseService {
 	 */
 	public List<SalesForecastHistory> getOrganizationSalesForecastHistories(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<SalesForecastHistory> entityList = new ArrayList<>();
+		List<SalesForecastHistory> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SalesForecastHistory.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -4231,9 +5337,15 @@ public class PartyBaseService {
 	 */
 	public List<SalesForecastHistory> getInternalSalesForecastHistories(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<SalesForecastHistory> entityList = new ArrayList<>();
+		List<SalesForecastHistory> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SalesForecastHistory.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("internalPartyId",
@@ -4257,9 +5369,15 @@ public class PartyBaseService {
 	 */
 	public List<SalesOpportunityRole> getSalesOpportunityRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SalesOpportunityRole> entityList = new ArrayList<>();
+		List<SalesOpportunityRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SalesOpportunityRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4282,9 +5400,15 @@ public class PartyBaseService {
 	 */
 	public List<SegmentGroupRole> getSegmentGroupRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SegmentGroupRole> entityList = new ArrayList<>();
+		List<SegmentGroupRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SegmentGroupRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4307,9 +5431,15 @@ public class PartyBaseService {
 	 */
 	public List<ServerHit> getServerHits(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ServerHit> entityList = new ArrayList<>();
+		List<ServerHit> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ServerHit.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4332,9 +5462,15 @@ public class PartyBaseService {
 	 */
 	public List<Shipment> getToShipments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Shipment> entityList = new ArrayList<>();
+		List<Shipment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Shipment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdTo", EntityOperator.EQUALS,
@@ -4357,9 +5493,15 @@ public class PartyBaseService {
 	 */
 	public List<Shipment> getFromShipments(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Shipment> entityList = new ArrayList<>();
+		List<Shipment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Shipment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyIdFrom", EntityOperator.EQUALS,
@@ -4382,9 +5524,15 @@ public class PartyBaseService {
 	 */
 	public List<ShipmentCostEstimate> getShipmentCostEstimates(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ShipmentCostEstimate> entityList = new ArrayList<>();
+		List<ShipmentCostEstimate> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ShipmentCostEstimate.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4407,9 +5555,15 @@ public class PartyBaseService {
 	 */
 	public List<ShipmentReceiptRole> getShipmentReceiptRoles(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ShipmentReceiptRole> entityList = new ArrayList<>();
+		List<ShipmentReceiptRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ShipmentReceiptRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4432,9 +5586,15 @@ public class PartyBaseService {
 	 */
 	public List<ShipmentRouteSegment> getCarrierShipmentRouteSegments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<ShipmentRouteSegment> entityList = new ArrayList<>();
+		List<ShipmentRouteSegment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ShipmentRouteSegment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("carrierPartyId", EntityOperator.EQUALS,
@@ -4457,9 +5617,15 @@ public class PartyBaseService {
 	 */
 	public List<ShoppingList> getShoppingLists(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ShoppingList> entityList = new ArrayList<>();
+		List<ShoppingList> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ShoppingList.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4482,9 +5648,15 @@ public class PartyBaseService {
 	 */
 	public List<Subscription> getSubscriptions(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Subscription> entityList = new ArrayList<>();
+		List<Subscription> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Subscription.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4507,9 +5679,15 @@ public class PartyBaseService {
 	 */
 	public List<Subscription> getOriginatedFromSubscriptions(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<Subscription> entityList = new ArrayList<>();
+		List<Subscription> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Subscription.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("originatedFromPartyId",
@@ -4533,9 +5711,15 @@ public class PartyBaseService {
 	 */
 	public List<SupplierProduct> getSupplierProducts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SupplierProduct> entityList = new ArrayList<>();
+		List<SupplierProduct> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SupplierProduct.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4558,9 +5742,15 @@ public class PartyBaseService {
 	 */
 	public List<SupplierProductFeature> getSupplierProductFeatures(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SupplierProductFeature> entityList = new ArrayList<>();
+		List<SupplierProductFeature> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SupplierProductFeature.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4583,9 +5773,15 @@ public class PartyBaseService {
 	 */
 	public List<SurveyResponse> getSurveyResponses(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<SurveyResponse> entityList = new ArrayList<>();
+		List<SurveyResponse> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SurveyResponse.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4608,9 +5804,15 @@ public class PartyBaseService {
 	 */
 	public List<TaxAuthority> getTaxAuthTaxAuthorities(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<TaxAuthority> entityList = new ArrayList<>();
+		List<TaxAuthority> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(TaxAuthority.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("taxAuthPartyId", EntityOperator.EQUALS,
@@ -4633,9 +5835,15 @@ public class PartyBaseService {
 	 */
 	public List<TaxAuthorityGlAccount> getOrganizationTaxAuthorityGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<TaxAuthorityGlAccount> entityList = new ArrayList<>();
+		List<TaxAuthorityGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(TaxAuthorityGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -4659,9 +5867,15 @@ public class PartyBaseService {
 	 */
 	public List<TimeEntry> getTimeEntries(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<TimeEntry> entityList = new ArrayList<>();
+		List<TimeEntry> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(TimeEntry.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4684,9 +5898,15 @@ public class PartyBaseService {
 	 */
 	public List<Timesheet> getTimesheets(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Timesheet> entityList = new ArrayList<>();
+		List<Timesheet> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Timesheet.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4709,9 +5929,15 @@ public class PartyBaseService {
 	 */
 	public List<Timesheet> getClientTimesheets(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<Timesheet> entityList = new ArrayList<>();
+		List<Timesheet> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Timesheet.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("clientPartyId", EntityOperator.EQUALS,
@@ -4734,9 +5960,15 @@ public class PartyBaseService {
 	 */
 	public List<TimesheetRole> getTimesheetRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<TimesheetRole> entityList = new ArrayList<>();
+		List<TimesheetRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(TimesheetRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4759,9 +5991,15 @@ public class PartyBaseService {
 	 */
 	public List<UserLogin> getUserLogins(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<UserLogin> entityList = new ArrayList<>();
+		List<UserLogin> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4784,9 +6022,15 @@ public class PartyBaseService {
 	 */
 	public List<UserLoginHistory> getUserLoginHistories(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<UserLoginHistory> entityList = new ArrayList<>();
+		List<UserLoginHistory> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(UserLoginHistory.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4809,9 +6053,15 @@ public class PartyBaseService {
 	 */
 	public List<VarianceReasonGlAccount> getOrganizationVarianceReasonGlAccounts(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<VarianceReasonGlAccount> entityList = new ArrayList<>();
+		List<VarianceReasonGlAccount> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(VarianceReasonGlAccount.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("organizationPartyId",
@@ -4833,7 +6083,7 @@ public class PartyBaseService {
 	/**
 	 * Get vendor
 	 */
-	public Vendor getVendor(Party party) {
+	public Optional<Vendor> getVendor(Party party) {
 		List<Vendor> entityList = null;
 		In in = new In();
 		in.setEntityName(Vendor.NAME);
@@ -4851,9 +6101,9 @@ public class PartyBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -4861,9 +6111,15 @@ public class PartyBaseService {
 	 */
 	public List<VendorProduct> getVendorVendorProducts(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<VendorProduct> entityList = new ArrayList<>();
+		List<VendorProduct> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(VendorProduct.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("vendorPartyId", EntityOperator.EQUALS,
@@ -4886,9 +6142,15 @@ public class PartyBaseService {
 	 */
 	public List<WebSiteRole> getWebSiteRoles(Party party, Integer start,
 			Integer number, List<String> orderBy) {
-		List<WebSiteRole> entityList = new ArrayList<>();
+		List<WebSiteRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4911,9 +6173,15 @@ public class PartyBaseService {
 	 */
 	public List<WebUserPreference> getWebUserPreferences(Party party,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebUserPreference> entityList = new ArrayList<>();
+		List<WebUserPreference> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebUserPreference.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4936,9 +6204,15 @@ public class PartyBaseService {
 	 */
 	public List<WorkEffortEventReminder> getWorkEffortEventReminders(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<WorkEffortEventReminder> entityList = new ArrayList<>();
+		List<WorkEffortEventReminder> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WorkEffortEventReminder.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party
@@ -4961,9 +6235,15 @@ public class PartyBaseService {
 	 */
 	public List<WorkEffortPartyAssignment> getWorkEffortPartyAssignments(
 			Party party, Integer start, Integer number, List<String> orderBy) {
-		List<WorkEffortPartyAssignment> entityList = new ArrayList<>();
+		List<WorkEffortPartyAssignment> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WorkEffortPartyAssignment.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("partyId", EntityOperator.EQUALS, party

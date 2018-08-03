@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GlAccountCategoryMember implements Serializable {
 
-	public static final long serialVersionUID = 8847665490362954752L;
+	public static final long serialVersionUID = 9169373897600912384L;
 	public static final String NAME = "GlAccountCategoryMember";
 	/**
 	 * Gl Account Id

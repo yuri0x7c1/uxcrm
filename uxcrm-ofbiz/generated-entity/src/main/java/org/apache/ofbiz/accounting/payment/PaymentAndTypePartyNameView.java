@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PaymentAndTypePartyNameView implements Serializable {
 
-	public static final long serialVersionUID = 3134030718158954496L;
+	public static final long serialVersionUID = 5614050175511031808L;
 	public static final String NAME = "PaymentAndTypePartyNameView";
 	/**
 	 * Party From First Name

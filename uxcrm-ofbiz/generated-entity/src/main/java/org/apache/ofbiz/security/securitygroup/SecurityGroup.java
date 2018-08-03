@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SecurityGroup implements Serializable {
 
-	public static final long serialVersionUID = 4855657438724234240L;
+	public static final long serialVersionUID = 164886050592864256L;
 	public static final String NAME = "SecurityGroup";
 	/**
 	 * Group Id
@@ -21,12 +21,6 @@ public class SecurityGroup implements Serializable {
 	@Getter
 	@Setter
 	private String groupId;
-	/**
-	 * Group Name
-	 */
-	@Getter
-	@Setter
-	private String groupName;
 	/**
 	 * Description
 	 */
@@ -59,12 +53,11 @@ public class SecurityGroup implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		groupId, groupName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		groupId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public SecurityGroup(GenericValue value) {
 		groupId = (String) value.get(Fields.groupId.name());
-		groupName = (String) value.get(Fields.groupName.name());
 		description = (String) value.get(Fields.description.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());

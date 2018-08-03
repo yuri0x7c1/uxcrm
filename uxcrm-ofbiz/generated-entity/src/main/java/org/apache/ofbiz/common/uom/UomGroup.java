@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UomGroup implements Serializable {
 
-	public static final long serialVersionUID = 854938988644625408L;
+	public static final long serialVersionUID = 4164739284106257408L;
 	public static final String NAME = "UomGroup";
 	/**
 	 * Uom Group Id

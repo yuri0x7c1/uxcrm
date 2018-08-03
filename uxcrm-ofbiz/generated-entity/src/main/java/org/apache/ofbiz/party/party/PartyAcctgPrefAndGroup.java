@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class PartyAcctgPrefAndGroup implements Serializable {
 
-	public static final long serialVersionUID = 4452244538840836096L;
+	public static final long serialVersionUID = 2058132788249605120L;
 	public static final String NAME = "PartyAcctgPrefAndGroup";
 	/**
 	 * Party Id

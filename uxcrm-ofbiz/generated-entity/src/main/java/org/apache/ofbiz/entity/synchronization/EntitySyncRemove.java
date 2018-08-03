@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EntitySyncRemove implements Serializable {
 
-	public static final long serialVersionUID = 3010859532809819136L;
+	public static final long serialVersionUID = 6015067072086968320L;
 	public static final String NAME = "EntitySyncRemove";
 	/**
 	 * Entity Sync Remove Id

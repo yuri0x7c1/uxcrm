@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortAndTimeEntry implements Serializable {
 
-	public static final long serialVersionUID = 2913892576934665216L;
+	public static final long serialVersionUID = 5727823203543336960L;
 	public static final String NAME = "WorkEffortAndTimeEntry";
 	/**
 	 * Work Effort Id

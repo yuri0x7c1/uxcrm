@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class InvoiceContent implements Serializable {
 
-	public static final long serialVersionUID = 116715969026577408L;
+	public static final long serialVersionUID = 4958324251893991424L;
 	public static final String NAME = "InvoiceContent";
 	/**
 	 * Invoice Id

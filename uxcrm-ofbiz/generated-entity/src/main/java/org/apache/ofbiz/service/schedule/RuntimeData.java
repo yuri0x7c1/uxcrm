@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RuntimeData implements Serializable {
 
-	public static final long serialVersionUID = 8724410719730970624L;
+	public static final long serialVersionUID = 5409867873947884544L;
 	public static final String NAME = "RuntimeData";
 	/**
 	 * Runtime Data Id

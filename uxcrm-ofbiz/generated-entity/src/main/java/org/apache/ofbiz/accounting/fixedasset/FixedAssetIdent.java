@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FixedAssetIdent implements Serializable {
 
-	public static final long serialVersionUID = 6691863130186264576L;
+	public static final long serialVersionUID = 3273929070214218752L;
 	public static final String NAME = "FixedAssetIdent";
 	/**
 	 * Fixed Asset Id

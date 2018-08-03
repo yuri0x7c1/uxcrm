@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class AcctgTransEntrySums implements Serializable {
 
-	public static final long serialVersionUID = 5176837270071567360L;
+	public static final long serialVersionUID = 4182073704679746560L;
 	public static final String NAME = "AcctgTransEntrySums";
 	/**
 	 * Gl Account Id

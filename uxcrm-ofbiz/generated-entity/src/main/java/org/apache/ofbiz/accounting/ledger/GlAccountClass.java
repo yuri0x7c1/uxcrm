@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GlAccountClass implements Serializable {
 
-	public static final long serialVersionUID = 4708471775664714752L;
+	public static final long serialVersionUID = 8732948357757047808L;
 	public static final String NAME = "GlAccountClass";
 	/**
 	 * Gl Account Class Id
@@ -40,12 +40,6 @@ public class GlAccountClass implements Serializable {
 	@Setter
 	private String isAssetClass;
 	/**
-	 * Sequence Num
-	 */
-	@Getter
-	@Setter
-	private Long sequenceNum;
-	/**
 	 * Last Updated Stamp
 	 */
 	@Getter
@@ -71,7 +65,7 @@ public class GlAccountClass implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		glAccountClassId, parentClassId, description, isAssetClass, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		glAccountClassId, parentClassId, description, isAssetClass, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public GlAccountClass(GenericValue value) {
@@ -79,7 +73,6 @@ public class GlAccountClass implements Serializable {
 		parentClassId = (String) value.get(Fields.parentClassId.name());
 		description = (String) value.get(Fields.description.name());
 		isAssetClass = (String) value.get(Fields.isAssetClass.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());
 		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp

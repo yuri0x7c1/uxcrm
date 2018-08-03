@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RejectionReason implements Serializable {
 
-	public static final long serialVersionUID = 2984557712836689920L;
+	public static final long serialVersionUID = 8898563244639886336L;
 	public static final String NAME = "RejectionReason";
 	/**
 	 * Rejection Id

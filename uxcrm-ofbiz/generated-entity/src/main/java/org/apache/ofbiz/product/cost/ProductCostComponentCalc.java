@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductCostComponentCalc implements Serializable {
 
-	public static final long serialVersionUID = 6385768116902594560L;
+	public static final long serialVersionUID = 3186298367164846080L;
 	public static final String NAME = "ProductCostComponentCalc";
 	/**
 	 * Product Id

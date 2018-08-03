@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class KeywordThesaurus implements Serializable {
 
-	public static final long serialVersionUID = 7499856267728004096L;
+	public static final long serialVersionUID = 249659707558193152L;
 	public static final String NAME = "KeywordThesaurus";
 	/**
 	 * Entered Keyword

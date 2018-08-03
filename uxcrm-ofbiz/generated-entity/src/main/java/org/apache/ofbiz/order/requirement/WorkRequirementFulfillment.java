@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkRequirementFulfillment implements Serializable {
 
-	public static final long serialVersionUID = 3552279334427908096L;
+	public static final long serialVersionUID = 5453517491391299584L;
 	public static final String NAME = "WorkRequirementFulfillment";
 	/**
 	 * Requirement Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemStatusForCount implements Serializable {
 
-	public static final long serialVersionUID = 4867515753576414208L;
+	public static final long serialVersionUID = 202585815008031744L;
 	public static final String NAME = "InventoryItemStatusForCount";
 	/**
 	 * Facility Id

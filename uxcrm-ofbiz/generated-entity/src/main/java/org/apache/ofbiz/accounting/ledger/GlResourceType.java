@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GlResourceType implements Serializable {
 
-	public static final long serialVersionUID = 2084022670883179520L;
+	public static final long serialVersionUID = 8340686502942688256L;
 	public static final String NAME = "GlResourceType";
 	/**
 	 * Gl Resource Type Id

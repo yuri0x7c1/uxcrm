@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class QuantityBreak implements Serializable {
 
-	public static final long serialVersionUID = 2812788775859743744L;
+	public static final long serialVersionUID = 6492935969700505600L;
 	public static final String NAME = "QuantityBreak";
 	/**
 	 * Quantity Break Id

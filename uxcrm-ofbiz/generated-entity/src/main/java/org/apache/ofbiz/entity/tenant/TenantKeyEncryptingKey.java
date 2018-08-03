@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TenantKeyEncryptingKey implements Serializable {
 
-	public static final long serialVersionUID = 8792203990810850304L;
+	public static final long serialVersionUID = 3786000027286518784L;
 	public static final String NAME = "TenantKeyEncryptingKey";
 	/**
 	 * Tenant Id

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class JavaResource implements Serializable {
 
-	public static final long serialVersionUID = 7001643744640266240L;
+	public static final long serialVersionUID = 6897783070034802688L;
 	public static final String NAME = "JavaResource";
 	/**
 	 * Resource Name

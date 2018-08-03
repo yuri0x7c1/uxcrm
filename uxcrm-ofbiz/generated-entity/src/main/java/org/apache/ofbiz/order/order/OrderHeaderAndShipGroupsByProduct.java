@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 
-	public static final long serialVersionUID = 8384534248058184704L;
+	public static final long serialVersionUID = 8641061426446020608L;
 	public static final String NAME = "OrderHeaderAndShipGroupsByProduct";
 	/**
 	 * Product Id
@@ -76,12 +76,6 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 	@Getter
 	@Setter
 	private String shipGroupSeqId;
-	/**
-	 * Supplier Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String supplierAgreementId;
 	/**
 	 * Estimated Delivery Date
 	 */
@@ -311,12 +305,6 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 	@Setter
 	private String visitId;
 	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
-	/**
 	 * Product Store Id
 	 */
 	@Getter
@@ -444,7 +432,7 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 	private String internalCode;
 
 	public enum Fields {
-		productId, brandName, internalName, facilityId, giftMessage, orderId, shippingInstructions, maySplit, shipByDate, shipGroupSeqId, supplierAgreementId, estimatedDeliveryDate, vendorPartyId, contactMechId, telecomContactMechId, shipAfterDate, carrierPartyId, carrierRoleTypeId, isGift, estimatedShipDate, supplierPartyId, shipmentMethodTypeId, trackingNumber, countryGeoId, houseNumberExt, address2, city, address1, postalCode, postalCodeGeoId, houseNumber, postalCodeExt, attnName, directions, countyGeoId, toName, cityGeoId, municipalityGeoId, stateProvinceGeoId, geoPointId, roleTypeId, partyId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, agreementId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
+		productId, brandName, internalName, facilityId, giftMessage, orderId, shippingInstructions, maySplit, shipByDate, shipGroupSeqId, estimatedDeliveryDate, vendorPartyId, contactMechId, telecomContactMechId, shipAfterDate, carrierPartyId, carrierRoleTypeId, isGift, estimatedShipDate, supplierPartyId, shipmentMethodTypeId, trackingNumber, countryGeoId, houseNumberExt, address2, city, address1, postalCode, postalCodeGeoId, houseNumber, postalCodeExt, attnName, directions, countyGeoId, toName, cityGeoId, municipalityGeoId, stateProvinceGeoId, geoPointId, roleTypeId, partyId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
 	}
 
 	public OrderHeaderAndShipGroupsByProduct(GenericValue value) {
@@ -459,8 +447,6 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 		maySplit = (String) value.get(Fields.maySplit.name());
 		shipByDate = (Timestamp) value.get(Fields.shipByDate.name());
 		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		supplierAgreementId = (String) value.get(Fields.supplierAgreementId
-				.name());
 		estimatedDeliveryDate = (Timestamp) value
 				.get(Fields.estimatedDeliveryDate.name());
 		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
@@ -506,7 +492,6 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 		terminalId = (String) value.get(Fields.terminalId.name());
 		isViewed = (String) value.get(Fields.isViewed.name());
 		visitId = (String) value.get(Fields.visitId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
 		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
 				.name());

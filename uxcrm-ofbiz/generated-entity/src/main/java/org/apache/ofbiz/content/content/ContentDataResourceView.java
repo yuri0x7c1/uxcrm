@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentDataResourceView implements Serializable {
 
-	public static final long serialVersionUID = 2345020343248039936L;
+	public static final long serialVersionUID = 3640940755651400704L;
 	public static final String NAME = "ContentDataResourceView";
 	/**
 	 * Owner Content Id

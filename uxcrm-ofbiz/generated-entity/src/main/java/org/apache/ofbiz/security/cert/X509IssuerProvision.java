@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class X509IssuerProvision implements Serializable {
 
-	public static final long serialVersionUID = 1777839175860261888L;
+	public static final long serialVersionUID = 4104657686410800128L;
 	public static final String NAME = "X509IssuerProvision";
 	/**
 	 * Cert Provision Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class TaxAuthorityRateProduct implements Serializable {
 
-	public static final long serialVersionUID = 7206224306067113984L;
+	public static final long serialVersionUID = 7038288996444511232L;
 	public static final String NAME = "TaxAuthorityRateProduct";
 	/**
 	 * Tax Authority Rate Seq Id
@@ -107,12 +107,6 @@ public class TaxAuthorityRateProduct implements Serializable {
 	@Setter
 	private String description;
 	/**
-	 * Is Tax In Shipping Price
-	 */
-	@Getter
-	@Setter
-	private String isTaxInShippingPrice;
-	/**
 	 * Last Updated Stamp
 	 */
 	@Getter
@@ -136,9 +130,15 @@ public class TaxAuthorityRateProduct implements Serializable {
 	@Getter
 	@Setter
 	private Timestamp createdTxStamp;
+	/**
+	 * Is Tax In Shipping Price
+	 */
+	@Getter
+	@Setter
+	private String isTaxInShippingPrice;
 
 	public enum Fields {
-		taxAuthorityRateSeqId, taxAuthGeoId, taxAuthPartyId, taxAuthorityRateTypeId, productStoreId, productCategoryId, titleTransferEnumId, minItemPrice, minPurchase, taxShipping, taxPercentage, taxPromotions, fromDate, thruDate, description, isTaxInShippingPrice, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		taxAuthorityRateSeqId, taxAuthGeoId, taxAuthPartyId, taxAuthorityRateTypeId, productStoreId, productCategoryId, titleTransferEnumId, minItemPrice, minPurchase, taxShipping, taxPercentage, taxPromotions, fromDate, thruDate, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, isTaxInShippingPrice
 	}
 
 	public TaxAuthorityRateProduct(GenericValue value) {
@@ -160,14 +160,14 @@ public class TaxAuthorityRateProduct implements Serializable {
 		fromDate = (Timestamp) value.get(Fields.fromDate.name());
 		thruDate = (Timestamp) value.get(Fields.thruDate.name());
 		description = (String) value.get(Fields.description.name());
-		isTaxInShippingPrice = (String) value.get(Fields.isTaxInShippingPrice
-				.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());
 		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
 				.name());
 		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
 		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		isTaxInShippingPrice = (String) value.get(Fields.isTaxInShippingPrice
+				.name());
 	}
 
 	public static TaxAuthorityRateProduct fromValue(

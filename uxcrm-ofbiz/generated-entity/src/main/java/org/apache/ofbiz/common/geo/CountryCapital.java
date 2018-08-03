@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CountryCapital implements Serializable {
 
-	public static final long serialVersionUID = 6597622204036204544L;
+	public static final long serialVersionUID = 4169292467239867392L;
 	public static final String NAME = "CountryCapital";
 	/**
 	 * Country Code

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ElectronicText implements Serializable {
 
-	public static final long serialVersionUID = 4970238990297939968L;
+	public static final long serialVersionUID = 2772242056502483968L;
 	public static final String NAME = "ElectronicText";
 	/**
 	 * Data Resource Id

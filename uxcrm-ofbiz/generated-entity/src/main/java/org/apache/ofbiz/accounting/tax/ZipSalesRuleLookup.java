@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ZipSalesRuleLookup implements Serializable {
 
-	public static final long serialVersionUID = 5985714470416849920L;
+	public static final long serialVersionUID = 4600768457162589184L;
 	public static final String NAME = "ZipSalesRuleLookup";
 	/**
 	 * State Code

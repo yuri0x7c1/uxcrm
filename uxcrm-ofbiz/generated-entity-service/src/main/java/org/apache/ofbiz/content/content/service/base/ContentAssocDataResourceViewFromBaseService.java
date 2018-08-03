@@ -1,31 +1,30 @@
 package org.apache.ofbiz.content.content.service.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ofbiz.common.ExecuteFindService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.apache.ofbiz.common.ExecuteFindService.In;
 import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.content.content.ContentAssoc;
-import org.apache.ofbiz.content.content.ContentAssocDataResourceViewFrom;
-import org.apache.ofbiz.content.content.ContentAssocDataResourceViewTo;
-import org.apache.ofbiz.content.content.ContentPurpose;
-import org.apache.ofbiz.content.content.ContentRole;
-import org.apache.ofbiz.content.data.ElectronicText;
-import org.apache.ofbiz.content.data.ImageDataResource;
-import org.apache.ofbiz.content.data.OtherDataResource;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
+import org.apache.ofbiz.content.content.ContentAssocDataResourceViewFrom;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.content.data.ElectronicText;
+import org.apache.ofbiz.content.data.ImageDataResource;
+import org.apache.ofbiz.content.data.OtherDataResource;
+import org.apache.ofbiz.content.content.ContentAssocDataResourceViewTo;
+import org.apache.ofbiz.content.content.ContentPurpose;
+import org.apache.ofbiz.content.content.ContentAssoc;
+import org.apache.ofbiz.content.content.ContentRole;
 
 @Slf4j
 @Component
@@ -60,9 +59,16 @@ public class ContentAssocDataResourceViewFromBaseService {
 	 */
 	public List<ContentAssocDataResourceViewFrom> find(Integer start,
 			Integer number, List<String> orderBy, EntityConditionList conditions) {
-		List<ContentAssocDataResourceViewFrom> entityList = new ArrayList<>();
+		List<ContentAssocDataResourceViewFrom> entityList = Collections
+				.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssocDataResourceViewFrom.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -85,9 +91,9 @@ public class ContentAssocDataResourceViewFromBaseService {
 	/**
 	 * Find one ContentAssocDataResourceViewFrom
 	 */
-	public ContentAssocDataResourceViewFrom findOne(Object contentIdStart,
-			Object contentId, Object caContentIdTo, Object caContentId,
-			Object caFromDate, Object caContentAssocTypeId,
+	public Optional<ContentAssocDataResourceViewFrom> findOne(
+			Object contentIdStart, Object contentId, Object caContentIdTo,
+			Object caContentId, Object caFromDate, Object caContentAssocTypeId,
 			Object drDataResourceId) {
 		List<ContentAssocDataResourceViewFrom> entityList = null;
 		In in = new In();
@@ -115,15 +121,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get electronic text
 	 */
-	public ElectronicText getElectronicText(
+	public Optional<ElectronicText> getElectronicText(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom) {
 		List<ElectronicText> entityList = null;
 		In in = new In();
@@ -143,15 +149,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get image data resource
 	 */
-	public ImageDataResource getImageDataResource(
+	public Optional<ImageDataResource> getImageDataResource(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom) {
 		List<ImageDataResource> entityList = null;
 		In in = new In();
@@ -171,15 +177,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get other data resource
 	 */
-	public OtherDataResource getOtherDataResource(
+	public Optional<OtherDataResource> getOtherDataResource(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom) {
 		List<OtherDataResource> entityList = null;
 		In in = new In();
@@ -199,9 +205,9 @@ public class ContentAssocDataResourceViewFromBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -210,9 +216,16 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentAssocDataResourceViewFrom> getContentAssocDataResourceViewFroms(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssocDataResourceViewFrom> entityList = new ArrayList<>();
+		List<ContentAssocDataResourceViewFrom> entityList = Collections
+				.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssocDataResourceViewFrom.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdStart", EntityOperator.EQUALS,
@@ -237,9 +250,16 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentAssocDataResourceViewTo> getContentAssocDataResourceViewToes(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssocDataResourceViewTo> entityList = new ArrayList<>();
+		List<ContentAssocDataResourceViewTo> entityList = Collections
+				.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssocDataResourceViewTo.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdStart", EntityOperator.EQUALS,
@@ -264,9 +284,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentPurpose> getContentPurposes(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentPurpose> entityList = new ArrayList<>();
+		List<ContentPurpose> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentPurpose.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -291,9 +317,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentAssoc> getFromContentAssocs(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssoc> entityList = new ArrayList<>();
+		List<ContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -318,9 +350,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentAssoc> getToContentAssocs(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssoc> entityList = new ArrayList<>();
+		List<ContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdTo", EntityOperator.EQUALS,
@@ -345,9 +383,15 @@ public class ContentAssocDataResourceViewFromBaseService {
 	public List<ContentRole> getContentRoles(
 			ContentAssocDataResourceViewFrom contentAssocDataResourceViewFrom,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentRole> entityList = new ArrayList<>();
+		List<ContentRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortOrderHeaderView implements Serializable {
 
-	public static final long serialVersionUID = 777394673024563200L;
+	public static final long serialVersionUID = 5003206023194005504L;
 	public static final String NAME = "WorkEffortOrderHeaderView";
 	/**
 	 * Order Type Description
@@ -82,12 +82,6 @@ public class WorkEffortOrderHeaderView implements Serializable {
 	@Getter
 	@Setter
 	private String visitId;
-	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
 	/**
 	 * Product Store Id
 	 */
@@ -216,7 +210,7 @@ public class WorkEffortOrderHeaderView implements Serializable {
 	private String internalCode;
 
 	public enum Fields {
-		orderTypeDescription, statusItemDescription, workEffortId, orderId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, agreementId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
+		orderTypeDescription, statusItemDescription, workEffortId, orderId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
 	}
 
 	public WorkEffortOrderHeaderView(GenericValue value) {
@@ -235,7 +229,6 @@ public class WorkEffortOrderHeaderView implements Serializable {
 		terminalId = (String) value.get(Fields.terminalId.name());
 		isViewed = (String) value.get(Fields.isViewed.name());
 		visitId = (String) value.get(Fields.visitId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
 		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
 				.name());

@@ -71,13 +71,13 @@ public class PartyView extends CommonView implements View {
 		)
 		.withGeneratedColumn("Party Name", party -> {
 			if (PARTY_TYPE_ID_PARTY_GROUP.equals(party.getPartyTypeId())) {
-				PartyGroup partyGroup = partyService.getPartyGroup(party);
+				PartyGroup partyGroup = partyService.getPartyGroup(party).get();
 				if (partyGroup != null) {
 					return partyGroup.getGroupName();
 				}
 			}
 			else if (PARTY_TYPE_ID_PERSON.equals(party.getPartyTypeId())) {
-				Person person = partyService.getPerson(party);
+				Person person = partyService.getPerson(party).get();
 				if (person != null) {
 					return person.getFirstName() + " " + person.getLastName();
 				}

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TarpittedLoginView implements Serializable {
 
-	public static final long serialVersionUID = 1098648000301551616L;
+	public static final long serialVersionUID = 5812666918359193600L;
 	public static final String NAME = "TarpittedLoginView";
 	/**
 	 * View Name Id

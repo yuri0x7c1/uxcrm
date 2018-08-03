@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortPartyAssignByRole implements Serializable {
 
-	public static final long serialVersionUID = 8189839267555404800L;
+	public static final long serialVersionUID = 1227584350014361600L;
 	public static final String NAME = "WorkEffortPartyAssignByRole";
 	/**
 	 * Wepa Party Id

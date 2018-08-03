@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CustomMethodType implements Serializable {
 
-	public static final long serialVersionUID = 3029298792199772160L;
+	public static final long serialVersionUID = 4793130154559187968L;
 	public static final String NAME = "CustomMethodType";
 	/**
 	 * Custom Method Type Id

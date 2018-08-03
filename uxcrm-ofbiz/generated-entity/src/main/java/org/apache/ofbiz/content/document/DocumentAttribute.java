@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DocumentAttribute implements Serializable {
 
-	public static final long serialVersionUID = 1654725864915350528L;
+	public static final long serialVersionUID = 65843796759335936L;
 	public static final String NAME = "DocumentAttribute";
 	/**
 	 * Document Id

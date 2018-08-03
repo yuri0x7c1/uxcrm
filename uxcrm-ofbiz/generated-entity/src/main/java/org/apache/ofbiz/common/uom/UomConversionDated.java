@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UomConversionDated implements Serializable {
 
-	public static final long serialVersionUID = 8666082883138492416L;
+	public static final long serialVersionUID = 2715478104958743552L;
 	public static final String NAME = "UomConversionDated";
 	/**
 	 * Uom Id

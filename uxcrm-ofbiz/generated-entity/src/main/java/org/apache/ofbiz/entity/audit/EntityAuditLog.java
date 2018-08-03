@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EntityAuditLog implements Serializable {
 
-	public static final long serialVersionUID = 2967108125946579968L;
+	public static final long serialVersionUID = 5719332737370370048L;
 	public static final String NAME = "EntityAuditLog";
 	/**
 	 * Audit History Seq Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CustRequestStatus implements Serializable {
 
-	public static final long serialVersionUID = 3423855213726484480L;
+	public static final long serialVersionUID = 1532054985933145088L;
 	public static final String NAME = "CustRequestStatus";
 	/**
 	 * Cust Request Status Id

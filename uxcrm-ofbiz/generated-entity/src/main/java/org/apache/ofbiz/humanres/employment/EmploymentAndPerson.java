@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class EmploymentAndPerson implements Serializable {
 
-	public static final long serialVersionUID = 4063097425192457216L;
+	public static final long serialVersionUID = 6401813548247022592L;
 	public static final String NAME = "EmploymentAndPerson";
 	/**
 	 * Role Type Id To

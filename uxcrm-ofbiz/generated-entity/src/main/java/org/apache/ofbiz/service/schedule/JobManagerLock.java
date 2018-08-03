@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class JobManagerLock implements Serializable {
 
-	public static final long serialVersionUID = 5396562843129064448L;
+	public static final long serialVersionUID = 5816363326952885248L;
 	public static final String NAME = "JobManagerLock";
 	/**
 	 * Instance Id

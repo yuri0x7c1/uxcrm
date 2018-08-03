@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PayGrade implements Serializable {
 
-	public static final long serialVersionUID = 2180491967919244288L;
+	public static final long serialVersionUID = 4438799511891017728L;
 	public static final String NAME = "PayGrade";
 	/**
 	 * Pay Grade Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GlBudgetXref implements Serializable {
 
-	public static final long serialVersionUID = 6886066680080582656L;
+	public static final long serialVersionUID = 7138676011647571968L;
 	public static final String NAME = "GlBudgetXref";
 	/**
 	 * Gl Account Id

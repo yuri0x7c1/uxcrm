@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class QuoteCoefficient implements Serializable {
 
-	public static final long serialVersionUID = 6545884055783446528L;
+	public static final long serialVersionUID = 2439356284675366912L;
 	public static final String NAME = "QuoteCoefficient";
 	/**
 	 * Quote Id

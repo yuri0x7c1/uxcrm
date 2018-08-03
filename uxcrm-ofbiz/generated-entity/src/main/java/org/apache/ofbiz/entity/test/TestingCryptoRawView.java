@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class TestingCryptoRawView implements Serializable {
 
-	public static final long serialVersionUID = 4735323175481379840L;
+	public static final long serialVersionUID = 5612667489583815680L;
 	public static final String NAME = "TestingCryptoRawView";
 	/**
 	 * Raw Encrypted Value

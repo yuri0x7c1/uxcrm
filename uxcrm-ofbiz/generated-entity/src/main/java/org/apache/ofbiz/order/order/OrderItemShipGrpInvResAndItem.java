@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderItemShipGrpInvResAndItem implements Serializable {
 
-	public static final long serialVersionUID = 6486644420385634304L;
+	public static final long serialVersionUID = 2115367971649880064L;
 	public static final String NAME = "OrderItemShipGrpInvResAndItem";
 	/**
 	 * Order Item Seq Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InvoiceAndApplAndPayment implements Serializable {
 
-	public static final long serialVersionUID = 7468779676504466432L;
+	public static final long serialVersionUID = 7235319495013306368L;
 	public static final String NAME = "InvoiceAndApplAndPayment";
 	/**
 	 * Party Id From

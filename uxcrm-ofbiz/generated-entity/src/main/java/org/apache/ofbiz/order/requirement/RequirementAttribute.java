@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RequirementAttribute implements Serializable {
 
-	public static final long serialVersionUID = 2705897468555644928L;
+	public static final long serialVersionUID = 7652718876771622912L;
 	public static final String NAME = "RequirementAttribute";
 	/**
 	 * Requirement Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebSitePathAlias implements Serializable {
 
-	public static final long serialVersionUID = 5714235286894085120L;
+	public static final long serialVersionUID = 2300325533738648576L;
 	public static final String NAME = "WebSitePathAlias";
 	/**
 	 * Web Site Id

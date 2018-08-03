@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProtectedView implements Serializable {
 
-	public static final long serialVersionUID = 672486158562177024L;
+	public static final long serialVersionUID = 1457643083472740352L;
 	public static final String NAME = "ProtectedView";
 	/**
 	 * Group Id

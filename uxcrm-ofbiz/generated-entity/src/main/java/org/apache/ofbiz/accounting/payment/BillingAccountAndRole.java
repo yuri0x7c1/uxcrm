@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BillingAccountAndRole implements Serializable {
 
-	public static final long serialVersionUID = 9159054317795189760L;
+	public static final long serialVersionUID = 898182062552133632L;
 	public static final String NAME = "BillingAccountAndRole";
 	/**
 	 * Billing Account Id

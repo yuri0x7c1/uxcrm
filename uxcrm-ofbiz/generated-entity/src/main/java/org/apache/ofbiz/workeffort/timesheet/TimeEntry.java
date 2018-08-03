@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TimeEntry implements Serializable {
 
-	public static final long serialVersionUID = 1993515936393731072L;
+	public static final long serialVersionUID = 3124609486760702976L;
 	public static final String NAME = "TimeEntry";
 	/**
 	 * Time Entry Id

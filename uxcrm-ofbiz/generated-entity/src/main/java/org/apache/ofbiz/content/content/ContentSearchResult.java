@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentSearchResult implements Serializable {
 
-	public static final long serialVersionUID = 8488574638002693120L;
+	public static final long serialVersionUID = 5963384489244704768L;
 	public static final String NAME = "ContentSearchResult";
 	/**
 	 * Content Search Result Id

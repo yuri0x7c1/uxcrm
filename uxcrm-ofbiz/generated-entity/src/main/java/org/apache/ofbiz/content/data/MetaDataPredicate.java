@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MetaDataPredicate implements Serializable {
 
-	public static final long serialVersionUID = 927321078778286080L;
+	public static final long serialVersionUID = 4058012543855514624L;
 	public static final String NAME = "MetaDataPredicate";
 	/**
 	 * Meta Data Predicate Id

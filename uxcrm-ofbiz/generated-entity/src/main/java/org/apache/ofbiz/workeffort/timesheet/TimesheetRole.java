@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TimesheetRole implements Serializable {
 
-	public static final long serialVersionUID = 2218986156033045504L;
+	public static final long serialVersionUID = 740833035986660352L;
 	public static final String NAME = "TimesheetRole";
 	/**
 	 * Timesheet Id

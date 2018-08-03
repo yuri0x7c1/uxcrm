@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserAgentMethodType implements Serializable {
 
-	public static final long serialVersionUID = 6733840873154193408L;
+	public static final long serialVersionUID = 2812190083654026240L;
 	public static final String NAME = "UserAgentMethodType";
 	/**
 	 * User Agent Method Type Id

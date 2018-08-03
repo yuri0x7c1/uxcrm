@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebSite implements Serializable {
 
-	public static final long serialVersionUID = 46404418741415936L;
+	public static final long serialVersionUID = 7308221349181128704L;
 	public static final String NAME = "WebSite";
 	/**
 	 * Web Site Id
@@ -57,12 +57,6 @@ public class WebSite implements Serializable {
 	@Getter
 	@Setter
 	private String enableHttps;
-	/**
-	 * Webapp Path
-	 */
-	@Getter
-	@Setter
-	private String webappPath;
 	/**
 	 * Standard Content Prefix
 	 */
@@ -143,7 +137,7 @@ public class WebSite implements Serializable {
 	private String displayMaintenancePage;
 
 	public enum Fields {
-		webSiteId, siteName, httpHost, httpPort, httpsHost, httpsPort, enableHttps, webappPath, standardContentPrefix, secureContentPrefix, cookieDomain, visualThemeSetId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, productStoreId, allowProductStoreChange, hostedPathAlias, isDefault, displayMaintenancePage
+		webSiteId, siteName, httpHost, httpPort, httpsHost, httpsPort, enableHttps, standardContentPrefix, secureContentPrefix, cookieDomain, visualThemeSetId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, productStoreId, allowProductStoreChange, hostedPathAlias, isDefault, displayMaintenancePage
 	}
 
 	public WebSite(GenericValue value) {
@@ -154,7 +148,6 @@ public class WebSite implements Serializable {
 		httpsHost = (String) value.get(Fields.httpsHost.name());
 		httpsPort = (String) value.get(Fields.httpsPort.name());
 		enableHttps = (String) value.get(Fields.enableHttps.name());
-		webappPath = (String) value.get(Fields.webappPath.name());
 		standardContentPrefix = (String) value.get(Fields.standardContentPrefix
 				.name());
 		secureContentPrefix = (String) value.get(Fields.secureContentPrefix

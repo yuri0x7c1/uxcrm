@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PortalPagePortlet implements Serializable {
 
-	public static final long serialVersionUID = 3006924775222020096L;
+	public static final long serialVersionUID = 8659509611167458304L;
 	public static final String NAME = "PortalPagePortlet";
 	/**
 	 * Portal Page Id

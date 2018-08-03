@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Lot implements Serializable {
 
-	public static final long serialVersionUID = 4875445162979859456L;
+	public static final long serialVersionUID = 2618693542041444352L;
 	public static final String NAME = "Lot";
 	/**
 	 * Lot Id

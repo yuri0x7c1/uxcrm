@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TaxAuthority implements Serializable {
 
-	public static final long serialVersionUID = 708602150707394560L;
+	public static final long serialVersionUID = 5103810505182314496L;
 	public static final String NAME = "TaxAuthority";
 	/**
 	 * Tax Auth Geo Id

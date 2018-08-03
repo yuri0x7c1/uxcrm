@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class EntitySyncInclGrpDetailView implements Serializable {
 
-	public static final long serialVersionUID = 4273791176048509952L;
+	public static final long serialVersionUID = 516662207830888448L;
 	public static final String NAME = "EntitySyncInclGrpDetailView";
 	/**
 	 * Entity Sync Id

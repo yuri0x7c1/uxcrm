@@ -1,27 +1,26 @@
 package org.apache.ofbiz.content.website.service.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ofbiz.common.ExecuteFindService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.apache.ofbiz.common.ExecuteFindService.In;
 import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.content.content.Content;
-import org.apache.ofbiz.content.website.WebSiteContent;
-import org.apache.ofbiz.content.website.WebSiteContentType;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.apache.ofbiz.webapp.website.WebSite;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
+import org.apache.ofbiz.content.website.WebSiteContent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.webapp.website.WebSite;
+import org.apache.ofbiz.content.content.Content;
+import org.apache.ofbiz.content.website.WebSiteContentType;
 
 @Slf4j
 @Component
@@ -55,9 +54,15 @@ public class WebSiteContentBaseService {
 	 */
 	public List<WebSiteContent> find(Integer start, Integer number,
 			List<String> orderBy, EntityConditionList conditions) {
-		List<WebSiteContent> entityList = new ArrayList<>();
+		List<WebSiteContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -80,7 +85,7 @@ public class WebSiteContentBaseService {
 	/**
 	 * Find one WebSiteContent
 	 */
-	public WebSiteContent findOne(Object webSiteId, Object contentId,
+	public Optional<WebSiteContent> findOne(Object webSiteId, Object contentId,
 			Object webSiteContentTypeId, Object fromDate) {
 		List<WebSiteContent> entityList = null;
 		In in = new In();
@@ -102,15 +107,15 @@ public class WebSiteContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get web site
 	 */
-	public WebSite getWebSite(WebSiteContent webSiteContent) {
+	public Optional<WebSite> getWebSite(WebSiteContent webSiteContent) {
 		List<WebSite> entityList = null;
 		In in = new In();
 		in.setEntityName(WebSite.NAME);
@@ -128,15 +133,15 @@ public class WebSiteContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get content
 	 */
-	public Content getContent(WebSiteContent webSiteContent) {
+	public Optional<Content> getContent(WebSiteContent webSiteContent) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -154,15 +159,15 @@ public class WebSiteContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get web site content type
 	 */
-	public WebSiteContentType getWebSiteContentType(
+	public Optional<WebSiteContentType> getWebSiteContentType(
 			WebSiteContent webSiteContent) {
 		List<WebSiteContentType> entityList = null;
 		In in = new In();
@@ -183,8 +188,8 @@ public class WebSiteContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 }

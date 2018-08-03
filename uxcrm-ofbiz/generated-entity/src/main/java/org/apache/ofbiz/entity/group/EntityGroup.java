@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EntityGroup implements Serializable {
 
-	public static final long serialVersionUID = 2673689932711603200L;
+	public static final long serialVersionUID = 2902724964100978688L;
 	public static final String NAME = "EntityGroup";
 	/**
 	 * Entity Group Id

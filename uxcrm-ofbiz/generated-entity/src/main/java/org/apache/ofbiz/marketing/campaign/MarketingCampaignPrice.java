@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MarketingCampaignPrice implements Serializable {
 
-	public static final long serialVersionUID = 4072008950572079104L;
+	public static final long serialVersionUID = 6875284839656206336L;
 	public static final String NAME = "MarketingCampaignPrice";
 	/**
 	 * Marketing Campaign Id
@@ -27,18 +27,6 @@ public class MarketingCampaignPrice implements Serializable {
 	@Getter
 	@Setter
 	private String productPriceRuleId;
-	/**
-	 * From Date
-	 */
-	@Getter
-	@Setter
-	private Timestamp fromDate;
-	/**
-	 * Thru Date
-	 */
-	@Getter
-	@Setter
-	private Timestamp thruDate;
 	/**
 	 * Last Updated Stamp
 	 */
@@ -65,7 +53,7 @@ public class MarketingCampaignPrice implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		marketingCampaignId, productPriceRuleId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		marketingCampaignId, productPriceRuleId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public MarketingCampaignPrice(GenericValue value) {
@@ -73,8 +61,6 @@ public class MarketingCampaignPrice implements Serializable {
 				.name());
 		productPriceRuleId = (String) value.get(Fields.productPriceRuleId
 				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());
 		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp

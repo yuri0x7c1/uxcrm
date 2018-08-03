@@ -1,29 +1,28 @@
 package org.apache.ofbiz.content.content.service.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ofbiz.common.ExecuteFindService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.apache.ofbiz.common.ExecuteFindService.In;
 import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.common.datasource.DataSource;
-import org.apache.ofbiz.content.content.Content;
-import org.apache.ofbiz.content.content.ContentAssoc;
-import org.apache.ofbiz.content.content.ContentAssocPredicate;
-import org.apache.ofbiz.content.content.ContentAssocType;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.apache.ofbiz.security.login.UserLogin;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
+import org.apache.ofbiz.content.content.ContentAssoc;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.content.content.Content;
+import org.apache.ofbiz.content.content.ContentAssocType;
+import org.apache.ofbiz.security.login.UserLogin;
+import org.apache.ofbiz.content.content.ContentAssocPredicate;
+import org.apache.ofbiz.common.datasource.DataSource;
 
 @Slf4j
 @Component
@@ -57,9 +56,15 @@ public class ContentAssocBaseService {
 	 */
 	public List<ContentAssoc> find(Integer start, Integer number,
 			List<String> orderBy, EntityConditionList conditions) {
-		List<ContentAssoc> entityList = new ArrayList<>();
+		List<ContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -82,7 +87,7 @@ public class ContentAssocBaseService {
 	/**
 	 * Find one ContentAssoc
 	 */
-	public ContentAssoc findOne(Object contentId, Object contentIdTo,
+	public Optional<ContentAssoc> findOne(Object contentId, Object contentIdTo,
 			Object contentAssocTypeId, Object fromDate) {
 		List<ContentAssoc> entityList = null;
 		In in = new In();
@@ -105,15 +110,15 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get from content
 	 */
-	public Content getFromContent(ContentAssoc contentAssoc) {
+	public Optional<Content> getFromContent(ContentAssoc contentAssoc) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -131,15 +136,15 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get to content
 	 */
-	public Content getToContent(ContentAssoc contentAssoc) {
+	public Optional<Content> getToContent(ContentAssoc contentAssoc) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -157,15 +162,16 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get content assoc type
 	 */
-	public ContentAssocType getContentAssocType(ContentAssoc contentAssoc) {
+	public Optional<ContentAssocType> getContentAssocType(
+			ContentAssoc contentAssoc) {
 		List<ContentAssocType> entityList = null;
 		In in = new In();
 		in.setEntityName(ContentAssocType.NAME);
@@ -184,15 +190,15 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get created by user login
 	 */
-	public UserLogin getCreatedByUserLogin(ContentAssoc contentAssoc) {
+	public Optional<UserLogin> getCreatedByUserLogin(ContentAssoc contentAssoc) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -211,15 +217,16 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get last modified by user login
 	 */
-	public UserLogin getLastModifiedByUserLogin(ContentAssoc contentAssoc) {
+	public Optional<UserLogin> getLastModifiedByUserLogin(
+			ContentAssoc contentAssoc) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -238,15 +245,15 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get content assoc predicate
 	 */
-	public ContentAssocPredicate getContentAssocPredicate(
+	public Optional<ContentAssocPredicate> getContentAssocPredicate(
 			ContentAssoc contentAssoc) {
 		List<ContentAssocPredicate> entityList = null;
 		In in = new In();
@@ -267,15 +274,15 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get data source
 	 */
-	public DataSource getDataSource(ContentAssoc contentAssoc) {
+	public Optional<DataSource> getDataSource(ContentAssoc contentAssoc) {
 		List<DataSource> entityList = null;
 		In in = new In();
 		in.setEntityName(DataSource.NAME);
@@ -293,8 +300,8 @@ public class ContentAssocBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 }

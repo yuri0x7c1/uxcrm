@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Facility implements Serializable {
 
-	public static final long serialVersionUID = 46220735801729024L;
+	public static final long serialVersionUID = 5421621693871152128L;
 	public static final String NAME = "Facility";
 	/**
 	 * Facility Id

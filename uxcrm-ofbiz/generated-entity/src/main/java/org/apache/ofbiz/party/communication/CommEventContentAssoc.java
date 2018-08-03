@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CommEventContentAssoc implements Serializable {
 
-	public static final long serialVersionUID = 3304088196190991360L;
+	public static final long serialVersionUID = 4145768294204693504L;
 	public static final String NAME = "CommEventContentAssoc";
 	/**
 	 * Content Id

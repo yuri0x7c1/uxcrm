@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserLoginSecurityGroup implements Serializable {
 
-	public static final long serialVersionUID = 6889671577844946944L;
+	public static final long serialVersionUID = 2701717988636325888L;
 	public static final String NAME = "UserLoginSecurityGroup";
 	/**
 	 * User Login Id

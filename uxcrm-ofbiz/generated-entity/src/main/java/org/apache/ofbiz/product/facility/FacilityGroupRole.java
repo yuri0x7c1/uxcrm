@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FacilityGroupRole implements Serializable {
 
-	public static final long serialVersionUID = 5315028868010975232L;
+	public static final long serialVersionUID = 8033073038831610880L;
 	public static final String NAME = "FacilityGroupRole";
 	/**
 	 * Facility Group Id

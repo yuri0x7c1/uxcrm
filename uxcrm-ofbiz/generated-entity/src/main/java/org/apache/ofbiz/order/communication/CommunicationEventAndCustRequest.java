@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CommunicationEventAndCustRequest implements Serializable {
 
-	public static final long serialVersionUID = 5920711768427772928L;
+	public static final long serialVersionUID = 5168620402403976192L;
 	public static final String NAME = "CommunicationEventAndCustRequest";
 	/**
 	 * Cust Request Id

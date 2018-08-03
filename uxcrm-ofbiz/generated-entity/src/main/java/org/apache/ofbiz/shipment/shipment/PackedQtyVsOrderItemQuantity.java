@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PackedQtyVsOrderItemQuantity implements Serializable {
 
-	public static final long serialVersionUID = 1009188338919587840L;
+	public static final long serialVersionUID = 5032986525423702016L;
 	public static final String NAME = "PackedQtyVsOrderItemQuantity";
 	/**
 	 * Shipment Id

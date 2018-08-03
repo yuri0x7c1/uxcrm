@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PartyAndGroup implements Serializable {
 
-	public static final long serialVersionUID = 6800181000869233664L;
+	public static final long serialVersionUID = 2077337214545511424L;
 	public static final String NAME = "PartyAndGroup";
 	/**
 	 * Last Modified Date

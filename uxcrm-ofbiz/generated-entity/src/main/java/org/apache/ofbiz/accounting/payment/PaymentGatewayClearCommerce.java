@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PaymentGatewayClearCommerce implements Serializable {
 
-	public static final long serialVersionUID = 4883090753044124672L;
+	public static final long serialVersionUID = 7326497189828915200L;
 	public static final String NAME = "PaymentGatewayClearCommerce";
 	/**
 	 * Payment Gateway Config Id

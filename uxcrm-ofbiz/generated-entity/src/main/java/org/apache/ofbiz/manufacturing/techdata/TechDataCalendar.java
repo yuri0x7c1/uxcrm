@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TechDataCalendar implements Serializable {
 
-	public static final long serialVersionUID = 3258908223861529600L;
+	public static final long serialVersionUID = 3879622171221498880L;
 	public static final String NAME = "TechDataCalendar";
 	/**
 	 * Calendar Id

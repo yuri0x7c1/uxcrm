@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SegmentGroupType implements Serializable {
 
-	public static final long serialVersionUID = 1999708427539697664L;
+	public static final long serialVersionUID = 3728193669779942400L;
 	public static final String NAME = "SegmentGroupType";
 	/**
 	 * Segment Group Type Id

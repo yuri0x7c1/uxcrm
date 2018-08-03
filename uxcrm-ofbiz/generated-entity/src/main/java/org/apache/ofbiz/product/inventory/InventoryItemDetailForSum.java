@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemDetailForSum implements Serializable {
 
-	public static final long serialVersionUID = 5314397536944921600L;
+	public static final long serialVersionUID = 1410280867157545984L;
 	public static final String NAME = "InventoryItemDetailForSum";
 	/**
 	 * Quantity On Hand Sum

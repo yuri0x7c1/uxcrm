@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserPrefGroupType implements Serializable {
 
-	public static final long serialVersionUID = 3531977694749031424L;
+	public static final long serialVersionUID = 9085689352901390336L;
 	public static final String NAME = "UserPrefGroupType";
 	/**
 	 * User Pref Group Type Id

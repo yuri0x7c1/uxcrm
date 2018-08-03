@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AgreementEmploymentAppl implements Serializable {
 
-	public static final long serialVersionUID = 1691757516436896768L;
+	public static final long serialVersionUID = 3197261365765633024L;
 	public static final String NAME = "AgreementEmploymentAppl";
 	/**
 	 * Agreement Id

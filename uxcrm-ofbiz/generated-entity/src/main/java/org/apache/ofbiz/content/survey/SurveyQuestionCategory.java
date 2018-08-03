@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SurveyQuestionCategory implements Serializable {
 
-	public static final long serialVersionUID = 5634950225569723392L;
+	public static final long serialVersionUID = 5945583819443452928L;
 	public static final String NAME = "SurveyQuestionCategory";
 	/**
 	 * Survey Question Category Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SegmentGroupClassification implements Serializable {
 
-	public static final long serialVersionUID = 8337329960884667392L;
+	public static final long serialVersionUID = 5431430243246169088L;
 	public static final String NAME = "SegmentGroupClassification";
 	/**
 	 * Segment Group Id

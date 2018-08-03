@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BenefitType implements Serializable {
 
-	public static final long serialVersionUID = 6212031112647872512L;
+	public static final long serialVersionUID = 6895657856877915136L;
 	public static final String NAME = "BenefitType";
 	/**
 	 * Benefit Type Id

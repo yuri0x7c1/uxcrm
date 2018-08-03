@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Visit implements Serializable {
 
-	public static final long serialVersionUID = 1014085928014504960L;
+	public static final long serialVersionUID = 5962164997171584000L;
 	public static final String NAME = "Visit";
 	/**
 	 * Visit Id
@@ -142,6 +142,30 @@ public class Visit implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 	/**
+	 * Last Updated Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedStamp;
+	/**
+	 * Last Updated Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedTxStamp;
+	/**
+	 * Created Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdStamp;
+	/**
+	 * Created Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdTxStamp;
+	/**
 	 * Client Ip State Prov Geo Id
 	 */
 	@Getter
@@ -173,7 +197,7 @@ public class Visit implements Serializable {
 	private String roleTypeId;
 
 	public enum Fields {
-		visitId, visitorId, userLoginId, userCreated, sessionId, serverIpAddress, serverHostName, webappName, initialLocale, initialRequest, initialReferrer, initialUserAgent, userAgentId, clientIpAddress, clientHostName, clientUser, clientIpIspName, clientIpPostalCode, cookie, fromDate, thruDate, clientIpStateProvGeoId, clientIpCountryGeoId, contactMechId, partyId, roleTypeId
+		visitId, visitorId, userLoginId, userCreated, sessionId, serverIpAddress, serverHostName, webappName, initialLocale, initialRequest, initialReferrer, initialUserAgent, userAgentId, clientIpAddress, clientHostName, clientUser, clientIpIspName, clientIpPostalCode, cookie, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, clientIpStateProvGeoId, clientIpCountryGeoId, contactMechId, partyId, roleTypeId
 	}
 
 	public Visit(GenericValue value) {
@@ -199,6 +223,12 @@ public class Visit implements Serializable {
 		cookie = (String) value.get(Fields.cookie.name());
 		fromDate = (Timestamp) value.get(Fields.fromDate.name());
 		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		lastUpdatedStamp = (Timestamp) value
+				.get(Fields.lastUpdatedStamp.name());
+		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
+				.name());
+		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
+		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
 		clientIpStateProvGeoId = (String) value
 				.get(Fields.clientIpStateProvGeoId.name());
 		clientIpCountryGeoId = (String) value.get(Fields.clientIpCountryGeoId

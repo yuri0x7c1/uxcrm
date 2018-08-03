@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ReturnReason implements Serializable {
 
-	public static final long serialVersionUID = 1076102788633089024L;
+	public static final long serialVersionUID = 40742502811851776L;
 	public static final String NAME = "ReturnReason";
 	/**
 	 * Return Reason Id

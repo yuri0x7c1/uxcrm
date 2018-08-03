@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Deduction implements Serializable {
 
-	public static final long serialVersionUID = 7898260088593746944L;
+	public static final long serialVersionUID = 202123135685337088L;
 	public static final String NAME = "Deduction";
 	/**
 	 * Deduction Id

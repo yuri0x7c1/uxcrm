@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderHeaderItemAndShipGroup implements Serializable {
 
-	public static final long serialVersionUID = 1432735748194053120L;
+	public static final long serialVersionUID = 502654784687858688L;
 	public static final String NAME = "OrderHeaderItemAndShipGroup";
 	/**
 	 * Oi Quantity
@@ -130,12 +130,6 @@ public class OrderHeaderItemAndShipGroup implements Serializable {
 	@Getter
 	@Setter
 	private String visitId;
-	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
 	/**
 	 * Product Store Id
 	 */
@@ -310,12 +304,6 @@ public class OrderHeaderItemAndShipGroup implements Serializable {
 	@Getter
 	@Setter
 	private Timestamp shipByDate;
-	/**
-	 * Supplier Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String supplierAgreementId;
 	/**
 	 * Estimated Delivery Date
 	 */
@@ -600,7 +588,7 @@ public class OrderHeaderItemAndShipGroup implements Serializable {
 	private String prodCatalogId;
 
 	public enum Fields {
-		oiQuantity, oiCancelQuantity, oiShipAfterDate, oiShipBeforeDate, oiEstimatedShipDate, oiEstimatedDeliveryDate, oiStatusId, oiExternalId, oiSyncStatusId, reservedQuantity, facilityId, invoicePerShipment, salesChannelEnumId, orderId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, agreementId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode, orderItemSeqId, quantity, shipGroupSeqId, cancelQuantity, giftMessage, shippingInstructions, maySplit, shipByDate, supplierAgreementId, estimatedDeliveryDate, vendorPartyId, contactMechId, telecomContactMechId, shipAfterDate, carrierPartyId, carrierRoleTypeId, isGift, estimatedShipDate, supplierPartyId, shipmentMethodTypeId, trackingNumber, deploymentId, cancelBackOrderDate, itemDescription, selectedAmount, unitPrice, productId, unitRecurringPrice, isItemGroupPrimary, autoCancelDate, productFeatureId, overrideGlAccountId, budgetId, supplierProductId, quoteId, shoppingListItemSeqId, subscriptionId, salesOpportunityId, dontCancelSetUserLogin, isPromo, isModifiedPrice, productCategoryId, shoppingListId, unitListPrice, unitAverageCost, orderItemTypeId, dontCancelSetDate, comments, recurringFreqUomId, orderItemGroupSeqId, quoteItemSeqId, fromInventoryItemId, budgetItemSeqId, correspondingPoId, changeByUserLoginId, prodCatalogId
+		oiQuantity, oiCancelQuantity, oiShipAfterDate, oiShipBeforeDate, oiEstimatedShipDate, oiEstimatedDeliveryDate, oiStatusId, oiExternalId, oiSyncStatusId, reservedQuantity, facilityId, invoicePerShipment, salesChannelEnumId, orderId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode, orderItemSeqId, quantity, shipGroupSeqId, cancelQuantity, giftMessage, shippingInstructions, maySplit, shipByDate, estimatedDeliveryDate, vendorPartyId, contactMechId, telecomContactMechId, shipAfterDate, carrierPartyId, carrierRoleTypeId, isGift, estimatedShipDate, supplierPartyId, shipmentMethodTypeId, trackingNumber, deploymentId, cancelBackOrderDate, itemDescription, selectedAmount, unitPrice, productId, unitRecurringPrice, isItemGroupPrimary, autoCancelDate, productFeatureId, overrideGlAccountId, budgetId, supplierProductId, quoteId, shoppingListItemSeqId, subscriptionId, salesOpportunityId, dontCancelSetUserLogin, isPromo, isModifiedPrice, productCategoryId, shoppingListId, unitListPrice, unitAverageCost, orderItemTypeId, dontCancelSetDate, comments, recurringFreqUomId, orderItemGroupSeqId, quoteItemSeqId, fromInventoryItemId, budgetItemSeqId, correspondingPoId, changeByUserLoginId, prodCatalogId
 	}
 
 	public OrderHeaderItemAndShipGroup(GenericValue value) {
@@ -630,7 +618,6 @@ public class OrderHeaderItemAndShipGroup implements Serializable {
 		terminalId = (String) value.get(Fields.terminalId.name());
 		isViewed = (String) value.get(Fields.isViewed.name());
 		visitId = (String) value.get(Fields.visitId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
 		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
 				.name());
@@ -666,8 +653,6 @@ public class OrderHeaderItemAndShipGroup implements Serializable {
 				.name());
 		maySplit = (String) value.get(Fields.maySplit.name());
 		shipByDate = (Timestamp) value.get(Fields.shipByDate.name());
-		supplierAgreementId = (String) value.get(Fields.supplierAgreementId
-				.name());
 		estimatedDeliveryDate = (Timestamp) value
 				.get(Fields.estimatedDeliveryDate.name());
 		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());

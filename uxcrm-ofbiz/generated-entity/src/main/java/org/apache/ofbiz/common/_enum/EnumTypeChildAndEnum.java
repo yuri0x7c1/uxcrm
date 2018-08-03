@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class EnumTypeChildAndEnum implements Serializable {
 
-	public static final long serialVersionUID = 7225196397455046656L;
+	public static final long serialVersionUID = 1039253163966846976L;
 	public static final String NAME = "EnumTypeChildAndEnum";
 	/**
 	 * Parent Enum Type Id

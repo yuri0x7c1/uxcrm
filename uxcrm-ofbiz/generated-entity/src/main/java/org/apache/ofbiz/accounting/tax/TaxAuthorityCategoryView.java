@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class TaxAuthorityCategoryView implements Serializable {
 
-	public static final long serialVersionUID = 2220244033543903232L;
+	public static final long serialVersionUID = 5176289432991235072L;
 	public static final String NAME = "TaxAuthorityCategoryView";
 	/**
 	 * Tax Auth Party Id

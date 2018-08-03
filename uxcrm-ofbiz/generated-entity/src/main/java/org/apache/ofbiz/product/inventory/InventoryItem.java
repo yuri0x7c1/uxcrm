@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InventoryItem implements Serializable {
 
-	public static final long serialVersionUID = 3540762822091895808L;
+	public static final long serialVersionUID = 3220592967849041920L;
 	public static final String NAME = "InventoryItem";
 	/**
 	 * Inventory Item Id
@@ -179,12 +179,6 @@ public class InventoryItem implements Serializable {
 	@Setter
 	private String currencyUomId;
 	/**
-	 * Fixed Asset Id
-	 */
-	@Getter
-	@Setter
-	private String fixedAssetId;
-	/**
 	 * Last Updated Stamp
 	 */
 	@Getter
@@ -208,9 +202,15 @@ public class InventoryItem implements Serializable {
 	@Getter
 	@Setter
 	private Timestamp createdTxStamp;
+	/**
+	 * Fixed Asset Id
+	 */
+	@Getter
+	@Setter
+	private String fixedAssetId;
 
 	public enum Fields {
-		inventoryItemId, inventoryItemTypeId, productId, partyId, ownerPartyId, statusId, datetimeReceived, datetimeManufactured, expireDate, facilityId, containerId, lotId, uomId, binNumber, locationSeqId, comments, quantityOnHandTotal, availableToPromiseTotal, accountingQuantityTotal, oldQuantityOnHand, oldAvailableToPromise, serialNumber, softIdentifier, activationNumber, activationValidThru, unitCost, currencyUomId, fixedAssetId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		inventoryItemId, inventoryItemTypeId, productId, partyId, ownerPartyId, statusId, datetimeReceived, datetimeManufactured, expireDate, facilityId, containerId, lotId, uomId, binNumber, locationSeqId, comments, quantityOnHandTotal, availableToPromiseTotal, accountingQuantityTotal, oldQuantityOnHand, oldAvailableToPromise, serialNumber, softIdentifier, activationNumber, activationValidThru, unitCost, currencyUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, fixedAssetId
 	}
 
 	public InventoryItem(GenericValue value) {
@@ -250,13 +250,13 @@ public class InventoryItem implements Serializable {
 				.name());
 		unitCost = (BigDecimal) value.get(Fields.unitCost.name());
 		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());
 		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
 				.name());
 		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
 		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
 	}
 
 	public static InventoryItem fromValue(

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GiftCard implements Serializable {
 
-	public static final long serialVersionUID = 832911629081282560L;
+	public static final long serialVersionUID = 6470393873472503808L;
 	public static final String NAME = "GiftCard";
 	/**
 	 * Payment Method Id

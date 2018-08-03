@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FixedAssetGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 1346512450472995840L;
+	public static final long serialVersionUID = 8415439912126751744L;
 	public static final String NAME = "FixedAssetGeoPoint";
 	/**
 	 * Fixed Asset Id

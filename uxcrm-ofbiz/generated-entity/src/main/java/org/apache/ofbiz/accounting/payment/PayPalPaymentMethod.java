@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PayPalPaymentMethod implements Serializable {
 
-	public static final long serialVersionUID = 8324971867710267392L;
+	public static final long serialVersionUID = 6466152076698389504L;
 	public static final String NAME = "PayPalPaymentMethod";
 	/**
 	 * Payment Method Id

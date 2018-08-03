@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class RateAmount implements Serializable {
 
-	public static final long serialVersionUID = 1720110148038895616L;
+	public static final long serialVersionUID = 1423849988633528320L;
 	public static final String NAME = "RateAmount";
 	/**
 	 * Rate Type Id

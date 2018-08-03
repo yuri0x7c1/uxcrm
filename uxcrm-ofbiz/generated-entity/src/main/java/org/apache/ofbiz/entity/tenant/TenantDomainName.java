@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TenantDomainName implements Serializable {
 
-	public static final long serialVersionUID = 9204484814455538688L;
+	public static final long serialVersionUID = 2758774187552834560L;
 	public static final String NAME = "TenantDomainName";
 	/**
 	 * Tenant Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EmplLeaveReasonType implements Serializable {
 
-	public static final long serialVersionUID = 3241797867227863040L;
+	public static final long serialVersionUID = 2573525387964302336L;
 	public static final String NAME = "EmplLeaveReasonType";
 	/**
 	 * Empl Leave Reason Type Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TrackingCodeOrderAndOrderHeader implements Serializable {
 
-	public static final long serialVersionUID = 3333291452056737792L;
+	public static final long serialVersionUID = 8780703291405715456L;
 	public static final String NAME = "TrackingCodeOrderAndOrderHeader";
 	/**
 	 * Order Id

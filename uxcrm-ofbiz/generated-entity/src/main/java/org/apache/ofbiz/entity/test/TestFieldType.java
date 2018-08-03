@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class TestFieldType implements Serializable {
 
-	public static final long serialVersionUID = 673318710032188416L;
+	public static final long serialVersionUID = 5403659989722456064L;
 	public static final String NAME = "TestFieldType";
 	/**
 	 * Test Field Type Id

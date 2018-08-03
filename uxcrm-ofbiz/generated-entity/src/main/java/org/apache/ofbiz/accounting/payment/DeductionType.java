@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DeductionType implements Serializable {
 
-	public static final long serialVersionUID = 664097567006429184L;
+	public static final long serialVersionUID = 7275657766570119168L;
 	public static final String NAME = "DeductionType";
 	/**
 	 * Deduction Type Id

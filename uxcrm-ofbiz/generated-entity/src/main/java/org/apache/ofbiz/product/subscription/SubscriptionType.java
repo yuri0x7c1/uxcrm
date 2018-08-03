@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SubscriptionType implements Serializable {
 
-	public static final long serialVersionUID = 2972027827550943232L;
+	public static final long serialVersionUID = 8973754760311819264L;
 	public static final String NAME = "SubscriptionType";
 	/**
 	 * Subscription Type Id

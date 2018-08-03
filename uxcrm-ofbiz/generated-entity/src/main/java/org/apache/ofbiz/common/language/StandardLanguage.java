@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class StandardLanguage implements Serializable {
 
-	public static final long serialVersionUID = 5131431495699410944L;
+	public static final long serialVersionUID = 6554044860686810112L;
 	public static final String NAME = "StandardLanguage";
 	/**
 	 * Standard Language Id

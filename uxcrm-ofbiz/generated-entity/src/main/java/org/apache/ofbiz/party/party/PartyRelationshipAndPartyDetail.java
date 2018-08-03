@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyRelationshipAndPartyDetail implements Serializable {
 
-	public static final long serialVersionUID = 4844066284671418368L;
+	public static final long serialVersionUID = 5062705018390557696L;
 	public static final String NAME = "PartyRelationshipAndPartyDetail";
 	/**
 	 * Rel Parent Type Id

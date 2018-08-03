@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CommEventContentDataResource implements Serializable {
 
-	public static final long serialVersionUID = 4942688703836392448L;
+	public static final long serialVersionUID = 3982231729996411904L;
 	public static final String NAME = "CommEventContentDataResource";
 	/**
 	 * From Date

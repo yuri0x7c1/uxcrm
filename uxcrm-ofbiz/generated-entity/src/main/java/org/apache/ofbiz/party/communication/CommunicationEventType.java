@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CommunicationEventType implements Serializable {
 
-	public static final long serialVersionUID = 1854216521785338880L;
+	public static final long serialVersionUID = 6013052003719933952L;
 	public static final String NAME = "CommunicationEventType";
 	/**
 	 * Communication Event Type Id

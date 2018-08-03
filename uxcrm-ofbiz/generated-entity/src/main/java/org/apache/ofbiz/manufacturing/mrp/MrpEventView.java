@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MrpEventView implements Serializable {
 
-	public static final long serialVersionUID = 7032659817787833344L;
+	public static final long serialVersionUID = 253592113995218944L;
 	public static final String NAME = "MrpEventView";
 	/**
 	 * Bill Of Material Level

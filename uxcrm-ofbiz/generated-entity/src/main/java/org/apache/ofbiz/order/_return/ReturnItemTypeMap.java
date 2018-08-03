@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ReturnItemTypeMap implements Serializable {
 
-	public static final long serialVersionUID = 1529585107790929920L;
+	public static final long serialVersionUID = 722308761370273792L;
 	public static final String NAME = "ReturnItemTypeMap";
 	/**
 	 * Return Item Map Key

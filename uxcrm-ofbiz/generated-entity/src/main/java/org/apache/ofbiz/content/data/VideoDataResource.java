@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class VideoDataResource implements Serializable {
 
-	public static final long serialVersionUID = 4458777031138418688L;
+	public static final long serialVersionUID = 2043262270179277824L;
 	public static final String NAME = "VideoDataResource";
 	/**
 	 * Data Resource Id

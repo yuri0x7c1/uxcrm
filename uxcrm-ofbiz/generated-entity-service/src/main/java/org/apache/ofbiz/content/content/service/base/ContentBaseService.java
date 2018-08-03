@@ -1,68 +1,67 @@
 package org.apache.ofbiz.content.content.service.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ofbiz.accounting.invoice.InvoiceContent;
-import org.apache.ofbiz.accounting.payment.PaymentContent;
-import org.apache.ofbiz.common.ExecuteFindService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.apache.ofbiz.common.ExecuteFindService.In;
 import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.common._enum.Enumeration;
-import org.apache.ofbiz.common.datasource.DataSource;
-import org.apache.ofbiz.common.method.CustomMethod;
-import org.apache.ofbiz.common.portal.PortalPage;
-import org.apache.ofbiz.common.status.StatusItem;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
+import org.apache.ofbiz.entity.GenericEntityException;
+import org.apache.ofbiz.entity.condition.EntityConditionList;
+import org.apache.ofbiz.entity.condition.EntityExpr;
+import org.apache.ofbiz.entity.condition.EntityOperator;
+import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
 import org.apache.ofbiz.content.content.Content;
-import org.apache.ofbiz.content.content.ContentApproval;
-import org.apache.ofbiz.content.content.ContentAssoc;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ofbiz.content.content.ContentType;
+import org.apache.ofbiz.content.data.DataResource;
+import org.apache.ofbiz.common.status.StatusItem;
+import org.apache.ofbiz.common._enum.Enumeration;
+import org.apache.ofbiz.common.method.CustomMethod;
+import org.apache.ofbiz.content.data.MimeType;
+import org.apache.ofbiz.content.data.CharacterSet;
+import org.apache.ofbiz.content.content.ContentTypeAttr;
+import org.apache.ofbiz.security.login.UserLogin;
+import org.apache.ofbiz.product.feature.ProductFeatureDataResource;
+import org.apache.ofbiz.common.datasource.DataSource;
 import org.apache.ofbiz.content.content.ContentAssocDataResourceViewFrom;
 import org.apache.ofbiz.content.content.ContentAssocDataResourceViewTo;
+import org.apache.ofbiz.party.agreement.AgreementContent;
+import org.apache.ofbiz.party.communication.CommEventContentAssoc;
+import org.apache.ofbiz.content.content.ContentApproval;
+import org.apache.ofbiz.content.content.ContentAssoc;
 import org.apache.ofbiz.content.content.ContentAttribute;
 import org.apache.ofbiz.content.content.ContentKeyword;
 import org.apache.ofbiz.content.content.ContentMetaData;
 import org.apache.ofbiz.content.content.ContentPurpose;
 import org.apache.ofbiz.content.content.ContentRevision;
 import org.apache.ofbiz.content.content.ContentRole;
-import org.apache.ofbiz.content.content.ContentType;
-import org.apache.ofbiz.content.content.ContentTypeAttr;
-import org.apache.ofbiz.content.data.CharacterSet;
-import org.apache.ofbiz.content.data.DataResource;
-import org.apache.ofbiz.content.data.MimeType;
+import org.apache.ofbiz.order.request.CustRequestContent;
+import org.apache.ofbiz.product.facility.FacilityContent;
+import org.apache.ofbiz.accounting.invoice.InvoiceContent;
+import org.apache.ofbiz.order.order.OrderContent;
+import org.apache.ofbiz.party.party.PartyContent;
+import org.apache.ofbiz.humanres.ability.PartyResume;
+import org.apache.ofbiz.accounting.payment.PaymentContent;
+import org.apache.ofbiz.common.portal.PortalPage;
+import org.apache.ofbiz.product.config.ProdConfItemContent;
+import org.apache.ofbiz.product.category.ProductCategoryContent;
+import org.apache.ofbiz.product.product.ProductContent;
+import org.apache.ofbiz.product.promo.ProductPromoContent;
+import org.apache.ofbiz.webapp.visit.ServerHit;
+import org.apache.ofbiz.webapp.visit.ServerHitBin;
+import org.apache.ofbiz.product.subscription.SubscriptionResource;
 import org.apache.ofbiz.content.survey.SurveyResponseAnswer;
+import org.apache.ofbiz.webapp.website.WebPage;
 import org.apache.ofbiz.content.website.WebSiteContent;
 import org.apache.ofbiz.content.website.WebSitePathAlias;
 import org.apache.ofbiz.content.website.WebSitePublishPoint;
-import org.apache.ofbiz.entity.GenericEntityException;
-import org.apache.ofbiz.entity.condition.EntityConditionList;
-import org.apache.ofbiz.entity.condition.EntityExpr;
-import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.apache.ofbiz.humanres.ability.PartyResume;
-import org.apache.ofbiz.order.order.OrderContent;
-import org.apache.ofbiz.order.request.CustRequestContent;
-import org.apache.ofbiz.party.agreement.AgreementContent;
-import org.apache.ofbiz.party.communication.CommEventContentAssoc;
-import org.apache.ofbiz.party.party.PartyContent;
-import org.apache.ofbiz.product.category.ProductCategoryContent;
-import org.apache.ofbiz.product.config.ProdConfItemContent;
-import org.apache.ofbiz.product.facility.FacilityContent;
-import org.apache.ofbiz.product.feature.ProductFeatureDataResource;
-import org.apache.ofbiz.product.product.ProductContent;
-import org.apache.ofbiz.product.promo.ProductPromoContent;
-import org.apache.ofbiz.product.subscription.SubscriptionResource;
-import org.apache.ofbiz.security.login.UserLogin;
-import org.apache.ofbiz.webapp.visit.ServerHit;
-import org.apache.ofbiz.webapp.visit.ServerHitBin;
-import org.apache.ofbiz.webapp.website.WebPage;
 import org.apache.ofbiz.workeffort.workeffort.WorkEffortContent;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
@@ -96,9 +95,15 @@ public class ContentBaseService {
 	 */
 	public List<Content> find(Integer start, Integer number,
 			List<String> orderBy, EntityConditionList conditions) {
-		List<Content> entityList = new ArrayList<>();
+		List<Content> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(Content.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -121,7 +126,7 @@ public class ContentBaseService {
 	/**
 	 * Find one Content
 	 */
-	public Content findOne(Object contentId) {
+	public Optional<Content> findOne(Object contentId) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -139,15 +144,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get content type
 	 */
-	public ContentType getContentType(Content content) {
+	public Optional<ContentType> getContentType(Content content) {
 		List<ContentType> entityList = null;
 		In in = new In();
 		in.setEntityName(ContentType.NAME);
@@ -165,15 +170,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get data resource
 	 */
-	public DataResource getDataResource(Content content) {
+	public Optional<DataResource> getDataResource(Content content) {
 		List<DataResource> entityList = null;
 		In in = new In();
 		in.setEntityName(DataResource.NAME);
@@ -191,15 +196,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get template data resource
 	 */
-	public DataResource getTemplateDataResource(Content content) {
+	public Optional<DataResource> getTemplateDataResource(Content content) {
 		List<DataResource> entityList = null;
 		In in = new In();
 		in.setEntityName(DataResource.NAME);
@@ -218,15 +223,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get status item
 	 */
-	public StatusItem getStatusItem(Content content) {
+	public Optional<StatusItem> getStatusItem(Content content) {
 		List<StatusItem> entityList = null;
 		In in = new In();
 		in.setEntityName(StatusItem.NAME);
@@ -244,15 +249,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get privilege enumeration
 	 */
-	public Enumeration getPrivilegeEnumeration(Content content) {
+	public Optional<Enumeration> getPrivilegeEnumeration(Content content) {
 		List<Enumeration> entityList = null;
 		In in = new In();
 		in.setEntityName(Enumeration.NAME);
@@ -270,15 +275,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get custom method
 	 */
-	public CustomMethod getCustomMethod(Content content) {
+	public Optional<CustomMethod> getCustomMethod(Content content) {
 		List<CustomMethod> entityList = null;
 		In in = new In();
 		in.setEntityName(CustomMethod.NAME);
@@ -296,15 +301,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get mime type
 	 */
-	public MimeType getMimeType(Content content) {
+	public Optional<MimeType> getMimeType(Content content) {
 		List<MimeType> entityList = null;
 		In in = new In();
 		in.setEntityName(MimeType.NAME);
@@ -322,15 +327,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get character set
 	 */
-	public CharacterSet getCharacterSet(Content content) {
+	public Optional<CharacterSet> getCharacterSet(Content content) {
 		List<CharacterSet> entityList = null;
 		In in = new In();
 		in.setEntityName(CharacterSet.NAME);
@@ -348,9 +353,9 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -358,9 +363,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentTypeAttr> getContentTypeAttrs(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentTypeAttr> entityList = new ArrayList<>();
+		List<ContentTypeAttr> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentTypeAttr.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentTypeId", EntityOperator.EQUALS,
@@ -381,7 +392,7 @@ public class ContentBaseService {
 	/**
 	 * Get created by user login
 	 */
-	public UserLogin getCreatedByUserLogin(Content content) {
+	public Optional<UserLogin> getCreatedByUserLogin(Content content) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -399,15 +410,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get last modified by user login
 	 */
-	public UserLogin getLastModifiedByUserLogin(Content content) {
+	public Optional<UserLogin> getLastModifiedByUserLogin(Content content) {
 		List<UserLogin> entityList = null;
 		In in = new In();
 		in.setEntityName(UserLogin.NAME);
@@ -426,9 +437,9 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -436,9 +447,15 @@ public class ContentBaseService {
 	 */
 	public List<ProductFeatureDataResource> getProductFeatureDataResources(
 			Content content, Integer start, Integer number, List<String> orderBy) {
-		List<ProductFeatureDataResource> entityList = new ArrayList<>();
+		List<ProductFeatureDataResource> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductFeatureDataResource.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("dataResourceId", EntityOperator.EQUALS,
@@ -459,7 +476,7 @@ public class ContentBaseService {
 	/**
 	 * Get data source
 	 */
-	public DataSource getDataSource(Content content) {
+	public Optional<DataSource> getDataSource(Content content) {
 		List<DataSource> entityList = null;
 		In in = new In();
 		in.setEntityName(DataSource.NAME);
@@ -477,15 +494,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get decorator content
 	 */
-	public Content getDecoratorContent(Content content) {
+	public Optional<Content> getDecoratorContent(Content content) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -503,15 +520,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get owner content
 	 */
-	public Content getOwnerContent(Content content) {
+	public Optional<Content> getOwnerContent(Content content) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -529,15 +546,15 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get instance of content
 	 */
-	public Content getInstanceOfContent(Content content) {
+	public Optional<Content> getInstanceOfContent(Content content) {
 		List<Content> entityList = null;
 		In in = new In();
 		in.setEntityName(Content.NAME);
@@ -555,9 +572,9 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -565,9 +582,16 @@ public class ContentBaseService {
 	 */
 	public List<ContentAssocDataResourceViewFrom> getContentAssocDataResourceViewFroms(
 			Content content, Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssocDataResourceViewFrom> entityList = new ArrayList<>();
+		List<ContentAssocDataResourceViewFrom> entityList = Collections
+				.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssocDataResourceViewFrom.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdStart", EntityOperator.EQUALS,
@@ -590,9 +614,16 @@ public class ContentBaseService {
 	 */
 	public List<ContentAssocDataResourceViewTo> getContentAssocDataResourceViewToes(
 			Content content, Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssocDataResourceViewTo> entityList = new ArrayList<>();
+		List<ContentAssocDataResourceViewTo> entityList = Collections
+				.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssocDataResourceViewTo.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdStart", EntityOperator.EQUALS,
@@ -615,9 +646,15 @@ public class ContentBaseService {
 	 */
 	public List<AgreementContent> getAgreementContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<AgreementContent> entityList = new ArrayList<>();
+		List<AgreementContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(AgreementContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -640,9 +677,15 @@ public class ContentBaseService {
 	 */
 	public List<CommEventContentAssoc> getFromCommEventContentAssocs(
 			Content content, Integer start, Integer number, List<String> orderBy) {
-		List<CommEventContentAssoc> entityList = new ArrayList<>();
+		List<CommEventContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CommEventContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -665,9 +708,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentApproval> getContentApprovals(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentApproval> entityList = new ArrayList<>();
+		List<ContentApproval> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentApproval.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -690,9 +739,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentAssoc> getFromContentAssocs(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssoc> entityList = new ArrayList<>();
+		List<ContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -715,9 +770,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentAssoc> getToContentAssocs(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAssoc> entityList = new ArrayList<>();
+		List<ContentAssoc> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAssoc.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentIdTo", EntityOperator.EQUALS,
@@ -740,9 +801,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentAttribute> getContentAttributes(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentAttribute> entityList = new ArrayList<>();
+		List<ContentAttribute> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentAttribute.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -765,9 +832,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentKeyword> getContentKeywords(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentKeyword> entityList = new ArrayList<>();
+		List<ContentKeyword> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentKeyword.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -790,9 +863,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentMetaData> getContentMetaDatas(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentMetaData> entityList = new ArrayList<>();
+		List<ContentMetaData> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentMetaData.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -815,9 +894,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentPurpose> getContentPurposes(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentPurpose> entityList = new ArrayList<>();
+		List<ContentPurpose> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentPurpose.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -840,9 +925,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentRevision> getContentRevisions(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ContentRevision> entityList = new ArrayList<>();
+		List<ContentRevision> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentRevision.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -865,9 +956,15 @@ public class ContentBaseService {
 	 */
 	public List<ContentRole> getContentRoles(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ContentRole> entityList = new ArrayList<>();
+		List<ContentRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ContentRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -890,9 +987,15 @@ public class ContentBaseService {
 	 */
 	public List<CustRequestContent> getCustRequestContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<CustRequestContent> entityList = new ArrayList<>();
+		List<CustRequestContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(CustRequestContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -915,9 +1018,15 @@ public class ContentBaseService {
 	 */
 	public List<FacilityContent> getFacilityContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<FacilityContent> entityList = new ArrayList<>();
+		List<FacilityContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(FacilityContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -940,9 +1049,15 @@ public class ContentBaseService {
 	 */
 	public List<InvoiceContent> getInvoiceContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<InvoiceContent> entityList = new ArrayList<>();
+		List<InvoiceContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(InvoiceContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -965,9 +1080,15 @@ public class ContentBaseService {
 	 */
 	public List<OrderContent> getOrderContents(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<OrderContent> entityList = new ArrayList<>();
+		List<OrderContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(OrderContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -990,9 +1111,15 @@ public class ContentBaseService {
 	 */
 	public List<PartyContent> getPartyContents(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyContent> entityList = new ArrayList<>();
+		List<PartyContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1015,9 +1142,15 @@ public class ContentBaseService {
 	 */
 	public List<PartyResume> getPartyResumes(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PartyResume> entityList = new ArrayList<>();
+		List<PartyResume> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PartyResume.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1040,9 +1173,15 @@ public class ContentBaseService {
 	 */
 	public List<PaymentContent> getPaymentContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<PaymentContent> entityList = new ArrayList<>();
+		List<PaymentContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PaymentContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1065,9 +1204,15 @@ public class ContentBaseService {
 	 */
 	public List<PortalPage> getPortalPages(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<PortalPage> entityList = new ArrayList<>();
+		List<PortalPage> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(PortalPage.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("helpContentId", EntityOperator.EQUALS,
@@ -1090,9 +1235,15 @@ public class ContentBaseService {
 	 */
 	public List<ProdConfItemContent> getProdConfItemContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProdConfItemContent> entityList = new ArrayList<>();
+		List<ProdConfItemContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProdConfItemContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1115,9 +1266,15 @@ public class ContentBaseService {
 	 */
 	public List<ProductCategoryContent> getProductCategoryContents(
 			Content content, Integer start, Integer number, List<String> orderBy) {
-		List<ProductCategoryContent> entityList = new ArrayList<>();
+		List<ProductCategoryContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductCategoryContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1140,9 +1297,15 @@ public class ContentBaseService {
 	 */
 	public List<ProductContent> getProductContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductContent> entityList = new ArrayList<>();
+		List<ProductContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1165,9 +1328,15 @@ public class ContentBaseService {
 	 */
 	public List<ProductPromoContent> getProductPromoContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<ProductPromoContent> entityList = new ArrayList<>();
+		List<ProductPromoContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ProductPromoContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1190,9 +1359,15 @@ public class ContentBaseService {
 	 */
 	public List<ServerHit> getServerHits(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ServerHit> entityList = new ArrayList<>();
+		List<ServerHit> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ServerHit.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("internalContentId",
@@ -1216,9 +1391,15 @@ public class ContentBaseService {
 	 */
 	public List<ServerHitBin> getServerHitBins(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<ServerHitBin> entityList = new ArrayList<>();
+		List<ServerHitBin> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(ServerHitBin.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("internalContentId",
@@ -1242,9 +1423,15 @@ public class ContentBaseService {
 	 */
 	public List<SubscriptionResource> getSubscriptionResources(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SubscriptionResource> entityList = new ArrayList<>();
+		List<SubscriptionResource> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SubscriptionResource.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1267,9 +1454,15 @@ public class ContentBaseService {
 	 */
 	public List<SurveyResponseAnswer> getSurveyResponseAnswers(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SurveyResponseAnswer> entityList = new ArrayList<>();
+		List<SurveyResponseAnswer> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SurveyResponseAnswer.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1292,9 +1485,15 @@ public class ContentBaseService {
 	 */
 	public List<WebPage> getWebPages(Content content, Integer start,
 			Integer number, List<String> orderBy) {
-		List<WebPage> entityList = new ArrayList<>();
+		List<WebPage> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebPage.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1317,9 +1516,15 @@ public class ContentBaseService {
 	 */
 	public List<WebSiteContent> getWebSiteContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebSiteContent> entityList = new ArrayList<>();
+		List<WebSiteContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1342,9 +1547,15 @@ public class ContentBaseService {
 	 */
 	public List<WebSitePathAlias> getWebSitePathAliases(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebSitePathAlias> entityList = new ArrayList<>();
+		List<WebSitePathAlias> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSitePathAlias.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,
@@ -1365,7 +1576,7 @@ public class ContentBaseService {
 	/**
 	 * Get web site publish point
 	 */
-	public WebSitePublishPoint getWebSitePublishPoint(Content content) {
+	public Optional<WebSitePublishPoint> getWebSitePublishPoint(Content content) {
 		List<WebSitePublishPoint> entityList = null;
 		In in = new In();
 		in.setEntityName(WebSitePublishPoint.NAME);
@@ -1383,9 +1594,9 @@ public class ContentBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
@@ -1393,9 +1604,15 @@ public class ContentBaseService {
 	 */
 	public List<WorkEffortContent> getWorkEffortContents(Content content,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WorkEffortContent> entityList = new ArrayList<>();
+		List<WorkEffortContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WorkEffortContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("contentId", EntityOperator.EQUALS,

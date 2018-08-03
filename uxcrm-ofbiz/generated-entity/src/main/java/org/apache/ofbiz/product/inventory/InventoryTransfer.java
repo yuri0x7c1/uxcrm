@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class InventoryTransfer implements Serializable {
 
-	public static final long serialVersionUID = 6321222240353890304L;
+	public static final long serialVersionUID = 8352189650224771072L;
 	public static final String NAME = "InventoryTransfer";
 	/**
 	 * Inventory Transfer Id

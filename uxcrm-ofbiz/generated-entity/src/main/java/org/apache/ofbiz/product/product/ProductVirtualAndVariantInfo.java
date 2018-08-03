@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProductVirtualAndVariantInfo implements Serializable {
 
-	public static final long serialVersionUID = 549393002418441216L;
+	public static final long serialVersionUID = 6767223255394092032L;
 	public static final String NAME = "ProductVirtualAndVariantInfo";
 	/**
 	 * Product Id

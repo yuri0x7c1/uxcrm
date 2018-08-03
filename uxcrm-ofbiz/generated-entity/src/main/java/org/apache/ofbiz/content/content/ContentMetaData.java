@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentMetaData implements Serializable {
 
-	public static final long serialVersionUID = 8289360551508140032L;
+	public static final long serialVersionUID = 3333422368993872896L;
 	public static final String NAME = "ContentMetaData";
 	/**
 	 * Content Id

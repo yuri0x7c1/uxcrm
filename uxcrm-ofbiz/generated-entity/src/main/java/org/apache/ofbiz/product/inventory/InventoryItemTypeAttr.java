@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 311577462869424128L;
+	public static final long serialVersionUID = 7150848390245967872L;
 	public static final String NAME = "InventoryItemTypeAttr";
 	/**
 	 * Inventory Item Type Id

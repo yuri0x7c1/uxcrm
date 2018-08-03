@@ -40,7 +40,7 @@ public class ContentService extends ContentBaseService {
 
 		List<Content> subContents = new ArrayList<>();
 		for (ContentAssoc contentAssoc : contentAssociations) {
-		    Content toContent = contentAssocService.getToContent(contentAssoc);
+		    Content toContent = contentAssocService.getToContent(contentAssoc).get();
 		    subContents.add(toContent);
 		}
 		log.debug("!!! sub contents {}", subContents);

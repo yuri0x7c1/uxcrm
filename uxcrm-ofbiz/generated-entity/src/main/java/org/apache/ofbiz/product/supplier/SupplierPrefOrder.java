@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SupplierPrefOrder implements Serializable {
 
-	public static final long serialVersionUID = 5591437624237814784L;
+	public static final long serialVersionUID = 5962839608075762688L;
 	public static final String NAME = "SupplierPrefOrder";
 	/**
 	 * Supplier Pref Order Id

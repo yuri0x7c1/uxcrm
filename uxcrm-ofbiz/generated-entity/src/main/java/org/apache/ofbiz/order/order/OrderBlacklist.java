@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderBlacklist implements Serializable {
 
-	public static final long serialVersionUID = 927201846911373312L;
+	public static final long serialVersionUID = 7921728584340214784L;
 	public static final String NAME = "OrderBlacklist";
 	/**
 	 * Blacklist String

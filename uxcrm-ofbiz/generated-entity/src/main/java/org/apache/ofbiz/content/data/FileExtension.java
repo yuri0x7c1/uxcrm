@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FileExtension implements Serializable {
 
-	public static final long serialVersionUID = 598985745136106496L;
+	public static final long serialVersionUID = 4041503556813674496L;
 	public static final String NAME = "FileExtension";
 	/**
 	 * File Extension Id

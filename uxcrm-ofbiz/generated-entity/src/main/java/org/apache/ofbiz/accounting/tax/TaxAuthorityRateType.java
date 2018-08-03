@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TaxAuthorityRateType implements Serializable {
 
-	public static final long serialVersionUID = 2679346433221541888L;
+	public static final long serialVersionUID = 2518858033813244928L;
 	public static final String NAME = "TaxAuthorityRateType";
 	/**
 	 * Tax Authority Rate Type Id

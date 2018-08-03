@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RequirementPartyProductCount implements Serializable {
 
-	public static final long serialVersionUID = 1577765565993929728L;
+	public static final long serialVersionUID = 2935583465949900800L;
 	public static final String NAME = "RequirementPartyProductCount";
 	/**
 	 * Requirement Type Id

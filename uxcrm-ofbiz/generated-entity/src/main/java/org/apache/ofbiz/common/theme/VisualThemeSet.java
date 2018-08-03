@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class VisualThemeSet implements Serializable {
 
-	public static final long serialVersionUID = 2592440169746459648L;
+	public static final long serialVersionUID = 8900776436200285184L;
 	public static final String NAME = "VisualThemeSet";
 	/**
 	 * Visual Theme Set Id

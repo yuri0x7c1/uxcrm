@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OtherDataResource implements Serializable {
 
-	public static final long serialVersionUID = 7183756716654854144L;
+	public static final long serialVersionUID = 8996509093519365120L;
 	public static final String NAME = "OtherDataResource";
 	/**
 	 * Data Resource Id

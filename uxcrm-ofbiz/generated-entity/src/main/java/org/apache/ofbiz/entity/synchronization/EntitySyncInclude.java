@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EntitySyncInclude implements Serializable {
 
-	public static final long serialVersionUID = 68175391923586048L;
+	public static final long serialVersionUID = 6538703693112579072L;
 	public static final String NAME = "EntitySyncInclude";
 	/**
 	 * Entity Sync Id

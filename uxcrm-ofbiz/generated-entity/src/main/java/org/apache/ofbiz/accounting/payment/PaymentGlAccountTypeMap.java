@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PaymentGlAccountTypeMap implements Serializable {
 
-	public static final long serialVersionUID = 8744679440302551040L;
+	public static final long serialVersionUID = 1008980523139393536L;
 	public static final String NAME = "PaymentGlAccountTypeMap";
 	/**
 	 * Payment Type Id

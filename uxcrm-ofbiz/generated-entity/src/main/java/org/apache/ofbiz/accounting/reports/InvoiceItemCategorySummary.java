@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InvoiceItemCategorySummary implements Serializable {
 
-	public static final long serialVersionUID = 8426651140328729600L;
+	public static final long serialVersionUID = 8741989614350687232L;
 	public static final String NAME = "InvoiceItemCategorySummary";
 	/**
 	 * Status Id

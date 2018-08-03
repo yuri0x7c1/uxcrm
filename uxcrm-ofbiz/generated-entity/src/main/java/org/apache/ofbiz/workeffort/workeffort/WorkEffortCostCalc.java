@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortCostCalc implements Serializable {
 
-	public static final long serialVersionUID = 7542557671922088960L;
+	public static final long serialVersionUID = 4798161628126402560L;
 	public static final String NAME = "WorkEffortCostCalc";
 	/**
 	 * Work Effort Id

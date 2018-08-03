@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class JobInterviewType implements Serializable {
 
-	public static final long serialVersionUID = 2385506890223998976L;
+	public static final long serialVersionUID = 5361318476366583808L;
 	public static final String NAME = "JobInterviewType";
 	/**
 	 * Job Interview Type Id

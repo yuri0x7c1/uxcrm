@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BrowserType implements Serializable {
 
-	public static final long serialVersionUID = 2915938154737159168L;
+	public static final long serialVersionUID = 2672501147373145088L;
 	public static final String NAME = "BrowserType";
 	/**
 	 * Browser Type Id

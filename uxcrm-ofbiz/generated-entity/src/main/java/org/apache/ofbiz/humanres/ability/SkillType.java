@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SkillType implements Serializable {
 
-	public static final long serialVersionUID = 8459748688559244288L;
+	public static final long serialVersionUID = 744770901098309632L;
 	public static final String NAME = "SkillType";
 	/**
 	 * Skill Type Id

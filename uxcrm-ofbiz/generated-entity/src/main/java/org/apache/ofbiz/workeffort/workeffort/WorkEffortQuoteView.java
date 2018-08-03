@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortQuoteView implements Serializable {
 
-	public static final long serialVersionUID = 2161533570176540672L;
+	public static final long serialVersionUID = 212006330638172160L;
 	public static final String NAME = "WorkEffortQuoteView";
 	/**
 	 * Status Item Description

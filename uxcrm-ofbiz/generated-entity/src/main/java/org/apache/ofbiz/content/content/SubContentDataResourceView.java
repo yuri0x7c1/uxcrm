@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SubContentDataResourceView implements Serializable {
 
-	public static final long serialVersionUID = 1227149334694975488L;
+	public static final long serialVersionUID = 6918561929049244672L;
 	public static final String NAME = "SubContentDataResourceView";
 	/**
 	 * Owner Content Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderAdjustmentBilling implements Serializable {
 
-	public static final long serialVersionUID = 7489354142089664512L;
+	public static final long serialVersionUID = 6080378743465932800L;
 	public static final String NAME = "OrderAdjustmentBilling";
 	/**
 	 * Order Adjustment Id

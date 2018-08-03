@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class CarrierAndShipmentMethod implements Serializable {
 
-	public static final long serialVersionUID = 5615126327598493696L;
+	public static final long serialVersionUID = 3782518158563446784L;
 	public static final String NAME = "CarrierAndShipmentMethod";
 	/**
 	 * Shipment Method Type Id

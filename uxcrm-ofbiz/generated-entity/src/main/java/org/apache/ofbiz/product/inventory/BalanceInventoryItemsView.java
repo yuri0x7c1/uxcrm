@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BalanceInventoryItemsView implements Serializable {
 
-	public static final long serialVersionUID = 7368361192122535936L;
+	public static final long serialVersionUID = 2174316479311091712L;
 	public static final String NAME = "BalanceInventoryItemsView";
 	/**
 	 * Inventory Item Id

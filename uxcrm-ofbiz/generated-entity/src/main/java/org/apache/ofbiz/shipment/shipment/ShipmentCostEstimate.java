@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ShipmentCostEstimate implements Serializable {
 
-	public static final long serialVersionUID = 1761601761900085248L;
+	public static final long serialVersionUID = 222327347541538816L;
 	public static final String NAME = "ShipmentCostEstimate";
 	/**
 	 * Shipment Cost Estimate Id

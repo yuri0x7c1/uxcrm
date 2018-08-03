@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SecurityGroupPermission implements Serializable {
 
-	public static final long serialVersionUID = 7756175505672359936L;
+	public static final long serialVersionUID = 4132170451955111936L;
 	public static final String NAME = "SecurityGroupPermission";
 	/**
 	 * Group Id
@@ -27,18 +27,6 @@ public class SecurityGroupPermission implements Serializable {
 	@Getter
 	@Setter
 	private String permissionId;
-	/**
-	 * From Date
-	 */
-	@Getter
-	@Setter
-	private Timestamp fromDate;
-	/**
-	 * Thru Date
-	 */
-	@Getter
-	@Setter
-	private Timestamp thruDate;
 	/**
 	 * Last Updated Stamp
 	 */
@@ -65,14 +53,12 @@ public class SecurityGroupPermission implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		groupId, permissionId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		groupId, permissionId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public SecurityGroupPermission(GenericValue value) {
 		groupId = (String) value.get(Fields.groupId.name());
 		permissionId = (String) value.get(Fields.permissionId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
 		lastUpdatedStamp = (Timestamp) value
 				.get(Fields.lastUpdatedStamp.name());
 		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp

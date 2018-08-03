@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PriorityType implements Serializable {
 
-	public static final long serialVersionUID = 7834729973432147968L;
+	public static final long serialVersionUID = 695809971033074688L;
 	public static final String NAME = "PriorityType";
 	/**
 	 * Priority Type Id

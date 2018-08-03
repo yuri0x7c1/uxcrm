@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Affiliate implements Serializable {
 
-	public static final long serialVersionUID = 3703106562921137152L;
+	public static final long serialVersionUID = 6530442467850644480L;
 	public static final String NAME = "Affiliate";
 	/**
 	 * Party Id

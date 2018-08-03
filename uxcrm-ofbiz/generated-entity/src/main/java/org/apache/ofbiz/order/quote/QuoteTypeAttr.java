@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class QuoteTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 4464337459427082240L;
+	public static final long serialVersionUID = 9145701420093697024L;
 	public static final String NAME = "QuoteTypeAttr";
 	/**
 	 * Quote Type Id

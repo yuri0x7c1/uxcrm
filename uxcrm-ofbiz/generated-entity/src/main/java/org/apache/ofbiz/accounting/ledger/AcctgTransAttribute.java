@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AcctgTransAttribute implements Serializable {
 
-	public static final long serialVersionUID = 5541153113339189248L;
+	public static final long serialVersionUID = 6250865203802513408L;
 	public static final String NAME = "AcctgTransAttribute";
 	/**
 	 * Acctg Trans Id

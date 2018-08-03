@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FacilityContentDetail implements Serializable {
 
-	public static final long serialVersionUID = 206256169446376448L;
+	public static final long serialVersionUID = 4750589263026046976L;
 	public static final String NAME = "FacilityContentDetail";
 	/**
 	 * From Date

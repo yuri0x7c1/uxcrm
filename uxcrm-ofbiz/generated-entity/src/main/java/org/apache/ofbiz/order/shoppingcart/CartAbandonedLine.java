@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CartAbandonedLine implements Serializable {
 
-	public static final long serialVersionUID = 8547072276634150912L;
+	public static final long serialVersionUID = 1831862463095090176L;
 	public static final String NAME = "CartAbandonedLine";
 	/**
 	 * Visit Id

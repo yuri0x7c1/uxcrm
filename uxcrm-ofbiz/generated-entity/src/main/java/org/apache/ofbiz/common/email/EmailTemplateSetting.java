@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EmailTemplateSetting implements Serializable {
 
-	public static final long serialVersionUID = 6399681220117818368L;
+	public static final long serialVersionUID = 6686629885205767168L;
 	public static final String NAME = "EmailTemplateSetting";
 	/**
 	 * Email Template Setting Id

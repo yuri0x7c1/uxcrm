@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EmailAddressVerification implements Serializable {
 
-	public static final long serialVersionUID = 5996784339718849536L;
+	public static final long serialVersionUID = 8165963618405733376L;
 	public static final String NAME = "EmailAddressVerification";
 	/**
 	 * Email Address

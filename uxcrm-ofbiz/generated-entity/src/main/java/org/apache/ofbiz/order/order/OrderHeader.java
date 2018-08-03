@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderHeader implements Serializable {
 
-	public static final long serialVersionUID = 8791874099330903040L;
+	public static final long serialVersionUID = 1030139595882635264L;
 	public static final String NAME = "OrderHeader";
 	/**
 	 * Order Id
@@ -131,12 +131,6 @@ public class OrderHeader implements Serializable {
 	@Setter
 	private String productStoreId;
 	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
-	/**
 	 * Terminal Id
 	 */
 	@Getter
@@ -222,7 +216,7 @@ public class OrderHeader implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		orderId, orderTypeId, orderName, externalId, salesChannelEnumId, orderDate, priority, entryDate, pickSheetPrintedDate, visitId, statusId, createdBy, firstAttemptOrderId, currencyUom, syncStatusId, billingAccountId, originFacilityId, webSiteId, productStoreId, agreementId, terminalId, transactionId, autoOrderShoppingListId, needsInventoryIssuance, isRushOrder, internalCode, remainingSubTotal, grandTotal, isViewed, invoicePerShipment, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		orderId, orderTypeId, orderName, externalId, salesChannelEnumId, orderDate, priority, entryDate, pickSheetPrintedDate, visitId, statusId, createdBy, firstAttemptOrderId, currencyUom, syncStatusId, billingAccountId, originFacilityId, webSiteId, productStoreId, terminalId, transactionId, autoOrderShoppingListId, needsInventoryIssuance, isRushOrder, internalCode, remainingSubTotal, grandTotal, isViewed, invoicePerShipment, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public OrderHeader(GenericValue value) {
@@ -248,7 +242,6 @@ public class OrderHeader implements Serializable {
 		originFacilityId = (String) value.get(Fields.originFacilityId.name());
 		webSiteId = (String) value.get(Fields.webSiteId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		terminalId = (String) value.get(Fields.terminalId.name());
 		transactionId = (String) value.get(Fields.transactionId.name());
 		autoOrderShoppingListId = (String) value

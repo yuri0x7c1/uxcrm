@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductCategoryRollupAndRole implements Serializable {
 
-	public static final long serialVersionUID = 3236622691121317888L;
+	public static final long serialVersionUID = 5106507541750654976L;
 	public static final String NAME = "ProductCategoryRollupAndRole";
 	/**
 	 * Product Category Id

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ReturnAdjustment implements Serializable {
 
-	public static final long serialVersionUID = 7128762341888648192L;
+	public static final long serialVersionUID = 3100371405118465024L;
 	public static final String NAME = "ReturnAdjustment";
 	/**
 	 * Return Adjustment Id

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class GeoAssocAndGeoFrom implements Serializable {
 
-	public static final long serialVersionUID = 4609931036212386816L;
+	public static final long serialVersionUID = 5486516566955844608L;
 	public static final String NAME = "GeoAssocAndGeoFrom";
 	/**
 	 * Geo Id To

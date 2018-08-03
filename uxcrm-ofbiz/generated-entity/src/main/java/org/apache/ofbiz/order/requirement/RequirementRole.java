@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RequirementRole implements Serializable {
 
-	public static final long serialVersionUID = 7603474407688723456L;
+	public static final long serialVersionUID = 14569683675302912L;
 	public static final String NAME = "RequirementRole";
 	/**
 	 * Requirement Id

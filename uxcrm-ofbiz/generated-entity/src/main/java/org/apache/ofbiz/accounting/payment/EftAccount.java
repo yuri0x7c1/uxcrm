@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EftAccount implements Serializable {
 
-	public static final long serialVersionUID = 2814863183150176256L;
+	public static final long serialVersionUID = 3433447389938357248L;
 	public static final String NAME = "EftAccount";
 	/**
 	 * Payment Method Id

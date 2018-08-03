@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class StatusValidChangeToDetail implements Serializable {
 
-	public static final long serialVersionUID = 5527832859733332992L;
+	public static final long serialVersionUID = 620694916339169280L;
 	public static final String NAME = "StatusValidChangeToDetail";
 	/**
 	 * Condition Expression

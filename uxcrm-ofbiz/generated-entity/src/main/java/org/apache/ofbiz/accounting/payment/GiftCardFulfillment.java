@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GiftCardFulfillment implements Serializable {
 
-	public static final long serialVersionUID = 6071310847086650368L;
+	public static final long serialVersionUID = 1592020022811586560L;
 	public static final String NAME = "GiftCardFulfillment";
 	/**
 	 * Fulfillment Id

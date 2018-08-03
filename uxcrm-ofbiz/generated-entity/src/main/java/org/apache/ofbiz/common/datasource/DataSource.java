@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DataSource implements Serializable {
 
-	public static final long serialVersionUID = 481800802306083840L;
+	public static final long serialVersionUID = 1519640089929925632L;
 	public static final String NAME = "DataSource";
 	/**
 	 * Data Source Id

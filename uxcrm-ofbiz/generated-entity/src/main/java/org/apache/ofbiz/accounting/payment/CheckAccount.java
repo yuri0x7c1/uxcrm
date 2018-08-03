@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CheckAccount implements Serializable {
 
-	public static final long serialVersionUID = 3406299146582964224L;
+	public static final long serialVersionUID = 3487409872316824576L;
 	public static final String NAME = "CheckAccount";
 	/**
 	 * Payment Method Id

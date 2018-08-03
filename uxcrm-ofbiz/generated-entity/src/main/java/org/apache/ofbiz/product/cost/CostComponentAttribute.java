@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CostComponentAttribute implements Serializable {
 
-	public static final long serialVersionUID = 6209231945011841024L;
+	public static final long serialVersionUID = 3100409036625867776L;
 	public static final String NAME = "CostComponentAttribute";
 	/**
 	 * Cost Component Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class QuoteTermAttribute implements Serializable {
 
-	public static final long serialVersionUID = 3648844306990552064L;
+	public static final long serialVersionUID = 5960022040811960320L;
 	public static final String NAME = "QuoteTermAttribute";
 	/**
 	 * Term Type Id

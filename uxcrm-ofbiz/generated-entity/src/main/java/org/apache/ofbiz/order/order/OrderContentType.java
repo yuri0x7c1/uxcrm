@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderContentType implements Serializable {
 
-	public static final long serialVersionUID = 4526766446946940928L;
+	public static final long serialVersionUID = 3713645525560685568L;
 	public static final String NAME = "OrderContentType";
 	/**
 	 * Order Content Type Id

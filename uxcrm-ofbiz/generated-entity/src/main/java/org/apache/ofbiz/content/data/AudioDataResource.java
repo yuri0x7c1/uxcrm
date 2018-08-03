@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AudioDataResource implements Serializable {
 
-	public static final long serialVersionUID = 2506917509335476224L;
+	public static final long serialVersionUID = 5973153886528590848L;
 	public static final String NAME = "AudioDataResource";
 	/**
 	 * Data Resource Id

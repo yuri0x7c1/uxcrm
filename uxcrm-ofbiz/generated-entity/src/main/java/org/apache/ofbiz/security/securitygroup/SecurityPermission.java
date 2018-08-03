@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SecurityPermission implements Serializable {
 
-	public static final long serialVersionUID = 5548139436907890688L;
+	public static final long serialVersionUID = 1724982565364466688L;
 	public static final String NAME = "SecurityPermission";
 	/**
 	 * Permission Id

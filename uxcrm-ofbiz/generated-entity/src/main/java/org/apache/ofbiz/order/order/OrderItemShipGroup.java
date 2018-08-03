@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderItemShipGroup implements Serializable {
 
-	public static final long serialVersionUID = 966207920835686400L;
+	public static final long serialVersionUID = 1288297537890336768L;
 	public static final String NAME = "OrderItemShipGroup";
 	/**
 	 * Order Id
@@ -39,12 +39,6 @@ public class OrderItemShipGroup implements Serializable {
 	@Getter
 	@Setter
 	private String supplierPartyId;
-	/**
-	 * Supplier Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String supplierAgreementId;
 	/**
 	 * Vendor Party Id
 	 */
@@ -161,7 +155,7 @@ public class OrderItemShipGroup implements Serializable {
 	private Timestamp createdTxStamp;
 
 	public enum Fields {
-		orderId, shipGroupSeqId, shipmentMethodTypeId, supplierPartyId, supplierAgreementId, vendorPartyId, carrierPartyId, carrierRoleTypeId, facilityId, contactMechId, telecomContactMechId, trackingNumber, shippingInstructions, maySplit, giftMessage, isGift, shipAfterDate, shipByDate, estimatedShipDate, estimatedDeliveryDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
+		orderId, shipGroupSeqId, shipmentMethodTypeId, supplierPartyId, vendorPartyId, carrierPartyId, carrierRoleTypeId, facilityId, contactMechId, telecomContactMechId, trackingNumber, shippingInstructions, maySplit, giftMessage, isGift, shipAfterDate, shipByDate, estimatedShipDate, estimatedDeliveryDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
 	}
 
 	public OrderItemShipGroup(GenericValue value) {
@@ -170,8 +164,6 @@ public class OrderItemShipGroup implements Serializable {
 		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
 				.name());
 		supplierPartyId = (String) value.get(Fields.supplierPartyId.name());
-		supplierAgreementId = (String) value.get(Fields.supplierAgreementId
-				.name());
 		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
 		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
 		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());

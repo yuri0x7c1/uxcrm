@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DeliverableType implements Serializable {
 
-	public static final long serialVersionUID = 7375246245022328832L;
+	public static final long serialVersionUID = 4910251528024090624L;
 	public static final String NAME = "DeliverableType";
 	/**
 	 * Deliverable Type Id

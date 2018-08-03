@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ShipmentGatewayUps implements Serializable {
 
-	public static final long serialVersionUID = 8111138173417827328L;
+	public static final long serialVersionUID = 6072010251452616704L;
 	public static final String NAME = "ShipmentGatewayUps";
 	/**
 	 * Shipment Gateway Config Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EmplPositionTypeRate implements Serializable {
 
-	public static final long serialVersionUID = 1609274310816758784L;
+	public static final long serialVersionUID = 3910659595807503360L;
 	public static final String NAME = "EmplPositionTypeRate";
 	/**
 	 * Empl Position Type Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ResponsibilityType implements Serializable {
 
-	public static final long serialVersionUID = 195502123458737152L;
+	public static final long serialVersionUID = 8385210952534902784L;
 	public static final String NAME = "ResponsibilityType";
 	/**
 	 * Responsibility Type Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GoodIdentificationType implements Serializable {
 
-	public static final long serialVersionUID = 2154247392149822464L;
+	public static final long serialVersionUID = 5796293621210791936L;
 	public static final String NAME = "GoodIdentificationType";
 	/**
 	 * Good Identification Type Id

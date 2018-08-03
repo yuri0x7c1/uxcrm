@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class EntityKeyStore implements Serializable {
 
-	public static final long serialVersionUID = 7190601282013666304L;
+	public static final long serialVersionUID = 2047463482849951744L;
 	public static final String NAME = "EntityKeyStore";
 	/**
 	 * Key Name

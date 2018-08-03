@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MrpEventType implements Serializable {
 
-	public static final long serialVersionUID = 767228216900957184L;
+	public static final long serialVersionUID = 7979213385313267712L;
 	public static final String NAME = "MrpEventType";
 	/**
 	 * Mrp Event Type Id

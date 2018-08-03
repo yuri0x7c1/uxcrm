@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PostalAddressBoundary implements Serializable {
 
-	public static final long serialVersionUID = 7767893320422870016L;
+	public static final long serialVersionUID = 8027533811190270976L;
 	public static final String NAME = "PostalAddressBoundary";
 	/**
 	 * Contact Mech Id

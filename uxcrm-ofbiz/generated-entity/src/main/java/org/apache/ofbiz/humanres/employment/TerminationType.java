@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TerminationType implements Serializable {
 
-	public static final long serialVersionUID = 7999175693903985664L;
+	public static final long serialVersionUID = 679409959922107392L;
 	public static final String NAME = "TerminationType";
 	/**
 	 * Termination Type Id

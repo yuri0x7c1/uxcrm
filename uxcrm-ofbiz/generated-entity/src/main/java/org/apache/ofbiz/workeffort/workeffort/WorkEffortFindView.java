@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortFindView implements Serializable {
 
-	public static final long serialVersionUID = 4442191292017622016L;
+	public static final long serialVersionUID = 2032898164605824000L;
 	public static final String NAME = "WorkEffortFindView";
 	/**
 	 * Work Effort Parent Id

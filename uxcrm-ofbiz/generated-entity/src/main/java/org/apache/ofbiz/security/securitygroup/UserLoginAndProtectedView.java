@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserLoginAndProtectedView implements Serializable {
 
-	public static final long serialVersionUID = 7240174354497414144L;
+	public static final long serialVersionUID = 833114156391942144L;
 	public static final String NAME = "UserLoginAndProtectedView";
 	/**
 	 * User Login Id

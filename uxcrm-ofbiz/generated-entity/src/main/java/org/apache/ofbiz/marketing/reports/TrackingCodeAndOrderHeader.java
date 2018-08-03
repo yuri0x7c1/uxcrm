@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class TrackingCodeAndOrderHeader implements Serializable {
 
-	public static final long serialVersionUID = 5935547550429360128L;
+	public static final long serialVersionUID = 1324234901330689024L;
 	public static final String NAME = "TrackingCodeAndOrderHeader";
 	/**
 	 * Grand Total

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 5124619691728559104L;
+	public static final long serialVersionUID = 6561413976110641152L;
 	public static final String NAME = "PartyGeoPoint";
 	/**
 	 * Party Id

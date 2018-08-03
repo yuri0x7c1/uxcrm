@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PaymentGatewayResponse implements Serializable {
 
-	public static final long serialVersionUID = 2612830895306448896L;
+	public static final long serialVersionUID = 9083891671537494016L;
 	public static final String NAME = "PaymentGatewayResponse";
 	/**
 	 * Payment Gateway Response Id

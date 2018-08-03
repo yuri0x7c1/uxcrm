@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CostComponentCalc implements Serializable {
 
-	public static final long serialVersionUID = 8736261609941379072L;
+	public static final long serialVersionUID = 7205361080135743488L;
 	public static final String NAME = "CostComponentCalc";
 	/**
 	 * Cost Component Calc Id

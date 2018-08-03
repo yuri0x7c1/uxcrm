@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortPartyAssignView implements Serializable {
 
-	public static final long serialVersionUID = 7903561283980691456L;
+	public static final long serialVersionUID = 2108421322238883840L;
 	public static final String NAME = "WorkEffortPartyAssignView";
 	/**
 	 * Assignment Status Id

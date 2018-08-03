@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ShipmentManifestView implements Serializable {
 
-	public static final long serialVersionUID = 4815624430062092288L;
+	public static final long serialVersionUID = 7216608965142342656L;
 	public static final String NAME = "ShipmentManifestView";
 	/**
 	 * Shipment Id

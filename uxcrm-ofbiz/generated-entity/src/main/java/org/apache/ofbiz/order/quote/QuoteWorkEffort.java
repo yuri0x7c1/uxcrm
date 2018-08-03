@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class QuoteWorkEffort implements Serializable {
 
-	public static final long serialVersionUID = 6167450931218902016L;
+	public static final long serialVersionUID = 7903268875334742016L;
 	public static final String NAME = "QuoteWorkEffort";
 	/**
 	 * Quote Id

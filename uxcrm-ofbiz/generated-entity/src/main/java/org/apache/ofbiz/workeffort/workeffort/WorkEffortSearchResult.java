@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortSearchResult implements Serializable {
 
-	public static final long serialVersionUID = 2739094018358956032L;
+	public static final long serialVersionUID = 7036871871272497152L;
 	public static final String NAME = "WorkEffortSearchResult";
 	/**
 	 * Work Effort Search Result Id

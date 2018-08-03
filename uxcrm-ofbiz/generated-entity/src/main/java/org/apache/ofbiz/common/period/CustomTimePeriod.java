@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CustomTimePeriod implements Serializable {
 
-	public static final long serialVersionUID = 340871229531102208L;
+	public static final long serialVersionUID = 3721271901160901632L;
 	public static final String NAME = "CustomTimePeriod";
 	/**
 	 * Custom Time Period Id

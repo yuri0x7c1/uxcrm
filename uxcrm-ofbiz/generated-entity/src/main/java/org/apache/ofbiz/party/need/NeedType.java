@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class NeedType implements Serializable {
 
-	public static final long serialVersionUID = 699906775643580416L;
+	public static final long serialVersionUID = 2305557971952372736L;
 	public static final String NAME = "NeedType";
 	/**
 	 * Need Type Id

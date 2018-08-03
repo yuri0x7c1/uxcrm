@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortCustRequestItemView implements Serializable {
 
-	public static final long serialVersionUID = 7917971835877189632L;
+	public static final long serialVersionUID = 5570477578316265472L;
 	public static final String NAME = "WorkEffortCustRequestItemView";
 	/**
 	 * Status Item Description

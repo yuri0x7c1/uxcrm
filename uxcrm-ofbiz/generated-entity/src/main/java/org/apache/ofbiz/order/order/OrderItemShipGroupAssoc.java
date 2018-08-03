@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderItemShipGroupAssoc implements Serializable {
 
-	public static final long serialVersionUID = 1664551089603984384L;
+	public static final long serialVersionUID = 3904654837194280960L;
 	public static final String NAME = "OrderItemShipGroupAssoc";
 	/**
 	 * Order Id

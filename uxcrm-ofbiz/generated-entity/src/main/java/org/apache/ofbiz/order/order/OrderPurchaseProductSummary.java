@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderPurchaseProductSummary implements Serializable {
 
-	public static final long serialVersionUID = 5008434448351155200L;
+	public static final long serialVersionUID = 355326051507832832L;
 	public static final String NAME = "OrderPurchaseProductSummary";
 	/**
 	 * Web Site Id

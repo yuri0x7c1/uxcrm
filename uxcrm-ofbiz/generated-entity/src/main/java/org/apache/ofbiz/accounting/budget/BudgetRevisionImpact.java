@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BudgetRevisionImpact implements Serializable {
 
-	public static final long serialVersionUID = 7588359037200963584L;
+	public static final long serialVersionUID = 938614802666126336L;
 	public static final String NAME = "BudgetRevisionImpact";
 	/**
 	 * Budget Id

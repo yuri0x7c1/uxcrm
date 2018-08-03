@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class FixedAssetStdCost implements Serializable {
 
-	public static final long serialVersionUID = 3704534142605616128L;
+	public static final long serialVersionUID = 5934552861855409152L;
 	public static final String NAME = "FixedAssetStdCost";
 	/**
 	 * Fixed Asset Id

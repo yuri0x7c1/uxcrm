@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class UomAndType implements Serializable {
 
-	public static final long serialVersionUID = 1864080748531672064L;
+	public static final long serialVersionUID = 6791274656298352640L;
 	public static final String NAME = "UomAndType";
 	/**
 	 * Description
@@ -39,12 +39,6 @@ public class UomAndType implements Serializable {
 	@Setter
 	private String uomTypeId;
 	/**
-	 * Numeric Code
-	 */
-	@Getter
-	@Setter
-	private Long numericCode;
-	/**
 	 * Type Parent Type Id
 	 */
 	@Getter
@@ -70,7 +64,7 @@ public class UomAndType implements Serializable {
 	private String typeUomTypeId;
 
 	public enum Fields {
-		description, uomId, abbreviation, uomTypeId, numericCode, typeParentTypeId, typeHasTable, typeDescription, typeUomTypeId
+		description, uomId, abbreviation, uomTypeId, typeParentTypeId, typeHasTable, typeDescription, typeUomTypeId
 	}
 
 	public UomAndType(GenericValue value) {
@@ -78,7 +72,6 @@ public class UomAndType implements Serializable {
 		uomId = (String) value.get(Fields.uomId.name());
 		abbreviation = (String) value.get(Fields.abbreviation.name());
 		uomTypeId = (String) value.get(Fields.uomTypeId.name());
-		numericCode = (Long) value.get(Fields.numericCode.name());
 		typeParentTypeId = (String) value.get(Fields.typeParentTypeId.name());
 		typeHasTable = (String) value.get(Fields.typeHasTable.name());
 		typeDescription = (String) value.get(Fields.typeDescription.name());

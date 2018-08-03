@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ZipSalesTaxLookup implements Serializable {
 
-	public static final long serialVersionUID = 6063598039093381120L;
+	public static final long serialVersionUID = 2598237077574574080L;
 	public static final String NAME = "ZipSalesTaxLookup";
 	/**
 	 * Zip Code

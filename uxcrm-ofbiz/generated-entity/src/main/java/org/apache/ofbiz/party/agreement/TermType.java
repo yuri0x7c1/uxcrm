@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TermType implements Serializable {
 
-	public static final long serialVersionUID = 898047128271074304L;
+	public static final long serialVersionUID = 7301445019661111296L;
 	public static final String NAME = "TermType";
 	/**
 	 * Term Type Id

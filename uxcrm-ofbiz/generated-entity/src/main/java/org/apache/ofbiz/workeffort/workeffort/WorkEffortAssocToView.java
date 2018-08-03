@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortAssocToView implements Serializable {
 
-	public static final long serialVersionUID = 3471482272363684864L;
+	public static final long serialVersionUID = 7018849447390124032L;
 	public static final String NAME = "WorkEffortAssocToView";
 	/**
 	 * Work Effort Id To

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PerfRatingType implements Serializable {
 
-	public static final long serialVersionUID = 6575403298042270720L;
+	public static final long serialVersionUID = 3208988492117173248L;
 	public static final String NAME = "PerfRatingType";
 	/**
 	 * Perf Rating Type Id

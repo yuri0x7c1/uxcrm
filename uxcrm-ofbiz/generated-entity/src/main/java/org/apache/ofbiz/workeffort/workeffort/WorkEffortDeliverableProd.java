@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortDeliverableProd implements Serializable {
 
-	public static final long serialVersionUID = 8236752109602126848L;
+	public static final long serialVersionUID = 2187914956649879552L;
 	public static final String NAME = "WorkEffortDeliverableProd";
 	/**
 	 * Work Effort Id

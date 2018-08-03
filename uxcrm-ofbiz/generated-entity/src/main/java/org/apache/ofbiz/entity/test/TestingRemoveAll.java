@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TestingRemoveAll implements Serializable {
 
-	public static final long serialVersionUID = 2220132272637774848L;
+	public static final long serialVersionUID = 7860821630732058624L;
 	public static final String NAME = "TestingRemoveAll";
 	/**
 	 * Testing Remove All Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BillingAccountRoleAndAddress implements Serializable {
 
-	public static final long serialVersionUID = 3170749326487103488L;
+	public static final long serialVersionUID = 3722508990510989312L;
 	public static final String NAME = "BillingAccountRoleAndAddress";
 	/**
 	 * Pcm From Date

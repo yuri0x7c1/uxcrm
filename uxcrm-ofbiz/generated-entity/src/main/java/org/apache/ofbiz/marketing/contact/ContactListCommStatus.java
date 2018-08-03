@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContactListCommStatus implements Serializable {
 
-	public static final long serialVersionUID = 8654600230848611328L;
+	public static final long serialVersionUID = 1473707572817053696L;
 	public static final String NAME = "ContactListCommStatus";
 	/**
 	 * Contact List Id

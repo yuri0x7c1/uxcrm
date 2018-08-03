@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class QuoteAdjustment implements Serializable {
 
-	public static final long serialVersionUID = 3134095213118278656L;
+	public static final long serialVersionUID = 1553569182335850496L;
 	public static final String NAME = "QuoteAdjustment";
 	/**
 	 * Quote Adjustment Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ValidResponsibility implements Serializable {
 
-	public static final long serialVersionUID = 1292675811978679296L;
+	public static final long serialVersionUID = 2432517584461872128L;
 	public static final String NAME = "ValidResponsibility";
 	/**
 	 * Empl Position Type Id

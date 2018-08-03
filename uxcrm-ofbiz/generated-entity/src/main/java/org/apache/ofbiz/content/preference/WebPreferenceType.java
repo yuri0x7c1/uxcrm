@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebPreferenceType implements Serializable {
 
-	public static final long serialVersionUID = 4204350333656882176L;
+	public static final long serialVersionUID = 6727633252315495424L;
 	public static final String NAME = "WebPreferenceType";
 	/**
 	 * Web Preference Type Id

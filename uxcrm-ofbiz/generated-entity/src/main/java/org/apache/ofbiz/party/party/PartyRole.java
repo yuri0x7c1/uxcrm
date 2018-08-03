@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyRole implements Serializable {
 
-	public static final long serialVersionUID = 6027876184248856576L;
+	public static final long serialVersionUID = 3663022829377805312L;
 	public static final String NAME = "PartyRole";
 	/**
 	 * Party Id

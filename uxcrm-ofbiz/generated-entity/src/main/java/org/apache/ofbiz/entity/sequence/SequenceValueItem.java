@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SequenceValueItem implements Serializable {
 
-	public static final long serialVersionUID = 1166309544683351040L;
+	public static final long serialVersionUID = 8865068675765605376L;
 	public static final String NAME = "SequenceValueItem";
 	/**
 	 * Seq Name

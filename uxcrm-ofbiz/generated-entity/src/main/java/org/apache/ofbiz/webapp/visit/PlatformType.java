@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PlatformType implements Serializable {
 
-	public static final long serialVersionUID = 3239580425774693376L;
+	public static final long serialVersionUID = 7809241611351837696L;
 	public static final String NAME = "PlatformType";
 	/**
 	 * Platform Type Id

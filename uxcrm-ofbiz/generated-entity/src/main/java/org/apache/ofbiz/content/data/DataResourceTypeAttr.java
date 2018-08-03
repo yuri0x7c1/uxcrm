@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DataResourceTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 5926558186062534656L;
+	public static final long serialVersionUID = 754988213851724800L;
 	public static final String NAME = "DataResourceTypeAttr";
 	/**
 	 * Data Resource Type Id

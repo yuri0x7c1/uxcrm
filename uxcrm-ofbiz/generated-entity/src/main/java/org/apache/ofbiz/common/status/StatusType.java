@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class StatusType implements Serializable {
 
-	public static final long serialVersionUID = 6077065492056028160L;
+	public static final long serialVersionUID = 9086926616372258816L;
 	public static final String NAME = "StatusType";
 	/**
 	 * Status Type Id

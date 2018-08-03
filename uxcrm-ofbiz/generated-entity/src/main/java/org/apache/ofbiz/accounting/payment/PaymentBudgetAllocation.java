@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PaymentBudgetAllocation implements Serializable {
 
-	public static final long serialVersionUID = 6248209429761608704L;
+	public static final long serialVersionUID = 5310151103240050688L;
 	public static final String NAME = "PaymentBudgetAllocation";
 	/**
 	 * Budget Id

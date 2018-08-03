@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebAnalyticsType implements Serializable {
 
-	public static final long serialVersionUID = 8041541331943239680L;
+	public static final long serialVersionUID = 3385990431153906688L;
 	public static final String NAME = "WebAnalyticsType";
 	/**
 	 * Web Analytics Type Id

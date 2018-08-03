@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SurveyTrigger implements Serializable {
 
-	public static final long serialVersionUID = 9167446614257592320L;
+	public static final long serialVersionUID = 1371299735809220608L;
 	public static final String NAME = "SurveyTrigger";
 	/**
 	 * Survey Id

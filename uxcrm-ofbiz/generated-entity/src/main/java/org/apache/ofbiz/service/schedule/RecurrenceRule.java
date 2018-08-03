@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RecurrenceRule implements Serializable {
 
-	public static final long serialVersionUID = 5880431338400381952L;
+	public static final long serialVersionUID = 271843258802840576L;
 	public static final String NAME = "RecurrenceRule";
 	/**
 	 * Recurrence Rule Id

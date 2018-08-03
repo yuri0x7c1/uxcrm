@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TelecomNumber implements Serializable {
 
-	public static final long serialVersionUID = 6989731986619582464L;
+	public static final long serialVersionUID = 8135442442804790272L;
 	public static final String NAME = "TelecomNumber";
 	/**
 	 * Contact Mech Id

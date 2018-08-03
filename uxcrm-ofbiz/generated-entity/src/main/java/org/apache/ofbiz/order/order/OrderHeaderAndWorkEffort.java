@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderHeaderAndWorkEffort implements Serializable {
 
-	public static final long serialVersionUID = 1808451034970819584L;
+	public static final long serialVersionUID = 8928900086892593152L;
 	public static final String NAME = "OrderHeaderAndWorkEffort";
 	/**
 	 * Work Effort Id
@@ -371,12 +371,6 @@ public class OrderHeaderAndWorkEffort implements Serializable {
 	@Setter
 	private String visitId;
 	/**
-	 * Agreement Id
-	 */
-	@Getter
-	@Setter
-	private String agreementId;
-	/**
 	 * Product Store Id
 	 */
 	@Getter
@@ -498,7 +492,7 @@ public class OrderHeaderAndWorkEffort implements Serializable {
 	private String internalCode;
 
 	public enum Fields {
-		workEffortId, recurrenceInfoId, workEffortTypeId, reservPersons, revisionNumber, tempExprId, showAsEnumId, infoUrl, universalId, locationDesc, createdByUserLogin, actualMilliSeconds, quantityToProduce, workEffortPurposeTypeId, serviceLoaderName, accommodationSpotId, estimatedStartDate, sendNotificationEmail, noteId, quantityRejected, priority, currentStatusId, runtimeDataId, estimatedMilliSeconds, specialTerms, timeTransparency, actualCompletionDate, fixedAssetId, reserv2ndPPPerc, totalMoneyAllowed, estimateCalcMethod, workEffortParentId, description, moneyUomId, reservNthPPPerc, workEffortName, lastModifiedByUserLogin, accommodationMapId, actualStartDate, scopeEnumId, quantityProduced, facilityId, estimatedSetupMillis, lastModifiedDate, sourceReferenceId, lastStatusUpdate, percentComplete, totalMilliSecondsAllowed, createdDate, actualSetupMillis, estimatedCompletionDate, invoicePerShipment, salesChannelEnumId, orderId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, agreementId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
+		workEffortId, recurrenceInfoId, workEffortTypeId, reservPersons, revisionNumber, tempExprId, showAsEnumId, infoUrl, universalId, locationDesc, createdByUserLogin, actualMilliSeconds, quantityToProduce, workEffortPurposeTypeId, serviceLoaderName, accommodationSpotId, estimatedStartDate, sendNotificationEmail, noteId, quantityRejected, priority, currentStatusId, runtimeDataId, estimatedMilliSeconds, specialTerms, timeTransparency, actualCompletionDate, fixedAssetId, reserv2ndPPPerc, totalMoneyAllowed, estimateCalcMethod, workEffortParentId, description, moneyUomId, reservNthPPPerc, workEffortName, lastModifiedByUserLogin, accommodationMapId, actualStartDate, scopeEnumId, quantityProduced, facilityId, estimatedSetupMillis, lastModifiedDate, sourceReferenceId, lastStatusUpdate, percentComplete, totalMilliSecondsAllowed, createdDate, actualSetupMillis, estimatedCompletionDate, invoicePerShipment, salesChannelEnumId, orderId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
 	}
 
 	public OrderHeaderAndWorkEffort(GenericValue value) {
@@ -584,7 +578,6 @@ public class OrderHeaderAndWorkEffort implements Serializable {
 		terminalId = (String) value.get(Fields.terminalId.name());
 		isViewed = (String) value.get(Fields.isViewed.name());
 		visitId = (String) value.get(Fields.visitId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
 		productStoreId = (String) value.get(Fields.productStoreId.name());
 		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
 				.name());

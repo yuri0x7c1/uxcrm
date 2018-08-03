@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductStoreEmailSetting implements Serializable {
 
-	public static final long serialVersionUID = 6377764793514115072L;
+	public static final long serialVersionUID = 3063077391135630336L;
 	public static final String NAME = "ProductStoreEmailSetting";
 	/**
 	 * Product Store Id

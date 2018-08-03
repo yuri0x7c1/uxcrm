@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PerformanceNote implements Serializable {
 
-	public static final long serialVersionUID = 940524281174238208L;
+	public static final long serialVersionUID = 7463518991702540288L;
 	public static final String NAME = "PerformanceNote";
 	/**
 	 * Party Id

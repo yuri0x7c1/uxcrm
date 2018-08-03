@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class OrderSummaryEntry implements Serializable {
 
-	public static final long serialVersionUID = 8784517320790195200L;
+	public static final long serialVersionUID = 3668227677503007744L;
 	public static final String NAME = "OrderSummaryEntry";
 	/**
 	 * Entry Date

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BenefitTypeAndParty implements Serializable {
 
-	public static final long serialVersionUID = 639852821989603328L;
+	public static final long serialVersionUID = 6617947518425081856L;
 	public static final String NAME = "BenefitTypeAndParty";
 	/**
 	 * Parent Type Id

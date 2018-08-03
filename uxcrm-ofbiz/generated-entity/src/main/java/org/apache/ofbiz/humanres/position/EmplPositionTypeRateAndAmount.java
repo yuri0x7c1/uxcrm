@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class EmplPositionTypeRateAndAmount implements Serializable {
 
-	public static final long serialVersionUID = 57953345511838720L;
+	public static final long serialVersionUID = 9138058610481854464L;
 	public static final String NAME = "EmplPositionTypeRateAndAmount";
 	/**
 	 * Rate Amount

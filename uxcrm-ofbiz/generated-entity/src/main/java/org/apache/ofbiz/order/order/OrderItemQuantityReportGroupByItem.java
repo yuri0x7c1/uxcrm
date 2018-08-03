@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderItemQuantityReportGroupByItem implements Serializable {
 
-	public static final long serialVersionUID = 5276851053578416128L;
+	public static final long serialVersionUID = 6065922110949366784L;
 	public static final String NAME = "OrderItemQuantityReportGroupByItem";
 	/**
 	 * Product Store Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContainerType implements Serializable {
 
-	public static final long serialVersionUID = 6324115350742237184L;
+	public static final long serialVersionUID = 5510973519217650688L;
 	public static final String NAME = "ContainerType";
 	/**
 	 * Container Type Id

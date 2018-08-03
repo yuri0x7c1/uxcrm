@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyIdentificationType implements Serializable {
 
-	public static final long serialVersionUID = 8079586071643551744L;
+	public static final long serialVersionUID = 4834338189865262080L;
 	public static final String NAME = "PartyIdentificationType";
 	/**
 	 * Party Identification Type Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TrackingCodeType implements Serializable {
 
-	public static final long serialVersionUID = 7861148558762526720L;
+	public static final long serialVersionUID = 4288612183462263808L;
 	public static final String NAME = "TrackingCodeType";
 	/**
 	 * Tracking Code Type Id

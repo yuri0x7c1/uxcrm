@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TaxAuthorityGlAccountBalance implements Serializable {
 
-	public static final long serialVersionUID = 3375934305959989248L;
+	public static final long serialVersionUID = 2784961716933049344L;
 	public static final String NAME = "TaxAuthorityGlAccountBalance";
 	/**
 	 * Base Currency Uom Id

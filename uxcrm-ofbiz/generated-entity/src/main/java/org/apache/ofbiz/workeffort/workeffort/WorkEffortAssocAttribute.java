@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortAssocAttribute implements Serializable {
 
-	public static final long serialVersionUID = 1048764927200553984L;
+	public static final long serialVersionUID = 6235463718873926656L;
 	public static final String NAME = "WorkEffortAssocAttribute";
 	/**
 	 * Work Effort Id From

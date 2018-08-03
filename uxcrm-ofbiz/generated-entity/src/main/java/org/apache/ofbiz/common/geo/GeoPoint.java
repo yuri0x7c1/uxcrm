@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 4214660600665792512L;
+	public static final long serialVersionUID = 19674184926043136L;
 	public static final String NAME = "GeoPoint";
 	/**
 	 * Geo Point Id

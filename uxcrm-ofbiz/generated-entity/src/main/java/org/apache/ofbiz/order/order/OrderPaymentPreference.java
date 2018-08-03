@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class OrderPaymentPreference implements Serializable {
 
-	public static final long serialVersionUID = 2348409738161008640L;
+	public static final long serialVersionUID = 8840283093692369920L;
 	public static final String NAME = "OrderPaymentPreference";
 	/**
 	 * Order Payment Preference Id

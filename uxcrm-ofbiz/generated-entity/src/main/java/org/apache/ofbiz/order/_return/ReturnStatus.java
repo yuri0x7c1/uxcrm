@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ReturnStatus implements Serializable {
 
-	public static final long serialVersionUID = 6542719003878341632L;
+	public static final long serialVersionUID = 6645565929061314560L;
 	public static final String NAME = "ReturnStatus";
 	/**
 	 * Return Status Id

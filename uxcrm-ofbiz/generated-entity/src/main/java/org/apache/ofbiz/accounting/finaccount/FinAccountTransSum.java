@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class FinAccountTransSum implements Serializable {
 
-	public static final long serialVersionUID = 2875307586924090368L;
+	public static final long serialVersionUID = 4986328799406635008L;
 	public static final String NAME = "FinAccountTransSum";
 	/**
 	 * Fin Account Id

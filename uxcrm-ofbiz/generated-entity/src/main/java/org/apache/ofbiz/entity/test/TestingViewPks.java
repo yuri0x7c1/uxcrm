@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class TestingViewPks implements Serializable {
 
-	public static final long serialVersionUID = 5736423668600142848L;
+	public static final long serialVersionUID = 1881889410175185920L;
 	public static final String NAME = "TestingViewPks";
 	/**
 	 * Testing Type Id

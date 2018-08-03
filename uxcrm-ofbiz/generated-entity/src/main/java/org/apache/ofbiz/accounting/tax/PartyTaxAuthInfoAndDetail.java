@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PartyTaxAuthInfoAndDetail implements Serializable {
 
-	public static final long serialVersionUID = 794386127627736064L;
+	public static final long serialVersionUID = 7488384382426506240L;
 	public static final String NAME = "PartyTaxAuthInfoAndDetail";
 	/**
 	 * Tax Auth Party Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ItemIssuanceQuantitySum implements Serializable {
 
-	public static final long serialVersionUID = 4885383241452876800L;
+	public static final long serialVersionUID = 7877213690105546752L;
 	public static final String NAME = "ItemIssuanceQuantitySum";
 	/**
 	 * Issued Quantity Sum

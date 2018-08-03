@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PerfReviewItemType implements Serializable {
 
-	public static final long serialVersionUID = 1476633047101821952L;
+	public static final long serialVersionUID = 5626873178947954688L;
 	public static final String NAME = "PerfReviewItemType";
 	/**
 	 * Perf Review Item Type Id

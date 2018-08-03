@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class MaxContentApprovalView implements Serializable {
 
-	public static final long serialVersionUID = 3227643578835100672L;
+	public static final long serialVersionUID = 3227035701926796288L;
 	public static final String NAME = "MaxContentApprovalView";
 	/**
 	 * Content Type Id

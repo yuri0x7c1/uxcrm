@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DataTemplateType implements Serializable {
 
-	public static final long serialVersionUID = 3229433459342773248L;
+	public static final long serialVersionUID = 7449289422158101504L;
 	public static final String NAME = "DataTemplateType";
 	/**
 	 * Data Template Type Id

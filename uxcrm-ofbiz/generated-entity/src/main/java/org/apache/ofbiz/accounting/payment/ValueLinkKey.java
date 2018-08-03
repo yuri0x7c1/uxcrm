@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ValueLinkKey implements Serializable {
 
-	public static final long serialVersionUID = 6726080512023704576L;
+	public static final long serialVersionUID = 454678911511483392L;
 	public static final String NAME = "ValueLinkKey";
 	/**
 	 * Merchant Id

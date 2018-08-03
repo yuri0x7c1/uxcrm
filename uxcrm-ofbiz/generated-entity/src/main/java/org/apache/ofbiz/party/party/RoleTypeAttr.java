@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RoleTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 6827087184812691456L;
+	public static final long serialVersionUID = 5078661384127650816L;
 	public static final String NAME = "RoleTypeAttr";
 	/**
 	 * Role Type Id

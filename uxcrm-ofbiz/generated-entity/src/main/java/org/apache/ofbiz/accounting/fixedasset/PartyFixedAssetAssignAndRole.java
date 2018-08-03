@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyFixedAssetAssignAndRole implements Serializable {
 
-	public static final long serialVersionUID = 8343268786676862976L;
+	public static final long serialVersionUID = 3016657033930155008L;
 	public static final String NAME = "PartyFixedAssetAssignAndRole";
 	/**
 	 * From Date

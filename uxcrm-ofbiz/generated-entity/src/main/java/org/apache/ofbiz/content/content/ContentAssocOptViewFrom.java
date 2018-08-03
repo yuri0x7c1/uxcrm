@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentAssocOptViewFrom implements Serializable {
 
-	public static final long serialVersionUID = 7600568772520518656L;
+	public static final long serialVersionUID = 3428502871497493504L;
 	public static final String NAME = "ContentAssocOptViewFrom";
 	/**
 	 * Content Id Start

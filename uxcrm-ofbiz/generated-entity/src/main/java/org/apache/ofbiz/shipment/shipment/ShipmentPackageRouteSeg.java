@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ShipmentPackageRouteSeg implements Serializable {
 
-	public static final long serialVersionUID = 6832870442866608128L;
+	public static final long serialVersionUID = 1229434744583146496L;
 	public static final String NAME = "ShipmentPackageRouteSeg";
 	/**
 	 * Shipment Id

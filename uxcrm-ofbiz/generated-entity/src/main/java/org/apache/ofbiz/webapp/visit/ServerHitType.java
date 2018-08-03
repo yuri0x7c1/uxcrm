@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ServerHitType implements Serializable {
 
-	public static final long serialVersionUID = 6423808167107135488L;
+	public static final long serialVersionUID = 4090492286918780928L;
 	public static final String NAME = "ServerHitType";
 	/**
 	 * Hit Type Id

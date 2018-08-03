@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SegmentGroupViewRelatedParties implements Serializable {
 
-	public static final long serialVersionUID = 4599369474211658752L;
+	public static final long serialVersionUID = 4173218436284144640L;
 	public static final String NAME = "SegmentGroupViewRelatedParties";
 	/**
 	 * Sgr Role Type Id

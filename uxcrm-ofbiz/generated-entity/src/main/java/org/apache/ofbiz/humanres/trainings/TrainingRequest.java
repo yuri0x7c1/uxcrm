@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TrainingRequest implements Serializable {
 
-	public static final long serialVersionUID = 633698474553997312L;
+	public static final long serialVersionUID = 1318605029240870912L;
 	public static final String NAME = "TrainingRequest";
 	/**
 	 * Training Request Id

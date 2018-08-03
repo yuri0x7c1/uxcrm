@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserLogin implements Serializable {
 
-	public static final long serialVersionUID = 4904187033698586624L;
+	public static final long serialVersionUID = 1398522765771893760L;
 	public static final String NAME = "UserLogin";
 	/**
 	 * User Login Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GeoType implements Serializable {
 
-	public static final long serialVersionUID = 2662592074174655488L;
+	public static final long serialVersionUID = 8534432975136080896L;
 	public static final String NAME = "GeoType";
 	/**
 	 * Geo Type Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DataResourceMetaData implements Serializable {
 
-	public static final long serialVersionUID = 6685188977180515328L;
+	public static final long serialVersionUID = 8855934550760339456L;
 	public static final String NAME = "DataResourceMetaData";
 	/**
 	 * Data Resource Id

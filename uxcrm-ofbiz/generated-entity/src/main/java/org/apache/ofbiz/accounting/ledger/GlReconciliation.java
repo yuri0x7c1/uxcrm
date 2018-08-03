@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GlReconciliation implements Serializable {
 
-	public static final long serialVersionUID = 6724186459734029312L;
+	public static final long serialVersionUID = 1724827540701358080L;
 	public static final String NAME = "GlReconciliation";
 	/**
 	 * Gl Reconciliation Id

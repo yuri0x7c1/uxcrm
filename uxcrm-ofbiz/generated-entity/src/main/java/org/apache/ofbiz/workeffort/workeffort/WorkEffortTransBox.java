@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortTransBox implements Serializable {
 
-	public static final long serialVersionUID = 8689458371438289920L;
+	public static final long serialVersionUID = 704349004646084608L;
 	public static final String NAME = "WorkEffortTransBox";
 	/**
 	 * Process Work Effort Id

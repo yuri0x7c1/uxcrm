@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class SupplierProductAndProduct implements Serializable {
 
-	public static final long serialVersionUID = 7590420691695472640L;
+	public static final long serialVersionUID = 8698684446091736064L;
 	public static final String NAME = "SupplierProductAndProduct";
 	/**
 	 * Supplier Product Name
@@ -244,6 +244,12 @@ public class SupplierProductAndProduct implements Serializable {
 	@Getter
 	@Setter
 	private String createdByUserLogin;
+	/**
+	 * Manufacturer Party Id
+	 */
+	@Getter
+	@Setter
+	private String manufacturerPartyId;
 	/**
 	 * Brand Name
 	 */
@@ -540,7 +546,7 @@ public class SupplierProductAndProduct implements Serializable {
 	private String requirementMethodEnumId;
 
 	public enum Fields {
-		supplierProductName, comments, productId, canDropShip, minimumOrderQuantity, supplierRatingTypeId, agreementItemSeqId, quantityUomId, supplierProductId, supplierPrefOrderId, unitsIncluded, orderQtyIncrements, currencyUomId, availableFromDate, shippingPrice, agreementId, availableThruDate, partyId, standardLeadTimeDays, lastPrice, originGeoId, detailScreen, requireInventory, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId
+		supplierProductName, comments, productId, canDropShip, minimumOrderQuantity, supplierRatingTypeId, agreementItemSeqId, quantityUomId, supplierProductId, supplierPrefOrderId, unitsIncluded, orderQtyIncrements, currencyUomId, availableFromDate, shippingPrice, agreementId, availableThruDate, partyId, standardLeadTimeDays, lastPrice, originGeoId, detailScreen, requireInventory, mediumImageUrl, productName, introductionDate, shippingHeight, originalImageUrl, inShippingBox, detailImageUrl, supportDiscontinuationDate, productWidth, includeInPromotions, configId, billOfMaterialLevel, lotIdFilledIn, productRating, createdByUserLogin, manufacturerPartyId, brandName, requireAmount, smallImageUrl, taxable, primaryProductCategoryId, salesDiscontinuationDate, salesDiscWhenNotAvail, returnable, weightUomId, isVirtual, priceDetailText, reserv2ndPPPerc, widthUomId, longDescription, diameterUomId, autoCreateKeywords, amountUomTypeId, productDiameter, ratingTypeEnum, description, chargeShipping, reservNthPPPerc, quantityIncluded, heightUomId, internalName, lastModifiedByUserLogin, virtualVariantMethodEnum, shippingWeight, shippingWidth, shippingDepth, reservMaxPersons, fixedAmount, inventoryItemTypeId, piecesIncluded, productDepth, facilityId, releaseDate, productHeight, lastModifiedDate, defaultShipmentBoxTypeId, orderDecimalQuantity, inventoryMessage, productWeight, depthUomId, productTypeId, createdDate, isVariant, largeImageUrl, requirementMethodEnumId
 	}
 
 	public SupplierProductAndProduct(GenericValue value) {
@@ -595,6 +601,8 @@ public class SupplierProductAndProduct implements Serializable {
 		lotIdFilledIn = (String) value.get(Fields.lotIdFilledIn.name());
 		productRating = (BigDecimal) value.get(Fields.productRating.name());
 		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
+				.name());
+		manufacturerPartyId = (String) value.get(Fields.manufacturerPartyId
 				.name());
 		brandName = (String) value.get(Fields.brandName.name());
 		requireAmount = (String) value.get(Fields.requireAmount.name());

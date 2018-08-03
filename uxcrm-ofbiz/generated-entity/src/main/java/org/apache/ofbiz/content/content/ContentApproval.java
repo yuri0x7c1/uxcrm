@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentApproval implements Serializable {
 
-	public static final long serialVersionUID = 1126267462337816576L;
+	public static final long serialVersionUID = 8199584273413928960L;
 	public static final String NAME = "ContentApproval";
 	/**
 	 * Content Approval Id

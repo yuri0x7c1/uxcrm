@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortAndPartyAssignAndType implements Serializable {
 
-	public static final long serialVersionUID = 2647325470562894848L;
+	public static final long serialVersionUID = 5734076356675522560L;
 	public static final String NAME = "WorkEffortAndPartyAssignAndType";
 	/**
 	 * Party Assign Facility Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class PartyContactDetailByPurpose implements Serializable {
 
-	public static final long serialVersionUID = 129304824609922048L;
+	public static final long serialVersionUID = 102767996776017920L;
 	public static final String NAME = "PartyContactDetailByPurpose";
 	/**
 	 * Contact Mech Purpose Type Id

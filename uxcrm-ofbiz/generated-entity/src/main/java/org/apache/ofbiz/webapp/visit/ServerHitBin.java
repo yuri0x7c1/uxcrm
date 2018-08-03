@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ServerHitBin implements Serializable {
 
-	public static final long serialVersionUID = 1016157346544049152L;
+	public static final long serialVersionUID = 994809362269258752L;
 	public static final String NAME = "ServerHitBin";
 	/**
 	 * Server Hit Bin Id
@@ -82,6 +82,30 @@ public class ServerHitBin implements Serializable {
 	@Setter
 	private Long maxTimeMillis;
 	/**
+	 * Last Updated Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedStamp;
+	/**
+	 * Last Updated Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedTxStamp;
+	/**
+	 * Created Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdStamp;
+	/**
+	 * Created Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdTxStamp;
+	/**
 	 * Internal Content Id
 	 */
 	@Getter
@@ -89,7 +113,7 @@ public class ServerHitBin implements Serializable {
 	private String internalContentId;
 
 	public enum Fields {
-		serverHitBinId, contentId, hitTypeId, serverIpAddress, serverHostName, binStartDateTime, binEndDateTime, numberHits, totalTimeMillis, minTimeMillis, maxTimeMillis, internalContentId
+		serverHitBinId, contentId, hitTypeId, serverIpAddress, serverHostName, binStartDateTime, binEndDateTime, numberHits, totalTimeMillis, minTimeMillis, maxTimeMillis, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, internalContentId
 	}
 
 	public ServerHitBin(GenericValue value) {
@@ -105,6 +129,12 @@ public class ServerHitBin implements Serializable {
 		totalTimeMillis = (Long) value.get(Fields.totalTimeMillis.name());
 		minTimeMillis = (Long) value.get(Fields.minTimeMillis.name());
 		maxTimeMillis = (Long) value.get(Fields.maxTimeMillis.name());
+		lastUpdatedStamp = (Timestamp) value
+				.get(Fields.lastUpdatedStamp.name());
+		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
+				.name());
+		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
+		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
 		internalContentId = (String) value.get(Fields.internalContentId.name());
 	}
 

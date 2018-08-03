@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderTermAttribute implements Serializable {
 
-	public static final long serialVersionUID = 649096570435585024L;
+	public static final long serialVersionUID = 938132605607980032L;
 	public static final String NAME = "OrderTermAttribute";
 	/**
 	 * Term Type Id

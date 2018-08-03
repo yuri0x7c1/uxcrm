@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BudgetItemTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 5265980105856747520L;
+	public static final long serialVersionUID = 4610271950932762624L;
 	public static final String NAME = "BudgetItemTypeAttr";
 	/**
 	 * Budget Item Type Id

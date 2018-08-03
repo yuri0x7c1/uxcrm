@@ -54,7 +54,7 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 		if (parent == null) {
 			List<WebSiteContent> webSiteContents = webSiteService.getWebSiteContents(webSite, 0, 1000, null);
 			for (WebSiteContent webSiteContent : webSiteContents) {
-				Content content = contentService.findOne(webSiteContent.getContentId());
+				Content content = contentService.findOne(webSiteContent.getContentId()).get();
 
 				nodes.add(WebSiteTreeNode.builder()
 					.contentId(content.getContentId())

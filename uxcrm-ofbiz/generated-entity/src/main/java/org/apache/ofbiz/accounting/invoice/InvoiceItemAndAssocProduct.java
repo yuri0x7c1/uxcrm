@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InvoiceItemAndAssocProduct implements Serializable {
 
-	public static final long serialVersionUID = 3783190971128491008L;
+	public static final long serialVersionUID = 1443452599199244288L;
 	public static final String NAME = "InvoiceItemAndAssocProduct";
 	/**
 	 * Term Amount

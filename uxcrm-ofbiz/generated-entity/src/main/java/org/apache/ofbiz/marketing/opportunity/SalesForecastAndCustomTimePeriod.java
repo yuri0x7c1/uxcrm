@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class SalesForecastAndCustomTimePeriod implements Serializable {
 
-	public static final long serialVersionUID = 1662940916093693952L;
+	public static final long serialVersionUID = 5625702095785735168L;
 	public static final String NAME = "SalesForecastAndCustomTimePeriod";
 	/**
 	 * Forecast Amount

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductPriceRule implements Serializable {
 
-	public static final long serialVersionUID = 4550322281404333056L;
+	public static final long serialVersionUID = 4285347657164889088L;
 	public static final String NAME = "ProductPriceRule";
 	/**
 	 * Product Price Rule Id

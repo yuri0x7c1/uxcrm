@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebPage implements Serializable {
 
-	public static final long serialVersionUID = 4809561763869698048L;
+	public static final long serialVersionUID = 7967115417887223808L;
 	public static final String NAME = "WebPage";
 	/**
 	 * Web Page Id

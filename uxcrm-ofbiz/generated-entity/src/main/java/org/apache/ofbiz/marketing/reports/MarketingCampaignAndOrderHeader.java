@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class MarketingCampaignAndOrderHeader implements Serializable {
 
-	public static final long serialVersionUID = 4241994400297073664L;
+	public static final long serialVersionUID = 7466834754528886784L;
 	public static final String NAME = "MarketingCampaignAndOrderHeader";
 	/**
 	 * Grand Total

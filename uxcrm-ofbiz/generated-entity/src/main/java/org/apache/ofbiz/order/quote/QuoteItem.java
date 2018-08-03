@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class QuoteItem implements Serializable {
 
-	public static final long serialVersionUID = 4869766910036794368L;
+	public static final long serialVersionUID = 5715329271938979840L;
 	public static final String NAME = "QuoteItem";
 	/**
 	 * Quote Id

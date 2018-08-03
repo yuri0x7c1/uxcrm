@@ -1,34 +1,32 @@
 package org.apache.ofbiz.webapp.website.service.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ofbiz.common.ExecuteFindService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.apache.ofbiz.common.ExecuteFindService.In;
 import org.apache.ofbiz.common.ExecuteFindService.Out;
-import org.apache.ofbiz.common.theme.VisualThemeSet;
-import org.apache.ofbiz.content.website.WebAnalyticsConfig;
-import org.apache.ofbiz.content.website.WebSiteContent;
-import org.apache.ofbiz.content.website.WebSitePathAlias;
+import org.apache.ofbiz.common.ExecuteFindService;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.Optional;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import org.apache.ofbiz.marketing.contact.WebSiteContactList;
-import org.apache.ofbiz.order.order.OrderHeader;
-import org.apache.ofbiz.party.party.WebSiteRole;
-import org.apache.ofbiz.product.store.ProductStore;
-import org.apache.ofbiz.product.subscription.SubscriptionResource;
-import org.apache.ofbiz.webapp.website.WebPage;
+import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
 import org.apache.ofbiz.webapp.website.WebSite;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
-
-import lombok.extern.slf4j.Slf4j;
+import org.apache.ofbiz.common.theme.VisualThemeSet;
+import org.apache.ofbiz.product.store.ProductStore;
+import org.apache.ofbiz.product.subscription.SubscriptionResource;
+import org.apache.ofbiz.content.website.WebAnalyticsConfig;
+import org.apache.ofbiz.webapp.website.WebPage;
+import org.apache.ofbiz.marketing.contact.WebSiteContactList;
+import org.apache.ofbiz.content.website.WebSiteContent;
+import org.apache.ofbiz.content.website.WebSitePathAlias;
+import org.apache.ofbiz.party.party.WebSiteRole;
 
 @Slf4j
 @Component
@@ -62,9 +60,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebSite> find(Integer start, Integer number,
 			List<String> orderBy, EntityConditionList conditions) {
-		List<WebSite> entityList = new ArrayList<>();
+		List<WebSite> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSite.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		if (conditions == null) {
 			in.setNoConditionFind(OfbizUtil.Y);
@@ -87,7 +91,7 @@ public class WebSiteBaseService {
 	/**
 	 * Find one WebSite
 	 */
-	public WebSite findOne(Object webSiteId) {
+	public Optional<WebSite> findOne(Object webSiteId) {
 		List<WebSite> entityList = null;
 		In in = new In();
 		in.setEntityName(WebSite.NAME);
@@ -105,15 +109,15 @@ public class WebSiteBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get visual theme set
 	 */
-	public VisualThemeSet getVisualThemeSet(WebSite webSite) {
+	public Optional<VisualThemeSet> getVisualThemeSet(WebSite webSite) {
 		List<VisualThemeSet> entityList = null;
 		In in = new In();
 		in.setEntityName(VisualThemeSet.NAME);
@@ -132,15 +136,15 @@ public class WebSiteBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	/**
 	 * Get product store
 	 */
-	public ProductStore getProductStore(WebSite webSite) {
+	public Optional<ProductStore> getProductStore(WebSite webSite) {
 		List<ProductStore> entityList = null;
 		In in = new In();
 		in.setEntityName(ProductStore.NAME);
@@ -158,34 +162,9 @@ public class WebSiteBaseService {
 			log.error(e.getMessage(), e);
 		}
 		if (CollectionUtils.isNotEmpty(entityList)) {
-			return entityList.get(0);
+			return Optional.of(entityList.get(0));
 		}
-		return null;
-	}
-
-	/**
-	 * Get order headers
-	 */
-	public List<OrderHeader> getOrderHeaders(WebSite webSite, Integer start,
-			Integer number, List<String> orderBy) {
-		List<OrderHeader> entityList = new ArrayList<>();
-		In in = new In();
-		in.setEntityName(OrderHeader.NAME);
-		in.setOrderByList(orderBy);
-		in.setEntityConditionList(new EntityConditionList<>(Arrays
-				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
-						webSite.getWebSiteId())), EntityOperator.AND));
-		Out out = executeFindService.runSync(in);
-		try {
-			if (out.getListIt() != null) {
-				entityList = OrderHeader.fromValues(out.getListIt()
-						.getPartialList(start, number));
-				out.getListIt().close();
-			}
-		} catch (GenericEntityException e) {
-			log.error(e.getMessage(), e);
-		}
-		return entityList;
+		return Optional.empty();
 	}
 
 	/**
@@ -193,9 +172,15 @@ public class WebSiteBaseService {
 	 */
 	public List<SubscriptionResource> getSubscriptionResources(WebSite webSite,
 			Integer start, Integer number, List<String> orderBy) {
-		List<SubscriptionResource> entityList = new ArrayList<>();
+		List<SubscriptionResource> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(SubscriptionResource.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -218,9 +203,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebAnalyticsConfig> getWebAnalyticsConfigs(WebSite webSite,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebAnalyticsConfig> entityList = new ArrayList<>();
+		List<WebAnalyticsConfig> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebAnalyticsConfig.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -243,9 +234,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebPage> getWebPages(WebSite webSite, Integer start,
 			Integer number, List<String> orderBy) {
-		List<WebPage> entityList = new ArrayList<>();
+		List<WebPage> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebPage.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -268,9 +265,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebSiteContactList> getWebSiteContactLists(WebSite webSite,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebSiteContactList> entityList = new ArrayList<>();
+		List<WebSiteContactList> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteContactList.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -293,9 +296,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebSiteContent> getWebSiteContents(WebSite webSite,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebSiteContent> entityList = new ArrayList<>();
+		List<WebSiteContent> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteContent.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -318,9 +327,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebSitePathAlias> getWebSitePathAliases(WebSite webSite,
 			Integer start, Integer number, List<String> orderBy) {
-		List<WebSitePathAlias> entityList = new ArrayList<>();
+		List<WebSitePathAlias> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSitePathAlias.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,
@@ -343,9 +358,15 @@ public class WebSiteBaseService {
 	 */
 	public List<WebSiteRole> getWebSiteRoles(WebSite webSite, Integer start,
 			Integer number, List<String> orderBy) {
-		List<WebSiteRole> entityList = new ArrayList<>();
+		List<WebSiteRole> entityList = Collections.emptyList();
 		In in = new In();
 		in.setEntityName(WebSiteRole.NAME);
+		if (start == null) {
+			start = OfbizUtil.DEFAULT_FIND_START;
+		}
+		if (number == null) {
+			number = OfbizUtil.DEFAULT_FIND_NUMBER;
+		}
 		in.setOrderByList(orderBy);
 		in.setEntityConditionList(new EntityConditionList<>(Arrays
 				.asList(new EntityExpr("webSiteId", EntityOperator.EQUALS,

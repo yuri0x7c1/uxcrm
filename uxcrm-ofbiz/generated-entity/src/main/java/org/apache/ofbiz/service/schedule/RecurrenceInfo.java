@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RecurrenceInfo implements Serializable {
 
-	public static final long serialVersionUID = 5446923058062280704L;
+	public static final long serialVersionUID = 1827059459945634816L;
 	public static final String NAME = "RecurrenceInfo";
 	/**
 	 * Recurrence Info Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductAverageCostType implements Serializable {
 
-	public static final long serialVersionUID = 4303937898338890752L;
+	public static final long serialVersionUID = 1928015300455548928L;
 	public static final String NAME = "ProductAverageCostType";
 	/**
 	 * Product Average Cost Type Id

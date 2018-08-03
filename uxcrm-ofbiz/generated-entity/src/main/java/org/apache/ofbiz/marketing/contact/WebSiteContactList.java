@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebSiteContactList implements Serializable {
 
-	public static final long serialVersionUID = 5923563849106611200L;
+	public static final long serialVersionUID = 7831775516056771584L;
 	public static final String NAME = "WebSiteContactList";
 	/**
 	 * Web Site Id

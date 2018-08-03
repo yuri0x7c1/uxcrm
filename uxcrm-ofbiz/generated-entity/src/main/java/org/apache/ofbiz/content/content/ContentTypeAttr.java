@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 3671899414159468544L;
+	public static final long serialVersionUID = 3205000566957742080L;
 	public static final String NAME = "ContentTypeAttr";
 	/**
 	 * Content Type Id

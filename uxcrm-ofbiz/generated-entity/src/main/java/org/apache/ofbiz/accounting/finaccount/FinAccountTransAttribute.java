@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FinAccountTransAttribute implements Serializable {
 
-	public static final long serialVersionUID = 6461932215189554176L;
+	public static final long serialVersionUID = 4323644983105460224L;
 	public static final String NAME = "FinAccountTransAttribute";
 	/**
 	 * Fin Account Trans Id

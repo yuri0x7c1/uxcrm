@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ServerHit implements Serializable {
 
-	public static final long serialVersionUID = 7222586602241599488L;
+	public static final long serialVersionUID = 1447766197686744064L;
 	public static final String NAME = "ServerHit";
 	/**
 	 * Visit Id
@@ -88,6 +88,30 @@ public class ServerHit implements Serializable {
 	@Setter
 	private String serverHostName;
 	/**
+	 * Last Updated Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedStamp;
+	/**
+	 * Last Updated Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp lastUpdatedTxStamp;
+	/**
+	 * Created Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdStamp;
+	/**
+	 * Created Tx Stamp
+	 */
+	@Getter
+	@Setter
+	private Timestamp createdTxStamp;
+	/**
 	 * Internal Content Id
 	 */
 	@Getter
@@ -113,7 +137,7 @@ public class ServerHit implements Serializable {
 	private String refByWebContactMechId;
 
 	public enum Fields {
-		visitId, contentId, hitStartDateTime, hitTypeId, numOfBytes, runningTimeMillis, userLoginId, statusId, requestUrl, referrerUrl, serverIpAddress, serverHostName, internalContentId, partyId, idByIpContactMechId, refByWebContactMechId
+		visitId, contentId, hitStartDateTime, hitTypeId, numOfBytes, runningTimeMillis, userLoginId, statusId, requestUrl, referrerUrl, serverIpAddress, serverHostName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, internalContentId, partyId, idByIpContactMechId, refByWebContactMechId
 	}
 
 	public ServerHit(GenericValue value) {
@@ -130,6 +154,12 @@ public class ServerHit implements Serializable {
 		referrerUrl = (String) value.get(Fields.referrerUrl.name());
 		serverIpAddress = (String) value.get(Fields.serverIpAddress.name());
 		serverHostName = (String) value.get(Fields.serverHostName.name());
+		lastUpdatedStamp = (Timestamp) value
+				.get(Fields.lastUpdatedStamp.name());
+		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
+				.name());
+		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
+		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
 		internalContentId = (String) value.get(Fields.internalContentId.name());
 		partyId = (String) value.get(Fields.partyId.name());
 		idByIpContactMechId = (String) value.get(Fields.idByIpContactMechId

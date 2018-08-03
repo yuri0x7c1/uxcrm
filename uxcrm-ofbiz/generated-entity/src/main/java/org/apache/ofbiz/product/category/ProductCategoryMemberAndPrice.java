@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProductCategoryMemberAndPrice implements Serializable {
 
-	public static final long serialVersionUID = 7421340693077705728L;
+	public static final long serialVersionUID = 4286903487945342976L;
 	public static final String NAME = "ProductCategoryMemberAndPrice";
 	/**
 	 * From Date
@@ -172,6 +172,12 @@ public class ProductCategoryMemberAndPrice implements Serializable {
 	@Getter
 	@Setter
 	private String productCreatedByUserLogin;
+	/**
+	 * Product Manufacturer Party Id
+	 */
+	@Getter
+	@Setter
+	private String productManufacturerPartyId;
 	/**
 	 * Product Brand Name
 	 */
@@ -594,7 +600,7 @@ public class ProductCategoryMemberAndPrice implements Serializable {
 	private String priceProductPriceTypeId;
 
 	public enum Fields {
-		fromDate, productCategoryId, comments, quantity, productId, sequenceNum, thruDate, productOriginGeoId, productDetailScreen, productRequireInventory, productQuantityUomId, productMediumImageUrl, productProductName, productIntroductionDate, productShippingHeight, productOriginalImageUrl, productInShippingBox, productDetailImageUrl, productSupportDiscontinuationDate, productProductWidth, productIncludeInPromotions, productConfigId, productBillOfMaterialLevel, productLotIdFilledIn, productProductRating, productCreatedByUserLogin, productBrandName, productRequireAmount, productSmallImageUrl, productTaxable, productPrimaryProductCategoryId, productSalesDiscontinuationDate, productSalesDiscWhenNotAvail, productReturnable, productWeightUomId, productIsVirtual, productPriceDetailText, productReserv2ndPPPerc, productWidthUomId, productLongDescription, productDiameterUomId, productAutoCreateKeywords, productAmountUomTypeId, productProductDiameter, productRatingTypeEnum, productDescription, productChargeShipping, productReservNthPPPerc, productQuantityIncluded, productHeightUomId, productInternalName, productLastModifiedByUserLogin, productVirtualVariantMethodEnum, productShippingWeight, productShippingWidth, productShippingDepth, productReservMaxPersons, productFixedAmount, productInventoryItemTypeId, productPiecesIncluded, productProductDepth, productFacilityId, productComments, productReleaseDate, productProductHeight, productLastModifiedDate, productDefaultShipmentBoxTypeId, productOrderDecimalQuantity, productInventoryMessage, productProductWeight, productDepthUomId, productProductTypeId, productCreatedDate, productIsVariant, productLargeImageUrl, productRequirementMethodEnumId, priceTaxInPrice, priceTermUomId, pricePriceWithTax, priceProductStoreGroupId, priceTaxAuthPartyId, priceLastModifiedByUserLogin, priceCustomPriceCalcService, pricePrice, priceTaxAuthGeoId, priceProductPricePurposeId, priceCreatedByUserLogin, priceLastModifiedDate, priceTaxPercentage, priceThruDate, priceFromDate, priceCurrencyUomId, priceCreatedDate, pricePriceWithoutTax, priceTaxAmount, priceProductPriceTypeId
+		fromDate, productCategoryId, comments, quantity, productId, sequenceNum, thruDate, productOriginGeoId, productDetailScreen, productRequireInventory, productQuantityUomId, productMediumImageUrl, productProductName, productIntroductionDate, productShippingHeight, productOriginalImageUrl, productInShippingBox, productDetailImageUrl, productSupportDiscontinuationDate, productProductWidth, productIncludeInPromotions, productConfigId, productBillOfMaterialLevel, productLotIdFilledIn, productProductRating, productCreatedByUserLogin, productManufacturerPartyId, productBrandName, productRequireAmount, productSmallImageUrl, productTaxable, productPrimaryProductCategoryId, productSalesDiscontinuationDate, productSalesDiscWhenNotAvail, productReturnable, productWeightUomId, productIsVirtual, productPriceDetailText, productReserv2ndPPPerc, productWidthUomId, productLongDescription, productDiameterUomId, productAutoCreateKeywords, productAmountUomTypeId, productProductDiameter, productRatingTypeEnum, productDescription, productChargeShipping, productReservNthPPPerc, productQuantityIncluded, productHeightUomId, productInternalName, productLastModifiedByUserLogin, productVirtualVariantMethodEnum, productShippingWeight, productShippingWidth, productShippingDepth, productReservMaxPersons, productFixedAmount, productInventoryItemTypeId, productPiecesIncluded, productProductDepth, productFacilityId, productComments, productReleaseDate, productProductHeight, productLastModifiedDate, productDefaultShipmentBoxTypeId, productOrderDecimalQuantity, productInventoryMessage, productProductWeight, productDepthUomId, productProductTypeId, productCreatedDate, productIsVariant, productLargeImageUrl, productRequirementMethodEnumId, priceTaxInPrice, priceTermUomId, pricePriceWithTax, priceProductStoreGroupId, priceTaxAuthPartyId, priceLastModifiedByUserLogin, priceCustomPriceCalcService, pricePrice, priceTaxAuthGeoId, priceProductPricePurposeId, priceCreatedByUserLogin, priceLastModifiedDate, priceTaxPercentage, priceThruDate, priceFromDate, priceCurrencyUomId, priceCreatedDate, pricePriceWithoutTax, priceTaxAmount, priceProductPriceTypeId
 	}
 
 	public ProductCategoryMemberAndPrice(GenericValue value) {
@@ -642,6 +648,8 @@ public class ProductCategoryMemberAndPrice implements Serializable {
 				.get(Fields.productProductRating.name());
 		productCreatedByUserLogin = (String) value
 				.get(Fields.productCreatedByUserLogin.name());
+		productManufacturerPartyId = (String) value
+				.get(Fields.productManufacturerPartyId.name());
 		productBrandName = (String) value.get(Fields.productBrandName.name());
 		productRequireAmount = (String) value.get(Fields.productRequireAmount
 				.name());

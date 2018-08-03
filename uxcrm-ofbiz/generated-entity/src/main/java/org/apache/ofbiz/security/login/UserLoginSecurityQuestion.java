@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserLoginSecurityQuestion implements Serializable {
 
-	public static final long serialVersionUID = 7481543593660040192L;
+	public static final long serialVersionUID = 5320465474993316864L;
 	public static final String NAME = "UserLoginSecurityQuestion";
 	/**
 	 * Question Enum Id

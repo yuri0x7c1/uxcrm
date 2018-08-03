@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TemporalExpressionChild implements Serializable {
 
-	public static final long serialVersionUID = 187789040690888704L;
+	public static final long serialVersionUID = 154996585488178176L;
 	public static final String NAME = "TemporalExpressionChild";
 	/**
 	 * From Temp Expr Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SalesOpportunityRole implements Serializable {
 
-	public static final long serialVersionUID = 6863740565324554240L;
+	public static final long serialVersionUID = 8319002071564397568L;
 	public static final String NAME = "SalesOpportunityRole";
 	/**
 	 * Sales Opportunity Id

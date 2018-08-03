@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WebSiteContentType implements Serializable {
 
-	public static final long serialVersionUID = 614965112972222464L;
+	public static final long serialVersionUID = 540965294772659200L;
 	public static final String NAME = "WebSiteContentType";
 	/**
 	 * Web Site Content Type Id

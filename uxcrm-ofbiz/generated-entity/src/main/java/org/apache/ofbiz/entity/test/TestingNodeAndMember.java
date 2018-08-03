@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TestingNodeAndMember implements Serializable {
 
-	public static final long serialVersionUID = 8857784084247583744L;
+	public static final long serialVersionUID = 419519422800865280L;
 	public static final String NAME = "TestingNodeAndMember";
 	/**
 	 * Description

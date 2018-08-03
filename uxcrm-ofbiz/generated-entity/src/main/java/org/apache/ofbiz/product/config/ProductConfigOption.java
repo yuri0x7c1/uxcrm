@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProductConfigOption implements Serializable {
 
-	public static final long serialVersionUID = 4143494740955185152L;
+	public static final long serialVersionUID = 8441966500429125632L;
 	public static final String NAME = "ProductConfigOption";
 	/**
 	 * Config Item Id

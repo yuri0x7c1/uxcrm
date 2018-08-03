@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ContentKeyword implements Serializable {
 
-	public static final long serialVersionUID = 2112685404546552832L;
+	public static final long serialVersionUID = 189458070891177984L;
 	public static final String NAME = "ContentKeyword";
 	/**
 	 * Content Id

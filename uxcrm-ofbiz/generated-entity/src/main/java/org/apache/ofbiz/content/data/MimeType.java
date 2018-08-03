@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MimeType implements Serializable {
 
-	public static final long serialVersionUID = 6213319801626444800L;
+	public static final long serialVersionUID = 1379269644793977856L;
 	public static final String NAME = "MimeType";
 	/**
 	 * Mime Type Id

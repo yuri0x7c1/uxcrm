@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BillingAccountTermAttr implements Serializable {
 
-	public static final long serialVersionUID = 8169363773707048960L;
+	public static final long serialVersionUID = 3097865185430243328L;
 	public static final String NAME = "BillingAccountTermAttr";
 	/**
 	 * Billing Account Term Id

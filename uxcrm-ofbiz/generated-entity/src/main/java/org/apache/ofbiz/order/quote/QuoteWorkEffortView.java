@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class QuoteWorkEffortView implements Serializable {
 
-	public static final long serialVersionUID = 9202566066791414784L;
+	public static final long serialVersionUID = 6790575273126024192L;
 	public static final String NAME = "QuoteWorkEffortView";
 	/**
 	 * Status Item Description

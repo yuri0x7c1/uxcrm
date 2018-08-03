@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class SalaryStep implements Serializable {
 
-	public static final long serialVersionUID = 2343305720480222208L;
+	public static final long serialVersionUID = 7678359141844184064L;
 	public static final String NAME = "SalaryStep";
 	/**
 	 * Salary Step Seq Id

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Component implements Serializable {
 
-	public static final long serialVersionUID = 4217344513642634240L;
+	public static final long serialVersionUID = 6661373933434881024L;
 	public static final String NAME = "Component";
 	/**
 	 * Component Name

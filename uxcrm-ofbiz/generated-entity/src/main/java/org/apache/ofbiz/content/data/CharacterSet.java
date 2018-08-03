@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CharacterSet implements Serializable {
 
-	public static final long serialVersionUID = 5790001137062102016L;
+	public static final long serialVersionUID = 9031018546303021056L;
 	public static final String NAME = "CharacterSet";
 	/**
 	 * Character Set Id

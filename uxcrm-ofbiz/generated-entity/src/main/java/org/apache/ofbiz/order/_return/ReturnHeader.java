@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ReturnHeader implements Serializable {
 
-	public static final long serialVersionUID = 6150113486677615616L;
+	public static final long serialVersionUID = 1972958992216352768L;
 	public static final String NAME = "ReturnHeader";
 	/**
 	 * Return Id

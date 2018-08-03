@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class VarianceReason implements Serializable {
 
-	public static final long serialVersionUID = 7765932914649680896L;
+	public static final long serialVersionUID = 8032181964733773824L;
 	public static final String NAME = "VarianceReason";
 	/**
 	 * Variance Reason Id

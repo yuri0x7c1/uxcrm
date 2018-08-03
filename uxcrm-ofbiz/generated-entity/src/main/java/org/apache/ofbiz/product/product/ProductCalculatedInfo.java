@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProductCalculatedInfo implements Serializable {
 
-	public static final long serialVersionUID = 4545625017398019072L;
+	public static final long serialVersionUID = 2066981253940258816L;
 	public static final String NAME = "ProductCalculatedInfo";
 	/**
 	 * Product Id

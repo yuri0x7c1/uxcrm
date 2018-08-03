@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CountryAddressFormat implements Serializable {
 
-	public static final long serialVersionUID = 929868462154137600L;
+	public static final long serialVersionUID = 3103952328272839680L;
 	public static final String NAME = "CountryAddressFormat";
 	/**
 	 * Geo Id

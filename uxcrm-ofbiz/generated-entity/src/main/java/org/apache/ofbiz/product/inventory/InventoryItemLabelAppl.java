@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class InventoryItemLabelAppl implements Serializable {
 
-	public static final long serialVersionUID = 7383394034254099456L;
+	public static final long serialVersionUID = 5479063041904147456L;
 	public static final String NAME = "InventoryItemLabelAppl";
 	/**
 	 * Inventory Item Id

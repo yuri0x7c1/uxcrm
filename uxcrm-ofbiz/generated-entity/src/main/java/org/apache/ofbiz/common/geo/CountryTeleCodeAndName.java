@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class CountryTeleCodeAndName implements Serializable {
 
-	public static final long serialVersionUID = 272700613146916864L;
+	public static final long serialVersionUID = 5845171930779502592L;
 	public static final String NAME = "CountryTeleCodeAndName";
 	/**
 	 * Tele Code

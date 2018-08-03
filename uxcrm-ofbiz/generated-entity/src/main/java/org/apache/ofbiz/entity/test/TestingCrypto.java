@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TestingCrypto implements Serializable {
 
-	public static final long serialVersionUID = 2925404093228156928L;
+	public static final long serialVersionUID = 8787380644689227776L;
 	public static final String NAME = "TestingCrypto";
 	/**
 	 * Testing Crypto Id

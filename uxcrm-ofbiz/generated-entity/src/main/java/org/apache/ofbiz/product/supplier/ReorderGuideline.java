@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ReorderGuideline implements Serializable {
 
-	public static final long serialVersionUID = 455397515576913920L;
+	public static final long serialVersionUID = 2421099138504252416L;
 	public static final String NAME = "ReorderGuideline";
 	/**
 	 * Reorder Guideline Id

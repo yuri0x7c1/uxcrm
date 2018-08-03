@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class WorkEffortRequirementView implements Serializable {
 
-	public static final long serialVersionUID = 1133614251590851584L;
+	public static final long serialVersionUID = 8529167783455087616L;
 	public static final String NAME = "WorkEffortRequirementView";
 	/**
 	 * Status Item Description

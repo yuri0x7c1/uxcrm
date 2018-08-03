@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class PicklistItem implements Serializable {
 
-	public static final long serialVersionUID = 1789638298730174464L;
+	public static final long serialVersionUID = 6232684150192071680L;
 	public static final String NAME = "PicklistItem";
 	/**
 	 * Picklist Bin Id
