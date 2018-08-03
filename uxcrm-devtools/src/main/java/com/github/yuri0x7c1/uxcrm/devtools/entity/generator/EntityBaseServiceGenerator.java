@@ -114,7 +114,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		if (conditionString == null) {
 			conditions =
 					"		if (conditions == null) {" +
-					"			in.setNoConditionFind(FindUtil.Y);" +
+					"			in.setNoConditionFind(OfbizUtil.Y);" +
 					"		}" +
 					"		else {" +
 					"			in.setEntityConditionList(conditions);" +
@@ -204,7 +204,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 				"		In in = new In();" +
 				"		in.setEntityName(%s.NAME);" +
 				"		if (conditions == null) {" +
-				"			in.setNoConditionFind(FindUtil.Y);" +
+				"			in.setNoConditionFind(OfbizUtil.Y);" +
 				"		}" +
 				"		else {" +
 				"			in.setEntityConditionList(conditions);" +
