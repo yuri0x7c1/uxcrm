@@ -3,7 +3,9 @@ package com.github.yuri0x7c1.uxcrm.devtools.entity.generator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
@@ -30,6 +32,7 @@ import org.springframework.stereotype.Component;
 import com.github.yuri0x7c1.uxcrm.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxcrm.devtools.generator.util.GeneratorUtil;
 import com.github.yuri0x7c1.uxcrm.devtools.service.util.ServiceUtil;
+import com.github.yuri0x7c1.uxcrm.util.OfbizUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -128,9 +131,15 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		}
 
 		return String.format(
-				"		List<%s> entityList = new ArrayList<>();" +
+				"		List<%s> entityList = Collections.emptyList();" +
 				"		In in = new In();" +
 				"		in.setEntityName(%s.NAME);" +
+				"		if (start == null) {" + 
+				"			start = OfbizUtil.DEFAULT_FIND_START;" + 
+				"		}" + 
+				"		if (number == null) {" + 
+				"			number = OfbizUtil.DEFAULT_FIND_NUMBER;" + 
+				"		}" +
 				"		in.setOrderByList(orderBy);" +
 				"%s" +
 				"		Out out = executeFindService.runSync(in);" +
@@ -232,9 +241,9 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 			"			log.error(e.getMessage(), e);" +
 			"		}" +
 			"		if (CollectionUtils.isNotEmpty(entityList)) {" +
-			"			return entityList.get(0);" +
+			"			return Optional.of(entityList.get(0));" +
 			"		}" +
-			"		return null;",
+			"		return Optional.empty();",
 			entityName,
 			entityName,
 			conditions,
@@ -252,7 +261,7 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		MethodSource<JavaClassSource> findOneMethod = serviceClass.addMethod()
 				.setName("findOne")
 				.setPublic()
-				.setReturnType(entity.getEntityName());
+				.setReturnType("Optional<" + entity.getEntityName() + ">");
 
 		findOneMethod.getJavaDoc().setFullText("Find one " + entity.getEntityName());
 
@@ -382,17 +391,19 @@ public class EntityBaseServiceGenerator implements EntityGenerator {
 		serviceClass.addImport(Arrays.class);
 		serviceClass.addImport(ArrayList.class);
 		serviceClass.addImport(List.class);
+		serviceClass.addImport(Collections.class);
 		serviceClass.addImport(CollectionUtils.class);
+		serviceClass.addImport(Optional.class);
 
 		serviceClass.addImport(GenericEntityException.class);
 		serviceClass.addImport(EntityConditionList.class);
 		serviceClass.addImport(EntityExpr.class);
 		serviceClass.addImport(EntityOperator.class);
 
-		serviceClass.addImport("com.github.yuri0x7c1.uxcrm.common.find.util.FindUtil");
+		serviceClass.addImport("com.github.yuri0x7c1.uxcrm.util.OfbizUtil");
 
 		serviceClass.addImport(generatorUtil.getPackageName(entity) + "." + entity.getEntityName());
-
+		
 		// create constructor
 		createConstructor(entity, serviceClass);
 

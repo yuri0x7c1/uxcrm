@@ -1,12 +1,17 @@
 package org.apache.ofbiz.party.party;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.ofbiz.entity.GenericValue;
+
+import com.google.common.collect.ImmutableList;
+
 import lombok.Getter;
 import lombok.Setter;
-import java.sql.Timestamp;
-import org.apache.ofbiz.entity.GenericValue;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Party Type Attr
@@ -80,10 +85,9 @@ public class PartyTypeAttr implements Serializable {
 	}
 
 	public static List<PartyTypeAttr> fromValues(List<GenericValue> values) {
-		List<PartyTypeAttr> entities = new ArrayList<>();
-		for (GenericValue value : values) {
-			entities.add(new PartyTypeAttr(value));
-		}
-		return entities;
+		return Collections.unmodifiableList(values.stream()
+			.map(value -> fromValue(value))
+			.collect(Collectors.toList())
+		);
 	}
 }
