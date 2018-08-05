@@ -45,6 +45,14 @@ public class ServiceUtil {
 			return packageName;
 		}
 
+	public List<ModelParam> getInParamList(ModelService service) {
+		List<ModelParam> inParamList = new ArrayList<>();
+		for (String inParamName : service.getInParamNames()) {
+			inParamList.add(service.getParam(inParamName));
+		}
+		return inParamList;
+	}
+	
 	public List<ModelParam> getOutParamList(ModelService service) {
 		List<ModelParam> outParamList = new ArrayList<>();
 		for (String outParamName : service.getOutParamNames()) {
@@ -52,8 +60,6 @@ public class ServiceUtil {
 		}
 		return outParamList;
 	}
-
-
 
 	public String getParamJavaTypeName(String type) {
 		if ("String".equals(type)) {

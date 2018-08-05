@@ -105,7 +105,7 @@ public class ServiceWrapperGenerator implements ServiceGenerator {
 			.setPrivate()
 			.addAnnotation(Autowired.class);
 
-		List<ModelParam> inParams = service.getInModelParamList();
+		List<ModelParam> inParams = serviceUtil.getInParamList(service);
 		List<ModelParam> outParams = serviceUtil.getOutParamList(service);
 
 
@@ -208,7 +208,7 @@ public class ServiceWrapperGenerator implements ServiceGenerator {
 
 			// toMap method body
 			StringBuilder toMapMethodBody = new StringBuilder("Map<String, Object> map = new HashMap<>();");
-			StringBuilder fromMapMethodBody = new StringBuilder("Out result = new Out();");
+			StringBuilder fromMapMethodBody = new StringBuilder();
 
 			// create In type fields
 			for (ModelParam param : outParams) {
