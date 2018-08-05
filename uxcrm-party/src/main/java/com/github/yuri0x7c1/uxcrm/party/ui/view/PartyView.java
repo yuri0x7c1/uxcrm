@@ -2,6 +2,7 @@ package com.github.yuri0x7c1.uxcrm.party.ui.view;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -71,15 +72,15 @@ public class PartyView extends CommonView implements View {
 		)
 		.withGeneratedColumn("Party Name", party -> {
 			if (PARTY_TYPE_ID_PARTY_GROUP.equals(party.getPartyTypeId())) {
-				PartyGroup partyGroup = partyService.getPartyGroup(party).get();
-				if (partyGroup != null) {
-					return partyGroup.getGroupName();
+				Optional<PartyGroup> partyGroup = partyService.getPartyGroup(party);
+				if (partyGroup.isPresent()) {
+					return partyGroup.get().getGroupName();
 				}
 			}
 			else if (PARTY_TYPE_ID_PERSON.equals(party.getPartyTypeId())) {
-				Person person = partyService.getPerson(party).get();
-				if (person != null) {
-					return person.getFirstName() + " " + person.getLastName();
+				Optional<Person> person = partyService.getPerson(party);
+				if (person.isPresent()) {
+					return person.get().getFirstName() + " " + person.get().getLastName();
 				}
 			}
 			return "";
