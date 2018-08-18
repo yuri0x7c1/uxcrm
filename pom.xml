@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <ofbiz.path>/path/to/ofbiz</ofbiz.path>
-		<vaadin.version>8.4.5</vaadin.version>
+		<vaadin.version>8.5.1</vaadin.version>
 		<vaadin4spring.version>2.0.0.RELEASE</vaadin4spring.version>
 	</properties>
 
