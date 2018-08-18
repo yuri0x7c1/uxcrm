@@ -15031,3 +15031,33 @@ div.v-layout.v-horizontal.v-widget {
 	padding-right: 10px;
 	padding-bottom: 10px;
 }
+
+.mytheme .uxcrm-topbar {
+	width: 100%;
+	background-color: #404040;
+}
+
+.mytheme .uxcrm-topbar .collapse-button {
+	display: inline-block;
+}
+
+.mytheme .uxcrm-topbar .collapse-button .v-icon {
+	color: white;
+}
+
+.mytheme .uxcrm-topbar .logout-button {
+	display: inline-block;
+	float: right;
+}
+
+.mytheme .uxcrm-topbar .logout-button .v-icon {
+	color: white;
+}
+
+.mytheme .uxcrm-topbar .user-label {
+	width: auto !important;
+	display: inline-block;
+	float: right;
+	color: white;
+	margin-top: 6px;
+}

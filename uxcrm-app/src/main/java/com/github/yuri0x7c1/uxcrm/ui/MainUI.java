@@ -6,23 +6,24 @@ import org.vaadin.spring.security.VaadinSecurity;
 import org.vaadin.spring.security.util.SecurityExceptionUtils;
 import org.vaadin.spring.sidebar.components.ValoSideBar;
 import org.vaadin.spring.sidebar.security.VaadinSecurityItemFilter;
-import org.vaadin.viritin.layouts.MCssLayout;
 
+import com.github.yuri0x7c1.uxcrm.common.ui.topbar.TopBar;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.AccessDeniedView;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.ErrorView;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.server.DefaultErrorHandler;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,6 +41,12 @@ public class MainUI extends UI {
 
     @Autowired
     SpringViewProvider springViewProvider;
+    
+    @Autowired
+    SpringNavigator navigator;
+    
+    @Autowired
+    TopBar topBar;
 
     @Autowired
     ValoSideBar sideBar;
@@ -59,25 +66,51 @@ public class MainUI extends UI {
                 }
             }
         });
-        HorizontalLayout layout = new HorizontalLayout();
-        layout.setSizeFull();
+        VerticalLayout verticalLayout = new VerticalLayout();
+        verticalLayout.setMargin(false);
+        verticalLayout.setSpacing(false);
+        verticalLayout.setWidth(100f, Unit.PERCENTAGE);
+        verticalLayout.setHeight(100f, Unit.PERCENTAGE);
+        
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        horizontalLayout.setSizeFull();
+
+        sideBar.addStyleName("uxcrm-sidebar");
+        if (getPage().getBrowserWindowWidth() < 768) {
+        	sideBar.setLargeIcons(true);
+        }
+        
+        getPage().addBrowserWindowResizeListener(event -> {
+        	if (event.getWidth() < 768) {
+        		sideBar.setLargeIcons(true);
+        	}
+        	else {
+        		sideBar.setLargeIcons(false);
+        	}
+		});
+        
+        horizontalLayout.addComponent(sideBar);
 
         // By adding a security item filter, only views that are accessible to the user will show up in the side bar.
         sideBar.setItemFilter(new VaadinSecurityItemFilter(vaadinSecurity));
-        layout.addComponent(sideBar);
+        horizontalLayout.addComponent(sideBar);
 
-        CssLayout viewContainer = new MCssLayout().withStyleName("view-container");
+        CssLayout viewContainer = new CssLayout();
+        viewContainer.addStyleName("view-container");
         viewContainer.setSizeFull();
-        layout.addComponent(viewContainer);
-        layout.setExpandRatio(viewContainer, 1f);
-
-        Navigator navigator = new Navigator(this, viewContainer);
+        horizontalLayout.addComponent(viewContainer);
+        horizontalLayout.setExpandRatio(viewContainer, 1f);
+        
+        verticalLayout.addComponents(topBar, horizontalLayout);
+        verticalLayout.setExpandRatio(horizontalLayout, 1f);
+        
         // Without an AccessDeniedView, the view provider would act like the restricted views did not exist at all.
         springViewProvider.setAccessDeniedViewClass(AccessDeniedView.class);
+        navigator.init(this, viewContainer);
         navigator.addProvider(springViewProvider);
         navigator.setErrorView(ErrorView.class);
         navigator.navigateTo(navigator.getState());
 
-        setContent(layout); // Call this here because the Navigator must have been configured before the Side Bar can be attached to a UI.
+        setContent(verticalLayout);
 	}
 }
