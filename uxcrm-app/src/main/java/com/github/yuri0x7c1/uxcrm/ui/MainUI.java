@@ -6,6 +6,7 @@ import org.vaadin.spring.security.VaadinSecurity;
 import org.vaadin.spring.security.util.SecurityExceptionUtils;
 import org.vaadin.spring.sidebar.components.ValoSideBar;
 import org.vaadin.spring.sidebar.security.VaadinSecurityItemFilter;
+import org.vaadin.viritin.layouts.MCssLayout;
 
 import com.github.yuri0x7c1.uxcrm.common.ui.view.AccessDeniedView;
 import com.github.yuri0x7c1.uxcrm.common.ui.view.ErrorView;
@@ -65,7 +66,7 @@ public class MainUI extends UI {
         sideBar.setItemFilter(new VaadinSecurityItemFilter(vaadinSecurity));
         layout.addComponent(sideBar);
 
-        CssLayout viewContainer = new CssLayout();
+        CssLayout viewContainer = new MCssLayout().withStyleName("view-container");
         viewContainer.setSizeFull();
         layout.addComponent(viewContainer);
         layout.setExpandRatio(viewContainer, 1f);

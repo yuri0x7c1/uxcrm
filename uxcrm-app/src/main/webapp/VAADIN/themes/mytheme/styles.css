@@ -1053,7 +1053,7 @@
  */
 
 .v-vaadin-version:after {
-	content: "8.4.5";
+	content: "8.5.1";
 }
 
 .v-widget {
@@ -15028,4 +15028,6 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .view-container {
 	overflow: auto;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }
