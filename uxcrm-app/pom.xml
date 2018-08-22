@@ -47,6 +47,12 @@
 			<artifactId>uxcrm-content</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.github.yuri0x7c1.uxcrm</groupId>
+			<artifactId>uxcrm-catalog</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
