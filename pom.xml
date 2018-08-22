@@ -26,6 +26,7 @@
     	<module>uxcrm-devtools</module>
     	<module>uxcrm-party</module>
     	<module>uxcrm-content</module>
+    	<module>uxcrm-catalog</module>
 		<module>uxcrm-app</module>
     </modules>
 
