@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.entity.model.ModelField;
 import org.apache.ofbiz.entity.model.ModelRelation;
@@ -30,11 +29,14 @@ import com.github.yuri0x7c1.uxcrm.devtools.generator.util.GeneratorUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldNameConstants;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
 public class EntityWrapperGenerator implements EntityGenerator {
+	
+	public static final String SUBDIR = "generated-entity" + "/src/main/java";
 
 	@Autowired
 	private ModelOfbiz ofbiz;
@@ -55,6 +57,9 @@ public class EntityWrapperGenerator implements EntityGenerator {
 		final JavaClassSource entityClass = Roaster.create(JavaClassSource.class);
 		entityClass.setPackage(generatorUtil.getPackageName(entity))
 			.setName(entity.getEntityName());
+		
+		// add class annotations
+		entityClass.addAnnotation(FieldNameConstants.class);
 
 		// comment
 		entityClass.getJavaDoc().setFullText(GeneratorUtil.createCaptionFromCamelCase(entity.getEntityName()));
@@ -105,14 +110,14 @@ public class EntityWrapperGenerator implements EntityGenerator {
 	private void createConstructorWithGenericValueParameter(ModelEntity entity, JavaClassSource entityClass) {
 		// create columns
 		StringBuilder constructorBody = new StringBuilder();
-
+		
 		// constructor body
-		for (ModelField field : entity.getFieldsUnmodifiable()) {
+		for (ModelField field : entity.getFieldsUnmodifiable()) {					
 			// append param to "fromValue()" body
-			constructorBody.append(String.format("%s = %s value.get(Fields.%s.name());",
+			constructorBody.append(String.format("%s = %s value.get(%s);",
 				field.getName(),
 				"(" + FieldType.find(field).getJavaType().getSimpleName() + ")",
-				field.getName()));
+				"FIELD_" + generatorUtil.camelCaseToConstant(field.getName())));
 		}
 
 		MethodSource<JavaClassSource> constructor = entityClass.addMethod()
@@ -167,22 +172,6 @@ public class EntityWrapperGenerator implements EntityGenerator {
 	}
 
 	/**
-	 * Create fields enum
-	 * @param entity
-	 * @param entityClass
-	 */
-	private void createFieldsEnum(ModelEntity entity, JavaClassSource entityClass) {
-		JavaEnumSource fieldsEnum = Roaster.create(JavaEnumSource.class);
-		fieldsEnum.setName("Fields");
-
-		for (ModelField field : entity.getFieldsUnmodifiable()) {
-			EnumConstantSource fieldConstant = fieldsEnum.addEnumConstant(field.getName());
-		}
-
-		entityClass.addNestedType(fieldsEnum);
-	}
-
-	/**
 	 * Create relations enum
 	 * @param entity
 	 * @param entityClass
@@ -220,9 +209,6 @@ public class EntityWrapperGenerator implements EntityGenerator {
 		// create entity class
 		final JavaClassSource entityClass = createEntityClass(entity);
 
-		// create fields enum
-		createFieldsEnum(entity, entityClass);
-
 		// create relations enum
 		// createRelationsEnum(entity, entityClass);
 
@@ -237,7 +223,13 @@ public class EntityWrapperGenerator implements EntityGenerator {
 
 		String destinationPath = env.getProperty("generator.destination_path");
 
-		File src = new File(FilenameUtils.concat(destinationPath, GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))), entity.getEntityName() + ".java");
+		File src = new File(
+			FilenameUtils.concat(
+				FilenameUtils.concat(destinationPath, SUBDIR),
+				GeneratorUtil.packageNameToPath(generatorUtil.getPackageName(entity))
+			),
+			entity.getEntityName() + ".java"
+		);
 
 		FileUtils.writeStringToFile(src,  entityClass.toString());
 
