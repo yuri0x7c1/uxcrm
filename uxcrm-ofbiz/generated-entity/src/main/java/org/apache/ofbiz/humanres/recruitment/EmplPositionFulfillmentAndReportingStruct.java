@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.recruitment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Empl Position Fulfillment And Reporting Struct
  */
+@FieldNameConstants
 public class EmplPositionFulfillmentAndReportingStruct implements Serializable {
 
-	public static final long serialVersionUID = 9108569940154182656L;
+	public static final long serialVersionUID = 7708227434650064896L;
 	public static final String NAME = "EmplPositionFulfillmentAndReportingStruct";
 	/**
 	 * Party Id
@@ -46,18 +48,13 @@ public class EmplPositionFulfillmentAndReportingStruct implements Serializable {
 	@Setter
 	private Timestamp reportingDate;
 
-	public enum Fields {
-		partyId, emplPositionId, emplPositionIdReportingTo, internalOrganisation, reportingDate
-	}
-
 	public EmplPositionFulfillmentAndReportingStruct(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		emplPositionId = (String) value.get(Fields.emplPositionId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		emplPositionId = (String) value.get(FIELD_EMPL_POSITION_ID);
 		emplPositionIdReportingTo = (String) value
-				.get(Fields.emplPositionIdReportingTo.name());
-		internalOrganisation = (String) value.get(Fields.internalOrganisation
-				.name());
-		reportingDate = (Timestamp) value.get(Fields.reportingDate.name());
+				.get(FIELD_EMPL_POSITION_ID_REPORTING_TO);
+		internalOrganisation = (String) value.get(FIELD_INTERNAL_ORGANISATION);
+		reportingDate = (Timestamp) value.get(FIELD_REPORTING_DATE);
 	}
 
 	public static EmplPositionFulfillmentAndReportingStruct fromValue(

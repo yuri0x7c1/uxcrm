@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Promo And Appl
  */
+@FieldNameConstants
 public class ProductStorePromoAndAppl implements Serializable {
 
-	public static final long serialVersionUID = 1629754179453820928L;
+	public static final long serialVersionUID = 579919414681731072L;
 	public static final String NAME = "ProductStorePromoAndAppl";
 	/**
 	 * Promo Name
@@ -64,19 +66,15 @@ public class ProductStorePromoAndAppl implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		promoName, userEntered, fromDate, sequenceNum, manualOnly, productStoreId, productPromoId, thruDate
-	}
-
 	public ProductStorePromoAndAppl(GenericValue value) {
-		promoName = (String) value.get(Fields.promoName.name());
-		userEntered = (String) value.get(Fields.userEntered.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		manualOnly = (String) value.get(Fields.manualOnly.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		promoName = (String) value.get(FIELD_PROMO_NAME);
+		userEntered = (String) value.get(FIELD_USER_ENTERED);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		manualOnly = (String) value.get(FIELD_MANUAL_ONLY);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static ProductStorePromoAndAppl fromValue(

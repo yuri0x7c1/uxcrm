@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.requirement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Requirement Type Attr
  */
+@FieldNameConstants
 public class RequirementTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 8191450101897101312L;
+	public static final long serialVersionUID = 5693855450511251456L;
 	public static final String NAME = "RequirementTypeAttr";
 	/**
 	 * Requirement Type Id
@@ -58,20 +60,14 @@ public class RequirementTypeAttr implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		requirementTypeId, attrName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RequirementTypeAttr(GenericValue value) {
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RequirementTypeAttr fromValue(

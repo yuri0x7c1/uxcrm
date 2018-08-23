@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Job Manager Lock
  */
+@FieldNameConstants
 public class JobManagerLock implements Serializable {
 
-	public static final long serialVersionUID = 5816363326952885248L;
+	public static final long serialVersionUID = 8613333245822750720L;
 	public static final String NAME = "JobManagerLock";
 	/**
 	 * Instance Id
@@ -94,29 +96,21 @@ public class JobManagerLock implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		instanceId, fromDate, thruDate, reasonEnumId, comments, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public JobManagerLock(GenericValue value) {
-		instanceId = (String) value.get(Fields.instanceId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		reasonEnumId = (String) value.get(Fields.reasonEnumId.name());
-		comments = (String) value.get(Fields.comments.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		instanceId = (String) value.get(FIELD_INSTANCE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		reasonEnumId = (String) value.get(FIELD_REASON_ENUM_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static JobManagerLock fromValue(

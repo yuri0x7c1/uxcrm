@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common._enum;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Enum Type Child And Enum
  */
+@FieldNameConstants
 public class EnumTypeChildAndEnum implements Serializable {
 
-	public static final long serialVersionUID = 1039253163966846976L;
+	public static final long serialVersionUID = 9186267466099634176L;
 	public static final String NAME = "EnumTypeChildAndEnum";
 	/**
 	 * Parent Enum Type Id
@@ -87,24 +89,19 @@ public class EnumTypeChildAndEnum implements Serializable {
 	@Setter
 	private String sequenceId;
 
-	public enum Fields {
-		parentEnumTypeId, parentParentTypeId, parentHasTable, parentDescription, childEnumTypeId, childHasTable, childDescription, enumTypeId, enumId, enumCode, description, sequenceId
-	}
-
 	public EnumTypeChildAndEnum(GenericValue value) {
-		parentEnumTypeId = (String) value.get(Fields.parentEnumTypeId.name());
-		parentParentTypeId = (String) value.get(Fields.parentParentTypeId
-				.name());
-		parentHasTable = (String) value.get(Fields.parentHasTable.name());
-		parentDescription = (String) value.get(Fields.parentDescription.name());
-		childEnumTypeId = (String) value.get(Fields.childEnumTypeId.name());
-		childHasTable = (String) value.get(Fields.childHasTable.name());
-		childDescription = (String) value.get(Fields.childDescription.name());
-		enumTypeId = (String) value.get(Fields.enumTypeId.name());
-		enumId = (String) value.get(Fields.enumId.name());
-		enumCode = (String) value.get(Fields.enumCode.name());
-		description = (String) value.get(Fields.description.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
+		parentEnumTypeId = (String) value.get(FIELD_PARENT_ENUM_TYPE_ID);
+		parentParentTypeId = (String) value.get(FIELD_PARENT_PARENT_TYPE_ID);
+		parentHasTable = (String) value.get(FIELD_PARENT_HAS_TABLE);
+		parentDescription = (String) value.get(FIELD_PARENT_DESCRIPTION);
+		childEnumTypeId = (String) value.get(FIELD_CHILD_ENUM_TYPE_ID);
+		childHasTable = (String) value.get(FIELD_CHILD_HAS_TABLE);
+		childDescription = (String) value.get(FIELD_CHILD_DESCRIPTION);
+		enumTypeId = (String) value.get(FIELD_ENUM_TYPE_ID);
+		enumId = (String) value.get(FIELD_ENUM_ID);
+		enumCode = (String) value.get(FIELD_ENUM_CODE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
 	}
 
 	public static EnumTypeChildAndEnum fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Question Category
  */
+@FieldNameConstants
 public class SurveyQuestionCategory implements Serializable {
 
-	public static final long serialVersionUID = 5945583819443452928L;
+	public static final long serialVersionUID = 8660435403732726784L;
 	public static final String NAME = "SurveyQuestionCategory";
 	/**
 	 * Survey Question Category Id
@@ -58,21 +60,15 @@ public class SurveyQuestionCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyQuestionCategoryId, parentCategoryId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyQuestionCategory(GenericValue value) {
 		surveyQuestionCategoryId = (String) value
-				.get(Fields.surveyQuestionCategoryId.name());
-		parentCategoryId = (String) value.get(Fields.parentCategoryId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SURVEY_QUESTION_CATEGORY_ID);
+		parentCategoryId = (String) value.get(FIELD_PARENT_CATEGORY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyQuestionCategory fromValue(

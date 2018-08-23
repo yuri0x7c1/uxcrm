@@ -37,12 +37,12 @@ public class ContentView extends CommonView implements View {
 
 	private MTable<ContentDataResourceView> contentTable = new MTable<>(ContentDataResourceView.class)
 		.withProperties(
-			ContentDataResourceView.Fields.contentId.name(),
-			ContentDataResourceView.Fields.contentName.name(),
-			ContentDataResourceView.Fields.contentTypeId.name(),
-			ContentDataResourceView.Fields.dataResourceId.name(),
-			ContentDataResourceView.Fields.drDataResourceName.name(),
-			ContentDataResourceView.Fields.mimeTypeId.name()
+			ContentDataResourceView.FIELD_CONTENT_ID,
+			ContentDataResourceView.FIELD_CONTENT_NAME,
+			ContentDataResourceView.FIELD_CONTENT_TYPE_ID,
+			ContentDataResourceView.FIELD_DATA_RESOURCE_ID,
+			ContentDataResourceView.FIELD_DR_DATA_RESOURCE_NAME,
+			ContentDataResourceView.FIELD_MIME_TYPE_ID
 		)
 		.withFullWidth()
 		.withFullHeight();
@@ -70,7 +70,7 @@ public class ContentView extends CommonView implements View {
 				return contentService.count(null);
 			}
 		)
-		.sort(new Object[] {ContentDataResourceView.Fields.contentId.name()}, new boolean[] {true});
+		.sort(new Object[] {ContentDataResourceView.FIELD_CONTENT_ID}, new boolean[] {true});
     }
 
     @Override

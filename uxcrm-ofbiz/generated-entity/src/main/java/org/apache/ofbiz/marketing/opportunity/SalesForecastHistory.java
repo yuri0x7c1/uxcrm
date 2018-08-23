@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Forecast History
  */
+@FieldNameConstants
 public class SalesForecastHistory implements Serializable {
 
-	public static final long serialVersionUID = 2756855512935579648L;
+	public static final long serialVersionUID = 5100845698649341952L;
 	public static final String NAME = "SalesForecastHistory";
 	/**
 	 * Sales Forecast History Id
@@ -137,41 +139,32 @@ public class SalesForecastHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesForecastHistoryId, salesForecastId, parentSalesForecastId, organizationPartyId, internalPartyId, customTimePeriodId, currencyUomId, quotaAmount, forecastAmount, bestCaseAmount, closedAmount, percentOfQuotaForecast, percentOfQuotaClosed, changeNote, modifiedByUserLoginId, modifiedTimestamp, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesForecastHistory(GenericValue value) {
 		salesForecastHistoryId = (String) value
-				.get(Fields.salesForecastHistoryId.name());
-		salesForecastId = (String) value.get(Fields.salesForecastId.name());
-		parentSalesForecastId = (String) value.get(Fields.parentSalesForecastId
-				.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		internalPartyId = (String) value.get(Fields.internalPartyId.name());
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		quotaAmount = (BigDecimal) value.get(Fields.quotaAmount.name());
-		forecastAmount = (BigDecimal) value.get(Fields.forecastAmount.name());
-		bestCaseAmount = (BigDecimal) value.get(Fields.bestCaseAmount.name());
-		closedAmount = (BigDecimal) value.get(Fields.closedAmount.name());
+				.get(FIELD_SALES_FORECAST_HISTORY_ID);
+		salesForecastId = (String) value.get(FIELD_SALES_FORECAST_ID);
+		parentSalesForecastId = (String) value
+				.get(FIELD_PARENT_SALES_FORECAST_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		internalPartyId = (String) value.get(FIELD_INTERNAL_PARTY_ID);
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		quotaAmount = (BigDecimal) value.get(FIELD_QUOTA_AMOUNT);
+		forecastAmount = (BigDecimal) value.get(FIELD_FORECAST_AMOUNT);
+		bestCaseAmount = (BigDecimal) value.get(FIELD_BEST_CASE_AMOUNT);
+		closedAmount = (BigDecimal) value.get(FIELD_CLOSED_AMOUNT);
 		percentOfQuotaForecast = (BigDecimal) value
-				.get(Fields.percentOfQuotaForecast.name());
+				.get(FIELD_PERCENT_OF_QUOTA_FORECAST);
 		percentOfQuotaClosed = (BigDecimal) value
-				.get(Fields.percentOfQuotaClosed.name());
-		changeNote = (String) value.get(Fields.changeNote.name());
-		modifiedByUserLoginId = (String) value.get(Fields.modifiedByUserLoginId
-				.name());
-		modifiedTimestamp = (Timestamp) value.get(Fields.modifiedTimestamp
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PERCENT_OF_QUOTA_CLOSED);
+		changeNote = (String) value.get(FIELD_CHANGE_NOTE);
+		modifiedByUserLoginId = (String) value
+				.get(FIELD_MODIFIED_BY_USER_LOGIN_ID);
+		modifiedTimestamp = (Timestamp) value.get(FIELD_MODIFIED_TIMESTAMP);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesForecastHistory fromValue(

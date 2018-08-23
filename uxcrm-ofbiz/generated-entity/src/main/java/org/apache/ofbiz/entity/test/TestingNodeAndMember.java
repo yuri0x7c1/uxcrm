@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing Node And Member
  */
+@FieldNameConstants
 public class TestingNodeAndMember implements Serializable {
 
-	public static final long serialVersionUID = 419519422800865280L;
+	public static final long serialVersionUID = 8845544853458659328L;
 	public static final String NAME = "TestingNodeAndMember";
 	/**
 	 * Description
@@ -64,20 +66,15 @@ public class TestingNodeAndMember implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		description, testingNodeId, primaryParentNodeId, fromDate, extendFromDate, testingId, extendThruDate, thruDate
-	}
-
 	public TestingNodeAndMember(GenericValue value) {
-		description = (String) value.get(Fields.description.name());
-		testingNodeId = (String) value.get(Fields.testingNodeId.name());
-		primaryParentNodeId = (String) value.get(Fields.primaryParentNodeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		extendFromDate = (Timestamp) value.get(Fields.extendFromDate.name());
-		testingId = (String) value.get(Fields.testingId.name());
-		extendThruDate = (Timestamp) value.get(Fields.extendThruDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		description = (String) value.get(FIELD_DESCRIPTION);
+		testingNodeId = (String) value.get(FIELD_TESTING_NODE_ID);
+		primaryParentNodeId = (String) value.get(FIELD_PRIMARY_PARENT_NODE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		extendFromDate = (Timestamp) value.get(FIELD_EXTEND_FROM_DATE);
+		testingId = (String) value.get(FIELD_TESTING_ID);
+		extendThruDate = (Timestamp) value.get(FIELD_EXTEND_THRU_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static TestingNodeAndMember fromValue(

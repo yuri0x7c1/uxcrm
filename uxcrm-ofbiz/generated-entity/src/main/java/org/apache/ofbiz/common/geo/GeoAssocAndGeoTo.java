@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Geo Assoc And Geo To
  */
+@FieldNameConstants
 public class GeoAssocAndGeoTo implements Serializable {
 
-	public static final long serialVersionUID = 5969419571671340032L;
+	public static final long serialVersionUID = 1605888990279467008L;
 	public static final String NAME = "GeoAssocAndGeoTo";
 	/**
 	 * Geo Id From
@@ -69,20 +71,16 @@ public class GeoAssocAndGeoTo implements Serializable {
 	@Setter
 	private String wellKnownText;
 
-	public enum Fields {
-		geoIdFrom, geoAssocTypeId, geoName, geoTypeId, geoId, geoCode, abbreviation, geoSecCode, wellKnownText
-	}
-
 	public GeoAssocAndGeoTo(GenericValue value) {
-		geoIdFrom = (String) value.get(Fields.geoIdFrom.name());
-		geoAssocTypeId = (String) value.get(Fields.geoAssocTypeId.name());
-		geoName = (String) value.get(Fields.geoName.name());
-		geoTypeId = (String) value.get(Fields.geoTypeId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		geoCode = (String) value.get(Fields.geoCode.name());
-		abbreviation = (String) value.get(Fields.abbreviation.name());
-		geoSecCode = (String) value.get(Fields.geoSecCode.name());
-		wellKnownText = (String) value.get(Fields.wellKnownText.name());
+		geoIdFrom = (String) value.get(FIELD_GEO_ID_FROM);
+		geoAssocTypeId = (String) value.get(FIELD_GEO_ASSOC_TYPE_ID);
+		geoName = (String) value.get(FIELD_GEO_NAME);
+		geoTypeId = (String) value.get(FIELD_GEO_TYPE_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		geoCode = (String) value.get(FIELD_GEO_CODE);
+		abbreviation = (String) value.get(FIELD_ABBREVIATION);
+		geoSecCode = (String) value.get(FIELD_GEO_SEC_CODE);
+		wellKnownText = (String) value.get(FIELD_WELL_KNOWN_TEXT);
 	}
 
 	public static GeoAssocAndGeoTo fromValue(

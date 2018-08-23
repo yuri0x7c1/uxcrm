@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Good Identification
  */
+@FieldNameConstants
 public class GoodIdentification implements Serializable {
 
-	public static final long serialVersionUID = 1748706920063186944L;
+	public static final long serialVersionUID = 1036563697216577536L;
 	public static final String NAME = "GoodIdentification";
 	/**
 	 * Good Identification Type Id
@@ -58,21 +60,15 @@ public class GoodIdentification implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		goodIdentificationTypeId, productId, idValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GoodIdentification(GenericValue value) {
 		goodIdentificationTypeId = (String) value
-				.get(Fields.goodIdentificationTypeId.name());
-		productId = (String) value.get(Fields.productId.name());
-		idValue = (String) value.get(Fields.idValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_GOOD_IDENTIFICATION_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		idValue = (String) value.get(FIELD_ID_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GoodIdentification fromValue(

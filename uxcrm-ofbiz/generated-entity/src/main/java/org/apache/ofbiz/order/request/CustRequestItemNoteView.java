@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request Item Note View
  */
+@FieldNameConstants
 public class CustRequestItemNoteView implements Serializable {
 
-	public static final long serialVersionUID = 8010661254820322304L;
+	public static final long serialVersionUID = 7493635393323054080L;
 	public static final String NAME = "CustRequestItemNoteView";
 	/**
 	 * Cust Request Id
@@ -70,21 +72,17 @@ public class CustRequestItemNoteView implements Serializable {
 	@Setter
 	private String lastName;
 
-	public enum Fields {
-		custRequestId, custRequestItemSeqId, noteId, noteName, noteInfo, noteDateTime, partyId, firstName, lastName
-	}
-
 	public CustRequestItemNoteView(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		lastName = (String) value.get(Fields.lastName.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
 	}
 
 	public static CustRequestItemNoteView fromValue(

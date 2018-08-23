@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Temporal Expression
  */
+@FieldNameConstants
 public class TemporalExpression implements Serializable {
 
-	public static final long serialVersionUID = 2621074282473535488L;
+	public static final long serialVersionUID = 6189172802735221760L;
 	public static final String NAME = "TemporalExpression";
 	/**
 	 * Temp Expr Id
@@ -94,26 +96,20 @@ public class TemporalExpression implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		tempExprId, tempExprTypeId, description, date1, date2, integer1, integer2, string1, string2, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TemporalExpression(GenericValue value) {
-		tempExprId = (String) value.get(Fields.tempExprId.name());
-		tempExprTypeId = (String) value.get(Fields.tempExprTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		date1 = (Timestamp) value.get(Fields.date1.name());
-		date2 = (Timestamp) value.get(Fields.date2.name());
-		integer1 = (Long) value.get(Fields.integer1.name());
-		integer2 = (Long) value.get(Fields.integer2.name());
-		string1 = (String) value.get(Fields.string1.name());
-		string2 = (String) value.get(Fields.string2.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		tempExprId = (String) value.get(FIELD_TEMP_EXPR_ID);
+		tempExprTypeId = (String) value.get(FIELD_TEMP_EXPR_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		date1 = (Timestamp) value.get(FIELD_DATE1);
+		date2 = (Timestamp) value.get(FIELD_DATE2);
+		integer1 = (Long) value.get(FIELD_INTEGER1);
+		integer2 = (Long) value.get(FIELD_INTEGER2);
+		string1 = (String) value.get(FIELD_STRING1);
+		string2 = (String) value.get(FIELD_STRING2);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TemporalExpression fromValue(

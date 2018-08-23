@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Type Gl Account
  */
+@FieldNameConstants
 public class FixedAssetTypeGlAccount implements Serializable {
 
-	public static final long serialVersionUID = 3026233574738736128L;
+	public static final long serialVersionUID = 6942619562717492224L;
 	public static final String NAME = "FixedAssetTypeGlAccount";
 	/**
 	 * Fixed Asset Type Id
@@ -88,26 +90,19 @@ public class FixedAssetTypeGlAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetTypeId, fixedAssetId, organizationPartyId, assetGlAccountId, accDepGlAccountId, depGlAccountId, profitGlAccountId, lossGlAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetTypeGlAccount(GenericValue value) {
-		fixedAssetTypeId = (String) value.get(Fields.fixedAssetTypeId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		assetGlAccountId = (String) value.get(Fields.assetGlAccountId.name());
-		accDepGlAccountId = (String) value.get(Fields.accDepGlAccountId.name());
-		depGlAccountId = (String) value.get(Fields.depGlAccountId.name());
-		profitGlAccountId = (String) value.get(Fields.profitGlAccountId.name());
-		lossGlAccountId = (String) value.get(Fields.lossGlAccountId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetTypeId = (String) value.get(FIELD_FIXED_ASSET_TYPE_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		assetGlAccountId = (String) value.get(FIELD_ASSET_GL_ACCOUNT_ID);
+		accDepGlAccountId = (String) value.get(FIELD_ACC_DEP_GL_ACCOUNT_ID);
+		depGlAccountId = (String) value.get(FIELD_DEP_GL_ACCOUNT_ID);
+		profitGlAccountId = (String) value.get(FIELD_PROFIT_GL_ACCOUNT_ID);
+		lossGlAccountId = (String) value.get(FIELD_LOSS_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetTypeGlAccount fromValue(

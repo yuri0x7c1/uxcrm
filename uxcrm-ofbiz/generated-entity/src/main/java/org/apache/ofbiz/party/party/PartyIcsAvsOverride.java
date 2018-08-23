@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Ics Avs Override
  */
+@FieldNameConstants
 public class PartyIcsAvsOverride implements Serializable {
 
-	public static final long serialVersionUID = 523905727000507392L;
+	public static final long serialVersionUID = 1233288659383099392L;
 	public static final String NAME = "PartyIcsAvsOverride";
 	/**
 	 * Party Id
@@ -52,19 +54,13 @@ public class PartyIcsAvsOverride implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, avsDeclineString, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyIcsAvsOverride(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		avsDeclineString = (String) value.get(Fields.avsDeclineString.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		avsDeclineString = (String) value.get(FIELD_AVS_DECLINE_STRING);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyIcsAvsOverride fromValue(

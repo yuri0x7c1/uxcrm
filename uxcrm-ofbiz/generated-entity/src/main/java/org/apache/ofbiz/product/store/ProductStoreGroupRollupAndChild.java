@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Group Rollup And Child
  */
+@FieldNameConstants
 public class ProductStoreGroupRollupAndChild implements Serializable {
 
-	public static final long serialVersionUID = 1425541386422625280L;
+	public static final long serialVersionUID = 8532247616310163456L;
 	public static final String NAME = "ProductStoreGroupRollupAndChild";
 	/**
 	 * Product Store Group Type Id
@@ -70,24 +72,19 @@ public class ProductStoreGroupRollupAndChild implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		productStoreGroupTypeId, primaryParentGroupId, productStoreGroupName, description, productStoreGroupId, fromDate, sequenceNum, parentGroupId, thruDate
-	}
-
 	public ProductStoreGroupRollupAndChild(GenericValue value) {
 		productStoreGroupTypeId = (String) value
-				.get(Fields.productStoreGroupTypeId.name());
-		primaryParentGroupId = (String) value.get(Fields.primaryParentGroupId
-				.name());
-		productStoreGroupName = (String) value.get(Fields.productStoreGroupName
-				.name());
-		description = (String) value.get(Fields.description.name());
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		parentGroupId = (String) value.get(Fields.parentGroupId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_PRODUCT_STORE_GROUP_TYPE_ID);
+		primaryParentGroupId = (String) value
+				.get(FIELD_PRIMARY_PARENT_GROUP_ID);
+		productStoreGroupName = (String) value
+				.get(FIELD_PRODUCT_STORE_GROUP_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		parentGroupId = (String) value.get(FIELD_PARENT_GROUP_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static ProductStoreGroupRollupAndChild fromValue(

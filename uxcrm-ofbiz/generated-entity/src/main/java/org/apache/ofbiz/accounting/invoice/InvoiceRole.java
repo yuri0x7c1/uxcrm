@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Role
  */
+@FieldNameConstants
 public class InvoiceRole implements Serializable {
 
-	public static final long serialVersionUID = 4821962877240989696L;
+	public static final long serialVersionUID = 5135105152801730560L;
 	public static final String NAME = "InvoiceRole";
 	/**
 	 * Invoice Id
@@ -71,23 +73,16 @@ public class InvoiceRole implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceId, partyId, roleTypeId, datetimePerformed, percentage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceRole(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		datetimePerformed = (Timestamp) value.get(Fields.datetimePerformed
-				.name());
-		percentage = (BigDecimal) value.get(Fields.percentage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		datetimePerformed = (Timestamp) value.get(FIELD_DATETIME_PERFORMED);
+		percentage = (BigDecimal) value.get(FIELD_PERCENTAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceRole fromValue(

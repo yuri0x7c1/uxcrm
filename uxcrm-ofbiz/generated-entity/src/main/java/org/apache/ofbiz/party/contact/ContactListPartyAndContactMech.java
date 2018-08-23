@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List Party And Contact Mech
  */
+@FieldNameConstants
 public class ContactListPartyAndContactMech implements Serializable {
 
-	public static final long serialVersionUID = 4035058859090931712L;
+	public static final long serialVersionUID = 7928097484110300160L;
 	public static final String NAME = "ContactListPartyAndContactMech";
 	/**
 	 * Contact From Date
@@ -82,23 +84,19 @@ public class ContactListPartyAndContactMech implements Serializable {
 	@Setter
 	private String contactMechId;
 
-	public enum Fields {
-		contactFromDate, contactThruDate, fromDate, statusId, contactListId, preferredContactMechId, partyId, thruDate, infoString, contactMechTypeId, contactMechId
-	}
-
 	public ContactListPartyAndContactMech(GenericValue value) {
-		contactFromDate = (Timestamp) value.get(Fields.contactFromDate.name());
-		contactThruDate = (Timestamp) value.get(Fields.contactThruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		contactListId = (String) value.get(Fields.contactListId.name());
+		contactFromDate = (Timestamp) value.get(FIELD_CONTACT_FROM_DATE);
+		contactThruDate = (Timestamp) value.get(FIELD_CONTACT_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
 		preferredContactMechId = (String) value
-				.get(Fields.preferredContactMechId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
+				.get(FIELD_PREFERRED_CONTACT_MECH_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
 	}
 
 	public static ContactListPartyAndContactMech fromValue(

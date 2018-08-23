@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request
  */
+@FieldNameConstants
 public class CustRequest implements Serializable {
 
-	public static final long serialVersionUID = 1365556684124788736L;
+	public static final long serialVersionUID = 5164556249856316416L;
 	public static final String NAME = "CustRequest";
 	/**
 	 * Cust Request Id
@@ -178,48 +180,38 @@ public class CustRequest implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		custRequestId, custRequestTypeId, custRequestCategoryId, statusId, fromPartyId, priority, custRequestDate, responseRequiredDate, custRequestName, description, maximumAmountUomId, productStoreId, salesChannelEnumId, fulfillContactMechId, currencyUomId, openDateTime, closedDateTime, internalComment, reason, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CustRequest(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestTypeId = (String) value.get(Fields.custRequestTypeId.name());
-		custRequestCategoryId = (String) value.get(Fields.custRequestCategoryId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		fromPartyId = (String) value.get(Fields.fromPartyId.name());
-		priority = (Long) value.get(Fields.priority.name());
-		custRequestDate = (Timestamp) value.get(Fields.custRequestDate.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestTypeId = (String) value.get(FIELD_CUST_REQUEST_TYPE_ID);
+		custRequestCategoryId = (String) value
+				.get(FIELD_CUST_REQUEST_CATEGORY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		fromPartyId = (String) value.get(FIELD_FROM_PARTY_ID);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		custRequestDate = (Timestamp) value.get(FIELD_CUST_REQUEST_DATE);
 		responseRequiredDate = (Timestamp) value
-				.get(Fields.responseRequiredDate.name());
-		custRequestName = (String) value.get(Fields.custRequestName.name());
-		description = (String) value.get(Fields.description.name());
-		maximumAmountUomId = (String) value.get(Fields.maximumAmountUomId
-				.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		fulfillContactMechId = (String) value.get(Fields.fulfillContactMechId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		openDateTime = (Timestamp) value.get(Fields.openDateTime.name());
-		closedDateTime = (Timestamp) value.get(Fields.closedDateTime.name());
-		internalComment = (String) value.get(Fields.internalComment.name());
-		reason = (String) value.get(Fields.reason.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_RESPONSE_REQUIRED_DATE);
+		custRequestName = (String) value.get(FIELD_CUST_REQUEST_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		maximumAmountUomId = (String) value.get(FIELD_MAXIMUM_AMOUNT_UOM_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		fulfillContactMechId = (String) value
+				.get(FIELD_FULFILL_CONTACT_MECH_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		openDateTime = (Timestamp) value.get(FIELD_OPEN_DATE_TIME);
+		closedDateTime = (Timestamp) value.get(FIELD_CLOSED_DATE_TIME);
+		internalComment = (String) value.get(FIELD_INTERNAL_COMMENT);
+		reason = (String) value.get(FIELD_REASON);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CustRequest fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Cost Calc
  */
+@FieldNameConstants
 public class WorkEffortCostCalc implements Serializable {
 
-	public static final long serialVersionUID = 4798161628126402560L;
+	public static final long serialVersionUID = 6932871944456988672L;
 	public static final String NAME = "WorkEffortCostCalc";
 	/**
 	 * Work Effort Id
@@ -70,24 +72,16 @@ public class WorkEffortCostCalc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, costComponentTypeId, costComponentCalcId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortCostCalc(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		costComponentTypeId = (String) value.get(Fields.costComponentTypeId
-				.name());
-		costComponentCalcId = (String) value.get(Fields.costComponentCalcId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		costComponentTypeId = (String) value.get(FIELD_COST_COMPONENT_TYPE_ID);
+		costComponentCalcId = (String) value.get(FIELD_COST_COMPONENT_CALC_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortCostCalc fromValue(

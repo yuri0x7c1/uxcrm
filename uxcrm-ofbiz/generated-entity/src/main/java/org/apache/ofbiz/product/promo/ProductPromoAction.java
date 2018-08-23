@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Action
  */
+@FieldNameConstants
 public class ProductPromoAction implements Serializable {
 
-	public static final long serialVersionUID = 9023248567663712256L;
+	public static final long serialVersionUID = 7811669751128105984L;
 	public static final String NAME = "ProductPromoAction";
 	/**
 	 * Product Promo Id
@@ -107,32 +109,25 @@ public class ProductPromoAction implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoId, productPromoRuleId, productPromoActionSeqId, productPromoActionEnumId, orderAdjustmentTypeId, serviceName, quantity, amount, productId, partyId, useCartQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoAction(GenericValue value) {
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
 		productPromoActionSeqId = (String) value
-				.get(Fields.productPromoActionSeqId.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_SEQ_ID);
 		productPromoActionEnumId = (String) value
-				.get(Fields.productPromoActionEnumId.name());
-		orderAdjustmentTypeId = (String) value.get(Fields.orderAdjustmentTypeId
-				.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		productId = (String) value.get(Fields.productId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		useCartQuantity = (String) value.get(Fields.useCartQuantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_ENUM_ID);
+		orderAdjustmentTypeId = (String) value
+				.get(FIELD_ORDER_ADJUSTMENT_TYPE_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		useCartQuantity = (String) value.get(FIELD_USE_CART_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoAction fromValue(

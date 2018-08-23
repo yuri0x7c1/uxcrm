@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact Mech Link
  */
+@FieldNameConstants
 public class ContactMechLink implements Serializable {
 
-	public static final long serialVersionUID = 2959392045668611072L;
+	public static final long serialVersionUID = 3570572387496243200L;
 	public static final String NAME = "ContactMechLink";
 	/**
 	 * Contact Mech Id From
@@ -52,19 +54,13 @@ public class ContactMechLink implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactMechIdFrom, contactMechIdTo, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContactMechLink(GenericValue value) {
-		contactMechIdFrom = (String) value.get(Fields.contactMechIdFrom.name());
-		contactMechIdTo = (String) value.get(Fields.contactMechIdTo.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contactMechIdFrom = (String) value.get(FIELD_CONTACT_MECH_ID_FROM);
+		contactMechIdTo = (String) value.get(FIELD_CONTACT_MECH_ID_TO);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContactMechLink fromValue(

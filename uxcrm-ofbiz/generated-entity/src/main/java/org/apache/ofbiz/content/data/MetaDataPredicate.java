@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Meta Data Predicate
  */
+@FieldNameConstants
 public class MetaDataPredicate implements Serializable {
 
-	public static final long serialVersionUID = 4058012543855514624L;
+	public static final long serialVersionUID = 8456275024558909440L;
 	public static final String NAME = "MetaDataPredicate";
 	/**
 	 * Meta Data Predicate Id
@@ -52,20 +54,13 @@ public class MetaDataPredicate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		metaDataPredicateId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MetaDataPredicate(GenericValue value) {
-		metaDataPredicateId = (String) value.get(Fields.metaDataPredicateId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		metaDataPredicateId = (String) value.get(FIELD_META_DATA_PREDICATE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MetaDataPredicate fromValue(

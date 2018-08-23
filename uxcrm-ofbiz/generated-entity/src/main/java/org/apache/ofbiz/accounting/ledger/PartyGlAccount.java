@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Gl Account
  */
+@FieldNameConstants
 public class PartyGlAccount implements Serializable {
 
-	public static final long serialVersionUID = 759090222957842432L;
+	public static final long serialVersionUID = 7198485931326806016L;
 	public static final String NAME = "PartyGlAccount";
 	/**
 	 * Organization Party Id
@@ -70,23 +72,16 @@ public class PartyGlAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		organizationPartyId, partyId, roleTypeId, glAccountTypeId, glAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyGlAccount(GenericValue value) {
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		glAccountTypeId = (String) value.get(Fields.glAccountTypeId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		glAccountTypeId = (String) value.get(FIELD_GL_ACCOUNT_TYPE_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyGlAccount fromValue(

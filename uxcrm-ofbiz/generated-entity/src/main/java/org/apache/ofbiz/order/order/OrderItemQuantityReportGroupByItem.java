@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Item Quantity Report Group By Item
  */
+@FieldNameConstants
 public class OrderItemQuantityReportGroupByItem implements Serializable {
 
-	public static final long serialVersionUID = 6065922110949366784L;
+	public static final long serialVersionUID = 688664345285432320L;
 	public static final String NAME = "OrderItemQuantityReportGroupByItem";
 	/**
 	 * Product Store Id
@@ -101,25 +103,21 @@ public class OrderItemQuantityReportGroupByItem implements Serializable {
 	@Setter
 	private BigDecimal quantityOpen;
 
-	public enum Fields {
-		productStoreId, orderId, orderTypeId, orderStatusId, orderDate, orderItemSeqId, orderItemStatusId, productId, itemDescription, shipBeforeDate, shipAfterDate, quantityOrdered, quantityIssued, quantityOpen
-	}
-
 	public OrderItemQuantityReportGroupByItem(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		orderItemStatusId = (String) value.get(Fields.orderItemStatusId.name());
-		productId = (String) value.get(Fields.productId.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		shipBeforeDate = (Timestamp) value.get(Fields.shipBeforeDate.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		quantityOrdered = (BigDecimal) value.get(Fields.quantityOrdered.name());
-		quantityIssued = (BigDecimal) value.get(Fields.quantityIssued.name());
-		quantityOpen = (BigDecimal) value.get(Fields.quantityOpen.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		orderItemStatusId = (String) value.get(FIELD_ORDER_ITEM_STATUS_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		shipBeforeDate = (Timestamp) value.get(FIELD_SHIP_BEFORE_DATE);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		quantityOrdered = (BigDecimal) value.get(FIELD_QUANTITY_ORDERED);
+		quantityIssued = (BigDecimal) value.get(FIELD_QUANTITY_ISSUED);
+		quantityOpen = (BigDecimal) value.get(FIELD_QUANTITY_OPEN);
 	}
 
 	public static OrderItemQuantityReportGroupByItem fromValue(

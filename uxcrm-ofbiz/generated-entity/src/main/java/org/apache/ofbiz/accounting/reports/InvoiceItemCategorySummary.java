@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Item Category Summary
  */
+@FieldNameConstants
 public class InvoiceItemCategorySummary implements Serializable {
 
-	public static final long serialVersionUID = 8741989614350687232L;
+	public static final long serialVersionUID = 7977063103394381824L;
 	public static final String NAME = "InvoiceItemCategorySummary";
 	/**
 	 * Status Id
@@ -83,22 +85,18 @@ public class InvoiceItemCategorySummary implements Serializable {
 	@Setter
 	private String productCategoryId;
 
-	public enum Fields {
-		statusId, invoiceDate, invoiceTypeId, partyIdFrom, partyId, currencyUomId, invoiceItemTypeId, productId, quantityTotal, amountTotal, productCategoryId
-	}
-
 	public InvoiceItemCategorySummary(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		invoiceDate = (Timestamp) value.get(Fields.invoiceDate.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantityTotal = (BigDecimal) value.get(Fields.quantityTotal.name());
-		amountTotal = (BigDecimal) value.get(Fields.amountTotal.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		invoiceDate = (Timestamp) value.get(FIELD_INVOICE_DATE);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantityTotal = (BigDecimal) value.get(FIELD_QUANTITY_TOTAL);
+		amountTotal = (BigDecimal) value.get(FIELD_AMOUNT_TOTAL);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
 	}
 
 	public static InvoiceItemCategorySummary fromValue(

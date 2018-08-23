@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Package Content
  */
+@FieldNameConstants
 public class ShipmentPackageContent implements Serializable {
 
-	public static final long serialVersionUID = 7929812567296130048L;
+	public static final long serialVersionUID = 1263016351918826496L;
 	public static final String NAME = "ShipmentPackageContent";
 	/**
 	 * Shipment Id
@@ -77,25 +79,18 @@ public class ShipmentPackageContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentId, shipmentPackageSeqId, shipmentItemSeqId, quantity, subProductId, subProductQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentPackageContent(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		subProductId = (String) value.get(Fields.subProductId.name());
-		subProductQuantity = (BigDecimal) value.get(Fields.subProductQuantity
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		subProductId = (String) value.get(FIELD_SUB_PRODUCT_ID);
+		subProductQuantity = (BigDecimal) value.get(FIELD_SUB_PRODUCT_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentPackageContent fromValue(

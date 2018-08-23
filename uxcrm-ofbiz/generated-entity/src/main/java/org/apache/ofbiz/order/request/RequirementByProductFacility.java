@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Requirement By Product Facility
  */
+@FieldNameConstants
 public class RequirementByProductFacility implements Serializable {
 
-	public static final long serialVersionUID = 1113341232401257472L;
+	public static final long serialVersionUID = 8752977653101552640L;
 	public static final String NAME = "RequirementByProductFacility";
 	/**
 	 * Status Id
@@ -40,15 +42,11 @@ public class RequirementByProductFacility implements Serializable {
 	@Setter
 	private BigDecimal quantity;
 
-	public enum Fields {
-		statusId, productId, facilityId, quantity
-	}
-
 	public RequirementByProductFacility(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
 	}
 
 	public static RequirementByProductFacility fromValue(

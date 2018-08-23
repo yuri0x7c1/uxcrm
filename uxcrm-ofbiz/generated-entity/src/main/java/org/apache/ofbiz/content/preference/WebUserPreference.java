@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.preference;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web User Preference
  */
+@FieldNameConstants
 public class WebUserPreference implements Serializable {
 
-	public static final long serialVersionUID = 8132330895833515008L;
+	public static final long serialVersionUID = 1512919067180101632L;
 	public static final String NAME = "WebUserPreference";
 	/**
 	 * User Login Id
@@ -70,24 +72,16 @@ public class WebUserPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userLoginId, partyId, visitId, webPreferenceTypeId, webPreferenceValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebUserPreference(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		webPreferenceTypeId = (String) value.get(Fields.webPreferenceTypeId
-				.name());
-		webPreferenceValue = (String) value.get(Fields.webPreferenceValue
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		webPreferenceTypeId = (String) value.get(FIELD_WEB_PREFERENCE_TYPE_ID);
+		webPreferenceValue = (String) value.get(FIELD_WEB_PREFERENCE_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebUserPreference fromValue(

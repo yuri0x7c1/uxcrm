@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header Item And Roles
  */
+@FieldNameConstants
 public class OrderHeaderItemAndRoles implements Serializable {
 
-	public static final long serialVersionUID = 1806130097858301952L;
+	public static final long serialVersionUID = 1855450896644244480L;
 	public static final String NAME = "OrderHeaderItemAndRoles";
 	/**
 	 * Order Name
@@ -197,44 +199,37 @@ public class OrderHeaderItemAndRoles implements Serializable {
 	@Setter
 	private String orderItemStatusId;
 
-	public enum Fields {
-		orderName, orderId, partyId, roleTypeId, orderTypeId, orderDate, entryDate, visitId, statusId, createdBy, firstAttemptOrderId, currencyUom, syncStatusId, billingAccountId, originFacilityId, productStoreId, webSiteId, grandTotal, remainingSubTotal, productId, quantity, unitPrice, unitListPrice, estimatedShipDate, autoCancelDate, correspondingPoId, orderItemTypeId, itemDescription, orderItemSeqId, orderItemStatusId
-	}
-
 	public OrderHeaderItemAndRoles(GenericValue value) {
-		orderName = (String) value.get(Fields.orderName.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		createdBy = (String) value.get(Fields.createdBy.name());
-		firstAttemptOrderId = (String) value.get(Fields.firstAttemptOrderId
-				.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
-		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
-		autoCancelDate = (Timestamp) value.get(Fields.autoCancelDate.name());
-		correspondingPoId = (String) value.get(Fields.correspondingPoId.name());
-		orderItemTypeId = (String) value.get(Fields.orderItemTypeId.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		orderItemStatusId = (String) value.get(Fields.orderItemStatusId.name());
+		orderName = (String) value.get(FIELD_ORDER_NAME);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		createdBy = (String) value.get(FIELD_CREATED_BY);
+		firstAttemptOrderId = (String) value.get(FIELD_FIRST_ATTEMPT_ORDER_ID);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
+		remainingSubTotal = (BigDecimal) value.get(FIELD_REMAINING_SUB_TOTAL);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
+		autoCancelDate = (Timestamp) value.get(FIELD_AUTO_CANCEL_DATE);
+		correspondingPoId = (String) value.get(FIELD_CORRESPONDING_PO_ID);
+		orderItemTypeId = (String) value.get(FIELD_ORDER_ITEM_TYPE_ID);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		orderItemStatusId = (String) value.get(FIELD_ORDER_ITEM_STATUS_ID);
 	}
 
 	public static OrderHeaderItemAndRoles fromValue(

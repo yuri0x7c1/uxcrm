@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Route Segment
  */
+@FieldNameConstants
 public class ShipmentRouteSegment implements Serializable {
 
-	public static final long serialVersionUID = 8948253972097112064L;
+	public static final long serialVersionUID = 5223845365799627776L;
 	public static final String NAME = "ShipmentRouteSegment";
 	/**
 	 * Shipment Id
@@ -257,74 +259,59 @@ public class ShipmentRouteSegment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentId, shipmentRouteSegmentId, deliveryId, originFacilityId, destFacilityId, originContactMechId, originTelecomNumberId, destContactMechId, destTelecomNumberId, carrierPartyId, shipmentMethodTypeId, carrierServiceStatusId, carrierDeliveryZone, carrierRestrictionCodes, carrierRestrictionDesc, billingWeight, billingWeightUomId, actualTransportCost, actualServiceCost, actualOtherCost, actualCost, currencyUomId, actualStartDate, actualArrivalDate, estimatedStartDate, estimatedArrivalDate, trackingIdNumber, trackingDigest, updatedByUserLoginId, lastUpdatedDate, homeDeliveryType, homeDeliveryDate, thirdPartyAccountNumber, thirdPartyPostalCode, thirdPartyCountryGeoCode, upsHighValueReport, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentRouteSegment(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
 		shipmentRouteSegmentId = (String) value
-				.get(Fields.shipmentRouteSegmentId.name());
-		deliveryId = (String) value.get(Fields.deliveryId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		destFacilityId = (String) value.get(Fields.destFacilityId.name());
-		originContactMechId = (String) value.get(Fields.originContactMechId
-				.name());
-		originTelecomNumberId = (String) value.get(Fields.originTelecomNumberId
-				.name());
-		destContactMechId = (String) value.get(Fields.destContactMechId.name());
-		destTelecomNumberId = (String) value.get(Fields.destTelecomNumberId
-				.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
+				.get(FIELD_SHIPMENT_ROUTE_SEGMENT_ID);
+		deliveryId = (String) value.get(FIELD_DELIVERY_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		destFacilityId = (String) value.get(FIELD_DEST_FACILITY_ID);
+		originContactMechId = (String) value.get(FIELD_ORIGIN_CONTACT_MECH_ID);
+		originTelecomNumberId = (String) value
+				.get(FIELD_ORIGIN_TELECOM_NUMBER_ID);
+		destContactMechId = (String) value.get(FIELD_DEST_CONTACT_MECH_ID);
+		destTelecomNumberId = (String) value.get(FIELD_DEST_TELECOM_NUMBER_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
 		carrierServiceStatusId = (String) value
-				.get(Fields.carrierServiceStatusId.name());
-		carrierDeliveryZone = (String) value.get(Fields.carrierDeliveryZone
-				.name());
+				.get(FIELD_CARRIER_SERVICE_STATUS_ID);
+		carrierDeliveryZone = (String) value.get(FIELD_CARRIER_DELIVERY_ZONE);
 		carrierRestrictionCodes = (String) value
-				.get(Fields.carrierRestrictionCodes.name());
+				.get(FIELD_CARRIER_RESTRICTION_CODES);
 		carrierRestrictionDesc = (String) value
-				.get(Fields.carrierRestrictionDesc.name());
-		billingWeight = (BigDecimal) value.get(Fields.billingWeight.name());
-		billingWeightUomId = (String) value.get(Fields.billingWeightUomId
-				.name());
-		actualTransportCost = (BigDecimal) value.get(Fields.actualTransportCost
-				.name());
-		actualServiceCost = (BigDecimal) value.get(Fields.actualServiceCost
-				.name());
-		actualOtherCost = (BigDecimal) value.get(Fields.actualOtherCost.name());
-		actualCost = (BigDecimal) value.get(Fields.actualCost.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
-		actualArrivalDate = (Timestamp) value.get(Fields.actualArrivalDate
-				.name());
-		estimatedStartDate = (Timestamp) value.get(Fields.estimatedStartDate
-				.name());
+				.get(FIELD_CARRIER_RESTRICTION_DESC);
+		billingWeight = (BigDecimal) value.get(FIELD_BILLING_WEIGHT);
+		billingWeightUomId = (String) value.get(FIELD_BILLING_WEIGHT_UOM_ID);
+		actualTransportCost = (BigDecimal) value
+				.get(FIELD_ACTUAL_TRANSPORT_COST);
+		actualServiceCost = (BigDecimal) value.get(FIELD_ACTUAL_SERVICE_COST);
+		actualOtherCost = (BigDecimal) value.get(FIELD_ACTUAL_OTHER_COST);
+		actualCost = (BigDecimal) value.get(FIELD_ACTUAL_COST);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
+		actualArrivalDate = (Timestamp) value.get(FIELD_ACTUAL_ARRIVAL_DATE);
+		estimatedStartDate = (Timestamp) value.get(FIELD_ESTIMATED_START_DATE);
 		estimatedArrivalDate = (Timestamp) value
-				.get(Fields.estimatedArrivalDate.name());
-		trackingIdNumber = (String) value.get(Fields.trackingIdNumber.name());
-		trackingDigest = (String) value.get(Fields.trackingDigest.name());
-		updatedByUserLoginId = (String) value.get(Fields.updatedByUserLoginId
-				.name());
-		lastUpdatedDate = (Timestamp) value.get(Fields.lastUpdatedDate.name());
-		homeDeliveryType = (String) value.get(Fields.homeDeliveryType.name());
-		homeDeliveryDate = (Timestamp) value
-				.get(Fields.homeDeliveryDate.name());
+				.get(FIELD_ESTIMATED_ARRIVAL_DATE);
+		trackingIdNumber = (String) value.get(FIELD_TRACKING_ID_NUMBER);
+		trackingDigest = (String) value.get(FIELD_TRACKING_DIGEST);
+		updatedByUserLoginId = (String) value
+				.get(FIELD_UPDATED_BY_USER_LOGIN_ID);
+		lastUpdatedDate = (Timestamp) value.get(FIELD_LAST_UPDATED_DATE);
+		homeDeliveryType = (String) value.get(FIELD_HOME_DELIVERY_TYPE);
+		homeDeliveryDate = (Timestamp) value.get(FIELD_HOME_DELIVERY_DATE);
 		thirdPartyAccountNumber = (String) value
-				.get(Fields.thirdPartyAccountNumber.name());
-		thirdPartyPostalCode = (String) value.get(Fields.thirdPartyPostalCode
-				.name());
+				.get(FIELD_THIRD_PARTY_ACCOUNT_NUMBER);
+		thirdPartyPostalCode = (String) value
+				.get(FIELD_THIRD_PARTY_POSTAL_CODE);
 		thirdPartyCountryGeoCode = (String) value
-				.get(Fields.thirdPartyCountryGeoCode.name());
-		upsHighValueReport = (byte[]) value.get(Fields.upsHighValueReport
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_THIRD_PARTY_COUNTRY_GEO_CODE);
+		upsHighValueReport = (byte[]) value.get(FIELD_UPS_HIGH_VALUE_REPORT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentRouteSegment fromValue(

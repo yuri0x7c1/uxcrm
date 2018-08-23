@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Type Attr
  */
+@FieldNameConstants
 public class ContentTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 3205000566957742080L;
+	public static final long serialVersionUID = 4279521219086735360L;
 	public static final String NAME = "ContentTypeAttr";
 	/**
 	 * Content Type Id
@@ -58,20 +60,14 @@ public class ContentTypeAttr implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentTypeId, attrName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentTypeAttr(GenericValue value) {
-		contentTypeId = (String) value.get(Fields.contentTypeId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentTypeId = (String) value.get(FIELD_CONTENT_TYPE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentTypeAttr fromValue(

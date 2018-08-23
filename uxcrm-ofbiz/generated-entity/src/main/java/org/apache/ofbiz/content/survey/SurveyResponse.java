@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Response
  */
+@FieldNameConstants
 public class SurveyResponse implements Serializable {
 
-	public static final long serialVersionUID = 3128320338389103616L;
+	public static final long serialVersionUID = 639481938494650368L;
 	public static final String NAME = "SurveyResponse";
 	/**
 	 * Survey Response Id
@@ -100,28 +102,21 @@ public class SurveyResponse implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyResponseId, surveyId, partyId, responseDate, lastModifiedDate, referenceId, generalFeedback, orderId, orderItemSeqId, statusId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyResponse(GenericValue value) {
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		responseDate = (Timestamp) value.get(Fields.responseDate.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		referenceId = (String) value.get(Fields.referenceId.name());
-		generalFeedback = (String) value.get(Fields.generalFeedback.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		responseDate = (Timestamp) value.get(FIELD_RESPONSE_DATE);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		referenceId = (String) value.get(FIELD_REFERENCE_ID);
+		generalFeedback = (String) value.get(FIELD_GENERAL_FEEDBACK);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyResponse fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Price Action
  */
+@FieldNameConstants
 public class ProductPriceAction implements Serializable {
 
-	public static final long serialVersionUID = 6914597144452641792L;
+	public static final long serialVersionUID = 2332187367417019392L;
 	public static final String NAME = "ProductPriceAction";
 	/**
 	 * Product Price Rule Id
@@ -71,25 +73,18 @@ public class ProductPriceAction implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPriceRuleId, productPriceActionSeqId, productPriceActionTypeId, amount, rateCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPriceAction(GenericValue value) {
-		productPriceRuleId = (String) value.get(Fields.productPriceRuleId
-				.name());
+		productPriceRuleId = (String) value.get(FIELD_PRODUCT_PRICE_RULE_ID);
 		productPriceActionSeqId = (String) value
-				.get(Fields.productPriceActionSeqId.name());
+				.get(FIELD_PRODUCT_PRICE_ACTION_SEQ_ID);
 		productPriceActionTypeId = (String) value
-				.get(Fields.productPriceActionTypeId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		rateCode = (String) value.get(Fields.rateCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_PRICE_ACTION_TYPE_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		rateCode = (String) value.get(FIELD_RATE_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPriceAction fromValue(

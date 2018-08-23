@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fin Account Trans
  */
+@FieldNameConstants
 public class FinAccountTrans implements Serializable {
 
-	public static final long serialVersionUID = 2060019955922813952L;
+	public static final long serialVersionUID = 628594345463884800L;
 	public static final String NAME = "FinAccountTrans";
 	/**
 	 * Fin Account Trans Id
@@ -131,35 +133,27 @@ public class FinAccountTrans implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		finAccountTransId, finAccountTransTypeId, finAccountId, partyId, glReconciliationId, transactionDate, entryDate, amount, paymentId, orderId, orderItemSeqId, performedByPartyId, reasonEnumId, comments, statusId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FinAccountTrans(GenericValue value) {
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		finAccountTransTypeId = (String) value.get(Fields.finAccountTransTypeId
-				.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		glReconciliationId = (String) value.get(Fields.glReconciliationId
-				.name());
-		transactionDate = (Timestamp) value.get(Fields.transactionDate.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		performedByPartyId = (String) value.get(Fields.performedByPartyId
-				.name());
-		reasonEnumId = (String) value.get(Fields.reasonEnumId.name());
-		comments = (String) value.get(Fields.comments.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		finAccountTransTypeId = (String) value
+				.get(FIELD_FIN_ACCOUNT_TRANS_TYPE_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		glReconciliationId = (String) value.get(FIELD_GL_RECONCILIATION_ID);
+		transactionDate = (Timestamp) value.get(FIELD_TRANSACTION_DATE);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		performedByPartyId = (String) value.get(FIELD_PERFORMED_BY_PARTY_ID);
+		reasonEnumId = (String) value.get(FIELD_REASON_ENUM_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FinAccountTrans fromValue(

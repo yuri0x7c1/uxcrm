@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Return Type
  */
+@FieldNameConstants
 public class ReturnType implements Serializable {
 
-	public static final long serialVersionUID = 5011117952608150528L;
+	public static final long serialVersionUID = 5250335094003406848L;
 	public static final String NAME = "ReturnType";
 	/**
 	 * Return Type Id
@@ -58,20 +60,14 @@ public class ReturnType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnTypeId, description, sequenceId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnType(GenericValue value) {
-		returnTypeId = (String) value.get(Fields.returnTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnTypeId = (String) value.get(FIELD_RETURN_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Assoc Type
  */
+@FieldNameConstants
 public class ProductAssocType implements Serializable {
 
-	public static final long serialVersionUID = 3308209069994540032L;
+	public static final long serialVersionUID = 3556683844007157760L;
 	public static final String NAME = "ProductAssocType";
 	/**
 	 * Product Assoc Type Id
@@ -64,22 +66,15 @@ public class ProductAssocType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productAssocTypeId, parentTypeId, hasTable, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductAssocType(GenericValue value) {
-		productAssocTypeId = (String) value.get(Fields.productAssocTypeId
-				.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productAssocTypeId = (String) value.get(FIELD_PRODUCT_ASSOC_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductAssocType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Address Match Map
  */
+@FieldNameConstants
 public class AddressMatchMap implements Serializable {
 
-	public static final long serialVersionUID = 6357681513234683904L;
+	public static final long serialVersionUID = 689059662944585728L;
 	public static final String NAME = "AddressMatchMap";
 	/**
 	 * Map Key
@@ -58,20 +60,14 @@ public class AddressMatchMap implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		mapKey, mapValue, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AddressMatchMap(GenericValue value) {
-		mapKey = (String) value.get(Fields.mapKey.name());
-		mapValue = (String) value.get(Fields.mapValue.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		mapKey = (String) value.get(FIELD_MAP_KEY);
+		mapValue = (String) value.get(FIELD_MAP_VALUE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AddressMatchMap fromValue(

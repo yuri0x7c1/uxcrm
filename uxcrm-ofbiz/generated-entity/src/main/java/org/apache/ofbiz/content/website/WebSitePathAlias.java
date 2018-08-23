@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site Path Alias
  */
+@FieldNameConstants
 public class WebSitePathAlias implements Serializable {
 
-	public static final long serialVersionUID = 2300325533738648576L;
+	public static final long serialVersionUID = 1084349909718497280L;
 	public static final String NAME = "WebSitePathAlias";
 	/**
 	 * Web Site Id
@@ -82,24 +84,18 @@ public class WebSitePathAlias implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webSiteId, pathAlias, fromDate, thruDate, aliasTo, contentId, mapKey, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebSitePathAlias(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		pathAlias = (String) value.get(Fields.pathAlias.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		aliasTo = (String) value.get(Fields.aliasTo.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		mapKey = (String) value.get(Fields.mapKey.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		pathAlias = (String) value.get(FIELD_PATH_ALIAS);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		aliasTo = (String) value.get(FIELD_ALIAS_TO);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		mapKey = (String) value.get(FIELD_MAP_KEY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebSitePathAlias fromValue(

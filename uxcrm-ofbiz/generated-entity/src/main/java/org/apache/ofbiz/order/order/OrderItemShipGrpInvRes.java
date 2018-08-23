@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Item Ship Grp Inv Res
  */
+@FieldNameConstants
 public class OrderItemShipGrpInvRes implements Serializable {
 
-	public static final long serialVersionUID = 1068679639324130304L;
+	public static final long serialVersionUID = 7212661382097205248L;
 	public static final String NAME = "OrderItemShipGrpInvRes";
 	/**
 	 * Order Id
@@ -125,37 +127,27 @@ public class OrderItemShipGrpInvRes implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, shipGroupSeqId, orderItemSeqId, inventoryItemId, reserveOrderEnumId, quantity, quantityNotAvailable, reservedDatetime, createdDatetime, promisedDatetime, currentPromisedDate, priority, sequenceId, oldPickStartDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemShipGrpInvRes(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		reserveOrderEnumId = (String) value.get(Fields.reserveOrderEnumId
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		reserveOrderEnumId = (String) value.get(FIELD_RESERVE_ORDER_ENUM_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
 		quantityNotAvailable = (BigDecimal) value
-				.get(Fields.quantityNotAvailable.name());
-		reservedDatetime = (Timestamp) value
-				.get(Fields.reservedDatetime.name());
-		createdDatetime = (Timestamp) value.get(Fields.createdDatetime.name());
-		promisedDatetime = (Timestamp) value
-				.get(Fields.promisedDatetime.name());
-		currentPromisedDate = (Timestamp) value.get(Fields.currentPromisedDate
-				.name());
-		priority = (String) value.get(Fields.priority.name());
-		sequenceId = (Long) value.get(Fields.sequenceId.name());
-		oldPickStartDate = (Timestamp) value
-				.get(Fields.oldPickStartDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_QUANTITY_NOT_AVAILABLE);
+		reservedDatetime = (Timestamp) value.get(FIELD_RESERVED_DATETIME);
+		createdDatetime = (Timestamp) value.get(FIELD_CREATED_DATETIME);
+		promisedDatetime = (Timestamp) value.get(FIELD_PROMISED_DATETIME);
+		currentPromisedDate = (Timestamp) value
+				.get(FIELD_CURRENT_PROMISED_DATE);
+		priority = (String) value.get(FIELD_PRIORITY);
+		sequenceId = (Long) value.get(FIELD_SEQUENCE_ID);
+		oldPickStartDate = (Timestamp) value.get(FIELD_OLD_PICK_START_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemShipGrpInvRes fromValue(

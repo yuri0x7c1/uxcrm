@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Operation
  */
+@FieldNameConstants
 public class ContentOperation implements Serializable {
 
-	public static final long serialVersionUID = 1151446529316767744L;
+	public static final long serialVersionUID = 3303363418746017792L;
 	public static final String NAME = "ContentOperation";
 	/**
 	 * Content Operation Id
@@ -52,20 +54,13 @@ public class ContentOperation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentOperationId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentOperation(GenericValue value) {
-		contentOperationId = (String) value.get(Fields.contentOperationId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentOperationId = (String) value.get(FIELD_CONTENT_OPERATION_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentOperation fromValue(

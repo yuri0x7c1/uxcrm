@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Orbital
  */
+@FieldNameConstants
 public class PaymentGatewayOrbital implements Serializable {
 
-	public static final long serialVersionUID = 3775288319564897280L;
+	public static final long serialVersionUID = 7371324348467335168L;
 	public static final String NAME = "PaymentGatewayOrbital";
 	/**
 	 * Payment Gateway Config Id
@@ -130,35 +132,28 @@ public class PaymentGatewayOrbital implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, username, connectionPassword, merchantId, engineClass, hostName, port, hostNameFailover, portFailover, connectionTimeoutSeconds, readTimeoutSeconds, authorizationURI, sdkVersion, sslSocketFactory, responseType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayOrbital(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		username = (String) value.get(Fields.username.name());
-		connectionPassword = (String) value.get(Fields.connectionPassword
-				.name());
-		merchantId = (String) value.get(Fields.merchantId.name());
-		engineClass = (String) value.get(Fields.engineClass.name());
-		hostName = (String) value.get(Fields.hostName.name());
-		port = (Long) value.get(Fields.port.name());
-		hostNameFailover = (String) value.get(Fields.hostNameFailover.name());
-		portFailover = (Long) value.get(Fields.portFailover.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		username = (String) value.get(FIELD_USERNAME);
+		connectionPassword = (String) value.get(FIELD_CONNECTION_PASSWORD);
+		merchantId = (String) value.get(FIELD_MERCHANT_ID);
+		engineClass = (String) value.get(FIELD_ENGINE_CLASS);
+		hostName = (String) value.get(FIELD_HOST_NAME);
+		port = (Long) value.get(FIELD_PORT);
+		hostNameFailover = (String) value.get(FIELD_HOST_NAME_FAILOVER);
+		portFailover = (Long) value.get(FIELD_PORT_FAILOVER);
 		connectionTimeoutSeconds = (Long) value
-				.get(Fields.connectionTimeoutSeconds.name());
-		readTimeoutSeconds = (Long) value.get(Fields.readTimeoutSeconds.name());
-		authorizationURI = (String) value.get(Fields.authorizationURI.name());
-		sdkVersion = (String) value.get(Fields.sdkVersion.name());
-		sslSocketFactory = (String) value.get(Fields.sslSocketFactory.name());
-		responseType = (String) value.get(Fields.responseType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_CONNECTION_TIMEOUT_SECONDS);
+		readTimeoutSeconds = (Long) value.get(FIELD_READ_TIMEOUT_SECONDS);
+		authorizationURI = (String) value.get(FIELD_AUTHORIZATION_U_R_I);
+		sdkVersion = (String) value.get(FIELD_SDK_VERSION);
+		sslSocketFactory = (String) value.get(FIELD_SSL_SOCKET_FACTORY);
+		responseType = (String) value.get(FIELD_RESPONSE_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayOrbital fromValue(

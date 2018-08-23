@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Return Item
  */
+@FieldNameConstants
 public class ReturnItem implements Serializable {
 
-	public static final long serialVersionUID = 5486374545785641984L;
+	public static final long serialVersionUID = 7899916811948569600L;
 	public static final String NAME = "ReturnItem";
 	/**
 	 * Return Id
@@ -131,35 +133,27 @@ public class ReturnItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnId, returnItemSeqId, returnReasonId, returnTypeId, returnItemTypeId, productId, description, orderId, orderItemSeqId, statusId, expectedItemStatus, returnQuantity, receivedQuantity, returnPrice, returnItemResponseId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnItem(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		returnReasonId = (String) value.get(Fields.returnReasonId.name());
-		returnTypeId = (String) value.get(Fields.returnTypeId.name());
-		returnItemTypeId = (String) value.get(Fields.returnItemTypeId.name());
-		productId = (String) value.get(Fields.productId.name());
-		description = (String) value.get(Fields.description.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		expectedItemStatus = (String) value.get(Fields.expectedItemStatus
-				.name());
-		returnQuantity = (BigDecimal) value.get(Fields.returnQuantity.name());
-		receivedQuantity = (BigDecimal) value.get(Fields.receivedQuantity
-				.name());
-		returnPrice = (BigDecimal) value.get(Fields.returnPrice.name());
-		returnItemResponseId = (String) value.get(Fields.returnItemResponseId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		returnReasonId = (String) value.get(FIELD_RETURN_REASON_ID);
+		returnTypeId = (String) value.get(FIELD_RETURN_TYPE_ID);
+		returnItemTypeId = (String) value.get(FIELD_RETURN_ITEM_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		expectedItemStatus = (String) value.get(FIELD_EXPECTED_ITEM_STATUS);
+		returnQuantity = (BigDecimal) value.get(FIELD_RETURN_QUANTITY);
+		receivedQuantity = (BigDecimal) value.get(FIELD_RECEIVED_QUANTITY);
+		returnPrice = (BigDecimal) value.get(FIELD_RETURN_PRICE);
+		returnItemResponseId = (String) value
+				.get(FIELD_RETURN_ITEM_RESPONSE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnItem fromValue(

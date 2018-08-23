@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Email Address Verification
  */
+@FieldNameConstants
 public class EmailAddressVerification implements Serializable {
 
-	public static final long serialVersionUID = 8165963618405733376L;
+	public static final long serialVersionUID = 2222940667664373760L;
 	public static final String NAME = "EmailAddressVerification";
 	/**
 	 * Email Address
@@ -58,20 +60,14 @@ public class EmailAddressVerification implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		emailAddress, verifyHash, expireDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmailAddressVerification(GenericValue value) {
-		emailAddress = (String) value.get(Fields.emailAddress.name());
-		verifyHash = (String) value.get(Fields.verifyHash.name());
-		expireDate = (Timestamp) value.get(Fields.expireDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		emailAddress = (String) value.get(FIELD_EMAIL_ADDRESS);
+		verifyHash = (String) value.get(FIELD_VERIFY_HASH);
+		expireDate = (Timestamp) value.get(FIELD_EXPIRE_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmailAddressVerification fromValue(

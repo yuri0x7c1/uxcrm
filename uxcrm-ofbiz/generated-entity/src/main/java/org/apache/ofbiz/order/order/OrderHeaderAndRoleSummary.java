@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Role Summary
  */
+@FieldNameConstants
 public class OrderHeaderAndRoleSummary implements Serializable {
 
-	public static final long serialVersionUID = 8820630825559824384L;
+	public static final long serialVersionUID = 6910562269156856832L;
 	public static final String NAME = "OrderHeaderAndRoleSummary";
 	/**
 	 * Party Id
@@ -71,22 +73,17 @@ public class OrderHeaderAndRoleSummary implements Serializable {
 	@Setter
 	private Long totalOrders;
 
-	public enum Fields {
-		partyId, roleTypeId, orderId, orderTypeId, orderDate, statusId, totalGrandAmount, totalSubRemainingAmount, totalOrders
-	}
-
 	public OrderHeaderAndRoleSummary(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		totalGrandAmount = (BigDecimal) value.get(Fields.totalGrandAmount
-				.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		totalGrandAmount = (BigDecimal) value.get(FIELD_TOTAL_GRAND_AMOUNT);
 		totalSubRemainingAmount = (BigDecimal) value
-				.get(Fields.totalSubRemainingAmount.name());
-		totalOrders = (Long) value.get(Fields.totalOrders.name());
+				.get(FIELD_TOTAL_SUB_REMAINING_AMOUNT);
+		totalOrders = (Long) value.get(FIELD_TOTAL_ORDERS);
 	}
 
 	public static OrderHeaderAndRoleSummary fromValue(

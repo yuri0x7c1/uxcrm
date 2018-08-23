@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.communication;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Communication Event Purpose
  */
+@FieldNameConstants
 public class CommunicationEventPurpose implements Serializable {
 
-	public static final long serialVersionUID = 7751636793003254784L;
+	public static final long serialVersionUID = 6868275025658807296L;
 	public static final String NAME = "CommunicationEventPurpose";
 	/**
 	 * Communication Event Prp Typ Id
@@ -58,22 +60,15 @@ public class CommunicationEventPurpose implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		communicationEventPrpTypId, communicationEventId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CommunicationEventPurpose(GenericValue value) {
 		communicationEventPrpTypId = (String) value
-				.get(Fields.communicationEventPrpTypId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_COMMUNICATION_EVENT_PRP_TYP_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CommunicationEventPurpose fromValue(

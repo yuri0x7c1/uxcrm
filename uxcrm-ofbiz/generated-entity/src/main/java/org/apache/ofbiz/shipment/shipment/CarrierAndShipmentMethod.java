@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Carrier And Shipment Method
  */
+@FieldNameConstants
 public class CarrierAndShipmentMethod implements Serializable {
 
-	public static final long serialVersionUID = 3782518158563446784L;
+	public static final long serialVersionUID = 768383696922244096L;
 	public static final String NAME = "CarrierAndShipmentMethod";
 	/**
 	 * Shipment Method Type Id
@@ -45,17 +47,13 @@ public class CarrierAndShipmentMethod implements Serializable {
 	@Setter
 	private String description;
 
-	public enum Fields {
-		shipmentMethodTypeId, partyId, roleTypeId, sequenceNumber, description
-	}
-
 	public CarrierAndShipmentMethod(GenericValue value) {
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		sequenceNumber = (Long) value.get(Fields.sequenceNumber.name());
-		description = (String) value.get(Fields.description.name());
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		sequenceNumber = (Long) value.get(FIELD_SEQUENCE_NUMBER);
+		description = (String) value.get(FIELD_DESCRIPTION);
 	}
 
 	public static CarrierAndShipmentMethod fromValue(

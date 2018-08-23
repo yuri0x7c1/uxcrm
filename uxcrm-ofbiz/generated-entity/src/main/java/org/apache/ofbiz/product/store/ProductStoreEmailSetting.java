@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Email Setting
  */
+@FieldNameConstants
 public class ProductStoreEmailSetting implements Serializable {
 
-	public static final long serialVersionUID = 3063077391135630336L;
+	public static final long serialVersionUID = 3863148866646727680L;
 	public static final String NAME = "ProductStoreEmailSetting";
 	/**
 	 * Product Store Id
@@ -94,28 +96,21 @@ public class ProductStoreEmailSetting implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, emailType, bodyScreenLocation, xslfoAttachScreenLocation, fromAddress, ccAddress, bccAddress, subject, contentType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreEmailSetting(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		emailType = (String) value.get(Fields.emailType.name());
-		bodyScreenLocation = (String) value.get(Fields.bodyScreenLocation
-				.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		emailType = (String) value.get(FIELD_EMAIL_TYPE);
+		bodyScreenLocation = (String) value.get(FIELD_BODY_SCREEN_LOCATION);
 		xslfoAttachScreenLocation = (String) value
-				.get(Fields.xslfoAttachScreenLocation.name());
-		fromAddress = (String) value.get(Fields.fromAddress.name());
-		ccAddress = (String) value.get(Fields.ccAddress.name());
-		bccAddress = (String) value.get(Fields.bccAddress.name());
-		subject = (String) value.get(Fields.subject.name());
-		contentType = (String) value.get(Fields.contentType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_XSLFO_ATTACH_SCREEN_LOCATION);
+		fromAddress = (String) value.get(FIELD_FROM_ADDRESS);
+		ccAddress = (String) value.get(FIELD_CC_ADDRESS);
+		bccAddress = (String) value.get(FIELD_BCC_ADDRESS);
+		subject = (String) value.get(FIELD_SUBJECT);
+		contentType = (String) value.get(FIELD_CONTENT_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreEmailSetting fromValue(

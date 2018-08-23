@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request Item Note
  */
+@FieldNameConstants
 public class CustRequestItemNote implements Serializable {
 
-	public static final long serialVersionUID = 3334783095935398912L;
+	public static final long serialVersionUID = 4862972217476030464L;
 	public static final String NAME = "CustRequestItemNote";
 	/**
 	 * Cust Request Id
@@ -58,21 +60,15 @@ public class CustRequestItemNote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		custRequestId, custRequestItemSeqId, noteId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CustRequestItemNote(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CustRequestItemNote fromValue(

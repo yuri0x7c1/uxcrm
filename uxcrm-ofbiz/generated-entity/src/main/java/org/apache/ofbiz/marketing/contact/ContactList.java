@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List
  */
+@FieldNameConstants
 public class ContactList implements Serializable {
 
-	public static final long serialVersionUID = 6057648291342486528L;
+	public static final long serialVersionUID = 5775252207729024000L;
 	public static final String NAME = "ContactList";
 	/**
 	 * Contact List Id
@@ -142,39 +144,30 @@ public class ContactList implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactListId, contactListTypeId, contactMechTypeId, marketingCampaignId, contactListName, description, comments, isPublic, singleUse, ownerPartyId, verifyEmailFrom, verifyEmailScreen, verifyEmailSubject, verifyEmailWebSiteId, optOutScreen, createdByUserLogin, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContactList(GenericValue value) {
-		contactListId = (String) value.get(Fields.contactListId.name());
-		contactListTypeId = (String) value.get(Fields.contactListTypeId.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		contactListName = (String) value.get(Fields.contactListName.name());
-		description = (String) value.get(Fields.description.name());
-		comments = (String) value.get(Fields.comments.name());
-		isPublic = (String) value.get(Fields.isPublic.name());
-		singleUse = (String) value.get(Fields.singleUse.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		verifyEmailFrom = (String) value.get(Fields.verifyEmailFrom.name());
-		verifyEmailScreen = (String) value.get(Fields.verifyEmailScreen.name());
-		verifyEmailSubject = (String) value.get(Fields.verifyEmailSubject
-				.name());
-		verifyEmailWebSiteId = (String) value.get(Fields.verifyEmailWebSiteId
-				.name());
-		optOutScreen = (String) value.get(Fields.optOutScreen.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		contactListTypeId = (String) value.get(FIELD_CONTACT_LIST_TYPE_ID);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		contactListName = (String) value.get(FIELD_CONTACT_LIST_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		isPublic = (String) value.get(FIELD_IS_PUBLIC);
+		singleUse = (String) value.get(FIELD_SINGLE_USE);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		verifyEmailFrom = (String) value.get(FIELD_VERIFY_EMAIL_FROM);
+		verifyEmailScreen = (String) value.get(FIELD_VERIFY_EMAIL_SCREEN);
+		verifyEmailSubject = (String) value.get(FIELD_VERIFY_EMAIL_SUBJECT);
+		verifyEmailWebSiteId = (String) value
+				.get(FIELD_VERIFY_EMAIL_WEB_SITE_ID);
+		optOutScreen = (String) value.get(FIELD_OPT_OUT_SCREEN);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContactList fromValue(

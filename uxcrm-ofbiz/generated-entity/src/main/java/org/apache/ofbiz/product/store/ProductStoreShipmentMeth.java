@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Store Shipment Meth
  */
+@FieldNameConstants
 public class ProductStoreShipmentMeth implements Serializable {
 
-	public static final long serialVersionUID = 454590541822922752L;
+	public static final long serialVersionUID = 3711588467343436800L;
 	public static final String NAME = "ProductStoreShipmentMeth";
 	/**
 	 * Product Store Ship Meth Id
@@ -209,54 +211,44 @@ public class ProductStoreShipmentMeth implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreShipMethId, productStoreId, shipmentMethodTypeId, partyId, roleTypeId, companyPartyId, minWeight, maxWeight, minSize, maxSize, minTotal, maxTotal, allowUspsAddr, requireUspsAddr, allowCompanyAddr, requireCompanyAddr, includeNoChargeItems, includeFeatureGroup, excludeFeatureGroup, includeGeoId, excludeGeoId, serviceName, configProps, shipmentCustomMethodId, shipmentGatewayConfigId, sequenceNumber, allowancePercent, minimumPrice, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreShipmentMeth(GenericValue value) {
 		productStoreShipMethId = (String) value
-				.get(Fields.productStoreShipMethId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		companyPartyId = (String) value.get(Fields.companyPartyId.name());
-		minWeight = (BigDecimal) value.get(Fields.minWeight.name());
-		maxWeight = (BigDecimal) value.get(Fields.maxWeight.name());
-		minSize = (BigDecimal) value.get(Fields.minSize.name());
-		maxSize = (BigDecimal) value.get(Fields.maxSize.name());
-		minTotal = (BigDecimal) value.get(Fields.minTotal.name());
-		maxTotal = (BigDecimal) value.get(Fields.maxTotal.name());
-		allowUspsAddr = (String) value.get(Fields.allowUspsAddr.name());
-		requireUspsAddr = (String) value.get(Fields.requireUspsAddr.name());
-		allowCompanyAddr = (String) value.get(Fields.allowCompanyAddr.name());
-		requireCompanyAddr = (String) value.get(Fields.requireCompanyAddr
-				.name());
-		includeNoChargeItems = (String) value.get(Fields.includeNoChargeItems
-				.name());
-		includeFeatureGroup = (String) value.get(Fields.includeFeatureGroup
-				.name());
-		excludeFeatureGroup = (String) value.get(Fields.excludeFeatureGroup
-				.name());
-		includeGeoId = (String) value.get(Fields.includeGeoId.name());
-		excludeGeoId = (String) value.get(Fields.excludeGeoId.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		configProps = (String) value.get(Fields.configProps.name());
+				.get(FIELD_PRODUCT_STORE_SHIP_METH_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		companyPartyId = (String) value.get(FIELD_COMPANY_PARTY_ID);
+		minWeight = (BigDecimal) value.get(FIELD_MIN_WEIGHT);
+		maxWeight = (BigDecimal) value.get(FIELD_MAX_WEIGHT);
+		minSize = (BigDecimal) value.get(FIELD_MIN_SIZE);
+		maxSize = (BigDecimal) value.get(FIELD_MAX_SIZE);
+		minTotal = (BigDecimal) value.get(FIELD_MIN_TOTAL);
+		maxTotal = (BigDecimal) value.get(FIELD_MAX_TOTAL);
+		allowUspsAddr = (String) value.get(FIELD_ALLOW_USPS_ADDR);
+		requireUspsAddr = (String) value.get(FIELD_REQUIRE_USPS_ADDR);
+		allowCompanyAddr = (String) value.get(FIELD_ALLOW_COMPANY_ADDR);
+		requireCompanyAddr = (String) value.get(FIELD_REQUIRE_COMPANY_ADDR);
+		includeNoChargeItems = (String) value
+				.get(FIELD_INCLUDE_NO_CHARGE_ITEMS);
+		includeFeatureGroup = (String) value.get(FIELD_INCLUDE_FEATURE_GROUP);
+		excludeFeatureGroup = (String) value.get(FIELD_EXCLUDE_FEATURE_GROUP);
+		includeGeoId = (String) value.get(FIELD_INCLUDE_GEO_ID);
+		excludeGeoId = (String) value.get(FIELD_EXCLUDE_GEO_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		configProps = (String) value.get(FIELD_CONFIG_PROPS);
 		shipmentCustomMethodId = (String) value
-				.get(Fields.shipmentCustomMethodId.name());
+				.get(FIELD_SHIPMENT_CUSTOM_METHOD_ID);
 		shipmentGatewayConfigId = (String) value
-				.get(Fields.shipmentGatewayConfigId.name());
-		sequenceNumber = (Long) value.get(Fields.sequenceNumber.name());
-		allowancePercent = (BigDecimal) value.get(Fields.allowancePercent
-				.name());
-		minimumPrice = (BigDecimal) value.get(Fields.minimumPrice.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SHIPMENT_GATEWAY_CONFIG_ID);
+		sequenceNumber = (Long) value.get(FIELD_SEQUENCE_NUMBER);
+		allowancePercent = (BigDecimal) value.get(FIELD_ALLOWANCE_PERCENT);
+		minimumPrice = (BigDecimal) value.get(FIELD_MINIMUM_PRICE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreShipmentMeth fromValue(

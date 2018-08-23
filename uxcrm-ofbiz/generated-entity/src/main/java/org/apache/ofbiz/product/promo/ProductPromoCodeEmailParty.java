@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Code Email Party
  */
+@FieldNameConstants
 public class ProductPromoCodeEmailParty implements Serializable {
 
-	public static final long serialVersionUID = 4142592870846475264L;
+	public static final long serialVersionUID = 1212488661182681088L;
 	public static final String NAME = "ProductPromoCodeEmailParty";
 	/**
 	 * Product Promo Code Id
@@ -46,17 +48,12 @@ public class ProductPromoCodeEmailParty implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		productPromoCodeId, infoString, partyId, fromDate, thruDate
-	}
-
 	public ProductPromoCodeEmailParty(GenericValue value) {
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static ProductPromoCodeEmailParty fromValue(

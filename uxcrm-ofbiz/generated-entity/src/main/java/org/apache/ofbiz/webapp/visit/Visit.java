@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Visit
  */
+@FieldNameConstants
 public class Visit implements Serializable {
 
-	public static final long serialVersionUID = 5962164997171584000L;
+	public static final long serialVersionUID = 2095145004269016064L;
 	public static final String NAME = "Visit";
 	/**
 	 * Visit Id
@@ -196,46 +198,39 @@ public class Visit implements Serializable {
 	@Setter
 	private String roleTypeId;
 
-	public enum Fields {
-		visitId, visitorId, userLoginId, userCreated, sessionId, serverIpAddress, serverHostName, webappName, initialLocale, initialRequest, initialReferrer, initialUserAgent, userAgentId, clientIpAddress, clientHostName, clientUser, clientIpIspName, clientIpPostalCode, cookie, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, clientIpStateProvGeoId, clientIpCountryGeoId, contactMechId, partyId, roleTypeId
-	}
-
 	public Visit(GenericValue value) {
-		visitId = (String) value.get(Fields.visitId.name());
-		visitorId = (String) value.get(Fields.visitorId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		userCreated = (String) value.get(Fields.userCreated.name());
-		sessionId = (String) value.get(Fields.sessionId.name());
-		serverIpAddress = (String) value.get(Fields.serverIpAddress.name());
-		serverHostName = (String) value.get(Fields.serverHostName.name());
-		webappName = (String) value.get(Fields.webappName.name());
-		initialLocale = (String) value.get(Fields.initialLocale.name());
-		initialRequest = (String) value.get(Fields.initialRequest.name());
-		initialReferrer = (String) value.get(Fields.initialReferrer.name());
-		initialUserAgent = (String) value.get(Fields.initialUserAgent.name());
-		userAgentId = (String) value.get(Fields.userAgentId.name());
-		clientIpAddress = (String) value.get(Fields.clientIpAddress.name());
-		clientHostName = (String) value.get(Fields.clientHostName.name());
-		clientUser = (String) value.get(Fields.clientUser.name());
-		clientIpIspName = (String) value.get(Fields.clientIpIspName.name());
-		clientIpPostalCode = (String) value.get(Fields.clientIpPostalCode
-				.name());
-		cookie = (String) value.get(Fields.cookie.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		visitorId = (String) value.get(FIELD_VISITOR_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		userCreated = (String) value.get(FIELD_USER_CREATED);
+		sessionId = (String) value.get(FIELD_SESSION_ID);
+		serverIpAddress = (String) value.get(FIELD_SERVER_IP_ADDRESS);
+		serverHostName = (String) value.get(FIELD_SERVER_HOST_NAME);
+		webappName = (String) value.get(FIELD_WEBAPP_NAME);
+		initialLocale = (String) value.get(FIELD_INITIAL_LOCALE);
+		initialRequest = (String) value.get(FIELD_INITIAL_REQUEST);
+		initialReferrer = (String) value.get(FIELD_INITIAL_REFERRER);
+		initialUserAgent = (String) value.get(FIELD_INITIAL_USER_AGENT);
+		userAgentId = (String) value.get(FIELD_USER_AGENT_ID);
+		clientIpAddress = (String) value.get(FIELD_CLIENT_IP_ADDRESS);
+		clientHostName = (String) value.get(FIELD_CLIENT_HOST_NAME);
+		clientUser = (String) value.get(FIELD_CLIENT_USER);
+		clientIpIspName = (String) value.get(FIELD_CLIENT_IP_ISP_NAME);
+		clientIpPostalCode = (String) value.get(FIELD_CLIENT_IP_POSTAL_CODE);
+		cookie = (String) value.get(FIELD_COOKIE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 		clientIpStateProvGeoId = (String) value
-				.get(Fields.clientIpStateProvGeoId.name());
-		clientIpCountryGeoId = (String) value.get(Fields.clientIpCountryGeoId
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
+				.get(FIELD_CLIENT_IP_STATE_PROV_GEO_ID);
+		clientIpCountryGeoId = (String) value
+				.get(FIELD_CLIENT_IP_COUNTRY_GEO_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
 	}
 
 	public static Visit fromValue(org.apache.ofbiz.entity.GenericValue value) {

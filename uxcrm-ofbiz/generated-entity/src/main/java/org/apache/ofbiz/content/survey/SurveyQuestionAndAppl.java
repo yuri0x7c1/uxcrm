@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Question And Appl
  */
+@FieldNameConstants
 public class SurveyQuestionAndAppl implements Serializable {
 
-	public static final long serialVersionUID = 8119890271394827264L;
+	public static final long serialVersionUID = 2403258380197322752L;
 	public static final String NAME = "SurveyQuestionAndAppl";
 	/**
 	 * Survey Question Type Id
@@ -136,36 +138,32 @@ public class SurveyQuestionAndAppl implements Serializable {
 	@Setter
 	private String surveyMultiRespColId;
 
-	public enum Fields {
-		surveyQuestionTypeId, formatString, surveyQuestionId, surveyQuestionCategoryId, question, description, enumTypeId, hint, geoId, withSurveyOptionSeqId, externalFieldRef, surveyId, sequenceNum, thruDate, fromDate, requiredField, withSurveyQuestionId, surveyPageSeqId, surveyMultiRespId, surveyMultiRespColId
-	}
-
 	public SurveyQuestionAndAppl(GenericValue value) {
-		surveyQuestionTypeId = (String) value.get(Fields.surveyQuestionTypeId
-				.name());
-		formatString = (String) value.get(Fields.formatString.name());
-		surveyQuestionId = (String) value.get(Fields.surveyQuestionId.name());
+		surveyQuestionTypeId = (String) value
+				.get(FIELD_SURVEY_QUESTION_TYPE_ID);
+		formatString = (String) value.get(FIELD_FORMAT_STRING);
+		surveyQuestionId = (String) value.get(FIELD_SURVEY_QUESTION_ID);
 		surveyQuestionCategoryId = (String) value
-				.get(Fields.surveyQuestionCategoryId.name());
-		question = (String) value.get(Fields.question.name());
-		description = (String) value.get(Fields.description.name());
-		enumTypeId = (String) value.get(Fields.enumTypeId.name());
-		hint = (String) value.get(Fields.hint.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		withSurveyOptionSeqId = (String) value.get(Fields.withSurveyOptionSeqId
-				.name());
-		externalFieldRef = (String) value.get(Fields.externalFieldRef.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		requiredField = (String) value.get(Fields.requiredField.name());
-		withSurveyQuestionId = (String) value.get(Fields.withSurveyQuestionId
-				.name());
-		surveyPageSeqId = (String) value.get(Fields.surveyPageSeqId.name());
-		surveyMultiRespId = (String) value.get(Fields.surveyMultiRespId.name());
-		surveyMultiRespColId = (String) value.get(Fields.surveyMultiRespColId
-				.name());
+				.get(FIELD_SURVEY_QUESTION_CATEGORY_ID);
+		question = (String) value.get(FIELD_QUESTION);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		enumTypeId = (String) value.get(FIELD_ENUM_TYPE_ID);
+		hint = (String) value.get(FIELD_HINT);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		withSurveyOptionSeqId = (String) value
+				.get(FIELD_WITH_SURVEY_OPTION_SEQ_ID);
+		externalFieldRef = (String) value.get(FIELD_EXTERNAL_FIELD_REF);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		requiredField = (String) value.get(FIELD_REQUIRED_FIELD);
+		withSurveyQuestionId = (String) value
+				.get(FIELD_WITH_SURVEY_QUESTION_ID);
+		surveyPageSeqId = (String) value.get(FIELD_SURVEY_PAGE_SEQ_ID);
+		surveyMultiRespId = (String) value.get(FIELD_SURVEY_MULTI_RESP_ID);
+		surveyMultiRespColId = (String) value
+				.get(FIELD_SURVEY_MULTI_RESP_COL_ID);
 	}
 
 	public static SurveyQuestionAndAppl fromValue(

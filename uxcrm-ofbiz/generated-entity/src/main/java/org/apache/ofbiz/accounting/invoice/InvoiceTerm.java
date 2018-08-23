@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Term
  */
+@FieldNameConstants
 public class InvoiceTerm implements Serializable {
 
-	public static final long serialVersionUID = 8478974418135186432L;
+	public static final long serialVersionUID = 5672488658929951744L;
 	public static final String NAME = "InvoiceTerm";
 	/**
 	 * Invoice Term Id
@@ -95,26 +97,20 @@ public class InvoiceTerm implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceTermId, termTypeId, invoiceId, invoiceItemSeqId, termValue, termDays, textValue, description, uomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceTerm(GenericValue value) {
-		invoiceTermId = (String) value.get(Fields.invoiceTermId.name());
-		termTypeId = (String) value.get(Fields.termTypeId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		termValue = (BigDecimal) value.get(Fields.termValue.name());
-		termDays = (Long) value.get(Fields.termDays.name());
-		textValue = (String) value.get(Fields.textValue.name());
-		description = (String) value.get(Fields.description.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceTermId = (String) value.get(FIELD_INVOICE_TERM_ID);
+		termTypeId = (String) value.get(FIELD_TERM_TYPE_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		termValue = (BigDecimal) value.get(FIELD_TERM_VALUE);
+		termDays = (Long) value.get(FIELD_TERM_DAYS);
+		textValue = (String) value.get(FIELD_TEXT_VALUE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceTerm fromValue(

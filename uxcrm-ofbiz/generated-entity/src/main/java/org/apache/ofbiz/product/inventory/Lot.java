@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Lot
  */
+@FieldNameConstants
 public class Lot implements Serializable {
 
-	public static final long serialVersionUID = 2618693542041444352L;
+	public static final long serialVersionUID = 4070389163531731968L;
 	public static final String NAME = "Lot";
 	/**
 	 * Lot Id
@@ -65,21 +67,15 @@ public class Lot implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		lotId, creationDate, quantity, expirationDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Lot(GenericValue value) {
-		lotId = (String) value.get(Fields.lotId.name());
-		creationDate = (Timestamp) value.get(Fields.creationDate.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		expirationDate = (Timestamp) value.get(Fields.expirationDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		lotId = (String) value.get(FIELD_LOT_ID);
+		creationDate = (Timestamp) value.get(FIELD_CREATION_DATE);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		expirationDate = (Timestamp) value.get(FIELD_EXPIRATION_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Lot fromValue(org.apache.ofbiz.entity.GenericValue value) {

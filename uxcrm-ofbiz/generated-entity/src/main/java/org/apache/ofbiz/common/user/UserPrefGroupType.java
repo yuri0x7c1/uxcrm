@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.user;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Pref Group Type
  */
+@FieldNameConstants
 public class UserPrefGroupType implements Serializable {
 
-	public static final long serialVersionUID = 9085689352901390336L;
+	public static final long serialVersionUID = 6973935771126700032L;
 	public static final String NAME = "UserPrefGroupType";
 	/**
 	 * User Pref Group Type Id
@@ -52,20 +54,13 @@ public class UserPrefGroupType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userPrefGroupTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserPrefGroupType(GenericValue value) {
-		userPrefGroupTypeId = (String) value.get(Fields.userPrefGroupTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userPrefGroupTypeId = (String) value.get(FIELD_USER_PREF_GROUP_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserPrefGroupType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Image Data Resource
  */
+@FieldNameConstants
 public class ImageDataResource implements Serializable {
 
-	public static final long serialVersionUID = 6718880281572409344L;
+	public static final long serialVersionUID = 6256949180652316672L;
 	public static final String NAME = "ImageDataResource";
 	/**
 	 * Data Resource Id
@@ -52,19 +54,13 @@ public class ImageDataResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataResourceId, imageData, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ImageDataResource(GenericValue value) {
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		imageData = (byte[]) value.get(Fields.imageData.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		imageData = (byte[]) value.get(FIELD_IMAGE_DATA);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ImageDataResource fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Pay Pal
  */
+@FieldNameConstants
 public class PaymentGatewayPayPal implements Serializable {
 
-	public static final long serialVersionUID = 8194083062186673152L;
+	public static final long serialVersionUID = 4378961158437265408L;
 	public static final String NAME = "PaymentGatewayPayPal";
 	/**
 	 * Payment Gateway Config Id
@@ -130,35 +132,28 @@ public class PaymentGatewayPayPal implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, businessEmail, apiUserName, apiPassword, apiSignature, apiEnvironment, notifyUrl, returnUrl, cancelReturnUrl, imageUrl, confirmTemplate, redirectUrl, confirmUrl, shippingCallbackUrl, requireConfirmedShipping, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayPayPal(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		businessEmail = (String) value.get(Fields.businessEmail.name());
-		apiUserName = (String) value.get(Fields.apiUserName.name());
-		apiPassword = (String) value.get(Fields.apiPassword.name());
-		apiSignature = (String) value.get(Fields.apiSignature.name());
-		apiEnvironment = (String) value.get(Fields.apiEnvironment.name());
-		notifyUrl = (String) value.get(Fields.notifyUrl.name());
-		returnUrl = (String) value.get(Fields.returnUrl.name());
-		cancelReturnUrl = (String) value.get(Fields.cancelReturnUrl.name());
-		imageUrl = (String) value.get(Fields.imageUrl.name());
-		confirmTemplate = (String) value.get(Fields.confirmTemplate.name());
-		redirectUrl = (String) value.get(Fields.redirectUrl.name());
-		confirmUrl = (String) value.get(Fields.confirmUrl.name());
-		shippingCallbackUrl = (String) value.get(Fields.shippingCallbackUrl
-				.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		businessEmail = (String) value.get(FIELD_BUSINESS_EMAIL);
+		apiUserName = (String) value.get(FIELD_API_USER_NAME);
+		apiPassword = (String) value.get(FIELD_API_PASSWORD);
+		apiSignature = (String) value.get(FIELD_API_SIGNATURE);
+		apiEnvironment = (String) value.get(FIELD_API_ENVIRONMENT);
+		notifyUrl = (String) value.get(FIELD_NOTIFY_URL);
+		returnUrl = (String) value.get(FIELD_RETURN_URL);
+		cancelReturnUrl = (String) value.get(FIELD_CANCEL_RETURN_URL);
+		imageUrl = (String) value.get(FIELD_IMAGE_URL);
+		confirmTemplate = (String) value.get(FIELD_CONFIRM_TEMPLATE);
+		redirectUrl = (String) value.get(FIELD_REDIRECT_URL);
+		confirmUrl = (String) value.get(FIELD_CONFIRM_URL);
+		shippingCallbackUrl = (String) value.get(FIELD_SHIPPING_CALLBACK_URL);
 		requireConfirmedShipping = (String) value
-				.get(Fields.requireConfirmedShipping.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_REQUIRE_CONFIRMED_SHIPPING);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayPayPal fromValue(

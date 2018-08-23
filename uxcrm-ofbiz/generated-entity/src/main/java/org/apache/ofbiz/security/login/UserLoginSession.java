@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.login;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login Session
  */
+@FieldNameConstants
 public class UserLoginSession implements Serializable {
 
-	public static final long serialVersionUID = 4767612156245553152L;
+	public static final long serialVersionUID = 3315796839100786688L;
 	public static final String NAME = "UserLoginSession";
 	/**
 	 * User Login Id
@@ -58,20 +60,14 @@ public class UserLoginSession implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userLoginId, savedDate, sessionData, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserLoginSession(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		savedDate = (Timestamp) value.get(Fields.savedDate.name());
-		sessionData = (String) value.get(Fields.sessionData.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		savedDate = (Timestamp) value.get(FIELD_SAVED_DATE);
+		sessionData = (String) value.get(FIELD_SESSION_DATA);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserLoginSession fromValue(

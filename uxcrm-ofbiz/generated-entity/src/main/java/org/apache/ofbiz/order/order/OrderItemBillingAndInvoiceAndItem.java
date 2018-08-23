@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Item Billing And Invoice And Item
  */
+@FieldNameConstants
 public class OrderItemBillingAndInvoiceAndItem implements Serializable {
 
-	public static final long serialVersionUID = 1226413462872793088L;
+	public static final long serialVersionUID = 5266550895847836672L;
 	public static final String NAME = "OrderItemBillingAndInvoiceAndItem";
 	/**
 	 * Status Id
@@ -70,20 +72,16 @@ public class OrderItemBillingAndInvoiceAndItem implements Serializable {
 	@Setter
 	private String shipmentReceiptId;
 
-	public enum Fields {
-		statusId, orderItemSeqId, amount, quantity, orderId, itemIssuanceId, invoiceId, invoiceItemSeqId, shipmentReceiptId
-	}
-
 	public OrderItemBillingAndInvoiceAndItem(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		itemIssuanceId = (String) value.get(Fields.itemIssuanceId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		shipmentReceiptId = (String) value.get(Fields.shipmentReceiptId.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		itemIssuanceId = (String) value.get(FIELD_ITEM_ISSUANCE_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		shipmentReceiptId = (String) value.get(FIELD_SHIPMENT_RECEIPT_ID);
 	}
 
 	public static OrderItemBillingAndInvoiceAndItem fromValue(

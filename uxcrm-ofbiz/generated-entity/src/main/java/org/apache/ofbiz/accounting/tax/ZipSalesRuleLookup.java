@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Zip Sales Rule Lookup
  */
+@FieldNameConstants
 public class ZipSalesRuleLookup implements Serializable {
 
-	public static final long serialVersionUID = 4600768457162589184L;
+	public static final long serialVersionUID = 4831647637506206720L;
 	public static final String NAME = "ZipSalesRuleLookup";
 	/**
 	 * State Code
@@ -82,24 +84,18 @@ public class ZipSalesRuleLookup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		stateCode, city, county, fromDate, idCode, taxable, shipCond, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ZipSalesRuleLookup(GenericValue value) {
-		stateCode = (String) value.get(Fields.stateCode.name());
-		city = (String) value.get(Fields.city.name());
-		county = (String) value.get(Fields.county.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		idCode = (String) value.get(Fields.idCode.name());
-		taxable = (String) value.get(Fields.taxable.name());
-		shipCond = (String) value.get(Fields.shipCond.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		stateCode = (String) value.get(FIELD_STATE_CODE);
+		city = (String) value.get(FIELD_CITY);
+		county = (String) value.get(FIELD_COUNTY);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		idCode = (String) value.get(FIELD_ID_CODE);
+		taxable = (String) value.get(FIELD_TAXABLE);
+		shipCond = (String) value.get(FIELD_SHIP_COND);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ZipSalesRuleLookup fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Mime Type
  */
+@FieldNameConstants
 public class MimeType implements Serializable {
 
-	public static final long serialVersionUID = 1379269644793977856L;
+	public static final long serialVersionUID = 4668342268813126656L;
 	public static final String NAME = "MimeType";
 	/**
 	 * Mime Type Id
@@ -52,19 +54,13 @@ public class MimeType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		mimeTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MimeType(GenericValue value) {
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MimeType fromValue(org.apache.ofbiz.entity.GenericValue value) {

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Cond
  */
+@FieldNameConstants
 public class ProductPromoCond implements Serializable {
 
-	public static final long serialVersionUID = 4079940335348332544L;
+	public static final long serialVersionUID = 4970436738413423616L;
 	public static final String NAME = "ProductPromoCond";
 	/**
 	 * Product Promo Id
@@ -82,26 +84,19 @@ public class ProductPromoCond implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoId, productPromoRuleId, productPromoCondSeqId, inputParamEnumId, operatorEnumId, condValue, otherValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoCond(GenericValue value) {
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
-		productPromoCondSeqId = (String) value.get(Fields.productPromoCondSeqId
-				.name());
-		inputParamEnumId = (String) value.get(Fields.inputParamEnumId.name());
-		operatorEnumId = (String) value.get(Fields.operatorEnumId.name());
-		condValue = (String) value.get(Fields.condValue.name());
-		otherValue = (String) value.get(Fields.otherValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
+		productPromoCondSeqId = (String) value
+				.get(FIELD_PRODUCT_PROMO_COND_SEQ_ID);
+		inputParamEnumId = (String) value.get(FIELD_INPUT_PARAM_ENUM_ID);
+		operatorEnumId = (String) value.get(FIELD_OPERATOR_ENUM_ID);
+		condValue = (String) value.get(FIELD_COND_VALUE);
+		otherValue = (String) value.get(FIELD_OTHER_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoCond fromValue(

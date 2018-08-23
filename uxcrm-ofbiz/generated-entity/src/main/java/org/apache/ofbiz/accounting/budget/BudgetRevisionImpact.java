@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Budget Revision Impact
  */
+@FieldNameConstants
 public class BudgetRevisionImpact implements Serializable {
 
-	public static final long serialVersionUID = 938614802666126336L;
+	public static final long serialVersionUID = 1803093043303354368L;
 	public static final String NAME = "BudgetRevisionImpact";
 	/**
 	 * Budget Id
@@ -77,23 +79,17 @@ public class BudgetRevisionImpact implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, budgetItemSeqId, revisionSeqId, revisedAmount, addDeleteFlag, revisionReason, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetRevisionImpact(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		revisionSeqId = (String) value.get(Fields.revisionSeqId.name());
-		revisedAmount = (BigDecimal) value.get(Fields.revisedAmount.name());
-		addDeleteFlag = (String) value.get(Fields.addDeleteFlag.name());
-		revisionReason = (String) value.get(Fields.revisionReason.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		revisionSeqId = (String) value.get(FIELD_REVISION_SEQ_ID);
+		revisedAmount = (BigDecimal) value.get(FIELD_REVISED_AMOUNT);
+		addDeleteFlag = (String) value.get(FIELD_ADD_DELETE_FLAG);
+		revisionReason = (String) value.get(FIELD_REVISION_REASON);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetRevisionImpact fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.need;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Need
  */
+@FieldNameConstants
 public class PartyNeed implements Serializable {
 
-	public static final long serialVersionUID = 310221217744411648L;
+	public static final long serialVersionUID = 7392511424950191104L;
 	public static final String NAME = "PartyNeed";
 	/**
 	 * Party Need Id
@@ -106,30 +108,22 @@ public class PartyNeed implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyNeedId, partyId, roleTypeId, partyTypeId, needTypeId, communicationEventId, productId, productCategoryId, visitId, datetimeRecorded, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyNeed(GenericValue value) {
-		partyNeedId = (String) value.get(Fields.partyNeedId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		needTypeId = (String) value.get(Fields.needTypeId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		datetimeRecorded = (Timestamp) value
-				.get(Fields.datetimeRecorded.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyNeedId = (String) value.get(FIELD_PARTY_NEED_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		needTypeId = (String) value.get(FIELD_NEED_TYPE_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		datetimeRecorded = (Timestamp) value.get(FIELD_DATETIME_RECORDED);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyNeed fromValue(org.apache.ofbiz.entity.GenericValue value) {

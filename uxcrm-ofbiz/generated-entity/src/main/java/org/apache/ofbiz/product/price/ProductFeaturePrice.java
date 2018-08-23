@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Feature Price
  */
+@FieldNameConstants
 public class ProductFeaturePrice implements Serializable {
 
-	public static final long serialVersionUID = 248156508309502976L;
+	public static final long serialVersionUID = 1517681960988741632L;
 	public static final String NAME = "ProductFeaturePrice";
 	/**
 	 * Product Feature Id
@@ -101,31 +103,22 @@ public class ProductFeaturePrice implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productFeatureId, productPriceTypeId, currencyUomId, fromDate, thruDate, price, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFeaturePrice(GenericValue value) {
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productPriceTypeId = (String) value.get(Fields.productPriceTypeId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		price = (BigDecimal) value.get(Fields.price.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productPriceTypeId = (String) value.get(FIELD_PRODUCT_PRICE_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		price = (BigDecimal) value.get(FIELD_PRICE);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFeaturePrice fromValue(

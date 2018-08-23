@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Balance Inventory Items View
  */
+@FieldNameConstants
 public class BalanceInventoryItemsView implements Serializable {
 
-	public static final long serialVersionUID = 2174316479311091712L;
+	public static final long serialVersionUID = 1485252167558714368L;
 	public static final String NAME = "BalanceInventoryItemsView";
 	/**
 	 * Inventory Item Id
@@ -101,31 +103,24 @@ public class BalanceInventoryItemsView implements Serializable {
 	@Setter
 	private Long sequenceId;
 
-	public enum Fields {
-		inventoryItemId, productId, facilityId, inventoryItemTypeId, availableToPromiseTotal, quantityOnHandTotal, orderId, shipGroupSeqId, orderItemSeqId, quantity, quantityNotAvailable, reserveOrderEnumId, reservedDatetime, sequenceId
-	}
-
 	public BalanceInventoryItemsView(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		inventoryItemTypeId = (String) value.get(Fields.inventoryItemTypeId
-				.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		inventoryItemTypeId = (String) value.get(FIELD_INVENTORY_ITEM_TYPE_ID);
 		availableToPromiseTotal = (BigDecimal) value
-				.get(Fields.availableToPromiseTotal.name());
-		quantityOnHandTotal = (BigDecimal) value.get(Fields.quantityOnHandTotal
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_TOTAL);
+		quantityOnHandTotal = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_TOTAL);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
 		quantityNotAvailable = (BigDecimal) value
-				.get(Fields.quantityNotAvailable.name());
-		reserveOrderEnumId = (String) value.get(Fields.reserveOrderEnumId
-				.name());
-		reservedDatetime = (Timestamp) value
-				.get(Fields.reservedDatetime.name());
-		sequenceId = (Long) value.get(Fields.sequenceId.name());
+				.get(FIELD_QUANTITY_NOT_AVAILABLE);
+		reserveOrderEnumId = (String) value.get(FIELD_RESERVE_ORDER_ENUM_ID);
+		reservedDatetime = (Timestamp) value.get(FIELD_RESERVED_DATETIME);
+		sequenceId = (Long) value.get(FIELD_SEQUENCE_ID);
 	}
 
 	public static BalanceInventoryItemsView fromValue(

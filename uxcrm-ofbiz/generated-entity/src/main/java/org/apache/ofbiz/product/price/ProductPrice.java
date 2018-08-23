@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Price
  */
+@FieldNameConstants
 public class ProductPrice implements Serializable {
 
-	public static final long serialVersionUID = 4787956160336353280L;
+	public static final long serialVersionUID = 9164586384257006592L;
 	public static final String NAME = "ProductPrice";
 	/**
 	 * Product Id
@@ -167,45 +169,35 @@ public class ProductPrice implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, productPriceTypeId, productPricePurposeId, currencyUomId, productStoreGroupId, fromDate, thruDate, price, termUomId, customPriceCalcService, priceWithoutTax, priceWithTax, taxAmount, taxPercentage, taxAuthPartyId, taxAuthGeoId, taxInPrice, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPrice(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productPriceTypeId = (String) value.get(Fields.productPriceTypeId
-				.name());
-		productPricePurposeId = (String) value.get(Fields.productPricePurposeId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		price = (BigDecimal) value.get(Fields.price.name());
-		termUomId = (String) value.get(Fields.termUomId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productPriceTypeId = (String) value.get(FIELD_PRODUCT_PRICE_TYPE_ID);
+		productPricePurposeId = (String) value
+				.get(FIELD_PRODUCT_PRICE_PURPOSE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		price = (BigDecimal) value.get(FIELD_PRICE);
+		termUomId = (String) value.get(FIELD_TERM_UOM_ID);
 		customPriceCalcService = (String) value
-				.get(Fields.customPriceCalcService.name());
-		priceWithoutTax = (BigDecimal) value.get(Fields.priceWithoutTax.name());
-		priceWithTax = (BigDecimal) value.get(Fields.priceWithTax.name());
-		taxAmount = (BigDecimal) value.get(Fields.taxAmount.name());
-		taxPercentage = (BigDecimal) value.get(Fields.taxPercentage.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxInPrice = (String) value.get(Fields.taxInPrice.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_CUSTOM_PRICE_CALC_SERVICE);
+		priceWithoutTax = (BigDecimal) value.get(FIELD_PRICE_WITHOUT_TAX);
+		priceWithTax = (BigDecimal) value.get(FIELD_PRICE_WITH_TAX);
+		taxAmount = (BigDecimal) value.get(FIELD_TAX_AMOUNT);
+		taxPercentage = (BigDecimal) value.get(FIELD_TAX_PERCENTAGE);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxInPrice = (String) value.get(FIELD_TAX_IN_PRICE);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPrice fromValue(

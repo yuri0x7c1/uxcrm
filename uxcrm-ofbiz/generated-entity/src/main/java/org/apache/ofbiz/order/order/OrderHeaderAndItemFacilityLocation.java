@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Item Facility Location
  */
+@FieldNameConstants
 public class OrderHeaderAndItemFacilityLocation implements Serializable {
 
-	public static final long serialVersionUID = 7846036461205645312L;
+	public static final long serialVersionUID = 5404404704520617984L;
 	public static final String NAME = "OrderHeaderAndItemFacilityLocation";
 	/**
 	 * Order Id
@@ -81,24 +83,19 @@ public class OrderHeaderAndItemFacilityLocation implements Serializable {
 	@Setter
 	private String areaId;
 
-	public enum Fields {
-		orderId, orderItemSeqId, inventoryItemId, shipGroupSeqId, shipmentMethodTypeId, carrierPartyId, productId, facilityId, locationSeqId, locationTypeEnumId, areaId
-	}
-
 	public OrderHeaderAndItemFacilityLocation(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		locationTypeEnumId = (String) value.get(Fields.locationTypeEnumId
-				.name());
-		areaId = (String) value.get(Fields.areaId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		locationTypeEnumId = (String) value.get(FIELD_LOCATION_TYPE_ENUM_ID);
+		areaId = (String) value.get(FIELD_AREA_ID);
 	}
 
 	public static OrderHeaderAndItemFacilityLocation fromValue(

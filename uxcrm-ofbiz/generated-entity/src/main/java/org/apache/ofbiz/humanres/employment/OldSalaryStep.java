@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Old Salary Step
  */
+@FieldNameConstants
 public class OldSalaryStep implements Serializable {
 
-	public static final long serialVersionUID = 1551583850432359424L;
+	public static final long serialVersionUID = 3328326892046176256L;
 	public static final String NAME = "OldSalaryStep";
 	/**
 	 * Salary Step Seq Id
@@ -65,21 +67,15 @@ public class OldSalaryStep implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salaryStepSeqId, payGradeId, dateModified, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldSalaryStep(GenericValue value) {
-		salaryStepSeqId = (String) value.get(Fields.salaryStepSeqId.name());
-		payGradeId = (String) value.get(Fields.payGradeId.name());
-		dateModified = (Timestamp) value.get(Fields.dateModified.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		salaryStepSeqId = (String) value.get(FIELD_SALARY_STEP_SEQ_ID);
+		payGradeId = (String) value.get(FIELD_PAY_GRADE_ID);
+		dateModified = (Timestamp) value.get(FIELD_DATE_MODIFIED);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldSalaryStep fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Std Cost
  */
+@FieldNameConstants
 public class FixedAssetStdCost implements Serializable {
 
-	public static final long serialVersionUID = 5934552861855409152L;
+	public static final long serialVersionUID = 8351005599636048896L;
 	public static final String NAME = "FixedAssetStdCost";
 	/**
 	 * Fixed Asset Id
@@ -77,24 +79,18 @@ public class FixedAssetStdCost implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, fixedAssetStdCostTypeId, fromDate, thruDate, amountUomId, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetStdCost(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
 		fixedAssetStdCostTypeId = (String) value
-				.get(Fields.fixedAssetStdCostTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		amountUomId = (String) value.get(Fields.amountUomId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_FIXED_ASSET_STD_COST_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		amountUomId = (String) value.get(FIELD_AMOUNT_UOM_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetStdCost fromValue(

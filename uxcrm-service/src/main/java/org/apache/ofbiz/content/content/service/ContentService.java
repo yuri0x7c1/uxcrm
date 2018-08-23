@@ -32,7 +32,7 @@ public class ContentService extends ContentBaseService {
 		List<ContentAssoc> contentAssociations = contentAssocService.find(
 			0, 100, null,
 			new EntityConditionList<EntityCondition>(
-					Arrays.asList(new EntityExpr(ContentAssoc.Fields.contentId, EntityOperator.EQUALS, content.getContentId())),
+					Arrays.asList(new EntityExpr(ContentAssoc.FIELD_CONTENT_ID, EntityOperator.EQUALS, content.getContentId())),
 					EntityOperator.AND
 			)
 		);

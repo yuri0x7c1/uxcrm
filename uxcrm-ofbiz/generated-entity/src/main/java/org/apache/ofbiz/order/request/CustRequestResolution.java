@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request Resolution
  */
+@FieldNameConstants
 public class CustRequestResolution implements Serializable {
 
-	public static final long serialVersionUID = 6744145458036197376L;
+	public static final long serialVersionUID = 3803619180934904832L;
 	public static final String NAME = "CustRequestResolution";
 	/**
 	 * Cust Request Resolution Id
@@ -58,21 +60,15 @@ public class CustRequestResolution implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		custRequestResolutionId, custRequestTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CustRequestResolution(GenericValue value) {
 		custRequestResolutionId = (String) value
-				.get(Fields.custRequestResolutionId.name());
-		custRequestTypeId = (String) value.get(Fields.custRequestTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_CUST_REQUEST_RESOLUTION_ID);
+		custRequestTypeId = (String) value.get(FIELD_CUST_REQUEST_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CustRequestResolution fromValue(

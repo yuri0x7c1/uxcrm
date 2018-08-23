@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.shoppinglist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shopping List Item
  */
+@FieldNameConstants
 public class ShoppingListItem implements Serializable {
 
-	public static final long serialVersionUID = 3557806714907648L;
+	public static final long serialVersionUID = 1795836746055795712L;
 	public static final String NAME = "ShoppingListItem";
 	/**
 	 * Shopping List Id
@@ -101,29 +103,22 @@ public class ShoppingListItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shoppingListId, shoppingListItemSeqId, productId, quantity, modifiedPrice, reservStart, reservLength, reservPersons, quantityPurchased, configId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShoppingListItem(GenericValue value) {
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		shoppingListItemSeqId = (String) value.get(Fields.shoppingListItemSeqId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		modifiedPrice = (BigDecimal) value.get(Fields.modifiedPrice.name());
-		reservStart = (Timestamp) value.get(Fields.reservStart.name());
-		reservLength = (BigDecimal) value.get(Fields.reservLength.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		quantityPurchased = (BigDecimal) value.get(Fields.quantityPurchased
-				.name());
-		configId = (String) value.get(Fields.configId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		shoppingListItemSeqId = (String) value
+				.get(FIELD_SHOPPING_LIST_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		modifiedPrice = (BigDecimal) value.get(FIELD_MODIFIED_PRICE);
+		reservStart = (Timestamp) value.get(FIELD_RESERV_START);
+		reservLength = (BigDecimal) value.get(FIELD_RESERV_LENGTH);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		quantityPurchased = (BigDecimal) value.get(FIELD_QUANTITY_PURCHASED);
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShoppingListItem fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.language;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Standard Language
  */
+@FieldNameConstants
 public class StandardLanguage implements Serializable {
 
-	public static final long serialVersionUID = 6554044860686810112L;
+	public static final long serialVersionUID = 4443360094024690688L;
 	public static final String NAME = "StandardLanguage";
 	/**
 	 * Standard Language Id
@@ -82,25 +84,18 @@ public class StandardLanguage implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		standardLanguageId, langCode3t, langCode3b, langCode2, langName, langFamily, langCharset, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public StandardLanguage(GenericValue value) {
-		standardLanguageId = (String) value.get(Fields.standardLanguageId
-				.name());
-		langCode3t = (String) value.get(Fields.langCode3t.name());
-		langCode3b = (String) value.get(Fields.langCode3b.name());
-		langCode2 = (String) value.get(Fields.langCode2.name());
-		langName = (String) value.get(Fields.langName.name());
-		langFamily = (String) value.get(Fields.langFamily.name());
-		langCharset = (String) value.get(Fields.langCharset.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		standardLanguageId = (String) value.get(FIELD_STANDARD_LANGUAGE_ID);
+		langCode3t = (String) value.get(FIELD_LANG_CODE3T);
+		langCode3b = (String) value.get(FIELD_LANG_CODE3B);
+		langCode2 = (String) value.get(FIELD_LANG_CODE2);
+		langName = (String) value.get(FIELD_LANG_NAME);
+		langFamily = (String) value.get(FIELD_LANG_FAMILY);
+		langCharset = (String) value.get(FIELD_LANG_CHARSET);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static StandardLanguage fromValue(

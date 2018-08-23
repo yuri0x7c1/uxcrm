@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Item Contact Mech
  */
+@FieldNameConstants
 public class OrderItemContactMech implements Serializable {
 
-	public static final long serialVersionUID = 2853564103257469952L;
+	public static final long serialVersionUID = 6762244769871795200L;
 	public static final String NAME = "OrderItemContactMech";
 	/**
 	 * Order Id
@@ -64,22 +66,16 @@ public class OrderItemContactMech implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, contactMechPurposeTypeId, contactMechId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemContactMech(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
 		contactMechPurposeTypeId = (String) value
-				.get(Fields.contactMechPurposeTypeId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_CONTACT_MECH_PURPOSE_TYPE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemContactMech fromValue(

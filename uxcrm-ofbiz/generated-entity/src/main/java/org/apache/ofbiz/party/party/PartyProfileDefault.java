@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Profile Default
  */
+@FieldNameConstants
 public class PartyProfileDefault implements Serializable {
 
-	public static final long serialVersionUID = 3379541017142423552L;
+	public static final long serialVersionUID = 9049378760440971264L;
 	public static final String NAME = "PartyProfileDefault";
 	/**
 	 * Party Id
@@ -76,23 +78,17 @@ public class PartyProfileDefault implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, productStoreId, defaultShipAddr, defaultBillAddr, defaultPayMeth, defaultShipMeth, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyProfileDefault(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		defaultShipAddr = (String) value.get(Fields.defaultShipAddr.name());
-		defaultBillAddr = (String) value.get(Fields.defaultBillAddr.name());
-		defaultPayMeth = (String) value.get(Fields.defaultPayMeth.name());
-		defaultShipMeth = (String) value.get(Fields.defaultShipMeth.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		defaultShipAddr = (String) value.get(FIELD_DEFAULT_SHIP_ADDR);
+		defaultBillAddr = (String) value.get(FIELD_DEFAULT_BILL_ADDR);
+		defaultPayMeth = (String) value.get(FIELD_DEFAULT_PAY_METH);
+		defaultShipMeth = (String) value.get(FIELD_DEFAULT_SHIP_METH);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyProfileDefault fromValue(

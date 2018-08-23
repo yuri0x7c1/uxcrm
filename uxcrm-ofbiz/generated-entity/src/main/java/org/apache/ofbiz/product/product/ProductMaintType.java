@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Maint Type
  */
+@FieldNameConstants
 public class ProductMaintType implements Serializable {
 
-	public static final long serialVersionUID = 4456781213620284416L;
+	public static final long serialVersionUID = 6721203108705379328L;
 	public static final String NAME = "ProductMaintType";
 	/**
 	 * Product Maint Type Id
@@ -58,21 +60,14 @@ public class ProductMaintType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productMaintTypeId, description, parentTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductMaintType(GenericValue value) {
-		productMaintTypeId = (String) value.get(Fields.productMaintTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productMaintTypeId = (String) value.get(FIELD_PRODUCT_MAINT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductMaintType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Items
  */
+@FieldNameConstants
 public class OrderHeaderAndItems implements Serializable {
 
-	public static final long serialVersionUID = 4766588407929186304L;
+	public static final long serialVersionUID = 3253371637499315200L;
 	public static final String NAME = "OrderHeaderAndItems";
 	/**
 	 * Order Id
@@ -131,32 +133,27 @@ public class OrderHeaderAndItems implements Serializable {
 	@Setter
 	private String orderItemTypeId;
 
-	public enum Fields {
-		orderId, orderDate, orderStatusId, grandTotal, productStoreId, orderTypeId, orderItemSeqId, productId, quantity, cancelQuantity, unitPrice, unitListPrice, itemDescription, itemStatusId, estimatedShipDate, estimatedDeliveryDate, shipBeforeDate, shipAfterDate, orderItemTypeId
-	}
-
 	public OrderHeaderAndItems(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		cancelQuantity = (BigDecimal) value.get(Fields.cancelQuantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		itemStatusId = (String) value.get(Fields.itemStatusId.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		cancelQuantity = (BigDecimal) value.get(FIELD_CANCEL_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		itemStatusId = (String) value.get(FIELD_ITEM_STATUS_ID);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		shipBeforeDate = (Timestamp) value.get(Fields.shipBeforeDate.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		orderItemTypeId = (String) value.get(Fields.orderItemTypeId.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		shipBeforeDate = (Timestamp) value.get(FIELD_SHIP_BEFORE_DATE);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		orderItemTypeId = (String) value.get(FIELD_ORDER_ITEM_TYPE_ID);
 	}
 
 	public static OrderHeaderAndItems fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Agreement Content And Info
  */
+@FieldNameConstants
 public class AgreementContentAndInfo implements Serializable {
 
-	public static final long serialVersionUID = 7196215832404908032L;
+	public static final long serialVersionUID = 1958234945269042176L;
 	public static final String NAME = "AgreementContentAndInfo";
 	/**
 	 * From Date
@@ -298,73 +300,61 @@ public class AgreementContentAndInfo implements Serializable {
 	@Setter
 	private String drCreatedByUserLogin;
 
-	public enum Fields {
-		fromDate, agreementId, contentId, agreementItemSeqId, agreementContentTypeId, thruDate, ownerContentId, contentTypeId, description, mimeTypeId, childLeafCount, privilegeEnumId, dataSourceId, lastModifiedByUserLogin, dataResourceId, createdByUserLogin, templateDataResourceId, lastModifiedDate, instanceOfContentId, serviceName, customMethodId, characterSetId, contentName, createdDate, statusId, localeString, decoratorContentId, childBranchCount, drDataResourceName, drSurveyId, drDataTemplateTypeId, drLastModifiedDate, drMimeTypeId, drDataCategoryId, drSurveyResponseId, drCharacterSetId, drDataSourceId, drLastModifiedByUserLogin, drCreatedDate, drStatusId, drLocaleString, drRelatedDetailId, drDataResourceId, drIsPublic, drObjectInfo, drDataResourceTypeId, drCreatedByUserLogin
-	}
-
 	public AgreementContentAndInfo(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
 		agreementContentTypeId = (String) value
-				.get(Fields.agreementContentTypeId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		ownerContentId = (String) value.get(Fields.ownerContentId.name());
-		contentTypeId = (String) value.get(Fields.contentTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		childLeafCount = (Long) value.get(Fields.childLeafCount.name());
-		privilegeEnumId = (String) value.get(Fields.privilegeEnumId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
+				.get(FIELD_AGREEMENT_CONTENT_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		ownerContentId = (String) value.get(FIELD_OWNER_CONTENT_ID);
+		contentTypeId = (String) value.get(FIELD_CONTENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		childLeafCount = (Long) value.get(FIELD_CHILD_LEAF_COUNT);
+		privilegeEnumId = (String) value.get(FIELD_PRIVILEGE_ENUM_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		templateDataResourceId = (String) value
-				.get(Fields.templateDataResourceId.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		instanceOfContentId = (String) value.get(Fields.instanceOfContentId
-				.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		customMethodId = (String) value.get(Fields.customMethodId.name());
-		characterSetId = (String) value.get(Fields.characterSetId.name());
-		contentName = (String) value.get(Fields.contentName.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		localeString = (String) value.get(Fields.localeString.name());
-		decoratorContentId = (String) value.get(Fields.decoratorContentId
-				.name());
-		childBranchCount = (Long) value.get(Fields.childBranchCount.name());
-		drDataResourceName = (String) value.get(Fields.drDataResourceName
-				.name());
-		drSurveyId = (String) value.get(Fields.drSurveyId.name());
-		drDataTemplateTypeId = (String) value.get(Fields.drDataTemplateTypeId
-				.name());
-		drLastModifiedDate = (Timestamp) value.get(Fields.drLastModifiedDate
-				.name());
-		drMimeTypeId = (String) value.get(Fields.drMimeTypeId.name());
-		drDataCategoryId = (String) value.get(Fields.drDataCategoryId.name());
-		drSurveyResponseId = (String) value.get(Fields.drSurveyResponseId
-				.name());
-		drCharacterSetId = (String) value.get(Fields.drCharacterSetId.name());
-		drDataSourceId = (String) value.get(Fields.drDataSourceId.name());
+				.get(FIELD_TEMPLATE_DATA_RESOURCE_ID);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		instanceOfContentId = (String) value.get(FIELD_INSTANCE_OF_CONTENT_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		customMethodId = (String) value.get(FIELD_CUSTOM_METHOD_ID);
+		characterSetId = (String) value.get(FIELD_CHARACTER_SET_ID);
+		contentName = (String) value.get(FIELD_CONTENT_NAME);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		localeString = (String) value.get(FIELD_LOCALE_STRING);
+		decoratorContentId = (String) value.get(FIELD_DECORATOR_CONTENT_ID);
+		childBranchCount = (Long) value.get(FIELD_CHILD_BRANCH_COUNT);
+		drDataResourceName = (String) value.get(FIELD_DR_DATA_RESOURCE_NAME);
+		drSurveyId = (String) value.get(FIELD_DR_SURVEY_ID);
+		drDataTemplateTypeId = (String) value
+				.get(FIELD_DR_DATA_TEMPLATE_TYPE_ID);
+		drLastModifiedDate = (Timestamp) value.get(FIELD_DR_LAST_MODIFIED_DATE);
+		drMimeTypeId = (String) value.get(FIELD_DR_MIME_TYPE_ID);
+		drDataCategoryId = (String) value.get(FIELD_DR_DATA_CATEGORY_ID);
+		drSurveyResponseId = (String) value.get(FIELD_DR_SURVEY_RESPONSE_ID);
+		drCharacterSetId = (String) value.get(FIELD_DR_CHARACTER_SET_ID);
+		drDataSourceId = (String) value.get(FIELD_DR_DATA_SOURCE_ID);
 		drLastModifiedByUserLogin = (String) value
-				.get(Fields.drLastModifiedByUserLogin.name());
-		drCreatedDate = (Timestamp) value.get(Fields.drCreatedDate.name());
-		drStatusId = (String) value.get(Fields.drStatusId.name());
-		drLocaleString = (String) value.get(Fields.drLocaleString.name());
-		drRelatedDetailId = (String) value.get(Fields.drRelatedDetailId.name());
-		drDataResourceId = (String) value.get(Fields.drDataResourceId.name());
-		drIsPublic = (String) value.get(Fields.drIsPublic.name());
-		drObjectInfo = (String) value.get(Fields.drObjectInfo.name());
-		drDataResourceTypeId = (String) value.get(Fields.drDataResourceTypeId
-				.name());
-		drCreatedByUserLogin = (String) value.get(Fields.drCreatedByUserLogin
-				.name());
+				.get(FIELD_DR_LAST_MODIFIED_BY_USER_LOGIN);
+		drCreatedDate = (Timestamp) value.get(FIELD_DR_CREATED_DATE);
+		drStatusId = (String) value.get(FIELD_DR_STATUS_ID);
+		drLocaleString = (String) value.get(FIELD_DR_LOCALE_STRING);
+		drRelatedDetailId = (String) value.get(FIELD_DR_RELATED_DETAIL_ID);
+		drDataResourceId = (String) value.get(FIELD_DR_DATA_RESOURCE_ID);
+		drIsPublic = (String) value.get(FIELD_DR_IS_PUBLIC);
+		drObjectInfo = (String) value.get(FIELD_DR_OBJECT_INFO);
+		drDataResourceTypeId = (String) value
+				.get(FIELD_DR_DATA_RESOURCE_TYPE_ID);
+		drCreatedByUserLogin = (String) value
+				.get(FIELD_DR_CREATED_BY_USER_LOGIN);
 	}
 
 	public static AgreementContentAndInfo fromValue(

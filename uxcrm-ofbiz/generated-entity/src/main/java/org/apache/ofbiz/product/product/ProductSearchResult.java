@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Search Result
  */
+@FieldNameConstants
 public class ProductSearchResult implements Serializable {
 
-	public static final long serialVersionUID = 5347896610639823872L;
+	public static final long serialVersionUID = 3297500027212786688L;
 	public static final String NAME = "ProductSearchResult";
 	/**
 	 * Product Search Result Id
@@ -82,25 +84,19 @@ public class ProductSearchResult implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productSearchResultId, visitId, orderByName, isAscending, numResults, secondsTotal, searchDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductSearchResult(GenericValue value) {
-		productSearchResultId = (String) value.get(Fields.productSearchResultId
-				.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		orderByName = (String) value.get(Fields.orderByName.name());
-		isAscending = (String) value.get(Fields.isAscending.name());
-		numResults = (Long) value.get(Fields.numResults.name());
-		secondsTotal = (Double) value.get(Fields.secondsTotal.name());
-		searchDate = (Timestamp) value.get(Fields.searchDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productSearchResultId = (String) value
+				.get(FIELD_PRODUCT_SEARCH_RESULT_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		orderByName = (String) value.get(FIELD_ORDER_BY_NAME);
+		isAscending = (String) value.get(FIELD_IS_ASCENDING);
+		numResults = (Long) value.get(FIELD_NUM_RESULTS);
+		secondsTotal = (Double) value.get(FIELD_SECONDS_TOTAL);
+		searchDate = (Timestamp) value.get(FIELD_SEARCH_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductSearchResult fromValue(

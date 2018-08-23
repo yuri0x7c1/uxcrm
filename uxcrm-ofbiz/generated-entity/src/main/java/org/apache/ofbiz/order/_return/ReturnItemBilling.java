@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Return Item Billing
  */
+@FieldNameConstants
 public class ReturnItemBilling implements Serializable {
 
-	public static final long serialVersionUID = 1321026799265762304L;
+	public static final long serialVersionUID = 7955596313469259776L;
 	public static final String NAME = "ReturnItemBilling";
 	/**
 	 * Return Id
@@ -83,24 +85,18 @@ public class ReturnItemBilling implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnId, returnItemSeqId, invoiceId, invoiceItemSeqId, shipmentReceiptId, quantity, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnItemBilling(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		shipmentReceiptId = (String) value.get(Fields.shipmentReceiptId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		shipmentReceiptId = (String) value.get(FIELD_SHIPMENT_RECEIPT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnItemBilling fromValue(

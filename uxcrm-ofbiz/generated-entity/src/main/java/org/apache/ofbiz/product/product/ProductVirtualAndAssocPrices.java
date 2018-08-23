@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Virtual And Assoc Prices
  */
+@FieldNameConstants
 public class ProductVirtualAndAssocPrices implements Serializable {
 
-	public static final long serialVersionUID = 2849540623227359232L;
+	public static final long serialVersionUID = 8273199498507579392L;
 	public static final String NAME = "ProductVirtualAndAssocPrices";
 	/**
 	 * Product Id
@@ -107,31 +109,23 @@ public class ProductVirtualAndAssocPrices implements Serializable {
 	@Setter
 	private BigDecimal assocMaxPrice;
 
-	public enum Fields {
-		productId, internalName, productName, productAssocTypeId, fromDate, thruDate, assocProductId, assocProductCount, assocPriceTypeId, assocCurrencyUomId, assocProductStoreGroupId, assocPriceFromDate, assocPriceThruDate, assocMinPrice, assocMaxPrice
-	}
-
 	public ProductVirtualAndAssocPrices(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		productName = (String) value.get(Fields.productName.name());
-		productAssocTypeId = (String) value.get(Fields.productAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		assocProductId = (String) value.get(Fields.assocProductId.name());
-		assocProductCount = (Long) value.get(Fields.assocProductCount.name());
-		assocPriceTypeId = (String) value.get(Fields.assocPriceTypeId.name());
-		assocCurrencyUomId = (String) value.get(Fields.assocCurrencyUomId
-				.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		productAssocTypeId = (String) value.get(FIELD_PRODUCT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		assocProductId = (String) value.get(FIELD_ASSOC_PRODUCT_ID);
+		assocProductCount = (Long) value.get(FIELD_ASSOC_PRODUCT_COUNT);
+		assocPriceTypeId = (String) value.get(FIELD_ASSOC_PRICE_TYPE_ID);
+		assocCurrencyUomId = (String) value.get(FIELD_ASSOC_CURRENCY_UOM_ID);
 		assocProductStoreGroupId = (String) value
-				.get(Fields.assocProductStoreGroupId.name());
-		assocPriceFromDate = (Timestamp) value.get(Fields.assocPriceFromDate
-				.name());
-		assocPriceThruDate = (Timestamp) value.get(Fields.assocPriceThruDate
-				.name());
-		assocMinPrice = (BigDecimal) value.get(Fields.assocMinPrice.name());
-		assocMaxPrice = (BigDecimal) value.get(Fields.assocMaxPrice.name());
+				.get(FIELD_ASSOC_PRODUCT_STORE_GROUP_ID);
+		assocPriceFromDate = (Timestamp) value.get(FIELD_ASSOC_PRICE_FROM_DATE);
+		assocPriceThruDate = (Timestamp) value.get(FIELD_ASSOC_PRICE_THRU_DATE);
+		assocMinPrice = (BigDecimal) value.get(FIELD_ASSOC_MIN_PRICE);
+		assocMaxPrice = (BigDecimal) value.get(FIELD_ASSOC_MAX_PRICE);
 	}
 
 	public static ProductVirtualAndAssocPrices fromValue(

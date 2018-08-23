@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Store Fin Act Setting
  */
+@FieldNameConstants
 public class ProductStoreFinActSetting implements Serializable {
 
-	public static final long serialVersionUID = 2514706120028515328L;
+	public static final long serialVersionUID = 6307727715648299008L;
 	public static final String NAME = "ProductStoreFinActSetting";
 	/**
 	 * Product Store Id
@@ -131,35 +133,27 @@ public class ProductStoreFinActSetting implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, finAccountTypeId, requirePinCode, validateGCFinAcct, accountCodeLength, pinCodeLength, accountValidDays, authValidDays, purchaseSurveyId, purchSurveySendTo, purchSurveyCopyMe, allowAuthToNegative, minBalance, replenishThreshold, replenishMethodEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreFinActSetting(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		finAccountTypeId = (String) value.get(Fields.finAccountTypeId.name());
-		requirePinCode = (String) value.get(Fields.requirePinCode.name());
-		validateGCFinAcct = (String) value.get(Fields.validateGCFinAcct.name());
-		accountCodeLength = (Long) value.get(Fields.accountCodeLength.name());
-		pinCodeLength = (Long) value.get(Fields.pinCodeLength.name());
-		accountValidDays = (Long) value.get(Fields.accountValidDays.name());
-		authValidDays = (Long) value.get(Fields.authValidDays.name());
-		purchaseSurveyId = (String) value.get(Fields.purchaseSurveyId.name());
-		purchSurveySendTo = (String) value.get(Fields.purchSurveySendTo.name());
-		purchSurveyCopyMe = (String) value.get(Fields.purchSurveyCopyMe.name());
-		allowAuthToNegative = (String) value.get(Fields.allowAuthToNegative
-				.name());
-		minBalance = (BigDecimal) value.get(Fields.minBalance.name());
-		replenishThreshold = (BigDecimal) value.get(Fields.replenishThreshold
-				.name());
-		replenishMethodEnumId = (String) value.get(Fields.replenishMethodEnumId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		finAccountTypeId = (String) value.get(FIELD_FIN_ACCOUNT_TYPE_ID);
+		requirePinCode = (String) value.get(FIELD_REQUIRE_PIN_CODE);
+		validateGCFinAcct = (String) value.get(FIELD_VALIDATE_G_C_FIN_ACCT);
+		accountCodeLength = (Long) value.get(FIELD_ACCOUNT_CODE_LENGTH);
+		pinCodeLength = (Long) value.get(FIELD_PIN_CODE_LENGTH);
+		accountValidDays = (Long) value.get(FIELD_ACCOUNT_VALID_DAYS);
+		authValidDays = (Long) value.get(FIELD_AUTH_VALID_DAYS);
+		purchaseSurveyId = (String) value.get(FIELD_PURCHASE_SURVEY_ID);
+		purchSurveySendTo = (String) value.get(FIELD_PURCH_SURVEY_SEND_TO);
+		purchSurveyCopyMe = (String) value.get(FIELD_PURCH_SURVEY_COPY_ME);
+		allowAuthToNegative = (String) value.get(FIELD_ALLOW_AUTH_TO_NEGATIVE);
+		minBalance = (BigDecimal) value.get(FIELD_MIN_BALANCE);
+		replenishThreshold = (BigDecimal) value.get(FIELD_REPLENISH_THRESHOLD);
+		replenishMethodEnumId = (String) value
+				.get(FIELD_REPLENISH_METHOD_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreFinActSetting fromValue(

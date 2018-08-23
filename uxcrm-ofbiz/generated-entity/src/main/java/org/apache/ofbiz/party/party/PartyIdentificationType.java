@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Identification Type
  */
+@FieldNameConstants
 public class PartyIdentificationType implements Serializable {
 
-	public static final long serialVersionUID = 4834338189865262080L;
+	public static final long serialVersionUID = 5446538226192063488L;
 	public static final String NAME = "PartyIdentificationType";
 	/**
 	 * Party Identification Type Id
@@ -64,22 +66,16 @@ public class PartyIdentificationType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyIdentificationTypeId, parentTypeId, hasTable, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyIdentificationType(GenericValue value) {
 		partyIdentificationTypeId = (String) value
-				.get(Fields.partyIdentificationTypeId.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PARTY_IDENTIFICATION_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyIdentificationType fromValue(

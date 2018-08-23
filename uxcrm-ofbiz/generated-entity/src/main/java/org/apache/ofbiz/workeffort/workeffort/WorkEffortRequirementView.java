@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Requirement View
  */
+@FieldNameConstants
 public class WorkEffortRequirementView implements Serializable {
 
-	public static final long serialVersionUID = 8529167783455087616L;
+	public static final long serialVersionUID = 4211621787970435072L;
 	public static final String NAME = "WorkEffortRequirementView";
 	/**
 	 * Status Item Description
@@ -155,41 +157,35 @@ public class WorkEffortRequirementView implements Serializable {
 	@Setter
 	private String deliverableId;
 
-	public enum Fields {
-		statusItemDescription, workReqFulfTypeDescription, requirementDescription, workEffortId, workReqFulfTypeId, requirementId, reason, facilityId, quantity, productId, lastModifiedDate, estimatedBudget, description, requiredByDate, requirementStartDate, requirementTypeId, useCase, lastModifiedByUserLogin, createdDate, statusId, fixedAssetId, createdByUserLogin, deliverableId
-	}
-
 	public WorkEffortRequirementView(GenericValue value) {
-		statusItemDescription = (String) value.get(Fields.statusItemDescription
-				.name());
+		statusItemDescription = (String) value
+				.get(FIELD_STATUS_ITEM_DESCRIPTION);
 		workReqFulfTypeDescription = (String) value
-				.get(Fields.workReqFulfTypeDescription.name());
+				.get(FIELD_WORK_REQ_FULF_TYPE_DESCRIPTION);
 		requirementDescription = (String) value
-				.get(Fields.requirementDescription.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		workReqFulfTypeId = (String) value.get(Fields.workReqFulfTypeId.name());
-		requirementId = (String) value.get(Fields.requirementId.name());
-		reason = (String) value.get(Fields.reason.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		estimatedBudget = (BigDecimal) value.get(Fields.estimatedBudget.name());
-		description = (String) value.get(Fields.description.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
+				.get(FIELD_REQUIREMENT_DESCRIPTION);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		workReqFulfTypeId = (String) value.get(FIELD_WORK_REQ_FULF_TYPE_ID);
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		reason = (String) value.get(FIELD_REASON);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		estimatedBudget = (BigDecimal) value.get(FIELD_ESTIMATED_BUDGET);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
 		requirementStartDate = (Timestamp) value
-				.get(Fields.requirementStartDate.name());
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		useCase = (String) value.get(Fields.useCase.name());
+				.get(FIELD_REQUIREMENT_START_DATE);
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		useCase = (String) value.get(FIELD_USE_CASE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		deliverableId = (String) value.get(Fields.deliverableId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		deliverableId = (String) value.get(FIELD_DELIVERABLE_ID);
 	}
 
 	public static WorkEffortRequirementView fromValue(

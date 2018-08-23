@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.rate;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Rate Amount And Relations
  */
+@FieldNameConstants
 public class RateAmountAndRelations implements Serializable {
 
-	public static final long serialVersionUID = 4151693471901250560L;
+	public static final long serialVersionUID = 6929211965670432768L;
 	public static final String NAME = "RateAmountAndRelations";
 	/**
 	 * Rate Description
@@ -119,30 +121,25 @@ public class RateAmountAndRelations implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		rateDescription, periodDescription, firstName, middleName, lastName, groupName, employeePositionDescription, workEffortName, workEffortId, rateTypeId, rateAmount, periodTypeId, thruDate, fromDate, emplPositionTypeId, rateCurrencyUomId, partyId
-	}
-
 	public RateAmountAndRelations(GenericValue value) {
-		rateDescription = (String) value.get(Fields.rateDescription.name());
-		periodDescription = (String) value.get(Fields.periodDescription.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		groupName = (String) value.get(Fields.groupName.name());
+		rateDescription = (String) value.get(FIELD_RATE_DESCRIPTION);
+		periodDescription = (String) value.get(FIELD_PERIOD_DESCRIPTION);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
 		employeePositionDescription = (String) value
-				.get(Fields.employeePositionDescription.name());
-		workEffortName = (String) value.get(Fields.workEffortName.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		rateAmount = (BigDecimal) value.get(Fields.rateAmount.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		emplPositionTypeId = (String) value.get(Fields.emplPositionTypeId
-				.name());
-		rateCurrencyUomId = (String) value.get(Fields.rateCurrencyUomId.name());
-		partyId = (String) value.get(Fields.partyId.name());
+				.get(FIELD_EMPLOYEE_POSITION_DESCRIPTION);
+		workEffortName = (String) value.get(FIELD_WORK_EFFORT_NAME);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		rateAmount = (BigDecimal) value.get(FIELD_RATE_AMOUNT);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		emplPositionTypeId = (String) value.get(FIELD_EMPL_POSITION_TYPE_ID);
+		rateCurrencyUomId = (String) value.get(FIELD_RATE_CURRENCY_UOM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static RateAmountAndRelations fromValue(

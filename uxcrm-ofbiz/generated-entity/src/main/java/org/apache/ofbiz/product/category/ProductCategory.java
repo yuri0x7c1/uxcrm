@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Category
  */
+@FieldNameConstants
 public class ProductCategory implements Serializable {
 
-	public static final long serialVersionUID = 5546627230528528384L;
+	public static final long serialVersionUID = 8025921903520738304L;
 	public static final String NAME = "ProductCategory";
 	/**
 	 * Product Category Id
@@ -106,30 +108,24 @@ public class ProductCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productCategoryId, productCategoryTypeId, primaryParentCategoryId, categoryName, description, longDescription, categoryImageUrl, linkOneImageUrl, linkTwoImageUrl, detailScreen, showInSelect, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductCategory(GenericValue value) {
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		productCategoryTypeId = (String) value.get(Fields.productCategoryTypeId
-				.name());
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		productCategoryTypeId = (String) value
+				.get(FIELD_PRODUCT_CATEGORY_TYPE_ID);
 		primaryParentCategoryId = (String) value
-				.get(Fields.primaryParentCategoryId.name());
-		categoryName = (String) value.get(Fields.categoryName.name());
-		description = (String) value.get(Fields.description.name());
-		longDescription = (String) value.get(Fields.longDescription.name());
-		categoryImageUrl = (String) value.get(Fields.categoryImageUrl.name());
-		linkOneImageUrl = (String) value.get(Fields.linkOneImageUrl.name());
-		linkTwoImageUrl = (String) value.get(Fields.linkTwoImageUrl.name());
-		detailScreen = (String) value.get(Fields.detailScreen.name());
-		showInSelect = (String) value.get(Fields.showInSelect.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRIMARY_PARENT_CATEGORY_ID);
+		categoryName = (String) value.get(FIELD_CATEGORY_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		longDescription = (String) value.get(FIELD_LONG_DESCRIPTION);
+		categoryImageUrl = (String) value.get(FIELD_CATEGORY_IMAGE_URL);
+		linkOneImageUrl = (String) value.get(FIELD_LINK_ONE_IMAGE_URL);
+		linkTwoImageUrl = (String) value.get(FIELD_LINK_TWO_IMAGE_URL);
+		detailScreen = (String) value.get(FIELD_DETAIL_SCREEN);
+		showInSelect = (String) value.get(FIELD_SHOW_IN_SELECT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductCategory fromValue(

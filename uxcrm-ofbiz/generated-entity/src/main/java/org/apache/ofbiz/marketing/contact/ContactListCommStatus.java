@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List Comm Status
  */
+@FieldNameConstants
 public class ContactListCommStatus implements Serializable {
 
-	public static final long serialVersionUID = 1473707572817053696L;
+	public static final long serialVersionUID = 5943338683599539200L;
 	public static final String NAME = "ContactListCommStatus";
 	/**
 	 * Contact List Id
@@ -82,26 +84,18 @@ public class ContactListCommStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactListId, communicationEventId, contactMechId, partyId, messageId, statusId, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContactListCommStatus(GenericValue value) {
-		contactListId = (String) value.get(Fields.contactListId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		messageId = (String) value.get(Fields.messageId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		messageId = (String) value.get(FIELD_MESSAGE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContactListCommStatus fromValue(

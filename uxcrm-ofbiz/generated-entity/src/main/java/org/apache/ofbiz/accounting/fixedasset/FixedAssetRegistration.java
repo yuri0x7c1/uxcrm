@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Registration
  */
+@FieldNameConstants
 public class FixedAssetRegistration implements Serializable {
 
-	public static final long serialVersionUID = 4694095803048639488L;
+	public static final long serialVersionUID = 1744849258412200960L;
 	public static final String NAME = "FixedAssetRegistration";
 	/**
 	 * Fixed Asset Id
@@ -82,26 +84,18 @@ public class FixedAssetRegistration implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, fromDate, thruDate, registrationDate, govAgencyPartyId, registrationNumber, licenseNumber, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetRegistration(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		registrationDate = (Timestamp) value
-				.get(Fields.registrationDate.name());
-		govAgencyPartyId = (String) value.get(Fields.govAgencyPartyId.name());
-		registrationNumber = (String) value.get(Fields.registrationNumber
-				.name());
-		licenseNumber = (String) value.get(Fields.licenseNumber.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		registrationDate = (Timestamp) value.get(FIELD_REGISTRATION_DATE);
+		govAgencyPartyId = (String) value.get(FIELD_GOV_AGENCY_PARTY_ID);
+		registrationNumber = (String) value.get(FIELD_REGISTRATION_NUMBER);
+		licenseNumber = (String) value.get(FIELD_LICENSE_NUMBER);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetRegistration fromValue(

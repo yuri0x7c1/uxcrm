@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Container
  */
+@FieldNameConstants
 public class Container implements Serializable {
 
-	public static final long serialVersionUID = 4639591452925747200L;
+	public static final long serialVersionUID = 6769656061496009728L;
 	public static final String NAME = "Container";
 	/**
 	 * Container Id
@@ -64,21 +66,15 @@ public class Container implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		containerId, containerTypeId, facilityId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Container(GenericValue value) {
-		containerId = (String) value.get(Fields.containerId.name());
-		containerTypeId = (String) value.get(Fields.containerTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		containerId = (String) value.get(FIELD_CONTAINER_ID);
+		containerTypeId = (String) value.get(FIELD_CONTAINER_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Container fromValue(org.apache.ofbiz.entity.GenericValue value) {

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Invitation Role Assoc
  */
+@FieldNameConstants
 public class PartyInvitationRoleAssoc implements Serializable {
 
-	public static final long serialVersionUID = 7757317585672733696L;
+	public static final long serialVersionUID = 3902196661021468672L;
 	public static final String NAME = "PartyInvitationRoleAssoc";
 	/**
 	 * Party Invitation Id
@@ -52,19 +54,13 @@ public class PartyInvitationRoleAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyInvitationId, roleTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyInvitationRoleAssoc(GenericValue value) {
-		partyInvitationId = (String) value.get(Fields.partyInvitationId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyInvitationId = (String) value.get(FIELD_PARTY_INVITATION_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyInvitationRoleAssoc fromValue(

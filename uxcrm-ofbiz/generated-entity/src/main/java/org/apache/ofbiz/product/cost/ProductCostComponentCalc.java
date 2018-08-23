@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.cost;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Cost Component Calc
  */
+@FieldNameConstants
 public class ProductCostComponentCalc implements Serializable {
 
-	public static final long serialVersionUID = 3186298367164846080L;
+	public static final long serialVersionUID = 3632193401156647936L;
 	public static final String NAME = "ProductCostComponentCalc";
 	/**
 	 * Product Id
@@ -76,25 +78,17 @@ public class ProductCostComponentCalc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, costComponentTypeId, costComponentCalcId, fromDate, sequenceNum, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductCostComponentCalc(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		costComponentTypeId = (String) value.get(Fields.costComponentTypeId
-				.name());
-		costComponentCalcId = (String) value.get(Fields.costComponentCalcId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		costComponentTypeId = (String) value.get(FIELD_COST_COMPONENT_TYPE_ID);
+		costComponentCalcId = (String) value.get(FIELD_COST_COMPONENT_CALC_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductCostComponentCalc fromValue(

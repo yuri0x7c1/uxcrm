@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.cert;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * X 509 Issuer Provision
  */
+@FieldNameConstants
 public class X509IssuerProvision implements Serializable {
 
-	public static final long serialVersionUID = 4104657686410800128L;
+	public static final long serialVersionUID = 2137666792212501504L;
 	public static final String NAME = "X509IssuerProvision";
 	/**
 	 * Cert Provision Id
@@ -88,26 +90,19 @@ public class X509IssuerProvision implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		certProvisionId, commonName, organizationalUnit, organizationName, cityLocality, stateProvince, country, serialNumber, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public X509IssuerProvision(GenericValue value) {
-		certProvisionId = (String) value.get(Fields.certProvisionId.name());
-		commonName = (String) value.get(Fields.commonName.name());
-		organizationalUnit = (String) value.get(Fields.organizationalUnit
-				.name());
-		organizationName = (String) value.get(Fields.organizationName.name());
-		cityLocality = (String) value.get(Fields.cityLocality.name());
-		stateProvince = (String) value.get(Fields.stateProvince.name());
-		country = (String) value.get(Fields.country.name());
-		serialNumber = (String) value.get(Fields.serialNumber.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		certProvisionId = (String) value.get(FIELD_CERT_PROVISION_ID);
+		commonName = (String) value.get(FIELD_COMMON_NAME);
+		organizationalUnit = (String) value.get(FIELD_ORGANIZATIONAL_UNIT);
+		organizationName = (String) value.get(FIELD_ORGANIZATION_NAME);
+		cityLocality = (String) value.get(FIELD_CITY_LOCALITY);
+		stateProvince = (String) value.get(FIELD_STATE_PROVINCE);
+		country = (String) value.get(FIELD_COUNTRY);
+		serialNumber = (String) value.get(FIELD_SERIAL_NUMBER);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static X509IssuerProvision fromValue(

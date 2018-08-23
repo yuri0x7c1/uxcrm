@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.position;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Empl Position And Fulfillment
  */
+@FieldNameConstants
 public class EmplPositionAndFulfillment implements Serializable {
 
-	public static final long serialVersionUID = 2159202801247083520L;
+	public static final long serialVersionUID = 8157264666910282752L;
 	public static final String NAME = "EmplPositionAndFulfillment";
 	/**
 	 * Employee Party Id
@@ -118,31 +120,24 @@ public class EmplPositionAndFulfillment implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		employeePartyId, fromDate, thruDate, estimatedThruDate, actualThruDate, exemptFlag, temporaryFlag, fulltimeFlag, emplPositionId, actualFromDate, budgetItemSeqId, budgetId, salaryFlag, statusId, estimatedFromDate, emplPositionTypeId, partyId
-	}
-
 	public EmplPositionAndFulfillment(GenericValue value) {
-		employeePartyId = (String) value.get(Fields.employeePartyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		estimatedThruDate = (Timestamp) value.get(Fields.estimatedThruDate
-				.name());
-		actualThruDate = (Timestamp) value.get(Fields.actualThruDate.name());
-		exemptFlag = (String) value.get(Fields.exemptFlag.name());
-		temporaryFlag = (String) value.get(Fields.temporaryFlag.name());
-		fulltimeFlag = (String) value.get(Fields.fulltimeFlag.name());
-		emplPositionId = (String) value.get(Fields.emplPositionId.name());
-		actualFromDate = (Timestamp) value.get(Fields.actualFromDate.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		budgetId = (String) value.get(Fields.budgetId.name());
-		salaryFlag = (String) value.get(Fields.salaryFlag.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		estimatedFromDate = (Timestamp) value.get(Fields.estimatedFromDate
-				.name());
-		emplPositionTypeId = (String) value.get(Fields.emplPositionTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		employeePartyId = (String) value.get(FIELD_EMPLOYEE_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		estimatedThruDate = (Timestamp) value.get(FIELD_ESTIMATED_THRU_DATE);
+		actualThruDate = (Timestamp) value.get(FIELD_ACTUAL_THRU_DATE);
+		exemptFlag = (String) value.get(FIELD_EXEMPT_FLAG);
+		temporaryFlag = (String) value.get(FIELD_TEMPORARY_FLAG);
+		fulltimeFlag = (String) value.get(FIELD_FULLTIME_FLAG);
+		emplPositionId = (String) value.get(FIELD_EMPL_POSITION_ID);
+		actualFromDate = (Timestamp) value.get(FIELD_ACTUAL_FROM_DATE);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		salaryFlag = (String) value.get(FIELD_SALARY_FLAG);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		estimatedFromDate = (Timestamp) value.get(FIELD_ESTIMATED_FROM_DATE);
+		emplPositionTypeId = (String) value.get(FIELD_EMPL_POSITION_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static EmplPositionAndFulfillment fromValue(

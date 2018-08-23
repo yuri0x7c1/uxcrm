@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Value Link Key
  */
+@FieldNameConstants
 public class ValueLinkKey implements Serializable {
 
-	public static final long serialVersionUID = 454678911511483392L;
+	public static final long serialVersionUID = 2496000964807286784L;
 	public static final String NAME = "ValueLinkKey";
 	/**
 	 * Merchant Id
@@ -118,34 +120,26 @@ public class ValueLinkKey implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		merchantId, publicKey, privateKey, exchangeKey, workingKey, workingKeyIndex, lastWorkingKey, createdDate, createdByTerminal, createdByUserLogin, lastModifiedDate, lastModifiedByTerminal, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ValueLinkKey(GenericValue value) {
-		merchantId = (String) value.get(Fields.merchantId.name());
-		publicKey = (String) value.get(Fields.publicKey.name());
-		privateKey = (String) value.get(Fields.privateKey.name());
-		exchangeKey = (String) value.get(Fields.exchangeKey.name());
-		workingKey = (String) value.get(Fields.workingKey.name());
-		workingKeyIndex = (Long) value.get(Fields.workingKeyIndex.name());
-		lastWorkingKey = (String) value.get(Fields.lastWorkingKey.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByTerminal = (String) value.get(Fields.createdByTerminal.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		merchantId = (String) value.get(FIELD_MERCHANT_ID);
+		publicKey = (String) value.get(FIELD_PUBLIC_KEY);
+		privateKey = (String) value.get(FIELD_PRIVATE_KEY);
+		exchangeKey = (String) value.get(FIELD_EXCHANGE_KEY);
+		workingKey = (String) value.get(FIELD_WORKING_KEY);
+		workingKeyIndex = (Long) value.get(FIELD_WORKING_KEY_INDEX);
+		lastWorkingKey = (String) value.get(FIELD_LAST_WORKING_KEY);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByTerminal = (String) value.get(FIELD_CREATED_BY_TERMINAL);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByTerminal = (String) value
-				.get(Fields.lastModifiedByTerminal.name());
+				.get(FIELD_LAST_MODIFIED_BY_TERMINAL);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ValueLinkKey fromValue(

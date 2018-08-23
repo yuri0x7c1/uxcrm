@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.communication;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Communication Event Sum
  */
+@FieldNameConstants
 public class CommunicationEventSum implements Serializable {
 
-	public static final long serialVersionUID = 4875904710721843200L;
+	public static final long serialVersionUID = 2727436784258548736L;
 	public static final String NAME = "CommunicationEventSum";
 	/**
 	 * Communication Event Id
@@ -33,15 +35,10 @@ public class CommunicationEventSum implements Serializable {
 	@Setter
 	private String partyIdTo;
 
-	public enum Fields {
-		communicationEventId, statusId, partyIdTo
-	}
-
 	public CommunicationEventSum(GenericValue value) {
-		communicationEventId = (Long) value.get(Fields.communicationEventId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
+		communicationEventId = (Long) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
 	}
 
 	public static CommunicationEventSum fromValue(

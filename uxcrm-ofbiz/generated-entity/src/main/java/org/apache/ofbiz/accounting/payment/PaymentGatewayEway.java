@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Eway
  */
+@FieldNameConstants
 public class PaymentGatewayEway implements Serializable {
 
-	public static final long serialVersionUID = 6050318582855583744L;
+	public static final long serialVersionUID = 5318412243976214528L;
 	public static final String NAME = "PaymentGatewayEway";
 	/**
 	 * Payment Gateway Config Id
@@ -76,24 +78,18 @@ public class PaymentGatewayEway implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, customerId, refundPwd, testMode, enableCvn, enableBeagle, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayEway(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		customerId = (String) value.get(Fields.customerId.name());
-		refundPwd = (String) value.get(Fields.refundPwd.name());
-		testMode = (String) value.get(Fields.testMode.name());
-		enableCvn = (String) value.get(Fields.enableCvn.name());
-		enableBeagle = (String) value.get(Fields.enableBeagle.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		customerId = (String) value.get(FIELD_CUSTOMER_ID);
+		refundPwd = (String) value.get(FIELD_REFUND_PWD);
+		testMode = (String) value.get(FIELD_TEST_MODE);
+		enableCvn = (String) value.get(FIELD_ENABLE_CVN);
+		enableBeagle = (String) value.get(FIELD_ENABLE_BEAGLE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayEway fromValue(

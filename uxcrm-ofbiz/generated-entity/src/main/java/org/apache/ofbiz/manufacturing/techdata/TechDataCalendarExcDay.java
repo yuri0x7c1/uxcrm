@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.techdata;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Tech Data Calendar Exc Day
  */
+@FieldNameConstants
 public class TechDataCalendarExcDay implements Serializable {
 
-	public static final long serialVersionUID = 8465648657360612352L;
+	public static final long serialVersionUID = 6909373244380050432L;
 	public static final String NAME = "TechDataCalendarExcDay";
 	/**
 	 * Calendar Id
@@ -71,24 +73,17 @@ public class TechDataCalendarExcDay implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		calendarId, exceptionDateStartTime, exceptionCapacity, usedCapacity, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TechDataCalendarExcDay(GenericValue value) {
-		calendarId = (String) value.get(Fields.calendarId.name());
+		calendarId = (String) value.get(FIELD_CALENDAR_ID);
 		exceptionDateStartTime = (Timestamp) value
-				.get(Fields.exceptionDateStartTime.name());
-		exceptionCapacity = (BigDecimal) value.get(Fields.exceptionCapacity
-				.name());
-		usedCapacity = (BigDecimal) value.get(Fields.usedCapacity.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EXCEPTION_DATE_START_TIME);
+		exceptionCapacity = (BigDecimal) value.get(FIELD_EXCEPTION_CAPACITY);
+		usedCapacity = (BigDecimal) value.get(FIELD_USED_CAPACITY);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TechDataCalendarExcDay fromValue(

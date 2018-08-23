@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Price Cond
  */
+@FieldNameConstants
 public class ProductPriceCond implements Serializable {
 
-	public static final long serialVersionUID = 1434925990000844800L;
+	public static final long serialVersionUID = 5162345760024267776L;
 	public static final String NAME = "ProductPriceCond";
 	/**
 	 * Product Price Rule Id
@@ -70,24 +72,17 @@ public class ProductPriceCond implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPriceRuleId, productPriceCondSeqId, inputParamEnumId, operatorEnumId, condValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPriceCond(GenericValue value) {
-		productPriceRuleId = (String) value.get(Fields.productPriceRuleId
-				.name());
-		productPriceCondSeqId = (String) value.get(Fields.productPriceCondSeqId
-				.name());
-		inputParamEnumId = (String) value.get(Fields.inputParamEnumId.name());
-		operatorEnumId = (String) value.get(Fields.operatorEnumId.name());
-		condValue = (String) value.get(Fields.condValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productPriceRuleId = (String) value.get(FIELD_PRODUCT_PRICE_RULE_ID);
+		productPriceCondSeqId = (String) value
+				.get(FIELD_PRODUCT_PRICE_COND_SEQ_ID);
+		inputParamEnumId = (String) value.get(FIELD_INPUT_PARAM_ENUM_ID);
+		operatorEnumId = (String) value.get(FIELD_OPERATOR_ENUM_ID);
+		condValue = (String) value.get(FIELD_COND_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPriceCond fromValue(

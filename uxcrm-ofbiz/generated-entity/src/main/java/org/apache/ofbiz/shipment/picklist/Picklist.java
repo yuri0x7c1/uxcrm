@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Picklist
  */
+@FieldNameConstants
 public class Picklist implements Serializable {
 
-	public static final long serialVersionUID = 614238513817866240L;
+	public static final long serialVersionUID = 2138454067729492992L;
 	public static final String NAME = "Picklist";
 	/**
 	 * Picklist Id
@@ -88,28 +90,21 @@ public class Picklist implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		picklistId, description, facilityId, shipmentMethodTypeId, statusId, picklistDate, createdByUserLogin, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Picklist(GenericValue value) {
-		picklistId = (String) value.get(Fields.picklistId.name());
-		description = (String) value.get(Fields.description.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		picklistDate = (Timestamp) value.get(Fields.picklistDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+		picklistId = (String) value.get(FIELD_PICKLIST_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		picklistDate = (Timestamp) value.get(FIELD_PICKLIST_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Picklist fromValue(org.apache.ofbiz.entity.GenericValue value) {

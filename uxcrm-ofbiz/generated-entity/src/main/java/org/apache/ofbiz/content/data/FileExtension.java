@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * File Extension
  */
+@FieldNameConstants
 public class FileExtension implements Serializable {
 
-	public static final long serialVersionUID = 4041503556813674496L;
+	public static final long serialVersionUID = 6341515084454350848L;
 	public static final String NAME = "FileExtension";
 	/**
 	 * File Extension Id
@@ -52,19 +54,13 @@ public class FileExtension implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fileExtensionId, mimeTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FileExtension(GenericValue value) {
-		fileExtensionId = (String) value.get(Fields.fileExtensionId.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fileExtensionId = (String) value.get(FIELD_FILE_EXTENSION_ID);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FileExtension fromValue(

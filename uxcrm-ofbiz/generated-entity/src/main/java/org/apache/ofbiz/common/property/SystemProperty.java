@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.property;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * System Property
  */
+@FieldNameConstants
 public class SystemProperty implements Serializable {
 
-	public static final long serialVersionUID = 2929001762177190912L;
+	public static final long serialVersionUID = 6990035932889171968L;
 	public static final String NAME = "SystemProperty";
 	/**
 	 * System Resource Id
@@ -64,22 +66,15 @@ public class SystemProperty implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		systemResourceId, systemPropertyId, systemPropertyValue, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SystemProperty(GenericValue value) {
-		systemResourceId = (String) value.get(Fields.systemResourceId.name());
-		systemPropertyId = (String) value.get(Fields.systemPropertyId.name());
-		systemPropertyValue = (String) value.get(Fields.systemPropertyValue
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		systemResourceId = (String) value.get(FIELD_SYSTEM_RESOURCE_ID);
+		systemPropertyId = (String) value.get(FIELD_SYSTEM_PROPERTY_ID);
+		systemPropertyValue = (String) value.get(FIELD_SYSTEM_PROPERTY_VALUE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SystemProperty fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Sales Opportunity Quote
  */
+@FieldNameConstants
 public class SalesOpportunityQuote implements Serializable {
 
-	public static final long serialVersionUID = 7621326551580096512L;
+	public static final long serialVersionUID = 1339128170233095168L;
 	public static final String NAME = "SalesOpportunityQuote";
 	/**
 	 * Sales Opportunity Id
@@ -52,20 +54,13 @@ public class SalesOpportunityQuote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesOpportunityId, quoteId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesOpportunityQuote(GenericValue value) {
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesOpportunityQuote fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.cost;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cost Component Attribute
  */
+@FieldNameConstants
 public class CostComponentAttribute implements Serializable {
 
-	public static final long serialVersionUID = 3100409036625867776L;
+	public static final long serialVersionUID = 6334649741976728576L;
 	public static final String NAME = "CostComponentAttribute";
 	/**
 	 * Cost Component Id
@@ -64,21 +66,15 @@ public class CostComponentAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		costComponentId, attrName, attrValue, attrDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CostComponentAttribute(GenericValue value) {
-		costComponentId = (String) value.get(Fields.costComponentId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		costComponentId = (String) value.get(FIELD_COST_COMPONENT_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CostComponentAttribute fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Resource Type
  */
+@FieldNameConstants
 public class DataResourceType implements Serializable {
 
-	public static final long serialVersionUID = 2607855733468327936L;
+	public static final long serialVersionUID = 8293693763253916672L;
 	public static final String NAME = "DataResourceType";
 	/**
 	 * Data Resource Type Id
@@ -64,22 +66,15 @@ public class DataResourceType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataResourceTypeId, parentTypeId, hasTable, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataResourceType(GenericValue value) {
-		dataResourceTypeId = (String) value.get(Fields.dataResourceTypeId
-				.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataResourceTypeId = (String) value.get(FIELD_DATA_RESOURCE_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataResourceType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Cust Request Item
  */
+@FieldNameConstants
 public class CustRequestItem implements Serializable {
 
-	public static final long serialVersionUID = 1736375770122734592L;
+	public static final long serialVersionUID = 8050002928553911296L;
 	public static final String NAME = "CustRequestItem";
 	/**
 	 * Cust Request Id
@@ -143,36 +145,30 @@ public class CustRequestItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		custRequestId, custRequestItemSeqId, custRequestResolutionId, statusId, priority, sequenceNum, requiredByDate, productId, quantity, selectedAmount, maximumAmount, reservStart, reservLength, reservPersons, configId, description, story, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CustRequestItem(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
 		custRequestResolutionId = (String) value
-				.get(Fields.custRequestResolutionId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		priority = (Long) value.get(Fields.priority.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		selectedAmount = (BigDecimal) value.get(Fields.selectedAmount.name());
-		maximumAmount = (BigDecimal) value.get(Fields.maximumAmount.name());
-		reservStart = (Timestamp) value.get(Fields.reservStart.name());
-		reservLength = (BigDecimal) value.get(Fields.reservLength.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		configId = (String) value.get(Fields.configId.name());
-		description = (String) value.get(Fields.description.name());
-		story = (String) value.get(Fields.story.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_CUST_REQUEST_RESOLUTION_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		selectedAmount = (BigDecimal) value.get(FIELD_SELECTED_AMOUNT);
+		maximumAmount = (BigDecimal) value.get(FIELD_MAXIMUM_AMOUNT);
+		reservStart = (Timestamp) value.get(FIELD_RESERV_START);
+		reservLength = (BigDecimal) value.get(FIELD_RESERV_LENGTH);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		story = (String) value.get(FIELD_STORY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CustRequestItem fromValue(

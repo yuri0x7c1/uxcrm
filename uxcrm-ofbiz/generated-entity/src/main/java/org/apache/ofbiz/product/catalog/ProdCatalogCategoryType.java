@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.catalog;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Prod Catalog Category Type
  */
+@FieldNameConstants
 public class ProdCatalogCategoryType implements Serializable {
 
-	public static final long serialVersionUID = 4910266773364122624L;
+	public static final long serialVersionUID = 8938378114506635264L;
 	public static final String NAME = "ProdCatalogCategoryType";
 	/**
 	 * Prod Catalog Category Type Id
@@ -58,21 +60,15 @@ public class ProdCatalogCategoryType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		prodCatalogCategoryTypeId, parentTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProdCatalogCategoryType(GenericValue value) {
 		prodCatalogCategoryTypeId = (String) value
-				.get(Fields.prodCatalogCategoryTypeId.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PROD_CATALOG_CATEGORY_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProdCatalogCategoryType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Quote Item
  */
+@FieldNameConstants
 public class QuoteItem implements Serializable {
 
-	public static final long serialVersionUID = 5715329271938979840L;
+	public static final long serialVersionUID = 7891538871061140480L;
 	public static final String NAME = "QuoteItem";
 	/**
 	 * Quote Id
@@ -167,40 +169,34 @@ public class QuoteItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quoteId, quoteItemSeqId, productId, productFeatureId, deliverableTypeId, skillTypeId, uomId, workEffortId, custRequestId, custRequestItemSeqId, quantity, selectedAmount, quoteUnitPrice, reservStart, reservLength, reservPersons, configId, estimatedDeliveryDate, comments, isPromo, leadTimeDays, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuoteItem(GenericValue value) {
-		quoteId = (String) value.get(Fields.quoteId.name());
-		quoteItemSeqId = (String) value.get(Fields.quoteItemSeqId.name());
-		productId = (String) value.get(Fields.productId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		deliverableTypeId = (String) value.get(Fields.deliverableTypeId.name());
-		skillTypeId = (String) value.get(Fields.skillTypeId.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		selectedAmount = (BigDecimal) value.get(Fields.selectedAmount.name());
-		quoteUnitPrice = (BigDecimal) value.get(Fields.quoteUnitPrice.name());
-		reservStart = (Timestamp) value.get(Fields.reservStart.name());
-		reservLength = (BigDecimal) value.get(Fields.reservLength.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		configId = (String) value.get(Fields.configId.name());
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		quoteItemSeqId = (String) value.get(FIELD_QUOTE_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		deliverableTypeId = (String) value.get(FIELD_DELIVERABLE_TYPE_ID);
+		skillTypeId = (String) value.get(FIELD_SKILL_TYPE_ID);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		selectedAmount = (BigDecimal) value.get(FIELD_SELECTED_AMOUNT);
+		quoteUnitPrice = (BigDecimal) value.get(FIELD_QUOTE_UNIT_PRICE);
+		reservStart = (Timestamp) value.get(FIELD_RESERV_START);
+		reservLength = (BigDecimal) value.get(FIELD_RESERV_LENGTH);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		configId = (String) value.get(FIELD_CONFIG_ID);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		isPromo = (String) value.get(Fields.isPromo.name());
-		leadTimeDays = (Long) value.get(Fields.leadTimeDays.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		isPromo = (String) value.get(FIELD_IS_PROMO);
+		leadTimeDays = (Long) value.get(FIELD_LEAD_TIME_DAYS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuoteItem fromValue(org.apache.ofbiz.entity.GenericValue value) {

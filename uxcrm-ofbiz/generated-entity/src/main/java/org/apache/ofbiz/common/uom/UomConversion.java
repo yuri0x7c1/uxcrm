@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.uom;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Uom Conversion
  */
+@FieldNameConstants
 public class UomConversion implements Serializable {
 
-	public static final long serialVersionUID = 2453371565007938560L;
+	public static final long serialVersionUID = 191057911907476480L;
 	public static final String NAME = "UomConversion";
 	/**
 	 * Uom Id
@@ -76,23 +78,17 @@ public class UomConversion implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		uomId, uomIdTo, conversionFactor, customMethodId, decimalScale, roundingMode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UomConversion(GenericValue value) {
-		uomId = (String) value.get(Fields.uomId.name());
-		uomIdTo = (String) value.get(Fields.uomIdTo.name());
-		conversionFactor = (Double) value.get(Fields.conversionFactor.name());
-		customMethodId = (String) value.get(Fields.customMethodId.name());
-		decimalScale = (Long) value.get(Fields.decimalScale.name());
-		roundingMode = (String) value.get(Fields.roundingMode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		uomId = (String) value.get(FIELD_UOM_ID);
+		uomIdTo = (String) value.get(FIELD_UOM_ID_TO);
+		conversionFactor = (Double) value.get(FIELD_CONVERSION_FACTOR);
+		customMethodId = (String) value.get(FIELD_CUSTOM_METHOD_ID);
+		decimalScale = (Long) value.get(FIELD_DECIMAL_SCALE);
+		roundingMode = (String) value.get(FIELD_ROUNDING_MODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UomConversion fromValue(

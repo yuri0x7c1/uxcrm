@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.document;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Document
  */
+@FieldNameConstants
 public class Document implements Serializable {
 
-	public static final long serialVersionUID = 7670522347177163776L;
+	public static final long serialVersionUID = 1140472286800081920L;
 	public static final String NAME = "Document";
 	/**
 	 * Document Id
@@ -82,24 +84,18 @@ public class Document implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		documentId, documentTypeId, dateCreated, comments, documentLocation, documentText, imageData, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Document(GenericValue value) {
-		documentId = (String) value.get(Fields.documentId.name());
-		documentTypeId = (String) value.get(Fields.documentTypeId.name());
-		dateCreated = (Timestamp) value.get(Fields.dateCreated.name());
-		comments = (String) value.get(Fields.comments.name());
-		documentLocation = (String) value.get(Fields.documentLocation.name());
-		documentText = (String) value.get(Fields.documentText.name());
-		imageData = (Object) value.get(Fields.imageData.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		documentId = (String) value.get(FIELD_DOCUMENT_ID);
+		documentTypeId = (String) value.get(FIELD_DOCUMENT_TYPE_ID);
+		dateCreated = (Timestamp) value.get(FIELD_DATE_CREATED);
+		comments = (String) value.get(FIELD_COMMENTS);
+		documentLocation = (String) value.get(FIELD_DOCUMENT_LOCATION);
+		documentText = (String) value.get(FIELD_DOCUMENT_TEXT);
+		imageData = (Object) value.get(FIELD_IMAGE_DATA);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Document fromValue(org.apache.ofbiz.entity.GenericValue value) {

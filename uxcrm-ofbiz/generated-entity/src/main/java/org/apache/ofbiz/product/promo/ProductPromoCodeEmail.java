@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Code Email
  */
+@FieldNameConstants
 public class ProductPromoCodeEmail implements Serializable {
 
-	public static final long serialVersionUID = 3229001808023558144L;
+	public static final long serialVersionUID = 7778132800007803904L;
 	public static final String NAME = "ProductPromoCodeEmail";
 	/**
 	 * Product Promo Code Id
@@ -52,20 +54,13 @@ public class ProductPromoCodeEmail implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoCodeId, emailAddress, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoCodeEmail(GenericValue value) {
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		emailAddress = (String) value.get(Fields.emailAddress.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		emailAddress = (String) value.get(FIELD_EMAIL_ADDRESS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoCodeEmail fromValue(

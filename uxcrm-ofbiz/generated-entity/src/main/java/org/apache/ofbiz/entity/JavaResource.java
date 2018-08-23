@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Java Resource
  */
+@FieldNameConstants
 public class JavaResource implements Serializable {
 
-	public static final long serialVersionUID = 6897783070034802688L;
+	public static final long serialVersionUID = 3694117500254562304L;
 	public static final String NAME = "JavaResource";
 	/**
 	 * Resource Name
@@ -51,19 +53,13 @@ public class JavaResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		resourceName, resourceValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public JavaResource(org.apache.ofbiz.entity.GenericValue value) {
-		resourceName = (String) value.get(Fields.resourceName.name());
-		resourceValue = (byte[]) value.get(Fields.resourceValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		resourceName = (String) value.get(FIELD_RESOURCE_NAME);
+		resourceValue = (byte[]) value.get(FIELD_RESOURCE_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static JavaResource fromValue(

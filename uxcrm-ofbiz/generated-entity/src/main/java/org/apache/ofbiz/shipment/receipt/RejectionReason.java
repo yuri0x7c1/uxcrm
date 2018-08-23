@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.receipt;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Rejection Reason
  */
+@FieldNameConstants
 public class RejectionReason implements Serializable {
 
-	public static final long serialVersionUID = 8898563244639886336L;
+	public static final long serialVersionUID = 7375462338183350272L;
 	public static final String NAME = "RejectionReason";
 	/**
 	 * Rejection Id
@@ -52,19 +54,13 @@ public class RejectionReason implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		rejectionId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RejectionReason(GenericValue value) {
-		rejectionId = (String) value.get(Fields.rejectionId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		rejectionId = (String) value.get(FIELD_REJECTION_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RejectionReason fromValue(

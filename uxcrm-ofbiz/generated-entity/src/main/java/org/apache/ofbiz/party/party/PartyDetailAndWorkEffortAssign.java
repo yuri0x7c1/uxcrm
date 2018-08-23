@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Detail And Work Effort Assign
  */
+@FieldNameConstants
 public class PartyDetailAndWorkEffortAssign implements Serializable {
 
-	public static final long serialVersionUID = 5521764023622141952L;
+	public static final long serialVersionUID = 5758576093640517632L;
 	public static final String NAME = "PartyDetailAndWorkEffortAssign";
 	/**
 	 * Party Id
@@ -94,24 +96,20 @@ public class PartyDetailAndWorkEffortAssign implements Serializable {
 	@Setter
 	private String groupName;
 
-	public enum Fields {
-		partyId, partyTypeId, partyStatusId, workEffortTypeId, workEffortId, fromDate, thruDate, roleTypeId, statusId, firstName, middleName, lastName, groupName
-	}
-
 	public PartyDetailAndWorkEffortAssign(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		partyStatusId = (String) value.get(Fields.partyStatusId.name());
-		workEffortTypeId = (String) value.get(Fields.workEffortTypeId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		groupName = (String) value.get(Fields.groupName.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		partyStatusId = (String) value.get(FIELD_PARTY_STATUS_ID);
+		workEffortTypeId = (String) value.get(FIELD_WORK_EFFORT_TYPE_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
 	}
 
 	public static PartyDetailAndWorkEffortAssign fromValue(

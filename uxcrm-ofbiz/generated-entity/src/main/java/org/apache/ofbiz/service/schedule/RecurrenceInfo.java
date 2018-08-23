@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Recurrence Info
  */
+@FieldNameConstants
 public class RecurrenceInfo implements Serializable {
 
-	public static final long serialVersionUID = 1827059459945634816L;
+	public static final long serialVersionUID = 4479512839744910336L;
 	public static final String NAME = "RecurrenceInfo";
 	/**
 	 * Recurrence Info Id
@@ -82,26 +84,18 @@ public class RecurrenceInfo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		recurrenceInfoId, startDateTime, exceptionDateTimes, recurrenceDateTimes, exceptionRuleId, recurrenceRuleId, recurrenceCount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RecurrenceInfo(GenericValue value) {
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		startDateTime = (Timestamp) value.get(Fields.startDateTime.name());
-		exceptionDateTimes = (String) value.get(Fields.exceptionDateTimes
-				.name());
-		recurrenceDateTimes = (String) value.get(Fields.recurrenceDateTimes
-				.name());
-		exceptionRuleId = (String) value.get(Fields.exceptionRuleId.name());
-		recurrenceRuleId = (String) value.get(Fields.recurrenceRuleId.name());
-		recurrenceCount = (Long) value.get(Fields.recurrenceCount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		startDateTime = (Timestamp) value.get(FIELD_START_DATE_TIME);
+		exceptionDateTimes = (String) value.get(FIELD_EXCEPTION_DATE_TIMES);
+		recurrenceDateTimes = (String) value.get(FIELD_RECURRENCE_DATE_TIMES);
+		exceptionRuleId = (String) value.get(FIELD_EXCEPTION_RULE_ID);
+		recurrenceRuleId = (String) value.get(FIELD_RECURRENCE_RULE_ID);
+		recurrenceCount = (Long) value.get(FIELD_RECURRENCE_COUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RecurrenceInfo fromValue(

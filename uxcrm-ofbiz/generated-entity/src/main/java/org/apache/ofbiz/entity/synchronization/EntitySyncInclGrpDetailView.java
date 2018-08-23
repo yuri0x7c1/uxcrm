@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.synchronization;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Entity Sync Incl Grp Detail View
  */
+@FieldNameConstants
 public class EntitySyncInclGrpDetailView implements Serializable {
 
-	public static final long serialVersionUID = 516662207830888448L;
+	public static final long serialVersionUID = 798934219654779904L;
 	public static final String NAME = "EntitySyncInclGrpDetailView";
 	/**
 	 * Entity Sync Id
@@ -39,15 +41,11 @@ public class EntitySyncInclGrpDetailView implements Serializable {
 	@Setter
 	private String applEnumId;
 
-	public enum Fields {
-		entitySyncId, entityGroupId, entityOrPackage, applEnumId
-	}
-
 	public EntitySyncInclGrpDetailView(GenericValue value) {
-		entitySyncId = (String) value.get(Fields.entitySyncId.name());
-		entityGroupId = (String) value.get(Fields.entityGroupId.name());
-		entityOrPackage = (String) value.get(Fields.entityOrPackage.name());
-		applEnumId = (String) value.get(Fields.applEnumId.name());
+		entitySyncId = (String) value.get(FIELD_ENTITY_SYNC_ID);
+		entityGroupId = (String) value.get(FIELD_ENTITY_GROUP_ID);
+		entityOrPackage = (String) value.get(FIELD_ENTITY_OR_PACKAGE);
+		applEnumId = (String) value.get(FIELD_APPL_ENUM_ID);
 	}
 
 	public static EntitySyncInclGrpDetailView fromValue(

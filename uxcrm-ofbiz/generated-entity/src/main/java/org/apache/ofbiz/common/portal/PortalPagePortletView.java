@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Portal Page Portlet View
  */
+@FieldNameConstants
 public class PortalPagePortletView implements Serializable {
 
-	public static final long serialVersionUID = 1087840627295434752L;
+	public static final long serialVersionUID = 3523626929493536768L;
 	public static final String NAME = "PortalPagePortletView";
 	/**
 	 * Portal Page Id
@@ -99,27 +101,21 @@ public class PortalPagePortletView implements Serializable {
 	@Setter
 	private String editFormName;
 
-	public enum Fields {
-		portalPageId, portletSeqId, sequenceNum, portalPortletId, columnSeqId, description, screenName, screenshot, securityServiceName, portletName, screenLocation, editFormLocation, securityMainAction, editFormName
-	}
-
 	public PortalPagePortletView(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		portletSeqId = (String) value.get(Fields.portletSeqId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		portalPortletId = (String) value.get(Fields.portalPortletId.name());
-		columnSeqId = (String) value.get(Fields.columnSeqId.name());
-		description = (String) value.get(Fields.description.name());
-		screenName = (String) value.get(Fields.screenName.name());
-		screenshot = (String) value.get(Fields.screenshot.name());
-		securityServiceName = (String) value.get(Fields.securityServiceName
-				.name());
-		portletName = (String) value.get(Fields.portletName.name());
-		screenLocation = (String) value.get(Fields.screenLocation.name());
-		editFormLocation = (String) value.get(Fields.editFormLocation.name());
-		securityMainAction = (String) value.get(Fields.securityMainAction
-				.name());
-		editFormName = (String) value.get(Fields.editFormName.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		portletSeqId = (String) value.get(FIELD_PORTLET_SEQ_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		portalPortletId = (String) value.get(FIELD_PORTAL_PORTLET_ID);
+		columnSeqId = (String) value.get(FIELD_COLUMN_SEQ_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		screenName = (String) value.get(FIELD_SCREEN_NAME);
+		screenshot = (String) value.get(FIELD_SCREENSHOT);
+		securityServiceName = (String) value.get(FIELD_SECURITY_SERVICE_NAME);
+		portletName = (String) value.get(FIELD_PORTLET_NAME);
+		screenLocation = (String) value.get(FIELD_SCREEN_LOCATION);
+		editFormLocation = (String) value.get(FIELD_EDIT_FORM_LOCATION);
+		securityMainAction = (String) value.get(FIELD_SECURITY_MAIN_ACTION);
+		editFormName = (String) value.get(FIELD_EDIT_FORM_NAME);
 	}
 
 	public static PortalPagePortletView fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Party Name View
  */
+@FieldNameConstants
 public class PartyNameView implements Serializable {
 
-	public static final long serialVersionUID = 5758903149202311168L;
+	public static final long serialVersionUID = 9136728363854332928L;
 	public static final String NAME = "PartyNameView";
 	/**
 	 * Party Id
@@ -93,24 +95,20 @@ public class PartyNameView implements Serializable {
 	@Setter
 	private String groupNameLocal;
 
-	public enum Fields {
-		partyId, partyTypeId, description, statusId, firstName, middleName, lastName, firstNameLocal, lastNameLocal, personalTitle, suffix, groupName, groupNameLocal
-	}
-
 	public PartyNameView(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
 	}
 
 	public static PartyNameView fromValue(

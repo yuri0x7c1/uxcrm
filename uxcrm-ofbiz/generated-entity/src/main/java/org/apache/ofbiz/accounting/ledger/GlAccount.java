@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account
  */
+@FieldNameConstants
 public class GlAccount implements Serializable {
 
-	public static final long serialVersionUID = 351825516237824L;
+	public static final long serialVersionUID = 1041706246552033280L;
 	public static final String NAME = "GlAccount";
 	/**
 	 * Gl Account Id
@@ -106,28 +108,22 @@ public class GlAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountId, glAccountTypeId, glAccountClassId, glResourceTypeId, glXbrlClassId, parentGlAccountId, accountCode, accountName, description, productId, externalId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlAccount(GenericValue value) {
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		glAccountTypeId = (String) value.get(Fields.glAccountTypeId.name());
-		glAccountClassId = (String) value.get(Fields.glAccountClassId.name());
-		glResourceTypeId = (String) value.get(Fields.glResourceTypeId.name());
-		glXbrlClassId = (String) value.get(Fields.glXbrlClassId.name());
-		parentGlAccountId = (String) value.get(Fields.parentGlAccountId.name());
-		accountCode = (String) value.get(Fields.accountCode.name());
-		accountName = (String) value.get(Fields.accountName.name());
-		description = (String) value.get(Fields.description.name());
-		productId = (String) value.get(Fields.productId.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		glAccountTypeId = (String) value.get(FIELD_GL_ACCOUNT_TYPE_ID);
+		glAccountClassId = (String) value.get(FIELD_GL_ACCOUNT_CLASS_ID);
+		glResourceTypeId = (String) value.get(FIELD_GL_RESOURCE_TYPE_ID);
+		glXbrlClassId = (String) value.get(FIELD_GL_XBRL_CLASS_ID);
+		parentGlAccountId = (String) value.get(FIELD_PARENT_GL_ACCOUNT_ID);
+		accountCode = (String) value.get(FIELD_ACCOUNT_CODE);
+		accountName = (String) value.get(FIELD_ACCOUNT_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlAccount fromValue(org.apache.ofbiz.entity.GenericValue value) {

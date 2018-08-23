@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Job Sandbox
  */
+@FieldNameConstants
 public class JobSandbox implements Serializable {
 
-	public static final long serialVersionUID = 2895252387703705600L;
+	public static final long serialVersionUID = 5149358072920120320L;
 	public static final String NAME = "JobSandbox";
 	/**
 	 * Job Id
@@ -178,41 +180,35 @@ public class JobSandbox implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		jobId, jobName, runTime, poolId, statusId, parentJobId, previousJobId, serviceName, loaderName, maxRetry, currentRetryCount, authUserLoginId, runAsUser, runtimeDataId, recurrenceInfoId, tempExprId, currentRecurrenceCount, maxRecurrenceCount, runByInstanceId, startDateTime, finishDateTime, cancelDateTime, jobResult, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public JobSandbox(GenericValue value) {
-		jobId = (String) value.get(Fields.jobId.name());
-		jobName = (String) value.get(Fields.jobName.name());
-		runTime = (Timestamp) value.get(Fields.runTime.name());
-		poolId = (String) value.get(Fields.poolId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		parentJobId = (String) value.get(Fields.parentJobId.name());
-		previousJobId = (String) value.get(Fields.previousJobId.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		loaderName = (String) value.get(Fields.loaderName.name());
-		maxRetry = (Long) value.get(Fields.maxRetry.name());
-		currentRetryCount = (Long) value.get(Fields.currentRetryCount.name());
-		authUserLoginId = (String) value.get(Fields.authUserLoginId.name());
-		runAsUser = (String) value.get(Fields.runAsUser.name());
-		runtimeDataId = (String) value.get(Fields.runtimeDataId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		tempExprId = (String) value.get(Fields.tempExprId.name());
-		currentRecurrenceCount = (Long) value.get(Fields.currentRecurrenceCount
-				.name());
-		maxRecurrenceCount = (Long) value.get(Fields.maxRecurrenceCount.name());
-		runByInstanceId = (String) value.get(Fields.runByInstanceId.name());
-		startDateTime = (Timestamp) value.get(Fields.startDateTime.name());
-		finishDateTime = (Timestamp) value.get(Fields.finishDateTime.name());
-		cancelDateTime = (Timestamp) value.get(Fields.cancelDateTime.name());
-		jobResult = (String) value.get(Fields.jobResult.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		jobId = (String) value.get(FIELD_JOB_ID);
+		jobName = (String) value.get(FIELD_JOB_NAME);
+		runTime = (Timestamp) value.get(FIELD_RUN_TIME);
+		poolId = (String) value.get(FIELD_POOL_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		parentJobId = (String) value.get(FIELD_PARENT_JOB_ID);
+		previousJobId = (String) value.get(FIELD_PREVIOUS_JOB_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		loaderName = (String) value.get(FIELD_LOADER_NAME);
+		maxRetry = (Long) value.get(FIELD_MAX_RETRY);
+		currentRetryCount = (Long) value.get(FIELD_CURRENT_RETRY_COUNT);
+		authUserLoginId = (String) value.get(FIELD_AUTH_USER_LOGIN_ID);
+		runAsUser = (String) value.get(FIELD_RUN_AS_USER);
+		runtimeDataId = (String) value.get(FIELD_RUNTIME_DATA_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		tempExprId = (String) value.get(FIELD_TEMP_EXPR_ID);
+		currentRecurrenceCount = (Long) value
+				.get(FIELD_CURRENT_RECURRENCE_COUNT);
+		maxRecurrenceCount = (Long) value.get(FIELD_MAX_RECURRENCE_COUNT);
+		runByInstanceId = (String) value.get(FIELD_RUN_BY_INSTANCE_ID);
+		startDateTime = (Timestamp) value.get(FIELD_START_DATE_TIME);
+		finishDateTime = (Timestamp) value.get(FIELD_FINISH_DATE_TIME);
+		cancelDateTime = (Timestamp) value.get(FIELD_CANCEL_DATE_TIME);
+		jobResult = (String) value.get(FIELD_JOB_RESULT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static JobSandbox fromValue(

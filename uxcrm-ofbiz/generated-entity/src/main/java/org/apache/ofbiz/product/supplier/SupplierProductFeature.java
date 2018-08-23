@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.supplier;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Supplier Product Feature
  */
+@FieldNameConstants
 public class SupplierProductFeature implements Serializable {
 
-	public static final long serialVersionUID = 8612243083447303168L;
+	public static final long serialVersionUID = 534341761152565248L;
 	public static final String NAME = "SupplierProductFeature";
 	/**
 	 * Party Id
@@ -70,22 +72,16 @@ public class SupplierProductFeature implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, productFeatureId, description, uomId, idCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SupplierProductFeature(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		description = (String) value.get(Fields.description.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		idCode = (String) value.get(Fields.idCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		idCode = (String) value.get(FIELD_ID_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SupplierProductFeature fromValue(

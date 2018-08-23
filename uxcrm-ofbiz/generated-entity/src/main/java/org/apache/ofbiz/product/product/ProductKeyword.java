@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Keyword
  */
+@FieldNameConstants
 public class ProductKeyword implements Serializable {
 
-	public static final long serialVersionUID = 944217525901937664L;
+	public static final long serialVersionUID = 3312636271833472000L;
 	public static final String NAME = "ProductKeyword";
 	/**
 	 * Product Id
@@ -70,22 +72,16 @@ public class ProductKeyword implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, keyword, keywordTypeId, relevancyWeight, statusId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductKeyword(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		keyword = (String) value.get(Fields.keyword.name());
-		keywordTypeId = (String) value.get(Fields.keywordTypeId.name());
-		relevancyWeight = (Long) value.get(Fields.relevancyWeight.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		keyword = (String) value.get(FIELD_KEYWORD);
+		keywordTypeId = (String) value.get(FIELD_KEYWORD_TYPE_ID);
+		relevancyWeight = (Long) value.get(FIELD_RELEVANCY_WEIGHT);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductKeyword fromValue(

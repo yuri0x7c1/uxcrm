@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Gl Budget Xref
  */
+@FieldNameConstants
 public class GlBudgetXref implements Serializable {
 
-	public static final long serialVersionUID = 7138676011647571968L;
+	public static final long serialVersionUID = 5850977492236469248L;
 	public static final String NAME = "GlBudgetXref";
 	/**
 	 * Gl Account Id
@@ -71,23 +73,17 @@ public class GlBudgetXref implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountId, budgetItemTypeId, fromDate, thruDate, allocationPercentage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlBudgetXref(GenericValue value) {
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		budgetItemTypeId = (String) value.get(Fields.budgetItemTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		budgetItemTypeId = (String) value.get(FIELD_BUDGET_ITEM_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 		allocationPercentage = (BigDecimal) value
-				.get(Fields.allocationPercentage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ALLOCATION_PERCENTAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlBudgetXref fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Method And Eft Account
  */
+@FieldNameConstants
 public class PaymentMethodAndEftAccount implements Serializable {
 
-	public static final long serialVersionUID = 6271164320822302720L;
+	public static final long serialVersionUID = 236959915947411456L;
 	public static final String NAME = "PaymentMethodAndEftAccount";
 	/**
 	 * Payment Method Id
@@ -100,27 +102,22 @@ public class PaymentMethodAndEftAccount implements Serializable {
 	@Setter
 	private Long yearsAtBank;
 
-	public enum Fields {
-		paymentMethodId, paymentMethodTypeId, partyId, glAccountId, fromDate, thruDate, bankName, routingNumber, accountType, accountNumber, nameOnAccount, companyNameOnAccount, contactMechId, yearsAtBank
-	}
-
 	public PaymentMethodAndEftAccount(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		bankName = (String) value.get(Fields.bankName.name());
-		routingNumber = (String) value.get(Fields.routingNumber.name());
-		accountType = (String) value.get(Fields.accountType.name());
-		accountNumber = (String) value.get(Fields.accountNumber.name());
-		nameOnAccount = (String) value.get(Fields.nameOnAccount.name());
-		companyNameOnAccount = (String) value.get(Fields.companyNameOnAccount
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		yearsAtBank = (Long) value.get(Fields.yearsAtBank.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		bankName = (String) value.get(FIELD_BANK_NAME);
+		routingNumber = (String) value.get(FIELD_ROUTING_NUMBER);
+		accountType = (String) value.get(FIELD_ACCOUNT_TYPE);
+		accountNumber = (String) value.get(FIELD_ACCOUNT_NUMBER);
+		nameOnAccount = (String) value.get(FIELD_NAME_ON_ACCOUNT);
+		companyNameOnAccount = (String) value
+				.get(FIELD_COMPANY_NAME_ON_ACCOUNT);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		yearsAtBank = (Long) value.get(FIELD_YEARS_AT_BANK);
 	}
 
 	public static PaymentMethodAndEftAccount fromValue(

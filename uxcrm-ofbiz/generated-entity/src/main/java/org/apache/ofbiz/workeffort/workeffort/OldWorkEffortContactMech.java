@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Work Effort Contact Mech
  */
+@FieldNameConstants
 public class OldWorkEffortContactMech implements Serializable {
 
-	public static final long serialVersionUID = 7557732004583632896L;
+	public static final long serialVersionUID = 6182760140821653504L;
 	public static final String NAME = "OldWorkEffortContactMech";
 	/**
 	 * Work Effort Id
@@ -58,20 +60,14 @@ public class OldWorkEffortContactMech implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, contactMechId, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldWorkEffortContactMech(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldWorkEffortContactMech fromValue(

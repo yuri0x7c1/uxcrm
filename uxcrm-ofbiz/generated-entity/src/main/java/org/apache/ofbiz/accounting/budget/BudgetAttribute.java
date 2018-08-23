@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Budget Attribute
  */
+@FieldNameConstants
 public class BudgetAttribute implements Serializable {
 
-	public static final long serialVersionUID = 2848499575530810368L;
+	public static final long serialVersionUID = 1697375657711869952L;
 	public static final String NAME = "BudgetAttribute";
 	/**
 	 * Budget Id
@@ -64,21 +66,15 @@ public class BudgetAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, attrName, attrValue, attrDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetAttribute(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetAttribute fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Prod Fea Grp App And Prod Fea App
  */
+@FieldNameConstants
 public class ProdFeaGrpAppAndProdFeaApp implements Serializable {
 
-	public static final long serialVersionUID = 1859007987328722944L;
+	public static final long serialVersionUID = 3840671614295091200L;
 	public static final String NAME = "ProdFeaGrpAppAndProdFeaApp";
 	/**
 	 * Product Feature Group Id
@@ -83,24 +85,20 @@ public class ProdFeaGrpAppAndProdFeaApp implements Serializable {
 	@Setter
 	private BigDecimal recurringAmount;
 
-	public enum Fields {
-		productFeatureGroupId, productFeatureId, groupFromDate, groupThruDate, productId, productFeatureApplTypeId, fromDate, thruDate, sequenceNum, amount, recurringAmount
-	}
-
 	public ProdFeaGrpAppAndProdFeaApp(GenericValue value) {
-		productFeatureGroupId = (String) value.get(Fields.productFeatureGroupId
-				.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		groupFromDate = (Timestamp) value.get(Fields.groupFromDate.name());
-		groupThruDate = (Timestamp) value.get(Fields.groupThruDate.name());
-		productId = (String) value.get(Fields.productId.name());
+		productFeatureGroupId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_GROUP_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		groupFromDate = (Timestamp) value.get(FIELD_GROUP_FROM_DATE);
+		groupThruDate = (Timestamp) value.get(FIELD_GROUP_THRU_DATE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
 		productFeatureApplTypeId = (String) value
-				.get(Fields.productFeatureApplTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		recurringAmount = (BigDecimal) value.get(Fields.recurringAmount.name());
+				.get(FIELD_PRODUCT_FEATURE_APPL_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		recurringAmount = (BigDecimal) value.get(FIELD_RECURRING_AMOUNT);
 	}
 
 	public static ProdFeaGrpAppAndProdFeaApp fromValue(

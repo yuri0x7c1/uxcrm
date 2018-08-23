@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Contact Detail By Purpose
  */
+@FieldNameConstants
 public class PartyContactDetailByPurpose implements Serializable {
 
-	public static final long serialVersionUID = 102767996776017920L;
+	public static final long serialVersionUID = 2765502204551288832L;
 	public static final String NAME = "PartyContactDetailByPurpose";
 	/**
 	 * Contact Mech Purpose Type Id
@@ -352,76 +354,66 @@ public class PartyContactDetailByPurpose implements Serializable {
 	@Setter
 	private String countryWellKnownText;
 
-	public enum Fields {
-		contactMechPurposeTypeId, purposeFromDate, purposeThruDate, contactMechTypeId, infoString, roleTypeId, extension, comments, verified, monthsWithContactMech, contactMechId, thruDate, fromDate, allowSolicitation, yearsWithContactMech, partyId, countryGeoId, houseNumberExt, address2, city, address1, postalCode, postalCodeGeoId, houseNumber, postalCodeExt, attnName, directions, countyGeoId, toName, cityGeoId, municipalityGeoId, stateProvinceGeoId, geoPointId, areaCode, askForName, countryCode, contactNumber, stateGeoName, stateGeoTypeId, stateGeoId, stateGeoCode, stateAbbreviation, stateGeoSecCode, stateWellKnownText, countyGeoName, countyGeoTypeId, countyGeoCode, countyAbbreviation, countyGeoSecCode, countyWellKnownText, countryGeoName, countryGeoTypeId, countryGeoCode, countryAbbreviation, countryGeoSecCode, countryWellKnownText
-	}
-
 	public PartyContactDetailByPurpose(GenericValue value) {
 		contactMechPurposeTypeId = (String) value
-				.get(Fields.contactMechPurposeTypeId.name());
-		purposeFromDate = (Timestamp) value.get(Fields.purposeFromDate.name());
-		purposeThruDate = (Timestamp) value.get(Fields.purposeThruDate.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		extension = (String) value.get(Fields.extension.name());
-		comments = (String) value.get(Fields.comments.name());
-		verified = (String) value.get(Fields.verified.name());
-		monthsWithContactMech = (Long) value.get(Fields.monthsWithContactMech
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		allowSolicitation = (String) value.get(Fields.allowSolicitation.name());
-		yearsWithContactMech = (Long) value.get(Fields.yearsWithContactMech
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		countryGeoId = (String) value.get(Fields.countryGeoId.name());
-		houseNumberExt = (String) value.get(Fields.houseNumberExt.name());
-		address2 = (String) value.get(Fields.address2.name());
-		city = (String) value.get(Fields.city.name());
-		address1 = (String) value.get(Fields.address1.name());
-		postalCode = (String) value.get(Fields.postalCode.name());
-		postalCodeGeoId = (String) value.get(Fields.postalCodeGeoId.name());
-		houseNumber = (Long) value.get(Fields.houseNumber.name());
-		postalCodeExt = (String) value.get(Fields.postalCodeExt.name());
-		attnName = (String) value.get(Fields.attnName.name());
-		directions = (String) value.get(Fields.directions.name());
-		countyGeoId = (String) value.get(Fields.countyGeoId.name());
-		toName = (String) value.get(Fields.toName.name());
-		cityGeoId = (String) value.get(Fields.cityGeoId.name());
-		municipalityGeoId = (String) value.get(Fields.municipalityGeoId.name());
-		stateProvinceGeoId = (String) value.get(Fields.stateProvinceGeoId
-				.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		areaCode = (String) value.get(Fields.areaCode.name());
-		askForName = (String) value.get(Fields.askForName.name());
-		countryCode = (String) value.get(Fields.countryCode.name());
-		contactNumber = (String) value.get(Fields.contactNumber.name());
-		stateGeoName = (String) value.get(Fields.stateGeoName.name());
-		stateGeoTypeId = (String) value.get(Fields.stateGeoTypeId.name());
-		stateGeoId = (String) value.get(Fields.stateGeoId.name());
-		stateGeoCode = (String) value.get(Fields.stateGeoCode.name());
-		stateAbbreviation = (String) value.get(Fields.stateAbbreviation.name());
-		stateGeoSecCode = (String) value.get(Fields.stateGeoSecCode.name());
-		stateWellKnownText = (String) value.get(Fields.stateWellKnownText
-				.name());
-		countyGeoName = (String) value.get(Fields.countyGeoName.name());
-		countyGeoTypeId = (String) value.get(Fields.countyGeoTypeId.name());
-		countyGeoCode = (String) value.get(Fields.countyGeoCode.name());
-		countyAbbreviation = (String) value.get(Fields.countyAbbreviation
-				.name());
-		countyGeoSecCode = (String) value.get(Fields.countyGeoSecCode.name());
-		countyWellKnownText = (String) value.get(Fields.countyWellKnownText
-				.name());
-		countryGeoName = (String) value.get(Fields.countryGeoName.name());
-		countryGeoTypeId = (String) value.get(Fields.countryGeoTypeId.name());
-		countryGeoCode = (String) value.get(Fields.countryGeoCode.name());
-		countryAbbreviation = (String) value.get(Fields.countryAbbreviation
-				.name());
-		countryGeoSecCode = (String) value.get(Fields.countryGeoSecCode.name());
-		countryWellKnownText = (String) value.get(Fields.countryWellKnownText
-				.name());
+				.get(FIELD_CONTACT_MECH_PURPOSE_TYPE_ID);
+		purposeFromDate = (Timestamp) value.get(FIELD_PURPOSE_FROM_DATE);
+		purposeThruDate = (Timestamp) value.get(FIELD_PURPOSE_THRU_DATE);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		extension = (String) value.get(FIELD_EXTENSION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		verified = (String) value.get(FIELD_VERIFIED);
+		monthsWithContactMech = (Long) value
+				.get(FIELD_MONTHS_WITH_CONTACT_MECH);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		allowSolicitation = (String) value.get(FIELD_ALLOW_SOLICITATION);
+		yearsWithContactMech = (Long) value.get(FIELD_YEARS_WITH_CONTACT_MECH);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		countryGeoId = (String) value.get(FIELD_COUNTRY_GEO_ID);
+		houseNumberExt = (String) value.get(FIELD_HOUSE_NUMBER_EXT);
+		address2 = (String) value.get(FIELD_ADDRESS2);
+		city = (String) value.get(FIELD_CITY);
+		address1 = (String) value.get(FIELD_ADDRESS1);
+		postalCode = (String) value.get(FIELD_POSTAL_CODE);
+		postalCodeGeoId = (String) value.get(FIELD_POSTAL_CODE_GEO_ID);
+		houseNumber = (Long) value.get(FIELD_HOUSE_NUMBER);
+		postalCodeExt = (String) value.get(FIELD_POSTAL_CODE_EXT);
+		attnName = (String) value.get(FIELD_ATTN_NAME);
+		directions = (String) value.get(FIELD_DIRECTIONS);
+		countyGeoId = (String) value.get(FIELD_COUNTY_GEO_ID);
+		toName = (String) value.get(FIELD_TO_NAME);
+		cityGeoId = (String) value.get(FIELD_CITY_GEO_ID);
+		municipalityGeoId = (String) value.get(FIELD_MUNICIPALITY_GEO_ID);
+		stateProvinceGeoId = (String) value.get(FIELD_STATE_PROVINCE_GEO_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		areaCode = (String) value.get(FIELD_AREA_CODE);
+		askForName = (String) value.get(FIELD_ASK_FOR_NAME);
+		countryCode = (String) value.get(FIELD_COUNTRY_CODE);
+		contactNumber = (String) value.get(FIELD_CONTACT_NUMBER);
+		stateGeoName = (String) value.get(FIELD_STATE_GEO_NAME);
+		stateGeoTypeId = (String) value.get(FIELD_STATE_GEO_TYPE_ID);
+		stateGeoId = (String) value.get(FIELD_STATE_GEO_ID);
+		stateGeoCode = (String) value.get(FIELD_STATE_GEO_CODE);
+		stateAbbreviation = (String) value.get(FIELD_STATE_ABBREVIATION);
+		stateGeoSecCode = (String) value.get(FIELD_STATE_GEO_SEC_CODE);
+		stateWellKnownText = (String) value.get(FIELD_STATE_WELL_KNOWN_TEXT);
+		countyGeoName = (String) value.get(FIELD_COUNTY_GEO_NAME);
+		countyGeoTypeId = (String) value.get(FIELD_COUNTY_GEO_TYPE_ID);
+		countyGeoCode = (String) value.get(FIELD_COUNTY_GEO_CODE);
+		countyAbbreviation = (String) value.get(FIELD_COUNTY_ABBREVIATION);
+		countyGeoSecCode = (String) value.get(FIELD_COUNTY_GEO_SEC_CODE);
+		countyWellKnownText = (String) value.get(FIELD_COUNTY_WELL_KNOWN_TEXT);
+		countryGeoName = (String) value.get(FIELD_COUNTRY_GEO_NAME);
+		countryGeoTypeId = (String) value.get(FIELD_COUNTRY_GEO_TYPE_ID);
+		countryGeoCode = (String) value.get(FIELD_COUNTRY_GEO_CODE);
+		countryAbbreviation = (String) value.get(FIELD_COUNTRY_ABBREVIATION);
+		countryGeoSecCode = (String) value.get(FIELD_COUNTRY_GEO_SEC_CODE);
+		countryWellKnownText = (String) value
+				.get(FIELD_COUNTRY_WELL_KNOWN_TEXT);
 	}
 
 	public static PartyContactDetailByPurpose fromValue(

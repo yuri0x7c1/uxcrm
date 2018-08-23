@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Keyword Ovrd
  */
+@FieldNameConstants
 public class ProductStoreKeywordOvrd implements Serializable {
 
-	public static final long serialVersionUID = 1644794132419915776L;
+	public static final long serialVersionUID = 483712706557139968L;
 	public static final String NAME = "ProductStoreKeywordOvrd";
 	/**
 	 * Product Store Id
@@ -76,23 +78,17 @@ public class ProductStoreKeywordOvrd implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, keyword, fromDate, thruDate, target, targetTypeEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreKeywordOvrd(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		keyword = (String) value.get(Fields.keyword.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		target = (String) value.get(Fields.target.name());
-		targetTypeEnumId = (String) value.get(Fields.targetTypeEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		keyword = (String) value.get(FIELD_KEYWORD);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		target = (String) value.get(FIELD_TARGET);
+		targetTypeEnumId = (String) value.get(FIELD_TARGET_TYPE_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreKeywordOvrd fromValue(

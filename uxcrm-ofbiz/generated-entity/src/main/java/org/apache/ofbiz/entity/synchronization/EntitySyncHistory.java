@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.synchronization;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Sync History
  */
+@FieldNameConstants
 public class EntitySyncHistory implements Serializable {
 
-	public static final long serialVersionUID = 4553571739466802176L;
+	public static final long serialVersionUID = 5618339037524047872L;
 	public static final String NAME = "EntitySyncHistory";
 	/**
 	 * Entity Sync Id
@@ -196,47 +198,40 @@ public class EntitySyncHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		entitySyncId, startDate, runStatusId, beginningSynchTime, lastSuccessfulSynchTime, lastCandidateEndTime, lastSplitStartTime, toCreateInserted, toCreateUpdated, toCreateNotUpdated, toStoreInserted, toStoreUpdated, toStoreNotUpdated, toRemoveDeleted, toRemoveAlreadyDeleted, totalRowsExported, totalRowsToCreate, totalRowsToStore, totalRowsToRemove, totalSplits, totalStoreCalls, runningTimeMillis, perSplitMinMillis, perSplitMaxMillis, perSplitMinItems, perSplitMaxItems, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntitySyncHistory(GenericValue value) {
-		entitySyncId = (String) value.get(Fields.entitySyncId.name());
-		startDate = (Timestamp) value.get(Fields.startDate.name());
-		runStatusId = (String) value.get(Fields.runStatusId.name());
-		beginningSynchTime = (Timestamp) value.get(Fields.beginningSynchTime
-				.name());
+		entitySyncId = (String) value.get(FIELD_ENTITY_SYNC_ID);
+		startDate = (Timestamp) value.get(FIELD_START_DATE);
+		runStatusId = (String) value.get(FIELD_RUN_STATUS_ID);
+		beginningSynchTime = (Timestamp) value.get(FIELD_BEGINNING_SYNCH_TIME);
 		lastSuccessfulSynchTime = (Timestamp) value
-				.get(Fields.lastSuccessfulSynchTime.name());
+				.get(FIELD_LAST_SUCCESSFUL_SYNCH_TIME);
 		lastCandidateEndTime = (Timestamp) value
-				.get(Fields.lastCandidateEndTime.name());
-		lastSplitStartTime = (Long) value.get(Fields.lastSplitStartTime.name());
-		toCreateInserted = (Long) value.get(Fields.toCreateInserted.name());
-		toCreateUpdated = (Long) value.get(Fields.toCreateUpdated.name());
-		toCreateNotUpdated = (Long) value.get(Fields.toCreateNotUpdated.name());
-		toStoreInserted = (Long) value.get(Fields.toStoreInserted.name());
-		toStoreUpdated = (Long) value.get(Fields.toStoreUpdated.name());
-		toStoreNotUpdated = (Long) value.get(Fields.toStoreNotUpdated.name());
-		toRemoveDeleted = (Long) value.get(Fields.toRemoveDeleted.name());
-		toRemoveAlreadyDeleted = (Long) value.get(Fields.toRemoveAlreadyDeleted
-				.name());
-		totalRowsExported = (Long) value.get(Fields.totalRowsExported.name());
-		totalRowsToCreate = (Long) value.get(Fields.totalRowsToCreate.name());
-		totalRowsToStore = (Long) value.get(Fields.totalRowsToStore.name());
-		totalRowsToRemove = (Long) value.get(Fields.totalRowsToRemove.name());
-		totalSplits = (Long) value.get(Fields.totalSplits.name());
-		totalStoreCalls = (Long) value.get(Fields.totalStoreCalls.name());
-		runningTimeMillis = (Long) value.get(Fields.runningTimeMillis.name());
-		perSplitMinMillis = (Long) value.get(Fields.perSplitMinMillis.name());
-		perSplitMaxMillis = (Long) value.get(Fields.perSplitMaxMillis.name());
-		perSplitMinItems = (Long) value.get(Fields.perSplitMinItems.name());
-		perSplitMaxItems = (Long) value.get(Fields.perSplitMaxItems.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_CANDIDATE_END_TIME);
+		lastSplitStartTime = (Long) value.get(FIELD_LAST_SPLIT_START_TIME);
+		toCreateInserted = (Long) value.get(FIELD_TO_CREATE_INSERTED);
+		toCreateUpdated = (Long) value.get(FIELD_TO_CREATE_UPDATED);
+		toCreateNotUpdated = (Long) value.get(FIELD_TO_CREATE_NOT_UPDATED);
+		toStoreInserted = (Long) value.get(FIELD_TO_STORE_INSERTED);
+		toStoreUpdated = (Long) value.get(FIELD_TO_STORE_UPDATED);
+		toStoreNotUpdated = (Long) value.get(FIELD_TO_STORE_NOT_UPDATED);
+		toRemoveDeleted = (Long) value.get(FIELD_TO_REMOVE_DELETED);
+		toRemoveAlreadyDeleted = (Long) value
+				.get(FIELD_TO_REMOVE_ALREADY_DELETED);
+		totalRowsExported = (Long) value.get(FIELD_TOTAL_ROWS_EXPORTED);
+		totalRowsToCreate = (Long) value.get(FIELD_TOTAL_ROWS_TO_CREATE);
+		totalRowsToStore = (Long) value.get(FIELD_TOTAL_ROWS_TO_STORE);
+		totalRowsToRemove = (Long) value.get(FIELD_TOTAL_ROWS_TO_REMOVE);
+		totalSplits = (Long) value.get(FIELD_TOTAL_SPLITS);
+		totalStoreCalls = (Long) value.get(FIELD_TOTAL_STORE_CALLS);
+		runningTimeMillis = (Long) value.get(FIELD_RUNNING_TIME_MILLIS);
+		perSplitMinMillis = (Long) value.get(FIELD_PER_SPLIT_MIN_MILLIS);
+		perSplitMaxMillis = (Long) value.get(FIELD_PER_SPLIT_MAX_MILLIS);
+		perSplitMinItems = (Long) value.get(FIELD_PER_SPLIT_MIN_ITEMS);
+		perSplitMaxItems = (Long) value.get(FIELD_PER_SPLIT_MAX_ITEMS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntitySyncHistory fromValue(

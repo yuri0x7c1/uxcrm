@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Party Tax Info
  */
+@FieldNameConstants
 public class OldPartyTaxInfo implements Serializable {
 
-	public static final long serialVersionUID = 5611324672154314752L;
+	public static final long serialVersionUID = 6842952927887058944L;
 	public static final String NAME = "OldPartyTaxInfo";
 	/**
 	 * Party Id
@@ -76,23 +78,17 @@ public class OldPartyTaxInfo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, geoId, fromDate, thruDate, partyTaxId, isExempt, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldPartyTaxInfo(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		partyTaxId = (String) value.get(Fields.partyTaxId.name());
-		isExempt = (String) value.get(Fields.isExempt.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		partyTaxId = (String) value.get(FIELD_PARTY_TAX_ID);
+		isExempt = (String) value.get(FIELD_IS_EXEMPT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldPartyTaxInfo fromValue(

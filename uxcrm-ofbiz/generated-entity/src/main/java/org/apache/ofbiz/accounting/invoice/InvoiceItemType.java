@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice Item Type
  */
+@FieldNameConstants
 public class InvoiceItemType implements Serializable {
 
-	public static final long serialVersionUID = 1853035545212500992L;
+	public static final long serialVersionUID = 8770230831740595200L;
 	public static final String NAME = "InvoiceItemType";
 	/**
 	 * Invoice Item Type Id
@@ -70,23 +72,16 @@ public class InvoiceItemType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceItemTypeId, parentTypeId, hasTable, description, defaultGlAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceItemType(GenericValue value) {
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
-		defaultGlAccountId = (String) value.get(Fields.defaultGlAccountId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		defaultGlAccountId = (String) value.get(FIELD_DEFAULT_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceItemType fromValue(

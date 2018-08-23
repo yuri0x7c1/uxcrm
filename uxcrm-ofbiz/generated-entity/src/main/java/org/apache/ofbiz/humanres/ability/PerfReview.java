@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.ability;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Perf Review
  */
+@FieldNameConstants
 public class PerfReview implements Serializable {
 
-	public static final long serialVersionUID = 8146864030491736064L;
+	public static final long serialVersionUID = 646143557078506496L;
 	public static final String NAME = "PerfReview";
 	/**
 	 * Employee Party Id
@@ -100,28 +102,21 @@ public class PerfReview implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		employeePartyId, employeeRoleTypeId, perfReviewId, managerPartyId, managerRoleTypeId, paymentId, emplPositionId, fromDate, thruDate, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PerfReview(GenericValue value) {
-		employeePartyId = (String) value.get(Fields.employeePartyId.name());
-		employeeRoleTypeId = (String) value.get(Fields.employeeRoleTypeId
-				.name());
-		perfReviewId = (String) value.get(Fields.perfReviewId.name());
-		managerPartyId = (String) value.get(Fields.managerPartyId.name());
-		managerRoleTypeId = (String) value.get(Fields.managerRoleTypeId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		emplPositionId = (String) value.get(Fields.emplPositionId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		employeePartyId = (String) value.get(FIELD_EMPLOYEE_PARTY_ID);
+		employeeRoleTypeId = (String) value.get(FIELD_EMPLOYEE_ROLE_TYPE_ID);
+		perfReviewId = (String) value.get(FIELD_PERF_REVIEW_ID);
+		managerPartyId = (String) value.get(FIELD_MANAGER_PARTY_ID);
+		managerRoleTypeId = (String) value.get(FIELD_MANAGER_ROLE_TYPE_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		emplPositionId = (String) value.get(FIELD_EMPL_POSITION_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PerfReview fromValue(

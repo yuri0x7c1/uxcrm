@@ -63,7 +63,7 @@ public class WebSiteTree extends VerticalLayout {
 		select.setWidthUndefined();
 		select.setItemCaptionGenerator(webSite -> webSite.getSiteName() + "[" + webSite.getWebSiteId() + "]");
 
-		select.setItems(webSiteService.find(0, 1000, Arrays.asList(new String[]{WebSite.Fields.webSiteId.name()}), null));
+		select.setItems(webSiteService.find(0, 1000, Arrays.asList(new String[]{WebSite.FIELD_WEB_SITE_ID}), null));
 
 		select.addSelectionListener(event -> {
 			if (event.getValue() != null) {

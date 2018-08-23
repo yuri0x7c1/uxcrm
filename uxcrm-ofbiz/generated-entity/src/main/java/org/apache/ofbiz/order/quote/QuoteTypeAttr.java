@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Quote Type Attr
  */
+@FieldNameConstants
 public class QuoteTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 9145701420093697024L;
+	public static final long serialVersionUID = 2346068640490974208L;
 	public static final String NAME = "QuoteTypeAttr";
 	/**
 	 * Quote Type Id
@@ -58,20 +60,14 @@ public class QuoteTypeAttr implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quoteTypeId, attrName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuoteTypeAttr(GenericValue value) {
-		quoteTypeId = (String) value.get(Fields.quoteTypeId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		quoteTypeId = (String) value.get(FIELD_QUOTE_TYPE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuoteTypeAttr fromValue(

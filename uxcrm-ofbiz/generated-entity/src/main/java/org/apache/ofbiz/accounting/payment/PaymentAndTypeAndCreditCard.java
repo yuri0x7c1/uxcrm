@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment And Type And Credit Card
  */
+@FieldNameConstants
 public class PaymentAndTypeAndCreditCard implements Serializable {
 
-	public static final long serialVersionUID = 2848621904327748608L;
+	public static final long serialVersionUID = 1746822170918216704L;
 	public static final String NAME = "PaymentAndTypeAndCreditCard";
 	/**
 	 * Role Type Id To
@@ -245,59 +247,48 @@ public class PaymentAndTypeAndCreditCard implements Serializable {
 	@Setter
 	private String suffixOnCard;
 
-	public enum Fields {
-		roleTypeIdTo, finAccountTransId, partyIdFrom, amount, paymentPreferenceId, comments, parentTypeId, actualCurrencyAmount, overrideGlAccountId, description, paymentMethodTypeId, actualCurrencyUomId, paymentTypeId, currencyUomId, statusId, hasTable, paymentId, paymentMethodId, paymentGatewayResponseId, paymentRefNum, partyIdTo, effectiveDate, firstNameOnCard, issueNumber, cardType, lastFailedAuthDate, consecutiveFailedNsf, contactMechId, companyNameOnCard, titleOnCard, lastNameOnCard, middleNameOnCard, validFromDate, expireDate, consecutiveFailedAuths, lastFailedNsfDate, cardNumber, suffixOnCard
-	}
-
 	public PaymentAndTypeAndCreditCard(GenericValue value) {
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		paymentPreferenceId = (String) value.get(Fields.paymentPreferenceId
-				.name());
-		comments = (String) value.get(Fields.comments.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		paymentPreferenceId = (String) value.get(FIELD_PAYMENT_PREFERENCE_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
 		actualCurrencyAmount = (BigDecimal) value
-				.get(Fields.actualCurrencyAmount.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		actualCurrencyUomId = (String) value.get(Fields.actualCurrencyUomId
-				.name());
-		paymentTypeId = (String) value.get(Fields.paymentTypeId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
+				.get(FIELD_ACTUAL_CURRENCY_AMOUNT);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		actualCurrencyUomId = (String) value.get(FIELD_ACTUAL_CURRENCY_UOM_ID);
+		paymentTypeId = (String) value.get(FIELD_PAYMENT_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
-		paymentRefNum = (String) value.get(Fields.paymentRefNum.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
-		firstNameOnCard = (String) value.get(Fields.firstNameOnCard.name());
-		issueNumber = (String) value.get(Fields.issueNumber.name());
-		cardType = (String) value.get(Fields.cardType.name());
-		lastFailedAuthDate = (Timestamp) value.get(Fields.lastFailedAuthDate
-				.name());
-		consecutiveFailedNsf = (Long) value.get(Fields.consecutiveFailedNsf
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		companyNameOnCard = (String) value.get(Fields.companyNameOnCard.name());
-		titleOnCard = (String) value.get(Fields.titleOnCard.name());
-		lastNameOnCard = (String) value.get(Fields.lastNameOnCard.name());
-		middleNameOnCard = (String) value.get(Fields.middleNameOnCard.name());
-		validFromDate = (String) value.get(Fields.validFromDate.name());
-		expireDate = (String) value.get(Fields.expireDate.name());
-		consecutiveFailedAuths = (Long) value.get(Fields.consecutiveFailedAuths
-				.name());
-		lastFailedNsfDate = (Timestamp) value.get(Fields.lastFailedNsfDate
-				.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		suffixOnCard = (String) value.get(Fields.suffixOnCard.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
+		paymentRefNum = (String) value.get(FIELD_PAYMENT_REF_NUM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
+		firstNameOnCard = (String) value.get(FIELD_FIRST_NAME_ON_CARD);
+		issueNumber = (String) value.get(FIELD_ISSUE_NUMBER);
+		cardType = (String) value.get(FIELD_CARD_TYPE);
+		lastFailedAuthDate = (Timestamp) value.get(FIELD_LAST_FAILED_AUTH_DATE);
+		consecutiveFailedNsf = (Long) value.get(FIELD_CONSECUTIVE_FAILED_NSF);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		companyNameOnCard = (String) value.get(FIELD_COMPANY_NAME_ON_CARD);
+		titleOnCard = (String) value.get(FIELD_TITLE_ON_CARD);
+		lastNameOnCard = (String) value.get(FIELD_LAST_NAME_ON_CARD);
+		middleNameOnCard = (String) value.get(FIELD_MIDDLE_NAME_ON_CARD);
+		validFromDate = (String) value.get(FIELD_VALID_FROM_DATE);
+		expireDate = (String) value.get(FIELD_EXPIRE_DATE);
+		consecutiveFailedAuths = (Long) value
+				.get(FIELD_CONSECUTIVE_FAILED_AUTHS);
+		lastFailedNsfDate = (Timestamp) value.get(FIELD_LAST_FAILED_NSF_DATE);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		suffixOnCard = (String) value.get(FIELD_SUFFIX_ON_CARD);
 	}
 
 	public static PaymentAndTypeAndCreditCard fromValue(

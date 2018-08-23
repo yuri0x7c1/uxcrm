@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shipment Route Segment Detail
  */
+@FieldNameConstants
 public class ShipmentRouteSegmentDetail implements Serializable {
 
-	public static final long serialVersionUID = 9144730159866417152L;
+	public static final long serialVersionUID = 4083436800627456000L;
 	public static final String NAME = "ShipmentRouteSegmentDetail";
 	/**
 	 * Shipment Id
@@ -76,25 +78,20 @@ public class ShipmentRouteSegmentDetail implements Serializable {
 	@Setter
 	private String primaryOrderId;
 
-	public enum Fields {
-		shipmentId, shipmentRouteSegmentId, originFacilityId, carrierPartyId, carrierServiceStatusId, shipmentMethodTypeId, billingWeight, billingWeightUomId, statusId, primaryOrderId
-	}
-
 	public ShipmentRouteSegmentDetail(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
 		shipmentRouteSegmentId = (String) value
-				.get(Fields.shipmentRouteSegmentId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
+				.get(FIELD_SHIPMENT_ROUTE_SEGMENT_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
 		carrierServiceStatusId = (String) value
-				.get(Fields.carrierServiceStatusId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		billingWeight = (BigDecimal) value.get(Fields.billingWeight.name());
-		billingWeightUomId = (String) value.get(Fields.billingWeightUomId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
+				.get(FIELD_CARRIER_SERVICE_STATUS_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		billingWeight = (BigDecimal) value.get(FIELD_BILLING_WEIGHT);
+		billingWeightUomId = (String) value.get(FIELD_BILLING_WEIGHT_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
 	}
 
 	public static ShipmentRouteSegmentDetail fromValue(

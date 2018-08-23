@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Fiscal Type
  */
+@FieldNameConstants
 public class GlFiscalType implements Serializable {
 
-	public static final long serialVersionUID = 3360459845197957120L;
+	public static final long serialVersionUID = 8316286923973616640L;
 	public static final String NAME = "GlFiscalType";
 	/**
 	 * Gl Fiscal Type Id
@@ -52,19 +54,13 @@ public class GlFiscalType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glFiscalTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlFiscalType(GenericValue value) {
-		glFiscalTypeId = (String) value.get(Fields.glFiscalTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glFiscalTypeId = (String) value.get(FIELD_GL_FISCAL_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlFiscalType fromValue(

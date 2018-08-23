@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Container Geo Point
  */
+@FieldNameConstants
 public class ContainerGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 2900775510628182016L;
+	public static final long serialVersionUID = 1107748297408434176L;
 	public static final String NAME = "ContainerGeoPoint";
 	/**
 	 * Container Id
@@ -64,21 +66,15 @@ public class ContainerGeoPoint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		containerId, geoPointId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContainerGeoPoint(GenericValue value) {
-		containerId = (String) value.get(Fields.containerId.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		containerId = (String) value.get(FIELD_CONTAINER_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContainerGeoPoint fromValue(

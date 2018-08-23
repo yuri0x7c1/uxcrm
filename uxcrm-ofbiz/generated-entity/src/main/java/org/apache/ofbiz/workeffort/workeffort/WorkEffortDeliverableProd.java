@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Deliverable Prod
  */
+@FieldNameConstants
 public class WorkEffortDeliverableProd implements Serializable {
 
-	public static final long serialVersionUID = 2187914956649879552L;
+	public static final long serialVersionUID = 4349061678846765056L;
 	public static final String NAME = "WorkEffortDeliverableProd";
 	/**
 	 * Work Effort Id
@@ -52,19 +54,13 @@ public class WorkEffortDeliverableProd implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, deliverableId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortDeliverableProd(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		deliverableId = (String) value.get(Fields.deliverableId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		deliverableId = (String) value.get(FIELD_DELIVERABLE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortDeliverableProd fromValue(

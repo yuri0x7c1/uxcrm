@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Billing Account Role And Address
  */
+@FieldNameConstants
 public class BillingAccountRoleAndAddress implements Serializable {
 
-	public static final long serialVersionUID = 3722508990510989312L;
+	public static final long serialVersionUID = 3462132535654998016L;
 	public static final String NAME = "BillingAccountRoleAndAddress";
 	/**
 	 * Pcm From Date
@@ -166,37 +168,32 @@ public class BillingAccountRoleAndAddress implements Serializable {
 	@Setter
 	private String geoPointId;
 
-	public enum Fields {
-		pcmFromDate, pcmThruDate, fromDate, roleTypeId, billingAccountId, partyId, thruDate, countryGeoId, houseNumberExt, address2, city, address1, postalCode, postalCodeGeoId, houseNumber, postalCodeExt, contactMechId, attnName, directions, countyGeoId, toName, cityGeoId, municipalityGeoId, stateProvinceGeoId, geoPointId
-	}
-
 	public BillingAccountRoleAndAddress(GenericValue value) {
-		pcmFromDate = (Timestamp) value.get(Fields.pcmFromDate.name());
-		pcmThruDate = (Timestamp) value.get(Fields.pcmThruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		countryGeoId = (String) value.get(Fields.countryGeoId.name());
-		houseNumberExt = (String) value.get(Fields.houseNumberExt.name());
-		address2 = (String) value.get(Fields.address2.name());
-		city = (String) value.get(Fields.city.name());
-		address1 = (String) value.get(Fields.address1.name());
-		postalCode = (String) value.get(Fields.postalCode.name());
-		postalCodeGeoId = (String) value.get(Fields.postalCodeGeoId.name());
-		houseNumber = (Long) value.get(Fields.houseNumber.name());
-		postalCodeExt = (String) value.get(Fields.postalCodeExt.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		attnName = (String) value.get(Fields.attnName.name());
-		directions = (String) value.get(Fields.directions.name());
-		countyGeoId = (String) value.get(Fields.countyGeoId.name());
-		toName = (String) value.get(Fields.toName.name());
-		cityGeoId = (String) value.get(Fields.cityGeoId.name());
-		municipalityGeoId = (String) value.get(Fields.municipalityGeoId.name());
-		stateProvinceGeoId = (String) value.get(Fields.stateProvinceGeoId
-				.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
+		pcmFromDate = (Timestamp) value.get(FIELD_PCM_FROM_DATE);
+		pcmThruDate = (Timestamp) value.get(FIELD_PCM_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		countryGeoId = (String) value.get(FIELD_COUNTRY_GEO_ID);
+		houseNumberExt = (String) value.get(FIELD_HOUSE_NUMBER_EXT);
+		address2 = (String) value.get(FIELD_ADDRESS2);
+		city = (String) value.get(FIELD_CITY);
+		address1 = (String) value.get(FIELD_ADDRESS1);
+		postalCode = (String) value.get(FIELD_POSTAL_CODE);
+		postalCodeGeoId = (String) value.get(FIELD_POSTAL_CODE_GEO_ID);
+		houseNumber = (Long) value.get(FIELD_HOUSE_NUMBER);
+		postalCodeExt = (String) value.get(FIELD_POSTAL_CODE_EXT);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		attnName = (String) value.get(FIELD_ATTN_NAME);
+		directions = (String) value.get(FIELD_DIRECTIONS);
+		countyGeoId = (String) value.get(FIELD_COUNTY_GEO_ID);
+		toName = (String) value.get(FIELD_TO_NAME);
+		cityGeoId = (String) value.get(FIELD_CITY_GEO_ID);
+		municipalityGeoId = (String) value.get(FIELD_MUNICIPALITY_GEO_ID);
+		stateProvinceGeoId = (String) value.get(FIELD_STATE_PROVINCE_GEO_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
 	}
 
 	public static BillingAccountRoleAndAddress fromValue(

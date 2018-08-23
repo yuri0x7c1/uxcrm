@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product
  */
+@FieldNameConstants
 public class Product implements Serializable {
 
-	public static final long serialVersionUID = 4264104504060838912L;
+	public static final long serialVersionUID = 4029623512526838784L;
 	public static final String NAME = "Product";
 	/**
 	 * Product Id
@@ -467,107 +469,90 @@ public class Product implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, productTypeId, primaryProductCategoryId, manufacturerPartyId, facilityId, introductionDate, releaseDate, supportDiscontinuationDate, salesDiscontinuationDate, salesDiscWhenNotAvail, internalName, brandName, comments, productName, description, longDescription, priceDetailText, smallImageUrl, mediumImageUrl, largeImageUrl, detailImageUrl, originalImageUrl, detailScreen, inventoryMessage, inventoryItemTypeId, requireInventory, quantityUomId, quantityIncluded, piecesIncluded, requireAmount, fixedAmount, amountUomTypeId, weightUomId, shippingWeight, productWeight, heightUomId, productHeight, shippingHeight, widthUomId, productWidth, shippingWidth, depthUomId, productDepth, shippingDepth, diameterUomId, productDiameter, productRating, ratingTypeEnum, returnable, taxable, chargeShipping, autoCreateKeywords, includeInPromotions, isVirtual, isVariant, virtualVariantMethodEnum, originGeoId, requirementMethodEnumId, billOfMaterialLevel, reservMaxPersons, reserv2ndPPPerc, reservNthPPPerc, configId, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, inShippingBox, defaultShipmentBoxTypeId, lotIdFilledIn, orderDecimalQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Product(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productTypeId = (String) value.get(Fields.productTypeId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productTypeId = (String) value.get(FIELD_PRODUCT_TYPE_ID);
 		primaryProductCategoryId = (String) value
-				.get(Fields.primaryProductCategoryId.name());
-		manufacturerPartyId = (String) value.get(Fields.manufacturerPartyId
-				.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		introductionDate = (Timestamp) value
-				.get(Fields.introductionDate.name());
-		releaseDate = (Timestamp) value.get(Fields.releaseDate.name());
+				.get(FIELD_PRIMARY_PRODUCT_CATEGORY_ID);
+		manufacturerPartyId = (String) value.get(FIELD_MANUFACTURER_PARTY_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		introductionDate = (Timestamp) value.get(FIELD_INTRODUCTION_DATE);
+		releaseDate = (Timestamp) value.get(FIELD_RELEASE_DATE);
 		supportDiscontinuationDate = (Timestamp) value
-				.get(Fields.supportDiscontinuationDate.name());
+				.get(FIELD_SUPPORT_DISCONTINUATION_DATE);
 		salesDiscontinuationDate = (Timestamp) value
-				.get(Fields.salesDiscontinuationDate.name());
-		salesDiscWhenNotAvail = (String) value.get(Fields.salesDiscWhenNotAvail
-				.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		brandName = (String) value.get(Fields.brandName.name());
-		comments = (String) value.get(Fields.comments.name());
-		productName = (String) value.get(Fields.productName.name());
-		description = (String) value.get(Fields.description.name());
-		longDescription = (String) value.get(Fields.longDescription.name());
-		priceDetailText = (String) value.get(Fields.priceDetailText.name());
-		smallImageUrl = (String) value.get(Fields.smallImageUrl.name());
-		mediumImageUrl = (String) value.get(Fields.mediumImageUrl.name());
-		largeImageUrl = (String) value.get(Fields.largeImageUrl.name());
-		detailImageUrl = (String) value.get(Fields.detailImageUrl.name());
-		originalImageUrl = (String) value.get(Fields.originalImageUrl.name());
-		detailScreen = (String) value.get(Fields.detailScreen.name());
-		inventoryMessage = (String) value.get(Fields.inventoryMessage.name());
-		inventoryItemTypeId = (String) value.get(Fields.inventoryItemTypeId
-				.name());
-		requireInventory = (String) value.get(Fields.requireInventory.name());
-		quantityUomId = (String) value.get(Fields.quantityUomId.name());
-		quantityIncluded = (BigDecimal) value.get(Fields.quantityIncluded
-				.name());
-		piecesIncluded = (Long) value.get(Fields.piecesIncluded.name());
-		requireAmount = (String) value.get(Fields.requireAmount.name());
-		fixedAmount = (BigDecimal) value.get(Fields.fixedAmount.name());
-		amountUomTypeId = (String) value.get(Fields.amountUomTypeId.name());
-		weightUomId = (String) value.get(Fields.weightUomId.name());
-		shippingWeight = (BigDecimal) value.get(Fields.shippingWeight.name());
-		productWeight = (BigDecimal) value.get(Fields.productWeight.name());
-		heightUomId = (String) value.get(Fields.heightUomId.name());
-		productHeight = (BigDecimal) value.get(Fields.productHeight.name());
-		shippingHeight = (BigDecimal) value.get(Fields.shippingHeight.name());
-		widthUomId = (String) value.get(Fields.widthUomId.name());
-		productWidth = (BigDecimal) value.get(Fields.productWidth.name());
-		shippingWidth = (BigDecimal) value.get(Fields.shippingWidth.name());
-		depthUomId = (String) value.get(Fields.depthUomId.name());
-		productDepth = (BigDecimal) value.get(Fields.productDepth.name());
-		shippingDepth = (BigDecimal) value.get(Fields.shippingDepth.name());
-		diameterUomId = (String) value.get(Fields.diameterUomId.name());
-		productDiameter = (BigDecimal) value.get(Fields.productDiameter.name());
-		productRating = (BigDecimal) value.get(Fields.productRating.name());
-		ratingTypeEnum = (String) value.get(Fields.ratingTypeEnum.name());
-		returnable = (String) value.get(Fields.returnable.name());
-		taxable = (String) value.get(Fields.taxable.name());
-		chargeShipping = (String) value.get(Fields.chargeShipping.name());
-		autoCreateKeywords = (String) value.get(Fields.autoCreateKeywords
-				.name());
-		includeInPromotions = (String) value.get(Fields.includeInPromotions
-				.name());
-		isVirtual = (String) value.get(Fields.isVirtual.name());
-		isVariant = (String) value.get(Fields.isVariant.name());
+				.get(FIELD_SALES_DISCONTINUATION_DATE);
+		salesDiscWhenNotAvail = (String) value
+				.get(FIELD_SALES_DISC_WHEN_NOT_AVAIL);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		brandName = (String) value.get(FIELD_BRAND_NAME);
+		comments = (String) value.get(FIELD_COMMENTS);
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		longDescription = (String) value.get(FIELD_LONG_DESCRIPTION);
+		priceDetailText = (String) value.get(FIELD_PRICE_DETAIL_TEXT);
+		smallImageUrl = (String) value.get(FIELD_SMALL_IMAGE_URL);
+		mediumImageUrl = (String) value.get(FIELD_MEDIUM_IMAGE_URL);
+		largeImageUrl = (String) value.get(FIELD_LARGE_IMAGE_URL);
+		detailImageUrl = (String) value.get(FIELD_DETAIL_IMAGE_URL);
+		originalImageUrl = (String) value.get(FIELD_ORIGINAL_IMAGE_URL);
+		detailScreen = (String) value.get(FIELD_DETAIL_SCREEN);
+		inventoryMessage = (String) value.get(FIELD_INVENTORY_MESSAGE);
+		inventoryItemTypeId = (String) value.get(FIELD_INVENTORY_ITEM_TYPE_ID);
+		requireInventory = (String) value.get(FIELD_REQUIRE_INVENTORY);
+		quantityUomId = (String) value.get(FIELD_QUANTITY_UOM_ID);
+		quantityIncluded = (BigDecimal) value.get(FIELD_QUANTITY_INCLUDED);
+		piecesIncluded = (Long) value.get(FIELD_PIECES_INCLUDED);
+		requireAmount = (String) value.get(FIELD_REQUIRE_AMOUNT);
+		fixedAmount = (BigDecimal) value.get(FIELD_FIXED_AMOUNT);
+		amountUomTypeId = (String) value.get(FIELD_AMOUNT_UOM_TYPE_ID);
+		weightUomId = (String) value.get(FIELD_WEIGHT_UOM_ID);
+		shippingWeight = (BigDecimal) value.get(FIELD_SHIPPING_WEIGHT);
+		productWeight = (BigDecimal) value.get(FIELD_PRODUCT_WEIGHT);
+		heightUomId = (String) value.get(FIELD_HEIGHT_UOM_ID);
+		productHeight = (BigDecimal) value.get(FIELD_PRODUCT_HEIGHT);
+		shippingHeight = (BigDecimal) value.get(FIELD_SHIPPING_HEIGHT);
+		widthUomId = (String) value.get(FIELD_WIDTH_UOM_ID);
+		productWidth = (BigDecimal) value.get(FIELD_PRODUCT_WIDTH);
+		shippingWidth = (BigDecimal) value.get(FIELD_SHIPPING_WIDTH);
+		depthUomId = (String) value.get(FIELD_DEPTH_UOM_ID);
+		productDepth = (BigDecimal) value.get(FIELD_PRODUCT_DEPTH);
+		shippingDepth = (BigDecimal) value.get(FIELD_SHIPPING_DEPTH);
+		diameterUomId = (String) value.get(FIELD_DIAMETER_UOM_ID);
+		productDiameter = (BigDecimal) value.get(FIELD_PRODUCT_DIAMETER);
+		productRating = (BigDecimal) value.get(FIELD_PRODUCT_RATING);
+		ratingTypeEnum = (String) value.get(FIELD_RATING_TYPE_ENUM);
+		returnable = (String) value.get(FIELD_RETURNABLE);
+		taxable = (String) value.get(FIELD_TAXABLE);
+		chargeShipping = (String) value.get(FIELD_CHARGE_SHIPPING);
+		autoCreateKeywords = (String) value.get(FIELD_AUTO_CREATE_KEYWORDS);
+		includeInPromotions = (String) value.get(FIELD_INCLUDE_IN_PROMOTIONS);
+		isVirtual = (String) value.get(FIELD_IS_VIRTUAL);
+		isVariant = (String) value.get(FIELD_IS_VARIANT);
 		virtualVariantMethodEnum = (String) value
-				.get(Fields.virtualVariantMethodEnum.name());
-		originGeoId = (String) value.get(Fields.originGeoId.name());
+				.get(FIELD_VIRTUAL_VARIANT_METHOD_ENUM);
+		originGeoId = (String) value.get(FIELD_ORIGIN_GEO_ID);
 		requirementMethodEnumId = (String) value
-				.get(Fields.requirementMethodEnumId.name());
-		billOfMaterialLevel = (Long) value.get(Fields.billOfMaterialLevel
-				.name());
-		reservMaxPersons = (BigDecimal) value.get(Fields.reservMaxPersons
-				.name());
-		reserv2ndPPPerc = (BigDecimal) value.get(Fields.reserv2ndPPPerc.name());
-		reservNthPPPerc = (BigDecimal) value.get(Fields.reservNthPPPerc.name());
-		configId = (String) value.get(Fields.configId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_REQUIREMENT_METHOD_ENUM_ID);
+		billOfMaterialLevel = (Long) value.get(FIELD_BILL_OF_MATERIAL_LEVEL);
+		reservMaxPersons = (BigDecimal) value.get(FIELD_RESERV_MAX_PERSONS);
+		reserv2ndPPPerc = (BigDecimal) value.get(FIELD_RESERV2ND_P_P_PERC);
+		reservNthPPPerc = (BigDecimal) value.get(FIELD_RESERV_NTH_P_P_PERC);
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		inShippingBox = (String) value.get(Fields.inShippingBox.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		inShippingBox = (String) value.get(FIELD_IN_SHIPPING_BOX);
 		defaultShipmentBoxTypeId = (String) value
-				.get(Fields.defaultShipmentBoxTypeId.name());
-		lotIdFilledIn = (String) value.get(Fields.lotIdFilledIn.name());
-		orderDecimalQuantity = (String) value.get(Fields.orderDecimalQuantity
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_DEFAULT_SHIPMENT_BOX_TYPE_ID);
+		lotIdFilledIn = (String) value.get(FIELD_LOT_ID_FILLED_IN);
+		orderDecimalQuantity = (String) value.get(FIELD_ORDER_DECIMAL_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Product fromValue(org.apache.ofbiz.entity.GenericValue value) {

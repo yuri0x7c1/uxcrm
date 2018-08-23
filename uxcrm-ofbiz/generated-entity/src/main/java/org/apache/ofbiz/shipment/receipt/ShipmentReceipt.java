@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.receipt;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Receipt
  */
+@FieldNameConstants
 public class ShipmentReceipt implements Serializable {
 
-	public static final long serialVersionUID = 2659743430790832128L;
+	public static final long serialVersionUID = 6954476232143128576L;
 	public static final String NAME = "ShipmentReceipt";
 	/**
 	 * Receipt Id
@@ -137,38 +139,29 @@ public class ShipmentReceipt implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		receiptId, inventoryItemId, productId, shipmentId, shipmentItemSeqId, shipmentPackageSeqId, orderId, orderItemSeqId, returnId, returnItemSeqId, rejectionId, receivedByUserLoginId, datetimeReceived, itemDescription, quantityAccepted, quantityRejected, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentReceipt(GenericValue value) {
-		receiptId = (String) value.get(Fields.receiptId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		productId = (String) value.get(Fields.productId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		rejectionId = (String) value.get(Fields.rejectionId.name());
-		receivedByUserLoginId = (String) value.get(Fields.receivedByUserLoginId
-				.name());
-		datetimeReceived = (Timestamp) value
-				.get(Fields.datetimeReceived.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		quantityAccepted = (BigDecimal) value.get(Fields.quantityAccepted
-				.name());
-		quantityRejected = (BigDecimal) value.get(Fields.quantityRejected
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		receiptId = (String) value.get(FIELD_RECEIPT_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		rejectionId = (String) value.get(FIELD_REJECTION_ID);
+		receivedByUserLoginId = (String) value
+				.get(FIELD_RECEIVED_BY_USER_LOGIN_ID);
+		datetimeReceived = (Timestamp) value.get(FIELD_DATETIME_RECEIVED);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		quantityAccepted = (BigDecimal) value.get(FIELD_QUANTITY_ACCEPTED);
+		quantityRejected = (BigDecimal) value.get(FIELD_QUANTITY_REJECTED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentReceipt fromValue(

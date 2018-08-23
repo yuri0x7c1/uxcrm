@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice Attribute
  */
+@FieldNameConstants
 public class InvoiceAttribute implements Serializable {
 
-	public static final long serialVersionUID = 6514117823333360640L;
+	public static final long serialVersionUID = 2036129029998352384L;
 	public static final String NAME = "InvoiceAttribute";
 	/**
 	 * Invoice Id
@@ -64,21 +66,15 @@ public class InvoiceAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceId, attrName, attrValue, attrDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceAttribute(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceAttribute fromValue(

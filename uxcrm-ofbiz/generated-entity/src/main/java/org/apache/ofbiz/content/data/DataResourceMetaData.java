@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Resource Meta Data
  */
+@FieldNameConstants
 public class DataResourceMetaData implements Serializable {
 
-	public static final long serialVersionUID = 8855934550760339456L;
+	public static final long serialVersionUID = 6085008183400934400L;
 	public static final String NAME = "DataResourceMetaData";
 	/**
 	 * Data Resource Id
@@ -64,22 +66,15 @@ public class DataResourceMetaData implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataResourceId, metaDataPredicateId, metaDataValue, dataSourceId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataResourceMetaData(GenericValue value) {
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		metaDataPredicateId = (String) value.get(Fields.metaDataPredicateId
-				.name());
-		metaDataValue = (String) value.get(Fields.metaDataValue.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		metaDataPredicateId = (String) value.get(FIELD_META_DATA_PREDICATE_ID);
+		metaDataValue = (String) value.get(FIELD_META_DATA_VALUE);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataResourceMetaData fromValue(

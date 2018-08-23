@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shipment Gateway Fedex
  */
+@FieldNameConstants
 public class ShipmentGatewayFedex implements Serializable {
 
-	public static final long serialVersionUID = 4456965285626522624L;
+	public static final long serialVersionUID = 8437784856915689472L;
 	public static final String NAME = "ShipmentGatewayFedex";
 	/**
 	 * Shipment Gateway Config Id
@@ -124,36 +126,26 @@ public class ShipmentGatewayFedex implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentGatewayConfigId, connectUrl, connectSoapUrl, connectTimeout, accessAccountNbr, accessMeterNumber, accessUserKey, accessUserPwd, labelImageType, defaultDropoffType, defaultPackagingType, templateShipment, templateSubscription, rateEstimateTemplate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentGatewayFedex(GenericValue value) {
 		shipmentGatewayConfigId = (String) value
-				.get(Fields.shipmentGatewayConfigId.name());
-		connectUrl = (String) value.get(Fields.connectUrl.name());
-		connectSoapUrl = (String) value.get(Fields.connectSoapUrl.name());
-		connectTimeout = (Long) value.get(Fields.connectTimeout.name());
-		accessAccountNbr = (String) value.get(Fields.accessAccountNbr.name());
-		accessMeterNumber = (String) value.get(Fields.accessMeterNumber.name());
-		accessUserKey = (String) value.get(Fields.accessUserKey.name());
-		accessUserPwd = (String) value.get(Fields.accessUserPwd.name());
-		labelImageType = (String) value.get(Fields.labelImageType.name());
-		defaultDropoffType = (String) value.get(Fields.defaultDropoffType
-				.name());
-		defaultPackagingType = (String) value.get(Fields.defaultPackagingType
-				.name());
-		templateShipment = (String) value.get(Fields.templateShipment.name());
-		templateSubscription = (String) value.get(Fields.templateSubscription
-				.name());
-		rateEstimateTemplate = (String) value.get(Fields.rateEstimateTemplate
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SHIPMENT_GATEWAY_CONFIG_ID);
+		connectUrl = (String) value.get(FIELD_CONNECT_URL);
+		connectSoapUrl = (String) value.get(FIELD_CONNECT_SOAP_URL);
+		connectTimeout = (Long) value.get(FIELD_CONNECT_TIMEOUT);
+		accessAccountNbr = (String) value.get(FIELD_ACCESS_ACCOUNT_NBR);
+		accessMeterNumber = (String) value.get(FIELD_ACCESS_METER_NUMBER);
+		accessUserKey = (String) value.get(FIELD_ACCESS_USER_KEY);
+		accessUserPwd = (String) value.get(FIELD_ACCESS_USER_PWD);
+		labelImageType = (String) value.get(FIELD_LABEL_IMAGE_TYPE);
+		defaultDropoffType = (String) value.get(FIELD_DEFAULT_DROPOFF_TYPE);
+		defaultPackagingType = (String) value.get(FIELD_DEFAULT_PACKAGING_TYPE);
+		templateShipment = (String) value.get(FIELD_TEMPLATE_SHIPMENT);
+		templateSubscription = (String) value.get(FIELD_TEMPLATE_SUBSCRIPTION);
+		rateEstimateTemplate = (String) value.get(FIELD_RATE_ESTIMATE_TEMPLATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentGatewayFedex fromValue(

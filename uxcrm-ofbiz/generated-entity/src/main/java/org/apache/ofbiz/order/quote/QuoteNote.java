@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Quote Note
  */
+@FieldNameConstants
 public class QuoteNote implements Serializable {
 
-	public static final long serialVersionUID = 410764650038050816L;
+	public static final long serialVersionUID = 6908351512249358336L;
 	public static final String NAME = "QuoteNote";
 	/**
 	 * Quote Id
@@ -52,19 +54,13 @@ public class QuoteNote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quoteId, noteId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuoteNote(GenericValue value) {
-		quoteId = (String) value.get(Fields.quoteId.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuoteNote fromValue(org.apache.ofbiz.entity.GenericValue value) {

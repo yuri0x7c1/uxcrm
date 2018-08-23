@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Item Issuance Quantity Sum
  */
+@FieldNameConstants
 public class ItemIssuanceQuantitySum implements Serializable {
 
-	public static final long serialVersionUID = 7877213690105546752L;
+	public static final long serialVersionUID = 3342036606461381632L;
 	public static final String NAME = "ItemIssuanceQuantitySum";
 	/**
 	 * Issued Quantity Sum
@@ -34,15 +36,10 @@ public class ItemIssuanceQuantitySum implements Serializable {
 	@Setter
 	private String orderItemSeqId;
 
-	public enum Fields {
-		issuedQuantitySum, orderId, orderItemSeqId
-	}
-
 	public ItemIssuanceQuantitySum(GenericValue value) {
-		issuedQuantitySum = (BigDecimal) value.get(Fields.issuedQuantitySum
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
+		issuedQuantitySum = (BigDecimal) value.get(FIELD_ISSUED_QUANTITY_SUM);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
 	}
 
 	public static ItemIssuanceQuantitySum fromValue(

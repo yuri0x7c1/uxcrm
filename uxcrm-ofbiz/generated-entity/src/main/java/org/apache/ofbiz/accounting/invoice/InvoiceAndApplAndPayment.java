@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice And Appl And Payment
  */
+@FieldNameConstants
 public class InvoiceAndApplAndPayment implements Serializable {
 
-	public static final long serialVersionUID = 7235319495013306368L;
+	public static final long serialVersionUID = 1300389555422747648L;
 	public static final String NAME = "InvoiceAndApplAndPayment";
 	/**
 	 * Party Id From
@@ -269,62 +271,55 @@ public class InvoiceAndApplAndPayment implements Serializable {
 	@Setter
 	private Timestamp pmEffectiveDate;
 
-	public enum Fields {
-		partyIdFrom, roleTypeId, recurrenceInfoId, invoiceTypeId, dueDate, description, billingAccountId, invoiceDate, contactMechId, currencyUomId, statusId, paidDate, referenceNumber, invoiceId, invoiceMessage, partyId, toPaymentId, amountApplied, overrideGlAccountId, invoiceItemSeqId, paymentApplicationId, paymentId, taxAuthGeoId, pmRoleTypeIdTo, pmFinAccountTransId, pmPartyIdFrom, pmAmount, pmPaymentPreferenceId, pmComments, pmActualCurrencyAmount, pmOverrideGlAccountId, pmPaymentMethodTypeId, pmActualCurrencyUomId, pmPaymentTypeId, pmCurrencyUomId, pmStatusId, pmPaymentId, pmPaymentMethodId, pmPaymentGatewayResponseId, pmPaymentRefNum, pmPartyIdTo, pmEffectiveDate
-	}
-
 	public InvoiceAndApplAndPayment(GenericValue value) {
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		dueDate = (Timestamp) value.get(Fields.dueDate.name());
-		description = (String) value.get(Fields.description.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		invoiceDate = (Timestamp) value.get(Fields.invoiceDate.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paidDate = (Timestamp) value.get(Fields.paidDate.name());
-		referenceNumber = (String) value.get(Fields.referenceNumber.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceMessage = (String) value.get(Fields.invoiceMessage.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		toPaymentId = (String) value.get(Fields.toPaymentId.name());
-		amountApplied = (BigDecimal) value.get(Fields.amountApplied.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		paymentApplicationId = (String) value.get(Fields.paymentApplicationId
-				.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		pmRoleTypeIdTo = (String) value.get(Fields.pmRoleTypeIdTo.name());
-		pmFinAccountTransId = (String) value.get(Fields.pmFinAccountTransId
-				.name());
-		pmPartyIdFrom = (String) value.get(Fields.pmPartyIdFrom.name());
-		pmAmount = (BigDecimal) value.get(Fields.pmAmount.name());
-		pmPaymentPreferenceId = (String) value.get(Fields.pmPaymentPreferenceId
-				.name());
-		pmComments = (String) value.get(Fields.pmComments.name());
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		dueDate = (Timestamp) value.get(FIELD_DUE_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		invoiceDate = (Timestamp) value.get(FIELD_INVOICE_DATE);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paidDate = (Timestamp) value.get(FIELD_PAID_DATE);
+		referenceNumber = (String) value.get(FIELD_REFERENCE_NUMBER);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceMessage = (String) value.get(FIELD_INVOICE_MESSAGE);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		toPaymentId = (String) value.get(FIELD_TO_PAYMENT_ID);
+		amountApplied = (BigDecimal) value.get(FIELD_AMOUNT_APPLIED);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		paymentApplicationId = (String) value.get(FIELD_PAYMENT_APPLICATION_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		pmRoleTypeIdTo = (String) value.get(FIELD_PM_ROLE_TYPE_ID_TO);
+		pmFinAccountTransId = (String) value.get(FIELD_PM_FIN_ACCOUNT_TRANS_ID);
+		pmPartyIdFrom = (String) value.get(FIELD_PM_PARTY_ID_FROM);
+		pmAmount = (BigDecimal) value.get(FIELD_PM_AMOUNT);
+		pmPaymentPreferenceId = (String) value
+				.get(FIELD_PM_PAYMENT_PREFERENCE_ID);
+		pmComments = (String) value.get(FIELD_PM_COMMENTS);
 		pmActualCurrencyAmount = (BigDecimal) value
-				.get(Fields.pmActualCurrencyAmount.name());
-		pmOverrideGlAccountId = (String) value.get(Fields.pmOverrideGlAccountId
-				.name());
-		pmPaymentMethodTypeId = (String) value.get(Fields.pmPaymentMethodTypeId
-				.name());
-		pmActualCurrencyUomId = (String) value.get(Fields.pmActualCurrencyUomId
-				.name());
-		pmPaymentTypeId = (String) value.get(Fields.pmPaymentTypeId.name());
-		pmCurrencyUomId = (String) value.get(Fields.pmCurrencyUomId.name());
-		pmStatusId = (String) value.get(Fields.pmStatusId.name());
-		pmPaymentId = (String) value.get(Fields.pmPaymentId.name());
-		pmPaymentMethodId = (String) value.get(Fields.pmPaymentMethodId.name());
+				.get(FIELD_PM_ACTUAL_CURRENCY_AMOUNT);
+		pmOverrideGlAccountId = (String) value
+				.get(FIELD_PM_OVERRIDE_GL_ACCOUNT_ID);
+		pmPaymentMethodTypeId = (String) value
+				.get(FIELD_PM_PAYMENT_METHOD_TYPE_ID);
+		pmActualCurrencyUomId = (String) value
+				.get(FIELD_PM_ACTUAL_CURRENCY_UOM_ID);
+		pmPaymentTypeId = (String) value.get(FIELD_PM_PAYMENT_TYPE_ID);
+		pmCurrencyUomId = (String) value.get(FIELD_PM_CURRENCY_UOM_ID);
+		pmStatusId = (String) value.get(FIELD_PM_STATUS_ID);
+		pmPaymentId = (String) value.get(FIELD_PM_PAYMENT_ID);
+		pmPaymentMethodId = (String) value.get(FIELD_PM_PAYMENT_METHOD_ID);
 		pmPaymentGatewayResponseId = (String) value
-				.get(Fields.pmPaymentGatewayResponseId.name());
-		pmPaymentRefNum = (String) value.get(Fields.pmPaymentRefNum.name());
-		pmPartyIdTo = (String) value.get(Fields.pmPartyIdTo.name());
-		pmEffectiveDate = (Timestamp) value.get(Fields.pmEffectiveDate.name());
+				.get(FIELD_PM_PAYMENT_GATEWAY_RESPONSE_ID);
+		pmPaymentRefNum = (String) value.get(FIELD_PM_PAYMENT_REF_NUM);
+		pmPartyIdTo = (String) value.get(FIELD_PM_PARTY_ID_TO);
+		pmEffectiveDate = (Timestamp) value.get(FIELD_PM_EFFECTIVE_DATE);
 	}
 
 	public static InvoiceAndApplAndPayment fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.shoppinglist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shopping List Item Survey
  */
+@FieldNameConstants
 public class ShoppingListItemSurvey implements Serializable {
 
-	public static final long serialVersionUID = 1137997101004449792L;
+	public static final long serialVersionUID = 2897042019079764992L;
 	public static final String NAME = "ShoppingListItemSurvey";
 	/**
 	 * Shopping List Id
@@ -58,21 +60,15 @@ public class ShoppingListItemSurvey implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shoppingListId, shoppingListItemSeqId, surveyResponseId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShoppingListItemSurvey(GenericValue value) {
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		shoppingListItemSeqId = (String) value.get(Fields.shoppingListItemSeqId
-				.name());
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		shoppingListItemSeqId = (String) value
+				.get(FIELD_SHOPPING_LIST_ITEM_SEQ_ID);
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShoppingListItemSurvey fromValue(

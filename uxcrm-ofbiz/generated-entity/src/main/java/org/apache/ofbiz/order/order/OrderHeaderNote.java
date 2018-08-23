@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Header Note
  */
+@FieldNameConstants
 public class OrderHeaderNote implements Serializable {
 
-	public static final long serialVersionUID = 4820252729045555200L;
+	public static final long serialVersionUID = 6598206342103218176L;
 	public static final String NAME = "OrderHeaderNote";
 	/**
 	 * Order Id
@@ -58,20 +60,14 @@ public class OrderHeaderNote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, noteId, internalNote, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderHeaderNote(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		internalNote = (String) value.get(Fields.internalNote.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		internalNote = (String) value.get(FIELD_INTERNAL_NOTE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderHeaderNote fromValue(

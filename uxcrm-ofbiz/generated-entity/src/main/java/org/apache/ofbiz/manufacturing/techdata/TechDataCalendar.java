@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.techdata;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tech Data Calendar
  */
+@FieldNameConstants
 public class TechDataCalendar implements Serializable {
 
-	public static final long serialVersionUID = 3879622171221498880L;
+	public static final long serialVersionUID = 4764258000397441024L;
 	public static final String NAME = "TechDataCalendar";
 	/**
 	 * Calendar Id
@@ -58,20 +60,14 @@ public class TechDataCalendar implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		calendarId, description, calendarWeekId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TechDataCalendar(GenericValue value) {
-		calendarId = (String) value.get(Fields.calendarId.name());
-		description = (String) value.get(Fields.description.name());
-		calendarWeekId = (String) value.get(Fields.calendarWeekId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		calendarId = (String) value.get(FIELD_CALENDAR_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		calendarWeekId = (String) value.get(FIELD_CALENDAR_WEEK_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TechDataCalendar fromValue(

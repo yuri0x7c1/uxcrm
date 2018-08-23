@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Variance Reason Gl Account
  */
+@FieldNameConstants
 public class VarianceReasonGlAccount implements Serializable {
 
-	public static final long serialVersionUID = 4049644051241171968L;
+	public static final long serialVersionUID = 3201123232685629440L;
 	public static final String NAME = "VarianceReasonGlAccount";
 	/**
 	 * Variance Reason Id
@@ -58,21 +60,14 @@ public class VarianceReasonGlAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		varianceReasonId, organizationPartyId, glAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public VarianceReasonGlAccount(GenericValue value) {
-		varianceReasonId = (String) value.get(Fields.varianceReasonId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		varianceReasonId = (String) value.get(FIELD_VARIANCE_REASON_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static VarianceReasonGlAccount fromValue(

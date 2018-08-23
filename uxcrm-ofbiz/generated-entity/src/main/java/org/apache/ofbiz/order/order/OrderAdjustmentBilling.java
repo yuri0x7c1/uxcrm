@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Adjustment Billing
  */
+@FieldNameConstants
 public class OrderAdjustmentBilling implements Serializable {
 
-	public static final long serialVersionUID = 6080378743465932800L;
+	public static final long serialVersionUID = 7026430626705418240L;
 	public static final String NAME = "OrderAdjustmentBilling";
 	/**
 	 * Order Adjustment Id
@@ -65,21 +67,15 @@ public class OrderAdjustmentBilling implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderAdjustmentId, invoiceId, invoiceItemSeqId, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderAdjustmentBilling(GenericValue value) {
-		orderAdjustmentId = (String) value.get(Fields.orderAdjustmentId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderAdjustmentId = (String) value.get(FIELD_ORDER_ADJUSTMENT_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderAdjustmentBilling fromValue(

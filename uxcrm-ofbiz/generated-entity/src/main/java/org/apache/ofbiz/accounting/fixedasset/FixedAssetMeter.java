@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Meter
  */
+@FieldNameConstants
 public class FixedAssetMeter implements Serializable {
 
-	public static final long serialVersionUID = 502482371690671104L;
+	public static final long serialVersionUID = 925541887463001088L;
 	public static final String NAME = "FixedAssetMeter";
 	/**
 	 * Fixed Asset Id
@@ -83,26 +85,18 @@ public class FixedAssetMeter implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, productMeterTypeId, readingDate, meterValue, readingReasonEnumId, maintHistSeqId, workEffortId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetMeter(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		productMeterTypeId = (String) value.get(Fields.productMeterTypeId
-				.name());
-		readingDate = (Timestamp) value.get(Fields.readingDate.name());
-		meterValue = (BigDecimal) value.get(Fields.meterValue.name());
-		readingReasonEnumId = (String) value.get(Fields.readingReasonEnumId
-				.name());
-		maintHistSeqId = (String) value.get(Fields.maintHistSeqId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		productMeterTypeId = (String) value.get(FIELD_PRODUCT_METER_TYPE_ID);
+		readingDate = (Timestamp) value.get(FIELD_READING_DATE);
+		meterValue = (BigDecimal) value.get(FIELD_METER_VALUE);
+		readingReasonEnumId = (String) value.get(FIELD_READING_REASON_ENUM_ID);
+		maintHistSeqId = (String) value.get(FIELD_MAINT_HIST_SEQ_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetMeter fromValue(

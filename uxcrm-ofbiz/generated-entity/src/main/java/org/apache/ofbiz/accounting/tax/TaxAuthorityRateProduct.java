@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority Rate Product
  */
+@FieldNameConstants
 public class TaxAuthorityRateProduct implements Serializable {
 
-	public static final long serialVersionUID = 7038288996444511232L;
+	public static final long serialVersionUID = 8689111536454505472L;
 	public static final String NAME = "TaxAuthorityRateProduct";
 	/**
 	 * Tax Authority Rate Seq Id
@@ -137,37 +139,30 @@ public class TaxAuthorityRateProduct implements Serializable {
 	@Setter
 	private String isTaxInShippingPrice;
 
-	public enum Fields {
-		taxAuthorityRateSeqId, taxAuthGeoId, taxAuthPartyId, taxAuthorityRateTypeId, productStoreId, productCategoryId, titleTransferEnumId, minItemPrice, minPurchase, taxShipping, taxPercentage, taxPromotions, fromDate, thruDate, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, isTaxInShippingPrice
-	}
-
 	public TaxAuthorityRateProduct(GenericValue value) {
-		taxAuthorityRateSeqId = (String) value.get(Fields.taxAuthorityRateSeqId
-				.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
+		taxAuthorityRateSeqId = (String) value
+				.get(FIELD_TAX_AUTHORITY_RATE_SEQ_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
 		taxAuthorityRateTypeId = (String) value
-				.get(Fields.taxAuthorityRateTypeId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		titleTransferEnumId = (String) value.get(Fields.titleTransferEnumId
-				.name());
-		minItemPrice = (BigDecimal) value.get(Fields.minItemPrice.name());
-		minPurchase = (BigDecimal) value.get(Fields.minPurchase.name());
-		taxShipping = (String) value.get(Fields.taxShipping.name());
-		taxPercentage = (BigDecimal) value.get(Fields.taxPercentage.name());
-		taxPromotions = (String) value.get(Fields.taxPromotions.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		isTaxInShippingPrice = (String) value.get(Fields.isTaxInShippingPrice
-				.name());
+				.get(FIELD_TAX_AUTHORITY_RATE_TYPE_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		titleTransferEnumId = (String) value.get(FIELD_TITLE_TRANSFER_ENUM_ID);
+		minItemPrice = (BigDecimal) value.get(FIELD_MIN_ITEM_PRICE);
+		minPurchase = (BigDecimal) value.get(FIELD_MIN_PURCHASE);
+		taxShipping = (String) value.get(FIELD_TAX_SHIPPING);
+		taxPercentage = (BigDecimal) value.get(FIELD_TAX_PERCENTAGE);
+		taxPromotions = (String) value.get(FIELD_TAX_PROMOTIONS);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		isTaxInShippingPrice = (String) value
+				.get(FIELD_IS_TAX_IN_SHIPPING_PRICE);
 	}
 
 	public static TaxAuthorityRateProduct fromValue(

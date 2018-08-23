@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portal Portlet
  */
+@FieldNameConstants
 public class PortalPortlet implements Serializable {
 
-	public static final long serialVersionUID = 4861165354225274880L;
+	public static final long serialVersionUID = 7343198030940009472L;
 	public static final String NAME = "PortalPortlet";
 	/**
 	 * Portal Portlet Id
@@ -100,29 +102,21 @@ public class PortalPortlet implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		portalPortletId, portletName, screenName, screenLocation, editFormName, editFormLocation, description, screenshot, securityServiceName, securityMainAction, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PortalPortlet(GenericValue value) {
-		portalPortletId = (String) value.get(Fields.portalPortletId.name());
-		portletName = (String) value.get(Fields.portletName.name());
-		screenName = (String) value.get(Fields.screenName.name());
-		screenLocation = (String) value.get(Fields.screenLocation.name());
-		editFormName = (String) value.get(Fields.editFormName.name());
-		editFormLocation = (String) value.get(Fields.editFormLocation.name());
-		description = (String) value.get(Fields.description.name());
-		screenshot = (String) value.get(Fields.screenshot.name());
-		securityServiceName = (String) value.get(Fields.securityServiceName
-				.name());
-		securityMainAction = (String) value.get(Fields.securityMainAction
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		portalPortletId = (String) value.get(FIELD_PORTAL_PORTLET_ID);
+		portletName = (String) value.get(FIELD_PORTLET_NAME);
+		screenName = (String) value.get(FIELD_SCREEN_NAME);
+		screenLocation = (String) value.get(FIELD_SCREEN_LOCATION);
+		editFormName = (String) value.get(FIELD_EDIT_FORM_NAME);
+		editFormLocation = (String) value.get(FIELD_EDIT_FORM_LOCATION);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		screenshot = (String) value.get(FIELD_SCREENSHOT);
+		securityServiceName = (String) value.get(FIELD_SECURITY_SERVICE_NAME);
+		securityMainAction = (String) value.get(FIELD_SECURITY_MAIN_ACTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PortalPortlet fromValue(

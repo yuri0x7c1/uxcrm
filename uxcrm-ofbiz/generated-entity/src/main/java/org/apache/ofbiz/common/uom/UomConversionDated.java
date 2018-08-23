@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.uom;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Uom Conversion Dated
  */
+@FieldNameConstants
 public class UomConversionDated implements Serializable {
 
-	public static final long serialVersionUID = 2715478104958743552L;
+	public static final long serialVersionUID = 73354216073917440L;
 	public static final String NAME = "UomConversionDated";
 	/**
 	 * Uom Id
@@ -94,26 +96,20 @@ public class UomConversionDated implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		uomId, uomIdTo, fromDate, thruDate, conversionFactor, customMethodId, decimalScale, roundingMode, purposeEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UomConversionDated(GenericValue value) {
-		uomId = (String) value.get(Fields.uomId.name());
-		uomIdTo = (String) value.get(Fields.uomIdTo.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		conversionFactor = (Double) value.get(Fields.conversionFactor.name());
-		customMethodId = (String) value.get(Fields.customMethodId.name());
-		decimalScale = (Long) value.get(Fields.decimalScale.name());
-		roundingMode = (String) value.get(Fields.roundingMode.name());
-		purposeEnumId = (String) value.get(Fields.purposeEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		uomId = (String) value.get(FIELD_UOM_ID);
+		uomIdTo = (String) value.get(FIELD_UOM_ID_TO);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		conversionFactor = (Double) value.get(FIELD_CONVERSION_FACTOR);
+		customMethodId = (String) value.get(FIELD_CUSTOM_METHOD_ID);
+		decimalScale = (Long) value.get(FIELD_DECIMAL_SCALE);
+		roundingMode = (String) value.get(FIELD_ROUNDING_MODE);
+		purposeEnumId = (String) value.get(FIELD_PURPOSE_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UomConversionDated fromValue(

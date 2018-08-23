@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment Method And Fin Account
  */
+@FieldNameConstants
 public class PaymentMethodAndFinAccount implements Serializable {
 
-	public static final long serialVersionUID = 7474672099911341056L;
+	public static final long serialVersionUID = 6132776101145929728L;
 	public static final String NAME = "PaymentMethodAndFinAccount";
 	/**
 	 * Fin Account Type Id
@@ -149,37 +151,29 @@ public class PaymentMethodAndFinAccount implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		finAccountTypeId, thruDate, isRefundable, availableBalance, fromDate, ownerPartyId, finAccountId, postToGlAccountId, currencyUomId, statusId, finAccountName, finAccountPin, actualBalance, replenishLevel, replenishPaymentId, organizationPartyId, finAccountCode, paymentMethodId, glAccountId, description, paymentMethodTypeId, partyId
-	}
-
 	public PaymentMethodAndFinAccount(GenericValue value) {
-		finAccountTypeId = (String) value.get(Fields.finAccountTypeId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		isRefundable = (String) value.get(Fields.isRefundable.name());
-		availableBalance = (BigDecimal) value.get(Fields.availableBalance
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		postToGlAccountId = (String) value.get(Fields.postToGlAccountId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		finAccountName = (String) value.get(Fields.finAccountName.name());
-		finAccountPin = (String) value.get(Fields.finAccountPin.name());
-		actualBalance = (BigDecimal) value.get(Fields.actualBalance.name());
-		replenishLevel = (BigDecimal) value.get(Fields.replenishLevel.name());
-		replenishPaymentId = (String) value.get(Fields.replenishPaymentId
-				.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		finAccountCode = (String) value.get(Fields.finAccountCode.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		description = (String) value.get(Fields.description.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		finAccountTypeId = (String) value.get(FIELD_FIN_ACCOUNT_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		isRefundable = (String) value.get(FIELD_IS_REFUNDABLE);
+		availableBalance = (BigDecimal) value.get(FIELD_AVAILABLE_BALANCE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		postToGlAccountId = (String) value.get(FIELD_POST_TO_GL_ACCOUNT_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		finAccountName = (String) value.get(FIELD_FIN_ACCOUNT_NAME);
+		finAccountPin = (String) value.get(FIELD_FIN_ACCOUNT_PIN);
+		actualBalance = (BigDecimal) value.get(FIELD_ACTUAL_BALANCE);
+		replenishLevel = (BigDecimal) value.get(FIELD_REPLENISH_LEVEL);
+		replenishPaymentId = (String) value.get(FIELD_REPLENISH_PAYMENT_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		finAccountCode = (String) value.get(FIELD_FIN_ACCOUNT_CODE);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static PaymentMethodAndFinAccount fromValue(

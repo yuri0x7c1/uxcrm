@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Work Effort
  */
+@FieldNameConstants
 public class OrderHeaderAndWorkEffort implements Serializable {
 
-	public static final long serialVersionUID = 8928900086892593152L;
+	public static final long serialVersionUID = 5654388438695934976L;
 	public static final String NAME = "OrderHeaderAndWorkEffort";
 	/**
 	 * Work Effort Id
@@ -491,118 +493,96 @@ public class OrderHeaderAndWorkEffort implements Serializable {
 	@Setter
 	private String internalCode;
 
-	public enum Fields {
-		workEffortId, recurrenceInfoId, workEffortTypeId, reservPersons, revisionNumber, tempExprId, showAsEnumId, infoUrl, universalId, locationDesc, createdByUserLogin, actualMilliSeconds, quantityToProduce, workEffortPurposeTypeId, serviceLoaderName, accommodationSpotId, estimatedStartDate, sendNotificationEmail, noteId, quantityRejected, priority, currentStatusId, runtimeDataId, estimatedMilliSeconds, specialTerms, timeTransparency, actualCompletionDate, fixedAssetId, reserv2ndPPPerc, totalMoneyAllowed, estimateCalcMethod, workEffortParentId, description, moneyUomId, reservNthPPPerc, workEffortName, lastModifiedByUserLogin, accommodationMapId, actualStartDate, scopeEnumId, quantityProduced, facilityId, estimatedSetupMillis, lastModifiedDate, sourceReferenceId, lastStatusUpdate, percentComplete, totalMilliSecondsAllowed, createdDate, actualSetupMillis, estimatedCompletionDate, invoicePerShipment, salesChannelEnumId, orderId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
-	}
-
 	public OrderHeaderAndWorkEffort(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		workEffortTypeId = (String) value.get(Fields.workEffortTypeId.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		revisionNumber = (Long) value.get(Fields.revisionNumber.name());
-		tempExprId = (String) value.get(Fields.tempExprId.name());
-		showAsEnumId = (String) value.get(Fields.showAsEnumId.name());
-		infoUrl = (String) value.get(Fields.infoUrl.name());
-		universalId = (String) value.get(Fields.universalId.name());
-		locationDesc = (String) value.get(Fields.locationDesc.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		actualMilliSeconds = (Double) value.get(Fields.actualMilliSeconds
-				.name());
-		quantityToProduce = (BigDecimal) value.get(Fields.quantityToProduce
-				.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		workEffortTypeId = (String) value.get(FIELD_WORK_EFFORT_TYPE_ID);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		revisionNumber = (Long) value.get(FIELD_REVISION_NUMBER);
+		tempExprId = (String) value.get(FIELD_TEMP_EXPR_ID);
+		showAsEnumId = (String) value.get(FIELD_SHOW_AS_ENUM_ID);
+		infoUrl = (String) value.get(FIELD_INFO_URL);
+		universalId = (String) value.get(FIELD_UNIVERSAL_ID);
+		locationDesc = (String) value.get(FIELD_LOCATION_DESC);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		actualMilliSeconds = (Double) value.get(FIELD_ACTUAL_MILLI_SECONDS);
+		quantityToProduce = (BigDecimal) value.get(FIELD_QUANTITY_TO_PRODUCE);
 		workEffortPurposeTypeId = (String) value
-				.get(Fields.workEffortPurposeTypeId.name());
-		serviceLoaderName = (String) value.get(Fields.serviceLoaderName.name());
-		accommodationSpotId = (String) value.get(Fields.accommodationSpotId
-				.name());
-		estimatedStartDate = (Timestamp) value.get(Fields.estimatedStartDate
-				.name());
-		sendNotificationEmail = (String) value.get(Fields.sendNotificationEmail
-				.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		quantityRejected = (BigDecimal) value.get(Fields.quantityRejected
-				.name());
-		priority = (Long) value.get(Fields.priority.name());
-		currentStatusId = (String) value.get(Fields.currentStatusId.name());
-		runtimeDataId = (String) value.get(Fields.runtimeDataId.name());
-		estimatedMilliSeconds = (Double) value.get(Fields.estimatedMilliSeconds
-				.name());
-		specialTerms = (String) value.get(Fields.specialTerms.name());
-		timeTransparency = (Long) value.get(Fields.timeTransparency.name());
+				.get(FIELD_WORK_EFFORT_PURPOSE_TYPE_ID);
+		serviceLoaderName = (String) value.get(FIELD_SERVICE_LOADER_NAME);
+		accommodationSpotId = (String) value.get(FIELD_ACCOMMODATION_SPOT_ID);
+		estimatedStartDate = (Timestamp) value.get(FIELD_ESTIMATED_START_DATE);
+		sendNotificationEmail = (String) value
+				.get(FIELD_SEND_NOTIFICATION_EMAIL);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		quantityRejected = (BigDecimal) value.get(FIELD_QUANTITY_REJECTED);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		currentStatusId = (String) value.get(FIELD_CURRENT_STATUS_ID);
+		runtimeDataId = (String) value.get(FIELD_RUNTIME_DATA_ID);
+		estimatedMilliSeconds = (Double) value
+				.get(FIELD_ESTIMATED_MILLI_SECONDS);
+		specialTerms = (String) value.get(FIELD_SPECIAL_TERMS);
+		timeTransparency = (Long) value.get(FIELD_TIME_TRANSPARENCY);
 		actualCompletionDate = (Timestamp) value
-				.get(Fields.actualCompletionDate.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		reserv2ndPPPerc = (BigDecimal) value.get(Fields.reserv2ndPPPerc.name());
-		totalMoneyAllowed = (BigDecimal) value.get(Fields.totalMoneyAllowed
-				.name());
-		estimateCalcMethod = (String) value.get(Fields.estimateCalcMethod
-				.name());
-		workEffortParentId = (String) value.get(Fields.workEffortParentId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		moneyUomId = (String) value.get(Fields.moneyUomId.name());
-		reservNthPPPerc = (BigDecimal) value.get(Fields.reservNthPPPerc.name());
-		workEffortName = (String) value.get(Fields.workEffortName.name());
+				.get(FIELD_ACTUAL_COMPLETION_DATE);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		reserv2ndPPPerc = (BigDecimal) value.get(FIELD_RESERV2ND_P_P_PERC);
+		totalMoneyAllowed = (BigDecimal) value.get(FIELD_TOTAL_MONEY_ALLOWED);
+		estimateCalcMethod = (String) value.get(FIELD_ESTIMATE_CALC_METHOD);
+		workEffortParentId = (String) value.get(FIELD_WORK_EFFORT_PARENT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		moneyUomId = (String) value.get(FIELD_MONEY_UOM_ID);
+		reservNthPPPerc = (BigDecimal) value.get(FIELD_RESERV_NTH_P_P_PERC);
+		workEffortName = (String) value.get(FIELD_WORK_EFFORT_NAME);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		accommodationMapId = (String) value.get(Fields.accommodationMapId
-				.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
-		scopeEnumId = (String) value.get(Fields.scopeEnumId.name());
-		quantityProduced = (BigDecimal) value.get(Fields.quantityProduced
-				.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		estimatedSetupMillis = (Double) value.get(Fields.estimatedSetupMillis
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		sourceReferenceId = (String) value.get(Fields.sourceReferenceId.name());
-		lastStatusUpdate = (Timestamp) value
-				.get(Fields.lastStatusUpdate.name());
-		percentComplete = (Long) value.get(Fields.percentComplete.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		accommodationMapId = (String) value.get(FIELD_ACCOMMODATION_MAP_ID);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
+		scopeEnumId = (String) value.get(FIELD_SCOPE_ENUM_ID);
+		quantityProduced = (BigDecimal) value.get(FIELD_QUANTITY_PRODUCED);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		estimatedSetupMillis = (Double) value.get(FIELD_ESTIMATED_SETUP_MILLIS);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		sourceReferenceId = (String) value.get(FIELD_SOURCE_REFERENCE_ID);
+		lastStatusUpdate = (Timestamp) value.get(FIELD_LAST_STATUS_UPDATE);
+		percentComplete = (Long) value.get(FIELD_PERCENT_COMPLETE);
 		totalMilliSecondsAllowed = (Double) value
-				.get(Fields.totalMilliSecondsAllowed.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		actualSetupMillis = (Double) value.get(Fields.actualSetupMillis.name());
+				.get(FIELD_TOTAL_MILLI_SECONDS_ALLOWED);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		actualSetupMillis = (Double) value.get(FIELD_ACTUAL_SETUP_MILLIS);
 		estimatedCompletionDate = (Timestamp) value
-				.get(Fields.estimatedCompletionDate.name());
-		invoicePerShipment = (String) value.get(Fields.invoicePerShipment
-				.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		terminalId = (String) value.get(Fields.terminalId.name());
-		isViewed = (String) value.get(Fields.isViewed.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
-				.name());
-		orderName = (String) value.get(Fields.orderName.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		isRushOrder = (String) value.get(Fields.isRushOrder.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
+				.get(FIELD_ESTIMATED_COMPLETION_DATE);
+		invoicePerShipment = (String) value.get(FIELD_INVOICE_PER_SHIPMENT);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		terminalId = (String) value.get(FIELD_TERMINAL_ID);
+		isViewed = (String) value.get(FIELD_IS_VIEWED);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		remainingSubTotal = (BigDecimal) value.get(FIELD_REMAINING_SUB_TOTAL);
+		orderName = (String) value.get(FIELD_ORDER_NAME);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		isRushOrder = (String) value.get(FIELD_IS_RUSH_ORDER);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
 		autoOrderShoppingListId = (String) value
-				.get(Fields.autoOrderShoppingListId.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		transactionId = (String) value.get(Fields.transactionId.name());
-		firstAttemptOrderId = (String) value.get(Fields.firstAttemptOrderId
-				.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		createdBy = (String) value.get(Fields.createdBy.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
+				.get(FIELD_AUTO_ORDER_SHOPPING_LIST_ID);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		transactionId = (String) value.get(FIELD_TRANSACTION_ID);
+		firstAttemptOrderId = (String) value.get(FIELD_FIRST_ATTEMPT_ORDER_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		createdBy = (String) value.get(FIELD_CREATED_BY);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
 		pickSheetPrintedDate = (Timestamp) value
-				.get(Fields.pickSheetPrintedDate.name());
+				.get(FIELD_PICK_SHEET_PRINTED_DATE);
 		needsInventoryIssuance = (String) value
-				.get(Fields.needsInventoryIssuance.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		internalCode = (String) value.get(Fields.internalCode.name());
+				.get(FIELD_NEEDS_INVENTORY_ISSUANCE);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		internalCode = (String) value.get(FIELD_INTERNAL_CODE);
 	}
 
 	public static OrderHeaderAndWorkEffort fromValue(

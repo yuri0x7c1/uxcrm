@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Communication Event View
  */
+@FieldNameConstants
 public class WorkEffortCommunicationEventView implements Serializable {
 
-	public static final long serialVersionUID = 530447941135839232L;
+	public static final long serialVersionUID = 5900043614252752896L;
 	public static final String NAME = "WorkEffortCommunicationEventView";
 	/**
 	 * Work Effort Id
@@ -190,42 +192,37 @@ public class WorkEffortCommunicationEventView implements Serializable {
 	@Setter
 	private String fromString;
 
-	public enum Fields {
-		workEffortId, communicationEventId, description, partyIdFrom, note, subject, ccString, contactMechTypeId, communicationEventTypeId, content, contentMimeTypeId, datetimeStarted, contactListId, contactMechIdFrom, reasonEnumId, roleTypeIdTo, parentCommEventId, entryDate, datetimeEnded, origCommEventId, messageId, roleTypeIdFrom, contactMechIdTo, headerString, statusId, bccString, partyIdTo, toString, fromString
-	}
-
 	public WorkEffortCommunicationEventView(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		note = (String) value.get(Fields.note.name());
-		subject = (String) value.get(Fields.subject.name());
-		ccString = (String) value.get(Fields.ccString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		note = (String) value.get(FIELD_NOTE);
+		subject = (String) value.get(FIELD_SUBJECT);
+		ccString = (String) value.get(FIELD_CC_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
 		communicationEventTypeId = (String) value
-				.get(Fields.communicationEventTypeId.name());
-		content = (String) value.get(Fields.content.name());
-		contentMimeTypeId = (String) value.get(Fields.contentMimeTypeId.name());
-		datetimeStarted = (Timestamp) value.get(Fields.datetimeStarted.name());
-		contactListId = (String) value.get(Fields.contactListId.name());
-		contactMechIdFrom = (String) value.get(Fields.contactMechIdFrom.name());
-		reasonEnumId = (String) value.get(Fields.reasonEnumId.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		parentCommEventId = (String) value.get(Fields.parentCommEventId.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		datetimeEnded = (Timestamp) value.get(Fields.datetimeEnded.name());
-		origCommEventId = (String) value.get(Fields.origCommEventId.name());
-		messageId = (String) value.get(Fields.messageId.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		contactMechIdTo = (String) value.get(Fields.contactMechIdTo.name());
-		headerString = (String) value.get(Fields.headerString.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		bccString = (String) value.get(Fields.bccString.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		toString = (String) value.get(Fields.toString.name());
-		fromString = (String) value.get(Fields.fromString.name());
+				.get(FIELD_COMMUNICATION_EVENT_TYPE_ID);
+		content = (String) value.get(FIELD_CONTENT);
+		contentMimeTypeId = (String) value.get(FIELD_CONTENT_MIME_TYPE_ID);
+		datetimeStarted = (Timestamp) value.get(FIELD_DATETIME_STARTED);
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		contactMechIdFrom = (String) value.get(FIELD_CONTACT_MECH_ID_FROM);
+		reasonEnumId = (String) value.get(FIELD_REASON_ENUM_ID);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		parentCommEventId = (String) value.get(FIELD_PARENT_COMM_EVENT_ID);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		datetimeEnded = (Timestamp) value.get(FIELD_DATETIME_ENDED);
+		origCommEventId = (String) value.get(FIELD_ORIG_COMM_EVENT_ID);
+		messageId = (String) value.get(FIELD_MESSAGE_ID);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		contactMechIdTo = (String) value.get(FIELD_CONTACT_MECH_ID_TO);
+		headerString = (String) value.get(FIELD_HEADER_STRING);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		bccString = (String) value.get(FIELD_BCC_STRING);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		toString = (String) value.get(FIELD_TO_STRING);
+		fromString = (String) value.get(FIELD_FROM_STRING);
 	}
 
 	public static WorkEffortCommunicationEventView fromValue(

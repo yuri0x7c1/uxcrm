@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Requirement And Role
  */
+@FieldNameConstants
 public class RequirementAndRole implements Serializable {
 
-	public static final long serialVersionUID = 5726998161038134272L;
+	public static final long serialVersionUID = 5938600150769418240L;
 	public static final String NAME = "RequirementAndRole";
 	/**
 	 * Requirement Id
@@ -131,33 +133,28 @@ public class RequirementAndRole implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		requirementId, requirementTypeId, statusId, facilityId, deliverableId, fixedAssetId, productId, description, requirementStartDate, requiredByDate, estimatedBudget, quantity, reason, lastModifiedDate, lastModifiedByUserLogin, partyId, roleTypeId, fromDate, thruDate
-	}
-
 	public RequirementAndRole(GenericValue value) {
-		requirementId = (String) value.get(Fields.requirementId.name());
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		deliverableId = (String) value.get(Fields.deliverableId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		productId = (String) value.get(Fields.productId.name());
-		description = (String) value.get(Fields.description.name());
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		deliverableId = (String) value.get(FIELD_DELIVERABLE_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
 		requirementStartDate = (Timestamp) value
-				.get(Fields.requirementStartDate.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
-		estimatedBudget = (BigDecimal) value.get(Fields.estimatedBudget.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		reason = (String) value.get(Fields.reason.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_REQUIREMENT_START_DATE);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
+		estimatedBudget = (BigDecimal) value.get(FIELD_ESTIMATED_BUDGET);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		reason = (String) value.get(FIELD_REASON);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static RequirementAndRole fromValue(

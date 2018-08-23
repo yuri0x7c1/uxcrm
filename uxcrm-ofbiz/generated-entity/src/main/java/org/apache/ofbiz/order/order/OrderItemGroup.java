@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Item Group
  */
+@FieldNameConstants
 public class OrderItemGroup implements Serializable {
 
-	public static final long serialVersionUID = 1268881242710306816L;
+	public static final long serialVersionUID = 2877545023413877760L;
 	public static final String NAME = "OrderItemGroup";
 	/**
 	 * Order Id
@@ -64,22 +66,15 @@ public class OrderItemGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemGroupSeqId, parentGroupSeqId, groupName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemGroup(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemGroupSeqId = (String) value.get(Fields.orderItemGroupSeqId
-				.name());
-		parentGroupSeqId = (String) value.get(Fields.parentGroupSeqId.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemGroupSeqId = (String) value.get(FIELD_ORDER_ITEM_GROUP_SEQ_ID);
+		parentGroupSeqId = (String) value.get(FIELD_PARENT_GROUP_SEQ_ID);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemGroup fromValue(

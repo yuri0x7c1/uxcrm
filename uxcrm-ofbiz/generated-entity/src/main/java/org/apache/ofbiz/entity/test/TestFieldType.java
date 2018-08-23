@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +16,10 @@ import java.util.ArrayList;
 /**
  * Test Field Type
  */
+@FieldNameConstants
 public class TestFieldType implements Serializable {
 
-	public static final long serialVersionUID = 5403659989722456064L;
+	public static final long serialVersionUID = 161652951235303424L;
 	public static final String NAME = "TestFieldType";
 	/**
 	 * Test Field Type Id
@@ -110,29 +112,22 @@ public class TestFieldType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testFieldTypeId, blobField, byteArrayField, objectField, dateField, timeField, dateTimeField, fixedPointField, floatingPointField, numericField, clobField, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestFieldType(GenericValue value) {
-		testFieldTypeId = (String) value.get(Fields.testFieldTypeId.name());
-		blobField = (Blob) value.get(Fields.blobField.name());
-		byteArrayField = (byte[]) value.get(Fields.byteArrayField.name());
-		objectField = (Object) value.get(Fields.objectField.name());
-		dateField = (Date) value.get(Fields.dateField.name());
-		timeField = (Time) value.get(Fields.timeField.name());
-		dateTimeField = (Timestamp) value.get(Fields.dateTimeField.name());
-		fixedPointField = (BigDecimal) value.get(Fields.fixedPointField.name());
-		floatingPointField = (Double) value.get(Fields.floatingPointField
-				.name());
-		numericField = (Long) value.get(Fields.numericField.name());
-		clobField = (String) value.get(Fields.clobField.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testFieldTypeId = (String) value.get(FIELD_TEST_FIELD_TYPE_ID);
+		blobField = (Blob) value.get(FIELD_BLOB_FIELD);
+		byteArrayField = (byte[]) value.get(FIELD_BYTE_ARRAY_FIELD);
+		objectField = (Object) value.get(FIELD_OBJECT_FIELD);
+		dateField = (Date) value.get(FIELD_DATE_FIELD);
+		timeField = (Time) value.get(FIELD_TIME_FIELD);
+		dateTimeField = (Timestamp) value.get(FIELD_DATE_TIME_FIELD);
+		fixedPointField = (BigDecimal) value.get(FIELD_FIXED_POINT_FIELD);
+		floatingPointField = (Double) value.get(FIELD_FLOATING_POINT_FIELD);
+		numericField = (Long) value.get(FIELD_NUMERIC_FIELD);
+		clobField = (String) value.get(FIELD_CLOB_FIELD);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestFieldType fromValue(

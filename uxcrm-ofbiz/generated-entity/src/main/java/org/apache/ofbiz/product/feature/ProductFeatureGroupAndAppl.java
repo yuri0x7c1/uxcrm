@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Feature Group And Appl
  */
+@FieldNameConstants
 public class ProductFeatureGroupAndAppl implements Serializable {
 
-	public static final long serialVersionUID = 8852506600140498944L;
+	public static final long serialVersionUID = 8258012865865445376L;
 	public static final String NAME = "ProductFeatureGroupAndAppl";
 	/**
 	 * From Date
@@ -101,28 +103,24 @@ public class ProductFeatureGroupAndAppl implements Serializable {
 	@Setter
 	private String abbrev;
 
-	public enum Fields {
-		fromDate, sequenceNum, productFeatureId, productFeatureGroupId, thruDate, productFeatureTypeId, idCode, numberSpecified, productFeatureCategoryId, description, uomId, defaultSequenceNum, defaultAmount, abbrev
-	}
-
 	public ProductFeatureGroupAndAppl(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productFeatureGroupId = (String) value.get(Fields.productFeatureGroupId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		productFeatureTypeId = (String) value.get(Fields.productFeatureTypeId
-				.name());
-		idCode = (String) value.get(Fields.idCode.name());
-		numberSpecified = (BigDecimal) value.get(Fields.numberSpecified.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productFeatureGroupId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_GROUP_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		productFeatureTypeId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_TYPE_ID);
+		idCode = (String) value.get(FIELD_ID_CODE);
+		numberSpecified = (BigDecimal) value.get(FIELD_NUMBER_SPECIFIED);
 		productFeatureCategoryId = (String) value
-				.get(Fields.productFeatureCategoryId.name());
-		description = (String) value.get(Fields.description.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		defaultSequenceNum = (Long) value.get(Fields.defaultSequenceNum.name());
-		defaultAmount = (BigDecimal) value.get(Fields.defaultAmount.name());
-		abbrev = (String) value.get(Fields.abbrev.name());
+				.get(FIELD_PRODUCT_FEATURE_CATEGORY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		defaultSequenceNum = (Long) value.get(FIELD_DEFAULT_SEQUENCE_NUM);
+		defaultAmount = (BigDecimal) value.get(FIELD_DEFAULT_AMOUNT);
+		abbrev = (String) value.get(FIELD_ABBREV);
 	}
 
 	public static ProductFeatureGroupAndAppl fromValue(

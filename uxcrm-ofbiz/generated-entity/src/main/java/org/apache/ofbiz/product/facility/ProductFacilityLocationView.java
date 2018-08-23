@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Facility Location View
  */
+@FieldNameConstants
 public class ProductFacilityLocationView implements Serializable {
 
-	public static final long serialVersionUID = 1435149987397317632L;
+	public static final long serialVersionUID = 4379583961111231488L;
 	public static final String NAME = "ProductFacilityLocationView";
 	/**
 	 * Facility Id
@@ -88,24 +90,19 @@ public class ProductFacilityLocationView implements Serializable {
 	@Setter
 	private String locationTypeEnumId;
 
-	public enum Fields {
-		facilityId, productId, moveQuantity, minimumStock, locationSeqId, sectionId, aisleId, areaId, positionId, levelId, geoPointId, locationTypeEnumId
-	}
-
 	public ProductFacilityLocationView(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
-		productId = (String) value.get(Fields.productId.name());
-		moveQuantity = (BigDecimal) value.get(Fields.moveQuantity.name());
-		minimumStock = (BigDecimal) value.get(Fields.minimumStock.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		sectionId = (String) value.get(Fields.sectionId.name());
-		aisleId = (String) value.get(Fields.aisleId.name());
-		areaId = (String) value.get(Fields.areaId.name());
-		positionId = (String) value.get(Fields.positionId.name());
-		levelId = (String) value.get(Fields.levelId.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		locationTypeEnumId = (String) value.get(Fields.locationTypeEnumId
-				.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		moveQuantity = (BigDecimal) value.get(FIELD_MOVE_QUANTITY);
+		minimumStock = (BigDecimal) value.get(FIELD_MINIMUM_STOCK);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		sectionId = (String) value.get(FIELD_SECTION_ID);
+		aisleId = (String) value.get(FIELD_AISLE_ID);
+		areaId = (String) value.get(FIELD_AREA_ID);
+		positionId = (String) value.get(FIELD_POSITION_ID);
+		levelId = (String) value.get(FIELD_LEVEL_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		locationTypeEnumId = (String) value.get(FIELD_LOCATION_TYPE_ENUM_ID);
 	}
 
 	public static ProductFacilityLocationView fromValue(

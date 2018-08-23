@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.cost;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cost Component Type Attr
  */
+@FieldNameConstants
 public class CostComponentTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 4636172630742413312L;
+	public static final long serialVersionUID = 2594236337072617472L;
 	public static final String NAME = "CostComponentTypeAttr";
 	/**
 	 * Cost Component Type Id
@@ -58,21 +60,14 @@ public class CostComponentTypeAttr implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		costComponentTypeId, attrName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CostComponentTypeAttr(GenericValue value) {
-		costComponentTypeId = (String) value.get(Fields.costComponentTypeId
-				.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		costComponentTypeId = (String) value.get(FIELD_COST_COMPONENT_TYPE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CostComponentTypeAttr fromValue(

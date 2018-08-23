@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Detail Summary
  */
+@FieldNameConstants
 public class InventoryItemDetailSummary implements Serializable {
 
-	public static final long serialVersionUID = 5319983228569812992L;
+	public static final long serialVersionUID = 4803501574852734976L;
 	public static final String NAME = "InventoryItemDetailSummary";
 	/**
 	 * Inventory Item Id
@@ -40,18 +42,14 @@ public class InventoryItemDetailSummary implements Serializable {
 	@Setter
 	private BigDecimal accountingQuantityTotal;
 
-	public enum Fields {
-		inventoryItemId, availableToPromiseTotal, quantityOnHandTotal, accountingQuantityTotal
-	}
-
 	public InventoryItemDetailSummary(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
 		availableToPromiseTotal = (BigDecimal) value
-				.get(Fields.availableToPromiseTotal.name());
-		quantityOnHandTotal = (BigDecimal) value.get(Fields.quantityOnHandTotal
-				.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_TOTAL);
+		quantityOnHandTotal = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_TOTAL);
 		accountingQuantityTotal = (BigDecimal) value
-				.get(Fields.accountingQuantityTotal.name());
+				.get(FIELD_ACCOUNTING_QUANTITY_TOTAL);
 	}
 
 	public static InventoryItemDetailSummary fromValue(

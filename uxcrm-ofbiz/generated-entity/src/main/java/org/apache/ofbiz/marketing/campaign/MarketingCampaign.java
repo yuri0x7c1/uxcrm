@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.campaign;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Marketing Campaign
  */
+@FieldNameConstants
 public class MarketingCampaign implements Serializable {
 
-	public static final long serialVersionUID = 7488721708581478400L;
+	public static final long serialVersionUID = 4609745033812048896L;
 	public static final String NAME = "MarketingCampaign";
 	/**
 	 * Marketing Campaign Id
@@ -155,40 +157,32 @@ public class MarketingCampaign implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		marketingCampaignId, parentCampaignId, statusId, campaignName, campaignSummary, budgetedCost, actualCost, estimatedCost, currencyUomId, fromDate, thruDate, isActive, convertedLeads, expectedResponsePercent, expectedRevenue, numSent, startDate, createdByUserLogin, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MarketingCampaign(GenericValue value) {
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		parentCampaignId = (String) value.get(Fields.parentCampaignId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		campaignName = (String) value.get(Fields.campaignName.name());
-		campaignSummary = (String) value.get(Fields.campaignSummary.name());
-		budgetedCost = (BigDecimal) value.get(Fields.budgetedCost.name());
-		actualCost = (BigDecimal) value.get(Fields.actualCost.name());
-		estimatedCost = (BigDecimal) value.get(Fields.estimatedCost.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		isActive = (String) value.get(Fields.isActive.name());
-		convertedLeads = (String) value.get(Fields.convertedLeads.name());
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		parentCampaignId = (String) value.get(FIELD_PARENT_CAMPAIGN_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		campaignName = (String) value.get(FIELD_CAMPAIGN_NAME);
+		campaignSummary = (String) value.get(FIELD_CAMPAIGN_SUMMARY);
+		budgetedCost = (BigDecimal) value.get(FIELD_BUDGETED_COST);
+		actualCost = (BigDecimal) value.get(FIELD_ACTUAL_COST);
+		estimatedCost = (BigDecimal) value.get(FIELD_ESTIMATED_COST);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		isActive = (String) value.get(FIELD_IS_ACTIVE);
+		convertedLeads = (String) value.get(FIELD_CONVERTED_LEADS);
 		expectedResponsePercent = (Double) value
-				.get(Fields.expectedResponsePercent.name());
-		expectedRevenue = (BigDecimal) value.get(Fields.expectedRevenue.name());
-		numSent = (Long) value.get(Fields.numSent.name());
-		startDate = (Timestamp) value.get(Fields.startDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+				.get(FIELD_EXPECTED_RESPONSE_PERCENT);
+		expectedRevenue = (BigDecimal) value.get(FIELD_EXPECTED_REVENUE);
+		numSent = (Long) value.get(FIELD_NUM_SENT);
+		startDate = (Timestamp) value.get(FIELD_START_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MarketingCampaign fromValue(

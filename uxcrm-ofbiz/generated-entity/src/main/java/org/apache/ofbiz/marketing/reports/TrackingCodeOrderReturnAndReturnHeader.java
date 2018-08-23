@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code Order Return And Return Header
  */
+@FieldNameConstants
 public class TrackingCodeOrderReturnAndReturnHeader implements Serializable {
 
-	public static final long serialVersionUID = 4401838974438036480L;
+	public static final long serialVersionUID = 7352974503207105536L;
 	public static final String NAME = "TrackingCodeOrderReturnAndReturnHeader";
 	/**
 	 * Return Id
@@ -64,20 +66,16 @@ public class TrackingCodeOrderReturnAndReturnHeader implements Serializable {
 	@Setter
 	private String statusId;
 
-	public enum Fields {
-		returnId, orderId, orderItemSeqId, trackingCodeId, siteId, hasExported, affiliateReferredTimeStamp, statusId
-	}
-
 	public TrackingCodeOrderReturnAndReturnHeader(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
-		siteId = (String) value.get(Fields.siteId.name());
-		hasExported = (String) value.get(Fields.hasExported.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
+		siteId = (String) value.get(FIELD_SITE_ID);
+		hasExported = (String) value.get(FIELD_HAS_EXPORTED);
 		affiliateReferredTimeStamp = (Timestamp) value
-				.get(Fields.affiliateReferredTimeStamp.name());
-		statusId = (String) value.get(Fields.statusId.name());
+				.get(FIELD_AFFILIATE_REFERRED_TIME_STAMP);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 	}
 
 	public static TrackingCodeOrderReturnAndReturnHeader fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Facility Contact Mech
  */
+@FieldNameConstants
 public class FacilityContactMech implements Serializable {
 
-	public static final long serialVersionUID = 281812146733586432L;
+	public static final long serialVersionUID = 2965084268569150464L;
 	public static final String NAME = "FacilityContactMech";
 	/**
 	 * Facility Id
@@ -76,23 +78,17 @@ public class FacilityContactMech implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		facilityId, contactMechId, fromDate, thruDate, extension, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FacilityContactMech(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		extension = (String) value.get(Fields.extension.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		extension = (String) value.get(FIELD_EXTENSION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FacilityContactMech fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.supplier;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Reorder Guideline
  */
+@FieldNameConstants
 public class ReorderGuideline implements Serializable {
 
-	public static final long serialVersionUID = 2421099138504252416L;
+	public static final long serialVersionUID = 5361882344205791232L;
 	public static final String NAME = "ReorderGuideline";
 	/**
 	 * Reorder Guideline Id
@@ -101,28 +103,21 @@ public class ReorderGuideline implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		reorderGuidelineId, productId, partyId, roleTypeId, facilityId, geoId, fromDate, thruDate, reorderQuantity, reorderLevel, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReorderGuideline(GenericValue value) {
-		reorderGuidelineId = (String) value.get(Fields.reorderGuidelineId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		reorderQuantity = (BigDecimal) value.get(Fields.reorderQuantity.name());
-		reorderLevel = (BigDecimal) value.get(Fields.reorderLevel.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		reorderGuidelineId = (String) value.get(FIELD_REORDER_GUIDELINE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		reorderQuantity = (BigDecimal) value.get(FIELD_REORDER_QUANTITY);
+		reorderLevel = (BigDecimal) value.get(FIELD_REORDER_LEVEL);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReorderGuideline fromValue(

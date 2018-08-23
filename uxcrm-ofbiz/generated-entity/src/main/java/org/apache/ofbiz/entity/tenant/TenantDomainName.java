@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.tenant;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tenant Domain Name
  */
+@FieldNameConstants
 public class TenantDomainName implements Serializable {
 
-	public static final long serialVersionUID = 2758774187552834560L;
+	public static final long serialVersionUID = 8697703956493709312L;
 	public static final String NAME = "TenantDomainName";
 	/**
 	 * Tenant Id
@@ -52,19 +54,13 @@ public class TenantDomainName implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		tenantId, domainName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TenantDomainName(GenericValue value) {
-		tenantId = (String) value.get(Fields.tenantId.name());
-		domainName = (String) value.get(Fields.domainName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		tenantId = (String) value.get(FIELD_TENANT_ID);
+		domainName = (String) value.get(FIELD_DOMAIN_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TenantDomainName fromValue(

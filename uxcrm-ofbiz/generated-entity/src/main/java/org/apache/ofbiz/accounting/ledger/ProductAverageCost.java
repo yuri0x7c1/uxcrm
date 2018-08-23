@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Average Cost
  */
+@FieldNameConstants
 public class ProductAverageCost implements Serializable {
 
-	public static final long serialVersionUID = 554400962154699776L;
+	public static final long serialVersionUID = 3835340090908821504L;
 	public static final String NAME = "ProductAverageCost";
 	/**
 	 * Product Average Cost Type Id
@@ -83,26 +85,19 @@ public class ProductAverageCost implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productAverageCostTypeId, organizationPartyId, productId, facilityId, fromDate, thruDate, averageCost, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductAverageCost(GenericValue value) {
 		productAverageCostTypeId = (String) value
-				.get(Fields.productAverageCostTypeId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		averageCost = (BigDecimal) value.get(Fields.averageCost.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_AVERAGE_COST_TYPE_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		averageCost = (BigDecimal) value.get(FIELD_AVERAGE_COST);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductAverageCost fromValue(

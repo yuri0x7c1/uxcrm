@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Benefit Type And Party
  */
+@FieldNameConstants
 public class BenefitTypeAndParty implements Serializable {
 
-	public static final long serialVersionUID = 6617947518425081856L;
+	public static final long serialVersionUID = 4270331936212390912L;
 	public static final String NAME = "BenefitTypeAndParty";
 	/**
 	 * Parent Type Id
@@ -113,29 +115,25 @@ public class BenefitTypeAndParty implements Serializable {
 	@Setter
 	private String partyIdTo;
 
-	public enum Fields {
-		parentTypeId, employerPaidPercentage, hasTable, benefitName, benefitTypeId, description, roleTypeIdTo, partyIdFrom, cost, actualEmployerPaidPercent, periodTypeId, roleTypeIdFrom, thruDate, fromDate, availableTime, partyIdTo
-	}
-
 	public BenefitTypeAndParty(GenericValue value) {
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
 		employerPaidPercentage = (Double) value
-				.get(Fields.employerPaidPercentage.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		benefitName = (String) value.get(Fields.benefitName.name());
-		benefitTypeId = (String) value.get(Fields.benefitTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		cost = (BigDecimal) value.get(Fields.cost.name());
+				.get(FIELD_EMPLOYER_PAID_PERCENTAGE);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		benefitName = (String) value.get(FIELD_BENEFIT_NAME);
+		benefitTypeId = (String) value.get(FIELD_BENEFIT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		cost = (BigDecimal) value.get(FIELD_COST);
 		actualEmployerPaidPercent = (Double) value
-				.get(Fields.actualEmployerPaidPercent.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		availableTime = (Long) value.get(Fields.availableTime.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
+				.get(FIELD_ACTUAL_EMPLOYER_PAID_PERCENT);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		availableTime = (Long) value.get(FIELD_AVAILABLE_TIME);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
 	}
 
 	public static BenefitTypeAndParty fromValue(

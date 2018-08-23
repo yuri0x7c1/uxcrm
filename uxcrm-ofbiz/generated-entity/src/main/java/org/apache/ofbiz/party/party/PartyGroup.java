@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Party Group
  */
+@FieldNameConstants
 public class PartyGroup implements Serializable {
 
-	public static final long serialVersionUID = 8731367510437168128L;
+	public static final long serialVersionUID = 9137626889380399104L;
 	public static final String NAME = "PartyGroup";
 	/**
 	 * Party Id
@@ -95,26 +97,20 @@ public class PartyGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, groupName, groupNameLocal, officeSiteName, annualRevenue, numEmployees, tickerSymbol, comments, logoImageUrl, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyGroup(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		officeSiteName = (String) value.get(Fields.officeSiteName.name());
-		annualRevenue = (BigDecimal) value.get(Fields.annualRevenue.name());
-		numEmployees = (Long) value.get(Fields.numEmployees.name());
-		tickerSymbol = (String) value.get(Fields.tickerSymbol.name());
-		comments = (String) value.get(Fields.comments.name());
-		logoImageUrl = (String) value.get(Fields.logoImageUrl.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		officeSiteName = (String) value.get(FIELD_OFFICE_SITE_NAME);
+		annualRevenue = (BigDecimal) value.get(FIELD_ANNUAL_REVENUE);
+		numEmployees = (Long) value.get(FIELD_NUM_EMPLOYEES);
+		tickerSymbol = (String) value.get(FIELD_TICKER_SYMBOL);
+		comments = (String) value.get(FIELD_COMMENTS);
+		logoImageUrl = (String) value.get(FIELD_LOGO_IMAGE_URL);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyGroup fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Status For Count
  */
+@FieldNameConstants
 public class InventoryItemStatusForCount implements Serializable {
 
-	public static final long serialVersionUID = 202585815008031744L;
+	public static final long serialVersionUID = 3648973609697072128L;
 	public static final String NAME = "InventoryItemStatusForCount";
 	/**
 	 * Facility Id
@@ -58,20 +60,14 @@ public class InventoryItemStatusForCount implements Serializable {
 	@Setter
 	private Timestamp statusEndDatetime;
 
-	public enum Fields {
-		facilityId, inventoryItemTypeId, inventoryItemId, productId, statusId, statusDatetime, statusEndDatetime
-	}
-
 	public InventoryItemStatusForCount(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
-		inventoryItemTypeId = (String) value.get(Fields.inventoryItemTypeId
-				.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		productId = (String) value.get(Fields.productId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDatetime = (Timestamp) value.get(Fields.statusDatetime.name());
-		statusEndDatetime = (Timestamp) value.get(Fields.statusEndDatetime
-				.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		inventoryItemTypeId = (String) value.get(FIELD_INVENTORY_ITEM_TYPE_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDatetime = (Timestamp) value.get(FIELD_STATUS_DATETIME);
+		statusEndDatetime = (Timestamp) value.get(FIELD_STATUS_END_DATETIME);
 	}
 
 	public static InventoryItemStatusForCount fromValue(

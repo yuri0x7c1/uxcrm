@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Shipment
  */
+@FieldNameConstants
 public class OrderShipment implements Serializable {
 
-	public static final long serialVersionUID = 8257354596245356544L;
+	public static final long serialVersionUID = 4924139102857513984L;
 	public static final String NAME = "OrderShipment";
 	/**
 	 * Order Id
@@ -77,23 +79,17 @@ public class OrderShipment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, shipGroupSeqId, shipmentId, shipmentItemSeqId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderShipment(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderShipment fromValue(

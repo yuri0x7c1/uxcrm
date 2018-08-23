@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment And Item
  */
+@FieldNameConstants
 public class ShipmentAndItem implements Serializable {
 
-	public static final long serialVersionUID = 2910139532518385664L;
+	public static final long serialVersionUID = 9035180510171554816L;
 	public static final String NAME = "ShipmentAndItem";
 	/**
 	 * Shipment Id
@@ -137,41 +139,31 @@ public class ShipmentAndItem implements Serializable {
 	@Setter
 	private String shipmentContentDescription;
 
-	public enum Fields {
-		shipmentId, shipmentTypeId, statusId, primaryOrderId, estimatedReadyDate, estimatedShipDate, estimatedArrivalDate, latestCancelDate, estimatedShipCost, handlingInstructions, originFacilityId, destinationFacilityId, originContactMechId, destinationContactMechId, partyIdTo, partyIdFrom, shipmentItemSeqId, productId, quantity, shipmentContentDescription
-	}
-
 	public ShipmentAndItem(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentTypeId = (String) value.get(Fields.shipmentTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
-		estimatedReadyDate = (Timestamp) value.get(Fields.estimatedReadyDate
-				.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentTypeId = (String) value.get(FIELD_SHIPMENT_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
+		estimatedReadyDate = (Timestamp) value.get(FIELD_ESTIMATED_READY_DATE);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
 		estimatedArrivalDate = (Timestamp) value
-				.get(Fields.estimatedArrivalDate.name());
-		latestCancelDate = (Timestamp) value
-				.get(Fields.latestCancelDate.name());
-		estimatedShipCost = (BigDecimal) value.get(Fields.estimatedShipCost
-				.name());
-		handlingInstructions = (String) value.get(Fields.handlingInstructions
-				.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		destinationFacilityId = (String) value.get(Fields.destinationFacilityId
-				.name());
-		originContactMechId = (String) value.get(Fields.originContactMechId
-				.name());
+				.get(FIELD_ESTIMATED_ARRIVAL_DATE);
+		latestCancelDate = (Timestamp) value.get(FIELD_LATEST_CANCEL_DATE);
+		estimatedShipCost = (BigDecimal) value.get(FIELD_ESTIMATED_SHIP_COST);
+		handlingInstructions = (String) value.get(FIELD_HANDLING_INSTRUCTIONS);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		destinationFacilityId = (String) value
+				.get(FIELD_DESTINATION_FACILITY_ID);
+		originContactMechId = (String) value.get(FIELD_ORIGIN_CONTACT_MECH_ID);
 		destinationContactMechId = (String) value
-				.get(Fields.destinationContactMechId.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
+				.get(FIELD_DESTINATION_CONTACT_MECH_ID);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
 		shipmentContentDescription = (String) value
-				.get(Fields.shipmentContentDescription.name());
+				.get(FIELD_SHIPMENT_CONTENT_DESCRIPTION);
 	}
 
 	public static ShipmentAndItem fromValue(

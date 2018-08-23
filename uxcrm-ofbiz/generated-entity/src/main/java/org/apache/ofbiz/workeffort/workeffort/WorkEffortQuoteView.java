@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Quote View
  */
+@FieldNameConstants
 public class WorkEffortQuoteView implements Serializable {
 
-	public static final long serialVersionUID = 212006330638172160L;
+	public static final long serialVersionUID = 8708900486610164736L;
 	public static final String NAME = "WorkEffortQuoteView";
 	/**
 	 * Status Item Description
@@ -100,27 +102,22 @@ public class WorkEffortQuoteView implements Serializable {
 	@Setter
 	private String quoteName;
 
-	public enum Fields {
-		statusItemDescription, workEffortId, quoteId, salesChannelEnumId, description, validThruDate, quoteTypeId, currencyUomId, statusId, validFromDate, productStoreId, partyId, issueDate, quoteName
-	}
-
 	public WorkEffortQuoteView(GenericValue value) {
-		statusItemDescription = (String) value.get(Fields.statusItemDescription
-				.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		validThruDate = (Timestamp) value.get(Fields.validThruDate.name());
-		quoteTypeId = (String) value.get(Fields.quoteTypeId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		validFromDate = (Timestamp) value.get(Fields.validFromDate.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		issueDate = (Timestamp) value.get(Fields.issueDate.name());
-		quoteName = (String) value.get(Fields.quoteName.name());
+		statusItemDescription = (String) value
+				.get(FIELD_STATUS_ITEM_DESCRIPTION);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		validThruDate = (Timestamp) value.get(FIELD_VALID_THRU_DATE);
+		quoteTypeId = (String) value.get(FIELD_QUOTE_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		validFromDate = (Timestamp) value.get(FIELD_VALID_FROM_DATE);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		issueDate = (Timestamp) value.get(FIELD_ISSUE_DATE);
+		quoteName = (String) value.get(FIELD_QUOTE_NAME);
 	}
 
 	public static WorkEffortQuoteView fromValue(

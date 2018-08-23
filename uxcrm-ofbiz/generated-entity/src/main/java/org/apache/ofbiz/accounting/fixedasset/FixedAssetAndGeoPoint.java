@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset And Geo Point
  */
+@FieldNameConstants
 public class FixedAssetAndGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 587941980042688512L;
+	public static final long serialVersionUID = 7482699170981820416L;
 	public static final String NAME = "FixedAssetAndGeoPoint";
 	/**
 	 * Fixed Asset Id
@@ -89,24 +91,19 @@ public class FixedAssetAndGeoPoint implements Serializable {
 	@Setter
 	private String longitude;
 
-	public enum Fields {
-		fixedAssetId, fromDate, thruDate, elevation, geoPointTypeEnumId, latitude, description, dataSourceId, elevationUomId, information, geoPointId, longitude
-	}
-
 	public FixedAssetAndGeoPoint(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		elevation = (BigDecimal) value.get(Fields.elevation.name());
-		geoPointTypeEnumId = (String) value.get(Fields.geoPointTypeEnumId
-				.name());
-		latitude = (String) value.get(Fields.latitude.name());
-		description = (String) value.get(Fields.description.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		elevationUomId = (String) value.get(Fields.elevationUomId.name());
-		information = (String) value.get(Fields.information.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		longitude = (String) value.get(Fields.longitude.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		elevation = (BigDecimal) value.get(FIELD_ELEVATION);
+		geoPointTypeEnumId = (String) value.get(FIELD_GEO_POINT_TYPE_ENUM_ID);
+		latitude = (String) value.get(FIELD_LATITUDE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		elevationUomId = (String) value.get(FIELD_ELEVATION_UOM_ID);
+		information = (String) value.get(FIELD_INFORMATION);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		longitude = (String) value.get(FIELD_LONGITUDE);
 	}
 
 	public static FixedAssetAndGeoPoint fromValue(

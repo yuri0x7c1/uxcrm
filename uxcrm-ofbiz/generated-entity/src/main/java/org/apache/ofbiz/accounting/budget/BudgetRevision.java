@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Budget Revision
  */
+@FieldNameConstants
 public class BudgetRevision implements Serializable {
 
-	public static final long serialVersionUID = 422350526760156160L;
+	public static final long serialVersionUID = 887607967661275136L;
 	public static final String NAME = "BudgetRevision";
 	/**
 	 * Budget Id
@@ -58,20 +60,14 @@ public class BudgetRevision implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, revisionSeqId, dateRevised, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetRevision(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		revisionSeqId = (String) value.get(Fields.revisionSeqId.name());
-		dateRevised = (Timestamp) value.get(Fields.dateRevised.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		revisionSeqId = (String) value.get(FIELD_REVISION_SEQ_ID);
+		dateRevised = (Timestamp) value.get(FIELD_DATE_REVISED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetRevision fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Group Rollup
  */
+@FieldNameConstants
 public class ProductStoreGroupRollup implements Serializable {
 
-	public static final long serialVersionUID = 3229972227747618816L;
+	public static final long serialVersionUID = 5169167297936633856L;
 	public static final String NAME = "ProductStoreGroupRollup";
 	/**
 	 * Product Store Group Id
@@ -70,23 +72,16 @@ public class ProductStoreGroupRollup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreGroupId, parentGroupId, fromDate, thruDate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreGroupRollup(GenericValue value) {
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		parentGroupId = (String) value.get(Fields.parentGroupId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		parentGroupId = (String) value.get(FIELD_PARENT_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreGroupRollup fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fin Account Auth
  */
+@FieldNameConstants
 public class FinAccountAuth implements Serializable {
 
-	public static final long serialVersionUID = 6310597594668174336L;
+	public static final long serialVersionUID = 6575365942326998016L;
 	public static final String NAME = "FinAccountAuth";
 	/**
 	 * Fin Account Auth Id
@@ -83,25 +85,18 @@ public class FinAccountAuth implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		finAccountAuthId, finAccountId, amount, currencyUomId, authorizationDate, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FinAccountAuth(GenericValue value) {
-		finAccountAuthId = (String) value.get(Fields.finAccountAuthId.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		authorizationDate = (Timestamp) value.get(Fields.authorizationDate
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		finAccountAuthId = (String) value.get(FIELD_FIN_ACCOUNT_AUTH_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		authorizationDate = (Timestamp) value.get(FIELD_AUTHORIZATION_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FinAccountAuth fromValue(

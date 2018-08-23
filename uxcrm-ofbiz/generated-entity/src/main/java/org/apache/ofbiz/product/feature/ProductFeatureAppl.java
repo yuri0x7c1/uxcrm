@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Feature Appl
  */
+@FieldNameConstants
 public class ProductFeatureAppl implements Serializable {
 
-	public static final long serialVersionUID = 8054096671531987968L;
+	public static final long serialVersionUID = 1776550384549173248L;
 	public static final String NAME = "ProductFeatureAppl";
 	/**
 	 * Product Id
@@ -89,26 +91,20 @@ public class ProductFeatureAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, productFeatureId, productFeatureApplTypeId, fromDate, thruDate, sequenceNum, amount, recurringAmount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFeatureAppl(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
 		productFeatureApplTypeId = (String) value
-				.get(Fields.productFeatureApplTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		recurringAmount = (BigDecimal) value.get(Fields.recurringAmount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_FEATURE_APPL_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		recurringAmount = (BigDecimal) value.get(FIELD_RECURRING_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFeatureAppl fromValue(

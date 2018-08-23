@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Return Item Type Map
  */
+@FieldNameConstants
 public class ReturnItemTypeMap implements Serializable {
 
-	public static final long serialVersionUID = 722308761370273792L;
+	public static final long serialVersionUID = 81599287643777024L;
 	public static final String NAME = "ReturnItemTypeMap";
 	/**
 	 * Return Item Map Key
@@ -58,21 +60,14 @@ public class ReturnItemTypeMap implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnItemMapKey, returnHeaderTypeId, returnItemTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnItemTypeMap(GenericValue value) {
-		returnItemMapKey = (String) value.get(Fields.returnItemMapKey.name());
-		returnHeaderTypeId = (String) value.get(Fields.returnHeaderTypeId
-				.name());
-		returnItemTypeId = (String) value.get(Fields.returnItemTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnItemMapKey = (String) value.get(FIELD_RETURN_ITEM_MAP_KEY);
+		returnHeaderTypeId = (String) value.get(FIELD_RETURN_HEADER_TYPE_ID);
+		returnItemTypeId = (String) value.get(FIELD_RETURN_ITEM_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnItemTypeMap fromValue(

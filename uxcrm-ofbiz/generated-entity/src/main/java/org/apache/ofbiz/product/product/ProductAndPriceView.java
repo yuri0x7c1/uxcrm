@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product And Price View
  */
+@FieldNameConstants
 public class ProductAndPriceView implements Serializable {
 
-	public static final long serialVersionUID = 3673135388697246720L;
+	public static final long serialVersionUID = 9210654197253504000L;
 	public static final String NAME = "ProductAndPriceView";
 	/**
 	 * Product Id
@@ -95,27 +97,22 @@ public class ProductAndPriceView implements Serializable {
 	@Setter
 	private BigDecimal price;
 
-	public enum Fields {
-		productId, productTypeId, productName, internalName, description, primaryProductCategoryId, isVirtual, productPriceTypeId, productPricePurposeId, currencyUomId, fromDate, thruDate, price
-	}
-
 	public ProductAndPriceView(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productTypeId = (String) value.get(Fields.productTypeId.name());
-		productName = (String) value.get(Fields.productName.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		description = (String) value.get(Fields.description.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productTypeId = (String) value.get(FIELD_PRODUCT_TYPE_ID);
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
 		primaryProductCategoryId = (String) value
-				.get(Fields.primaryProductCategoryId.name());
-		isVirtual = (String) value.get(Fields.isVirtual.name());
-		productPriceTypeId = (String) value.get(Fields.productPriceTypeId
-				.name());
-		productPricePurposeId = (String) value.get(Fields.productPricePurposeId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		price = (BigDecimal) value.get(Fields.price.name());
+				.get(FIELD_PRIMARY_PRODUCT_CATEGORY_ID);
+		isVirtual = (String) value.get(FIELD_IS_VIRTUAL);
+		productPriceTypeId = (String) value.get(FIELD_PRODUCT_PRICE_TYPE_ID);
+		productPricePurposeId = (String) value
+				.get(FIELD_PRODUCT_PRICE_PURPOSE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		price = (BigDecimal) value.get(FIELD_PRICE);
 	}
 
 	public static ProductAndPriceView fromValue(

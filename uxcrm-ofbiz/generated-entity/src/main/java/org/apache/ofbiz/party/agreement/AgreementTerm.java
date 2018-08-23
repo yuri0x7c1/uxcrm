@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Agreement Term
  */
+@FieldNameConstants
 public class AgreementTerm implements Serializable {
 
-	public static final long serialVersionUID = 4175326726582664192L;
+	public static final long serialVersionUID = 2274001931462549504L;
 	public static final String NAME = "AgreementTerm";
 	/**
 	 * Agreement Term Id
@@ -119,31 +121,24 @@ public class AgreementTerm implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		agreementTermId, termTypeId, agreementId, agreementItemSeqId, invoiceItemTypeId, fromDate, thruDate, termValue, termDays, textValue, minQuantity, maxQuantity, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AgreementTerm(GenericValue value) {
-		agreementTermId = (String) value.get(Fields.agreementTermId.name());
-		termTypeId = (String) value.get(Fields.termTypeId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		termValue = (BigDecimal) value.get(Fields.termValue.name());
-		termDays = (Long) value.get(Fields.termDays.name());
-		textValue = (String) value.get(Fields.textValue.name());
-		minQuantity = (Double) value.get(Fields.minQuantity.name());
-		maxQuantity = (Double) value.get(Fields.maxQuantity.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		agreementTermId = (String) value.get(FIELD_AGREEMENT_TERM_ID);
+		termTypeId = (String) value.get(FIELD_TERM_TYPE_ID);
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		termValue = (BigDecimal) value.get(FIELD_TERM_VALUE);
+		termDays = (Long) value.get(FIELD_TERM_DAYS);
+		textValue = (String) value.get(FIELD_TEXT_VALUE);
+		minQuantity = (Double) value.get(FIELD_MIN_QUANTITY);
+		maxQuantity = (Double) value.get(FIELD_MAX_QUANTITY);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AgreementTerm fromValue(

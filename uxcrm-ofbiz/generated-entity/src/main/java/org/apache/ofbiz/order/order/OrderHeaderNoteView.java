@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Header Note View
  */
+@FieldNameConstants
 public class OrderHeaderNoteView implements Serializable {
 
-	public static final long serialVersionUID = 7767165150771889152L;
+	public static final long serialVersionUID = 3933694928665364480L;
 	public static final String NAME = "OrderHeaderNoteView";
 	/**
 	 * Order Id
@@ -58,18 +60,14 @@ public class OrderHeaderNoteView implements Serializable {
 	@Setter
 	private String noteParty;
 
-	public enum Fields {
-		orderId, internalNote, noteId, noteName, noteInfo, noteDateTime, noteParty
-	}
-
 	public OrderHeaderNoteView(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		internalNote = (String) value.get(Fields.internalNote.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		noteParty = (String) value.get(Fields.noteParty.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		internalNote = (String) value.get(FIELD_INTERNAL_NOTE);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		noteParty = (String) value.get(FIELD_NOTE_PARTY);
 	}
 
 	public static OrderHeaderNoteView fromValue(

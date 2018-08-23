@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Group
  */
+@FieldNameConstants
 public class PaymentGroup implements Serializable {
 
-	public static final long serialVersionUID = 4038792854829092864L;
+	public static final long serialVersionUID = 7830897196926019584L;
 	public static final String NAME = "PaymentGroup";
 	/**
 	 * Payment Group Id
@@ -58,21 +60,14 @@ public class PaymentGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGroupId, paymentGroupTypeId, paymentGroupName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGroup(GenericValue value) {
-		paymentGroupId = (String) value.get(Fields.paymentGroupId.name());
-		paymentGroupTypeId = (String) value.get(Fields.paymentGroupTypeId
-				.name());
-		paymentGroupName = (String) value.get(Fields.paymentGroupName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentGroupId = (String) value.get(FIELD_PAYMENT_GROUP_ID);
+		paymentGroupTypeId = (String) value.get(FIELD_PAYMENT_GROUP_TYPE_ID);
+		paymentGroupName = (String) value.get(FIELD_PAYMENT_GROUP_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGroup fromValue(

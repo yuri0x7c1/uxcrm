@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment Budget Allocation
  */
+@FieldNameConstants
 public class PaymentBudgetAllocation implements Serializable {
 
-	public static final long serialVersionUID = 5310151103240050688L;
+	public static final long serialVersionUID = 7561696385401868288L;
 	public static final String NAME = "PaymentBudgetAllocation";
 	/**
 	 * Budget Id
@@ -65,21 +67,15 @@ public class PaymentBudgetAllocation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, budgetItemSeqId, paymentId, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentBudgetAllocation(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentBudgetAllocation fromValue(

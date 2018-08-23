@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Shipment Package Route Detail
  */
+@FieldNameConstants
 public class ShipmentPackageRouteDetail implements Serializable {
 
-	public static final long serialVersionUID = 3357503535996103680L;
+	public static final long serialVersionUID = 441669448854877184L;
 	public static final String NAME = "ShipmentPackageRouteDetail";
 	/**
 	 * Shipment Id
@@ -75,25 +77,21 @@ public class ShipmentPackageRouteDetail implements Serializable {
 	@Setter
 	private String primaryOrderId;
 
-	public enum Fields {
-		shipmentId, shipmentPackageSeqId, shipmentRouteSegmentId, labelPrinted, trackingCode, carrierPartyId, carrierServiceStatusId, shipmentMethodTypeId, statusId, primaryOrderId
-	}
-
 	public ShipmentPackageRouteDetail(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
 		shipmentRouteSegmentId = (String) value
-				.get(Fields.shipmentRouteSegmentId.name());
-		labelPrinted = (String) value.get(Fields.labelPrinted.name());
-		trackingCode = (String) value.get(Fields.trackingCode.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
+				.get(FIELD_SHIPMENT_ROUTE_SEGMENT_ID);
+		labelPrinted = (String) value.get(FIELD_LABEL_PRINTED);
+		trackingCode = (String) value.get(FIELD_TRACKING_CODE);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
 		carrierServiceStatusId = (String) value
-				.get(Fields.carrierServiceStatusId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
+				.get(FIELD_CARRIER_SERVICE_STATUS_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
 	}
 
 	public static ShipmentPackageRouteDetail fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inv Item And Ord Item
  */
+@FieldNameConstants
 public class InvItemAndOrdItem implements Serializable {
 
-	public static final long serialVersionUID = 3433809323893910528L;
+	public static final long serialVersionUID = 6663018010884912128L;
 	public static final String NAME = "InvItemAndOrdItem";
 	/**
 	 * Order Id
@@ -142,37 +144,30 @@ public class InvItemAndOrdItem implements Serializable {
 	@Setter
 	private String salesOpportunityId;
 
-	public enum Fields {
-		orderId, orderItemSeqId, amount, quantity, productId, overrideOrgPartyId, productFeatureId, taxableFlag, taxAuthorityRateSeqId, overrideGlAccountId, description, invoiceItemSeqId, uomId, invoiceItemTypeId, inventoryItemId, taxAuthPartyId, parentInvoiceId, parentInvoiceItemSeqId, taxAuthGeoId, invoiceId, salesOpportunityId
-	}
-
 	public InvItemAndOrdItem(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		overrideOrgPartyId = (String) value.get(Fields.overrideOrgPartyId
-				.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		taxableFlag = (String) value.get(Fields.taxableFlag.name());
-		taxAuthorityRateSeqId = (String) value.get(Fields.taxAuthorityRateSeqId
-				.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		parentInvoiceId = (String) value.get(Fields.parentInvoiceId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		overrideOrgPartyId = (String) value.get(FIELD_OVERRIDE_ORG_PARTY_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		taxableFlag = (String) value.get(FIELD_TAXABLE_FLAG);
+		taxAuthorityRateSeqId = (String) value
+				.get(FIELD_TAX_AUTHORITY_RATE_SEQ_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		parentInvoiceId = (String) value.get(FIELD_PARENT_INVOICE_ID);
 		parentInvoiceItemSeqId = (String) value
-				.get(Fields.parentInvoiceItemSeqId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
+				.get(FIELD_PARENT_INVOICE_ITEM_SEQ_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
 	}
 
 	public static InvItemAndOrdItem fromValue(

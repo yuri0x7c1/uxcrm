@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Gl Reconciliation
  */
+@FieldNameConstants
 public class GlReconciliation implements Serializable {
 
-	public static final long serialVersionUID = 1724827540701358080L;
+	public static final long serialVersionUID = 8180406092561532928L;
 	public static final String NAME = "GlReconciliation";
 	/**
 	 * Gl Reconciliation Id
@@ -119,37 +121,25 @@ public class GlReconciliation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glReconciliationId, glReconciliationName, description, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, glAccountId, statusId, organizationPartyId, reconciledBalance, openingBalance, reconciledDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlReconciliation(GenericValue value) {
-		glReconciliationId = (String) value.get(Fields.glReconciliationId
-				.name());
-		glReconciliationName = (String) value.get(Fields.glReconciliationName
-				.name());
-		description = (String) value.get(Fields.description.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		glReconciliationId = (String) value.get(FIELD_GL_RECONCILIATION_ID);
+		glReconciliationName = (String) value.get(FIELD_GL_RECONCILIATION_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		reconciledBalance = (BigDecimal) value.get(Fields.reconciledBalance
-				.name());
-		openingBalance = (BigDecimal) value.get(Fields.openingBalance.name());
-		reconciledDate = (Timestamp) value.get(Fields.reconciledDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		reconciledBalance = (BigDecimal) value.get(FIELD_RECONCILED_BALANCE);
+		openingBalance = (BigDecimal) value.get(FIELD_OPENING_BALANCE);
+		reconciledDate = (Timestamp) value.get(FIELD_RECONCILED_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlReconciliation fromValue(

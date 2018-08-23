@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.techdata;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Tech Data Calendar Week
  */
+@FieldNameConstants
 public class TechDataCalendarWeek implements Serializable {
 
-	public static final long serialVersionUID = 2583750932111638528L;
+	public static final long serialVersionUID = 326980747818507264L;
 	public static final String NAME = "TechDataCalendarWeek";
 	/**
 	 * Calendar Week Id
@@ -137,33 +139,27 @@ public class TechDataCalendarWeek implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		calendarWeekId, description, mondayStartTime, mondayCapacity, tuesdayStartTime, tuesdayCapacity, wednesdayStartTime, wednesdayCapacity, thursdayStartTime, thursdayCapacity, fridayStartTime, fridayCapacity, saturdayStartTime, saturdayCapacity, sundayStartTime, sundayCapacity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TechDataCalendarWeek(GenericValue value) {
-		calendarWeekId = (String) value.get(Fields.calendarWeekId.name());
-		description = (String) value.get(Fields.description.name());
-		mondayStartTime = (Time) value.get(Fields.mondayStartTime.name());
-		mondayCapacity = (Double) value.get(Fields.mondayCapacity.name());
-		tuesdayStartTime = (Time) value.get(Fields.tuesdayStartTime.name());
-		tuesdayCapacity = (Double) value.get(Fields.tuesdayCapacity.name());
-		wednesdayStartTime = (Time) value.get(Fields.wednesdayStartTime.name());
-		wednesdayCapacity = (Double) value.get(Fields.wednesdayCapacity.name());
-		thursdayStartTime = (Time) value.get(Fields.thursdayStartTime.name());
-		thursdayCapacity = (Double) value.get(Fields.thursdayCapacity.name());
-		fridayStartTime = (Time) value.get(Fields.fridayStartTime.name());
-		fridayCapacity = (Double) value.get(Fields.fridayCapacity.name());
-		saturdayStartTime = (Time) value.get(Fields.saturdayStartTime.name());
-		saturdayCapacity = (Double) value.get(Fields.saturdayCapacity.name());
-		sundayStartTime = (Time) value.get(Fields.sundayStartTime.name());
-		sundayCapacity = (Double) value.get(Fields.sundayCapacity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		calendarWeekId = (String) value.get(FIELD_CALENDAR_WEEK_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		mondayStartTime = (Time) value.get(FIELD_MONDAY_START_TIME);
+		mondayCapacity = (Double) value.get(FIELD_MONDAY_CAPACITY);
+		tuesdayStartTime = (Time) value.get(FIELD_TUESDAY_START_TIME);
+		tuesdayCapacity = (Double) value.get(FIELD_TUESDAY_CAPACITY);
+		wednesdayStartTime = (Time) value.get(FIELD_WEDNESDAY_START_TIME);
+		wednesdayCapacity = (Double) value.get(FIELD_WEDNESDAY_CAPACITY);
+		thursdayStartTime = (Time) value.get(FIELD_THURSDAY_START_TIME);
+		thursdayCapacity = (Double) value.get(FIELD_THURSDAY_CAPACITY);
+		fridayStartTime = (Time) value.get(FIELD_FRIDAY_START_TIME);
+		fridayCapacity = (Double) value.get(FIELD_FRIDAY_CAPACITY);
+		saturdayStartTime = (Time) value.get(FIELD_SATURDAY_START_TIME);
+		saturdayCapacity = (Double) value.get(FIELD_SATURDAY_CAPACITY);
+		sundayStartTime = (Time) value.get(FIELD_SUNDAY_START_TIME);
+		sundayCapacity = (Double) value.get(FIELD_SUNDAY_CAPACITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TechDataCalendarWeek fromValue(

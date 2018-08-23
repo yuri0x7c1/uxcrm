@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.timesheet;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Old Party Rate
  */
+@FieldNameConstants
 public class OldPartyRate implements Serializable {
 
-	public static final long serialVersionUID = 6875172213470804992L;
+	public static final long serialVersionUID = 912299106170025984L;
 	public static final String NAME = "OldPartyRate";
 	/**
 	 * Party Id
@@ -83,24 +85,18 @@ public class OldPartyRate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, rateTypeId, currencyUomId, defaultRate, fromDate, thruDate, rate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldPartyRate(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		defaultRate = (String) value.get(Fields.defaultRate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		rate = (BigDecimal) value.get(Fields.rate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		defaultRate = (String) value.get(FIELD_DEFAULT_RATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		rate = (BigDecimal) value.get(FIELD_RATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldPartyRate fromValue(

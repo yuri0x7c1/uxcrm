@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Category Attribute
  */
+@FieldNameConstants
 public class ProductCategoryAttribute implements Serializable {
 
-	public static final long serialVersionUID = 7253042435219548160L;
+	public static final long serialVersionUID = 3914722470760008704L;
 	public static final String NAME = "ProductCategoryAttribute";
 	/**
 	 * Product Category Id
@@ -64,21 +66,15 @@ public class ProductCategoryAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productCategoryId, attrName, attrValue, attrDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductCategoryAttribute(GenericValue value) {
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductCategoryAttribute fromValue(

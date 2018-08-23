@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.compdoc;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Assoc Revision Item View
  */
+@FieldNameConstants
 public class ContentAssocRevisionItemView implements Serializable {
 
-	public static final long serialVersionUID = 1791997443782000640L;
+	public static final long serialVersionUID = 6085662330856114176L;
 	public static final String NAME = "ContentAssocRevisionItemView";
 	/**
 	 * Instance Of Content Id
@@ -88,27 +90,21 @@ public class ContentAssocRevisionItemView implements Serializable {
 	@Setter
 	private String maxRevisionSeqId;
 
-	public enum Fields {
-		instanceOfContentId, dataResourceId, contentId, contentIdTo, contentAssocTypeId, thruDate, fromDate, sequenceNum, rootRevisionContentId, itemContentId, contentRevisionSeqId, maxRevisionSeqId
-	}
-
 	public ContentAssocRevisionItemView(GenericValue value) {
-		instanceOfContentId = (String) value.get(Fields.instanceOfContentId
-				.name());
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		contentIdTo = (String) value.get(Fields.contentIdTo.name());
-		contentAssocTypeId = (String) value.get(Fields.contentAssocTypeId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		rootRevisionContentId = (String) value.get(Fields.rootRevisionContentId
-				.name());
-		itemContentId = (String) value.get(Fields.itemContentId.name());
-		contentRevisionSeqId = (String) value.get(Fields.contentRevisionSeqId
-				.name());
-		maxRevisionSeqId = (String) value.get(Fields.maxRevisionSeqId.name());
+		instanceOfContentId = (String) value.get(FIELD_INSTANCE_OF_CONTENT_ID);
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentIdTo = (String) value.get(FIELD_CONTENT_ID_TO);
+		contentAssocTypeId = (String) value.get(FIELD_CONTENT_ASSOC_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		rootRevisionContentId = (String) value
+				.get(FIELD_ROOT_REVISION_CONTENT_ID);
+		itemContentId = (String) value.get(FIELD_ITEM_CONTENT_ID);
+		contentRevisionSeqId = (String) value
+				.get(FIELD_CONTENT_REVISION_SEQ_ID);
+		maxRevisionSeqId = (String) value.get(FIELD_MAX_REVISION_SEQ_ID);
 	}
 
 	public static ContentAssocRevisionItemView fromValue(

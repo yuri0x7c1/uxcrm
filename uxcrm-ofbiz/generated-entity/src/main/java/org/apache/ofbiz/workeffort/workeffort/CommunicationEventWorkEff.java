@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Communication Event Work Eff
  */
+@FieldNameConstants
 public class CommunicationEventWorkEff implements Serializable {
 
-	public static final long serialVersionUID = 1996943881481313280L;
+	public static final long serialVersionUID = 8229914411256632320L;
 	public static final String NAME = "CommunicationEventWorkEff";
 	/**
 	 * Work Effort Id
@@ -58,21 +60,14 @@ public class CommunicationEventWorkEff implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, communicationEventId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CommunicationEventWorkEff(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CommunicationEventWorkEff fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing Node Member
  */
+@FieldNameConstants
 public class TestingNodeMember implements Serializable {
 
-	public static final long serialVersionUID = 4713228815986402304L;
+	public static final long serialVersionUID = 7467412622559655936L;
 	public static final String NAME = "TestingNodeMember";
 	/**
 	 * Testing Node Id
@@ -76,23 +78,17 @@ public class TestingNodeMember implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testingNodeId, testingId, fromDate, thruDate, extendFromDate, extendThruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestingNodeMember(GenericValue value) {
-		testingNodeId = (String) value.get(Fields.testingNodeId.name());
-		testingId = (String) value.get(Fields.testingId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		extendFromDate = (Timestamp) value.get(Fields.extendFromDate.name());
-		extendThruDate = (Timestamp) value.get(Fields.extendThruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testingNodeId = (String) value.get(FIELD_TESTING_NODE_ID);
+		testingId = (String) value.get(FIELD_TESTING_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		extendFromDate = (Timestamp) value.get(FIELD_EXTEND_FROM_DATE);
+		extendThruDate = (Timestamp) value.get(FIELD_EXTEND_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestingNodeMember fromValue(

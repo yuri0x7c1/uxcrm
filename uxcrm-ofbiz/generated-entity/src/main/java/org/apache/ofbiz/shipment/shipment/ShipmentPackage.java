@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Package
  */
+@FieldNameConstants
 public class ShipmentPackage implements Serializable {
 
-	public static final long serialVersionUID = 4714853312274290688L;
+	public static final long serialVersionUID = 4048134904825254912L;
 	public static final String NAME = "ShipmentPackage";
 	/**
 	 * Shipment Id
@@ -107,29 +109,23 @@ public class ShipmentPackage implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentId, shipmentPackageSeqId, shipmentBoxTypeId, dateCreated, boxLength, boxHeight, boxWidth, dimensionUomId, weight, weightUomId, insuredValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentPackage(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
-		shipmentBoxTypeId = (String) value.get(Fields.shipmentBoxTypeId.name());
-		dateCreated = (Timestamp) value.get(Fields.dateCreated.name());
-		boxLength = (BigDecimal) value.get(Fields.boxLength.name());
-		boxHeight = (BigDecimal) value.get(Fields.boxHeight.name());
-		boxWidth = (BigDecimal) value.get(Fields.boxWidth.name());
-		dimensionUomId = (String) value.get(Fields.dimensionUomId.name());
-		weight = (BigDecimal) value.get(Fields.weight.name());
-		weightUomId = (String) value.get(Fields.weightUomId.name());
-		insuredValue = (BigDecimal) value.get(Fields.insuredValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
+		shipmentBoxTypeId = (String) value.get(FIELD_SHIPMENT_BOX_TYPE_ID);
+		dateCreated = (Timestamp) value.get(FIELD_DATE_CREATED);
+		boxLength = (BigDecimal) value.get(FIELD_BOX_LENGTH);
+		boxHeight = (BigDecimal) value.get(FIELD_BOX_HEIGHT);
+		boxWidth = (BigDecimal) value.get(FIELD_BOX_WIDTH);
+		dimensionUomId = (String) value.get(FIELD_DIMENSION_UOM_ID);
+		weight = (BigDecimal) value.get(FIELD_WEIGHT);
+		weightUomId = (String) value.get(FIELD_WEIGHT_UOM_ID);
+		insuredValue = (BigDecimal) value.get(FIELD_INSURED_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentPackage fromValue(

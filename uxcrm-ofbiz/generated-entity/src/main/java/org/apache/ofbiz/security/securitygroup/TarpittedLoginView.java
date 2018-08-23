@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.securitygroup;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tarpitted Login View
  */
+@FieldNameConstants
 public class TarpittedLoginView implements Serializable {
 
-	public static final long serialVersionUID = 5812666918359193600L;
+	public static final long serialVersionUID = 1201574893833940992L;
 	public static final String NAME = "TarpittedLoginView";
 	/**
 	 * View Name Id
@@ -58,21 +60,15 @@ public class TarpittedLoginView implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		viewNameId, userLoginId, tarpitReleaseDateTime, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TarpittedLoginView(GenericValue value) {
-		viewNameId = (String) value.get(Fields.viewNameId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		tarpitReleaseDateTime = (Long) value.get(Fields.tarpitReleaseDateTime
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		viewNameId = (String) value.get(FIELD_VIEW_NAME_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		tarpitReleaseDateTime = (Long) value
+				.get(FIELD_TARPIT_RELEASE_DATE_TIME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TarpittedLoginView fromValue(

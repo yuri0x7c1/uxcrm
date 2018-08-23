@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Salary Step
  */
+@FieldNameConstants
 public class SalaryStep implements Serializable {
 
-	public static final long serialVersionUID = 7678359141844184064L;
+	public static final long serialVersionUID = 6324458496990386176L;
 	public static final String NAME = "SalaryStep";
 	/**
 	 * Salary Step Seq Id
@@ -89,27 +91,20 @@ public class SalaryStep implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salaryStepSeqId, payGradeId, fromDate, thruDate, dateModified, amount, createdByUserLogin, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalaryStep(GenericValue value) {
-		salaryStepSeqId = (String) value.get(Fields.salaryStepSeqId.name());
-		payGradeId = (String) value.get(Fields.payGradeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		dateModified = (Timestamp) value.get(Fields.dateModified.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+		salaryStepSeqId = (String) value.get(FIELD_SALARY_STEP_SEQ_ID);
+		payGradeId = (String) value.get(FIELD_PAY_GRADE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		dateModified = (Timestamp) value.get(FIELD_DATE_MODIFIED);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalaryStep fromValue(

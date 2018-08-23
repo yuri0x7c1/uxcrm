@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.tenant;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tenant Data Source
  */
+@FieldNameConstants
 public class TenantDataSource implements Serializable {
 
-	public static final long serialVersionUID = 5632426416749294592L;
+	public static final long serialVersionUID = 5011831035385473024L;
 	public static final String NAME = "TenantDataSource";
 	/**
 	 * Tenant Id
@@ -70,22 +72,16 @@ public class TenantDataSource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		tenantId, entityGroupName, jdbcUri, jdbcUsername, jdbcPassword, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TenantDataSource(GenericValue value) {
-		tenantId = (String) value.get(Fields.tenantId.name());
-		entityGroupName = (String) value.get(Fields.entityGroupName.name());
-		jdbcUri = (String) value.get(Fields.jdbcUri.name());
-		jdbcUsername = (String) value.get(Fields.jdbcUsername.name());
-		jdbcPassword = (String) value.get(Fields.jdbcPassword.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		tenantId = (String) value.get(FIELD_TENANT_ID);
+		entityGroupName = (String) value.get(FIELD_ENTITY_GROUP_NAME);
+		jdbcUri = (String) value.get(FIELD_JDBC_URI);
+		jdbcUsername = (String) value.get(FIELD_JDBC_USERNAME);
+		jdbcPassword = (String) value.get(FIELD_JDBC_PASSWORD);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TenantDataSource fromValue(

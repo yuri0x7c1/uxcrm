@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice And Role
  */
+@FieldNameConstants
 public class InvoiceAndRole implements Serializable {
 
-	public static final long serialVersionUID = 3064085693540337664L;
+	public static final long serialVersionUID = 7023034323151676416L;
 	public static final String NAME = "InvoiceAndRole";
 	/**
 	 * Invoice Role Party Id
@@ -124,30 +126,25 @@ public class InvoiceAndRole implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		invoiceRolePartyId, invoiceRoleTypeId, partyIdFrom, roleTypeId, recurrenceInfoId, invoiceTypeId, dueDate, description, billingAccountId, invoiceDate, contactMechId, currencyUomId, statusId, paidDate, referenceNumber, invoiceId, invoiceMessage, partyId
-	}
-
 	public InvoiceAndRole(GenericValue value) {
-		invoiceRolePartyId = (String) value.get(Fields.invoiceRolePartyId
-				.name());
-		invoiceRoleTypeId = (String) value.get(Fields.invoiceRoleTypeId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		dueDate = (Timestamp) value.get(Fields.dueDate.name());
-		description = (String) value.get(Fields.description.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		invoiceDate = (Timestamp) value.get(Fields.invoiceDate.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paidDate = (Timestamp) value.get(Fields.paidDate.name());
-		referenceNumber = (String) value.get(Fields.referenceNumber.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceMessage = (String) value.get(Fields.invoiceMessage.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		invoiceRolePartyId = (String) value.get(FIELD_INVOICE_ROLE_PARTY_ID);
+		invoiceRoleTypeId = (String) value.get(FIELD_INVOICE_ROLE_TYPE_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		dueDate = (Timestamp) value.get(FIELD_DUE_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		invoiceDate = (Timestamp) value.get(FIELD_INVOICE_DATE);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paidDate = (Timestamp) value.get(FIELD_PAID_DATE);
+		referenceNumber = (String) value.get(FIELD_REFERENCE_NUMBER);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceMessage = (String) value.get(FIELD_INVOICE_MESSAGE);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static InvoiceAndRole fromValue(

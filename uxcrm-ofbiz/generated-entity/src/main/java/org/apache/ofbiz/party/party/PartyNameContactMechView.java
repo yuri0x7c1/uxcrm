@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Name Contact Mech View
  */
+@FieldNameConstants
 public class PartyNameContactMechView implements Serializable {
 
-	public static final long serialVersionUID = 8116727675661554688L;
+	public static final long serialVersionUID = 7233836611575398400L;
 	public static final String NAME = "PartyNameContactMechView";
 	/**
 	 * Party Id
@@ -118,28 +120,24 @@ public class PartyNameContactMechView implements Serializable {
 	@Setter
 	private String infoString;
 
-	public enum Fields {
-		partyId, partyTypeId, statusId, firstName, middleName, lastName, firstNameLocal, lastNameLocal, personalTitle, suffix, groupName, groupNameLocal, contactMechId, fromDate, thruDate, contactMechTypeId, infoString
-	}
-
 	public PartyNameContactMechView(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		infoString = (String) value.get(Fields.infoString.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		infoString = (String) value.get(FIELD_INFO_STRING);
 	}
 
 	public static PartyNameContactMechView fromValue(

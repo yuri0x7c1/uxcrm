@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Agent Type
  */
+@FieldNameConstants
 public class UserAgentType implements Serializable {
 
-	public static final long serialVersionUID = 696831106855393280L;
+	public static final long serialVersionUID = 6407500458305169408L;
 	public static final String NAME = "UserAgentType";
 	/**
 	 * User Agent Type Id
@@ -52,19 +54,13 @@ public class UserAgentType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userAgentTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserAgentType(GenericValue value) {
-		userAgentTypeId = (String) value.get(Fields.userAgentTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userAgentTypeId = (String) value.get(FIELD_USER_AGENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserAgentType fromValue(

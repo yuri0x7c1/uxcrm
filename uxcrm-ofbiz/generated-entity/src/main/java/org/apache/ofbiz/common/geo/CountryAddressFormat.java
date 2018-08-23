@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Country Address Format
  */
+@FieldNameConstants
 public class CountryAddressFormat implements Serializable {
 
-	public static final long serialVersionUID = 3103952328272839680L;
+	public static final long serialVersionUID = 5819550582279304192L;
 	public static final String NAME = "CountryAddressFormat";
 	/**
 	 * Geo Id
@@ -88,27 +90,21 @@ public class CountryAddressFormat implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		geoId, geoAssocTypeId, requireStateProvinceId, requirePostalCode, postalCodeRegex, hasPostalCodeExt, requirePostalCodeExt, addressFormat, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CountryAddressFormat(GenericValue value) {
-		geoId = (String) value.get(Fields.geoId.name());
-		geoAssocTypeId = (String) value.get(Fields.geoAssocTypeId.name());
+		geoId = (String) value.get(FIELD_GEO_ID);
+		geoAssocTypeId = (String) value.get(FIELD_GEO_ASSOC_TYPE_ID);
 		requireStateProvinceId = (String) value
-				.get(Fields.requireStateProvinceId.name());
-		requirePostalCode = (String) value.get(Fields.requirePostalCode.name());
-		postalCodeRegex = (String) value.get(Fields.postalCodeRegex.name());
-		hasPostalCodeExt = (String) value.get(Fields.hasPostalCodeExt.name());
-		requirePostalCodeExt = (String) value.get(Fields.requirePostalCodeExt
-				.name());
-		addressFormat = (String) value.get(Fields.addressFormat.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_REQUIRE_STATE_PROVINCE_ID);
+		requirePostalCode = (String) value.get(FIELD_REQUIRE_POSTAL_CODE);
+		postalCodeRegex = (String) value.get(FIELD_POSTAL_CODE_REGEX);
+		hasPostalCodeExt = (String) value.get(FIELD_HAS_POSTAL_CODE_EXT);
+		requirePostalCodeExt = (String) value
+				.get(FIELD_REQUIRE_POSTAL_CODE_EXT);
+		addressFormat = (String) value.get(FIELD_ADDRESS_FORMAT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CountryAddressFormat fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Return Item Shipment
  */
+@FieldNameConstants
 public class ReturnItemShipment implements Serializable {
 
-	public static final long serialVersionUID = 6376096938477250560L;
+	public static final long serialVersionUID = 3721964804846171136L;
 	public static final String NAME = "ReturnItemShipment";
 	/**
 	 * Return Id
@@ -71,22 +73,16 @@ public class ReturnItemShipment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnId, returnItemSeqId, shipmentId, shipmentItemSeqId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnItemShipment(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnItemShipment fromValue(

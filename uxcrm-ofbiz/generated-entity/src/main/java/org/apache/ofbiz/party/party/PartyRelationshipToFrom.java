@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Relationship To From
  */
+@FieldNameConstants
 public class PartyRelationshipToFrom implements Serializable {
 
-	public static final long serialVersionUID = 6253767299659496448L;
+	public static final long serialVersionUID = 2857218893327007744L;
 	public static final String NAME = "PartyRelationshipToFrom";
 	/**
 	 * One Role Type Id To
@@ -184,47 +186,39 @@ public class PartyRelationshipToFrom implements Serializable {
 	@Setter
 	private String twoPartyIdTo;
 
-	public enum Fields {
-		oneRoleTypeIdTo, onePartyIdFrom, onePositionTitle, oneComments, onePriorityTypeId, onePermissionsEnumId, oneRoleTypeIdFrom, oneThruDate, oneFromDate, oneRelationshipName, oneSecurityGroupId, onePartyRelationshipTypeId, oneStatusId, onePartyIdTo, twoRoleTypeIdTo, twoPartyIdFrom, twoPositionTitle, twoComments, twoPriorityTypeId, twoPermissionsEnumId, twoRoleTypeIdFrom, twoThruDate, twoFromDate, twoRelationshipName, twoSecurityGroupId, twoPartyRelationshipTypeId, twoStatusId, twoPartyIdTo
-	}
-
 	public PartyRelationshipToFrom(GenericValue value) {
-		oneRoleTypeIdTo = (String) value.get(Fields.oneRoleTypeIdTo.name());
-		onePartyIdFrom = (String) value.get(Fields.onePartyIdFrom.name());
-		onePositionTitle = (String) value.get(Fields.onePositionTitle.name());
-		oneComments = (String) value.get(Fields.oneComments.name());
-		onePriorityTypeId = (String) value.get(Fields.onePriorityTypeId.name());
-		onePermissionsEnumId = (String) value.get(Fields.onePermissionsEnumId
-				.name());
-		oneRoleTypeIdFrom = (String) value.get(Fields.oneRoleTypeIdFrom.name());
-		oneThruDate = (Timestamp) value.get(Fields.oneThruDate.name());
-		oneFromDate = (Timestamp) value.get(Fields.oneFromDate.name());
-		oneRelationshipName = (String) value.get(Fields.oneRelationshipName
-				.name());
-		oneSecurityGroupId = (String) value.get(Fields.oneSecurityGroupId
-				.name());
+		oneRoleTypeIdTo = (String) value.get(FIELD_ONE_ROLE_TYPE_ID_TO);
+		onePartyIdFrom = (String) value.get(FIELD_ONE_PARTY_ID_FROM);
+		onePositionTitle = (String) value.get(FIELD_ONE_POSITION_TITLE);
+		oneComments = (String) value.get(FIELD_ONE_COMMENTS);
+		onePriorityTypeId = (String) value.get(FIELD_ONE_PRIORITY_TYPE_ID);
+		onePermissionsEnumId = (String) value
+				.get(FIELD_ONE_PERMISSIONS_ENUM_ID);
+		oneRoleTypeIdFrom = (String) value.get(FIELD_ONE_ROLE_TYPE_ID_FROM);
+		oneThruDate = (Timestamp) value.get(FIELD_ONE_THRU_DATE);
+		oneFromDate = (Timestamp) value.get(FIELD_ONE_FROM_DATE);
+		oneRelationshipName = (String) value.get(FIELD_ONE_RELATIONSHIP_NAME);
+		oneSecurityGroupId = (String) value.get(FIELD_ONE_SECURITY_GROUP_ID);
 		onePartyRelationshipTypeId = (String) value
-				.get(Fields.onePartyRelationshipTypeId.name());
-		oneStatusId = (String) value.get(Fields.oneStatusId.name());
-		onePartyIdTo = (String) value.get(Fields.onePartyIdTo.name());
-		twoRoleTypeIdTo = (String) value.get(Fields.twoRoleTypeIdTo.name());
-		twoPartyIdFrom = (String) value.get(Fields.twoPartyIdFrom.name());
-		twoPositionTitle = (String) value.get(Fields.twoPositionTitle.name());
-		twoComments = (String) value.get(Fields.twoComments.name());
-		twoPriorityTypeId = (String) value.get(Fields.twoPriorityTypeId.name());
-		twoPermissionsEnumId = (String) value.get(Fields.twoPermissionsEnumId
-				.name());
-		twoRoleTypeIdFrom = (String) value.get(Fields.twoRoleTypeIdFrom.name());
-		twoThruDate = (Timestamp) value.get(Fields.twoThruDate.name());
-		twoFromDate = (Timestamp) value.get(Fields.twoFromDate.name());
-		twoRelationshipName = (String) value.get(Fields.twoRelationshipName
-				.name());
-		twoSecurityGroupId = (String) value.get(Fields.twoSecurityGroupId
-				.name());
+				.get(FIELD_ONE_PARTY_RELATIONSHIP_TYPE_ID);
+		oneStatusId = (String) value.get(FIELD_ONE_STATUS_ID);
+		onePartyIdTo = (String) value.get(FIELD_ONE_PARTY_ID_TO);
+		twoRoleTypeIdTo = (String) value.get(FIELD_TWO_ROLE_TYPE_ID_TO);
+		twoPartyIdFrom = (String) value.get(FIELD_TWO_PARTY_ID_FROM);
+		twoPositionTitle = (String) value.get(FIELD_TWO_POSITION_TITLE);
+		twoComments = (String) value.get(FIELD_TWO_COMMENTS);
+		twoPriorityTypeId = (String) value.get(FIELD_TWO_PRIORITY_TYPE_ID);
+		twoPermissionsEnumId = (String) value
+				.get(FIELD_TWO_PERMISSIONS_ENUM_ID);
+		twoRoleTypeIdFrom = (String) value.get(FIELD_TWO_ROLE_TYPE_ID_FROM);
+		twoThruDate = (Timestamp) value.get(FIELD_TWO_THRU_DATE);
+		twoFromDate = (Timestamp) value.get(FIELD_TWO_FROM_DATE);
+		twoRelationshipName = (String) value.get(FIELD_TWO_RELATIONSHIP_NAME);
+		twoSecurityGroupId = (String) value.get(FIELD_TWO_SECURITY_GROUP_ID);
 		twoPartyRelationshipTypeId = (String) value
-				.get(Fields.twoPartyRelationshipTypeId.name());
-		twoStatusId = (String) value.get(Fields.twoStatusId.name());
-		twoPartyIdTo = (String) value.get(Fields.twoPartyIdTo.name());
+				.get(FIELD_TWO_PARTY_RELATIONSHIP_TYPE_ID);
+		twoStatusId = (String) value.get(FIELD_TWO_STATUS_ID);
+		twoPartyIdTo = (String) value.get(FIELD_TWO_PARTY_ID_TO);
 	}
 
 	public static PartyRelationshipToFrom fromValue(

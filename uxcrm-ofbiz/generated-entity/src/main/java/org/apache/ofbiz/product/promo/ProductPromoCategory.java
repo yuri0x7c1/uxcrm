@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Category
  */
+@FieldNameConstants
 public class ProductPromoCategory implements Serializable {
 
-	public static final long serialVersionUID = 6747061737612654592L;
+	public static final long serialVersionUID = 3043258754181475328L;
 	public static final String NAME = "ProductPromoCategory";
 	/**
 	 * Product Promo Id
@@ -88,30 +90,22 @@ public class ProductPromoCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoId, productPromoRuleId, productPromoActionSeqId, productPromoCondSeqId, productCategoryId, andGroupId, productPromoApplEnumId, includeSubCategories, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoCategory(GenericValue value) {
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
 		productPromoActionSeqId = (String) value
-				.get(Fields.productPromoActionSeqId.name());
-		productPromoCondSeqId = (String) value.get(Fields.productPromoCondSeqId
-				.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		andGroupId = (String) value.get(Fields.andGroupId.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_SEQ_ID);
+		productPromoCondSeqId = (String) value
+				.get(FIELD_PRODUCT_PROMO_COND_SEQ_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		andGroupId = (String) value.get(FIELD_AND_GROUP_ID);
 		productPromoApplEnumId = (String) value
-				.get(Fields.productPromoApplEnumId.name());
-		includeSubCategories = (String) value.get(Fields.includeSubCategories
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_PROMO_APPL_ENUM_ID);
+		includeSubCategories = (String) value.get(FIELD_INCLUDE_SUB_CATEGORIES);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoCategory fromValue(

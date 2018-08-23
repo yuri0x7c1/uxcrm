@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Purchase Product Summary
  */
+@FieldNameConstants
 public class OrderPurchaseProductSummary implements Serializable {
 
-	public static final long serialVersionUID = 355326051507832832L;
+	public static final long serialVersionUID = 8011692730540169216L;
 	public static final String NAME = "OrderPurchaseProductSummary";
 	/**
 	 * Web Site Id
@@ -107,26 +109,22 @@ public class OrderPurchaseProductSummary implements Serializable {
 	@Setter
 	private String itemStatusId;
 
-	public enum Fields {
-		webSiteId, productStoreId, originFacilityId, terminalId, statusId, productId, internalName, quantity, cancelQuantity, unitPrice, unitListPrice, orderId, orderTypeId, orderDate, itemStatusId
-	}
-
 	public OrderPurchaseProductSummary(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		terminalId = (String) value.get(Fields.terminalId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		productId = (String) value.get(Fields.productId.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		cancelQuantity = (BigDecimal) value.get(Fields.cancelQuantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		itemStatusId = (String) value.get(Fields.itemStatusId.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		terminalId = (String) value.get(FIELD_TERMINAL_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		cancelQuantity = (BigDecimal) value.get(FIELD_CANCEL_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		itemStatusId = (String) value.get(FIELD_ITEM_STATUS_ID);
 	}
 
 	public static OrderPurchaseProductSummary fromValue(

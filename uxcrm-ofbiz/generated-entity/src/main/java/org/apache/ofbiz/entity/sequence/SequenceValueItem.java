@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.sequence;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Sequence Value Item
  */
+@FieldNameConstants
 public class SequenceValueItem implements Serializable {
 
-	public static final long serialVersionUID = 8865068675765605376L;
+	public static final long serialVersionUID = 3967132287281812480L;
 	public static final String NAME = "SequenceValueItem";
 	/**
 	 * Seq Name
@@ -52,19 +54,13 @@ public class SequenceValueItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		seqName, seqId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SequenceValueItem(GenericValue value) {
-		seqName = (String) value.get(Fields.seqName.name());
-		seqId = (Long) value.get(Fields.seqId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		seqName = (String) value.get(FIELD_SEQ_NAME);
+		seqId = (Long) value.get(FIELD_SEQ_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SequenceValueItem fromValue(

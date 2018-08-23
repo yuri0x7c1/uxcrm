@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority Assoc
  */
+@FieldNameConstants
 public class TaxAuthorityAssoc implements Serializable {
 
-	public static final long serialVersionUID = 2835805351317005312L;
+	public static final long serialVersionUID = 1773098894964141056L;
 	public static final String NAME = "TaxAuthorityAssoc";
 	/**
 	 * Tax Auth Geo Id
@@ -82,25 +84,19 @@ public class TaxAuthorityAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		taxAuthGeoId, taxAuthPartyId, toTaxAuthGeoId, toTaxAuthPartyId, fromDate, thruDate, taxAuthorityAssocTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TaxAuthorityAssoc(GenericValue value) {
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		toTaxAuthGeoId = (String) value.get(Fields.toTaxAuthGeoId.name());
-		toTaxAuthPartyId = (String) value.get(Fields.toTaxAuthPartyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		toTaxAuthGeoId = (String) value.get(FIELD_TO_TAX_AUTH_GEO_ID);
+		toTaxAuthPartyId = (String) value.get(FIELD_TO_TAX_AUTH_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 		taxAuthorityAssocTypeId = (String) value
-				.get(Fields.taxAuthorityAssocTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_TAX_AUTHORITY_ASSOC_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TaxAuthorityAssoc fromValue(

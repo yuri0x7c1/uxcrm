@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Facility
  */
+@FieldNameConstants
 public class ProductStoreFacility implements Serializable {
 
-	public static final long serialVersionUID = 5793681901409272832L;
+	public static final long serialVersionUID = 4983142356943584256L;
 	public static final String NAME = "ProductStoreFacility";
 	/**
 	 * Product Store Id
@@ -70,22 +72,16 @@ public class ProductStoreFacility implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, facilityId, fromDate, thruDate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreFacility(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreFacility fromValue(

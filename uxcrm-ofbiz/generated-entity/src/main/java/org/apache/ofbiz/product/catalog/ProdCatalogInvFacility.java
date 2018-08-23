@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.catalog;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Prod Catalog Inv Facility
  */
+@FieldNameConstants
 public class ProdCatalogInvFacility implements Serializable {
 
-	public static final long serialVersionUID = 7940057551008710656L;
+	public static final long serialVersionUID = 3390100864034720768L;
 	public static final String NAME = "ProdCatalogInvFacility";
 	/**
 	 * Prod Catalog Id
@@ -70,22 +72,16 @@ public class ProdCatalogInvFacility implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		prodCatalogId, facilityId, fromDate, thruDate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProdCatalogInvFacility(GenericValue value) {
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProdCatalogInvFacility fromValue(

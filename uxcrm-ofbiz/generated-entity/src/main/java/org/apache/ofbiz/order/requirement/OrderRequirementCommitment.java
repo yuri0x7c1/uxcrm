@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.requirement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Requirement Commitment
  */
+@FieldNameConstants
 public class OrderRequirementCommitment implements Serializable {
 
-	public static final long serialVersionUID = 4155310934316168192L;
+	public static final long serialVersionUID = 6471686224588403712L;
 	public static final String NAME = "OrderRequirementCommitment";
 	/**
 	 * Order Id
@@ -65,21 +67,15 @@ public class OrderRequirementCommitment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, requirementId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderRequirementCommitment(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		requirementId = (String) value.get(Fields.requirementId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderRequirementCommitment fromValue(

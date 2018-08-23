@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site
  */
+@FieldNameConstants
 public class WebSite implements Serializable {
 
-	public static final long serialVersionUID = 7308221349181128704L;
+	public static final long serialVersionUID = 4065739714090171392L;
 	public static final String NAME = "WebSite";
 	/**
 	 * Web Site Id
@@ -136,37 +138,30 @@ public class WebSite implements Serializable {
 	@Setter
 	private String displayMaintenancePage;
 
-	public enum Fields {
-		webSiteId, siteName, httpHost, httpPort, httpsHost, httpsPort, enableHttps, standardContentPrefix, secureContentPrefix, cookieDomain, visualThemeSetId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, productStoreId, allowProductStoreChange, hostedPathAlias, isDefault, displayMaintenancePage
-	}
-
 	public WebSite(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		siteName = (String) value.get(Fields.siteName.name());
-		httpHost = (String) value.get(Fields.httpHost.name());
-		httpPort = (String) value.get(Fields.httpPort.name());
-		httpsHost = (String) value.get(Fields.httpsHost.name());
-		httpsPort = (String) value.get(Fields.httpsPort.name());
-		enableHttps = (String) value.get(Fields.enableHttps.name());
-		standardContentPrefix = (String) value.get(Fields.standardContentPrefix
-				.name());
-		secureContentPrefix = (String) value.get(Fields.secureContentPrefix
-				.name());
-		cookieDomain = (String) value.get(Fields.cookieDomain.name());
-		visualThemeSetId = (String) value.get(Fields.visualThemeSetId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		siteName = (String) value.get(FIELD_SITE_NAME);
+		httpHost = (String) value.get(FIELD_HTTP_HOST);
+		httpPort = (String) value.get(FIELD_HTTP_PORT);
+		httpsHost = (String) value.get(FIELD_HTTPS_HOST);
+		httpsPort = (String) value.get(FIELD_HTTPS_PORT);
+		enableHttps = (String) value.get(FIELD_ENABLE_HTTPS);
+		standardContentPrefix = (String) value
+				.get(FIELD_STANDARD_CONTENT_PREFIX);
+		secureContentPrefix = (String) value.get(FIELD_SECURE_CONTENT_PREFIX);
+		cookieDomain = (String) value.get(FIELD_COOKIE_DOMAIN);
+		visualThemeSetId = (String) value.get(FIELD_VISUAL_THEME_SET_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
 		allowProductStoreChange = (String) value
-				.get(Fields.allowProductStoreChange.name());
-		hostedPathAlias = (String) value.get(Fields.hostedPathAlias.name());
-		isDefault = (String) value.get(Fields.isDefault.name());
+				.get(FIELD_ALLOW_PRODUCT_STORE_CHANGE);
+		hostedPathAlias = (String) value.get(FIELD_HOSTED_PATH_ALIAS);
+		isDefault = (String) value.get(FIELD_IS_DEFAULT);
 		displayMaintenancePage = (String) value
-				.get(Fields.displayMaintenancePage.name());
+				.get(FIELD_DISPLAY_MAINTENANCE_PAGE);
 	}
 
 	public static WebSite fromValue(org.apache.ofbiz.entity.GenericValue value) {

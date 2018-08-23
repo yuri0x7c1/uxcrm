@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Acctg Trans
  */
+@FieldNameConstants
 public class AcctgTrans implements Serializable {
 
-	public static final long serialVersionUID = 525059235561562112L;
+	public static final long serialVersionUID = 2188398451403752448L;
 	public static final String NAME = "AcctgTrans";
 	/**
 	 * Acctg Trans Id
@@ -208,50 +210,41 @@ public class AcctgTrans implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		acctgTransId, acctgTransTypeId, description, transactionDate, isPosted, postedDate, scheduledPostingDate, glJournalId, glFiscalTypeId, voucherRef, voucherDate, groupStatusId, fixedAssetId, inventoryItemId, physicalInventoryId, partyId, roleTypeId, invoiceId, paymentId, finAccountTransId, shipmentId, receiptId, workEffortId, theirAcctgTransId, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AcctgTrans(GenericValue value) {
-		acctgTransId = (String) value.get(Fields.acctgTransId.name());
-		acctgTransTypeId = (String) value.get(Fields.acctgTransTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		transactionDate = (Timestamp) value.get(Fields.transactionDate.name());
-		isPosted = (String) value.get(Fields.isPosted.name());
-		postedDate = (Timestamp) value.get(Fields.postedDate.name());
+		acctgTransId = (String) value.get(FIELD_ACCTG_TRANS_ID);
+		acctgTransTypeId = (String) value.get(FIELD_ACCTG_TRANS_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		transactionDate = (Timestamp) value.get(FIELD_TRANSACTION_DATE);
+		isPosted = (String) value.get(FIELD_IS_POSTED);
+		postedDate = (Timestamp) value.get(FIELD_POSTED_DATE);
 		scheduledPostingDate = (Timestamp) value
-				.get(Fields.scheduledPostingDate.name());
-		glJournalId = (String) value.get(Fields.glJournalId.name());
-		glFiscalTypeId = (String) value.get(Fields.glFiscalTypeId.name());
-		voucherRef = (String) value.get(Fields.voucherRef.name());
-		voucherDate = (Timestamp) value.get(Fields.voucherDate.name());
-		groupStatusId = (String) value.get(Fields.groupStatusId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		physicalInventoryId = (String) value.get(Fields.physicalInventoryId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		receiptId = (String) value.get(Fields.receiptId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		theirAcctgTransId = (String) value.get(Fields.theirAcctgTransId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_SCHEDULED_POSTING_DATE);
+		glJournalId = (String) value.get(FIELD_GL_JOURNAL_ID);
+		glFiscalTypeId = (String) value.get(FIELD_GL_FISCAL_TYPE_ID);
+		voucherRef = (String) value.get(FIELD_VOUCHER_REF);
+		voucherDate = (Timestamp) value.get(FIELD_VOUCHER_DATE);
+		groupStatusId = (String) value.get(FIELD_GROUP_STATUS_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		physicalInventoryId = (String) value.get(FIELD_PHYSICAL_INVENTORY_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		receiptId = (String) value.get(FIELD_RECEIPT_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		theirAcctgTransId = (String) value.get(FIELD_THEIR_ACCTG_TRANS_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AcctgTrans fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Return Adjustment
  */
+@FieldNameConstants
 public class ReturnAdjustment implements Serializable {
 
-	public static final long serialVersionUID = 3100371405118465024L;
+	public static final long serialVersionUID = 4289745716464107520L;
 	public static final String NAME = "ReturnAdjustment";
 	/**
 	 * Return Adjustment Id
@@ -227,60 +229,47 @@ public class ReturnAdjustment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnAdjustmentId, returnAdjustmentTypeId, returnId, returnItemSeqId, shipGroupSeqId, comments, description, returnTypeId, orderAdjustmentId, amount, productPromoId, productPromoRuleId, productPromoActionSeqId, productFeatureId, correspondingProductId, taxAuthorityRateSeqId, sourceReferenceId, sourcePercentage, customerReferenceId, primaryGeoId, secondaryGeoId, exemptAmount, taxAuthGeoId, taxAuthPartyId, overrideGlAccountId, includeInTax, includeInShipping, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnAdjustment(GenericValue value) {
-		returnAdjustmentId = (String) value.get(Fields.returnAdjustmentId
-				.name());
+		returnAdjustmentId = (String) value.get(FIELD_RETURN_ADJUSTMENT_ID);
 		returnAdjustmentTypeId = (String) value
-				.get(Fields.returnAdjustmentTypeId.name());
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		comments = (String) value.get(Fields.comments.name());
-		description = (String) value.get(Fields.description.name());
-		returnTypeId = (String) value.get(Fields.returnTypeId.name());
-		orderAdjustmentId = (String) value.get(Fields.orderAdjustmentId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
+				.get(FIELD_RETURN_ADJUSTMENT_TYPE_ID);
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		returnTypeId = (String) value.get(FIELD_RETURN_TYPE_ID);
+		orderAdjustmentId = (String) value.get(FIELD_ORDER_ADJUSTMENT_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
 		productPromoActionSeqId = (String) value
-				.get(Fields.productPromoActionSeqId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_SEQ_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
 		correspondingProductId = (String) value
-				.get(Fields.correspondingProductId.name());
-		taxAuthorityRateSeqId = (String) value.get(Fields.taxAuthorityRateSeqId
-				.name());
-		sourceReferenceId = (String) value.get(Fields.sourceReferenceId.name());
-		sourcePercentage = (BigDecimal) value.get(Fields.sourcePercentage
-				.name());
-		customerReferenceId = (String) value.get(Fields.customerReferenceId
-				.name());
-		primaryGeoId = (String) value.get(Fields.primaryGeoId.name());
-		secondaryGeoId = (String) value.get(Fields.secondaryGeoId.name());
-		exemptAmount = (BigDecimal) value.get(Fields.exemptAmount.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		includeInTax = (String) value.get(Fields.includeInTax.name());
-		includeInShipping = (String) value.get(Fields.includeInShipping.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_CORRESPONDING_PRODUCT_ID);
+		taxAuthorityRateSeqId = (String) value
+				.get(FIELD_TAX_AUTHORITY_RATE_SEQ_ID);
+		sourceReferenceId = (String) value.get(FIELD_SOURCE_REFERENCE_ID);
+		sourcePercentage = (BigDecimal) value.get(FIELD_SOURCE_PERCENTAGE);
+		customerReferenceId = (String) value.get(FIELD_CUSTOMER_REFERENCE_ID);
+		primaryGeoId = (String) value.get(FIELD_PRIMARY_GEO_ID);
+		secondaryGeoId = (String) value.get(FIELD_SECONDARY_GEO_ID);
+		exemptAmount = (BigDecimal) value.get(FIELD_EXEMPT_AMOUNT);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		includeInTax = (String) value.get(FIELD_INCLUDE_IN_TAX);
+		includeInShipping = (String) value.get(FIELD_INCLUDE_IN_SHIPPING);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnAdjustment fromValue(

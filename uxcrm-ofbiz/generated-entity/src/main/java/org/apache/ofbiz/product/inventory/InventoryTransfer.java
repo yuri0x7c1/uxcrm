@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Transfer
  */
+@FieldNameConstants
 public class InventoryTransfer implements Serializable {
 
-	public static final long serialVersionUID = 8352189650224771072L;
+	public static final long serialVersionUID = 7797490763891968000L;
 	public static final String NAME = "InventoryTransfer";
 	/**
 	 * Inventory Transfer Id
@@ -118,31 +120,24 @@ public class InventoryTransfer implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		inventoryTransferId, statusId, inventoryItemId, facilityId, locationSeqId, containerId, facilityIdTo, locationSeqIdTo, containerIdTo, itemIssuanceId, sendDate, receiveDate, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryTransfer(GenericValue value) {
-		inventoryTransferId = (String) value.get(Fields.inventoryTransferId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		containerId = (String) value.get(Fields.containerId.name());
-		facilityIdTo = (String) value.get(Fields.facilityIdTo.name());
-		locationSeqIdTo = (String) value.get(Fields.locationSeqIdTo.name());
-		containerIdTo = (String) value.get(Fields.containerIdTo.name());
-		itemIssuanceId = (String) value.get(Fields.itemIssuanceId.name());
-		sendDate = (Timestamp) value.get(Fields.sendDate.name());
-		receiveDate = (Timestamp) value.get(Fields.receiveDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		inventoryTransferId = (String) value.get(FIELD_INVENTORY_TRANSFER_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		containerId = (String) value.get(FIELD_CONTAINER_ID);
+		facilityIdTo = (String) value.get(FIELD_FACILITY_ID_TO);
+		locationSeqIdTo = (String) value.get(FIELD_LOCATION_SEQ_ID_TO);
+		containerIdTo = (String) value.get(FIELD_CONTAINER_ID_TO);
+		itemIssuanceId = (String) value.get(FIELD_ITEM_ISSUANCE_ID);
+		sendDate = (Timestamp) value.get(FIELD_SEND_DATE);
+		receiveDate = (Timestamp) value.get(FIELD_RECEIVE_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryTransfer fromValue(

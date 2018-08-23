@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common._enum;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Enumeration
  */
+@FieldNameConstants
 public class Enumeration implements Serializable {
 
-	public static final long serialVersionUID = 1328348875544300544L;
+	public static final long serialVersionUID = 4692486788067855360L;
 	public static final String NAME = "Enumeration";
 	/**
 	 * Enum Id
@@ -70,22 +72,16 @@ public class Enumeration implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		enumId, enumTypeId, enumCode, sequenceId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Enumeration(GenericValue value) {
-		enumId = (String) value.get(Fields.enumId.name());
-		enumTypeId = (String) value.get(Fields.enumTypeId.name());
-		enumCode = (String) value.get(Fields.enumCode.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		enumId = (String) value.get(FIELD_ENUM_ID);
+		enumTypeId = (String) value.get(FIELD_ENUM_TYPE_ID);
+		enumCode = (String) value.get(FIELD_ENUM_CODE);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Enumeration fromValue(

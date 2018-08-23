@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Geo Point
  */
+@FieldNameConstants
 public class GeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 19674184926043136L;
+	public static final long serialVersionUID = 1416359400032303104L;
 	public static final String NAME = "GeoPoint";
 	/**
 	 * Geo Point Id
@@ -95,27 +97,20 @@ public class GeoPoint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		geoPointId, geoPointTypeEnumId, description, dataSourceId, latitude, longitude, elevation, elevationUomId, information, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GeoPoint(GenericValue value) {
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		geoPointTypeEnumId = (String) value.get(Fields.geoPointTypeEnumId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		latitude = (String) value.get(Fields.latitude.name());
-		longitude = (String) value.get(Fields.longitude.name());
-		elevation = (BigDecimal) value.get(Fields.elevation.name());
-		elevationUomId = (String) value.get(Fields.elevationUomId.name());
-		information = (String) value.get(Fields.information.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		geoPointTypeEnumId = (String) value.get(FIELD_GEO_POINT_TYPE_ENUM_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		latitude = (String) value.get(FIELD_LATITUDE);
+		longitude = (String) value.get(FIELD_LONGITUDE);
+		elevation = (BigDecimal) value.get(FIELD_ELEVATION);
+		elevationUomId = (String) value.get(FIELD_ELEVATION_UOM_ID);
+		information = (String) value.get(FIELD_INFORMATION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GeoPoint fromValue(org.apache.ofbiz.entity.GenericValue value) {

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Use
  */
+@FieldNameConstants
 public class ProductPromoUse implements Serializable {
 
-	public static final long serialVersionUID = 7746149924629194752L;
+	public static final long serialVersionUID = 320188801745165312L;
 	public static final String NAME = "ProductPromoUse";
 	/**
 	 * Order Id
@@ -83,27 +85,20 @@ public class ProductPromoUse implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, promoSequenceId, productPromoId, productPromoCodeId, partyId, totalDiscountAmount, quantityLeftInActions, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoUse(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		promoSequenceId = (String) value.get(Fields.promoSequenceId.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		totalDiscountAmount = (BigDecimal) value.get(Fields.totalDiscountAmount
-				.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		promoSequenceId = (String) value.get(FIELD_PROMO_SEQUENCE_ID);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		totalDiscountAmount = (BigDecimal) value
+				.get(FIELD_TOTAL_DISCOUNT_AMOUNT);
 		quantityLeftInActions = (BigDecimal) value
-				.get(Fields.quantityLeftInActions.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_QUANTITY_LEFT_IN_ACTIONS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoUse fromValue(

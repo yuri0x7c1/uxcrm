@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Category
  */
+@FieldNameConstants
 public class DataCategory implements Serializable {
 
-	public static final long serialVersionUID = 1658797583441411072L;
+	public static final long serialVersionUID = 4840853878073762816L;
 	public static final String NAME = "DataCategory";
 	/**
 	 * Data Category Id
@@ -58,20 +60,14 @@ public class DataCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataCategoryId, parentCategoryId, categoryName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataCategory(GenericValue value) {
-		dataCategoryId = (String) value.get(Fields.dataCategoryId.name());
-		parentCategoryId = (String) value.get(Fields.parentCategoryId.name());
-		categoryName = (String) value.get(Fields.categoryName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataCategoryId = (String) value.get(FIELD_DATA_CATEGORY_ID);
+		parentCategoryId = (String) value.get(FIELD_PARENT_CATEGORY_ID);
+		categoryName = (String) value.get(FIELD_CATEGORY_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataCategory fromValue(

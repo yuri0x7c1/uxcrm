@@ -94,15 +94,15 @@ public class WebSiteTreeDataProvider extends AbstractBackEndHierarchicalDataProv
 			0,
 			1000,
 			Arrays.asList(
-				ContentAssocDataResourceViewFrom.Fields.caSequenceNum.name(),
-				ContentAssocDataResourceViewFrom.Fields.caFromDate.name(),
-				ContentAssocDataResourceViewFrom.Fields.createdDate.name()
+				ContentAssocDataResourceViewFrom.FIELD_CA_SEQUENCE_NUM,
+				ContentAssocDataResourceViewFrom.FIELD_CA_FROM_DATE,
+				ContentAssocDataResourceViewFrom.FIELD_CREATED_DATE
 			),
 			new EntityConditionList<EntityCondition>(
 				Arrays.asList(
-					new EntityExpr(ContentAssocDataResourceViewFrom.Fields.caContentIdTo, EntityOperator.EQUALS, parent.getContentId()),
-					new EntityExpr(ContentAssocDataResourceViewFrom.Fields.caContentAssocTypeId, EntityOperator.EQUALS, "SUB_CONTENT"),
-					new EntityExpr(ContentAssocDataResourceViewFrom.Fields.caThruDate, EntityOperator.EQUALS, null)
+					new EntityExpr(ContentAssocDataResourceViewFrom.FIELD_CA_CONTENT_ID_TO, EntityOperator.EQUALS, parent.getContentId()),
+					new EntityExpr(ContentAssocDataResourceViewFrom.FIELD_CA_CONTENT_ASSOC_TYPE_ID, EntityOperator.EQUALS, "SUB_CONTENT"),
+					new EntityExpr(ContentAssocDataResourceViewFrom.FIELD_CA_THRU_DATE, EntityOperator.EQUALS, null)
 				),
 				EntityOperator.AND
 			)

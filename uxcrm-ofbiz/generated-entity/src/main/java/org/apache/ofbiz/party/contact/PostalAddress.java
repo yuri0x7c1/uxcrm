@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Postal Address
  */
+@FieldNameConstants
 public class PostalAddress implements Serializable {
 
-	public static final long serialVersionUID = 2438570101010186240L;
+	public static final long serialVersionUID = 1102142759123439616L;
 	public static final String NAME = "PostalAddress";
 	/**
 	 * Contact Mech Id
@@ -148,36 +150,29 @@ public class PostalAddress implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactMechId, toName, attnName, address1, address2, houseNumber, houseNumberExt, directions, city, cityGeoId, postalCode, postalCodeExt, countryGeoId, stateProvinceGeoId, countyGeoId, municipalityGeoId, postalCodeGeoId, geoPointId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PostalAddress(GenericValue value) {
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		toName = (String) value.get(Fields.toName.name());
-		attnName = (String) value.get(Fields.attnName.name());
-		address1 = (String) value.get(Fields.address1.name());
-		address2 = (String) value.get(Fields.address2.name());
-		houseNumber = (Long) value.get(Fields.houseNumber.name());
-		houseNumberExt = (String) value.get(Fields.houseNumberExt.name());
-		directions = (String) value.get(Fields.directions.name());
-		city = (String) value.get(Fields.city.name());
-		cityGeoId = (String) value.get(Fields.cityGeoId.name());
-		postalCode = (String) value.get(Fields.postalCode.name());
-		postalCodeExt = (String) value.get(Fields.postalCodeExt.name());
-		countryGeoId = (String) value.get(Fields.countryGeoId.name());
-		stateProvinceGeoId = (String) value.get(Fields.stateProvinceGeoId
-				.name());
-		countyGeoId = (String) value.get(Fields.countyGeoId.name());
-		municipalityGeoId = (String) value.get(Fields.municipalityGeoId.name());
-		postalCodeGeoId = (String) value.get(Fields.postalCodeGeoId.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		toName = (String) value.get(FIELD_TO_NAME);
+		attnName = (String) value.get(FIELD_ATTN_NAME);
+		address1 = (String) value.get(FIELD_ADDRESS1);
+		address2 = (String) value.get(FIELD_ADDRESS2);
+		houseNumber = (Long) value.get(FIELD_HOUSE_NUMBER);
+		houseNumberExt = (String) value.get(FIELD_HOUSE_NUMBER_EXT);
+		directions = (String) value.get(FIELD_DIRECTIONS);
+		city = (String) value.get(FIELD_CITY);
+		cityGeoId = (String) value.get(FIELD_CITY_GEO_ID);
+		postalCode = (String) value.get(FIELD_POSTAL_CODE);
+		postalCodeExt = (String) value.get(FIELD_POSTAL_CODE_EXT);
+		countryGeoId = (String) value.get(FIELD_COUNTRY_GEO_ID);
+		stateProvinceGeoId = (String) value.get(FIELD_STATE_PROVINCE_GEO_ID);
+		countyGeoId = (String) value.get(FIELD_COUNTY_GEO_ID);
+		municipalityGeoId = (String) value.get(FIELD_MUNICIPALITY_GEO_ID);
+		postalCodeGeoId = (String) value.get(FIELD_POSTAL_CODE_GEO_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PostalAddress fromValue(

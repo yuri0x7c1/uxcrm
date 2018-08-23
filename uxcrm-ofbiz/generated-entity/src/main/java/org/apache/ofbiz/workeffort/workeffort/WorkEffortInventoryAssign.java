@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Inventory Assign
  */
+@FieldNameConstants
 public class WorkEffortInventoryAssign implements Serializable {
 
-	public static final long serialVersionUID = 1864727571407570944L;
+	public static final long serialVersionUID = 4528853547312382976L;
 	public static final String NAME = "WorkEffortInventoryAssign";
 	/**
 	 * Work Effort Id
@@ -64,21 +66,15 @@ public class WorkEffortInventoryAssign implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, inventoryItemId, statusId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortInventoryAssign(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		quantity = (Double) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		quantity = (Double) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortInventoryAssign fromValue(

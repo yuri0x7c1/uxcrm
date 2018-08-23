@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Approval
  */
+@FieldNameConstants
 public class ContentApproval implements Serializable {
 
-	public static final long serialVersionUID = 8199584273413928960L;
+	public static final long serialVersionUID = 2778931923714912256L;
 	public static final String NAME = "ContentApproval";
 	/**
 	 * Content Approval Id
@@ -94,27 +96,21 @@ public class ContentApproval implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentApprovalId, contentId, contentRevisionSeqId, partyId, roleTypeId, approvalStatusId, approvalDate, sequenceNum, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentApproval(GenericValue value) {
-		contentApprovalId = (String) value.get(Fields.contentApprovalId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		contentRevisionSeqId = (String) value.get(Fields.contentRevisionSeqId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		approvalStatusId = (String) value.get(Fields.approvalStatusId.name());
-		approvalDate = (Timestamp) value.get(Fields.approvalDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentApprovalId = (String) value.get(FIELD_CONTENT_APPROVAL_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentRevisionSeqId = (String) value
+				.get(FIELD_CONTENT_REVISION_SEQ_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		approvalStatusId = (String) value.get(FIELD_APPROVAL_STATUS_ID);
+		approvalDate = (Timestamp) value.get(FIELD_APPROVAL_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentApproval fromValue(

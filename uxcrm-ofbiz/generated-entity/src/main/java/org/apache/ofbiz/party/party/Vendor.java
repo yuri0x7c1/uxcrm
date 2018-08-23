@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Vendor
  */
+@FieldNameConstants
 public class Vendor implements Serializable {
 
-	public static final long serialVersionUID = 524610844590375936L;
+	public static final long serialVersionUID = 4064981426263387136L;
 	public static final String NAME = "Vendor";
 	/**
 	 * Party Id
@@ -70,24 +72,16 @@ public class Vendor implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, manifestCompanyName, manifestCompanyTitle, manifestLogoUrl, manifestPolicies, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Vendor(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		manifestCompanyName = (String) value.get(Fields.manifestCompanyName
-				.name());
-		manifestCompanyTitle = (String) value.get(Fields.manifestCompanyTitle
-				.name());
-		manifestLogoUrl = (String) value.get(Fields.manifestLogoUrl.name());
-		manifestPolicies = (String) value.get(Fields.manifestPolicies.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		manifestCompanyName = (String) value.get(FIELD_MANIFEST_COMPANY_NAME);
+		manifestCompanyTitle = (String) value.get(FIELD_MANIFEST_COMPANY_TITLE);
+		manifestLogoUrl = (String) value.get(FIELD_MANIFEST_LOGO_URL);
+		manifestPolicies = (String) value.get(FIELD_MANIFEST_POLICIES);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Vendor fromValue(org.apache.ofbiz.entity.GenericValue value) {

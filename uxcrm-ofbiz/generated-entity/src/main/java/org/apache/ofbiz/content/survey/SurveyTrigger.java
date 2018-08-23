@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Trigger
  */
+@FieldNameConstants
 public class SurveyTrigger implements Serializable {
 
-	public static final long serialVersionUID = 1371299735809220608L;
+	public static final long serialVersionUID = 723853270005704704L;
 	public static final String NAME = "SurveyTrigger";
 	/**
 	 * Survey Id
@@ -64,21 +66,15 @@ public class SurveyTrigger implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyId, surveyApplTypeId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyTrigger(GenericValue value) {
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyApplTypeId = (String) value.get(Fields.surveyApplTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyApplTypeId = (String) value.get(FIELD_SURVEY_APPL_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyTrigger fromValue(

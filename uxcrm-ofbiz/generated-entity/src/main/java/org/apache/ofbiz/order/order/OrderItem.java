@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Item
  */
+@FieldNameConstants
 public class OrderItem implements Serializable {
 
-	public static final long serialVersionUID = 2083154436984474624L;
+	public static final long serialVersionUID = 6687645656866761728L;
 	public static final String NAME = "OrderItem";
 	/**
 	 * Order Id
@@ -317,77 +319,61 @@ public class OrderItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, externalId, orderItemTypeId, orderItemGroupSeqId, isItemGroupPrimary, fromInventoryItemId, budgetId, budgetItemSeqId, productId, supplierProductId, productFeatureId, prodCatalogId, productCategoryId, isPromo, quoteId, quoteItemSeqId, shoppingListId, shoppingListItemSeqId, subscriptionId, deploymentId, quantity, cancelQuantity, selectedAmount, unitPrice, unitListPrice, unitAverageCost, unitRecurringPrice, isModifiedPrice, recurringFreqUomId, itemDescription, comments, correspondingPoId, statusId, syncStatusId, estimatedShipDate, estimatedDeliveryDate, autoCancelDate, dontCancelSetDate, dontCancelSetUserLogin, shipBeforeDate, shipAfterDate, cancelBackOrderDate, overrideGlAccountId, salesOpportunityId, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItem(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		orderItemTypeId = (String) value.get(Fields.orderItemTypeId.name());
-		orderItemGroupSeqId = (String) value.get(Fields.orderItemGroupSeqId
-				.name());
-		isItemGroupPrimary = (String) value.get(Fields.isItemGroupPrimary
-				.name());
-		fromInventoryItemId = (String) value.get(Fields.fromInventoryItemId
-				.name());
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		productId = (String) value.get(Fields.productId.name());
-		supplierProductId = (String) value.get(Fields.supplierProductId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		isPromo = (String) value.get(Fields.isPromo.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		quoteItemSeqId = (String) value.get(Fields.quoteItemSeqId.name());
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		shoppingListItemSeqId = (String) value.get(Fields.shoppingListItemSeqId
-				.name());
-		subscriptionId = (String) value.get(Fields.subscriptionId.name());
-		deploymentId = (String) value.get(Fields.deploymentId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		cancelQuantity = (BigDecimal) value.get(Fields.cancelQuantity.name());
-		selectedAmount = (BigDecimal) value.get(Fields.selectedAmount.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		unitAverageCost = (BigDecimal) value.get(Fields.unitAverageCost.name());
-		unitRecurringPrice = (BigDecimal) value.get(Fields.unitRecurringPrice
-				.name());
-		isModifiedPrice = (String) value.get(Fields.isModifiedPrice.name());
-		recurringFreqUomId = (String) value.get(Fields.recurringFreqUomId
-				.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		comments = (String) value.get(Fields.comments.name());
-		correspondingPoId = (String) value.get(Fields.correspondingPoId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		orderItemTypeId = (String) value.get(FIELD_ORDER_ITEM_TYPE_ID);
+		orderItemGroupSeqId = (String) value.get(FIELD_ORDER_ITEM_GROUP_SEQ_ID);
+		isItemGroupPrimary = (String) value.get(FIELD_IS_ITEM_GROUP_PRIMARY);
+		fromInventoryItemId = (String) value.get(FIELD_FROM_INVENTORY_ITEM_ID);
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		supplierProductId = (String) value.get(FIELD_SUPPLIER_PRODUCT_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		isPromo = (String) value.get(FIELD_IS_PROMO);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		quoteItemSeqId = (String) value.get(FIELD_QUOTE_ITEM_SEQ_ID);
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		shoppingListItemSeqId = (String) value
+				.get(FIELD_SHOPPING_LIST_ITEM_SEQ_ID);
+		subscriptionId = (String) value.get(FIELD_SUBSCRIPTION_ID);
+		deploymentId = (String) value.get(FIELD_DEPLOYMENT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		cancelQuantity = (BigDecimal) value.get(FIELD_CANCEL_QUANTITY);
+		selectedAmount = (BigDecimal) value.get(FIELD_SELECTED_AMOUNT);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		unitAverageCost = (BigDecimal) value.get(FIELD_UNIT_AVERAGE_COST);
+		unitRecurringPrice = (BigDecimal) value.get(FIELD_UNIT_RECURRING_PRICE);
+		isModifiedPrice = (String) value.get(FIELD_IS_MODIFIED_PRICE);
+		recurringFreqUomId = (String) value.get(FIELD_RECURRING_FREQ_UOM_ID);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		correspondingPoId = (String) value.get(FIELD_CORRESPONDING_PO_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		autoCancelDate = (Timestamp) value.get(Fields.autoCancelDate.name());
-		dontCancelSetDate = (Timestamp) value.get(Fields.dontCancelSetDate
-				.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		autoCancelDate = (Timestamp) value.get(FIELD_AUTO_CANCEL_DATE);
+		dontCancelSetDate = (Timestamp) value.get(FIELD_DONT_CANCEL_SET_DATE);
 		dontCancelSetUserLogin = (String) value
-				.get(Fields.dontCancelSetUserLogin.name());
-		shipBeforeDate = (Timestamp) value.get(Fields.shipBeforeDate.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		cancelBackOrderDate = (Timestamp) value.get(Fields.cancelBackOrderDate
-				.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_DONT_CANCEL_SET_USER_LOGIN);
+		shipBeforeDate = (Timestamp) value.get(FIELD_SHIP_BEFORE_DATE);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		cancelBackOrderDate = (Timestamp) value
+				.get(FIELD_CANCEL_BACK_ORDER_DATE);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItem fromValue(org.apache.ofbiz.entity.GenericValue value) {

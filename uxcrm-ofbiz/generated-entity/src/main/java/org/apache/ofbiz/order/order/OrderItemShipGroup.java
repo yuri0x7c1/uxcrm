@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Item Ship Group
  */
+@FieldNameConstants
 public class OrderItemShipGroup implements Serializable {
 
-	public static final long serialVersionUID = 1288297537890336768L;
+	public static final long serialVersionUID = 5280554852121863168L;
 	public static final String NAME = "OrderItemShipGroup";
 	/**
 	 * Order Id
@@ -154,41 +156,33 @@ public class OrderItemShipGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, shipGroupSeqId, shipmentMethodTypeId, supplierPartyId, vendorPartyId, carrierPartyId, carrierRoleTypeId, facilityId, contactMechId, telecomContactMechId, trackingNumber, shippingInstructions, maySplit, giftMessage, isGift, shipAfterDate, shipByDate, estimatedShipDate, estimatedDeliveryDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemShipGroup(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		supplierPartyId = (String) value.get(Fields.supplierPartyId.name());
-		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		telecomContactMechId = (String) value.get(Fields.telecomContactMechId
-				.name());
-		trackingNumber = (String) value.get(Fields.trackingNumber.name());
-		shippingInstructions = (String) value.get(Fields.shippingInstructions
-				.name());
-		maySplit = (String) value.get(Fields.maySplit.name());
-		giftMessage = (String) value.get(Fields.giftMessage.name());
-		isGift = (String) value.get(Fields.isGift.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		shipByDate = (Timestamp) value.get(Fields.shipByDate.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		supplierPartyId = (String) value.get(FIELD_SUPPLIER_PARTY_ID);
+		vendorPartyId = (String) value.get(FIELD_VENDOR_PARTY_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		telecomContactMechId = (String) value
+				.get(FIELD_TELECOM_CONTACT_MECH_ID);
+		trackingNumber = (String) value.get(FIELD_TRACKING_NUMBER);
+		shippingInstructions = (String) value.get(FIELD_SHIPPING_INSTRUCTIONS);
+		maySplit = (String) value.get(FIELD_MAY_SPLIT);
+		giftMessage = (String) value.get(FIELD_GIFT_MESSAGE);
+		isGift = (String) value.get(FIELD_IS_GIFT);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		shipByDate = (Timestamp) value.get(FIELD_SHIP_BY_DATE);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemShipGroup fromValue(

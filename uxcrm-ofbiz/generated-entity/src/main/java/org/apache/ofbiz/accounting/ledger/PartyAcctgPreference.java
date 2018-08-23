@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Acctg Preference
  */
+@FieldNameConstants
 public class PartyAcctgPreference implements Serializable {
 
-	public static final long serialVersionUID = 705921990567988224L;
+	public static final long serialVersionUID = 3802463602132799488L;
 	public static final String NAME = "PartyAcctgPreference";
 	/**
 	 * Party Id
@@ -172,49 +174,40 @@ public class PartyAcctgPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, fiscalYearStartMonth, fiscalYearStartDay, taxFormId, cogsMethodId, baseCurrencyUomId, invoiceSeqCustMethId, invoiceIdPrefix, lastInvoiceNumber, lastInvoiceRestartDate, useInvoiceIdForReturns, quoteSeqCustMethId, quoteIdPrefix, lastQuoteNumber, orderSeqCustMethId, orderIdPrefix, lastOrderNumber, refundPaymentMethodId, errorGlJournalId, oldInvoiceSequenceEnumId, oldOrderSequenceEnumId, oldQuoteSequenceEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyAcctgPreference(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		fiscalYearStartMonth = (Long) value.get(Fields.fiscalYearStartMonth
-				.name());
-		fiscalYearStartDay = (Long) value.get(Fields.fiscalYearStartDay.name());
-		taxFormId = (String) value.get(Fields.taxFormId.name());
-		cogsMethodId = (String) value.get(Fields.cogsMethodId.name());
-		baseCurrencyUomId = (String) value.get(Fields.baseCurrencyUomId.name());
-		invoiceSeqCustMethId = (String) value.get(Fields.invoiceSeqCustMethId
-				.name());
-		invoiceIdPrefix = (String) value.get(Fields.invoiceIdPrefix.name());
-		lastInvoiceNumber = (Long) value.get(Fields.lastInvoiceNumber.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fiscalYearStartMonth = (Long) value.get(FIELD_FISCAL_YEAR_START_MONTH);
+		fiscalYearStartDay = (Long) value.get(FIELD_FISCAL_YEAR_START_DAY);
+		taxFormId = (String) value.get(FIELD_TAX_FORM_ID);
+		cogsMethodId = (String) value.get(FIELD_COGS_METHOD_ID);
+		baseCurrencyUomId = (String) value.get(FIELD_BASE_CURRENCY_UOM_ID);
+		invoiceSeqCustMethId = (String) value
+				.get(FIELD_INVOICE_SEQ_CUST_METH_ID);
+		invoiceIdPrefix = (String) value.get(FIELD_INVOICE_ID_PREFIX);
+		lastInvoiceNumber = (Long) value.get(FIELD_LAST_INVOICE_NUMBER);
 		lastInvoiceRestartDate = (Timestamp) value
-				.get(Fields.lastInvoiceRestartDate.name());
+				.get(FIELD_LAST_INVOICE_RESTART_DATE);
 		useInvoiceIdForReturns = (String) value
-				.get(Fields.useInvoiceIdForReturns.name());
-		quoteSeqCustMethId = (String) value.get(Fields.quoteSeqCustMethId
-				.name());
-		quoteIdPrefix = (String) value.get(Fields.quoteIdPrefix.name());
-		lastQuoteNumber = (Long) value.get(Fields.lastQuoteNumber.name());
-		orderSeqCustMethId = (String) value.get(Fields.orderSeqCustMethId
-				.name());
-		orderIdPrefix = (String) value.get(Fields.orderIdPrefix.name());
-		lastOrderNumber = (Long) value.get(Fields.lastOrderNumber.name());
-		refundPaymentMethodId = (String) value.get(Fields.refundPaymentMethodId
-				.name());
-		errorGlJournalId = (String) value.get(Fields.errorGlJournalId.name());
+				.get(FIELD_USE_INVOICE_ID_FOR_RETURNS);
+		quoteSeqCustMethId = (String) value.get(FIELD_QUOTE_SEQ_CUST_METH_ID);
+		quoteIdPrefix = (String) value.get(FIELD_QUOTE_ID_PREFIX);
+		lastQuoteNumber = (Long) value.get(FIELD_LAST_QUOTE_NUMBER);
+		orderSeqCustMethId = (String) value.get(FIELD_ORDER_SEQ_CUST_METH_ID);
+		orderIdPrefix = (String) value.get(FIELD_ORDER_ID_PREFIX);
+		lastOrderNumber = (Long) value.get(FIELD_LAST_ORDER_NUMBER);
+		refundPaymentMethodId = (String) value
+				.get(FIELD_REFUND_PAYMENT_METHOD_ID);
+		errorGlJournalId = (String) value.get(FIELD_ERROR_GL_JOURNAL_ID);
 		oldInvoiceSequenceEnumId = (String) value
-				.get(Fields.oldInvoiceSequenceEnumId.name());
+				.get(FIELD_OLD_INVOICE_SEQUENCE_ENUM_ID);
 		oldOrderSequenceEnumId = (String) value
-				.get(Fields.oldOrderSequenceEnumId.name());
+				.get(FIELD_OLD_ORDER_SEQUENCE_ENUM_ID);
 		oldQuoteSequenceEnumId = (String) value
-				.get(Fields.oldQuoteSequenceEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_OLD_QUOTE_SEQUENCE_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyAcctgPreference fromValue(

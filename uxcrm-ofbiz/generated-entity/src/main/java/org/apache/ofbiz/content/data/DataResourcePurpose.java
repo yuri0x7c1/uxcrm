@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Resource Purpose
  */
+@FieldNameConstants
 public class DataResourcePurpose implements Serializable {
 
-	public static final long serialVersionUID = 5558270282393675776L;
+	public static final long serialVersionUID = 1705118468638639104L;
 	public static final String NAME = "DataResourcePurpose";
 	/**
 	 * Data Resource Id
@@ -52,20 +54,14 @@ public class DataResourcePurpose implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataResourceId, contentPurposeTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataResourcePurpose(GenericValue value) {
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		contentPurposeTypeId = (String) value.get(Fields.contentPurposeTypeId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		contentPurposeTypeId = (String) value
+				.get(FIELD_CONTENT_PURPOSE_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataResourcePurpose fromValue(

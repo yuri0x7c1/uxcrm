@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing Crypto
  */
+@FieldNameConstants
 public class TestingCrypto implements Serializable {
 
-	public static final long serialVersionUID = 8787380644689227776L;
+	public static final long serialVersionUID = 5616199274267744256L;
 	public static final String NAME = "TestingCrypto";
 	/**
 	 * Testing Crypto Id
@@ -70,24 +72,16 @@ public class TestingCrypto implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testingCryptoId, testingCryptoTypeId, unencryptedValue, encryptedValue, saltedEncryptedValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestingCrypto(GenericValue value) {
-		testingCryptoId = (String) value.get(Fields.testingCryptoId.name());
-		testingCryptoTypeId = (String) value.get(Fields.testingCryptoTypeId
-				.name());
-		unencryptedValue = (String) value.get(Fields.unencryptedValue.name());
-		encryptedValue = (String) value.get(Fields.encryptedValue.name());
-		saltedEncryptedValue = (String) value.get(Fields.saltedEncryptedValue
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testingCryptoId = (String) value.get(FIELD_TESTING_CRYPTO_ID);
+		testingCryptoTypeId = (String) value.get(FIELD_TESTING_CRYPTO_TYPE_ID);
+		unencryptedValue = (String) value.get(FIELD_UNENCRYPTED_VALUE);
+		encryptedValue = (String) value.get(FIELD_ENCRYPTED_VALUE);
+		saltedEncryptedValue = (String) value.get(FIELD_SALTED_ENCRYPTED_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestingCrypto fromValue(

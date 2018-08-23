@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List Party
  */
+@FieldNameConstants
 public class ContactListParty implements Serializable {
 
-	public static final long serialVersionUID = 1818145802816347136L;
+	public static final long serialVersionUID = 3040091537969874944L;
 	public static final String NAME = "ContactListParty";
 	/**
 	 * Contact List Id
@@ -76,24 +78,18 @@ public class ContactListParty implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactListId, partyId, fromDate, thruDate, statusId, preferredContactMechId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContactListParty(GenericValue value) {
-		contactListId = (String) value.get(Fields.contactListId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredContactMechId = (String) value
-				.get(Fields.preferredContactMechId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PREFERRED_CONTACT_MECH_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContactListParty fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Purpose
  */
+@FieldNameConstants
 public class ContentPurpose implements Serializable {
 
-	public static final long serialVersionUID = 6375232889459535872L;
+	public static final long serialVersionUID = 6632739562228066304L;
 	public static final String NAME = "ContentPurpose";
 	/**
 	 * Content Id
@@ -58,21 +60,15 @@ public class ContentPurpose implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, contentPurposeTypeId, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentPurpose(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		contentPurposeTypeId = (String) value.get(Fields.contentPurposeTypeId
-				.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentPurposeTypeId = (String) value
+				.get(FIELD_CONTENT_PURPOSE_TYPE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentPurpose fromValue(

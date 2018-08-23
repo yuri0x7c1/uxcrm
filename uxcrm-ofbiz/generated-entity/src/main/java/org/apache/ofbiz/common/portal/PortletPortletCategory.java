@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portlet Portlet Category
  */
+@FieldNameConstants
 public class PortletPortletCategory implements Serializable {
 
-	public static final long serialVersionUID = 3226655238739970048L;
+	public static final long serialVersionUID = 3532901190788423680L;
 	public static final String NAME = "PortletPortletCategory";
 	/**
 	 * Portal Portlet Id
@@ -52,19 +54,13 @@ public class PortletPortletCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		portalPortletId, portletCategoryId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PortletPortletCategory(GenericValue value) {
-		portalPortletId = (String) value.get(Fields.portalPortletId.name());
-		portletCategoryId = (String) value.get(Fields.portletCategoryId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		portalPortletId = (String) value.get(FIELD_PORTAL_PORTLET_ID);
+		portletCategoryId = (String) value.get(FIELD_PORTLET_CATEGORY_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PortletPortletCategory fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Tax Auth Info
  */
+@FieldNameConstants
 public class PartyTaxAuthInfo implements Serializable {
 
-	public static final long serialVersionUID = 8665738187525497856L;
+	public static final long serialVersionUID = 1682380868990899200L;
 	public static final String NAME = "PartyTaxAuthInfo";
 	/**
 	 * Party Id
@@ -88,25 +90,19 @@ public class PartyTaxAuthInfo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, taxAuthGeoId, taxAuthPartyId, fromDate, thruDate, partyTaxId, isExempt, isNexus, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyTaxAuthInfo(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		partyTaxId = (String) value.get(Fields.partyTaxId.name());
-		isExempt = (String) value.get(Fields.isExempt.name());
-		isNexus = (String) value.get(Fields.isNexus.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		partyTaxId = (String) value.get(FIELD_PARTY_TAX_ID);
+		isExempt = (String) value.get(FIELD_IS_EXEMPT);
+		isNexus = (String) value.get(FIELD_IS_NEXUS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyTaxAuthInfo fromValue(

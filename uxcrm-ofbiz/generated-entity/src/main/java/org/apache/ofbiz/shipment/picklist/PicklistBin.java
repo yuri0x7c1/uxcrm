@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Picklist Bin
  */
+@FieldNameConstants
 public class PicklistBin implements Serializable {
 
-	public static final long serialVersionUID = 2417112827097007104L;
+	public static final long serialVersionUID = 5553305747791385600L;
 	public static final String NAME = "PicklistBin";
 	/**
 	 * Picklist Bin Id
@@ -70,23 +72,17 @@ public class PicklistBin implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		picklistBinId, picklistId, binLocationNumber, primaryOrderId, primaryShipGroupSeqId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PicklistBin(GenericValue value) {
-		picklistBinId = (String) value.get(Fields.picklistBinId.name());
-		picklistId = (String) value.get(Fields.picklistId.name());
-		binLocationNumber = (Long) value.get(Fields.binLocationNumber.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
-		primaryShipGroupSeqId = (String) value.get(Fields.primaryShipGroupSeqId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		picklistBinId = (String) value.get(FIELD_PICKLIST_BIN_ID);
+		picklistId = (String) value.get(FIELD_PICKLIST_ID);
+		binLocationNumber = (Long) value.get(FIELD_BIN_LOCATION_NUMBER);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
+		primaryShipGroupSeqId = (String) value
+				.get(FIELD_PRIMARY_SHIP_GROUP_SEQ_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PicklistBin fromValue(

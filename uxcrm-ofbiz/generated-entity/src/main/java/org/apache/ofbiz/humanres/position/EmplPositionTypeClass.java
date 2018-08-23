@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.position;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Empl Position Type Class
  */
+@FieldNameConstants
 public class EmplPositionTypeClass implements Serializable {
 
-	public static final long serialVersionUID = 3163727673974325248L;
+	public static final long serialVersionUID = 4687987158819642368L;
 	public static final String NAME = "EmplPositionTypeClass";
 	/**
 	 * Empl Position Type Id
@@ -70,25 +72,18 @@ public class EmplPositionTypeClass implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		emplPositionTypeId, emplPositionClassTypeId, fromDate, thruDate, standardHoursPerWeek, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmplPositionTypeClass(GenericValue value) {
-		emplPositionTypeId = (String) value.get(Fields.emplPositionTypeId
-				.name());
+		emplPositionTypeId = (String) value.get(FIELD_EMPL_POSITION_TYPE_ID);
 		emplPositionClassTypeId = (String) value
-				.get(Fields.emplPositionClassTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		standardHoursPerWeek = (Double) value.get(Fields.standardHoursPerWeek
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EMPL_POSITION_CLASS_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		standardHoursPerWeek = (Double) value
+				.get(FIELD_STANDARD_HOURS_PER_WEEK);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmplPositionTypeClass fromValue(

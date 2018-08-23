@@ -36,7 +36,7 @@ public class WebSiteView extends CommonView implements View {
 	private WebSiteService webSiteService;
 
 	private MTable<WebSite> webSiteTable = new MTable<>(WebSite.class)
-		.withProperties(WebSite.Fields.webSiteId.name(), WebSite.Fields.siteName.name())
+		.withProperties(WebSite.FIELD_WEB_SITE_ID, WebSite.FIELD_SITE_NAME)
 		.withFullWidth()
 		.withFullHeight();
 
@@ -63,7 +63,7 @@ public class WebSiteView extends CommonView implements View {
 				return webSiteService.count(null);
 			}
 		)
-		.sort(new Object[] {WebSite.Fields.webSiteId.name()}, new boolean[] {true});
+		.sort(new Object[] {WebSite.FIELD_WEB_SITE_ID}, new boolean[] {true});
     }
 
     @Override

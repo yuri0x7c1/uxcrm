@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Method And Gift Card
  */
+@FieldNameConstants
 public class PaymentMethodAndGiftCard implements Serializable {
 
-	public static final long serialVersionUID = 5248855654760745984L;
+	public static final long serialVersionUID = 4680779910401022976L;
 	public static final String NAME = "PaymentMethodAndGiftCard";
 	/**
 	 * Payment Method Id
@@ -76,22 +78,17 @@ public class PaymentMethodAndGiftCard implements Serializable {
 	@Setter
 	private String contactMechId;
 
-	public enum Fields {
-		paymentMethodId, paymentMethodTypeId, partyId, glAccountId, fromDate, thruDate, cardNumber, pinNumber, expireDate, contactMechId
-	}
-
 	public PaymentMethodAndGiftCard(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		pinNumber = (String) value.get(Fields.pinNumber.name());
-		expireDate = (String) value.get(Fields.expireDate.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		pinNumber = (String) value.get(FIELD_PIN_NUMBER);
+		expireDate = (String) value.get(FIELD_EXPIRE_DATE);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
 	}
 
 	public static PaymentMethodAndGiftCard fromValue(

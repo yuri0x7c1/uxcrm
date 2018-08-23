@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Purpose Operation
  */
+@FieldNameConstants
 public class ContentPurposeOperation implements Serializable {
 
-	public static final long serialVersionUID = 8279271414921410560L;
+	public static final long serialVersionUID = 8908921888315821056L;
 	public static final String NAME = "ContentPurposeOperation";
 	/**
 	 * Content Purpose Type Id
@@ -70,24 +72,17 @@ public class ContentPurposeOperation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentPurposeTypeId, contentOperationId, roleTypeId, statusId, privilegeEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentPurposeOperation(GenericValue value) {
-		contentPurposeTypeId = (String) value.get(Fields.contentPurposeTypeId
-				.name());
-		contentOperationId = (String) value.get(Fields.contentOperationId
-				.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		privilegeEnumId = (String) value.get(Fields.privilegeEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentPurposeTypeId = (String) value
+				.get(FIELD_CONTENT_PURPOSE_TYPE_ID);
+		contentOperationId = (String) value.get(FIELD_CONTENT_OPERATION_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		privilegeEnumId = (String) value.get(FIELD_PRIVILEGE_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentPurposeOperation fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.theme;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Visual Theme Resource
  */
+@FieldNameConstants
 public class VisualThemeResource implements Serializable {
 
-	public static final long serialVersionUID = 803177821172107264L;
+	public static final long serialVersionUID = 2179879722453681152L;
 	public static final String NAME = "VisualThemeResource";
 	/**
 	 * Visual Theme Id
@@ -64,22 +66,15 @@ public class VisualThemeResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		visualThemeId, resourceTypeEnumId, sequenceId, resourceValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public VisualThemeResource(GenericValue value) {
-		visualThemeId = (String) value.get(Fields.visualThemeId.name());
-		resourceTypeEnumId = (String) value.get(Fields.resourceTypeEnumId
-				.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		resourceValue = (String) value.get(Fields.resourceValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		visualThemeId = (String) value.get(FIELD_VISUAL_THEME_ID);
+		resourceTypeEnumId = (String) value.get(FIELD_RESOURCE_TYPE_ENUM_ID);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		resourceValue = (String) value.get(FIELD_RESOURCE_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static VisualThemeResource fromValue(

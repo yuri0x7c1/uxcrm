@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.status;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Status Item
  */
+@FieldNameConstants
 public class StatusItem implements Serializable {
 
-	public static final long serialVersionUID = 5810440173542452224L;
+	public static final long serialVersionUID = 7061115034317615104L;
 	public static final String NAME = "StatusItem";
 	/**
 	 * Status Id
@@ -70,22 +72,16 @@ public class StatusItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		statusId, statusTypeId, statusCode, sequenceId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public StatusItem(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		statusTypeId = (String) value.get(Fields.statusTypeId.name());
-		statusCode = (String) value.get(Fields.statusCode.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusTypeId = (String) value.get(FIELD_STATUS_TYPE_ID);
+		statusCode = (String) value.get(FIELD_STATUS_CODE);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static StatusItem fromValue(

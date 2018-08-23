@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.audit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Audit Log
  */
+@FieldNameConstants
 public class EntityAuditLog implements Serializable {
 
-	public static final long serialVersionUID = 5719332737370370048L;
+	public static final long serialVersionUID = 312696769796760576L;
 	public static final String NAME = "EntityAuditLog";
 	/**
 	 * Audit History Seq Id
@@ -94,28 +96,20 @@ public class EntityAuditLog implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		auditHistorySeqId, changedEntityName, changedFieldName, pkCombinedValueText, oldValueText, newValueText, changedDate, changedByInfo, changedSessionInfo, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntityAuditLog(GenericValue value) {
-		auditHistorySeqId = (String) value.get(Fields.auditHistorySeqId.name());
-		changedEntityName = (String) value.get(Fields.changedEntityName.name());
-		changedFieldName = (String) value.get(Fields.changedFieldName.name());
-		pkCombinedValueText = (String) value.get(Fields.pkCombinedValueText
-				.name());
-		oldValueText = (String) value.get(Fields.oldValueText.name());
-		newValueText = (String) value.get(Fields.newValueText.name());
-		changedDate = (Timestamp) value.get(Fields.changedDate.name());
-		changedByInfo = (String) value.get(Fields.changedByInfo.name());
-		changedSessionInfo = (String) value.get(Fields.changedSessionInfo
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		auditHistorySeqId = (String) value.get(FIELD_AUDIT_HISTORY_SEQ_ID);
+		changedEntityName = (String) value.get(FIELD_CHANGED_ENTITY_NAME);
+		changedFieldName = (String) value.get(FIELD_CHANGED_FIELD_NAME);
+		pkCombinedValueText = (String) value.get(FIELD_PK_COMBINED_VALUE_TEXT);
+		oldValueText = (String) value.get(FIELD_OLD_VALUE_TEXT);
+		newValueText = (String) value.get(FIELD_NEW_VALUE_TEXT);
+		changedDate = (Timestamp) value.get(FIELD_CHANGED_DATE);
+		changedByInfo = (String) value.get(FIELD_CHANGED_BY_INFO);
+		changedSessionInfo = (String) value.get(FIELD_CHANGED_SESSION_INFO);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntityAuditLog fromValue(

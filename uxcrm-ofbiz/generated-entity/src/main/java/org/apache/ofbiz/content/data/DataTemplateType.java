@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Template Type
  */
+@FieldNameConstants
 public class DataTemplateType implements Serializable {
 
-	public static final long serialVersionUID = 7449289422158101504L;
+	public static final long serialVersionUID = 1089654466668265472L;
 	public static final String NAME = "DataTemplateType";
 	/**
 	 * Data Template Type Id
@@ -58,21 +60,14 @@ public class DataTemplateType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataTemplateTypeId, description, extension, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataTemplateType(GenericValue value) {
-		dataTemplateTypeId = (String) value.get(Fields.dataTemplateTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		extension = (String) value.get(Fields.extension.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataTemplateTypeId = (String) value.get(FIELD_DATA_TEMPLATE_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		extension = (String) value.get(FIELD_EXTENSION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataTemplateType fromValue(

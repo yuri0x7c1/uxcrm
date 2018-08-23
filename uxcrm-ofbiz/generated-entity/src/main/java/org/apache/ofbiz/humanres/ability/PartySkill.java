@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.ability;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Skill
  */
+@FieldNameConstants
 public class PartySkill implements Serializable {
 
-	public static final long serialVersionUID = 7210107934569305088L;
+	public static final long serialVersionUID = 2051112094364596224L;
 	public static final String NAME = "PartySkill";
 	/**
 	 * Party Id
@@ -76,24 +78,17 @@ public class PartySkill implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, skillTypeId, yearsExperience, rating, skillLevel, startedUsingDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartySkill(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		skillTypeId = (String) value.get(Fields.skillTypeId.name());
-		yearsExperience = (Long) value.get(Fields.yearsExperience.name());
-		rating = (Long) value.get(Fields.rating.name());
-		skillLevel = (Long) value.get(Fields.skillLevel.name());
-		startedUsingDate = (Timestamp) value
-				.get(Fields.startedUsingDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		skillTypeId = (String) value.get(FIELD_SKILL_TYPE_ID);
+		yearsExperience = (Long) value.get(FIELD_YEARS_EXPERIENCE);
+		rating = (Long) value.get(FIELD_RATING);
+		skillLevel = (Long) value.get(FIELD_SKILL_LEVEL);
+		startedUsingDate = (Timestamp) value.get(FIELD_STARTED_USING_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartySkill fromValue(

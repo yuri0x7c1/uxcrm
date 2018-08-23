@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.position;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Empl Position Type Rate And Amount
  */
+@FieldNameConstants
 public class EmplPositionTypeRateAndAmount implements Serializable {
 
-	public static final long serialVersionUID = 9138058610481854464L;
+	public static final long serialVersionUID = 4140969082352868352L;
 	public static final String NAME = "EmplPositionTypeRateAndAmount";
 	/**
 	 * Rate Amount
@@ -83,25 +85,18 @@ public class EmplPositionTypeRateAndAmount implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		rateAmount, periodTypeId, rateCurrencyUomId, rateAmountFromDate, rateAmountThruDate, fromDate, rateTypeId, emplPositionTypeId, salaryStepSeqId, payGradeId, thruDate
-	}
-
 	public EmplPositionTypeRateAndAmount(GenericValue value) {
-		rateAmount = (BigDecimal) value.get(Fields.rateAmount.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		rateCurrencyUomId = (String) value.get(Fields.rateCurrencyUomId.name());
-		rateAmountFromDate = (Timestamp) value.get(Fields.rateAmountFromDate
-				.name());
-		rateAmountThruDate = (Timestamp) value.get(Fields.rateAmountThruDate
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		emplPositionTypeId = (String) value.get(Fields.emplPositionTypeId
-				.name());
-		salaryStepSeqId = (String) value.get(Fields.salaryStepSeqId.name());
-		payGradeId = (String) value.get(Fields.payGradeId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		rateAmount = (BigDecimal) value.get(FIELD_RATE_AMOUNT);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		rateCurrencyUomId = (String) value.get(FIELD_RATE_CURRENCY_UOM_ID);
+		rateAmountFromDate = (Timestamp) value.get(FIELD_RATE_AMOUNT_FROM_DATE);
+		rateAmountThruDate = (Timestamp) value.get(FIELD_RATE_AMOUNT_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		emplPositionTypeId = (String) value.get(FIELD_EMPL_POSITION_TYPE_ID);
+		salaryStepSeqId = (String) value.get(FIELD_SALARY_STEP_SEQ_ID);
+		payGradeId = (String) value.get(FIELD_PAY_GRADE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static EmplPositionTypeRateAndAmount fromValue(

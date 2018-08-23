@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Addendum
  */
+@FieldNameConstants
 public class Addendum implements Serializable {
 
-	public static final long serialVersionUID = 7149033213207379968L;
+	public static final long serialVersionUID = 2210005708325559296L;
 	public static final String NAME = "Addendum";
 	/**
 	 * Addendum Id
@@ -76,26 +78,19 @@ public class Addendum implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		addendumId, agreementId, agreementItemSeqId, addendumCreationDate, addendumEffectiveDate, addendumText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Addendum(GenericValue value) {
-		addendumId = (String) value.get(Fields.addendumId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
+		addendumId = (String) value.get(FIELD_ADDENDUM_ID);
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
 		addendumCreationDate = (Timestamp) value
-				.get(Fields.addendumCreationDate.name());
+				.get(FIELD_ADDENDUM_CREATION_DATE);
 		addendumEffectiveDate = (Timestamp) value
-				.get(Fields.addendumEffectiveDate.name());
-		addendumText = (String) value.get(Fields.addendumText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ADDENDUM_EFFECTIVE_DATE);
+		addendumText = (String) value.get(FIELD_ADDENDUM_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Addendum fromValue(org.apache.ofbiz.entity.GenericValue value) {

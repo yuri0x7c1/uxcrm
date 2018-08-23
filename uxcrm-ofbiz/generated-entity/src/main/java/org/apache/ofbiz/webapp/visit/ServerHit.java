@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Server Hit
  */
+@FieldNameConstants
 public class ServerHit implements Serializable {
 
-	public static final long serialVersionUID = 1447766197686744064L;
+	public static final long serialVersionUID = 1883136938459198464L;
 	public static final String NAME = "ServerHit";
 	/**
 	 * Visit Id
@@ -136,36 +138,29 @@ public class ServerHit implements Serializable {
 	@Setter
 	private String refByWebContactMechId;
 
-	public enum Fields {
-		visitId, contentId, hitStartDateTime, hitTypeId, numOfBytes, runningTimeMillis, userLoginId, statusId, requestUrl, referrerUrl, serverIpAddress, serverHostName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, internalContentId, partyId, idByIpContactMechId, refByWebContactMechId
-	}
-
 	public ServerHit(GenericValue value) {
-		visitId = (String) value.get(Fields.visitId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		hitStartDateTime = (Timestamp) value
-				.get(Fields.hitStartDateTime.name());
-		hitTypeId = (String) value.get(Fields.hitTypeId.name());
-		numOfBytes = (Long) value.get(Fields.numOfBytes.name());
-		runningTimeMillis = (Long) value.get(Fields.runningTimeMillis.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		requestUrl = (String) value.get(Fields.requestUrl.name());
-		referrerUrl = (String) value.get(Fields.referrerUrl.name());
-		serverIpAddress = (String) value.get(Fields.serverIpAddress.name());
-		serverHostName = (String) value.get(Fields.serverHostName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		internalContentId = (String) value.get(Fields.internalContentId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		idByIpContactMechId = (String) value.get(Fields.idByIpContactMechId
-				.name());
-		refByWebContactMechId = (String) value.get(Fields.refByWebContactMechId
-				.name());
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		hitStartDateTime = (Timestamp) value.get(FIELD_HIT_START_DATE_TIME);
+		hitTypeId = (String) value.get(FIELD_HIT_TYPE_ID);
+		numOfBytes = (Long) value.get(FIELD_NUM_OF_BYTES);
+		runningTimeMillis = (Long) value.get(FIELD_RUNNING_TIME_MILLIS);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		requestUrl = (String) value.get(FIELD_REQUEST_URL);
+		referrerUrl = (String) value.get(FIELD_REFERRER_URL);
+		serverIpAddress = (String) value.get(FIELD_SERVER_IP_ADDRESS);
+		serverHostName = (String) value.get(FIELD_SERVER_HOST_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		internalContentId = (String) value.get(FIELD_INTERNAL_CONTENT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		idByIpContactMechId = (String) value
+				.get(FIELD_ID_BY_IP_CONTACT_MECH_ID);
+		refByWebContactMechId = (String) value
+				.get(FIELD_REF_BY_WEB_CONTACT_MECH_ID);
 	}
 
 	public static ServerHit fromValue(org.apache.ofbiz.entity.GenericValue value) {

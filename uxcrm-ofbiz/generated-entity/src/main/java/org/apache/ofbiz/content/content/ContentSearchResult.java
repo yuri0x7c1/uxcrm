@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Search Result
  */
+@FieldNameConstants
 public class ContentSearchResult implements Serializable {
 
-	public static final long serialVersionUID = 5963384489244704768L;
+	public static final long serialVersionUID = 5153438611871368192L;
 	public static final String NAME = "ContentSearchResult";
 	/**
 	 * Content Search Result Id
@@ -82,25 +84,19 @@ public class ContentSearchResult implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentSearchResultId, visitId, orderByName, isAscending, numResults, secondsTotal, searchDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentSearchResult(GenericValue value) {
-		contentSearchResultId = (String) value.get(Fields.contentSearchResultId
-				.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		orderByName = (String) value.get(Fields.orderByName.name());
-		isAscending = (String) value.get(Fields.isAscending.name());
-		numResults = (Long) value.get(Fields.numResults.name());
-		secondsTotal = (Double) value.get(Fields.secondsTotal.name());
-		searchDate = (Timestamp) value.get(Fields.searchDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentSearchResultId = (String) value
+				.get(FIELD_CONTENT_SEARCH_RESULT_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		orderByName = (String) value.get(FIELD_ORDER_BY_NAME);
+		isAscending = (String) value.get(FIELD_IS_ASCENDING);
+		numResults = (Long) value.get(FIELD_NUM_RESULTS);
+		secondsTotal = (Double) value.get(FIELD_SECONDS_TOTAL);
+		searchDate = (Timestamp) value.get(FIELD_SEARCH_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentSearchResult fromValue(

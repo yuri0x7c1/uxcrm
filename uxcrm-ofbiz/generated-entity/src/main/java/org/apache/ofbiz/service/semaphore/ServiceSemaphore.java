@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.semaphore;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Service Semaphore
  */
+@FieldNameConstants
 public class ServiceSemaphore implements Serializable {
 
-	public static final long serialVersionUID = 268454251684627456L;
+	public static final long serialVersionUID = 1938294269131914240L;
 	public static final String NAME = "ServiceSemaphore";
 	/**
 	 * Service Name
@@ -64,22 +66,15 @@ public class ServiceSemaphore implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		serviceName, lockedByInstanceId, lockThread, lockTime, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ServiceSemaphore(GenericValue value) {
-		serviceName = (String) value.get(Fields.serviceName.name());
-		lockedByInstanceId = (String) value.get(Fields.lockedByInstanceId
-				.name());
-		lockThread = (String) value.get(Fields.lockThread.name());
-		lockTime = (Timestamp) value.get(Fields.lockTime.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		lockedByInstanceId = (String) value.get(FIELD_LOCKED_BY_INSTANCE_ID);
+		lockThread = (String) value.get(FIELD_LOCK_THREAD);
+		lockTime = (Timestamp) value.get(FIELD_LOCK_TIME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ServiceSemaphore fromValue(

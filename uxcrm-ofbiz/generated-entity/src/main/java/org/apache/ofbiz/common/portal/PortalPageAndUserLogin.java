@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portal Page And User Login
  */
+@FieldNameConstants
 public class PortalPageAndUserLogin implements Serializable {
 
-	public static final long serialVersionUID = 8805890106186936320L;
+	public static final long serialVersionUID = 6797229688015583232L;
 	public static final String NAME = "PortalPageAndUserLogin";
 	/**
 	 * Portal Page Id
@@ -52,18 +54,13 @@ public class PortalPageAndUserLogin implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		portalPageId, securityGroupId, parentPortalPageId, userLoginId, fromDate, thruDate
-	}
-
 	public PortalPageAndUserLogin(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		securityGroupId = (String) value.get(Fields.securityGroupId.name());
-		parentPortalPageId = (String) value.get(Fields.parentPortalPageId
-				.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		securityGroupId = (String) value.get(FIELD_SECURITY_GROUP_ID);
+		parentPortalPageId = (String) value.get(FIELD_PARENT_PORTAL_PAGE_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static PortalPageAndUserLogin fromValue(

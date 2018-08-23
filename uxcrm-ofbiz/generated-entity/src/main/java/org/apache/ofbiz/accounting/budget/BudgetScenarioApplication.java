@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Budget Scenario Application
  */
+@FieldNameConstants
 public class BudgetScenarioApplication implements Serializable {
 
-	public static final long serialVersionUID = 6761033358758859776L;
+	public static final long serialVersionUID = 8033872073337392128L;
 	public static final String NAME = "BudgetScenarioApplication";
 	/**
 	 * Budget Scenario Applic Id
@@ -77,25 +79,18 @@ public class BudgetScenarioApplication implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetScenarioApplicId, budgetScenarioId, budgetId, budgetItemSeqId, amountChange, percentageChange, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetScenarioApplication(GenericValue value) {
 		budgetScenarioApplicId = (String) value
-				.get(Fields.budgetScenarioApplicId.name());
-		budgetScenarioId = (String) value.get(Fields.budgetScenarioId.name());
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		amountChange = (BigDecimal) value.get(Fields.amountChange.name());
-		percentageChange = (BigDecimal) value.get(Fields.percentageChange
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_BUDGET_SCENARIO_APPLIC_ID);
+		budgetScenarioId = (String) value.get(FIELD_BUDGET_SCENARIO_ID);
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		amountChange = (BigDecimal) value.get(FIELD_AMOUNT_CHANGE);
+		percentageChange = (BigDecimal) value.get(FIELD_PERCENTAGE_CHANGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetScenarioApplication fromValue(

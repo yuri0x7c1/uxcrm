@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account And History
  */
+@FieldNameConstants
 public class GlAccountAndHistory implements Serializable {
 
-	public static final long serialVersionUID = 1776207212408279040L;
+	public static final long serialVersionUID = 8774873578451902464L;
 	public static final String NAME = "GlAccountAndHistory";
 	/**
 	 * Gl Account Class Id
@@ -118,30 +120,24 @@ public class GlAccountAndHistory implements Serializable {
 	@Setter
 	private BigDecimal openingBalance;
 
-	public enum Fields {
-		glAccountClassId, accountCode, productId, accountName, glAccountId, description, externalId, glAccountTypeId, glResourceTypeId, parentGlAccountId, glXbrlClassId, postedCredits, postedDebits, endingBalance, organizationPartyId, customTimePeriodId, openingBalance
-	}
-
 	public GlAccountAndHistory(GenericValue value) {
-		glAccountClassId = (String) value.get(Fields.glAccountClassId.name());
-		accountCode = (String) value.get(Fields.accountCode.name());
-		productId = (String) value.get(Fields.productId.name());
-		accountName = (String) value.get(Fields.accountName.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		description = (String) value.get(Fields.description.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		glAccountTypeId = (String) value.get(Fields.glAccountTypeId.name());
-		glResourceTypeId = (String) value.get(Fields.glResourceTypeId.name());
-		parentGlAccountId = (String) value.get(Fields.parentGlAccountId.name());
-		glXbrlClassId = (String) value.get(Fields.glXbrlClassId.name());
-		postedCredits = (BigDecimal) value.get(Fields.postedCredits.name());
-		postedDebits = (BigDecimal) value.get(Fields.postedDebits.name());
-		endingBalance = (BigDecimal) value.get(Fields.endingBalance.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		openingBalance = (BigDecimal) value.get(Fields.openingBalance.name());
+		glAccountClassId = (String) value.get(FIELD_GL_ACCOUNT_CLASS_ID);
+		accountCode = (String) value.get(FIELD_ACCOUNT_CODE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		accountName = (String) value.get(FIELD_ACCOUNT_NAME);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		glAccountTypeId = (String) value.get(FIELD_GL_ACCOUNT_TYPE_ID);
+		glResourceTypeId = (String) value.get(FIELD_GL_RESOURCE_TYPE_ID);
+		parentGlAccountId = (String) value.get(FIELD_PARENT_GL_ACCOUNT_ID);
+		glXbrlClassId = (String) value.get(FIELD_GL_XBRL_CLASS_ID);
+		postedCredits = (BigDecimal) value.get(FIELD_POSTED_CREDITS);
+		postedDebits = (BigDecimal) value.get(FIELD_POSTED_DEBITS);
+		endingBalance = (BigDecimal) value.get(FIELD_ENDING_BALANCE);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		openingBalance = (BigDecimal) value.get(FIELD_OPENING_BALANCE);
 	}
 
 	public static GlAccountAndHistory fromValue(

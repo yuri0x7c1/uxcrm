@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.uom;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Uom And Group
  */
+@FieldNameConstants
 public class UomAndGroup implements Serializable {
 
-	public static final long serialVersionUID = 3900830274147041280L;
+	public static final long serialVersionUID = 620400723604668416L;
 	public static final String NAME = "UomAndGroup";
 	/**
 	 * Uom Group Id
@@ -69,20 +71,16 @@ public class UomAndGroup implements Serializable {
 	@Setter
 	private String typeUomTypeId;
 
-	public enum Fields {
-		uomGroupId, uomId, description, abbreviation, uomTypeId, typeParentTypeId, typeHasTable, typeDescription, typeUomTypeId
-	}
-
 	public UomAndGroup(GenericValue value) {
-		uomGroupId = (String) value.get(Fields.uomGroupId.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		description = (String) value.get(Fields.description.name());
-		abbreviation = (String) value.get(Fields.abbreviation.name());
-		uomTypeId = (String) value.get(Fields.uomTypeId.name());
-		typeParentTypeId = (String) value.get(Fields.typeParentTypeId.name());
-		typeHasTable = (String) value.get(Fields.typeHasTable.name());
-		typeDescription = (String) value.get(Fields.typeDescription.name());
-		typeUomTypeId = (String) value.get(Fields.typeUomTypeId.name());
+		uomGroupId = (String) value.get(FIELD_UOM_GROUP_ID);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		abbreviation = (String) value.get(FIELD_ABBREVIATION);
+		uomTypeId = (String) value.get(FIELD_UOM_TYPE_ID);
+		typeParentTypeId = (String) value.get(FIELD_TYPE_PARENT_TYPE_ID);
+		typeHasTable = (String) value.get(FIELD_TYPE_HAS_TABLE);
+		typeDescription = (String) value.get(FIELD_TYPE_DESCRIPTION);
+		typeUomTypeId = (String) value.get(FIELD_TYPE_UOM_TYPE_ID);
 	}
 
 	public static UomAndGroup fromValue(

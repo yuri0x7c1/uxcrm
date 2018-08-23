@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Shipment Info Summary
  */
+@FieldNameConstants
 public class OrderShipmentInfoSummary implements Serializable {
 
-	public static final long serialVersionUID = 686125052258052096L;
+	public static final long serialVersionUID = 3188824743572529152L;
 	public static final String NAME = "OrderShipmentInfoSummary";
 	/**
 	 * Order Id
@@ -82,25 +84,21 @@ public class OrderShipmentInfoSummary implements Serializable {
 	@Setter
 	private String boxNumber;
 
-	public enum Fields {
-		orderId, orderItemSeqId, shipmentId, shipGroupSeqId, shipmentRouteSegmentId, carrierPartyId, actualStartDate, shipmentMethodTypeId, shipmentPackageSeqId, trackingCode, boxNumber
-	}
-
 	public OrderShipmentInfoSummary(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
 		shipmentRouteSegmentId = (String) value
-				.get(Fields.shipmentRouteSegmentId.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
-		trackingCode = (String) value.get(Fields.trackingCode.name());
-		boxNumber = (String) value.get(Fields.boxNumber.name());
+				.get(FIELD_SHIPMENT_ROUTE_SEGMENT_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
+		trackingCode = (String) value.get(FIELD_TRACKING_CODE);
+		boxNumber = (String) value.get(FIELD_BOX_NUMBER);
 	}
 
 	public static OrderShipmentInfoSummary fromValue(

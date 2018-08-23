@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.synchronization;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Sync
  */
+@FieldNameConstants
 public class EntitySync implements Serializable {
 
-	public static final long serialVersionUID = 7841577058953101312L;
+	public static final long serialVersionUID = 5364878165476986880L;
 	public static final String NAME = "EntitySync";
 	/**
 	 * Entity Sync Id
@@ -124,39 +126,30 @@ public class EntitySync implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		entitySyncId, runStatusId, lastSuccessfulSynchTime, lastHistoryStartDate, preOfflineSynchTime, offlineSyncSplitMillis, syncSplitMillis, syncEndBufferMillis, maxRunningNoUpdateMillis, targetServiceName, targetDelegatorName, keepRemoveInfoHours, forPullOnly, forPushOnly, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntitySync(GenericValue value) {
-		entitySyncId = (String) value.get(Fields.entitySyncId.name());
-		runStatusId = (String) value.get(Fields.runStatusId.name());
+		entitySyncId = (String) value.get(FIELD_ENTITY_SYNC_ID);
+		runStatusId = (String) value.get(FIELD_RUN_STATUS_ID);
 		lastSuccessfulSynchTime = (Timestamp) value
-				.get(Fields.lastSuccessfulSynchTime.name());
+				.get(FIELD_LAST_SUCCESSFUL_SYNCH_TIME);
 		lastHistoryStartDate = (Timestamp) value
-				.get(Fields.lastHistoryStartDate.name());
-		preOfflineSynchTime = (Timestamp) value.get(Fields.preOfflineSynchTime
-				.name());
-		offlineSyncSplitMillis = (Long) value.get(Fields.offlineSyncSplitMillis
-				.name());
-		syncSplitMillis = (Long) value.get(Fields.syncSplitMillis.name());
-		syncEndBufferMillis = (Long) value.get(Fields.syncEndBufferMillis
-				.name());
+				.get(FIELD_LAST_HISTORY_START_DATE);
+		preOfflineSynchTime = (Timestamp) value
+				.get(FIELD_PRE_OFFLINE_SYNCH_TIME);
+		offlineSyncSplitMillis = (Long) value
+				.get(FIELD_OFFLINE_SYNC_SPLIT_MILLIS);
+		syncSplitMillis = (Long) value.get(FIELD_SYNC_SPLIT_MILLIS);
+		syncEndBufferMillis = (Long) value.get(FIELD_SYNC_END_BUFFER_MILLIS);
 		maxRunningNoUpdateMillis = (Long) value
-				.get(Fields.maxRunningNoUpdateMillis.name());
-		targetServiceName = (String) value.get(Fields.targetServiceName.name());
-		targetDelegatorName = (String) value.get(Fields.targetDelegatorName
-				.name());
-		keepRemoveInfoHours = (Double) value.get(Fields.keepRemoveInfoHours
-				.name());
-		forPullOnly = (String) value.get(Fields.forPullOnly.name());
-		forPushOnly = (String) value.get(Fields.forPushOnly.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_MAX_RUNNING_NO_UPDATE_MILLIS);
+		targetServiceName = (String) value.get(FIELD_TARGET_SERVICE_NAME);
+		targetDelegatorName = (String) value.get(FIELD_TARGET_DELEGATOR_NAME);
+		keepRemoveInfoHours = (Double) value.get(FIELD_KEEP_REMOVE_INFO_HOURS);
+		forPullOnly = (String) value.get(FIELD_FOR_PULL_ONLY);
+		forPushOnly = (String) value.get(FIELD_FOR_PUSH_ONLY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntitySync fromValue(

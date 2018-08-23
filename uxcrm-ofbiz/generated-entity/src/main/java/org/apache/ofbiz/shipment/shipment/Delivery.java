@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Delivery
  */
+@FieldNameConstants
 public class Delivery implements Serializable {
 
-	public static final long serialVersionUID = 1243854612783351808L;
+	public static final long serialVersionUID = 6277297628530402304L;
 	public static final String NAME = "Delivery";
 	/**
 	 * Delivery Id
@@ -107,31 +109,23 @@ public class Delivery implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		deliveryId, originFacilityId, destFacilityId, actualStartDate, actualArrivalDate, estimatedStartDate, estimatedArrivalDate, fixedAssetId, startMileage, endMileage, fuelUsed, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Delivery(GenericValue value) {
-		deliveryId = (String) value.get(Fields.deliveryId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		destFacilityId = (String) value.get(Fields.destFacilityId.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
-		actualArrivalDate = (Timestamp) value.get(Fields.actualArrivalDate
-				.name());
-		estimatedStartDate = (Timestamp) value.get(Fields.estimatedStartDate
-				.name());
+		deliveryId = (String) value.get(FIELD_DELIVERY_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		destFacilityId = (String) value.get(FIELD_DEST_FACILITY_ID);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
+		actualArrivalDate = (Timestamp) value.get(FIELD_ACTUAL_ARRIVAL_DATE);
+		estimatedStartDate = (Timestamp) value.get(FIELD_ESTIMATED_START_DATE);
 		estimatedArrivalDate = (Timestamp) value
-				.get(Fields.estimatedArrivalDate.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		startMileage = (BigDecimal) value.get(Fields.startMileage.name());
-		endMileage = (BigDecimal) value.get(Fields.endMileage.name());
-		fuelUsed = (BigDecimal) value.get(Fields.fuelUsed.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ESTIMATED_ARRIVAL_DATE);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		startMileage = (BigDecimal) value.get(FIELD_START_MILEAGE);
+		endMileage = (BigDecimal) value.get(FIELD_END_MILEAGE);
+		fuelUsed = (BigDecimal) value.get(FIELD_FUEL_USED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Delivery fromValue(org.apache.ofbiz.entity.GenericValue value) {

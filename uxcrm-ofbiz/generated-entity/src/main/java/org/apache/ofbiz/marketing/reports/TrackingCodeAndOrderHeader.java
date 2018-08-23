@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code And Order Header
  */
+@FieldNameConstants
 public class TrackingCodeAndOrderHeader implements Serializable {
 
-	public static final long serialVersionUID = 1324234901330689024L;
+	public static final long serialVersionUID = 3484317380450038784L;
 	public static final String NAME = "TrackingCodeAndOrderHeader";
 	/**
 	 * Grand Total
@@ -41,15 +43,11 @@ public class TrackingCodeAndOrderHeader implements Serializable {
 	@Setter
 	private String trackingCodeId;
 
-	public enum Fields {
-		grandTotal, orderId, orderDate, trackingCodeId
-	}
-
 	public TrackingCodeAndOrderHeader(GenericValue value) {
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
-		orderId = (Long) value.get(Fields.orderId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
+		orderId = (Long) value.get(FIELD_ORDER_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
 	}
 
 	public static TrackingCodeAndOrderHeader fromValue(

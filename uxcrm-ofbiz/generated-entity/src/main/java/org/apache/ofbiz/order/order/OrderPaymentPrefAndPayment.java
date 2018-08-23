@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Payment Pref And Payment
  */
+@FieldNameConstants
 public class OrderPaymentPrefAndPayment implements Serializable {
 
-	public static final long serialVersionUID = 525577959179872256L;
+	public static final long serialVersionUID = 7291834151036934144L;
 	public static final String NAME = "OrderPaymentPrefAndPayment";
 	/**
 	 * Order Payment Preference Id
@@ -52,18 +54,14 @@ public class OrderPaymentPrefAndPayment implements Serializable {
 	@Setter
 	private BigDecimal amount;
 
-	public enum Fields {
-		orderPaymentPreferenceId, orderId, statusId, paymentId, paymentTypeId, amount
-	}
-
 	public OrderPaymentPrefAndPayment(GenericValue value) {
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		paymentTypeId = (String) value.get(Fields.paymentTypeId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		paymentTypeId = (String) value.get(FIELD_PAYMENT_TYPE_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
 	}
 
 	public static OrderPaymentPrefAndPayment fromValue(

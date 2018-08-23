@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.segment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Segment Group View Related Parties
  */
+@FieldNameConstants
 public class SegmentGroupViewRelatedParties implements Serializable {
 
-	public static final long serialVersionUID = 4173218436284144640L;
+	public static final long serialVersionUID = 3667643984689623040L;
 	public static final String NAME = "SegmentGroupViewRelatedParties";
 	/**
 	 * Sgr Role Type Id
@@ -256,67 +258,57 @@ public class SegmentGroupViewRelatedParties implements Serializable {
 	@Setter
 	private String prPcPartyIdTo;
 
-	public enum Fields {
-		sgrRoleTypeId, sgrSegmentGroupId, sgrPartyId, sgrToRoleTypeId, sgrToSegmentGroupId, sgrToPartyId, prSgrRoleTypeIdTo, prSgrPartyIdFrom, prSgrPositionTitle, prSgrComments, prSgrPriorityTypeId, prSgrPermissionsEnumId, prSgrRoleTypeIdFrom, prSgrThruDate, prSgrFromDate, prSgrRelationshipName, prSgrSecurityGroupId, prSgrPartyRelationshipTypeId, prSgrStatusId, prSgrPartyIdTo, sgcPartyClassificationGroupId, sgcSegmentGroupId, pcFromDate, pcPartyClassificationGroupId, pcPartyId, pcThruDate, prPcRoleTypeIdTo, prPcPartyIdFrom, prPcPositionTitle, prPcComments, prPcPriorityTypeId, prPcPermissionsEnumId, prPcRoleTypeIdFrom, prPcThruDate, prPcFromDate, prPcRelationshipName, prPcSecurityGroupId, prPcPartyRelationshipTypeId, prPcStatusId, prPcPartyIdTo
-	}
-
 	public SegmentGroupViewRelatedParties(GenericValue value) {
-		sgrRoleTypeId = (String) value.get(Fields.sgrRoleTypeId.name());
-		sgrSegmentGroupId = (String) value.get(Fields.sgrSegmentGroupId.name());
-		sgrPartyId = (String) value.get(Fields.sgrPartyId.name());
-		sgrToRoleTypeId = (String) value.get(Fields.sgrToRoleTypeId.name());
-		sgrToSegmentGroupId = (String) value.get(Fields.sgrToSegmentGroupId
-				.name());
-		sgrToPartyId = (String) value.get(Fields.sgrToPartyId.name());
-		prSgrRoleTypeIdTo = (String) value.get(Fields.prSgrRoleTypeIdTo.name());
-		prSgrPartyIdFrom = (String) value.get(Fields.prSgrPartyIdFrom.name());
-		prSgrPositionTitle = (String) value.get(Fields.prSgrPositionTitle
-				.name());
-		prSgrComments = (String) value.get(Fields.prSgrComments.name());
-		prSgrPriorityTypeId = (String) value.get(Fields.prSgrPriorityTypeId
-				.name());
+		sgrRoleTypeId = (String) value.get(FIELD_SGR_ROLE_TYPE_ID);
+		sgrSegmentGroupId = (String) value.get(FIELD_SGR_SEGMENT_GROUP_ID);
+		sgrPartyId = (String) value.get(FIELD_SGR_PARTY_ID);
+		sgrToRoleTypeId = (String) value.get(FIELD_SGR_TO_ROLE_TYPE_ID);
+		sgrToSegmentGroupId = (String) value.get(FIELD_SGR_TO_SEGMENT_GROUP_ID);
+		sgrToPartyId = (String) value.get(FIELD_SGR_TO_PARTY_ID);
+		prSgrRoleTypeIdTo = (String) value.get(FIELD_PR_SGR_ROLE_TYPE_ID_TO);
+		prSgrPartyIdFrom = (String) value.get(FIELD_PR_SGR_PARTY_ID_FROM);
+		prSgrPositionTitle = (String) value.get(FIELD_PR_SGR_POSITION_TITLE);
+		prSgrComments = (String) value.get(FIELD_PR_SGR_COMMENTS);
+		prSgrPriorityTypeId = (String) value.get(FIELD_PR_SGR_PRIORITY_TYPE_ID);
 		prSgrPermissionsEnumId = (String) value
-				.get(Fields.prSgrPermissionsEnumId.name());
-		prSgrRoleTypeIdFrom = (String) value.get(Fields.prSgrRoleTypeIdFrom
-				.name());
-		prSgrThruDate = (Timestamp) value.get(Fields.prSgrThruDate.name());
-		prSgrFromDate = (Timestamp) value.get(Fields.prSgrFromDate.name());
-		prSgrRelationshipName = (String) value.get(Fields.prSgrRelationshipName
-				.name());
-		prSgrSecurityGroupId = (String) value.get(Fields.prSgrSecurityGroupId
-				.name());
+				.get(FIELD_PR_SGR_PERMISSIONS_ENUM_ID);
+		prSgrRoleTypeIdFrom = (String) value
+				.get(FIELD_PR_SGR_ROLE_TYPE_ID_FROM);
+		prSgrThruDate = (Timestamp) value.get(FIELD_PR_SGR_THRU_DATE);
+		prSgrFromDate = (Timestamp) value.get(FIELD_PR_SGR_FROM_DATE);
+		prSgrRelationshipName = (String) value
+				.get(FIELD_PR_SGR_RELATIONSHIP_NAME);
+		prSgrSecurityGroupId = (String) value
+				.get(FIELD_PR_SGR_SECURITY_GROUP_ID);
 		prSgrPartyRelationshipTypeId = (String) value
-				.get(Fields.prSgrPartyRelationshipTypeId.name());
-		prSgrStatusId = (String) value.get(Fields.prSgrStatusId.name());
-		prSgrPartyIdTo = (String) value.get(Fields.prSgrPartyIdTo.name());
+				.get(FIELD_PR_SGR_PARTY_RELATIONSHIP_TYPE_ID);
+		prSgrStatusId = (String) value.get(FIELD_PR_SGR_STATUS_ID);
+		prSgrPartyIdTo = (String) value.get(FIELD_PR_SGR_PARTY_ID_TO);
 		sgcPartyClassificationGroupId = (String) value
-				.get(Fields.sgcPartyClassificationGroupId.name());
-		sgcSegmentGroupId = (String) value.get(Fields.sgcSegmentGroupId.name());
-		pcFromDate = (Timestamp) value.get(Fields.pcFromDate.name());
+				.get(FIELD_SGC_PARTY_CLASSIFICATION_GROUP_ID);
+		sgcSegmentGroupId = (String) value.get(FIELD_SGC_SEGMENT_GROUP_ID);
+		pcFromDate = (Timestamp) value.get(FIELD_PC_FROM_DATE);
 		pcPartyClassificationGroupId = (String) value
-				.get(Fields.pcPartyClassificationGroupId.name());
-		pcPartyId = (String) value.get(Fields.pcPartyId.name());
-		pcThruDate = (Timestamp) value.get(Fields.pcThruDate.name());
-		prPcRoleTypeIdTo = (String) value.get(Fields.prPcRoleTypeIdTo.name());
-		prPcPartyIdFrom = (String) value.get(Fields.prPcPartyIdFrom.name());
-		prPcPositionTitle = (String) value.get(Fields.prPcPositionTitle.name());
-		prPcComments = (String) value.get(Fields.prPcComments.name());
-		prPcPriorityTypeId = (String) value.get(Fields.prPcPriorityTypeId
-				.name());
-		prPcPermissionsEnumId = (String) value.get(Fields.prPcPermissionsEnumId
-				.name());
-		prPcRoleTypeIdFrom = (String) value.get(Fields.prPcRoleTypeIdFrom
-				.name());
-		prPcThruDate = (Timestamp) value.get(Fields.prPcThruDate.name());
-		prPcFromDate = (Timestamp) value.get(Fields.prPcFromDate.name());
-		prPcRelationshipName = (String) value.get(Fields.prPcRelationshipName
-				.name());
-		prPcSecurityGroupId = (String) value.get(Fields.prPcSecurityGroupId
-				.name());
+				.get(FIELD_PC_PARTY_CLASSIFICATION_GROUP_ID);
+		pcPartyId = (String) value.get(FIELD_PC_PARTY_ID);
+		pcThruDate = (Timestamp) value.get(FIELD_PC_THRU_DATE);
+		prPcRoleTypeIdTo = (String) value.get(FIELD_PR_PC_ROLE_TYPE_ID_TO);
+		prPcPartyIdFrom = (String) value.get(FIELD_PR_PC_PARTY_ID_FROM);
+		prPcPositionTitle = (String) value.get(FIELD_PR_PC_POSITION_TITLE);
+		prPcComments = (String) value.get(FIELD_PR_PC_COMMENTS);
+		prPcPriorityTypeId = (String) value.get(FIELD_PR_PC_PRIORITY_TYPE_ID);
+		prPcPermissionsEnumId = (String) value
+				.get(FIELD_PR_PC_PERMISSIONS_ENUM_ID);
+		prPcRoleTypeIdFrom = (String) value.get(FIELD_PR_PC_ROLE_TYPE_ID_FROM);
+		prPcThruDate = (Timestamp) value.get(FIELD_PR_PC_THRU_DATE);
+		prPcFromDate = (Timestamp) value.get(FIELD_PR_PC_FROM_DATE);
+		prPcRelationshipName = (String) value
+				.get(FIELD_PR_PC_RELATIONSHIP_NAME);
+		prPcSecurityGroupId = (String) value.get(FIELD_PR_PC_SECURITY_GROUP_ID);
 		prPcPartyRelationshipTypeId = (String) value
-				.get(Fields.prPcPartyRelationshipTypeId.name());
-		prPcStatusId = (String) value.get(Fields.prPcStatusId.name());
-		prPcPartyIdTo = (String) value.get(Fields.prPcPartyIdTo.name());
+				.get(FIELD_PR_PC_PARTY_RELATIONSHIP_TYPE_ID);
+		prPcStatusId = (String) value.get(FIELD_PR_PC_STATUS_ID);
+		prPcPartyIdTo = (String) value.get(FIELD_PR_PC_PARTY_ID_TO);
 	}
 
 	public static SegmentGroupViewRelatedParties fromValue(

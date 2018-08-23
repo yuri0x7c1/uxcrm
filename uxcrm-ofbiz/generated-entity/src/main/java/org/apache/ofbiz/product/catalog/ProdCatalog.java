@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.catalog;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Prod Catalog
  */
+@FieldNameConstants
 public class ProdCatalog implements Serializable {
 
-	public static final long serialVersionUID = 2775155334485504000L;
+	public static final long serialVersionUID = 7481823803174556672L;
 	public static final String NAME = "ProdCatalog";
 	/**
 	 * Prod Catalog Id
@@ -94,28 +96,21 @@ public class ProdCatalog implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		prodCatalogId, catalogName, useQuickAdd, styleSheet, headerLogo, contentPathPrefix, templatePathPrefix, viewAllowPermReqd, purchaseAllowPermReqd, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProdCatalog(GenericValue value) {
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		catalogName = (String) value.get(Fields.catalogName.name());
-		useQuickAdd = (String) value.get(Fields.useQuickAdd.name());
-		styleSheet = (String) value.get(Fields.styleSheet.name());
-		headerLogo = (String) value.get(Fields.headerLogo.name());
-		contentPathPrefix = (String) value.get(Fields.contentPathPrefix.name());
-		templatePathPrefix = (String) value.get(Fields.templatePathPrefix
-				.name());
-		viewAllowPermReqd = (String) value.get(Fields.viewAllowPermReqd.name());
-		purchaseAllowPermReqd = (String) value.get(Fields.purchaseAllowPermReqd
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		catalogName = (String) value.get(FIELD_CATALOG_NAME);
+		useQuickAdd = (String) value.get(FIELD_USE_QUICK_ADD);
+		styleSheet = (String) value.get(FIELD_STYLE_SHEET);
+		headerLogo = (String) value.get(FIELD_HEADER_LOGO);
+		contentPathPrefix = (String) value.get(FIELD_CONTENT_PATH_PREFIX);
+		templatePathPrefix = (String) value.get(FIELD_TEMPLATE_PATH_PREFIX);
+		viewAllowPermReqd = (String) value.get(FIELD_VIEW_ALLOW_PERM_REQD);
+		purchaseAllowPermReqd = (String) value
+				.get(FIELD_PURCHASE_ALLOW_PERM_REQD);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProdCatalog fromValue(

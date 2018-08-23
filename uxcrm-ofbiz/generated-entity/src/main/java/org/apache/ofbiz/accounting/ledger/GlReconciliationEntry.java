@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Gl Reconciliation Entry
  */
+@FieldNameConstants
 public class GlReconciliationEntry implements Serializable {
 
-	public static final long serialVersionUID = 5542183345332396032L;
+	public static final long serialVersionUID = 680714385488674816L;
 	public static final String NAME = "GlReconciliationEntry";
 	/**
 	 * Gl Reconciliation Id
@@ -65,24 +67,16 @@ public class GlReconciliationEntry implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glReconciliationId, acctgTransId, acctgTransEntrySeqId, reconciledAmount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlReconciliationEntry(GenericValue value) {
-		glReconciliationId = (String) value.get(Fields.glReconciliationId
-				.name());
-		acctgTransId = (String) value.get(Fields.acctgTransId.name());
-		acctgTransEntrySeqId = (String) value.get(Fields.acctgTransEntrySeqId
-				.name());
-		reconciledAmount = (BigDecimal) value.get(Fields.reconciledAmount
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glReconciliationId = (String) value.get(FIELD_GL_RECONCILIATION_ID);
+		acctgTransId = (String) value.get(FIELD_ACCTG_TRANS_ID);
+		acctgTransEntrySeqId = (String) value
+				.get(FIELD_ACCTG_TRANS_ENTRY_SEQ_ID);
+		reconciledAmount = (BigDecimal) value.get(FIELD_RECONCILED_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlReconciliationEntry fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Category And Member
  */
+@FieldNameConstants
 public class ProductCategoryAndMember implements Serializable {
 
-	public static final long serialVersionUID = 6405094131727216640L;
+	public static final long serialVersionUID = 2258406142638652416L;
 	public static final String NAME = "ProductCategoryAndMember";
 	/**
 	 * Long Description
@@ -119,30 +121,26 @@ public class ProductCategoryAndMember implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		longDescription, productCategoryTypeId, detailScreen, description, linkTwoImageUrl, categoryName, productCategoryId, linkOneImageUrl, primaryParentCategoryId, categoryImageUrl, showInSelect, fromDate, comments, quantity, productId, sequenceNum, thruDate
-	}
-
 	public ProductCategoryAndMember(GenericValue value) {
-		longDescription = (String) value.get(Fields.longDescription.name());
-		productCategoryTypeId = (String) value.get(Fields.productCategoryTypeId
-				.name());
-		detailScreen = (String) value.get(Fields.detailScreen.name());
-		description = (String) value.get(Fields.description.name());
-		linkTwoImageUrl = (String) value.get(Fields.linkTwoImageUrl.name());
-		categoryName = (String) value.get(Fields.categoryName.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		linkOneImageUrl = (String) value.get(Fields.linkOneImageUrl.name());
+		longDescription = (String) value.get(FIELD_LONG_DESCRIPTION);
+		productCategoryTypeId = (String) value
+				.get(FIELD_PRODUCT_CATEGORY_TYPE_ID);
+		detailScreen = (String) value.get(FIELD_DETAIL_SCREEN);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		linkTwoImageUrl = (String) value.get(FIELD_LINK_TWO_IMAGE_URL);
+		categoryName = (String) value.get(FIELD_CATEGORY_NAME);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		linkOneImageUrl = (String) value.get(FIELD_LINK_ONE_IMAGE_URL);
 		primaryParentCategoryId = (String) value
-				.get(Fields.primaryParentCategoryId.name());
-		categoryImageUrl = (String) value.get(Fields.categoryImageUrl.name());
-		showInSelect = (String) value.get(Fields.showInSelect.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_PRIMARY_PARENT_CATEGORY_ID);
+		categoryImageUrl = (String) value.get(FIELD_CATEGORY_IMAGE_URL);
+		showInSelect = (String) value.get(FIELD_SHOW_IN_SELECT);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static ProductCategoryAndMember fromValue(

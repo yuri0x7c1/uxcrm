@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Quote Adjustment
  */
+@FieldNameConstants
 public class QuoteAdjustment implements Serializable {
 
-	public static final long serialVersionUID = 1553569182335850496L;
+	public static final long serialVersionUID = 912569028146055168L;
 	public static final String NAME = "QuoteAdjustment";
 	/**
 	 * Quote Adjustment Id
@@ -203,54 +205,42 @@ public class QuoteAdjustment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quoteAdjustmentId, quoteAdjustmentTypeId, quoteId, quoteItemSeqId, comments, description, amount, productPromoId, productPromoRuleId, productPromoActionSeqId, productFeatureId, correspondingProductId, sourceReferenceId, sourcePercentage, customerReferenceId, primaryGeoId, secondaryGeoId, exemptAmount, taxAuthGeoId, taxAuthPartyId, overrideGlAccountId, includeInTax, includeInShipping, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuoteAdjustment(GenericValue value) {
-		quoteAdjustmentId = (String) value.get(Fields.quoteAdjustmentId.name());
-		quoteAdjustmentTypeId = (String) value.get(Fields.quoteAdjustmentTypeId
-				.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		quoteItemSeqId = (String) value.get(Fields.quoteItemSeqId.name());
-		comments = (String) value.get(Fields.comments.name());
-		description = (String) value.get(Fields.description.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
+		quoteAdjustmentId = (String) value.get(FIELD_QUOTE_ADJUSTMENT_ID);
+		quoteAdjustmentTypeId = (String) value
+				.get(FIELD_QUOTE_ADJUSTMENT_TYPE_ID);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		quoteItemSeqId = (String) value.get(FIELD_QUOTE_ITEM_SEQ_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
 		productPromoActionSeqId = (String) value
-				.get(Fields.productPromoActionSeqId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_SEQ_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
 		correspondingProductId = (String) value
-				.get(Fields.correspondingProductId.name());
-		sourceReferenceId = (String) value.get(Fields.sourceReferenceId.name());
-		sourcePercentage = (BigDecimal) value.get(Fields.sourcePercentage
-				.name());
-		customerReferenceId = (String) value.get(Fields.customerReferenceId
-				.name());
-		primaryGeoId = (String) value.get(Fields.primaryGeoId.name());
-		secondaryGeoId = (String) value.get(Fields.secondaryGeoId.name());
-		exemptAmount = (BigDecimal) value.get(Fields.exemptAmount.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		includeInTax = (String) value.get(Fields.includeInTax.name());
-		includeInShipping = (String) value.get(Fields.includeInShipping.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_CORRESPONDING_PRODUCT_ID);
+		sourceReferenceId = (String) value.get(FIELD_SOURCE_REFERENCE_ID);
+		sourcePercentage = (BigDecimal) value.get(FIELD_SOURCE_PERCENTAGE);
+		customerReferenceId = (String) value.get(FIELD_CUSTOMER_REFERENCE_ID);
+		primaryGeoId = (String) value.get(FIELD_PRIMARY_GEO_ID);
+		secondaryGeoId = (String) value.get(FIELD_SECONDARY_GEO_ID);
+		exemptAmount = (BigDecimal) value.get(FIELD_EXEMPT_AMOUNT);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		includeInTax = (String) value.get(FIELD_INCLUDE_IN_TAX);
+		includeInShipping = (String) value.get(FIELD_INCLUDE_IN_SHIPPING);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuoteAdjustment fromValue(

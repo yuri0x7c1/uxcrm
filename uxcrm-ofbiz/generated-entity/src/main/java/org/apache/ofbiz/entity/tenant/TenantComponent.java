@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.tenant;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tenant Component
  */
+@FieldNameConstants
 public class TenantComponent implements Serializable {
 
-	public static final long serialVersionUID = 4153353974432164864L;
+	public static final long serialVersionUID = 472172324532405248L;
 	public static final String NAME = "TenantComponent";
 	/**
 	 * Tenant Id
@@ -58,20 +60,14 @@ public class TenantComponent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		tenantId, componentName, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TenantComponent(GenericValue value) {
-		tenantId = (String) value.get(Fields.tenantId.name());
-		componentName = (String) value.get(Fields.componentName.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		tenantId = (String) value.get(FIELD_TENANT_ID);
+		componentName = (String) value.get(FIELD_COMPONENT_NAME);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TenantComponent fromValue(

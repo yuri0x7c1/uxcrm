@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Feature And Appl
  */
+@FieldNameConstants
 public class ProductFeatureAndAppl implements Serializable {
 
-	public static final long serialVersionUID = 8795584262893272064L;
+	public static final long serialVersionUID = 8735782757578171392L;
 	public static final String NAME = "ProductFeatureAndAppl";
 	/**
 	 * Product Feature Id
@@ -119,31 +121,27 @@ public class ProductFeatureAndAppl implements Serializable {
 	@Setter
 	private BigDecimal recurringAmount;
 
-	public enum Fields {
-		productFeatureId, productFeatureTypeId, productFeatureCategoryId, description, uomId, numberSpecified, defaultAmount, defaultSequenceNum, abbrev, idCode, productId, productFeatureApplTypeId, fromDate, thruDate, sequenceNum, amount, recurringAmount
-	}
-
 	public ProductFeatureAndAppl(GenericValue value) {
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productFeatureTypeId = (String) value.get(Fields.productFeatureTypeId
-				.name());
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productFeatureTypeId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_TYPE_ID);
 		productFeatureCategoryId = (String) value
-				.get(Fields.productFeatureCategoryId.name());
-		description = (String) value.get(Fields.description.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		numberSpecified = (BigDecimal) value.get(Fields.numberSpecified.name());
-		defaultAmount = (BigDecimal) value.get(Fields.defaultAmount.name());
-		defaultSequenceNum = (Long) value.get(Fields.defaultSequenceNum.name());
-		abbrev = (String) value.get(Fields.abbrev.name());
-		idCode = (String) value.get(Fields.idCode.name());
-		productId = (String) value.get(Fields.productId.name());
+				.get(FIELD_PRODUCT_FEATURE_CATEGORY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		numberSpecified = (BigDecimal) value.get(FIELD_NUMBER_SPECIFIED);
+		defaultAmount = (BigDecimal) value.get(FIELD_DEFAULT_AMOUNT);
+		defaultSequenceNum = (Long) value.get(FIELD_DEFAULT_SEQUENCE_NUM);
+		abbrev = (String) value.get(FIELD_ABBREV);
+		idCode = (String) value.get(FIELD_ID_CODE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
 		productFeatureApplTypeId = (String) value
-				.get(Fields.productFeatureApplTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		recurringAmount = (BigDecimal) value.get(Fields.recurringAmount.name());
+				.get(FIELD_PRODUCT_FEATURE_APPL_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		recurringAmount = (BigDecimal) value.get(FIELD_RECURRING_AMOUNT);
 	}
 
 	public static ProductFeatureAndAppl fromValue(

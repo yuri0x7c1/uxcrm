@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Testing Crypto Raw View
  */
+@FieldNameConstants
 public class TestingCryptoRawView implements Serializable {
 
-	public static final long serialVersionUID = 5612667489583815680L;
+	public static final long serialVersionUID = 1362392014067550208L;
 	public static final String NAME = "TestingCryptoRawView";
 	/**
 	 * Raw Encrypted Value
@@ -57,21 +59,15 @@ public class TestingCryptoRawView implements Serializable {
 	@Setter
 	private String testingCryptoTypeId;
 
-	public enum Fields {
-		rawEncryptedValue, rawSaltedEncryptedValue, testingCryptoId, encryptedValue, saltedEncryptedValue, unencryptedValue, testingCryptoTypeId
-	}
-
 	public TestingCryptoRawView(GenericValue value) {
-		rawEncryptedValue = (String) value.get(Fields.rawEncryptedValue.name());
+		rawEncryptedValue = (String) value.get(FIELD_RAW_ENCRYPTED_VALUE);
 		rawSaltedEncryptedValue = (String) value
-				.get(Fields.rawSaltedEncryptedValue.name());
-		testingCryptoId = (String) value.get(Fields.testingCryptoId.name());
-		encryptedValue = (String) value.get(Fields.encryptedValue.name());
-		saltedEncryptedValue = (String) value.get(Fields.saltedEncryptedValue
-				.name());
-		unencryptedValue = (String) value.get(Fields.unencryptedValue.name());
-		testingCryptoTypeId = (String) value.get(Fields.testingCryptoTypeId
-				.name());
+				.get(FIELD_RAW_SALTED_ENCRYPTED_VALUE);
+		testingCryptoId = (String) value.get(FIELD_TESTING_CRYPTO_ID);
+		encryptedValue = (String) value.get(FIELD_ENCRYPTED_VALUE);
+		saltedEncryptedValue = (String) value.get(FIELD_SALTED_ENCRYPTED_VALUE);
+		unencryptedValue = (String) value.get(FIELD_UNENCRYPTED_VALUE);
+		testingCryptoTypeId = (String) value.get(FIELD_TESTING_CRYPTO_TYPE_ID);
 	}
 
 	public static TestingCryptoRawView fromValue(

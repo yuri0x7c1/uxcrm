@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Delivery Schedule
  */
+@FieldNameConstants
 public class OrderDeliverySchedule implements Serializable {
 
-	public static final long serialVersionUID = 4975453013594725376L;
+	public static final long serialVersionUID = 1769692704920279040L;
 	public static final String NAME = "OrderDeliverySchedule";
 	/**
 	 * Order Id
@@ -107,29 +109,22 @@ public class OrderDeliverySchedule implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, estimatedReadyDate, cartons, skidsPallets, unitsPieces, totalCubicSize, totalCubicUomId, totalWeight, totalWeightUomId, statusId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderDeliverySchedule(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		estimatedReadyDate = (Timestamp) value.get(Fields.estimatedReadyDate
-				.name());
-		cartons = (Long) value.get(Fields.cartons.name());
-		skidsPallets = (Long) value.get(Fields.skidsPallets.name());
-		unitsPieces = (BigDecimal) value.get(Fields.unitsPieces.name());
-		totalCubicSize = (BigDecimal) value.get(Fields.totalCubicSize.name());
-		totalCubicUomId = (String) value.get(Fields.totalCubicUomId.name());
-		totalWeight = (BigDecimal) value.get(Fields.totalWeight.name());
-		totalWeightUomId = (String) value.get(Fields.totalWeightUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		estimatedReadyDate = (Timestamp) value.get(FIELD_ESTIMATED_READY_DATE);
+		cartons = (Long) value.get(FIELD_CARTONS);
+		skidsPallets = (Long) value.get(FIELD_SKIDS_PALLETS);
+		unitsPieces = (BigDecimal) value.get(FIELD_UNITS_PIECES);
+		totalCubicSize = (BigDecimal) value.get(FIELD_TOTAL_CUBIC_SIZE);
+		totalCubicUomId = (String) value.get(FIELD_TOTAL_CUBIC_UOM_ID);
+		totalWeight = (BigDecimal) value.get(FIELD_TOTAL_WEIGHT);
+		totalWeightUomId = (String) value.get(FIELD_TOTAL_WEIGHT_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderDeliverySchedule fromValue(

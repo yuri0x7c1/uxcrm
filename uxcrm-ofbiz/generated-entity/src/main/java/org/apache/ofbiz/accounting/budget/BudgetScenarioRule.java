@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Budget Scenario Rule
  */
+@FieldNameConstants
 public class BudgetScenarioRule implements Serializable {
 
-	public static final long serialVersionUID = 1547632486431780864L;
+	public static final long serialVersionUID = 2322811118087844864L;
 	public static final String NAME = "BudgetScenarioRule";
 	/**
 	 * Budget Scenario Id
@@ -65,22 +67,15 @@ public class BudgetScenarioRule implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetScenarioId, budgetItemTypeId, amountChange, percentageChange, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetScenarioRule(GenericValue value) {
-		budgetScenarioId = (String) value.get(Fields.budgetScenarioId.name());
-		budgetItemTypeId = (String) value.get(Fields.budgetItemTypeId.name());
-		amountChange = (BigDecimal) value.get(Fields.amountChange.name());
-		percentageChange = (BigDecimal) value.get(Fields.percentageChange
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetScenarioId = (String) value.get(FIELD_BUDGET_SCENARIO_ID);
+		budgetItemTypeId = (String) value.get(FIELD_BUDGET_ITEM_TYPE_ID);
+		amountChange = (BigDecimal) value.get(FIELD_AMOUNT_CHANGE);
+		percentageChange = (BigDecimal) value.get(FIELD_PERCENTAGE_CHANGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetScenarioRule fromValue(

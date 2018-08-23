@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site Contact List
  */
+@FieldNameConstants
 public class WebSiteContactList implements Serializable {
 
-	public static final long serialVersionUID = 7831775516056771584L;
+	public static final long serialVersionUID = 2133657306216205312L;
 	public static final String NAME = "WebSiteContactList";
 	/**
 	 * Web Site Id
@@ -64,21 +66,15 @@ public class WebSiteContactList implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webSiteId, contactListId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebSiteContactList(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		contactListId = (String) value.get(Fields.contactListId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebSiteContactList fromValue(

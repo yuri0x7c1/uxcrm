@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.communication;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Communication Event
  */
+@FieldNameConstants
 public class CommunicationEvent implements Serializable {
 
-	public static final long serialVersionUID = 6996593253015246848L;
+	public static final long serialVersionUID = 7468361358457446400L;
 	public static final String NAME = "CommunicationEvent";
 	/**
 	 * Communication Event Id
@@ -202,46 +204,39 @@ public class CommunicationEvent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		communicationEventId, communicationEventTypeId, origCommEventId, parentCommEventId, statusId, contactMechTypeId, contactMechIdFrom, contactMechIdTo, roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, entryDate, datetimeStarted, datetimeEnded, subject, contentMimeTypeId, content, note, reasonEnumId, contactListId, headerString, fromString, toString, ccString, bccString, messageId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CommunicationEvent(GenericValue value) {
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
 		communicationEventTypeId = (String) value
-				.get(Fields.communicationEventTypeId.name());
-		origCommEventId = (String) value.get(Fields.origCommEventId.name());
-		parentCommEventId = (String) value.get(Fields.parentCommEventId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		contactMechIdFrom = (String) value.get(Fields.contactMechIdFrom.name());
-		contactMechIdTo = (String) value.get(Fields.contactMechIdTo.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		datetimeStarted = (Timestamp) value.get(Fields.datetimeStarted.name());
-		datetimeEnded = (Timestamp) value.get(Fields.datetimeEnded.name());
-		subject = (String) value.get(Fields.subject.name());
-		contentMimeTypeId = (String) value.get(Fields.contentMimeTypeId.name());
-		content = (String) value.get(Fields.content.name());
-		note = (String) value.get(Fields.note.name());
-		reasonEnumId = (String) value.get(Fields.reasonEnumId.name());
-		contactListId = (String) value.get(Fields.contactListId.name());
-		headerString = (String) value.get(Fields.headerString.name());
-		fromString = (String) value.get(Fields.fromString.name());
-		toString = (String) value.get(Fields.toString.name());
-		ccString = (String) value.get(Fields.ccString.name());
-		bccString = (String) value.get(Fields.bccString.name());
-		messageId = (String) value.get(Fields.messageId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_COMMUNICATION_EVENT_TYPE_ID);
+		origCommEventId = (String) value.get(FIELD_ORIG_COMM_EVENT_ID);
+		parentCommEventId = (String) value.get(FIELD_PARENT_COMM_EVENT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		contactMechIdFrom = (String) value.get(FIELD_CONTACT_MECH_ID_FROM);
+		contactMechIdTo = (String) value.get(FIELD_CONTACT_MECH_ID_TO);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		datetimeStarted = (Timestamp) value.get(FIELD_DATETIME_STARTED);
+		datetimeEnded = (Timestamp) value.get(FIELD_DATETIME_ENDED);
+		subject = (String) value.get(FIELD_SUBJECT);
+		contentMimeTypeId = (String) value.get(FIELD_CONTENT_MIME_TYPE_ID);
+		content = (String) value.get(FIELD_CONTENT);
+		note = (String) value.get(FIELD_NOTE);
+		reasonEnumId = (String) value.get(FIELD_REASON_ENUM_ID);
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		headerString = (String) value.get(FIELD_HEADER_STRING);
+		fromString = (String) value.get(FIELD_FROM_STRING);
+		toString = (String) value.get(FIELD_TO_STRING);
+		ccString = (String) value.get(FIELD_CC_STRING);
+		bccString = (String) value.get(FIELD_BCC_STRING);
+		messageId = (String) value.get(FIELD_MESSAGE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CommunicationEvent fromValue(

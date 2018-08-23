@@ -1,5 +1,6 @@
 package org.apache.ofbiz.catalina.session;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Catalina Session
  */
+@FieldNameConstants
 public class CatalinaSession implements Serializable {
 
-	public static final long serialVersionUID = 7053614840895516672L;
+	public static final long serialVersionUID = 6140151854697433088L;
 	public static final String NAME = "CatalinaSession";
 	/**
 	 * Session Id
@@ -77,23 +79,17 @@ public class CatalinaSession implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		sessionId, sessionSize, sessionInfo, isValid, maxIdle, lastAccessed, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CatalinaSession(GenericValue value) {
-		sessionId = (String) value.get(Fields.sessionId.name());
-		sessionSize = (Long) value.get(Fields.sessionSize.name());
-		sessionInfo = (Blob) value.get(Fields.sessionInfo.name());
-		isValid = (String) value.get(Fields.isValid.name());
-		maxIdle = (Long) value.get(Fields.maxIdle.name());
-		lastAccessed = (Long) value.get(Fields.lastAccessed.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		sessionId = (String) value.get(FIELD_SESSION_ID);
+		sessionSize = (Long) value.get(FIELD_SESSION_SIZE);
+		sessionInfo = (Blob) value.get(FIELD_SESSION_INFO);
+		isValid = (String) value.get(FIELD_IS_VALID);
+		maxIdle = (Long) value.get(FIELD_MAX_IDLE);
+		lastAccessed = (Long) value.get(FIELD_LAST_ACCESSED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CatalinaSession fromValue(

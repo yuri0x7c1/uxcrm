@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.cost;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Cost Component
  */
+@FieldNameConstants
 public class CostComponent implements Serializable {
 
-	public static final long serialVersionUID = 1804253971874238464L;
+	public static final long serialVersionUID = 1620024071776921600L;
 	public static final String NAME = "CostComponent";
 	/**
 	 * Cost Component Id
@@ -119,32 +121,24 @@ public class CostComponent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		costComponentId, costComponentTypeId, productId, productFeatureId, partyId, geoId, workEffortId, fixedAssetId, costComponentCalcId, fromDate, thruDate, cost, costUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CostComponent(GenericValue value) {
-		costComponentId = (String) value.get(Fields.costComponentId.name());
-		costComponentTypeId = (String) value.get(Fields.costComponentTypeId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		costComponentCalcId = (String) value.get(Fields.costComponentCalcId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		cost = (BigDecimal) value.get(Fields.cost.name());
-		costUomId = (String) value.get(Fields.costUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		costComponentId = (String) value.get(FIELD_COST_COMPONENT_ID);
+		costComponentTypeId = (String) value.get(FIELD_COST_COMPONENT_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		costComponentCalcId = (String) value.get(FIELD_COST_COMPONENT_CALC_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		cost = (BigDecimal) value.get(FIELD_COST);
+		costUomId = (String) value.get(FIELD_COST_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CostComponent fromValue(

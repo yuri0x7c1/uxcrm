@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Category Member
  */
+@FieldNameConstants
 public class ProductCategoryMember implements Serializable {
 
-	public static final long serialVersionUID = 6462257277949370368L;
+	public static final long serialVersionUID = 1453719829736036352L;
 	public static final String NAME = "ProductCategoryMember";
 	/**
 	 * Product Category Id
@@ -83,24 +85,18 @@ public class ProductCategoryMember implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productCategoryId, productId, fromDate, thruDate, comments, sequenceNum, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductCategoryMember(GenericValue value) {
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		productId = (String) value.get(Fields.productId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductCategoryMember fromValue(

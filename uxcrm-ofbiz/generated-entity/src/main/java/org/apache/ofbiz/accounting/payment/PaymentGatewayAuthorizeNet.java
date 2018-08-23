@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Authorize Net
  */
+@FieldNameConstants
 public class PaymentGatewayAuthorizeNet implements Serializable {
 
-	public static final long serialVersionUID = 5376715911514685440L;
+	public static final long serialVersionUID = 5228801202059915264L;
 	public static final String NAME = "PaymentGatewayAuthorizeNet";
 	/**
 	 * Payment Gateway Config Id
@@ -154,37 +156,31 @@ public class PaymentGatewayAuthorizeNet implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, transactionUrl, certificateAlias, apiVersion, delimitedData, delimiterChar, cpVersion, cpMarketType, cpDeviceType, method, emailCustomer, emailMerchant, testMode, relayResponse, tranKey, userId, pwd, transDescription, duplicateWindow, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayAuthorizeNet(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		transactionUrl = (String) value.get(Fields.transactionUrl.name());
-		certificateAlias = (String) value.get(Fields.certificateAlias.name());
-		apiVersion = (String) value.get(Fields.apiVersion.name());
-		delimitedData = (String) value.get(Fields.delimitedData.name());
-		delimiterChar = (String) value.get(Fields.delimiterChar.name());
-		cpVersion = (String) value.get(Fields.cpVersion.name());
-		cpMarketType = (String) value.get(Fields.cpMarketType.name());
-		cpDeviceType = (String) value.get(Fields.cpDeviceType.name());
-		method = (String) value.get(Fields.method.name());
-		emailCustomer = (String) value.get(Fields.emailCustomer.name());
-		emailMerchant = (String) value.get(Fields.emailMerchant.name());
-		testMode = (String) value.get(Fields.testMode.name());
-		relayResponse = (String) value.get(Fields.relayResponse.name());
-		tranKey = (String) value.get(Fields.tranKey.name());
-		userId = (String) value.get(Fields.userId.name());
-		pwd = (String) value.get(Fields.pwd.name());
-		transDescription = (String) value.get(Fields.transDescription.name());
-		duplicateWindow = (Long) value.get(Fields.duplicateWindow.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		transactionUrl = (String) value.get(FIELD_TRANSACTION_URL);
+		certificateAlias = (String) value.get(FIELD_CERTIFICATE_ALIAS);
+		apiVersion = (String) value.get(FIELD_API_VERSION);
+		delimitedData = (String) value.get(FIELD_DELIMITED_DATA);
+		delimiterChar = (String) value.get(FIELD_DELIMITER_CHAR);
+		cpVersion = (String) value.get(FIELD_CP_VERSION);
+		cpMarketType = (String) value.get(FIELD_CP_MARKET_TYPE);
+		cpDeviceType = (String) value.get(FIELD_CP_DEVICE_TYPE);
+		method = (String) value.get(FIELD_METHOD);
+		emailCustomer = (String) value.get(FIELD_EMAIL_CUSTOMER);
+		emailMerchant = (String) value.get(FIELD_EMAIL_MERCHANT);
+		testMode = (String) value.get(FIELD_TEST_MODE);
+		relayResponse = (String) value.get(FIELD_RELAY_RESPONSE);
+		tranKey = (String) value.get(FIELD_TRAN_KEY);
+		userId = (String) value.get(FIELD_USER_ID);
+		pwd = (String) value.get(FIELD_PWD);
+		transDescription = (String) value.get(FIELD_TRANS_DESCRIPTION);
+		duplicateWindow = (Long) value.get(FIELD_DUPLICATE_WINDOW);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayAuthorizeNet fromValue(

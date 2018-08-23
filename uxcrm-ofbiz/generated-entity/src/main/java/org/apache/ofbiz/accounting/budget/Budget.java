@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Budget
  */
+@FieldNameConstants
 public class Budget implements Serializable {
 
-	public static final long serialVersionUID = 750826485634897920L;
+	public static final long serialVersionUID = 3807025738979581952L;
 	public static final String NAME = "Budget";
 	/**
 	 * Budget Id
@@ -64,22 +66,15 @@ public class Budget implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, budgetTypeId, customTimePeriodId, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Budget(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetTypeId = (String) value.get(Fields.budgetTypeId.name());
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetTypeId = (String) value.get(FIELD_BUDGET_TYPE_ID);
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Budget fromValue(org.apache.ofbiz.entity.GenericValue value) {

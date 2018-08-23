@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Agreement Item And Party Appl
  */
+@FieldNameConstants
 public class AgreementItemAndPartyAppl implements Serializable {
 
-	public static final long serialVersionUID = 8248656695275072512L;
+	public static final long serialVersionUID = 1382529196186423296L;
 	public static final String NAME = "AgreementItemAndPartyAppl";
 	/**
 	 * Currency Uom Id
@@ -118,30 +120,24 @@ public class AgreementItemAndPartyAppl implements Serializable {
 	@Setter
 	private String partyIdTo;
 
-	public enum Fields {
-		currencyUomId, agreementText, agreementImage, agreementId, agreementItemSeqId, agreementItemTypeId, partyId, roleTypeIdTo, partyIdFrom, agreementDate, agreementTypeId, description, roleTypeIdFrom, thruDate, fromDate, textData, partyIdTo
-	}
-
 	public AgreementItemAndPartyAppl(GenericValue value) {
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		agreementText = (String) value.get(Fields.agreementText.name());
-		agreementImage = (Object) value.get(Fields.agreementImage.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		agreementItemTypeId = (String) value.get(Fields.agreementItemTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		agreementDate = (Timestamp) value.get(Fields.agreementDate.name());
-		agreementTypeId = (String) value.get(Fields.agreementTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		textData = (String) value.get(Fields.textData.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		agreementText = (String) value.get(FIELD_AGREEMENT_TEXT);
+		agreementImage = (Object) value.get(FIELD_AGREEMENT_IMAGE);
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		agreementItemTypeId = (String) value.get(FIELD_AGREEMENT_ITEM_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		agreementDate = (Timestamp) value.get(FIELD_AGREEMENT_DATE);
+		agreementTypeId = (String) value.get(FIELD_AGREEMENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		textData = (String) value.get(FIELD_TEXT_DATA);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
 	}
 
 	public static AgreementItemAndPartyAppl fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Opportunity History
  */
+@FieldNameConstants
 public class SalesOpportunityHistory implements Serializable {
 
-	public static final long serialVersionUID = 5237404456088654848L;
+	public static final long serialVersionUID = 2170346556350503936L;
 	public static final String NAME = "SalesOpportunityHistory";
 	/**
 	 * Sales Opportunity History Id
@@ -113,36 +115,25 @@ public class SalesOpportunityHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesOpportunityHistoryId, salesOpportunityId, description, nextStep, estimatedAmount, estimatedProbability, currencyUomId, estimatedCloseDate, opportunityStageId, changeNote, modifiedByUserLogin, modifiedTimestamp, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesOpportunityHistory(GenericValue value) {
 		salesOpportunityHistoryId = (String) value
-				.get(Fields.salesOpportunityHistoryId.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		nextStep = (String) value.get(Fields.nextStep.name());
-		estimatedAmount = (BigDecimal) value.get(Fields.estimatedAmount.name());
+				.get(FIELD_SALES_OPPORTUNITY_HISTORY_ID);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		nextStep = (String) value.get(FIELD_NEXT_STEP);
+		estimatedAmount = (BigDecimal) value.get(FIELD_ESTIMATED_AMOUNT);
 		estimatedProbability = (BigDecimal) value
-				.get(Fields.estimatedProbability.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		estimatedCloseDate = (Timestamp) value.get(Fields.estimatedCloseDate
-				.name());
-		opportunityStageId = (String) value.get(Fields.opportunityStageId
-				.name());
-		changeNote = (String) value.get(Fields.changeNote.name());
-		modifiedByUserLogin = (String) value.get(Fields.modifiedByUserLogin
-				.name());
-		modifiedTimestamp = (Timestamp) value.get(Fields.modifiedTimestamp
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ESTIMATED_PROBABILITY);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		estimatedCloseDate = (Timestamp) value.get(FIELD_ESTIMATED_CLOSE_DATE);
+		opportunityStageId = (String) value.get(FIELD_OPPORTUNITY_STAGE_ID);
+		changeNote = (String) value.get(FIELD_CHANGE_NOTE);
+		modifiedByUserLogin = (String) value.get(FIELD_MODIFIED_BY_USER_LOGIN);
+		modifiedTimestamp = (Timestamp) value.get(FIELD_MODIFIED_TIMESTAMP);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesOpportunityHistory fromValue(

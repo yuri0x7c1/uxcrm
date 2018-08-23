@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Role Type In 3 Levels
  */
+@FieldNameConstants
 public class RoleTypeIn3Levels implements Serializable {
 
-	public static final long serialVersionUID = 2344960432316356608L;
+	public static final long serialVersionUID = 7592951394733899776L;
 	public static final String NAME = "RoleTypeIn3Levels";
 	/**
 	 * Top Role Type Id
@@ -51,17 +53,13 @@ public class RoleTypeIn3Levels implements Serializable {
 	@Setter
 	private String lowDescription;
 
-	public enum Fields {
-		topRoleTypeId, topDescription, midRoleTypeId, midDescription, lowRoleTypeId, lowDescription
-	}
-
 	public RoleTypeIn3Levels(GenericValue value) {
-		topRoleTypeId = (String) value.get(Fields.topRoleTypeId.name());
-		topDescription = (String) value.get(Fields.topDescription.name());
-		midRoleTypeId = (String) value.get(Fields.midRoleTypeId.name());
-		midDescription = (String) value.get(Fields.midDescription.name());
-		lowRoleTypeId = (String) value.get(Fields.lowRoleTypeId.name());
-		lowDescription = (String) value.get(Fields.lowDescription.name());
+		topRoleTypeId = (String) value.get(FIELD_TOP_ROLE_TYPE_ID);
+		topDescription = (String) value.get(FIELD_TOP_DESCRIPTION);
+		midRoleTypeId = (String) value.get(FIELD_MID_ROLE_TYPE_ID);
+		midDescription = (String) value.get(FIELD_MID_DESCRIPTION);
+		lowRoleTypeId = (String) value.get(FIELD_LOW_ROLE_TYPE_ID);
+		lowDescription = (String) value.get(FIELD_LOW_DESCRIPTION);
 	}
 
 	public static RoleTypeIn3Levels fromValue(

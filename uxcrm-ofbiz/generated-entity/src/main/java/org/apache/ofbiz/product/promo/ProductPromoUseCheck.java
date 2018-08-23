@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Use Check
  */
+@FieldNameConstants
 public class ProductPromoUseCheck implements Serializable {
 
-	public static final long serialVersionUID = 6886190173265191936L;
+	public static final long serialVersionUID = 3096782199649476608L;
 	public static final String NAME = "ProductPromoUseCheck";
 	/**
 	 * Status Id
@@ -64,22 +66,17 @@ public class ProductPromoUseCheck implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		statusId, quantityLeftInActions, orderId, totalDiscountAmount, productPromoCodeId, promoSequenceId, productPromoId, partyId
-	}
-
 	public ProductPromoUseCheck(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		quantityLeftInActions = (BigDecimal) value
-				.get(Fields.quantityLeftInActions.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		totalDiscountAmount = (BigDecimal) value.get(Fields.totalDiscountAmount
-				.name());
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		promoSequenceId = (String) value.get(Fields.promoSequenceId.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		partyId = (String) value.get(Fields.partyId.name());
+				.get(FIELD_QUANTITY_LEFT_IN_ACTIONS);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		totalDiscountAmount = (BigDecimal) value
+				.get(FIELD_TOTAL_DISCOUNT_AMOUNT);
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		promoSequenceId = (String) value.get(FIELD_PROMO_SEQUENCE_ID);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static ProductPromoUseCheck fromValue(

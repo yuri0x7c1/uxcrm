@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Category Member And Price
  */
+@FieldNameConstants
 public class ProductCategoryMemberAndPrice implements Serializable {
 
-	public static final long serialVersionUID = 4286903487945342976L;
+	public static final long serialVersionUID = 216188863186124800L;
 	public static final String NAME = "ProductCategoryMemberAndPrice";
 	/**
 	 * From Date
@@ -599,181 +601,160 @@ public class ProductCategoryMemberAndPrice implements Serializable {
 	@Setter
 	private String priceProductPriceTypeId;
 
-	public enum Fields {
-		fromDate, productCategoryId, comments, quantity, productId, sequenceNum, thruDate, productOriginGeoId, productDetailScreen, productRequireInventory, productQuantityUomId, productMediumImageUrl, productProductName, productIntroductionDate, productShippingHeight, productOriginalImageUrl, productInShippingBox, productDetailImageUrl, productSupportDiscontinuationDate, productProductWidth, productIncludeInPromotions, productConfigId, productBillOfMaterialLevel, productLotIdFilledIn, productProductRating, productCreatedByUserLogin, productManufacturerPartyId, productBrandName, productRequireAmount, productSmallImageUrl, productTaxable, productPrimaryProductCategoryId, productSalesDiscontinuationDate, productSalesDiscWhenNotAvail, productReturnable, productWeightUomId, productIsVirtual, productPriceDetailText, productReserv2ndPPPerc, productWidthUomId, productLongDescription, productDiameterUomId, productAutoCreateKeywords, productAmountUomTypeId, productProductDiameter, productRatingTypeEnum, productDescription, productChargeShipping, productReservNthPPPerc, productQuantityIncluded, productHeightUomId, productInternalName, productLastModifiedByUserLogin, productVirtualVariantMethodEnum, productShippingWeight, productShippingWidth, productShippingDepth, productReservMaxPersons, productFixedAmount, productInventoryItemTypeId, productPiecesIncluded, productProductDepth, productFacilityId, productComments, productReleaseDate, productProductHeight, productLastModifiedDate, productDefaultShipmentBoxTypeId, productOrderDecimalQuantity, productInventoryMessage, productProductWeight, productDepthUomId, productProductTypeId, productCreatedDate, productIsVariant, productLargeImageUrl, productRequirementMethodEnumId, priceTaxInPrice, priceTermUomId, pricePriceWithTax, priceProductStoreGroupId, priceTaxAuthPartyId, priceLastModifiedByUserLogin, priceCustomPriceCalcService, pricePrice, priceTaxAuthGeoId, priceProductPricePurposeId, priceCreatedByUserLogin, priceLastModifiedDate, priceTaxPercentage, priceThruDate, priceFromDate, priceCurrencyUomId, priceCreatedDate, pricePriceWithoutTax, priceTaxAmount, priceProductPriceTypeId
-	}
-
 	public ProductCategoryMemberAndPrice(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		comments = (String) value.get(Fields.comments.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		productOriginGeoId = (String) value.get(Fields.productOriginGeoId
-				.name());
-		productDetailScreen = (String) value.get(Fields.productDetailScreen
-				.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		productOriginGeoId = (String) value.get(FIELD_PRODUCT_ORIGIN_GEO_ID);
+		productDetailScreen = (String) value.get(FIELD_PRODUCT_DETAIL_SCREEN);
 		productRequireInventory = (String) value
-				.get(Fields.productRequireInventory.name());
-		productQuantityUomId = (String) value.get(Fields.productQuantityUomId
-				.name());
-		productMediumImageUrl = (String) value.get(Fields.productMediumImageUrl
-				.name());
-		productProductName = (String) value.get(Fields.productProductName
-				.name());
+				.get(FIELD_PRODUCT_REQUIRE_INVENTORY);
+		productQuantityUomId = (String) value
+				.get(FIELD_PRODUCT_QUANTITY_UOM_ID);
+		productMediumImageUrl = (String) value
+				.get(FIELD_PRODUCT_MEDIUM_IMAGE_URL);
+		productProductName = (String) value.get(FIELD_PRODUCT_PRODUCT_NAME);
 		productIntroductionDate = (Timestamp) value
-				.get(Fields.productIntroductionDate.name());
+				.get(FIELD_PRODUCT_INTRODUCTION_DATE);
 		productShippingHeight = (BigDecimal) value
-				.get(Fields.productShippingHeight.name());
+				.get(FIELD_PRODUCT_SHIPPING_HEIGHT);
 		productOriginalImageUrl = (String) value
-				.get(Fields.productOriginalImageUrl.name());
-		productInShippingBox = (String) value.get(Fields.productInShippingBox
-				.name());
-		productDetailImageUrl = (String) value.get(Fields.productDetailImageUrl
-				.name());
+				.get(FIELD_PRODUCT_ORIGINAL_IMAGE_URL);
+		productInShippingBox = (String) value
+				.get(FIELD_PRODUCT_IN_SHIPPING_BOX);
+		productDetailImageUrl = (String) value
+				.get(FIELD_PRODUCT_DETAIL_IMAGE_URL);
 		productSupportDiscontinuationDate = (Timestamp) value
-				.get(Fields.productSupportDiscontinuationDate.name());
-		productProductWidth = (BigDecimal) value.get(Fields.productProductWidth
-				.name());
+				.get(FIELD_PRODUCT_SUPPORT_DISCONTINUATION_DATE);
+		productProductWidth = (BigDecimal) value
+				.get(FIELD_PRODUCT_PRODUCT_WIDTH);
 		productIncludeInPromotions = (String) value
-				.get(Fields.productIncludeInPromotions.name());
-		productConfigId = (String) value.get(Fields.productConfigId.name());
+				.get(FIELD_PRODUCT_INCLUDE_IN_PROMOTIONS);
+		productConfigId = (String) value.get(FIELD_PRODUCT_CONFIG_ID);
 		productBillOfMaterialLevel = (Long) value
-				.get(Fields.productBillOfMaterialLevel.name());
-		productLotIdFilledIn = (String) value.get(Fields.productLotIdFilledIn
-				.name());
+				.get(FIELD_PRODUCT_BILL_OF_MATERIAL_LEVEL);
+		productLotIdFilledIn = (String) value
+				.get(FIELD_PRODUCT_LOT_ID_FILLED_IN);
 		productProductRating = (BigDecimal) value
-				.get(Fields.productProductRating.name());
+				.get(FIELD_PRODUCT_PRODUCT_RATING);
 		productCreatedByUserLogin = (String) value
-				.get(Fields.productCreatedByUserLogin.name());
+				.get(FIELD_PRODUCT_CREATED_BY_USER_LOGIN);
 		productManufacturerPartyId = (String) value
-				.get(Fields.productManufacturerPartyId.name());
-		productBrandName = (String) value.get(Fields.productBrandName.name());
-		productRequireAmount = (String) value.get(Fields.productRequireAmount
-				.name());
-		productSmallImageUrl = (String) value.get(Fields.productSmallImageUrl
-				.name());
-		productTaxable = (String) value.get(Fields.productTaxable.name());
+				.get(FIELD_PRODUCT_MANUFACTURER_PARTY_ID);
+		productBrandName = (String) value.get(FIELD_PRODUCT_BRAND_NAME);
+		productRequireAmount = (String) value.get(FIELD_PRODUCT_REQUIRE_AMOUNT);
+		productSmallImageUrl = (String) value
+				.get(FIELD_PRODUCT_SMALL_IMAGE_URL);
+		productTaxable = (String) value.get(FIELD_PRODUCT_TAXABLE);
 		productPrimaryProductCategoryId = (String) value
-				.get(Fields.productPrimaryProductCategoryId.name());
+				.get(FIELD_PRODUCT_PRIMARY_PRODUCT_CATEGORY_ID);
 		productSalesDiscontinuationDate = (Timestamp) value
-				.get(Fields.productSalesDiscontinuationDate.name());
+				.get(FIELD_PRODUCT_SALES_DISCONTINUATION_DATE);
 		productSalesDiscWhenNotAvail = (String) value
-				.get(Fields.productSalesDiscWhenNotAvail.name());
-		productReturnable = (String) value.get(Fields.productReturnable.name());
-		productWeightUomId = (String) value.get(Fields.productWeightUomId
-				.name());
-		productIsVirtual = (String) value.get(Fields.productIsVirtual.name());
+				.get(FIELD_PRODUCT_SALES_DISC_WHEN_NOT_AVAIL);
+		productReturnable = (String) value.get(FIELD_PRODUCT_RETURNABLE);
+		productWeightUomId = (String) value.get(FIELD_PRODUCT_WEIGHT_UOM_ID);
+		productIsVirtual = (String) value.get(FIELD_PRODUCT_IS_VIRTUAL);
 		productPriceDetailText = (String) value
-				.get(Fields.productPriceDetailText.name());
+				.get(FIELD_PRODUCT_PRICE_DETAIL_TEXT);
 		productReserv2ndPPPerc = (BigDecimal) value
-				.get(Fields.productReserv2ndPPPerc.name());
-		productWidthUomId = (String) value.get(Fields.productWidthUomId.name());
+				.get(FIELD_PRODUCT_RESERV2ND_P_P_PERC);
+		productWidthUomId = (String) value.get(FIELD_PRODUCT_WIDTH_UOM_ID);
 		productLongDescription = (String) value
-				.get(Fields.productLongDescription.name());
-		productDiameterUomId = (String) value.get(Fields.productDiameterUomId
-				.name());
+				.get(FIELD_PRODUCT_LONG_DESCRIPTION);
+		productDiameterUomId = (String) value
+				.get(FIELD_PRODUCT_DIAMETER_UOM_ID);
 		productAutoCreateKeywords = (String) value
-				.get(Fields.productAutoCreateKeywords.name());
+				.get(FIELD_PRODUCT_AUTO_CREATE_KEYWORDS);
 		productAmountUomTypeId = (String) value
-				.get(Fields.productAmountUomTypeId.name());
+				.get(FIELD_PRODUCT_AMOUNT_UOM_TYPE_ID);
 		productProductDiameter = (BigDecimal) value
-				.get(Fields.productProductDiameter.name());
-		productRatingTypeEnum = (String) value.get(Fields.productRatingTypeEnum
-				.name());
-		productDescription = (String) value.get(Fields.productDescription
-				.name());
-		productChargeShipping = (String) value.get(Fields.productChargeShipping
-				.name());
+				.get(FIELD_PRODUCT_PRODUCT_DIAMETER);
+		productRatingTypeEnum = (String) value
+				.get(FIELD_PRODUCT_RATING_TYPE_ENUM);
+		productDescription = (String) value.get(FIELD_PRODUCT_DESCRIPTION);
+		productChargeShipping = (String) value
+				.get(FIELD_PRODUCT_CHARGE_SHIPPING);
 		productReservNthPPPerc = (BigDecimal) value
-				.get(Fields.productReservNthPPPerc.name());
+				.get(FIELD_PRODUCT_RESERV_NTH_P_P_PERC);
 		productQuantityIncluded = (BigDecimal) value
-				.get(Fields.productQuantityIncluded.name());
-		productHeightUomId = (String) value.get(Fields.productHeightUomId
-				.name());
-		productInternalName = (String) value.get(Fields.productInternalName
-				.name());
+				.get(FIELD_PRODUCT_QUANTITY_INCLUDED);
+		productHeightUomId = (String) value.get(FIELD_PRODUCT_HEIGHT_UOM_ID);
+		productInternalName = (String) value.get(FIELD_PRODUCT_INTERNAL_NAME);
 		productLastModifiedByUserLogin = (String) value
-				.get(Fields.productLastModifiedByUserLogin.name());
+				.get(FIELD_PRODUCT_LAST_MODIFIED_BY_USER_LOGIN);
 		productVirtualVariantMethodEnum = (String) value
-				.get(Fields.productVirtualVariantMethodEnum.name());
+				.get(FIELD_PRODUCT_VIRTUAL_VARIANT_METHOD_ENUM);
 		productShippingWeight = (BigDecimal) value
-				.get(Fields.productShippingWeight.name());
+				.get(FIELD_PRODUCT_SHIPPING_WEIGHT);
 		productShippingWidth = (BigDecimal) value
-				.get(Fields.productShippingWidth.name());
+				.get(FIELD_PRODUCT_SHIPPING_WIDTH);
 		productShippingDepth = (BigDecimal) value
-				.get(Fields.productShippingDepth.name());
+				.get(FIELD_PRODUCT_SHIPPING_DEPTH);
 		productReservMaxPersons = (BigDecimal) value
-				.get(Fields.productReservMaxPersons.name());
-		productFixedAmount = (BigDecimal) value.get(Fields.productFixedAmount
-				.name());
+				.get(FIELD_PRODUCT_RESERV_MAX_PERSONS);
+		productFixedAmount = (BigDecimal) value.get(FIELD_PRODUCT_FIXED_AMOUNT);
 		productInventoryItemTypeId = (String) value
-				.get(Fields.productInventoryItemTypeId.name());
-		productPiecesIncluded = (Long) value.get(Fields.productPiecesIncluded
-				.name());
-		productProductDepth = (BigDecimal) value.get(Fields.productProductDepth
-				.name());
-		productFacilityId = (String) value.get(Fields.productFacilityId.name());
-		productComments = (String) value.get(Fields.productComments.name());
-		productReleaseDate = (Timestamp) value.get(Fields.productReleaseDate
-				.name());
+				.get(FIELD_PRODUCT_INVENTORY_ITEM_TYPE_ID);
+		productPiecesIncluded = (Long) value.get(FIELD_PRODUCT_PIECES_INCLUDED);
+		productProductDepth = (BigDecimal) value
+				.get(FIELD_PRODUCT_PRODUCT_DEPTH);
+		productFacilityId = (String) value.get(FIELD_PRODUCT_FACILITY_ID);
+		productComments = (String) value.get(FIELD_PRODUCT_COMMENTS);
+		productReleaseDate = (Timestamp) value.get(FIELD_PRODUCT_RELEASE_DATE);
 		productProductHeight = (BigDecimal) value
-				.get(Fields.productProductHeight.name());
+				.get(FIELD_PRODUCT_PRODUCT_HEIGHT);
 		productLastModifiedDate = (Timestamp) value
-				.get(Fields.productLastModifiedDate.name());
+				.get(FIELD_PRODUCT_LAST_MODIFIED_DATE);
 		productDefaultShipmentBoxTypeId = (String) value
-				.get(Fields.productDefaultShipmentBoxTypeId.name());
+				.get(FIELD_PRODUCT_DEFAULT_SHIPMENT_BOX_TYPE_ID);
 		productOrderDecimalQuantity = (String) value
-				.get(Fields.productOrderDecimalQuantity.name());
+				.get(FIELD_PRODUCT_ORDER_DECIMAL_QUANTITY);
 		productInventoryMessage = (String) value
-				.get(Fields.productInventoryMessage.name());
+				.get(FIELD_PRODUCT_INVENTORY_MESSAGE);
 		productProductWeight = (BigDecimal) value
-				.get(Fields.productProductWeight.name());
-		productDepthUomId = (String) value.get(Fields.productDepthUomId.name());
-		productProductTypeId = (String) value.get(Fields.productProductTypeId
-				.name());
-		productCreatedDate = (Timestamp) value.get(Fields.productCreatedDate
-				.name());
-		productIsVariant = (String) value.get(Fields.productIsVariant.name());
-		productLargeImageUrl = (String) value.get(Fields.productLargeImageUrl
-				.name());
+				.get(FIELD_PRODUCT_PRODUCT_WEIGHT);
+		productDepthUomId = (String) value.get(FIELD_PRODUCT_DEPTH_UOM_ID);
+		productProductTypeId = (String) value
+				.get(FIELD_PRODUCT_PRODUCT_TYPE_ID);
+		productCreatedDate = (Timestamp) value.get(FIELD_PRODUCT_CREATED_DATE);
+		productIsVariant = (String) value.get(FIELD_PRODUCT_IS_VARIANT);
+		productLargeImageUrl = (String) value
+				.get(FIELD_PRODUCT_LARGE_IMAGE_URL);
 		productRequirementMethodEnumId = (String) value
-				.get(Fields.productRequirementMethodEnumId.name());
-		priceTaxInPrice = (String) value.get(Fields.priceTaxInPrice.name());
-		priceTermUomId = (String) value.get(Fields.priceTermUomId.name());
-		pricePriceWithTax = (BigDecimal) value.get(Fields.pricePriceWithTax
-				.name());
+				.get(FIELD_PRODUCT_REQUIREMENT_METHOD_ENUM_ID);
+		priceTaxInPrice = (String) value.get(FIELD_PRICE_TAX_IN_PRICE);
+		priceTermUomId = (String) value.get(FIELD_PRICE_TERM_UOM_ID);
+		pricePriceWithTax = (BigDecimal) value.get(FIELD_PRICE_PRICE_WITH_TAX);
 		priceProductStoreGroupId = (String) value
-				.get(Fields.priceProductStoreGroupId.name());
-		priceTaxAuthPartyId = (String) value.get(Fields.priceTaxAuthPartyId
-				.name());
+				.get(FIELD_PRICE_PRODUCT_STORE_GROUP_ID);
+		priceTaxAuthPartyId = (String) value.get(FIELD_PRICE_TAX_AUTH_PARTY_ID);
 		priceLastModifiedByUserLogin = (String) value
-				.get(Fields.priceLastModifiedByUserLogin.name());
+				.get(FIELD_PRICE_LAST_MODIFIED_BY_USER_LOGIN);
 		priceCustomPriceCalcService = (String) value
-				.get(Fields.priceCustomPriceCalcService.name());
-		pricePrice = (BigDecimal) value.get(Fields.pricePrice.name());
-		priceTaxAuthGeoId = (String) value.get(Fields.priceTaxAuthGeoId.name());
+				.get(FIELD_PRICE_CUSTOM_PRICE_CALC_SERVICE);
+		pricePrice = (BigDecimal) value.get(FIELD_PRICE_PRICE);
+		priceTaxAuthGeoId = (String) value.get(FIELD_PRICE_TAX_AUTH_GEO_ID);
 		priceProductPricePurposeId = (String) value
-				.get(Fields.priceProductPricePurposeId.name());
+				.get(FIELD_PRICE_PRODUCT_PRICE_PURPOSE_ID);
 		priceCreatedByUserLogin = (String) value
-				.get(Fields.priceCreatedByUserLogin.name());
+				.get(FIELD_PRICE_CREATED_BY_USER_LOGIN);
 		priceLastModifiedDate = (Timestamp) value
-				.get(Fields.priceLastModifiedDate.name());
-		priceTaxPercentage = (BigDecimal) value.get(Fields.priceTaxPercentage
-				.name());
-		priceThruDate = (Timestamp) value.get(Fields.priceThruDate.name());
-		priceFromDate = (Timestamp) value.get(Fields.priceFromDate.name());
-		priceCurrencyUomId = (String) value.get(Fields.priceCurrencyUomId
-				.name());
-		priceCreatedDate = (Timestamp) value
-				.get(Fields.priceCreatedDate.name());
+				.get(FIELD_PRICE_LAST_MODIFIED_DATE);
+		priceTaxPercentage = (BigDecimal) value.get(FIELD_PRICE_TAX_PERCENTAGE);
+		priceThruDate = (Timestamp) value.get(FIELD_PRICE_THRU_DATE);
+		priceFromDate = (Timestamp) value.get(FIELD_PRICE_FROM_DATE);
+		priceCurrencyUomId = (String) value.get(FIELD_PRICE_CURRENCY_UOM_ID);
+		priceCreatedDate = (Timestamp) value.get(FIELD_PRICE_CREATED_DATE);
 		pricePriceWithoutTax = (BigDecimal) value
-				.get(Fields.pricePriceWithoutTax.name());
-		priceTaxAmount = (BigDecimal) value.get(Fields.priceTaxAmount.name());
+				.get(FIELD_PRICE_PRICE_WITHOUT_TAX);
+		priceTaxAmount = (BigDecimal) value.get(FIELD_PRICE_TAX_AMOUNT);
 		priceProductPriceTypeId = (String) value
-				.get(Fields.priceProductPriceTypeId.name());
+				.get(FIELD_PRICE_PRODUCT_PRICE_TYPE_ID);
 	}
 
 	public static ProductCategoryMemberAndPrice fromValue(

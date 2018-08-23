@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.securitygroup;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login And Protected View
  */
+@FieldNameConstants
 public class UserLoginAndProtectedView implements Serializable {
 
-	public static final long serialVersionUID = 833114156391942144L;
+	public static final long serialVersionUID = 3234994399016517632L;
 	public static final String NAME = "UserLoginAndProtectedView";
 	/**
 	 * User Login Id
@@ -64,19 +66,15 @@ public class UserLoginAndProtectedView implements Serializable {
 	@Setter
 	private Long maxHits;
 
-	public enum Fields {
-		userLoginId, fromDate, groupId, thruDate, viewNameId, maxHitsDuration, tarpitDuration, maxHits
-	}
-
 	public UserLoginAndProtectedView(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		groupId = (String) value.get(Fields.groupId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		viewNameId = (String) value.get(Fields.viewNameId.name());
-		maxHitsDuration = (Long) value.get(Fields.maxHitsDuration.name());
-		tarpitDuration = (Long) value.get(Fields.tarpitDuration.name());
-		maxHits = (Long) value.get(Fields.maxHits.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		viewNameId = (String) value.get(FIELD_VIEW_NAME_ID);
+		maxHitsDuration = (Long) value.get(FIELD_MAX_HITS_DURATION);
+		tarpitDuration = (Long) value.get(FIELD_TARPIT_DURATION);
+		maxHits = (Long) value.get(FIELD_MAX_HITS);
 	}
 
 	public static UserLoginAndProtectedView fromValue(

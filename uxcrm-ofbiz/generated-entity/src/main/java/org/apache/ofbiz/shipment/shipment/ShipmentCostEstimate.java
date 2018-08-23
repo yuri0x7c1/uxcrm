@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Cost Estimate
  */
+@FieldNameConstants
 public class ShipmentCostEstimate implements Serializable {
 
-	public static final long serialVersionUID = 222327347541538816L;
+	public static final long serialVersionUID = 4814167936380244992L;
 	public static final String NAME = "ShipmentCostEstimate";
 	/**
 	 * Shipment Cost Estimate Id
@@ -209,53 +211,45 @@ public class ShipmentCostEstimate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentCostEstimateId, shipmentMethodTypeId, carrierPartyId, carrierRoleTypeId, productStoreShipMethId, productStoreId, partyId, roleTypeId, geoIdTo, geoIdFrom, weightBreakId, weightUomId, weightUnitPrice, quantityBreakId, quantityUomId, quantityUnitPrice, priceBreakId, priceUomId, priceUnitPrice, orderFlatPrice, orderPricePercent, orderItemFlatPrice, shippingPricePercent, productFeatureGroupId, oversizeUnit, oversizePrice, featurePercent, featurePrice, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentCostEstimate(GenericValue value) {
 		shipmentCostEstimateId = (String) value
-				.get(Fields.shipmentCostEstimateId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
+				.get(FIELD_SHIPMENT_COST_ESTIMATE_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
 		productStoreShipMethId = (String) value
-				.get(Fields.productStoreShipMethId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		geoIdTo = (String) value.get(Fields.geoIdTo.name());
-		geoIdFrom = (String) value.get(Fields.geoIdFrom.name());
-		weightBreakId = (String) value.get(Fields.weightBreakId.name());
-		weightUomId = (String) value.get(Fields.weightUomId.name());
-		weightUnitPrice = (BigDecimal) value.get(Fields.weightUnitPrice.name());
-		quantityBreakId = (String) value.get(Fields.quantityBreakId.name());
-		quantityUomId = (String) value.get(Fields.quantityUomId.name());
-		quantityUnitPrice = (BigDecimal) value.get(Fields.quantityUnitPrice
-				.name());
-		priceBreakId = (String) value.get(Fields.priceBreakId.name());
-		priceUomId = (String) value.get(Fields.priceUomId.name());
-		priceUnitPrice = (BigDecimal) value.get(Fields.priceUnitPrice.name());
-		orderFlatPrice = (BigDecimal) value.get(Fields.orderFlatPrice.name());
-		orderPricePercent = (BigDecimal) value.get(Fields.orderPricePercent
-				.name());
-		orderItemFlatPrice = (BigDecimal) value.get(Fields.orderItemFlatPrice
-				.name());
+				.get(FIELD_PRODUCT_STORE_SHIP_METH_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		geoIdTo = (String) value.get(FIELD_GEO_ID_TO);
+		geoIdFrom = (String) value.get(FIELD_GEO_ID_FROM);
+		weightBreakId = (String) value.get(FIELD_WEIGHT_BREAK_ID);
+		weightUomId = (String) value.get(FIELD_WEIGHT_UOM_ID);
+		weightUnitPrice = (BigDecimal) value.get(FIELD_WEIGHT_UNIT_PRICE);
+		quantityBreakId = (String) value.get(FIELD_QUANTITY_BREAK_ID);
+		quantityUomId = (String) value.get(FIELD_QUANTITY_UOM_ID);
+		quantityUnitPrice = (BigDecimal) value.get(FIELD_QUANTITY_UNIT_PRICE);
+		priceBreakId = (String) value.get(FIELD_PRICE_BREAK_ID);
+		priceUomId = (String) value.get(FIELD_PRICE_UOM_ID);
+		priceUnitPrice = (BigDecimal) value.get(FIELD_PRICE_UNIT_PRICE);
+		orderFlatPrice = (BigDecimal) value.get(FIELD_ORDER_FLAT_PRICE);
+		orderPricePercent = (BigDecimal) value.get(FIELD_ORDER_PRICE_PERCENT);
+		orderItemFlatPrice = (BigDecimal) value
+				.get(FIELD_ORDER_ITEM_FLAT_PRICE);
 		shippingPricePercent = (BigDecimal) value
-				.get(Fields.shippingPricePercent.name());
-		productFeatureGroupId = (String) value.get(Fields.productFeatureGroupId
-				.name());
-		oversizeUnit = (BigDecimal) value.get(Fields.oversizeUnit.name());
-		oversizePrice = (BigDecimal) value.get(Fields.oversizePrice.name());
-		featurePercent = (BigDecimal) value.get(Fields.featurePercent.name());
-		featurePrice = (BigDecimal) value.get(Fields.featurePrice.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SHIPPING_PRICE_PERCENT);
+		productFeatureGroupId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_GROUP_ID);
+		oversizeUnit = (BigDecimal) value.get(FIELD_OVERSIZE_UNIT);
+		oversizePrice = (BigDecimal) value.get(FIELD_OVERSIZE_PRICE);
+		featurePercent = (BigDecimal) value.get(FIELD_FEATURE_PERCENT);
+		featurePrice = (BigDecimal) value.get(FIELD_FEATURE_PRICE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentCostEstimate fromValue(

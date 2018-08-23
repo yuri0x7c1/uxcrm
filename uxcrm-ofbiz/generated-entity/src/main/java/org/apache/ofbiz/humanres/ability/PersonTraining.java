@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.ability;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Person Training
  */
+@FieldNameConstants
 public class PersonTraining implements Serializable {
 
-	public static final long serialVersionUID = 1128635597552728064L;
+	public static final long serialVersionUID = 1228150026161277952L;
 	public static final String NAME = "PersonTraining";
 	/**
 	 * Party Id
@@ -94,27 +96,20 @@ public class PersonTraining implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, trainingRequestId, trainingClassTypeId, workEffortId, fromDate, thruDate, approverId, approvalStatus, reason, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PersonTraining(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		trainingRequestId = (String) value.get(Fields.trainingRequestId.name());
-		trainingClassTypeId = (String) value.get(Fields.trainingClassTypeId
-				.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		approverId = (String) value.get(Fields.approverId.name());
-		approvalStatus = (String) value.get(Fields.approvalStatus.name());
-		reason = (String) value.get(Fields.reason.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		trainingRequestId = (String) value.get(FIELD_TRAINING_REQUEST_ID);
+		trainingClassTypeId = (String) value.get(FIELD_TRAINING_CLASS_TYPE_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		approverId = (String) value.get(FIELD_APPROVER_ID);
+		approvalStatus = (String) value.get(FIELD_APPROVAL_STATUS);
+		reason = (String) value.get(FIELD_REASON);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PersonTraining fromValue(

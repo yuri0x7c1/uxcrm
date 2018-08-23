@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Page
  */
+@FieldNameConstants
 public class SurveyPage implements Serializable {
 
-	public static final long serialVersionUID = 7988442920701221888L;
+	public static final long serialVersionUID = 5535189495612939264L;
 	public static final String NAME = "SurveyPage";
 	/**
 	 * Survey Id
@@ -64,21 +66,15 @@ public class SurveyPage implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyId, surveyPageSeqId, pageName, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyPage(GenericValue value) {
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyPageSeqId = (String) value.get(Fields.surveyPageSeqId.name());
-		pageName = (String) value.get(Fields.pageName.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyPageSeqId = (String) value.get(FIELD_SURVEY_PAGE_SEQ_ID);
+		pageName = (String) value.get(FIELD_PAGE_NAME);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyPage fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Status
  */
+@FieldNameConstants
 public class OrderStatus implements Serializable {
 
-	public static final long serialVersionUID = 1824577375683607552L;
+	public static final long serialVersionUID = 8038093020441509888L;
 	public static final String NAME = "OrderStatus";
 	/**
 	 * Order Status Id
@@ -88,26 +90,20 @@ public class OrderStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderStatusId, statusId, orderId, orderItemSeqId, orderPaymentPreferenceId, statusDatetime, statusUserLogin, changeReason, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderStatus(GenericValue value) {
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		statusDatetime = (Timestamp) value.get(Fields.statusDatetime.name());
-		statusUserLogin = (String) value.get(Fields.statusUserLogin.name());
-		changeReason = (String) value.get(Fields.changeReason.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		statusDatetime = (Timestamp) value.get(FIELD_STATUS_DATETIME);
+		statusUserLogin = (String) value.get(FIELD_STATUS_USER_LOGIN);
+		changeReason = (String) value.get(FIELD_CHANGE_REASON);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderStatus fromValue(

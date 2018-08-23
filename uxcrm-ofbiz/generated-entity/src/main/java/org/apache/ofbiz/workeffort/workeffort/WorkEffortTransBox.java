@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Trans Box
  */
+@FieldNameConstants
 public class WorkEffortTransBox implements Serializable {
 
-	public static final long serialVersionUID = 704349004646084608L;
+	public static final long serialVersionUID = 4037068570366282752L;
 	public static final String NAME = "WorkEffortTransBox";
 	/**
 	 * Process Work Effort Id
@@ -58,21 +60,14 @@ public class WorkEffortTransBox implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		processWorkEffortId, toActivityId, transitionId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortTransBox(GenericValue value) {
-		processWorkEffortId = (String) value.get(Fields.processWorkEffortId
-				.name());
-		toActivityId = (String) value.get(Fields.toActivityId.name());
-		transitionId = (String) value.get(Fields.transitionId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		processWorkEffortId = (String) value.get(FIELD_PROCESS_WORK_EFFORT_ID);
+		toActivityId = (String) value.get(FIELD_TO_ACTIVITY_ID);
+		transitionId = (String) value.get(FIELD_TRANSITION_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortTransBox fromValue(

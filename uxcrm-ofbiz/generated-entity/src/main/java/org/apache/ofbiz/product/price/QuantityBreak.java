@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Quantity Break
  */
+@FieldNameConstants
 public class QuantityBreak implements Serializable {
 
-	public static final long serialVersionUID = 6492935969700505600L;
+	public static final long serialVersionUID = 8715354424456027136L;
 	public static final String NAME = "QuantityBreak";
 	/**
 	 * Quantity Break Id
@@ -65,22 +67,15 @@ public class QuantityBreak implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quantityBreakId, quantityBreakTypeId, fromQuantity, thruQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuantityBreak(GenericValue value) {
-		quantityBreakId = (String) value.get(Fields.quantityBreakId.name());
-		quantityBreakTypeId = (String) value.get(Fields.quantityBreakTypeId
-				.name());
-		fromQuantity = (BigDecimal) value.get(Fields.fromQuantity.name());
-		thruQuantity = (BigDecimal) value.get(Fields.thruQuantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		quantityBreakId = (String) value.get(FIELD_QUANTITY_BREAK_ID);
+		quantityBreakTypeId = (String) value.get(FIELD_QUANTITY_BREAK_TYPE_ID);
+		fromQuantity = (BigDecimal) value.get(FIELD_FROM_QUANTITY);
+		thruQuantity = (BigDecimal) value.get(FIELD_THRU_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuantityBreak fromValue(

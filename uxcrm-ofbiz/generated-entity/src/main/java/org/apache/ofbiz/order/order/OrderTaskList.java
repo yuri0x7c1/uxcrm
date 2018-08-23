@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Task List
  */
+@FieldNameConstants
 public class OrderTaskList implements Serializable {
 
-	public static final long serialVersionUID = 4344707890232975360L;
+	public static final long serialVersionUID = 2808114126440552448L;
 	public static final String NAME = "OrderTaskList";
 	/**
 	 * Order Id
@@ -203,49 +205,41 @@ public class OrderTaskList implements Serializable {
 	@Setter
 	private Timestamp statusDateTime;
 
-	public enum Fields {
-		orderId, orderTypeId, orderDate, entryDate, grandTotal, orderRoleTypeId, customerPartyId, customerFirstName, customerLastName, workEffortId, workEffortTypeId, currentStatusId, lastStatusUpdate, priority, workEffortName, description, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, estimatedStartDate, estimatedCompletionDate, actualStartDate, actualCompletionDate, infoUrl, wepaPartyId, roleTypeId, fromDate, thruDate, statusId, statusDateTime
-	}
-
 	public OrderTaskList(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
-		orderRoleTypeId = (String) value.get(Fields.orderRoleTypeId.name());
-		customerPartyId = (String) value.get(Fields.customerPartyId.name());
-		customerFirstName = (String) value.get(Fields.customerFirstName.name());
-		customerLastName = (String) value.get(Fields.customerLastName.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		workEffortTypeId = (String) value.get(Fields.workEffortTypeId.name());
-		currentStatusId = (String) value.get(Fields.currentStatusId.name());
-		lastStatusUpdate = (Timestamp) value
-				.get(Fields.lastStatusUpdate.name());
-		priority = (Long) value.get(Fields.priority.name());
-		workEffortName = (String) value.get(Fields.workEffortName.name());
-		description = (String) value.get(Fields.description.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
+		orderRoleTypeId = (String) value.get(FIELD_ORDER_ROLE_TYPE_ID);
+		customerPartyId = (String) value.get(FIELD_CUSTOMER_PARTY_ID);
+		customerFirstName = (String) value.get(FIELD_CUSTOMER_FIRST_NAME);
+		customerLastName = (String) value.get(FIELD_CUSTOMER_LAST_NAME);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		workEffortTypeId = (String) value.get(FIELD_WORK_EFFORT_TYPE_ID);
+		currentStatusId = (String) value.get(FIELD_CURRENT_STATUS_ID);
+		lastStatusUpdate = (Timestamp) value.get(FIELD_LAST_STATUS_UPDATE);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		workEffortName = (String) value.get(FIELD_WORK_EFFORT_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		estimatedStartDate = (Timestamp) value.get(Fields.estimatedStartDate
-				.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		estimatedStartDate = (Timestamp) value.get(FIELD_ESTIMATED_START_DATE);
 		estimatedCompletionDate = (Timestamp) value
-				.get(Fields.estimatedCompletionDate.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
+				.get(FIELD_ESTIMATED_COMPLETION_DATE);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
 		actualCompletionDate = (Timestamp) value
-				.get(Fields.actualCompletionDate.name());
-		infoUrl = (String) value.get(Fields.infoUrl.name());
-		wepaPartyId = (String) value.get(Fields.wepaPartyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDateTime = (Timestamp) value.get(Fields.statusDateTime.name());
+				.get(FIELD_ACTUAL_COMPLETION_DATE);
+		infoUrl = (String) value.get(FIELD_INFO_URL);
+		wepaPartyId = (String) value.get(FIELD_WEPA_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDateTime = (Timestamp) value.get(FIELD_STATUS_DATE_TIME);
 	}
 
 	public static OrderTaskList fromValue(

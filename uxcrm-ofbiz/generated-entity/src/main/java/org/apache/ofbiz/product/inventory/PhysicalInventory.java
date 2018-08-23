@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Physical Inventory
  */
+@FieldNameConstants
 public class PhysicalInventory implements Serializable {
 
-	public static final long serialVersionUID = 1257208048739395584L;
+	public static final long serialVersionUID = 674275558542842880L;
 	public static final String NAME = "PhysicalInventory";
 	/**
 	 * Physical Inventory Id
@@ -64,23 +66,16 @@ public class PhysicalInventory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		physicalInventoryId, physicalInventoryDate, partyId, generalComments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PhysicalInventory(GenericValue value) {
-		physicalInventoryId = (String) value.get(Fields.physicalInventoryId
-				.name());
+		physicalInventoryId = (String) value.get(FIELD_PHYSICAL_INVENTORY_ID);
 		physicalInventoryDate = (Timestamp) value
-				.get(Fields.physicalInventoryDate.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		generalComments = (String) value.get(Fields.generalComments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PHYSICAL_INVENTORY_DATE);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		generalComments = (String) value.get(FIELD_GENERAL_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PhysicalInventory fromValue(

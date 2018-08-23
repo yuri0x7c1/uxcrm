@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.subscription;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Subscription Fulfillment Piece
  */
+@FieldNameConstants
 public class SubscriptionFulfillmentPiece implements Serializable {
 
-	public static final long serialVersionUID = 460697561972167680L;
+	public static final long serialVersionUID = 2302847133222247424L;
 	public static final String NAME = "SubscriptionFulfillmentPiece";
 	/**
 	 * Subscription Activity Id
@@ -52,20 +54,14 @@ public class SubscriptionFulfillmentPiece implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		subscriptionActivityId, subscriptionId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SubscriptionFulfillmentPiece(GenericValue value) {
 		subscriptionActivityId = (String) value
-				.get(Fields.subscriptionActivityId.name());
-		subscriptionId = (String) value.get(Fields.subscriptionId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SUBSCRIPTION_ACTIVITY_ID);
+		subscriptionId = (String) value.get(FIELD_SUBSCRIPTION_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SubscriptionFulfillmentPiece fromValue(

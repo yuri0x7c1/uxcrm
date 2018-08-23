@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Date;
 import lombok.Getter;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 /**
  * Order Summary Entry
  */
+@FieldNameConstants
 public class OrderSummaryEntry implements Serializable {
 
-	public static final long serialVersionUID = 3668227677503007744L;
+	public static final long serialVersionUID = 8886119787917665280L;
 	public static final String NAME = "OrderSummaryEntry";
 	/**
 	 * Entry Date
@@ -78,23 +80,17 @@ public class OrderSummaryEntry implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		entryDate, productId, facilityId, totalQuantity, grossSales, productCost, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderSummaryEntry(GenericValue value) {
-		entryDate = (Date) value.get(Fields.entryDate.name());
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		totalQuantity = (BigDecimal) value.get(Fields.totalQuantity.name());
-		grossSales = (BigDecimal) value.get(Fields.grossSales.name());
-		productCost = (BigDecimal) value.get(Fields.productCost.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		entryDate = (Date) value.get(FIELD_ENTRY_DATE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		totalQuantity = (BigDecimal) value.get(FIELD_TOTAL_QUANTITY);
+		grossSales = (BigDecimal) value.get(FIELD_GROSS_SALES);
+		productCost = (BigDecimal) value.get(FIELD_PRODUCT_COST);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderSummaryEntry fromValue(

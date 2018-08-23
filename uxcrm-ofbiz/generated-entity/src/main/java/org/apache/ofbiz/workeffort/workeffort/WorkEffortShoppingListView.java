@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Shopping List View
  */
+@FieldNameConstants
 public class WorkEffortShoppingListView implements Serializable {
 
-	public static final long serialVersionUID = 1662359467832426496L;
+	public static final long serialVersionUID = 1133805736460829696L;
 	public static final String NAME = "WorkEffortShoppingListView";
 	/**
 	 * Shopping List Type Description
@@ -148,39 +150,32 @@ public class WorkEffortShoppingListView implements Serializable {
 	@Setter
 	private String visitorId;
 
-	public enum Fields {
-		shoppingListTypeDescription, workEffortId, shoppingListId, recurrenceInfoId, parentShoppingListId, productPromoCodeId, description, isActive, shoppingListTypeId, contactMechId, carrierPartyId, currencyUom, lastOrderedDate, carrierRoleTypeId, paymentMethodId, isPublic, productStoreId, listName, lastAdminModified, partyId, shipmentMethodTypeId, visitorId
-	}
-
 	public WorkEffortShoppingListView(GenericValue value) {
 		shoppingListTypeDescription = (String) value
-				.get(Fields.shoppingListTypeDescription.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		parentShoppingListId = (String) value.get(Fields.parentShoppingListId
-				.name());
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		isActive = (String) value.get(Fields.isActive.name());
-		shoppingListTypeId = (String) value.get(Fields.shoppingListTypeId
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		lastOrderedDate = (Timestamp) value.get(Fields.lastOrderedDate.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		isPublic = (String) value.get(Fields.isPublic.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		listName = (String) value.get(Fields.listName.name());
-		lastAdminModified = (Timestamp) value.get(Fields.lastAdminModified
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		visitorId = (String) value.get(Fields.visitorId.name());
+				.get(FIELD_SHOPPING_LIST_TYPE_DESCRIPTION);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		parentShoppingListId = (String) value
+				.get(FIELD_PARENT_SHOPPING_LIST_ID);
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isActive = (String) value.get(FIELD_IS_ACTIVE);
+		shoppingListTypeId = (String) value.get(FIELD_SHOPPING_LIST_TYPE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		lastOrderedDate = (Timestamp) value.get(FIELD_LAST_ORDERED_DATE);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		isPublic = (String) value.get(FIELD_IS_PUBLIC);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		listName = (String) value.get(FIELD_LIST_NAME);
+		lastAdminModified = (Timestamp) value.get(FIELD_LAST_ADMIN_MODIFIED);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		visitorId = (String) value.get(FIELD_VISITOR_ID);
 	}
 
 	public static WorkEffortShoppingListView fromValue(

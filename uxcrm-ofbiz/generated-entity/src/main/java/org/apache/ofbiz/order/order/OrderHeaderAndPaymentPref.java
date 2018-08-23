@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Payment Pref
  */
+@FieldNameConstants
 public class OrderHeaderAndPaymentPref implements Serializable {
 
-	public static final long serialVersionUID = 7259312828292605952L;
+	public static final long serialVersionUID = 7617578551175858176L;
 	public static final String NAME = "OrderHeaderAndPaymentPref";
 	/**
 	 * Order Id
@@ -89,25 +91,20 @@ public class OrderHeaderAndPaymentPref implements Serializable {
 	@Setter
 	private BigDecimal maxAmount;
 
-	public enum Fields {
-		orderId, orderDate, originFacilityId, productStoreId, terminalId, webSiteId, currencyUom, orderPaymentPreferenceId, paymentMethodTypeId, orderStatusId, paymentStatusId, maxAmount
-	}
-
 	public OrderHeaderAndPaymentPref(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		terminalId = (String) value.get(Fields.terminalId.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		terminalId = (String) value.get(FIELD_TERMINAL_ID);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		paymentStatusId = (String) value.get(Fields.paymentStatusId.name());
-		maxAmount = (BigDecimal) value.get(Fields.maxAmount.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		paymentStatusId = (String) value.get(FIELD_PAYMENT_STATUS_ID);
+		maxAmount = (BigDecimal) value.get(FIELD_MAX_AMOUNT);
 	}
 
 	public static OrderHeaderAndPaymentPref fromValue(

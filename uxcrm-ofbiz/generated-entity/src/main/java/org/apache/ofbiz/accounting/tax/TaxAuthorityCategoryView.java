@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority Category View
  */
+@FieldNameConstants
 public class TaxAuthorityCategoryView implements Serializable {
 
-	public static final long serialVersionUID = 5176289432991235072L;
+	public static final long serialVersionUID = 839749619503538176L;
 	public static final String NAME = "TaxAuthorityCategoryView";
 	/**
 	 * Tax Auth Party Id
@@ -93,26 +95,22 @@ public class TaxAuthorityCategoryView implements Serializable {
 	@Setter
 	private String showInSelect;
 
-	public enum Fields {
-		taxAuthPartyId, productCategoryId, taxAuthGeoId, longDescription, productCategoryTypeId, detailScreen, description, linkTwoImageUrl, categoryName, linkOneImageUrl, primaryParentCategoryId, categoryImageUrl, showInSelect
-	}
-
 	public TaxAuthorityCategoryView(GenericValue value) {
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		longDescription = (String) value.get(Fields.longDescription.name());
-		productCategoryTypeId = (String) value.get(Fields.productCategoryTypeId
-				.name());
-		detailScreen = (String) value.get(Fields.detailScreen.name());
-		description = (String) value.get(Fields.description.name());
-		linkTwoImageUrl = (String) value.get(Fields.linkTwoImageUrl.name());
-		categoryName = (String) value.get(Fields.categoryName.name());
-		linkOneImageUrl = (String) value.get(Fields.linkOneImageUrl.name());
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		longDescription = (String) value.get(FIELD_LONG_DESCRIPTION);
+		productCategoryTypeId = (String) value
+				.get(FIELD_PRODUCT_CATEGORY_TYPE_ID);
+		detailScreen = (String) value.get(FIELD_DETAIL_SCREEN);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		linkTwoImageUrl = (String) value.get(FIELD_LINK_TWO_IMAGE_URL);
+		categoryName = (String) value.get(FIELD_CATEGORY_NAME);
+		linkOneImageUrl = (String) value.get(FIELD_LINK_ONE_IMAGE_URL);
 		primaryParentCategoryId = (String) value
-				.get(Fields.primaryParentCategoryId.name());
-		categoryImageUrl = (String) value.get(Fields.categoryImageUrl.name());
-		showInSelect = (String) value.get(Fields.showInSelect.name());
+				.get(FIELD_PRIMARY_PARENT_CATEGORY_ID);
+		categoryImageUrl = (String) value.get(FIELD_CATEGORY_IMAGE_URL);
+		showInSelect = (String) value.get(FIELD_SHOW_IN_SELECT);
 	}
 
 	public static TaxAuthorityCategoryView fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing Subtype
  */
+@FieldNameConstants
 public class TestingSubtype implements Serializable {
 
-	public static final long serialVersionUID = 7416406199962108928L;
+	public static final long serialVersionUID = 328356854299448320L;
 	public static final String NAME = "TestingSubtype";
 	/**
 	 * Testing Type Id
@@ -52,20 +54,13 @@ public class TestingSubtype implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testingTypeId, subtypeDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestingSubtype(GenericValue value) {
-		testingTypeId = (String) value.get(Fields.testingTypeId.name());
-		subtypeDescription = (String) value.get(Fields.subtypeDescription
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testingTypeId = (String) value.get(FIELD_TESTING_TYPE_ID);
+		subtypeDescription = (String) value.get(FIELD_SUBTYPE_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestingSubtype fromValue(

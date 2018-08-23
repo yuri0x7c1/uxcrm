@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item And Detail
  */
+@FieldNameConstants
 public class InventoryItemAndDetail implements Serializable {
 
-	public static final long serialVersionUID = 2665875940964784128L;
+	public static final long serialVersionUID = 1373058038979058688L;
 	public static final String NAME = "InventoryItemAndDetail";
 	/**
 	 * Inventory Item Id
@@ -305,74 +307,66 @@ public class InventoryItemAndDetail implements Serializable {
 	@Setter
 	private Timestamp effectiveDate;
 
-	public enum Fields {
-		inventoryItemId, inventoryItemTypeId, productId, partyId, ownerPartyId, statusId, datetimeReceived, datetimeManufactured, expireDate, facilityId, containerId, lotId, uomId, binNumber, locationSeqId, comments, quantityOnHandTotal, availableToPromiseTotal, accountingQuantityTotal, oldQuantityOnHand, oldAvailableToPromise, serialNumber, softIdentifier, activationNumber, activationValidThru, currencyUomId, inventoryItemFixedAssetId, workEffortId, orderId, description, maintHistSeqId, inventoryItemDetailSeqId, accountingQuantityDiff, physicalInventoryId, itemIssuanceId, returnId, reasonEnumId, receiptId, quantityOnHandDiff, orderItemSeqId, shipmentItemSeqId, shipGroupSeqId, availableToPromiseDiff, shipmentId, unitCost, returnItemSeqId, fixedAssetId, effectiveDate
-	}
-
 	public InventoryItemAndDetail(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		inventoryItemTypeId = (String) value.get(Fields.inventoryItemTypeId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		datetimeReceived = (Timestamp) value
-				.get(Fields.datetimeReceived.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		inventoryItemTypeId = (String) value.get(FIELD_INVENTORY_ITEM_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		datetimeReceived = (Timestamp) value.get(FIELD_DATETIME_RECEIVED);
 		datetimeManufactured = (Timestamp) value
-				.get(Fields.datetimeManufactured.name());
-		expireDate = (Timestamp) value.get(Fields.expireDate.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		containerId = (String) value.get(Fields.containerId.name());
-		lotId = (String) value.get(Fields.lotId.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		binNumber = (String) value.get(Fields.binNumber.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		comments = (String) value.get(Fields.comments.name());
-		quantityOnHandTotal = (BigDecimal) value.get(Fields.quantityOnHandTotal
-				.name());
+				.get(FIELD_DATETIME_MANUFACTURED);
+		expireDate = (Timestamp) value.get(FIELD_EXPIRE_DATE);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		containerId = (String) value.get(FIELD_CONTAINER_ID);
+		lotId = (String) value.get(FIELD_LOT_ID);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		binNumber = (String) value.get(FIELD_BIN_NUMBER);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		quantityOnHandTotal = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_TOTAL);
 		availableToPromiseTotal = (BigDecimal) value
-				.get(Fields.availableToPromiseTotal.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_TOTAL);
 		accountingQuantityTotal = (BigDecimal) value
-				.get(Fields.accountingQuantityTotal.name());
-		oldQuantityOnHand = (BigDecimal) value.get(Fields.oldQuantityOnHand
-				.name());
+				.get(FIELD_ACCOUNTING_QUANTITY_TOTAL);
+		oldQuantityOnHand = (BigDecimal) value.get(FIELD_OLD_QUANTITY_ON_HAND);
 		oldAvailableToPromise = (BigDecimal) value
-				.get(Fields.oldAvailableToPromise.name());
-		serialNumber = (String) value.get(Fields.serialNumber.name());
-		softIdentifier = (String) value.get(Fields.softIdentifier.name());
-		activationNumber = (String) value.get(Fields.activationNumber.name());
-		activationValidThru = (Timestamp) value.get(Fields.activationValidThru
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
+				.get(FIELD_OLD_AVAILABLE_TO_PROMISE);
+		serialNumber = (String) value.get(FIELD_SERIAL_NUMBER);
+		softIdentifier = (String) value.get(FIELD_SOFT_IDENTIFIER);
+		activationNumber = (String) value.get(FIELD_ACTIVATION_NUMBER);
+		activationValidThru = (Timestamp) value
+				.get(FIELD_ACTIVATION_VALID_THRU);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
 		inventoryItemFixedAssetId = (String) value
-				.get(Fields.inventoryItemFixedAssetId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		description = (String) value.get(Fields.description.name());
-		maintHistSeqId = (String) value.get(Fields.maintHistSeqId.name());
+				.get(FIELD_INVENTORY_ITEM_FIXED_ASSET_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		maintHistSeqId = (String) value.get(FIELD_MAINT_HIST_SEQ_ID);
 		inventoryItemDetailSeqId = (String) value
-				.get(Fields.inventoryItemDetailSeqId.name());
+				.get(FIELD_INVENTORY_ITEM_DETAIL_SEQ_ID);
 		accountingQuantityDiff = (BigDecimal) value
-				.get(Fields.accountingQuantityDiff.name());
-		physicalInventoryId = (String) value.get(Fields.physicalInventoryId
-				.name());
-		itemIssuanceId = (String) value.get(Fields.itemIssuanceId.name());
-		returnId = (String) value.get(Fields.returnId.name());
-		reasonEnumId = (String) value.get(Fields.reasonEnumId.name());
-		receiptId = (String) value.get(Fields.receiptId.name());
-		quantityOnHandDiff = (BigDecimal) value.get(Fields.quantityOnHandDiff
-				.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
+				.get(FIELD_ACCOUNTING_QUANTITY_DIFF);
+		physicalInventoryId = (String) value.get(FIELD_PHYSICAL_INVENTORY_ID);
+		itemIssuanceId = (String) value.get(FIELD_ITEM_ISSUANCE_ID);
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		reasonEnumId = (String) value.get(FIELD_REASON_ENUM_ID);
+		receiptId = (String) value.get(FIELD_RECEIPT_ID);
+		quantityOnHandDiff = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_DIFF);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
 		availableToPromiseDiff = (BigDecimal) value
-				.get(Fields.availableToPromiseDiff.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		unitCost = (BigDecimal) value.get(Fields.unitCost.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_DIFF);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		unitCost = (BigDecimal) value.get(FIELD_UNIT_COST);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
 	}
 
 	public static InventoryItemAndDetail fromValue(

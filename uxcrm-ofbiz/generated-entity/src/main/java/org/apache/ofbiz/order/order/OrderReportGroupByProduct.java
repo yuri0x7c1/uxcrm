@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Report Group By Product
  */
+@FieldNameConstants
 public class OrderReportGroupByProduct implements Serializable {
 
-	public static final long serialVersionUID = 8190019824455536640L;
+	public static final long serialVersionUID = 4129278026845599744L;
 	public static final String NAME = "OrderReportGroupByProduct";
 	/**
 	 * Product Id
@@ -59,18 +61,14 @@ public class OrderReportGroupByProduct implements Serializable {
 	@Setter
 	private BigDecimal unitPrice;
 
-	public enum Fields {
-		productId, orderDate, orderStatusId, orderItemStatusId, orderTypeId, quantity, unitPrice
-	}
-
 	public OrderReportGroupByProduct(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		orderItemStatusId = (String) value.get(Fields.orderItemStatusId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		orderItemStatusId = (String) value.get(FIELD_ORDER_ITEM_STATUS_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
 	}
 
 	public static OrderReportGroupByProduct fromValue(

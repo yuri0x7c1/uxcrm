@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Party Acctg Pref And Group
  */
+@FieldNameConstants
 public class PartyAcctgPrefAndGroup implements Serializable {
 
-	public static final long serialVersionUID = 2058132788249605120L;
+	public static final long serialVersionUID = 7988577528480863232L;
 	public static final String NAME = "PartyAcctgPrefAndGroup";
 	/**
 	 * Party Id
@@ -39,15 +41,11 @@ public class PartyAcctgPrefAndGroup implements Serializable {
 	@Setter
 	private String roleTypeId;
 
-	public enum Fields {
-		partyId, baseCurrencyUomId, groupName, roleTypeId
-	}
-
 	public PartyAcctgPrefAndGroup(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		baseCurrencyUomId = (String) value.get(Fields.baseCurrencyUomId.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		baseCurrencyUomId = (String) value.get(FIELD_BASE_CURRENCY_UOM_ID);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
 	}
 
 	public static PartyAcctgPrefAndGroup fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Picklist Item
  */
+@FieldNameConstants
 public class PicklistItem implements Serializable {
 
-	public static final long serialVersionUID = 6232684150192071680L;
+	public static final long serialVersionUID = 5629496544196712448L;
 	public static final String NAME = "PicklistItem";
 	/**
 	 * Picklist Bin Id
@@ -83,24 +85,18 @@ public class PicklistItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		picklistBinId, orderId, orderItemSeqId, shipGroupSeqId, inventoryItemId, itemStatusId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PicklistItem(GenericValue value) {
-		picklistBinId = (String) value.get(Fields.picklistBinId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		itemStatusId = (String) value.get(Fields.itemStatusId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		picklistBinId = (String) value.get(FIELD_PICKLIST_BIN_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		itemStatusId = (String) value.get(FIELD_ITEM_STATUS_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PicklistItem fromValue(

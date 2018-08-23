@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account Category
  */
+@FieldNameConstants
 public class GlAccountCategory implements Serializable {
 
-	public static final long serialVersionUID = 4476632002555322368L;
+	public static final long serialVersionUID = 3751665830341036032L;
 	public static final String NAME = "GlAccountCategory";
 	/**
 	 * Gl Account Category Id
@@ -58,22 +60,15 @@ public class GlAccountCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountCategoryId, glAccountCategoryTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlAccountCategory(GenericValue value) {
-		glAccountCategoryId = (String) value.get(Fields.glAccountCategoryId
-				.name());
+		glAccountCategoryId = (String) value.get(FIELD_GL_ACCOUNT_CATEGORY_ID);
 		glAccountCategoryTypeId = (String) value
-				.get(Fields.glAccountCategoryTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_GL_ACCOUNT_CATEGORY_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlAccountCategory fromValue(

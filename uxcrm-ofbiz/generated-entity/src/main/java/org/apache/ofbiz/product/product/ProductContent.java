@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Content
  */
+@FieldNameConstants
 public class ProductContent implements Serializable {
 
-	public static final long serialVersionUID = 823936942927468544L;
+	public static final long serialVersionUID = 775153154820134912L;
 	public static final String NAME = "ProductContent";
 	/**
 	 * Product Id
@@ -112,32 +114,24 @@ public class ProductContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, contentId, productContentTypeId, fromDate, thruDate, purchaseFromDate, purchaseThruDate, useCountLimit, useTime, useTimeUomId, useRoleTypeId, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductContent(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		productContentTypeId = (String) value.get(Fields.productContentTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		purchaseFromDate = (Timestamp) value
-				.get(Fields.purchaseFromDate.name());
-		purchaseThruDate = (Timestamp) value
-				.get(Fields.purchaseThruDate.name());
-		useCountLimit = (Long) value.get(Fields.useCountLimit.name());
-		useTime = (Long) value.get(Fields.useTime.name());
-		useTimeUomId = (String) value.get(Fields.useTimeUomId.name());
-		useRoleTypeId = (String) value.get(Fields.useRoleTypeId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		productContentTypeId = (String) value
+				.get(FIELD_PRODUCT_CONTENT_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		purchaseFromDate = (Timestamp) value.get(FIELD_PURCHASE_FROM_DATE);
+		purchaseThruDate = (Timestamp) value.get(FIELD_PURCHASE_THRU_DATE);
+		useCountLimit = (Long) value.get(FIELD_USE_COUNT_LIMIT);
+		useTime = (Long) value.get(FIELD_USE_TIME);
+		useTimeUomId = (String) value.get(FIELD_USE_TIME_UOM_ID);
+		useRoleTypeId = (String) value.get(FIELD_USE_ROLE_TYPE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductContent fromValue(

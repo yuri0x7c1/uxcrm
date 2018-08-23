@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Label Appl
  */
+@FieldNameConstants
 public class InventoryItemLabelAppl implements Serializable {
 
-	public static final long serialVersionUID = 5479063041904147456L;
+	public static final long serialVersionUID = 7209176812432240640L;
 	public static final String NAME = "InventoryItemLabelAppl";
 	/**
 	 * Inventory Item Id
@@ -64,23 +66,17 @@ public class InventoryItemLabelAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		inventoryItemId, inventoryItemLabelTypeId, inventoryItemLabelId, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryItemLabelAppl(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
 		inventoryItemLabelTypeId = (String) value
-				.get(Fields.inventoryItemLabelTypeId.name());
-		inventoryItemLabelId = (String) value.get(Fields.inventoryItemLabelId
-				.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_INVENTORY_ITEM_LABEL_TYPE_ID);
+		inventoryItemLabelId = (String) value
+				.get(FIELD_INVENTORY_ITEM_LABEL_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryItemLabelAppl fromValue(

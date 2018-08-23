@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header Item And Inv
  */
+@FieldNameConstants
 public class OrderHeaderItemAndInv implements Serializable {
 
-	public static final long serialVersionUID = 3508056169292547072L;
+	public static final long serialVersionUID = 3578534228109754368L;
 	public static final String NAME = "OrderHeaderItemAndInv";
 	/**
 	 * Order Id
@@ -161,39 +163,32 @@ public class OrderHeaderItemAndInv implements Serializable {
 	@Setter
 	private BigDecimal quantityNotAvailable;
 
-	public enum Fields {
-		orderId, orderTypeId, orderDate, entryDate, visitId, statusId, createdBy, firstAttemptOrderId, currencyUom, syncStatusId, billingAccountId, originFacilityId, productStoreId, webSiteId, grandTotal, remainingSubTotal, productId, quantity, unitPrice, unitListPrice, estimatedShipDate, autoCancelDate, correspondingPoId, quantityNotAvailable
-	}
-
 	public OrderHeaderItemAndInv(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		createdBy = (String) value.get(Fields.createdBy.name());
-		firstAttemptOrderId = (String) value.get(Fields.firstAttemptOrderId
-				.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
-		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
-		autoCancelDate = (Timestamp) value.get(Fields.autoCancelDate.name());
-		correspondingPoId = (String) value.get(Fields.correspondingPoId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		createdBy = (String) value.get(FIELD_CREATED_BY);
+		firstAttemptOrderId = (String) value.get(FIELD_FIRST_ATTEMPT_ORDER_ID);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
+		remainingSubTotal = (BigDecimal) value.get(FIELD_REMAINING_SUB_TOTAL);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
+		autoCancelDate = (Timestamp) value.get(FIELD_AUTO_CANCEL_DATE);
+		correspondingPoId = (String) value.get(FIELD_CORRESPONDING_PO_ID);
 		quantityNotAvailable = (BigDecimal) value
-				.get(Fields.quantityNotAvailable.name());
+				.get(FIELD_QUANTITY_NOT_AVAILABLE);
 	}
 
 	public static OrderHeaderItemAndInv fromValue(

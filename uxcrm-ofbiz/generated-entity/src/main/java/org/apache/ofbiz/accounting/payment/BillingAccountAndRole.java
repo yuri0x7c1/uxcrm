@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Billing Account And Role
  */
+@FieldNameConstants
 public class BillingAccountAndRole implements Serializable {
 
-	public static final long serialVersionUID = 898182062552133632L;
+	public static final long serialVersionUID = 4972259285787683840L;
 	public static final String NAME = "BillingAccountAndRole";
 	/**
 	 * Billing Account Id
@@ -83,23 +85,19 @@ public class BillingAccountAndRole implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		billingAccountId, accountLimit, accountCurrencyUomId, contactMechId, accountFromDate, accountThruDate, description, fromDate, roleTypeId, partyId, thruDate
-	}
-
 	public BillingAccountAndRole(GenericValue value) {
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		accountLimit = (BigDecimal) value.get(Fields.accountLimit.name());
-		accountCurrencyUomId = (String) value.get(Fields.accountCurrencyUomId
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		accountFromDate = (Timestamp) value.get(Fields.accountFromDate.name());
-		accountThruDate = (Timestamp) value.get(Fields.accountThruDate.name());
-		description = (String) value.get(Fields.description.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		accountLimit = (BigDecimal) value.get(FIELD_ACCOUNT_LIMIT);
+		accountCurrencyUomId = (String) value
+				.get(FIELD_ACCOUNT_CURRENCY_UOM_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		accountFromDate = (Timestamp) value.get(FIELD_ACCOUNT_FROM_DATE);
+		accountThruDate = (Timestamp) value.get(FIELD_ACCOUNT_THRU_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static BillingAccountAndRole fromValue(

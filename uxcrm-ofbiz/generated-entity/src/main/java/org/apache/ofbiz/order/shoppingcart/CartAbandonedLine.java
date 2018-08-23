@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.shoppingcart;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Cart Abandoned Line
  */
+@FieldNameConstants
 public class CartAbandonedLine implements Serializable {
 
-	public static final long serialVersionUID = 1831862463095090176L;
+	public static final long serialVersionUID = 6839517541647413248L;
 	public static final String NAME = "CartAbandonedLine";
 	/**
 	 * Visit Id
@@ -125,33 +127,27 @@ public class CartAbandonedLine implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		visitId, cartAbandonedLineSeqId, productId, prodCatalogId, quantity, reservStart, reservLength, reservPersons, unitPrice, reserv2ndPPPerc, reservNthPPPerc, configId, totalWithAdjustments, wasReserved, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CartAbandonedLine(GenericValue value) {
-		visitId = (String) value.get(Fields.visitId.name());
+		visitId = (String) value.get(FIELD_VISIT_ID);
 		cartAbandonedLineSeqId = (String) value
-				.get(Fields.cartAbandonedLineSeqId.name());
-		productId = (String) value.get(Fields.productId.name());
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		reservStart = (Timestamp) value.get(Fields.reservStart.name());
-		reservLength = (BigDecimal) value.get(Fields.reservLength.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		reserv2ndPPPerc = (BigDecimal) value.get(Fields.reserv2ndPPPerc.name());
-		reservNthPPPerc = (BigDecimal) value.get(Fields.reservNthPPPerc.name());
-		configId = (String) value.get(Fields.configId.name());
+				.get(FIELD_CART_ABANDONED_LINE_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		reservStart = (Timestamp) value.get(FIELD_RESERV_START);
+		reservLength = (BigDecimal) value.get(FIELD_RESERV_LENGTH);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		reserv2ndPPPerc = (BigDecimal) value.get(FIELD_RESERV2ND_P_P_PERC);
+		reservNthPPPerc = (BigDecimal) value.get(FIELD_RESERV_NTH_P_P_PERC);
+		configId = (String) value.get(FIELD_CONFIG_ID);
 		totalWithAdjustments = (BigDecimal) value
-				.get(Fields.totalWithAdjustments.name());
-		wasReserved = (String) value.get(Fields.wasReserved.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_TOTAL_WITH_ADJUSTMENTS);
+		wasReserved = (String) value.get(FIELD_WAS_RESERVED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CartAbandonedLine fromValue(

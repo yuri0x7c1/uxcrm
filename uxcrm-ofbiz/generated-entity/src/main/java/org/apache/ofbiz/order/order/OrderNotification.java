@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Notification
  */
+@FieldNameConstants
 public class OrderNotification implements Serializable {
 
-	public static final long serialVersionUID = 8435195011231228928L;
+	public static final long serialVersionUID = 1954179394243371008L;
 	public static final String NAME = "OrderNotification";
 	/**
 	 * Order Notification Id
@@ -70,24 +72,16 @@ public class OrderNotification implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderNotificationId, orderId, emailType, comments, notificationDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderNotification(GenericValue value) {
-		orderNotificationId = (String) value.get(Fields.orderNotificationId
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		emailType = (String) value.get(Fields.emailType.name());
-		comments = (String) value.get(Fields.comments.name());
-		notificationDate = (Timestamp) value
-				.get(Fields.notificationDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderNotificationId = (String) value.get(FIELD_ORDER_NOTIFICATION_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		emailType = (String) value.get(FIELD_EMAIL_TYPE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		notificationDate = (Timestamp) value.get(FIELD_NOTIFICATION_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderNotification fromValue(

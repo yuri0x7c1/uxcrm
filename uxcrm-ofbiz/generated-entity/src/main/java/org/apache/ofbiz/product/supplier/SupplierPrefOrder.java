@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.supplier;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Supplier Pref Order
  */
+@FieldNameConstants
 public class SupplierPrefOrder implements Serializable {
 
-	public static final long serialVersionUID = 5962839608075762688L;
+	public static final long serialVersionUID = 3766312099821806592L;
 	public static final String NAME = "SupplierPrefOrder";
 	/**
 	 * Supplier Pref Order Id
@@ -52,20 +54,13 @@ public class SupplierPrefOrder implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		supplierPrefOrderId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SupplierPrefOrder(GenericValue value) {
-		supplierPrefOrderId = (String) value.get(Fields.supplierPrefOrderId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		supplierPrefOrderId = (String) value.get(FIELD_SUPPLIER_PREF_ORDER_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SupplierPrefOrder fromValue(

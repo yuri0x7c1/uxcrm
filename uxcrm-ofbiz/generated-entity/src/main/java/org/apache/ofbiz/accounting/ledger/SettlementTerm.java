@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Settlement Term
  */
+@FieldNameConstants
 public class SettlementTerm implements Serializable {
 
-	public static final long serialVersionUID = 5629520214356361216L;
+	public static final long serialVersionUID = 5957822134102412288L;
 	public static final String NAME = "SettlementTerm";
 	/**
 	 * Settlement Term Id
@@ -64,21 +66,15 @@ public class SettlementTerm implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		settlementTermId, termName, termValue, uomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SettlementTerm(GenericValue value) {
-		settlementTermId = (String) value.get(Fields.settlementTermId.name());
-		termName = (String) value.get(Fields.termName.name());
-		termValue = (Long) value.get(Fields.termValue.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		settlementTermId = (String) value.get(FIELD_SETTLEMENT_TERM_ID);
+		termName = (String) value.get(FIELD_TERM_NAME);
+		termValue = (Long) value.get(FIELD_TERM_VALUE);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SettlementTerm fromValue(

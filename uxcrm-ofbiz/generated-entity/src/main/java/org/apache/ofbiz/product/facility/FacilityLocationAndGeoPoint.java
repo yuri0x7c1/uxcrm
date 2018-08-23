@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Facility Location And Geo Point
  */
+@FieldNameConstants
 public class FacilityLocationAndGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 5477857454770607104L;
+	public static final long serialVersionUID = 8477778853898934272L;
 	public static final String NAME = "FacilityLocationAndGeoPoint";
 	/**
 	 * Facility Id
@@ -95,25 +97,20 @@ public class FacilityLocationAndGeoPoint implements Serializable {
 	@Setter
 	private String longitude;
 
-	public enum Fields {
-		facilityId, locationSeqId, fromDate, thruDate, elevation, geoPointTypeEnumId, latitude, description, dataSourceId, elevationUomId, information, geoPointId, longitude
-	}
-
 	public FacilityLocationAndGeoPoint(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		elevation = (BigDecimal) value.get(Fields.elevation.name());
-		geoPointTypeEnumId = (String) value.get(Fields.geoPointTypeEnumId
-				.name());
-		latitude = (String) value.get(Fields.latitude.name());
-		description = (String) value.get(Fields.description.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		elevationUomId = (String) value.get(Fields.elevationUomId.name());
-		information = (String) value.get(Fields.information.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		longitude = (String) value.get(Fields.longitude.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		elevation = (BigDecimal) value.get(FIELD_ELEVATION);
+		geoPointTypeEnumId = (String) value.get(FIELD_GEO_POINT_TYPE_ENUM_ID);
+		latitude = (String) value.get(FIELD_LATITUDE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		elevationUomId = (String) value.get(FIELD_ELEVATION_UOM_ID);
+		information = (String) value.get(FIELD_INFORMATION);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		longitude = (String) value.get(FIELD_LONGITUDE);
 	}
 
 	public static FacilityLocationAndGeoPoint fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Agreement Product Appl
  */
+@FieldNameConstants
 public class AgreementProductAppl implements Serializable {
 
-	public static final long serialVersionUID = 2007817251556930560L;
+	public static final long serialVersionUID = 3750502315562865664L;
 	public static final String NAME = "AgreementProductAppl";
 	/**
 	 * Agreement Id
@@ -65,22 +67,15 @@ public class AgreementProductAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		agreementId, agreementItemSeqId, productId, price, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AgreementProductAppl(GenericValue value) {
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		price = (BigDecimal) value.get(Fields.price.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		price = (BigDecimal) value.get(FIELD_PRICE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AgreementProductAppl fromValue(

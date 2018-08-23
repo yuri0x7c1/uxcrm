@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Picklist And Bin And Item
  */
+@FieldNameConstants
 public class PicklistAndBinAndItem implements Serializable {
 
-	public static final long serialVersionUID = 4875756802889526272L;
+	public static final long serialVersionUID = 5368613184557000704L;
 	public static final String NAME = "PicklistAndBinAndItem";
 	/**
 	 * Picklist Id
@@ -125,33 +127,28 @@ public class PicklistAndBinAndItem implements Serializable {
 	@Setter
 	private String itemStatusId;
 
-	public enum Fields {
-		picklistId, lastModifiedByUserLogin, facilityId, statusId, description, picklistDate, shipmentMethodTypeId, createdByUserLogin, primaryOrderId, picklistBinId, primaryShipGroupSeqId, binLocationNumber, orderItemSeqId, inventoryItemId, quantity, orderId, shipGroupSeqId, itemStatusId
-	}
-
 	public PicklistAndBinAndItem(GenericValue value) {
-		picklistId = (String) value.get(Fields.picklistId.name());
+		picklistId = (String) value.get(FIELD_PICKLIST_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		description = (String) value.get(Fields.description.name());
-		picklistDate = (Timestamp) value.get(Fields.picklistDate.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
-		picklistBinId = (String) value.get(Fields.picklistBinId.name());
-		primaryShipGroupSeqId = (String) value.get(Fields.primaryShipGroupSeqId
-				.name());
-		binLocationNumber = (Long) value.get(Fields.binLocationNumber.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		itemStatusId = (String) value.get(Fields.itemStatusId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		picklistDate = (Timestamp) value.get(FIELD_PICKLIST_DATE);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
+		picklistBinId = (String) value.get(FIELD_PICKLIST_BIN_ID);
+		primaryShipGroupSeqId = (String) value
+				.get(FIELD_PRIMARY_SHIP_GROUP_SEQ_ID);
+		binLocationNumber = (Long) value.get(FIELD_BIN_LOCATION_NUMBER);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		itemStatusId = (String) value.get(FIELD_ITEM_STATUS_ID);
 	}
 
 	public static PicklistAndBinAndItem fromValue(

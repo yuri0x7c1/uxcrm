@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product And Assoc
  */
+@FieldNameConstants
 public class ProductAndAssoc implements Serializable {
 
-	public static final long serialVersionUID = 2032558868934843392L;
+	public static final long serialVersionUID = 2864100522040650752L;
 	public static final String NAME = "ProductAndAssoc";
 	/**
 	 * Product Id
@@ -53,18 +55,13 @@ public class ProductAndAssoc implements Serializable {
 	@Setter
 	private Timestamp fromDate;
 
-	public enum Fields {
-		productId, internalName, productIdTo, productAssocTypeId, quantity, fromDate
-	}
-
 	public ProductAndAssoc(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		productIdTo = (String) value.get(Fields.productIdTo.name());
-		productAssocTypeId = (String) value.get(Fields.productAssocTypeId
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		productIdTo = (String) value.get(FIELD_PRODUCT_ID_TO);
+		productAssocTypeId = (String) value.get(FIELD_PRODUCT_ASSOC_TYPE_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
 	}
 
 	public static ProductAndAssoc fromValue(

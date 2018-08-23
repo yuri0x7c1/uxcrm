@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 /**
  * Acctg Trans Entry
  */
+@FieldNameConstants
 public class AcctgTransEntry implements Serializable {
 
-	public static final long serialVersionUID = 4799136972988309504L;
+	public static final long serialVersionUID = 1983628936599034880L;
 	public static final String NAME = "AcctgTransEntry";
 	/**
 	 * Acctg Trans Id
@@ -192,45 +194,38 @@ public class AcctgTransEntry implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		acctgTransId, acctgTransEntrySeqId, acctgTransEntryTypeId, description, voucherRef, partyId, roleTypeId, theirPartyId, productId, theirProductId, inventoryItemId, glAccountTypeId, glAccountId, organizationPartyId, amount, currencyUomId, origAmount, origCurrencyUomId, debitCreditFlag, dueDate, groupId, taxId, reconcileStatusId, settlementTermId, isSummary, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AcctgTransEntry(GenericValue value) {
-		acctgTransId = (String) value.get(Fields.acctgTransId.name());
-		acctgTransEntrySeqId = (String) value.get(Fields.acctgTransEntrySeqId
-				.name());
-		acctgTransEntryTypeId = (String) value.get(Fields.acctgTransEntryTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		voucherRef = (String) value.get(Fields.voucherRef.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		theirPartyId = (String) value.get(Fields.theirPartyId.name());
-		productId = (String) value.get(Fields.productId.name());
-		theirProductId = (String) value.get(Fields.theirProductId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		glAccountTypeId = (String) value.get(Fields.glAccountTypeId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		origAmount = (BigDecimal) value.get(Fields.origAmount.name());
-		origCurrencyUomId = (String) value.get(Fields.origCurrencyUomId.name());
-		debitCreditFlag = (String) value.get(Fields.debitCreditFlag.name());
-		dueDate = (Date) value.get(Fields.dueDate.name());
-		groupId = (String) value.get(Fields.groupId.name());
-		taxId = (String) value.get(Fields.taxId.name());
-		reconcileStatusId = (String) value.get(Fields.reconcileStatusId.name());
-		settlementTermId = (String) value.get(Fields.settlementTermId.name());
-		isSummary = (String) value.get(Fields.isSummary.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		acctgTransId = (String) value.get(FIELD_ACCTG_TRANS_ID);
+		acctgTransEntrySeqId = (String) value
+				.get(FIELD_ACCTG_TRANS_ENTRY_SEQ_ID);
+		acctgTransEntryTypeId = (String) value
+				.get(FIELD_ACCTG_TRANS_ENTRY_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		voucherRef = (String) value.get(FIELD_VOUCHER_REF);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		theirPartyId = (String) value.get(FIELD_THEIR_PARTY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		theirProductId = (String) value.get(FIELD_THEIR_PRODUCT_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		glAccountTypeId = (String) value.get(FIELD_GL_ACCOUNT_TYPE_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		origAmount = (BigDecimal) value.get(FIELD_ORIG_AMOUNT);
+		origCurrencyUomId = (String) value.get(FIELD_ORIG_CURRENCY_UOM_ID);
+		debitCreditFlag = (String) value.get(FIELD_DEBIT_CREDIT_FLAG);
+		dueDate = (Date) value.get(FIELD_DUE_DATE);
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		taxId = (String) value.get(FIELD_TAX_ID);
+		reconcileStatusId = (String) value.get(FIELD_RECONCILE_STATUS_ID);
+		settlementTermId = (String) value.get(FIELD_SETTLEMENT_TERM_ID);
+		isSummary = (String) value.get(FIELD_IS_SUMMARY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AcctgTransEntry fromValue(

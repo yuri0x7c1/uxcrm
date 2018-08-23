@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Assoc Attribute
  */
+@FieldNameConstants
 public class WorkEffortAssocAttribute implements Serializable {
 
-	public static final long serialVersionUID = 6235463718873926656L;
+	public static final long serialVersionUID = 68635032771309568L;
 	public static final String NAME = "WorkEffortAssocAttribute";
 	/**
 	 * Work Effort Id From
@@ -82,25 +84,19 @@ public class WorkEffortAssocAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortIdFrom, workEffortIdTo, workEffortAssocTypeId, fromDate, attrName, attrValue, attrDescription, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortAssocAttribute(GenericValue value) {
-		workEffortIdFrom = (String) value.get(Fields.workEffortIdFrom.name());
-		workEffortIdTo = (String) value.get(Fields.workEffortIdTo.name());
-		workEffortAssocTypeId = (String) value.get(Fields.workEffortAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortIdFrom = (String) value.get(FIELD_WORK_EFFORT_ID_FROM);
+		workEffortIdTo = (String) value.get(FIELD_WORK_EFFORT_ID_TO);
+		workEffortAssocTypeId = (String) value
+				.get(FIELD_WORK_EFFORT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortAssocAttribute fromValue(

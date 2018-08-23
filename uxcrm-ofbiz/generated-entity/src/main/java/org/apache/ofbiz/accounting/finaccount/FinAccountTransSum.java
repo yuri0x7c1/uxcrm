@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fin Account Trans Sum
  */
+@FieldNameConstants
 public class FinAccountTransSum implements Serializable {
 
-	public static final long serialVersionUID = 4986328799406635008L;
+	public static final long serialVersionUID = 4233955240423416832L;
 	public static final String NAME = "FinAccountTransSum";
 	/**
 	 * Fin Account Id
@@ -41,16 +43,12 @@ public class FinAccountTransSum implements Serializable {
 	@Setter
 	private BigDecimal amount;
 
-	public enum Fields {
-		finAccountId, finAccountTransTypeId, transactionDate, amount
-	}
-
 	public FinAccountTransSum(GenericValue value) {
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		finAccountTransTypeId = (String) value.get(Fields.finAccountTransTypeId
-				.name());
-		transactionDate = (Timestamp) value.get(Fields.transactionDate.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		finAccountTransTypeId = (String) value
+				.get(FIELD_FIN_ACCOUNT_TRANS_TYPE_ID);
+		transactionDate = (Timestamp) value.get(FIELD_TRANSACTION_DATE);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
 	}
 
 	public static FinAccountTransSum fromValue(

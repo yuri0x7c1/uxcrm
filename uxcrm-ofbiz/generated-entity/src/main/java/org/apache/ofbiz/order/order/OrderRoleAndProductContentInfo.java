@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Role And Product Content Info
  */
+@FieldNameConstants
 public class OrderRoleAndProductContentInfo implements Serializable {
 
-	public static final long serialVersionUID = 7455920347227611136L;
+	public static final long serialVersionUID = 1774643978400292864L;
 	public static final String NAME = "OrderRoleAndProductContentInfo";
 	/**
 	 * Product Name
@@ -509,116 +511,96 @@ public class OrderRoleAndProductContentInfo implements Serializable {
 	@Setter
 	private Long childBranchCount;
 
-	public enum Fields {
-		productName, contentStatusId, roleTypeId, orderId, partyId, deploymentId, cancelBackOrderDate, itemDescription, selectedAmount, orderItemSeqId, unitPrice, productId, unitRecurringPrice, isItemGroupPrimary, autoCancelDate, productFeatureId, overrideGlAccountId, budgetId, supplierProductId, estimatedDeliveryDate, quoteId, statusId, syncStatusId, estimatedShipDate, shoppingListItemSeqId, subscriptionId, salesOpportunityId, dontCancelSetUserLogin, isPromo, isModifiedPrice, shipBeforeDate, productCategoryId, shoppingListId, unitListPrice, unitAverageCost, orderItemTypeId, dontCancelSetDate, quantity, comments, recurringFreqUomId, orderItemGroupSeqId, quoteItemSeqId, externalId, fromInventoryItemId, budgetItemSeqId, correspondingPoId, cancelQuantity, shipAfterDate, changeByUserLoginId, prodCatalogId, purchaseFromDate, useTimeUomId, sequenceNum, contentId, useCountLimit, productContentTypeId, thruDate, fromDate, useRoleTypeId, useTime, purchaseThruDate, ownerContentId, contentTypeId, description, mimeTypeId, childLeafCount, privilegeEnumId, dataSourceId, lastModifiedByUserLogin, dataResourceId, createdByUserLogin, templateDataResourceId, lastModifiedDate, instanceOfContentId, serviceName, customMethodId, characterSetId, contentName, createdDate, localeString, decoratorContentId, childBranchCount
-	}
-
 	public OrderRoleAndProductContentInfo(GenericValue value) {
-		productName = (String) value.get(Fields.productName.name());
-		contentStatusId = (String) value.get(Fields.contentStatusId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		deploymentId = (String) value.get(Fields.deploymentId.name());
-		cancelBackOrderDate = (Timestamp) value.get(Fields.cancelBackOrderDate
-				.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		selectedAmount = (BigDecimal) value.get(Fields.selectedAmount.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
-		productId = (String) value.get(Fields.productId.name());
-		unitRecurringPrice = (BigDecimal) value.get(Fields.unitRecurringPrice
-				.name());
-		isItemGroupPrimary = (String) value.get(Fields.isItemGroupPrimary
-				.name());
-		autoCancelDate = (Timestamp) value.get(Fields.autoCancelDate.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		budgetId = (String) value.get(Fields.budgetId.name());
-		supplierProductId = (String) value.get(Fields.supplierProductId.name());
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		contentStatusId = (String) value.get(FIELD_CONTENT_STATUS_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		deploymentId = (String) value.get(FIELD_DEPLOYMENT_ID);
+		cancelBackOrderDate = (Timestamp) value
+				.get(FIELD_CANCEL_BACK_ORDER_DATE);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		selectedAmount = (BigDecimal) value.get(FIELD_SELECTED_AMOUNT);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		unitRecurringPrice = (BigDecimal) value.get(FIELD_UNIT_RECURRING_PRICE);
+		isItemGroupPrimary = (String) value.get(FIELD_IS_ITEM_GROUP_PRIMARY);
+		autoCancelDate = (Timestamp) value.get(FIELD_AUTO_CANCEL_DATE);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		supplierProductId = (String) value.get(FIELD_SUPPLIER_PRODUCT_ID);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
-		shoppingListItemSeqId = (String) value.get(Fields.shoppingListItemSeqId
-				.name());
-		subscriptionId = (String) value.get(Fields.subscriptionId.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
+		shoppingListItemSeqId = (String) value
+				.get(FIELD_SHOPPING_LIST_ITEM_SEQ_ID);
+		subscriptionId = (String) value.get(FIELD_SUBSCRIPTION_ID);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
 		dontCancelSetUserLogin = (String) value
-				.get(Fields.dontCancelSetUserLogin.name());
-		isPromo = (String) value.get(Fields.isPromo.name());
-		isModifiedPrice = (String) value.get(Fields.isModifiedPrice.name());
-		shipBeforeDate = (Timestamp) value.get(Fields.shipBeforeDate.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		unitListPrice = (BigDecimal) value.get(Fields.unitListPrice.name());
-		unitAverageCost = (BigDecimal) value.get(Fields.unitAverageCost.name());
-		orderItemTypeId = (String) value.get(Fields.orderItemTypeId.name());
-		dontCancelSetDate = (Timestamp) value.get(Fields.dontCancelSetDate
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		comments = (String) value.get(Fields.comments.name());
-		recurringFreqUomId = (String) value.get(Fields.recurringFreqUomId
-				.name());
-		orderItemGroupSeqId = (String) value.get(Fields.orderItemGroupSeqId
-				.name());
-		quoteItemSeqId = (String) value.get(Fields.quoteItemSeqId.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		fromInventoryItemId = (String) value.get(Fields.fromInventoryItemId
-				.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		correspondingPoId = (String) value.get(Fields.correspondingPoId.name());
-		cancelQuantity = (BigDecimal) value.get(Fields.cancelQuantity.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		purchaseFromDate = (Timestamp) value
-				.get(Fields.purchaseFromDate.name());
-		useTimeUomId = (String) value.get(Fields.useTimeUomId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		useCountLimit = (Long) value.get(Fields.useCountLimit.name());
-		productContentTypeId = (String) value.get(Fields.productContentTypeId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		useRoleTypeId = (String) value.get(Fields.useRoleTypeId.name());
-		useTime = (Long) value.get(Fields.useTime.name());
-		purchaseThruDate = (Timestamp) value
-				.get(Fields.purchaseThruDate.name());
-		ownerContentId = (String) value.get(Fields.ownerContentId.name());
-		contentTypeId = (String) value.get(Fields.contentTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		childLeafCount = (Long) value.get(Fields.childLeafCount.name());
-		privilegeEnumId = (String) value.get(Fields.privilegeEnumId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
+				.get(FIELD_DONT_CANCEL_SET_USER_LOGIN);
+		isPromo = (String) value.get(FIELD_IS_PROMO);
+		isModifiedPrice = (String) value.get(FIELD_IS_MODIFIED_PRICE);
+		shipBeforeDate = (Timestamp) value.get(FIELD_SHIP_BEFORE_DATE);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		unitListPrice = (BigDecimal) value.get(FIELD_UNIT_LIST_PRICE);
+		unitAverageCost = (BigDecimal) value.get(FIELD_UNIT_AVERAGE_COST);
+		orderItemTypeId = (String) value.get(FIELD_ORDER_ITEM_TYPE_ID);
+		dontCancelSetDate = (Timestamp) value.get(FIELD_DONT_CANCEL_SET_DATE);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		comments = (String) value.get(FIELD_COMMENTS);
+		recurringFreqUomId = (String) value.get(FIELD_RECURRING_FREQ_UOM_ID);
+		orderItemGroupSeqId = (String) value.get(FIELD_ORDER_ITEM_GROUP_SEQ_ID);
+		quoteItemSeqId = (String) value.get(FIELD_QUOTE_ITEM_SEQ_ID);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		fromInventoryItemId = (String) value.get(FIELD_FROM_INVENTORY_ITEM_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		correspondingPoId = (String) value.get(FIELD_CORRESPONDING_PO_ID);
+		cancelQuantity = (BigDecimal) value.get(FIELD_CANCEL_QUANTITY);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		purchaseFromDate = (Timestamp) value.get(FIELD_PURCHASE_FROM_DATE);
+		useTimeUomId = (String) value.get(FIELD_USE_TIME_UOM_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		useCountLimit = (Long) value.get(FIELD_USE_COUNT_LIMIT);
+		productContentTypeId = (String) value
+				.get(FIELD_PRODUCT_CONTENT_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		useRoleTypeId = (String) value.get(FIELD_USE_ROLE_TYPE_ID);
+		useTime = (Long) value.get(FIELD_USE_TIME);
+		purchaseThruDate = (Timestamp) value.get(FIELD_PURCHASE_THRU_DATE);
+		ownerContentId = (String) value.get(FIELD_OWNER_CONTENT_ID);
+		contentTypeId = (String) value.get(FIELD_CONTENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		childLeafCount = (Long) value.get(FIELD_CHILD_LEAF_COUNT);
+		privilegeEnumId = (String) value.get(FIELD_PRIVILEGE_ENUM_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
 		templateDataResourceId = (String) value
-				.get(Fields.templateDataResourceId.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		instanceOfContentId = (String) value.get(Fields.instanceOfContentId
-				.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		customMethodId = (String) value.get(Fields.customMethodId.name());
-		characterSetId = (String) value.get(Fields.characterSetId.name());
-		contentName = (String) value.get(Fields.contentName.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		localeString = (String) value.get(Fields.localeString.name());
-		decoratorContentId = (String) value.get(Fields.decoratorContentId
-				.name());
-		childBranchCount = (Long) value.get(Fields.childBranchCount.name());
+				.get(FIELD_TEMPLATE_DATA_RESOURCE_ID);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		instanceOfContentId = (String) value.get(FIELD_INSTANCE_OF_CONTENT_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		customMethodId = (String) value.get(FIELD_CUSTOM_METHOD_ID);
+		characterSetId = (String) value.get(FIELD_CHARACTER_SET_ID);
+		contentName = (String) value.get(FIELD_CONTENT_NAME);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		localeString = (String) value.get(FIELD_LOCALE_STRING);
+		decoratorContentId = (String) value.get(FIELD_DECORATOR_CONTENT_ID);
+		childBranchCount = (Long) value.get(FIELD_CHILD_BRANCH_COUNT);
 	}
 
 	public static OrderRoleAndProductContentInfo fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.communication;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Comm Event Content Assoc
  */
+@FieldNameConstants
 public class CommEventContentAssoc implements Serializable {
 
-	public static final long serialVersionUID = 4145768294204693504L;
+	public static final long serialVersionUID = 9155227102833003520L;
 	public static final String NAME = "CommEventContentAssoc";
 	/**
 	 * Content Id
@@ -76,25 +78,18 @@ public class CommEventContentAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, communicationEventId, commContentAssocTypeId, fromDate, thruDate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CommEventContentAssoc(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
 		commContentAssocTypeId = (String) value
-				.get(Fields.commContentAssocTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_COMM_CONTENT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CommEventContentAssoc fromValue(

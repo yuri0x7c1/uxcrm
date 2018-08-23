@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Identification
  */
+@FieldNameConstants
 public class PartyIdentification implements Serializable {
 
-	public static final long serialVersionUID = 5292171853800599552L;
+	public static final long serialVersionUID = 1681019783550280704L;
 	public static final String NAME = "PartyIdentification";
 	/**
 	 * Party Id
@@ -58,21 +60,15 @@ public class PartyIdentification implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, partyIdentificationTypeId, idValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyIdentification(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
 		partyIdentificationTypeId = (String) value
-				.get(Fields.partyIdentificationTypeId.name());
-		idValue = (String) value.get(Fields.idValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PARTY_IDENTIFICATION_TYPE_ID);
+		idValue = (String) value.get(FIELD_ID_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyIdentification fromValue(

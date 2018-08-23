@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Promo Appl
  */
+@FieldNameConstants
 public class ProductStorePromoAppl implements Serializable {
 
-	public static final long serialVersionUID = 2851461184438048768L;
+	public static final long serialVersionUID = 8852238341732948992L;
 	public static final String NAME = "ProductStorePromoAppl";
 	/**
 	 * Product Store Id
@@ -76,23 +78,17 @@ public class ProductStorePromoAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, productPromoId, fromDate, thruDate, sequenceNum, manualOnly, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStorePromoAppl(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		manualOnly = (String) value.get(Fields.manualOnly.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		manualOnly = (String) value.get(FIELD_MANUAL_ONLY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStorePromoAppl fromValue(

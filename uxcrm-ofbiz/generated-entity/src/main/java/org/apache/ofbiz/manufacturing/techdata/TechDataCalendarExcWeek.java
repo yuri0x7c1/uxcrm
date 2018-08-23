@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.techdata;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Tech Data Calendar Exc Week
  */
+@FieldNameConstants
 public class TechDataCalendarExcWeek implements Serializable {
 
-	public static final long serialVersionUID = 6284734220922549248L;
+	public static final long serialVersionUID = 743706591259223040L;
 	public static final String NAME = "TechDataCalendarExcWeek";
 	/**
 	 * Calendar Id
@@ -65,21 +67,15 @@ public class TechDataCalendarExcWeek implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		calendarId, exceptionDateStart, calendarWeekId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TechDataCalendarExcWeek(GenericValue value) {
-		calendarId = (String) value.get(Fields.calendarId.name());
-		exceptionDateStart = (Date) value.get(Fields.exceptionDateStart.name());
-		calendarWeekId = (String) value.get(Fields.calendarWeekId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		calendarId = (String) value.get(FIELD_CALENDAR_ID);
+		exceptionDateStart = (Date) value.get(FIELD_EXCEPTION_DATE_START);
+		calendarWeekId = (String) value.get(FIELD_CALENDAR_WEEK_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TechDataCalendarExcWeek fromValue(

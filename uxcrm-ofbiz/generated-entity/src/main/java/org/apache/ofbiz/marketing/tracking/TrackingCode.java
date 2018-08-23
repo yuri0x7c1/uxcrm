@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.tracking;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code
  */
+@FieldNameConstants
 public class TrackingCode implements Serializable {
 
-	public static final long serialVersionUID = 1609750766377583616L;
+	public static final long serialVersionUID = 5612981637307703296L;
 	public static final String NAME = "TrackingCode";
 	/**
 	 * Tracking Code Id
@@ -154,41 +156,31 @@ public class TrackingCode implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		trackingCodeId, trackingCodeTypeId, marketingCampaignId, redirectUrl, overrideLogo, overrideCss, prodCatalogId, comments, description, trackableLifetime, billableLifetime, fromDate, thruDate, groupId, subgroupId, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TrackingCode(GenericValue value) {
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
-		trackingCodeTypeId = (String) value.get(Fields.trackingCodeTypeId
-				.name());
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		redirectUrl = (String) value.get(Fields.redirectUrl.name());
-		overrideLogo = (String) value.get(Fields.overrideLogo.name());
-		overrideCss = (String) value.get(Fields.overrideCss.name());
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		comments = (String) value.get(Fields.comments.name());
-		description = (String) value.get(Fields.description.name());
-		trackableLifetime = (Long) value.get(Fields.trackableLifetime.name());
-		billableLifetime = (Long) value.get(Fields.billableLifetime.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		groupId = (String) value.get(Fields.groupId.name());
-		subgroupId = (String) value.get(Fields.subgroupId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
+		trackingCodeTypeId = (String) value.get(FIELD_TRACKING_CODE_TYPE_ID);
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		redirectUrl = (String) value.get(FIELD_REDIRECT_URL);
+		overrideLogo = (String) value.get(FIELD_OVERRIDE_LOGO);
+		overrideCss = (String) value.get(FIELD_OVERRIDE_CSS);
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		trackableLifetime = (Long) value.get(FIELD_TRACKABLE_LIFETIME);
+		billableLifetime = (Long) value.get(FIELD_BILLABLE_LIFETIME);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		subgroupId = (String) value.get(FIELD_SUBGROUP_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TrackingCode fromValue(

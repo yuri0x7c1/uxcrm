@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Physical Inventory And Variance
  */
+@FieldNameConstants
 public class PhysicalInventoryAndVariance implements Serializable {
 
-	public static final long serialVersionUID = 4263826910247188480L;
+	public static final long serialVersionUID = 5951245371142221824L;
 	public static final String NAME = "PhysicalInventoryAndVariance";
 	/**
 	 * Physical Inventory Id
@@ -71,24 +73,18 @@ public class PhysicalInventoryAndVariance implements Serializable {
 	@Setter
 	private String comments;
 
-	public enum Fields {
-		physicalInventoryId, physicalInventoryDate, partyId, generalComments, inventoryItemId, varianceReasonId, availableToPromiseVar, quantityOnHandVar, comments
-	}
-
 	public PhysicalInventoryAndVariance(GenericValue value) {
-		physicalInventoryId = (String) value.get(Fields.physicalInventoryId
-				.name());
+		physicalInventoryId = (String) value.get(FIELD_PHYSICAL_INVENTORY_ID);
 		physicalInventoryDate = (Timestamp) value
-				.get(Fields.physicalInventoryDate.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		generalComments = (String) value.get(Fields.generalComments.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		varianceReasonId = (String) value.get(Fields.varianceReasonId.name());
+				.get(FIELD_PHYSICAL_INVENTORY_DATE);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		generalComments = (String) value.get(FIELD_GENERAL_COMMENTS);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		varianceReasonId = (String) value.get(FIELD_VARIANCE_REASON_ID);
 		availableToPromiseVar = (BigDecimal) value
-				.get(Fields.availableToPromiseVar.name());
-		quantityOnHandVar = (BigDecimal) value.get(Fields.quantityOnHandVar
-				.name());
-		comments = (String) value.get(Fields.comments.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_VAR);
+		quantityOnHandVar = (BigDecimal) value.get(FIELD_QUANTITY_ON_HAND_VAR);
+		comments = (String) value.get(FIELD_COMMENTS);
 	}
 
 	public static PhysicalInventoryAndVariance fromValue(

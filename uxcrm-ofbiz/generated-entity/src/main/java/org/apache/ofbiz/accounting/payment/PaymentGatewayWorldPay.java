@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway World Pay
  */
+@FieldNameConstants
 public class PaymentGatewayWorldPay implements Serializable {
 
-	public static final long serialVersionUID = 6737030312290430976L;
+	public static final long serialVersionUID = 5897904905836355584L;
 	public static final String NAME = "PaymentGatewayWorldPay";
 	/**
 	 * Payment Gateway Config Id
@@ -106,29 +108,23 @@ public class PaymentGatewayWorldPay implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, redirectUrl, instId, authMode, fixContact, hideContact, hideCurrency, langId, noLanguageMenu, withDelivery, testMode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayWorldPay(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		redirectUrl = (String) value.get(Fields.redirectUrl.name());
-		instId = (String) value.get(Fields.instId.name());
-		authMode = (String) value.get(Fields.authMode.name());
-		fixContact = (String) value.get(Fields.fixContact.name());
-		hideContact = (String) value.get(Fields.hideContact.name());
-		hideCurrency = (String) value.get(Fields.hideCurrency.name());
-		langId = (String) value.get(Fields.langId.name());
-		noLanguageMenu = (String) value.get(Fields.noLanguageMenu.name());
-		withDelivery = (String) value.get(Fields.withDelivery.name());
-		testMode = (Long) value.get(Fields.testMode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		redirectUrl = (String) value.get(FIELD_REDIRECT_URL);
+		instId = (String) value.get(FIELD_INST_ID);
+		authMode = (String) value.get(FIELD_AUTH_MODE);
+		fixContact = (String) value.get(FIELD_FIX_CONTACT);
+		hideContact = (String) value.get(FIELD_HIDE_CONTACT);
+		hideCurrency = (String) value.get(FIELD_HIDE_CURRENCY);
+		langId = (String) value.get(FIELD_LANG_ID);
+		noLanguageMenu = (String) value.get(FIELD_NO_LANGUAGE_MENU);
+		withDelivery = (String) value.get(FIELD_WITH_DELIVERY);
+		testMode = (Long) value.get(FIELD_TEST_MODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayWorldPay fromValue(

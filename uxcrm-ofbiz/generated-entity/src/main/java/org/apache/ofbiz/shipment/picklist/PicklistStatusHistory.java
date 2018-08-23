@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Picklist Status History
  */
+@FieldNameConstants
 public class PicklistStatusHistory implements Serializable {
 
-	public static final long serialVersionUID = 990853764867531776L;
+	public static final long serialVersionUID = 1899068507351552000L;
 	public static final String NAME = "PicklistStatusHistory";
 	/**
 	 * Picklist Id
@@ -70,22 +72,16 @@ public class PicklistStatusHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		picklistId, changeDate, changeUserLoginId, statusId, statusIdTo, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PicklistStatusHistory(GenericValue value) {
-		picklistId = (String) value.get(Fields.picklistId.name());
-		changeDate = (Timestamp) value.get(Fields.changeDate.name());
-		changeUserLoginId = (String) value.get(Fields.changeUserLoginId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusIdTo = (String) value.get(Fields.statusIdTo.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		picklistId = (String) value.get(FIELD_PICKLIST_ID);
+		changeDate = (Timestamp) value.get(FIELD_CHANGE_DATE);
+		changeUserLoginId = (String) value.get(FIELD_CHANGE_USER_LOGIN_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusIdTo = (String) value.get(FIELD_STATUS_ID_TO);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PicklistStatusHistory fromValue(

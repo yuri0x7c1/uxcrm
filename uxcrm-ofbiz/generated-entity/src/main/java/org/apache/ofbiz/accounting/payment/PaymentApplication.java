@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment Application
  */
+@FieldNameConstants
 public class PaymentApplication implements Serializable {
 
-	public static final long serialVersionUID = 6118843665523638272L;
+	public static final long serialVersionUID = 75637292493031424L;
 	public static final String NAME = "PaymentApplication";
 	/**
 	 * Payment Application Id
@@ -95,28 +97,20 @@ public class PaymentApplication implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentApplicationId, paymentId, invoiceId, invoiceItemSeqId, billingAccountId, overrideGlAccountId, toPaymentId, taxAuthGeoId, amountApplied, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentApplication(GenericValue value) {
-		paymentApplicationId = (String) value.get(Fields.paymentApplicationId
-				.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		toPaymentId = (String) value.get(Fields.toPaymentId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		amountApplied = (BigDecimal) value.get(Fields.amountApplied.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentApplicationId = (String) value.get(FIELD_PAYMENT_APPLICATION_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		toPaymentId = (String) value.get(FIELD_TO_PAYMENT_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		amountApplied = (BigDecimal) value.get(FIELD_AMOUNT_APPLIED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentApplication fromValue(

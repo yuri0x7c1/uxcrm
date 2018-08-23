@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Mime Type Html Template
  */
+@FieldNameConstants
 public class MimeTypeHtmlTemplate implements Serializable {
 
-	public static final long serialVersionUID = 3846394364927775744L;
+	public static final long serialVersionUID = 430425082053092352L;
 	public static final String NAME = "MimeTypeHtmlTemplate";
 	/**
 	 * Mime Type Id
@@ -52,19 +54,13 @@ public class MimeTypeHtmlTemplate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		mimeTypeId, templateLocation, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MimeTypeHtmlTemplate(GenericValue value) {
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		templateLocation = (String) value.get(Fields.templateLocation.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		templateLocation = (String) value.get(FIELD_TEMPLATE_LOCATION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MimeTypeHtmlTemplate fromValue(

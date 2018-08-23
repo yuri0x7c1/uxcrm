@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.recruitment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Job Interview
  */
+@FieldNameConstants
 public class JobInterview implements Serializable {
 
-	public static final long serialVersionUID = 7613042593520135168L;
+	public static final long serialVersionUID = 8914862494036085760L;
 	public static final String NAME = "JobInterview";
 	/**
 	 * Job Interview Id
@@ -89,30 +91,21 @@ public class JobInterview implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		jobInterviewId, jobIntervieweePartyId, jobRequisitionId, jobInterviewerPartyId, jobInterviewTypeId, gradeSecuredEnumId, jobInterviewResult, jobInterviewDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public JobInterview(GenericValue value) {
-		jobInterviewId = (String) value.get(Fields.jobInterviewId.name());
-		jobIntervieweePartyId = (String) value.get(Fields.jobIntervieweePartyId
-				.name());
-		jobRequisitionId = (String) value.get(Fields.jobRequisitionId.name());
-		jobInterviewerPartyId = (String) value.get(Fields.jobInterviewerPartyId
-				.name());
-		jobInterviewTypeId = (String) value.get(Fields.jobInterviewTypeId
-				.name());
-		gradeSecuredEnumId = (String) value.get(Fields.gradeSecuredEnumId
-				.name());
-		jobInterviewResult = (String) value.get(Fields.jobInterviewResult
-				.name());
-		jobInterviewDate = (Date) value.get(Fields.jobInterviewDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		jobInterviewId = (String) value.get(FIELD_JOB_INTERVIEW_ID);
+		jobIntervieweePartyId = (String) value
+				.get(FIELD_JOB_INTERVIEWEE_PARTY_ID);
+		jobRequisitionId = (String) value.get(FIELD_JOB_REQUISITION_ID);
+		jobInterviewerPartyId = (String) value
+				.get(FIELD_JOB_INTERVIEWER_PARTY_ID);
+		jobInterviewTypeId = (String) value.get(FIELD_JOB_INTERVIEW_TYPE_ID);
+		gradeSecuredEnumId = (String) value.get(FIELD_GRADE_SECURED_ENUM_ID);
+		jobInterviewResult = (String) value.get(FIELD_JOB_INTERVIEW_RESULT);
+		jobInterviewDate = (Date) value.get(FIELD_JOB_INTERVIEW_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static JobInterview fromValue(

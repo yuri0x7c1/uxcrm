@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.segment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Segment Group Classification
  */
+@FieldNameConstants
 public class SegmentGroupClassification implements Serializable {
 
-	public static final long serialVersionUID = 5431430243246169088L;
+	public static final long serialVersionUID = 6511171591437713408L;
 	public static final String NAME = "SegmentGroupClassification";
 	/**
 	 * Segment Group Id
@@ -52,20 +54,14 @@ public class SegmentGroupClassification implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		segmentGroupId, partyClassificationGroupId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SegmentGroupClassification(GenericValue value) {
-		segmentGroupId = (String) value.get(Fields.segmentGroupId.name());
+		segmentGroupId = (String) value.get(FIELD_SEGMENT_GROUP_ID);
 		partyClassificationGroupId = (String) value
-				.get(Fields.partyClassificationGroupId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PARTY_CLASSIFICATION_GROUP_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SegmentGroupClassification fromValue(

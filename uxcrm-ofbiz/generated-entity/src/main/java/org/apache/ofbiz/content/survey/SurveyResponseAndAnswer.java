@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Survey Response And Answer
  */
+@FieldNameConstants
 public class SurveyResponseAndAnswer implements Serializable {
 
-	public static final long serialVersionUID = 3349703989233907712L;
+	public static final long serialVersionUID = 5800645784693462016L;
 	public static final String NAME = "SurveyResponseAndAnswer";
 	/**
 	 * Order Item Seq Id
@@ -179,41 +181,35 @@ public class SurveyResponseAndAnswer implements Serializable {
 	@Setter
 	private String surveyMultiRespId;
 
-	public enum Fields {
-		orderItemSeqId, surveyId, lastModifiedDate, orderId, generalFeedback, surveyResponseId, responseDate, referenceId, statusId, partyId, amountBase, surveyQuestionId, sequenceNum, surveyOptionSeqId, contentId, durationUomId, currencyResponse, floatResponse, numericResponse, duration, answeredDate, textResponse, amountBaseUomId, booleanResponse, weightFactor, surveyMultiRespColId, surveyMultiRespId
-	}
-
 	public SurveyResponseAndAnswer(GenericValue value) {
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		generalFeedback = (String) value.get(Fields.generalFeedback.name());
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		responseDate = (Timestamp) value.get(Fields.responseDate.name());
-		referenceId = (String) value.get(Fields.referenceId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		amountBase = (BigDecimal) value.get(Fields.amountBase.name());
-		surveyQuestionId = (String) value.get(Fields.surveyQuestionId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		surveyOptionSeqId = (String) value.get(Fields.surveyOptionSeqId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		durationUomId = (String) value.get(Fields.durationUomId.name());
-		currencyResponse = (BigDecimal) value.get(Fields.currencyResponse
-				.name());
-		floatResponse = (Double) value.get(Fields.floatResponse.name());
-		numericResponse = (Long) value.get(Fields.numericResponse.name());
-		duration = (Long) value.get(Fields.duration.name());
-		answeredDate = (Timestamp) value.get(Fields.answeredDate.name());
-		textResponse = (String) value.get(Fields.textResponse.name());
-		amountBaseUomId = (String) value.get(Fields.amountBaseUomId.name());
-		booleanResponse = (String) value.get(Fields.booleanResponse.name());
-		weightFactor = (Double) value.get(Fields.weightFactor.name());
-		surveyMultiRespColId = (String) value.get(Fields.surveyMultiRespColId
-				.name());
-		surveyMultiRespId = (String) value.get(Fields.surveyMultiRespId.name());
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		generalFeedback = (String) value.get(FIELD_GENERAL_FEEDBACK);
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		responseDate = (Timestamp) value.get(FIELD_RESPONSE_DATE);
+		referenceId = (String) value.get(FIELD_REFERENCE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		amountBase = (BigDecimal) value.get(FIELD_AMOUNT_BASE);
+		surveyQuestionId = (String) value.get(FIELD_SURVEY_QUESTION_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		surveyOptionSeqId = (String) value.get(FIELD_SURVEY_OPTION_SEQ_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		durationUomId = (String) value.get(FIELD_DURATION_UOM_ID);
+		currencyResponse = (BigDecimal) value.get(FIELD_CURRENCY_RESPONSE);
+		floatResponse = (Double) value.get(FIELD_FLOAT_RESPONSE);
+		numericResponse = (Long) value.get(FIELD_NUMERIC_RESPONSE);
+		duration = (Long) value.get(FIELD_DURATION);
+		answeredDate = (Timestamp) value.get(FIELD_ANSWERED_DATE);
+		textResponse = (String) value.get(FIELD_TEXT_RESPONSE);
+		amountBaseUomId = (String) value.get(FIELD_AMOUNT_BASE_UOM_ID);
+		booleanResponse = (String) value.get(FIELD_BOOLEAN_RESPONSE);
+		weightFactor = (Double) value.get(FIELD_WEIGHT_FACTOR);
+		surveyMultiRespColId = (String) value
+				.get(FIELD_SURVEY_MULTI_RESP_COL_ID);
+		surveyMultiRespId = (String) value.get(FIELD_SURVEY_MULTI_RESP_ID);
 	}
 
 	public static SurveyResponseAndAnswer fromValue(

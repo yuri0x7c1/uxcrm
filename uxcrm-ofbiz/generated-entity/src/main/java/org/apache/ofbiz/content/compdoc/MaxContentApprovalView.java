@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.compdoc;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Max Content Approval View
  */
+@FieldNameConstants
 public class MaxContentApprovalView implements Serializable {
 
-	public static final long serialVersionUID = 3227035701926796288L;
+	public static final long serialVersionUID = 4229157523262626816L;
 	public static final String NAME = "MaxContentApprovalView";
 	/**
 	 * Content Type Id
@@ -57,20 +59,16 @@ public class MaxContentApprovalView implements Serializable {
 	@Setter
 	private String maxContentRevisionSeqId;
 
-	public enum Fields {
-		contentTypeId, contentId, partyId, roleTypeId, sequenceNum, contentRevisionSeqId, maxContentRevisionSeqId
-	}
-
 	public MaxContentApprovalView(GenericValue value) {
-		contentTypeId = (String) value.get(Fields.contentTypeId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		contentRevisionSeqId = (String) value.get(Fields.contentRevisionSeqId
-				.name());
+		contentTypeId = (String) value.get(FIELD_CONTENT_TYPE_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		contentRevisionSeqId = (String) value
+				.get(FIELD_CONTENT_REVISION_SEQ_ID);
 		maxContentRevisionSeqId = (String) value
-				.get(Fields.maxContentRevisionSeqId.name());
+				.get(FIELD_MAX_CONTENT_REVISION_SEQ_ID);
 	}
 
 	public static MaxContentApprovalView fromValue(

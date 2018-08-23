@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Fin Account Status
  */
+@FieldNameConstants
 public class FinAccountStatus implements Serializable {
 
-	public static final long serialVersionUID = 1755858712947017728L;
+	public static final long serialVersionUID = 1676756230321651712L;
 	public static final String NAME = "FinAccountStatus";
 	/**
 	 * Fin Account Id
@@ -70,23 +72,16 @@ public class FinAccountStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		finAccountId, statusId, statusDate, statusEndDate, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FinAccountStatus(GenericValue value) {
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		statusEndDate = (Timestamp) value.get(Fields.statusEndDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		statusEndDate = (Timestamp) value.get(FIELD_STATUS_END_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FinAccountStatus fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Credit Card
  */
+@FieldNameConstants
 public class CreditCard implements Serializable {
 
-	public static final long serialVersionUID = 5640483452294898688L;
+	public static final long serialVersionUID = 3375233650682853376L;
 	public static final String NAME = "CreditCard";
 	/**
 	 * Payment Method Id
@@ -142,38 +144,29 @@ public class CreditCard implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentMethodId, cardType, cardNumber, validFromDate, expireDate, issueNumber, companyNameOnCard, titleOnCard, firstNameOnCard, middleNameOnCard, lastNameOnCard, suffixOnCard, contactMechId, consecutiveFailedAuths, lastFailedAuthDate, consecutiveFailedNsf, lastFailedNsfDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CreditCard(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		cardType = (String) value.get(Fields.cardType.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		validFromDate = (String) value.get(Fields.validFromDate.name());
-		expireDate = (String) value.get(Fields.expireDate.name());
-		issueNumber = (String) value.get(Fields.issueNumber.name());
-		companyNameOnCard = (String) value.get(Fields.companyNameOnCard.name());
-		titleOnCard = (String) value.get(Fields.titleOnCard.name());
-		firstNameOnCard = (String) value.get(Fields.firstNameOnCard.name());
-		middleNameOnCard = (String) value.get(Fields.middleNameOnCard.name());
-		lastNameOnCard = (String) value.get(Fields.lastNameOnCard.name());
-		suffixOnCard = (String) value.get(Fields.suffixOnCard.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		consecutiveFailedAuths = (Long) value.get(Fields.consecutiveFailedAuths
-				.name());
-		lastFailedAuthDate = (Timestamp) value.get(Fields.lastFailedAuthDate
-				.name());
-		consecutiveFailedNsf = (Long) value.get(Fields.consecutiveFailedNsf
-				.name());
-		lastFailedNsfDate = (Timestamp) value.get(Fields.lastFailedNsfDate
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		cardType = (String) value.get(FIELD_CARD_TYPE);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		validFromDate = (String) value.get(FIELD_VALID_FROM_DATE);
+		expireDate = (String) value.get(FIELD_EXPIRE_DATE);
+		issueNumber = (String) value.get(FIELD_ISSUE_NUMBER);
+		companyNameOnCard = (String) value.get(FIELD_COMPANY_NAME_ON_CARD);
+		titleOnCard = (String) value.get(FIELD_TITLE_ON_CARD);
+		firstNameOnCard = (String) value.get(FIELD_FIRST_NAME_ON_CARD);
+		middleNameOnCard = (String) value.get(FIELD_MIDDLE_NAME_ON_CARD);
+		lastNameOnCard = (String) value.get(FIELD_LAST_NAME_ON_CARD);
+		suffixOnCard = (String) value.get(FIELD_SUFFIX_ON_CARD);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		consecutiveFailedAuths = (Long) value
+				.get(FIELD_CONSECUTIVE_FAILED_AUTHS);
+		lastFailedAuthDate = (Timestamp) value.get(FIELD_LAST_FAILED_AUTH_DATE);
+		consecutiveFailedNsf = (Long) value.get(FIELD_CONSECUTIVE_FAILED_NSF);
+		lastFailedNsfDate = (Timestamp) value.get(FIELD_LAST_FAILED_NSF_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CreditCard fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Page
  */
+@FieldNameConstants
 public class WebPage implements Serializable {
 
-	public static final long serialVersionUID = 7967115417887223808L;
+	public static final long serialVersionUID = 4601365251141622784L;
 	public static final String NAME = "WebPage";
 	/**
 	 * Web Page Id
@@ -64,21 +66,15 @@ public class WebPage implements Serializable {
 	@Setter
 	private String contentId;
 
-	public enum Fields {
-		webPageId, pageName, webSiteId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, contentId
-	}
-
 	public WebPage(GenericValue value) {
-		webPageId = (String) value.get(Fields.webPageId.name());
-		pageName = (String) value.get(Fields.pageName.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		contentId = (String) value.get(Fields.contentId.name());
+		webPageId = (String) value.get(FIELD_WEB_PAGE_ID);
+		pageName = (String) value.get(FIELD_PAGE_NAME);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
 	}
 
 	public static WebPage fromValue(org.apache.ofbiz.entity.GenericValue value) {

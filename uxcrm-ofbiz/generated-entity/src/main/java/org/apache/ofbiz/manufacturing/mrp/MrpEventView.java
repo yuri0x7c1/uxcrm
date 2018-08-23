@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.mrp;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Mrp Event View
  */
+@FieldNameConstants
 public class MrpEventView implements Serializable {
 
-	public static final long serialVersionUID = 253592113995218944L;
+	public static final long serialVersionUID = 279634022271945728L;
 	public static final String NAME = "MrpEventView";
 	/**
 	 * Bill Of Material Level
@@ -70,21 +72,16 @@ public class MrpEventView implements Serializable {
 	@Setter
 	private Timestamp eventDate;
 
-	public enum Fields {
-		billOfMaterialLevel, mrpEventTypeId, mrpId, facilityId, quantity, productId, isLate, eventName, eventDate
-	}
-
 	public MrpEventView(GenericValue value) {
-		billOfMaterialLevel = (Long) value.get(Fields.billOfMaterialLevel
-				.name());
-		mrpEventTypeId = (String) value.get(Fields.mrpEventTypeId.name());
-		mrpId = (String) value.get(Fields.mrpId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		quantity = (Double) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		isLate = (String) value.get(Fields.isLate.name());
-		eventName = (String) value.get(Fields.eventName.name());
-		eventDate = (Timestamp) value.get(Fields.eventDate.name());
+		billOfMaterialLevel = (Long) value.get(FIELD_BILL_OF_MATERIAL_LEVEL);
+		mrpEventTypeId = (String) value.get(FIELD_MRP_EVENT_TYPE_ID);
+		mrpId = (String) value.get(FIELD_MRP_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		quantity = (Double) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		isLate = (String) value.get(FIELD_IS_LATE);
+		eventName = (String) value.get(FIELD_EVENT_NAME);
+		eventDate = (Timestamp) value.get(FIELD_EVENT_DATE);
 	}
 
 	public static MrpEventView fromValue(

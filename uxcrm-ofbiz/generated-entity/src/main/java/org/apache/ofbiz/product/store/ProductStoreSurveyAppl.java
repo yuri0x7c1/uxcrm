@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Survey Appl
  */
+@FieldNameConstants
 public class ProductStoreSurveyAppl implements Serializable {
 
-	public static final long serialVersionUID = 4010615198939972608L;
+	public static final long serialVersionUID = 4198298739262655488L;
 	public static final String NAME = "ProductStoreSurveyAppl";
 	/**
 	 * Product Store Survey Id
@@ -112,30 +114,24 @@ public class ProductStoreSurveyAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreSurveyId, productStoreId, surveyApplTypeId, groupName, surveyId, productId, productCategoryId, fromDate, thruDate, surveyTemplate, resultTemplate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreSurveyAppl(GenericValue value) {
-		productStoreSurveyId = (String) value.get(Fields.productStoreSurveyId
-				.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		surveyApplTypeId = (String) value.get(Fields.surveyApplTypeId.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		productId = (String) value.get(Fields.productId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		surveyTemplate = (String) value.get(Fields.surveyTemplate.name());
-		resultTemplate = (String) value.get(Fields.resultTemplate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreSurveyId = (String) value
+				.get(FIELD_PRODUCT_STORE_SURVEY_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		surveyApplTypeId = (String) value.get(FIELD_SURVEY_APPL_TYPE_ID);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		surveyTemplate = (String) value.get(FIELD_SURVEY_TEMPLATE);
+		resultTemplate = (String) value.get(FIELD_RESULT_TEMPLATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreSurveyAppl fromValue(

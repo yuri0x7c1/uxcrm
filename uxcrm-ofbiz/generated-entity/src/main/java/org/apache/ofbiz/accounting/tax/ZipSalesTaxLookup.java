@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Zip Sales Tax Lookup
  */
+@FieldNameConstants
 public class ZipSalesTaxLookup implements Serializable {
 
-	public static final long serialVersionUID = 2598237077574574080L;
+	public static final long serialVersionUID = 7876368813223415808L;
 	public static final String NAME = "ZipSalesTaxLookup";
 	/**
 	 * Zip Code
@@ -173,42 +175,34 @@ public class ZipSalesTaxLookup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		zipCode, stateCode, city, county, fromDate, countyFips, countyDefault, generalDefault, insideCity, geoCode, stateSalesTax, citySalesTax, cityLocalSalesTax, countySalesTax, countyLocalSalesTax, comboSalesTax, stateUseTax, cityUseTax, cityLocalUseTax, countyUseTax, countyLocalUseTax, comboUseTax, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ZipSalesTaxLookup(GenericValue value) {
-		zipCode = (String) value.get(Fields.zipCode.name());
-		stateCode = (String) value.get(Fields.stateCode.name());
-		city = (String) value.get(Fields.city.name());
-		county = (String) value.get(Fields.county.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		countyFips = (String) value.get(Fields.countyFips.name());
-		countyDefault = (String) value.get(Fields.countyDefault.name());
-		generalDefault = (String) value.get(Fields.generalDefault.name());
-		insideCity = (String) value.get(Fields.insideCity.name());
-		geoCode = (String) value.get(Fields.geoCode.name());
-		stateSalesTax = (BigDecimal) value.get(Fields.stateSalesTax.name());
-		citySalesTax = (BigDecimal) value.get(Fields.citySalesTax.name());
-		cityLocalSalesTax = (BigDecimal) value.get(Fields.cityLocalSalesTax
-				.name());
-		countySalesTax = (BigDecimal) value.get(Fields.countySalesTax.name());
-		countyLocalSalesTax = (BigDecimal) value.get(Fields.countyLocalSalesTax
-				.name());
-		comboSalesTax = (BigDecimal) value.get(Fields.comboSalesTax.name());
-		stateUseTax = (BigDecimal) value.get(Fields.stateUseTax.name());
-		cityUseTax = (BigDecimal) value.get(Fields.cityUseTax.name());
-		cityLocalUseTax = (BigDecimal) value.get(Fields.cityLocalUseTax.name());
-		countyUseTax = (BigDecimal) value.get(Fields.countyUseTax.name());
-		countyLocalUseTax = (BigDecimal) value.get(Fields.countyLocalUseTax
-				.name());
-		comboUseTax = (BigDecimal) value.get(Fields.comboUseTax.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		zipCode = (String) value.get(FIELD_ZIP_CODE);
+		stateCode = (String) value.get(FIELD_STATE_CODE);
+		city = (String) value.get(FIELD_CITY);
+		county = (String) value.get(FIELD_COUNTY);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		countyFips = (String) value.get(FIELD_COUNTY_FIPS);
+		countyDefault = (String) value.get(FIELD_COUNTY_DEFAULT);
+		generalDefault = (String) value.get(FIELD_GENERAL_DEFAULT);
+		insideCity = (String) value.get(FIELD_INSIDE_CITY);
+		geoCode = (String) value.get(FIELD_GEO_CODE);
+		stateSalesTax = (BigDecimal) value.get(FIELD_STATE_SALES_TAX);
+		citySalesTax = (BigDecimal) value.get(FIELD_CITY_SALES_TAX);
+		cityLocalSalesTax = (BigDecimal) value.get(FIELD_CITY_LOCAL_SALES_TAX);
+		countySalesTax = (BigDecimal) value.get(FIELD_COUNTY_SALES_TAX);
+		countyLocalSalesTax = (BigDecimal) value
+				.get(FIELD_COUNTY_LOCAL_SALES_TAX);
+		comboSalesTax = (BigDecimal) value.get(FIELD_COMBO_SALES_TAX);
+		stateUseTax = (BigDecimal) value.get(FIELD_STATE_USE_TAX);
+		cityUseTax = (BigDecimal) value.get(FIELD_CITY_USE_TAX);
+		cityLocalUseTax = (BigDecimal) value.get(FIELD_CITY_LOCAL_USE_TAX);
+		countyUseTax = (BigDecimal) value.get(FIELD_COUNTY_USE_TAX);
+		countyLocalUseTax = (BigDecimal) value.get(FIELD_COUNTY_LOCAL_USE_TAX);
+		comboUseTax = (BigDecimal) value.get(FIELD_COMBO_USE_TAX);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ZipSalesTaxLookup fromValue(

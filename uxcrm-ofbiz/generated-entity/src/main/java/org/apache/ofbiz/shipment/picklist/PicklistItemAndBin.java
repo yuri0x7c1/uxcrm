@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.picklist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Picklist Item And Bin
  */
+@FieldNameConstants
 public class PicklistItemAndBin implements Serializable {
 
-	public static final long serialVersionUID = 4760341332461559808L;
+	public static final long serialVersionUID = 6789406290537491456L;
 	public static final String NAME = "PicklistItemAndBin";
 	/**
 	 * Picklist Id
@@ -82,23 +84,19 @@ public class PicklistItemAndBin implements Serializable {
 	@Setter
 	private String itemStatusId;
 
-	public enum Fields {
-		picklistId, primaryOrderId, picklistBinId, primaryShipGroupSeqId, binLocationNumber, orderItemSeqId, inventoryItemId, quantity, orderId, shipGroupSeqId, itemStatusId
-	}
-
 	public PicklistItemAndBin(GenericValue value) {
-		picklistId = (String) value.get(Fields.picklistId.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
-		picklistBinId = (String) value.get(Fields.picklistBinId.name());
-		primaryShipGroupSeqId = (String) value.get(Fields.primaryShipGroupSeqId
-				.name());
-		binLocationNumber = (Long) value.get(Fields.binLocationNumber.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		itemStatusId = (String) value.get(Fields.itemStatusId.name());
+		picklistId = (String) value.get(FIELD_PICKLIST_ID);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
+		picklistBinId = (String) value.get(FIELD_PICKLIST_BIN_ID);
+		primaryShipGroupSeqId = (String) value
+				.get(FIELD_PRIMARY_SHIP_GROUP_SEQ_ID);
+		binLocationNumber = (Long) value.get(FIELD_BIN_LOCATION_NUMBER);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		itemStatusId = (String) value.get(FIELD_ITEM_STATUS_ID);
 	}
 
 	public static PicklistItemAndBin fromValue(

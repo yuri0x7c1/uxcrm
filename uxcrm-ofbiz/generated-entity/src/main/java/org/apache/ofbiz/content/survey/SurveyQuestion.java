@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Question
  */
+@FieldNameConstants
 public class SurveyQuestion implements Serializable {
 
-	public static final long serialVersionUID = 3701340084369569792L;
+	public static final long serialVersionUID = 8875959392207998976L;
 	public static final String NAME = "SurveyQuestion";
 	/**
 	 * Survey Question Id
@@ -94,28 +96,22 @@ public class SurveyQuestion implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyQuestionId, surveyQuestionCategoryId, surveyQuestionTypeId, description, question, hint, enumTypeId, geoId, formatString, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyQuestion(GenericValue value) {
-		surveyQuestionId = (String) value.get(Fields.surveyQuestionId.name());
+		surveyQuestionId = (String) value.get(FIELD_SURVEY_QUESTION_ID);
 		surveyQuestionCategoryId = (String) value
-				.get(Fields.surveyQuestionCategoryId.name());
-		surveyQuestionTypeId = (String) value.get(Fields.surveyQuestionTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		question = (String) value.get(Fields.question.name());
-		hint = (String) value.get(Fields.hint.name());
-		enumTypeId = (String) value.get(Fields.enumTypeId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		formatString = (String) value.get(Fields.formatString.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SURVEY_QUESTION_CATEGORY_ID);
+		surveyQuestionTypeId = (String) value
+				.get(FIELD_SURVEY_QUESTION_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		question = (String) value.get(FIELD_QUESTION);
+		hint = (String) value.get(FIELD_HINT);
+		enumTypeId = (String) value.get(FIELD_ENUM_TYPE_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		formatString = (String) value.get(FIELD_FORMAT_STRING);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyQuestion fromValue(

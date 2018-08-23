@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Maint
  */
+@FieldNameConstants
 public class FixedAssetMaint implements Serializable {
 
-	public static final long serialVersionUID = 1584550599843612672L;
+	public static final long serialVersionUID = 5568329711040707584L;
 	public static final String NAME = "FixedAssetMaint";
 	/**
 	 * Fixed Asset Id
@@ -101,31 +103,22 @@ public class FixedAssetMaint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, maintHistSeqId, statusId, productMaintTypeId, productMaintSeqId, scheduleWorkEffortId, intervalQuantity, intervalUomId, intervalMeterTypeId, purchaseOrderId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetMaint(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		maintHistSeqId = (String) value.get(Fields.maintHistSeqId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		productMaintTypeId = (String) value.get(Fields.productMaintTypeId
-				.name());
-		productMaintSeqId = (String) value.get(Fields.productMaintSeqId.name());
-		scheduleWorkEffortId = (String) value.get(Fields.scheduleWorkEffortId
-				.name());
-		intervalQuantity = (BigDecimal) value.get(Fields.intervalQuantity
-				.name());
-		intervalUomId = (String) value.get(Fields.intervalUomId.name());
-		intervalMeterTypeId = (String) value.get(Fields.intervalMeterTypeId
-				.name());
-		purchaseOrderId = (String) value.get(Fields.purchaseOrderId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		maintHistSeqId = (String) value.get(FIELD_MAINT_HIST_SEQ_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		productMaintTypeId = (String) value.get(FIELD_PRODUCT_MAINT_TYPE_ID);
+		productMaintSeqId = (String) value.get(FIELD_PRODUCT_MAINT_SEQ_ID);
+		scheduleWorkEffortId = (String) value
+				.get(FIELD_SCHEDULE_WORK_EFFORT_ID);
+		intervalQuantity = (BigDecimal) value.get(FIELD_INTERVAL_QUANTITY);
+		intervalUomId = (String) value.get(FIELD_INTERVAL_UOM_ID);
+		intervalMeterTypeId = (String) value.get(FIELD_INTERVAL_METER_TYPE_ID);
+		purchaseOrderId = (String) value.get(FIELD_PURCHASE_ORDER_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetMaint fromValue(

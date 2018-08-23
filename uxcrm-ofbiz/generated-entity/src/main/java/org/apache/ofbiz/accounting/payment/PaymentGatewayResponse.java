@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Response
  */
+@FieldNameConstants
 public class PaymentGatewayResponse implements Serializable {
 
-	public static final long serialVersionUID = 9083891671537494016L;
+	public static final long serialVersionUID = 7004250602688033792L;
 	public static final String NAME = "PaymentGatewayResponse";
 	/**
 	 * Payment Gateway Response Id
@@ -173,45 +175,36 @@ public class PaymentGatewayResponse implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayResponseId, paymentServiceTypeEnumId, orderPaymentPreferenceId, paymentMethodTypeId, paymentMethodId, transCodeEnumId, amount, currencyUomId, referenceNum, altReference, subReference, gatewayCode, gatewayFlag, gatewayAvsResult, gatewayCvResult, gatewayScoreResult, gatewayMessage, transactionDate, resultDeclined, resultNsf, resultBadExpire, resultBadCardNumber, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayResponse(GenericValue value) {
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
 		paymentServiceTypeEnumId = (String) value
-				.get(Fields.paymentServiceTypeEnumId.name());
+				.get(FIELD_PAYMENT_SERVICE_TYPE_ENUM_ID);
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		transCodeEnumId = (String) value.get(Fields.transCodeEnumId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		referenceNum = (String) value.get(Fields.referenceNum.name());
-		altReference = (String) value.get(Fields.altReference.name());
-		subReference = (String) value.get(Fields.subReference.name());
-		gatewayCode = (String) value.get(Fields.gatewayCode.name());
-		gatewayFlag = (String) value.get(Fields.gatewayFlag.name());
-		gatewayAvsResult = (String) value.get(Fields.gatewayAvsResult.name());
-		gatewayCvResult = (String) value.get(Fields.gatewayCvResult.name());
-		gatewayScoreResult = (String) value.get(Fields.gatewayScoreResult
-				.name());
-		gatewayMessage = (String) value.get(Fields.gatewayMessage.name());
-		transactionDate = (Timestamp) value.get(Fields.transactionDate.name());
-		resultDeclined = (String) value.get(Fields.resultDeclined.name());
-		resultNsf = (String) value.get(Fields.resultNsf.name());
-		resultBadExpire = (String) value.get(Fields.resultBadExpire.name());
-		resultBadCardNumber = (String) value.get(Fields.resultBadCardNumber
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		transCodeEnumId = (String) value.get(FIELD_TRANS_CODE_ENUM_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		referenceNum = (String) value.get(FIELD_REFERENCE_NUM);
+		altReference = (String) value.get(FIELD_ALT_REFERENCE);
+		subReference = (String) value.get(FIELD_SUB_REFERENCE);
+		gatewayCode = (String) value.get(FIELD_GATEWAY_CODE);
+		gatewayFlag = (String) value.get(FIELD_GATEWAY_FLAG);
+		gatewayAvsResult = (String) value.get(FIELD_GATEWAY_AVS_RESULT);
+		gatewayCvResult = (String) value.get(FIELD_GATEWAY_CV_RESULT);
+		gatewayScoreResult = (String) value.get(FIELD_GATEWAY_SCORE_RESULT);
+		gatewayMessage = (String) value.get(FIELD_GATEWAY_MESSAGE);
+		transactionDate = (Timestamp) value.get(FIELD_TRANSACTION_DATE);
+		resultDeclined = (String) value.get(FIELD_RESULT_DECLINED);
+		resultNsf = (String) value.get(FIELD_RESULT_NSF);
+		resultBadExpire = (String) value.get(FIELD_RESULT_BAD_EXPIRE);
+		resultBadCardNumber = (String) value.get(FIELD_RESULT_BAD_CARD_NUMBER);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayResponse fromValue(

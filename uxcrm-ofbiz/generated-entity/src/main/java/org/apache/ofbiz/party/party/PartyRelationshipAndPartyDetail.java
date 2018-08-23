@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Relationship And Party Detail
  */
+@FieldNameConstants
 public class PartyRelationshipAndPartyDetail implements Serializable {
 
-	public static final long serialVersionUID = 5062705018390557696L;
+	public static final long serialVersionUID = 2055164542284853248L;
 	public static final String NAME = "PartyRelationshipAndPartyDetail";
 	/**
 	 * Rel Parent Type Id
@@ -238,51 +240,45 @@ public class PartyRelationshipAndPartyDetail implements Serializable {
 	@Setter
 	private String partyIdTo;
 
-	public enum Fields {
-		relParentTypeId, partyId, partyTypeId, description, partyStatusId, toFirstName, toMiddleName, toLastName, tofirstNameLocal, toLastNameLocal, toPersonalTitle, toSuffix, toGroupName, toGroupNameLocal, fromFirstName, fromMiddleName, fromLastName, fromfirstNameLocal, fromLastNameLocal, fromPersonalTitle, fromSuffix, fromGroupName, fromGroupNameLocal, roleTypeIdTo, partyIdFrom, positionTitle, comments, priorityTypeId, permissionsEnumId, roleTypeIdFrom, thruDate, fromDate, relationshipName, securityGroupId, partyRelationshipTypeId, statusId, partyIdTo
-	}
-
 	public PartyRelationshipAndPartyDetail(GenericValue value) {
-		relParentTypeId = (String) value.get(Fields.relParentTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		partyStatusId = (String) value.get(Fields.partyStatusId.name());
-		toFirstName = (String) value.get(Fields.toFirstName.name());
-		toMiddleName = (String) value.get(Fields.toMiddleName.name());
-		toLastName = (String) value.get(Fields.toLastName.name());
-		tofirstNameLocal = (String) value.get(Fields.tofirstNameLocal.name());
-		toLastNameLocal = (String) value.get(Fields.toLastNameLocal.name());
-		toPersonalTitle = (String) value.get(Fields.toPersonalTitle.name());
-		toSuffix = (String) value.get(Fields.toSuffix.name());
-		toGroupName = (String) value.get(Fields.toGroupName.name());
-		toGroupNameLocal = (String) value.get(Fields.toGroupNameLocal.name());
-		fromFirstName = (String) value.get(Fields.fromFirstName.name());
-		fromMiddleName = (String) value.get(Fields.fromMiddleName.name());
-		fromLastName = (String) value.get(Fields.fromLastName.name());
-		fromfirstNameLocal = (String) value.get(Fields.fromfirstNameLocal
-				.name());
-		fromLastNameLocal = (String) value.get(Fields.fromLastNameLocal.name());
-		fromPersonalTitle = (String) value.get(Fields.fromPersonalTitle.name());
-		fromSuffix = (String) value.get(Fields.fromSuffix.name());
-		fromGroupName = (String) value.get(Fields.fromGroupName.name());
-		fromGroupNameLocal = (String) value.get(Fields.fromGroupNameLocal
-				.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		positionTitle = (String) value.get(Fields.positionTitle.name());
-		comments = (String) value.get(Fields.comments.name());
-		priorityTypeId = (String) value.get(Fields.priorityTypeId.name());
-		permissionsEnumId = (String) value.get(Fields.permissionsEnumId.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		relationshipName = (String) value.get(Fields.relationshipName.name());
-		securityGroupId = (String) value.get(Fields.securityGroupId.name());
+		relParentTypeId = (String) value.get(FIELD_REL_PARENT_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		partyStatusId = (String) value.get(FIELD_PARTY_STATUS_ID);
+		toFirstName = (String) value.get(FIELD_TO_FIRST_NAME);
+		toMiddleName = (String) value.get(FIELD_TO_MIDDLE_NAME);
+		toLastName = (String) value.get(FIELD_TO_LAST_NAME);
+		tofirstNameLocal = (String) value.get(FIELD_TOFIRST_NAME_LOCAL);
+		toLastNameLocal = (String) value.get(FIELD_TO_LAST_NAME_LOCAL);
+		toPersonalTitle = (String) value.get(FIELD_TO_PERSONAL_TITLE);
+		toSuffix = (String) value.get(FIELD_TO_SUFFIX);
+		toGroupName = (String) value.get(FIELD_TO_GROUP_NAME);
+		toGroupNameLocal = (String) value.get(FIELD_TO_GROUP_NAME_LOCAL);
+		fromFirstName = (String) value.get(FIELD_FROM_FIRST_NAME);
+		fromMiddleName = (String) value.get(FIELD_FROM_MIDDLE_NAME);
+		fromLastName = (String) value.get(FIELD_FROM_LAST_NAME);
+		fromfirstNameLocal = (String) value.get(FIELD_FROMFIRST_NAME_LOCAL);
+		fromLastNameLocal = (String) value.get(FIELD_FROM_LAST_NAME_LOCAL);
+		fromPersonalTitle = (String) value.get(FIELD_FROM_PERSONAL_TITLE);
+		fromSuffix = (String) value.get(FIELD_FROM_SUFFIX);
+		fromGroupName = (String) value.get(FIELD_FROM_GROUP_NAME);
+		fromGroupNameLocal = (String) value.get(FIELD_FROM_GROUP_NAME_LOCAL);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		positionTitle = (String) value.get(FIELD_POSITION_TITLE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		priorityTypeId = (String) value.get(FIELD_PRIORITY_TYPE_ID);
+		permissionsEnumId = (String) value.get(FIELD_PERMISSIONS_ENUM_ID);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		relationshipName = (String) value.get(FIELD_RELATIONSHIP_NAME);
+		securityGroupId = (String) value.get(FIELD_SECURITY_GROUP_ID);
 		partyRelationshipTypeId = (String) value
-				.get(Fields.partyRelationshipTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
+				.get(FIELD_PARTY_RELATIONSHIP_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
 	}
 
 	public static PartyRelationshipAndPartyDetail fromValue(

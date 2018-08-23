@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.securitygroup;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Security Permission
  */
+@FieldNameConstants
 public class SecurityPermission implements Serializable {
 
-	public static final long serialVersionUID = 1724982565364466688L;
+	public static final long serialVersionUID = 83691460434384896L;
 	public static final String NAME = "SecurityPermission";
 	/**
 	 * Permission Id
@@ -52,19 +54,13 @@ public class SecurityPermission implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		permissionId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SecurityPermission(GenericValue value) {
-		permissionId = (String) value.get(Fields.permissionId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		permissionId = (String) value.get(FIELD_PERMISSION_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SecurityPermission fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Platform Type
  */
+@FieldNameConstants
 public class PlatformType implements Serializable {
 
-	public static final long serialVersionUID = 7809241611351837696L;
+	public static final long serialVersionUID = 7256787056411825152L;
 	public static final String NAME = "PlatformType";
 	/**
 	 * Platform Type Id
@@ -58,20 +60,14 @@ public class PlatformType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		platformTypeId, platformName, platformVersion, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PlatformType(GenericValue value) {
-		platformTypeId = (String) value.get(Fields.platformTypeId.name());
-		platformName = (String) value.get(Fields.platformName.name());
-		platformVersion = (String) value.get(Fields.platformVersion.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		platformTypeId = (String) value.get(FIELD_PLATFORM_TYPE_ID);
+		platformName = (String) value.get(FIELD_PLATFORM_NAME);
+		platformVersion = (String) value.get(FIELD_PLATFORM_VERSION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PlatformType fromValue(

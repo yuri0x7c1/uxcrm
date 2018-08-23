@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.segment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Segment Group
  */
+@FieldNameConstants
 public class SegmentGroup implements Serializable {
 
-	public static final long serialVersionUID = 7811073118306649088L;
+	public static final long serialVersionUID = 1143196360611576832L;
 	public static final String NAME = "SegmentGroup";
 	/**
 	 * Segment Group Id
@@ -64,22 +66,15 @@ public class SegmentGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		segmentGroupId, segmentGroupTypeId, description, productStoreId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SegmentGroup(GenericValue value) {
-		segmentGroupId = (String) value.get(Fields.segmentGroupId.name());
-		segmentGroupTypeId = (String) value.get(Fields.segmentGroupTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		segmentGroupId = (String) value.get(FIELD_SEGMENT_GROUP_ID);
+		segmentGroupTypeId = (String) value.get(FIELD_SEGMENT_GROUP_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SegmentGroup fromValue(

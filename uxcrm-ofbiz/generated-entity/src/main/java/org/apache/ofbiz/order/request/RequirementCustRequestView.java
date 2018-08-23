@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Requirement Cust Request View
  */
+@FieldNameConstants
 public class RequirementCustRequestView implements Serializable {
 
-	public static final long serialVersionUID = 6254711904169017344L;
+	public static final long serialVersionUID = 7917331380734151680L;
 	public static final String NAME = "RequirementCustRequestView";
 	/**
 	 * Cust Request Id
@@ -95,26 +97,22 @@ public class RequirementCustRequestView implements Serializable {
 	@Setter
 	private BigDecimal maximumAmount;
 
-	public enum Fields {
-		custRequestId, custRequestItemSeqId, requirementId, requirementTypeId, description, productId, estimatedBudget, quantity, requirementStartDate, requiredByDate, statusId, priority, maximumAmount
-	}
-
 	public RequirementCustRequestView(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
-		requirementId = (String) value.get(Fields.requirementId.name());
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		productId = (String) value.get(Fields.productId.name());
-		estimatedBudget = (BigDecimal) value.get(Fields.estimatedBudget.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		estimatedBudget = (BigDecimal) value.get(FIELD_ESTIMATED_BUDGET);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
 		requirementStartDate = (Timestamp) value
-				.get(Fields.requirementStartDate.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		priority = (Long) value.get(Fields.priority.name());
-		maximumAmount = (BigDecimal) value.get(Fields.maximumAmount.name());
+				.get(FIELD_REQUIREMENT_START_DATE);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		maximumAmount = (BigDecimal) value.get(FIELD_MAXIMUM_AMOUNT);
 	}
 
 	public static RequirementCustRequestView fromValue(

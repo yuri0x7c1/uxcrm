@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Item Price Info
  */
+@FieldNameConstants
 public class OrderItemPriceInfo implements Serializable {
 
-	public static final long serialVersionUID = 5854750054358179840L;
+	public static final long serialVersionUID = 7705809388288310272L;
 	public static final String NAME = "OrderItemPriceInfo";
 	/**
 	 * Order Item Price Info Id
@@ -89,28 +91,21 @@ public class OrderItemPriceInfo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderItemPriceInfoId, orderId, orderItemSeqId, productPriceRuleId, productPriceActionSeqId, modifyAmount, description, rateCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemPriceInfo(GenericValue value) {
-		orderItemPriceInfoId = (String) value.get(Fields.orderItemPriceInfoId
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		productPriceRuleId = (String) value.get(Fields.productPriceRuleId
-				.name());
+		orderItemPriceInfoId = (String) value
+				.get(FIELD_ORDER_ITEM_PRICE_INFO_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		productPriceRuleId = (String) value.get(FIELD_PRODUCT_PRICE_RULE_ID);
 		productPriceActionSeqId = (String) value
-				.get(Fields.productPriceActionSeqId.name());
-		modifyAmount = (BigDecimal) value.get(Fields.modifyAmount.name());
-		description = (String) value.get(Fields.description.name());
-		rateCode = (String) value.get(Fields.rateCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_PRICE_ACTION_SEQ_ID);
+		modifyAmount = (BigDecimal) value.get(FIELD_MODIFY_AMOUNT);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		rateCode = (String) value.get(FIELD_RATE_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemPriceInfo fromValue(

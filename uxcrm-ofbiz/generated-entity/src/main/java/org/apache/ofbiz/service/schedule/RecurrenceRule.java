@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Recurrence Rule
  */
+@FieldNameConstants
 public class RecurrenceRule implements Serializable {
 
-	public static final long serialVersionUID = 271843258802840576L;
+	public static final long serialVersionUID = 3576115689832863744L;
 	public static final String NAME = "RecurrenceRule";
 	/**
 	 * Recurrence Rule Id
@@ -136,33 +138,27 @@ public class RecurrenceRule implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		recurrenceRuleId, frequency, untilDateTime, countNumber, intervalNumber, bySecondList, byMinuteList, byHourList, byDayList, byMonthDayList, byYearDayList, byWeekNoList, byMonthList, bySetPosList, weekStart, xName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RecurrenceRule(GenericValue value) {
-		recurrenceRuleId = (String) value.get(Fields.recurrenceRuleId.name());
-		frequency = (String) value.get(Fields.frequency.name());
-		untilDateTime = (Timestamp) value.get(Fields.untilDateTime.name());
-		countNumber = (Long) value.get(Fields.countNumber.name());
-		intervalNumber = (Long) value.get(Fields.intervalNumber.name());
-		bySecondList = (String) value.get(Fields.bySecondList.name());
-		byMinuteList = (String) value.get(Fields.byMinuteList.name());
-		byHourList = (String) value.get(Fields.byHourList.name());
-		byDayList = (String) value.get(Fields.byDayList.name());
-		byMonthDayList = (String) value.get(Fields.byMonthDayList.name());
-		byYearDayList = (String) value.get(Fields.byYearDayList.name());
-		byWeekNoList = (String) value.get(Fields.byWeekNoList.name());
-		byMonthList = (String) value.get(Fields.byMonthList.name());
-		bySetPosList = (String) value.get(Fields.bySetPosList.name());
-		weekStart = (String) value.get(Fields.weekStart.name());
-		xName = (String) value.get(Fields.xName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		recurrenceRuleId = (String) value.get(FIELD_RECURRENCE_RULE_ID);
+		frequency = (String) value.get(FIELD_FREQUENCY);
+		untilDateTime = (Timestamp) value.get(FIELD_UNTIL_DATE_TIME);
+		countNumber = (Long) value.get(FIELD_COUNT_NUMBER);
+		intervalNumber = (Long) value.get(FIELD_INTERVAL_NUMBER);
+		bySecondList = (String) value.get(FIELD_BY_SECOND_LIST);
+		byMinuteList = (String) value.get(FIELD_BY_MINUTE_LIST);
+		byHourList = (String) value.get(FIELD_BY_HOUR_LIST);
+		byDayList = (String) value.get(FIELD_BY_DAY_LIST);
+		byMonthDayList = (String) value.get(FIELD_BY_MONTH_DAY_LIST);
+		byYearDayList = (String) value.get(FIELD_BY_YEAR_DAY_LIST);
+		byWeekNoList = (String) value.get(FIELD_BY_WEEK_NO_LIST);
+		byMonthList = (String) value.get(FIELD_BY_MONTH_LIST);
+		bySetPosList = (String) value.get(FIELD_BY_SET_POS_LIST);
+		weekStart = (String) value.get(FIELD_WEEK_START);
+		xName = (String) value.get(FIELD_X_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RecurrenceRule fromValue(

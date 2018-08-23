@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Fixed Asset Assignment
  */
+@FieldNameConstants
 public class PartyFixedAssetAssignment implements Serializable {
 
-	public static final long serialVersionUID = 8602766389013821440L;
+	public static final long serialVersionUID = 4574163861113239552L;
 	public static final String NAME = "PartyFixedAssetAssignment";
 	/**
 	 * Party Id
@@ -88,25 +90,19 @@ public class PartyFixedAssetAssignment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, roleTypeId, fixedAssetId, fromDate, thruDate, allocatedDate, statusId, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyFixedAssetAssignment(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		allocatedDate = (Timestamp) value.get(Fields.allocatedDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		allocatedDate = (Timestamp) value.get(FIELD_ALLOCATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyFixedAssetAssignment fromValue(

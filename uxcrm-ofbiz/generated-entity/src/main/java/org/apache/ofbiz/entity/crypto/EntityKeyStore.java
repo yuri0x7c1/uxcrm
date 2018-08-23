@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.crypto;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Key Store
  */
+@FieldNameConstants
 public class EntityKeyStore implements Serializable {
 
-	public static final long serialVersionUID = 2047463482849951744L;
+	public static final long serialVersionUID = 6253456849407731712L;
 	public static final String NAME = "EntityKeyStore";
 	/**
 	 * Key Name
@@ -52,19 +54,13 @@ public class EntityKeyStore implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		keyName, keyText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntityKeyStore(GenericValue value) {
-		keyName = (String) value.get(Fields.keyName.name());
-		keyText = (String) value.get(Fields.keyText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		keyName = (String) value.get(FIELD_KEY_NAME);
+		keyText = (String) value.get(FIELD_KEY_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntityKeyStore fromValue(

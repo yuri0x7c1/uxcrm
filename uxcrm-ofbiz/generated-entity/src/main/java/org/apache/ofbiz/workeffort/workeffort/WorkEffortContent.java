@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Content
  */
+@FieldNameConstants
 public class WorkEffortContent implements Serializable {
 
-	public static final long serialVersionUID = 2868574549836232704L;
+	public static final long serialVersionUID = 5429657098214241280L;
 	public static final String NAME = "WorkEffortContent";
 	/**
 	 * Work Effort Id
@@ -70,23 +72,17 @@ public class WorkEffortContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, contentId, workEffortContentTypeId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortContent(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		contentId = (String) value.get(Fields.contentId.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
 		workEffortContentTypeId = (String) value
-				.get(Fields.workEffortContentTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_WORK_EFFORT_CONTENT_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortContent fromValue(

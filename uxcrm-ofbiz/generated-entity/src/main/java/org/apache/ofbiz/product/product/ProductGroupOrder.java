@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Group Order
  */
+@FieldNameConstants
 public class ProductGroupOrder implements Serializable {
 
-	public static final long serialVersionUID = 82680394074941440L;
+	public static final long serialVersionUID = 725017632899935232L;
 	public static final String NAME = "ProductGroupOrder";
 	/**
 	 * Group Order Id
@@ -89,25 +91,19 @@ public class ProductGroupOrder implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		groupOrderId, productId, fromDate, thruDate, statusId, reqOrderQty, soldOrderQty, jobId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductGroupOrder(GenericValue value) {
-		groupOrderId = (String) value.get(Fields.groupOrderId.name());
-		productId = (String) value.get(Fields.productId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		reqOrderQty = (BigDecimal) value.get(Fields.reqOrderQty.name());
-		soldOrderQty = (BigDecimal) value.get(Fields.soldOrderQty.name());
-		jobId = (String) value.get(Fields.jobId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		groupOrderId = (String) value.get(FIELD_GROUP_ORDER_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		reqOrderQty = (BigDecimal) value.get(FIELD_REQ_ORDER_QTY);
+		soldOrderQty = (BigDecimal) value.get(FIELD_SOLD_ORDER_QTY);
+		jobId = (String) value.get(FIELD_JOB_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductGroupOrder fromValue(

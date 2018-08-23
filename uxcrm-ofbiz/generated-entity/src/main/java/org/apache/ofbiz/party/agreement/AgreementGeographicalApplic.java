@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Agreement Geographical Applic
  */
+@FieldNameConstants
 public class AgreementGeographicalApplic implements Serializable {
 
-	public static final long serialVersionUID = 2215131551333539840L;
+	public static final long serialVersionUID = 203545091447993344L;
 	public static final String NAME = "AgreementGeographicalApplic";
 	/**
 	 * Agreement Id
@@ -58,21 +60,14 @@ public class AgreementGeographicalApplic implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		agreementId, agreementItemSeqId, geoId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AgreementGeographicalApplic(GenericValue value) {
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AgreementGeographicalApplic fromValue(

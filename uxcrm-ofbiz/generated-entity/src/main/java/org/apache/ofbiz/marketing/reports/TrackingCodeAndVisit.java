@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code And Visit
  */
+@FieldNameConstants
 public class TrackingCodeAndVisit implements Serializable {
 
-	public static final long serialVersionUID = 997787688622063616L;
+	public static final long serialVersionUID = 4545287923573361664L;
 	public static final String NAME = "TrackingCodeAndVisit";
 	/**
 	 * Tracking Code Id
@@ -34,14 +36,10 @@ public class TrackingCodeAndVisit implements Serializable {
 	@Setter
 	private Timestamp fromDate;
 
-	public enum Fields {
-		trackingCodeId, visitId, fromDate
-	}
-
 	public TrackingCodeAndVisit(GenericValue value) {
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
-		visitId = (Long) value.get(Fields.visitId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
+		visitId = (Long) value.get(FIELD_VISIT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
 	}
 
 	public static TrackingCodeAndVisit fromValue(

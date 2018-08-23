@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset
  */
+@FieldNameConstants
 public class FixedAsset implements Serializable {
 
-	public static final long serialVersionUID = 7237933209476506624L;
+	public static final long serialVersionUID = 1386733737949257728L;
 	public static final String NAME = "FixedAsset";
 	/**
 	 * Fixed Asset Id
@@ -192,49 +194,38 @@ public class FixedAsset implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, fixedAssetTypeId, parentFixedAssetId, instanceOfProductId, classEnumId, partyId, roleTypeId, fixedAssetName, acquireOrderId, acquireOrderItemSeqId, dateAcquired, dateLastServiced, dateNextService, expectedEndOfLife, actualEndOfLife, productionCapacity, uomId, calendarId, serialNumber, locatedAtFacilityId, locatedAtLocationSeqId, salvageValue, depreciation, purchaseCost, purchaseCostUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAsset(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		fixedAssetTypeId = (String) value.get(Fields.fixedAssetTypeId.name());
-		parentFixedAssetId = (String) value.get(Fields.parentFixedAssetId
-				.name());
-		instanceOfProductId = (String) value.get(Fields.instanceOfProductId
-				.name());
-		classEnumId = (String) value.get(Fields.classEnumId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fixedAssetName = (String) value.get(Fields.fixedAssetName.name());
-		acquireOrderId = (String) value.get(Fields.acquireOrderId.name());
-		acquireOrderItemSeqId = (String) value.get(Fields.acquireOrderItemSeqId
-				.name());
-		dateAcquired = (Timestamp) value.get(Fields.dateAcquired.name());
-		dateLastServiced = (Timestamp) value
-				.get(Fields.dateLastServiced.name());
-		dateNextService = (Timestamp) value.get(Fields.dateNextService.name());
-		expectedEndOfLife = (Date) value.get(Fields.expectedEndOfLife.name());
-		actualEndOfLife = (Date) value.get(Fields.actualEndOfLife.name());
-		productionCapacity = (BigDecimal) value.get(Fields.productionCapacity
-				.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		calendarId = (String) value.get(Fields.calendarId.name());
-		serialNumber = (String) value.get(Fields.serialNumber.name());
-		locatedAtFacilityId = (String) value.get(Fields.locatedAtFacilityId
-				.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		fixedAssetTypeId = (String) value.get(FIELD_FIXED_ASSET_TYPE_ID);
+		parentFixedAssetId = (String) value.get(FIELD_PARENT_FIXED_ASSET_ID);
+		instanceOfProductId = (String) value.get(FIELD_INSTANCE_OF_PRODUCT_ID);
+		classEnumId = (String) value.get(FIELD_CLASS_ENUM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fixedAssetName = (String) value.get(FIELD_FIXED_ASSET_NAME);
+		acquireOrderId = (String) value.get(FIELD_ACQUIRE_ORDER_ID);
+		acquireOrderItemSeqId = (String) value
+				.get(FIELD_ACQUIRE_ORDER_ITEM_SEQ_ID);
+		dateAcquired = (Timestamp) value.get(FIELD_DATE_ACQUIRED);
+		dateLastServiced = (Timestamp) value.get(FIELD_DATE_LAST_SERVICED);
+		dateNextService = (Timestamp) value.get(FIELD_DATE_NEXT_SERVICE);
+		expectedEndOfLife = (Date) value.get(FIELD_EXPECTED_END_OF_LIFE);
+		actualEndOfLife = (Date) value.get(FIELD_ACTUAL_END_OF_LIFE);
+		productionCapacity = (BigDecimal) value.get(FIELD_PRODUCTION_CAPACITY);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		calendarId = (String) value.get(FIELD_CALENDAR_ID);
+		serialNumber = (String) value.get(FIELD_SERIAL_NUMBER);
+		locatedAtFacilityId = (String) value.get(FIELD_LOCATED_AT_FACILITY_ID);
 		locatedAtLocationSeqId = (String) value
-				.get(Fields.locatedAtLocationSeqId.name());
-		salvageValue = (BigDecimal) value.get(Fields.salvageValue.name());
-		depreciation = (BigDecimal) value.get(Fields.depreciation.name());
-		purchaseCost = (BigDecimal) value.get(Fields.purchaseCost.name());
-		purchaseCostUomId = (String) value.get(Fields.purchaseCostUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LOCATED_AT_LOCATION_SEQ_ID);
+		salvageValue = (BigDecimal) value.get(FIELD_SALVAGE_VALUE);
+		depreciation = (BigDecimal) value.get(FIELD_DEPRECIATION);
+		purchaseCost = (BigDecimal) value.get(FIELD_PURCHASE_COST);
+		purchaseCostUomId = (String) value.get(FIELD_PURCHASE_COST_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAsset fromValue(

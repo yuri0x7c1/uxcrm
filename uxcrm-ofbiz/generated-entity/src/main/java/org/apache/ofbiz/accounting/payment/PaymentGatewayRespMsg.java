@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Resp Msg
  */
+@FieldNameConstants
 public class PaymentGatewayRespMsg implements Serializable {
 
-	public static final long serialVersionUID = 534600913500369920L;
+	public static final long serialVersionUID = 6348607848936376320L;
 	public static final String NAME = "PaymentGatewayRespMsg";
 	/**
 	 * Payment Gateway Resp Msg Id
@@ -58,22 +60,16 @@ public class PaymentGatewayRespMsg implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayRespMsgId, paymentGatewayResponseId, pgrMessage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayRespMsg(GenericValue value) {
 		paymentGatewayRespMsgId = (String) value
-				.get(Fields.paymentGatewayRespMsgId.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESP_MSG_ID);
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
-		pgrMessage = (String) value.get(Fields.pgrMessage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
+		pgrMessage = (String) value.get(FIELD_PGR_MESSAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayRespMsg fromValue(

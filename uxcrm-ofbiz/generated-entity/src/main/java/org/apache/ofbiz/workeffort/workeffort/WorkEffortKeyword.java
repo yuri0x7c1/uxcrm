@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Keyword
  */
+@FieldNameConstants
 public class WorkEffortKeyword implements Serializable {
 
-	public static final long serialVersionUID = 1869345170631600128L;
+	public static final long serialVersionUID = 3402774442780537856L;
 	public static final String NAME = "WorkEffortKeyword";
 	/**
 	 * Work Effort Id
@@ -58,20 +60,14 @@ public class WorkEffortKeyword implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, keyword, relevancyWeight, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortKeyword(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		keyword = (String) value.get(Fields.keyword.name());
-		relevancyWeight = (Long) value.get(Fields.relevancyWeight.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		keyword = (String) value.get(FIELD_KEYWORD);
+		relevancyWeight = (Long) value.get(FIELD_RELEVANCY_WEIGHT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortKeyword fromValue(

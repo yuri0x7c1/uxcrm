@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Work Effort And Child
  */
+@FieldNameConstants
 public class WorkEffortAndChild implements Serializable {
 
-	public static final long serialVersionUID = 6226407907909617664L;
+	public static final long serialVersionUID = 2087759612775102464L;
 	public static final String NAME = "WorkEffortAndChild";
 	/**
 	 * Work Effort Id
@@ -69,24 +71,18 @@ public class WorkEffortAndChild implements Serializable {
 	@Setter
 	private String childCurrentStatusId;
 
-	public enum Fields {
-		workEffortId, workEffortName, workEffortTypeId, workEffortParentId, currentStatusId, childWorkEffortId, childWorkEffortName, childWorkEffortTypeId, childCurrentStatusId
-	}
-
 	public WorkEffortAndChild(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		workEffortName = (String) value.get(Fields.workEffortName.name());
-		workEffortTypeId = (String) value.get(Fields.workEffortTypeId.name());
-		workEffortParentId = (String) value.get(Fields.workEffortParentId
-				.name());
-		currentStatusId = (String) value.get(Fields.currentStatusId.name());
-		childWorkEffortId = (String) value.get(Fields.childWorkEffortId.name());
-		childWorkEffortName = (String) value.get(Fields.childWorkEffortName
-				.name());
-		childWorkEffortTypeId = (String) value.get(Fields.childWorkEffortTypeId
-				.name());
-		childCurrentStatusId = (String) value.get(Fields.childCurrentStatusId
-				.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		workEffortName = (String) value.get(FIELD_WORK_EFFORT_NAME);
+		workEffortTypeId = (String) value.get(FIELD_WORK_EFFORT_TYPE_ID);
+		workEffortParentId = (String) value.get(FIELD_WORK_EFFORT_PARENT_ID);
+		currentStatusId = (String) value.get(FIELD_CURRENT_STATUS_ID);
+		childWorkEffortId = (String) value.get(FIELD_CHILD_WORK_EFFORT_ID);
+		childWorkEffortName = (String) value.get(FIELD_CHILD_WORK_EFFORT_NAME);
+		childWorkEffortTypeId = (String) value
+				.get(FIELD_CHILD_WORK_EFFORT_TYPE_ID);
+		childCurrentStatusId = (String) value
+				.get(FIELD_CHILD_CURRENT_STATUS_ID);
 	}
 
 	public static WorkEffortAndChild fromValue(

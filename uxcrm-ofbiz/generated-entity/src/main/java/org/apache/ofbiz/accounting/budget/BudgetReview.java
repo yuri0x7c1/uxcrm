@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Budget Review
  */
+@FieldNameConstants
 public class BudgetReview implements Serializable {
 
-	public static final long serialVersionUID = 6223267561122100224L;
+	public static final long serialVersionUID = 8263387217247677440L;
 	public static final String NAME = "BudgetReview";
 	/**
 	 * Budget Id
@@ -70,23 +72,17 @@ public class BudgetReview implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, budgetReviewId, partyId, budgetReviewResultTypeId, reviewDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetReview(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetReviewId = (String) value.get(Fields.budgetReviewId.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetReviewId = (String) value.get(FIELD_BUDGET_REVIEW_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 		budgetReviewResultTypeId = (String) value
-				.get(Fields.budgetReviewResultTypeId.name());
-		reviewDate = (Timestamp) value.get(Fields.reviewDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_BUDGET_REVIEW_RESULT_TYPE_ID);
+		reviewDate = (Timestamp) value.get(FIELD_REVIEW_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetReview fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Party And Group
  */
+@FieldNameConstants
 public class PartyAndGroup implements Serializable {
 
-	public static final long serialVersionUID = 2077337214545511424L;
+	public static final long serialVersionUID = 5456665823421654016L;
 	public static final String NAME = "PartyAndGroup";
 	/**
 	 * Last Modified Date
@@ -137,35 +139,29 @@ public class PartyAndGroup implements Serializable {
 	@Setter
 	private BigDecimal annualRevenue;
 
-	public enum Fields {
-		lastModifiedDate, externalId, description, isUnread, partyTypeId, lastModifiedByUserLogin, dataSourceId, createdDate, statusId, preferredCurrencyUomId, partyId, createdByUserLogin, comments, tickerSymbol, logoImageUrl, groupName, groupNameLocal, numEmployees, officeSiteName, annualRevenue
-	}
-
 	public PartyAndGroup(GenericValue value) {
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		description = (String) value.get(Fields.description.name());
-		isUnread = (String) value.get(Fields.isUnread.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isUnread = (String) value.get(FIELD_IS_UNREAD);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredCurrencyUomId = (String) value
-				.get(Fields.preferredCurrencyUomId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		comments = (String) value.get(Fields.comments.name());
-		tickerSymbol = (String) value.get(Fields.tickerSymbol.name());
-		logoImageUrl = (String) value.get(Fields.logoImageUrl.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		numEmployees = (Long) value.get(Fields.numEmployees.name());
-		officeSiteName = (String) value.get(Fields.officeSiteName.name());
-		annualRevenue = (BigDecimal) value.get(Fields.annualRevenue.name());
+				.get(FIELD_PREFERRED_CURRENCY_UOM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		comments = (String) value.get(FIELD_COMMENTS);
+		tickerSymbol = (String) value.get(FIELD_TICKER_SYMBOL);
+		logoImageUrl = (String) value.get(FIELD_LOGO_IMAGE_URL);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		numEmployees = (Long) value.get(FIELD_NUM_EMPLOYEES);
+		officeSiteName = (String) value.get(FIELD_OFFICE_SITE_NAME);
+		annualRevenue = (BigDecimal) value.get(FIELD_ANNUAL_REVENUE);
 	}
 
 	public static PartyAndGroup fromValue(

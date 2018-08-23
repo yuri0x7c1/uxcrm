@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Pay Grade
  */
+@FieldNameConstants
 public class PayGrade implements Serializable {
 
-	public static final long serialVersionUID = 4438799511891017728L;
+	public static final long serialVersionUID = 2054061530253538304L;
 	public static final String NAME = "PayGrade";
 	/**
 	 * Pay Grade Id
@@ -58,20 +60,14 @@ public class PayGrade implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		payGradeId, payGradeName, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PayGrade(GenericValue value) {
-		payGradeId = (String) value.get(Fields.payGradeId.name());
-		payGradeName = (String) value.get(Fields.payGradeName.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		payGradeId = (String) value.get(FIELD_PAY_GRADE_ID);
+		payGradeName = (String) value.get(FIELD_PAY_GRADE_NAME);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PayGrade fromValue(org.apache.ofbiz.entity.GenericValue value) {

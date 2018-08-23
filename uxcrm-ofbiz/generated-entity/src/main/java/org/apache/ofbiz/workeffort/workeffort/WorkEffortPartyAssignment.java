@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Party Assignment
  */
+@FieldNameConstants
 public class WorkEffortPartyAssignment implements Serializable {
 
-	public static final long serialVersionUID = 1585230336201568256L;
+	public static final long serialVersionUID = 2172978027530949632L;
 	public static final String NAME = "WorkEffortPartyAssignment";
 	/**
 	 * Work Effort Id
@@ -124,34 +126,27 @@ public class WorkEffortPartyAssignment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, partyId, roleTypeId, fromDate, thruDate, assignedByUserLoginId, statusId, statusDateTime, expectationEnumId, delegateReasonEnumId, facilityId, comments, mustRsvp, availabilityStatusId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortPartyAssignment(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		assignedByUserLoginId = (String) value.get(Fields.assignedByUserLoginId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDateTime = (Timestamp) value.get(Fields.statusDateTime.name());
-		expectationEnumId = (String) value.get(Fields.expectationEnumId.name());
-		delegateReasonEnumId = (String) value.get(Fields.delegateReasonEnumId
-				.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		comments = (String) value.get(Fields.comments.name());
-		mustRsvp = (String) value.get(Fields.mustRsvp.name());
-		availabilityStatusId = (String) value.get(Fields.availabilityStatusId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		assignedByUserLoginId = (String) value
+				.get(FIELD_ASSIGNED_BY_USER_LOGIN_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDateTime = (Timestamp) value.get(FIELD_STATUS_DATE_TIME);
+		expectationEnumId = (String) value.get(FIELD_EXPECTATION_ENUM_ID);
+		delegateReasonEnumId = (String) value
+				.get(FIELD_DELEGATE_REASON_ENUM_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		mustRsvp = (String) value.get(FIELD_MUST_RSVP);
+		availabilityStatusId = (String) value.get(FIELD_AVAILABILITY_STATUS_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortPartyAssignment fromValue(

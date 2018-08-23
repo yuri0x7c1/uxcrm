@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Geo Assoc
  */
+@FieldNameConstants
 public class GeoAssoc implements Serializable {
 
-	public static final long serialVersionUID = 8323925727087676416L;
+	public static final long serialVersionUID = 5691581296028217344L;
 	public static final String NAME = "GeoAssoc";
 	/**
 	 * Geo Id
@@ -58,20 +60,14 @@ public class GeoAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		geoId, geoIdTo, geoAssocTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GeoAssoc(GenericValue value) {
-		geoId = (String) value.get(Fields.geoId.name());
-		geoIdTo = (String) value.get(Fields.geoIdTo.name());
-		geoAssocTypeId = (String) value.get(Fields.geoAssocTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		geoId = (String) value.get(FIELD_GEO_ID);
+		geoIdTo = (String) value.get(FIELD_GEO_ID_TO);
+		geoAssocTypeId = (String) value.get(FIELD_GEO_ASSOC_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GeoAssoc fromValue(org.apache.ofbiz.entity.GenericValue value) {

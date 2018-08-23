@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Product
  */
+@FieldNameConstants
 public class FixedAssetProduct implements Serializable {
 
-	public static final long serialVersionUID = 6457198120892963840L;
+	public static final long serialVersionUID = 1558138991733384192L;
 	public static final String NAME = "FixedAssetProduct";
 	/**
 	 * Fixed Asset Id
@@ -95,27 +97,21 @@ public class FixedAssetProduct implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, productId, fixedAssetProductTypeId, fromDate, thruDate, comments, sequenceNum, quantity, quantityUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetProduct(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		productId = (String) value.get(Fields.productId.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
 		fixedAssetProductTypeId = (String) value
-				.get(Fields.fixedAssetProductTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		quantityUomId = (String) value.get(Fields.quantityUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_FIXED_ASSET_PRODUCT_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		quantityUomId = (String) value.get(FIELD_QUANTITY_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetProduct fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Facility Location
  */
+@FieldNameConstants
 public class FacilityLocation implements Serializable {
 
-	public static final long serialVersionUID = 8143831453135456256L;
+	public static final long serialVersionUID = 8376231950018784256L;
 	public static final String NAME = "FacilityLocation";
 	/**
 	 * Facility Id
@@ -94,27 +96,20 @@ public class FacilityLocation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		facilityId, locationSeqId, locationTypeEnumId, areaId, aisleId, sectionId, levelId, positionId, geoPointId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FacilityLocation(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		locationTypeEnumId = (String) value.get(Fields.locationTypeEnumId
-				.name());
-		areaId = (String) value.get(Fields.areaId.name());
-		aisleId = (String) value.get(Fields.aisleId.name());
-		sectionId = (String) value.get(Fields.sectionId.name());
-		levelId = (String) value.get(Fields.levelId.name());
-		positionId = (String) value.get(Fields.positionId.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		locationTypeEnumId = (String) value.get(FIELD_LOCATION_TYPE_ENUM_ID);
+		areaId = (String) value.get(FIELD_AREA_ID);
+		aisleId = (String) value.get(FIELD_AISLE_ID);
+		sectionId = (String) value.get(FIELD_SECTION_ID);
+		levelId = (String) value.get(FIELD_LEVEL_ID);
+		positionId = (String) value.get(FIELD_POSITION_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FacilityLocation fromValue(

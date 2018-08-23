@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort And Fulfillment
  */
+@FieldNameConstants
 public class WorkEffortAndFulfillment implements Serializable {
 
-	public static final long serialVersionUID = 7636427061527182336L;
+	public static final long serialVersionUID = 2517025001329288192L;
 	public static final String NAME = "WorkEffortAndFulfillment";
 	/**
 	 * Work Effort Description
@@ -419,107 +421,89 @@ public class WorkEffortAndFulfillment implements Serializable {
 	@Setter
 	private String deliverableId;
 
-	public enum Fields {
-		workEffortDescription, workEffortFixedAssetId, workEffortFacilityId, requirementFacilityId, requirementFixedAssetId, requirementDescription, requirementCreationDate, workEffortId, recurrenceInfoId, workEffortTypeId, reservPersons, revisionNumber, tempExprId, showAsEnumId, infoUrl, universalId, locationDesc, createdByUserLogin, actualMilliSeconds, quantityToProduce, workEffortPurposeTypeId, serviceLoaderName, accommodationSpotId, estimatedStartDate, sendNotificationEmail, noteId, quantityRejected, priority, currentStatusId, runtimeDataId, estimatedMilliSeconds, specialTerms, timeTransparency, actualCompletionDate, reserv2ndPPPerc, totalMoneyAllowed, estimateCalcMethod, workEffortParentId, moneyUomId, reservNthPPPerc, workEffortName, lastModifiedByUserLogin, accommodationMapId, actualStartDate, scopeEnumId, quantityProduced, estimatedSetupMillis, lastModifiedDate, sourceReferenceId, lastStatusUpdate, percentComplete, totalMilliSecondsAllowed, createdDate, actualSetupMillis, estimatedCompletionDate, workReqFulfTypeId, requirementId, reason, quantity, productId, estimatedBudget, requiredByDate, requirementStartDate, requirementTypeId, useCase, statusId, deliverableId
-	}
-
 	public WorkEffortAndFulfillment(GenericValue value) {
-		workEffortDescription = (String) value.get(Fields.workEffortDescription
-				.name());
+		workEffortDescription = (String) value
+				.get(FIELD_WORK_EFFORT_DESCRIPTION);
 		workEffortFixedAssetId = (String) value
-				.get(Fields.workEffortFixedAssetId.name());
-		workEffortFacilityId = (String) value.get(Fields.workEffortFacilityId
-				.name());
-		requirementFacilityId = (String) value.get(Fields.requirementFacilityId
-				.name());
+				.get(FIELD_WORK_EFFORT_FIXED_ASSET_ID);
+		workEffortFacilityId = (String) value
+				.get(FIELD_WORK_EFFORT_FACILITY_ID);
+		requirementFacilityId = (String) value
+				.get(FIELD_REQUIREMENT_FACILITY_ID);
 		requirementFixedAssetId = (String) value
-				.get(Fields.requirementFixedAssetId.name());
+				.get(FIELD_REQUIREMENT_FIXED_ASSET_ID);
 		requirementDescription = (String) value
-				.get(Fields.requirementDescription.name());
+				.get(FIELD_REQUIREMENT_DESCRIPTION);
 		requirementCreationDate = (Timestamp) value
-				.get(Fields.requirementCreationDate.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		workEffortTypeId = (String) value.get(Fields.workEffortTypeId.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		revisionNumber = (Long) value.get(Fields.revisionNumber.name());
-		tempExprId = (String) value.get(Fields.tempExprId.name());
-		showAsEnumId = (String) value.get(Fields.showAsEnumId.name());
-		infoUrl = (String) value.get(Fields.infoUrl.name());
-		universalId = (String) value.get(Fields.universalId.name());
-		locationDesc = (String) value.get(Fields.locationDesc.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		actualMilliSeconds = (Double) value.get(Fields.actualMilliSeconds
-				.name());
-		quantityToProduce = (BigDecimal) value.get(Fields.quantityToProduce
-				.name());
+				.get(FIELD_REQUIREMENT_CREATION_DATE);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		workEffortTypeId = (String) value.get(FIELD_WORK_EFFORT_TYPE_ID);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		revisionNumber = (Long) value.get(FIELD_REVISION_NUMBER);
+		tempExprId = (String) value.get(FIELD_TEMP_EXPR_ID);
+		showAsEnumId = (String) value.get(FIELD_SHOW_AS_ENUM_ID);
+		infoUrl = (String) value.get(FIELD_INFO_URL);
+		universalId = (String) value.get(FIELD_UNIVERSAL_ID);
+		locationDesc = (String) value.get(FIELD_LOCATION_DESC);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		actualMilliSeconds = (Double) value.get(FIELD_ACTUAL_MILLI_SECONDS);
+		quantityToProduce = (BigDecimal) value.get(FIELD_QUANTITY_TO_PRODUCE);
 		workEffortPurposeTypeId = (String) value
-				.get(Fields.workEffortPurposeTypeId.name());
-		serviceLoaderName = (String) value.get(Fields.serviceLoaderName.name());
-		accommodationSpotId = (String) value.get(Fields.accommodationSpotId
-				.name());
-		estimatedStartDate = (Timestamp) value.get(Fields.estimatedStartDate
-				.name());
-		sendNotificationEmail = (String) value.get(Fields.sendNotificationEmail
-				.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		quantityRejected = (BigDecimal) value.get(Fields.quantityRejected
-				.name());
-		priority = (Long) value.get(Fields.priority.name());
-		currentStatusId = (String) value.get(Fields.currentStatusId.name());
-		runtimeDataId = (String) value.get(Fields.runtimeDataId.name());
-		estimatedMilliSeconds = (Double) value.get(Fields.estimatedMilliSeconds
-				.name());
-		specialTerms = (String) value.get(Fields.specialTerms.name());
-		timeTransparency = (Long) value.get(Fields.timeTransparency.name());
+				.get(FIELD_WORK_EFFORT_PURPOSE_TYPE_ID);
+		serviceLoaderName = (String) value.get(FIELD_SERVICE_LOADER_NAME);
+		accommodationSpotId = (String) value.get(FIELD_ACCOMMODATION_SPOT_ID);
+		estimatedStartDate = (Timestamp) value.get(FIELD_ESTIMATED_START_DATE);
+		sendNotificationEmail = (String) value
+				.get(FIELD_SEND_NOTIFICATION_EMAIL);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		quantityRejected = (BigDecimal) value.get(FIELD_QUANTITY_REJECTED);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		currentStatusId = (String) value.get(FIELD_CURRENT_STATUS_ID);
+		runtimeDataId = (String) value.get(FIELD_RUNTIME_DATA_ID);
+		estimatedMilliSeconds = (Double) value
+				.get(FIELD_ESTIMATED_MILLI_SECONDS);
+		specialTerms = (String) value.get(FIELD_SPECIAL_TERMS);
+		timeTransparency = (Long) value.get(FIELD_TIME_TRANSPARENCY);
 		actualCompletionDate = (Timestamp) value
-				.get(Fields.actualCompletionDate.name());
-		reserv2ndPPPerc = (BigDecimal) value.get(Fields.reserv2ndPPPerc.name());
-		totalMoneyAllowed = (BigDecimal) value.get(Fields.totalMoneyAllowed
-				.name());
-		estimateCalcMethod = (String) value.get(Fields.estimateCalcMethod
-				.name());
-		workEffortParentId = (String) value.get(Fields.workEffortParentId
-				.name());
-		moneyUomId = (String) value.get(Fields.moneyUomId.name());
-		reservNthPPPerc = (BigDecimal) value.get(Fields.reservNthPPPerc.name());
-		workEffortName = (String) value.get(Fields.workEffortName.name());
+				.get(FIELD_ACTUAL_COMPLETION_DATE);
+		reserv2ndPPPerc = (BigDecimal) value.get(FIELD_RESERV2ND_P_P_PERC);
+		totalMoneyAllowed = (BigDecimal) value.get(FIELD_TOTAL_MONEY_ALLOWED);
+		estimateCalcMethod = (String) value.get(FIELD_ESTIMATE_CALC_METHOD);
+		workEffortParentId = (String) value.get(FIELD_WORK_EFFORT_PARENT_ID);
+		moneyUomId = (String) value.get(FIELD_MONEY_UOM_ID);
+		reservNthPPPerc = (BigDecimal) value.get(FIELD_RESERV_NTH_P_P_PERC);
+		workEffortName = (String) value.get(FIELD_WORK_EFFORT_NAME);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		accommodationMapId = (String) value.get(Fields.accommodationMapId
-				.name());
-		actualStartDate = (Timestamp) value.get(Fields.actualStartDate.name());
-		scopeEnumId = (String) value.get(Fields.scopeEnumId.name());
-		quantityProduced = (BigDecimal) value.get(Fields.quantityProduced
-				.name());
-		estimatedSetupMillis = (Double) value.get(Fields.estimatedSetupMillis
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		sourceReferenceId = (String) value.get(Fields.sourceReferenceId.name());
-		lastStatusUpdate = (Timestamp) value
-				.get(Fields.lastStatusUpdate.name());
-		percentComplete = (Long) value.get(Fields.percentComplete.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		accommodationMapId = (String) value.get(FIELD_ACCOMMODATION_MAP_ID);
+		actualStartDate = (Timestamp) value.get(FIELD_ACTUAL_START_DATE);
+		scopeEnumId = (String) value.get(FIELD_SCOPE_ENUM_ID);
+		quantityProduced = (BigDecimal) value.get(FIELD_QUANTITY_PRODUCED);
+		estimatedSetupMillis = (Double) value.get(FIELD_ESTIMATED_SETUP_MILLIS);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		sourceReferenceId = (String) value.get(FIELD_SOURCE_REFERENCE_ID);
+		lastStatusUpdate = (Timestamp) value.get(FIELD_LAST_STATUS_UPDATE);
+		percentComplete = (Long) value.get(FIELD_PERCENT_COMPLETE);
 		totalMilliSecondsAllowed = (Double) value
-				.get(Fields.totalMilliSecondsAllowed.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		actualSetupMillis = (Double) value.get(Fields.actualSetupMillis.name());
+				.get(FIELD_TOTAL_MILLI_SECONDS_ALLOWED);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		actualSetupMillis = (Double) value.get(FIELD_ACTUAL_SETUP_MILLIS);
 		estimatedCompletionDate = (Timestamp) value
-				.get(Fields.estimatedCompletionDate.name());
-		workReqFulfTypeId = (String) value.get(Fields.workReqFulfTypeId.name());
-		requirementId = (String) value.get(Fields.requirementId.name());
-		reason = (String) value.get(Fields.reason.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		estimatedBudget = (BigDecimal) value.get(Fields.estimatedBudget.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
+				.get(FIELD_ESTIMATED_COMPLETION_DATE);
+		workReqFulfTypeId = (String) value.get(FIELD_WORK_REQ_FULF_TYPE_ID);
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		reason = (String) value.get(FIELD_REASON);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		estimatedBudget = (BigDecimal) value.get(FIELD_ESTIMATED_BUDGET);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
 		requirementStartDate = (Timestamp) value
-				.get(Fields.requirementStartDate.name());
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		useCase = (String) value.get(Fields.useCase.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		deliverableId = (String) value.get(Fields.deliverableId.name());
+				.get(FIELD_REQUIREMENT_START_DATE);
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		useCase = (String) value.get(FIELD_USE_CASE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		deliverableId = (String) value.get(FIELD_DELIVERABLE_ID);
 	}
 
 	public static WorkEffortAndFulfillment fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.recruitment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Job Requisition
  */
+@FieldNameConstants
 public class JobRequisition implements Serializable {
 
-	public static final long serialVersionUID = 2481041222541112320L;
+	public static final long serialVersionUID = 8498591327246141440L;
 	public static final String NAME = "JobRequisition";
 	/**
 	 * Job Requisition Id
@@ -125,32 +127,26 @@ public class JobRequisition implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		jobRequisitionId, durationMonths, age, gender, experienceMonths, experienceYears, qualification, jobLocation, skillTypeId, noOfResources, jobPostingTypeEnumId, jobRequisitionDate, examTypeEnumId, requiredOnDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public JobRequisition(GenericValue value) {
-		jobRequisitionId = (String) value.get(Fields.jobRequisitionId.name());
-		durationMonths = (Long) value.get(Fields.durationMonths.name());
-		age = (Long) value.get(Fields.age.name());
-		gender = (String) value.get(Fields.gender.name());
-		experienceMonths = (Long) value.get(Fields.experienceMonths.name());
-		experienceYears = (Long) value.get(Fields.experienceYears.name());
-		qualification = (String) value.get(Fields.qualification.name());
-		jobLocation = (String) value.get(Fields.jobLocation.name());
-		skillTypeId = (String) value.get(Fields.skillTypeId.name());
-		noOfResources = (Long) value.get(Fields.noOfResources.name());
-		jobPostingTypeEnumId = (String) value.get(Fields.jobPostingTypeEnumId
-				.name());
-		jobRequisitionDate = (Date) value.get(Fields.jobRequisitionDate.name());
-		examTypeEnumId = (String) value.get(Fields.examTypeEnumId.name());
-		requiredOnDate = (Date) value.get(Fields.requiredOnDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		jobRequisitionId = (String) value.get(FIELD_JOB_REQUISITION_ID);
+		durationMonths = (Long) value.get(FIELD_DURATION_MONTHS);
+		age = (Long) value.get(FIELD_AGE);
+		gender = (String) value.get(FIELD_GENDER);
+		experienceMonths = (Long) value.get(FIELD_EXPERIENCE_MONTHS);
+		experienceYears = (Long) value.get(FIELD_EXPERIENCE_YEARS);
+		qualification = (String) value.get(FIELD_QUALIFICATION);
+		jobLocation = (String) value.get(FIELD_JOB_LOCATION);
+		skillTypeId = (String) value.get(FIELD_SKILL_TYPE_ID);
+		noOfResources = (Long) value.get(FIELD_NO_OF_RESOURCES);
+		jobPostingTypeEnumId = (String) value
+				.get(FIELD_JOB_POSTING_TYPE_ENUM_ID);
+		jobRequisitionDate = (Date) value.get(FIELD_JOB_REQUISITION_DATE);
+		examTypeEnumId = (String) value.get(FIELD_EXAM_TYPE_ENUM_ID);
+		requiredOnDate = (Date) value.get(FIELD_REQUIRED_ON_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static JobRequisition fromValue(

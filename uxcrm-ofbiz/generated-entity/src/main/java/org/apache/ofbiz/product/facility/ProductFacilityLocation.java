@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Facility Location
  */
+@FieldNameConstants
 public class ProductFacilityLocation implements Serializable {
 
-	public static final long serialVersionUID = 7035081371209710592L;
+	public static final long serialVersionUID = 2347976697279247360L;
 	public static final String NAME = "ProductFacilityLocation";
 	/**
 	 * Product Id
@@ -71,22 +73,16 @@ public class ProductFacilityLocation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, facilityId, locationSeqId, minimumStock, moveQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFacilityLocation(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		minimumStock = (BigDecimal) value.get(Fields.minimumStock.name());
-		moveQuantity = (BigDecimal) value.get(Fields.moveQuantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		minimumStock = (BigDecimal) value.get(FIELD_MINIMUM_STOCK);
+		moveQuantity = (BigDecimal) value.get(FIELD_MOVE_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFacilityLocation fromValue(

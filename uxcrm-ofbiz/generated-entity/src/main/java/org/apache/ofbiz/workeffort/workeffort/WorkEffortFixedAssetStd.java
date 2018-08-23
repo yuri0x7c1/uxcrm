@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Fixed Asset Std
  */
+@FieldNameConstants
 public class WorkEffortFixedAssetStd implements Serializable {
 
-	public static final long serialVersionUID = 5110515837445431296L;
+	public static final long serialVersionUID = 731946944704880640L;
 	public static final String NAME = "WorkEffortFixedAssetStd";
 	/**
 	 * Work Effort Id
@@ -71,22 +73,16 @@ public class WorkEffortFixedAssetStd implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, fixedAssetTypeId, estimatedQuantity, estimatedDuration, estimatedCost, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortFixedAssetStd(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fixedAssetTypeId = (String) value.get(Fields.fixedAssetTypeId.name());
-		estimatedQuantity = (Double) value.get(Fields.estimatedQuantity.name());
-		estimatedDuration = (Double) value.get(Fields.estimatedDuration.name());
-		estimatedCost = (BigDecimal) value.get(Fields.estimatedCost.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fixedAssetTypeId = (String) value.get(FIELD_FIXED_ASSET_TYPE_ID);
+		estimatedQuantity = (Double) value.get(FIELD_ESTIMATED_QUANTITY);
+		estimatedDuration = (Double) value.get(FIELD_ESTIMATED_DURATION);
+		estimatedCost = (BigDecimal) value.get(FIELD_ESTIMATED_COST);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortFixedAssetStd fromValue(

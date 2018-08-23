@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Clear Commerce
  */
+@FieldNameConstants
 public class PaymentGatewayClearCommerce implements Serializable {
 
-	public static final long serialVersionUID = 7326497189828915200L;
+	public static final long serialVersionUID = 3053912335479009280L;
 	public static final String NAME = "PaymentGatewayClearCommerce";
 	/**
 	 * Payment Gateway Config Id
@@ -106,29 +108,23 @@ public class PaymentGatewayClearCommerce implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, sourceId, groupId, clientId, username, pwd, userAlias, effectiveAlias, processMode, serverURL, enableCVM, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayClearCommerce(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		sourceId = (String) value.get(Fields.sourceId.name());
-		groupId = (String) value.get(Fields.groupId.name());
-		clientId = (String) value.get(Fields.clientId.name());
-		username = (String) value.get(Fields.username.name());
-		pwd = (String) value.get(Fields.pwd.name());
-		userAlias = (String) value.get(Fields.userAlias.name());
-		effectiveAlias = (String) value.get(Fields.effectiveAlias.name());
-		processMode = (String) value.get(Fields.processMode.name());
-		serverURL = (String) value.get(Fields.serverURL.name());
-		enableCVM = (String) value.get(Fields.enableCVM.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		sourceId = (String) value.get(FIELD_SOURCE_ID);
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		clientId = (String) value.get(FIELD_CLIENT_ID);
+		username = (String) value.get(FIELD_USERNAME);
+		pwd = (String) value.get(FIELD_PWD);
+		userAlias = (String) value.get(FIELD_USER_ALIAS);
+		effectiveAlias = (String) value.get(FIELD_EFFECTIVE_ALIAS);
+		processMode = (String) value.get(FIELD_PROCESS_MODE);
+		serverURL = (String) value.get(FIELD_SERVER_U_R_L);
+		enableCVM = (String) value.get(FIELD_ENABLE_C_V_M);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayClearCommerce fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Item And Assoc Product
  */
+@FieldNameConstants
 public class InvoiceItemAndAssocProduct implements Serializable {
 
-	public static final long serialVersionUID = 1443452599199244288L;
+	public static final long serialVersionUID = 695470184352860160L;
 	public static final String NAME = "InvoiceItemAndAssocProduct";
 	/**
 	 * Term Amount
@@ -101,28 +103,23 @@ public class InvoiceItemAndAssocProduct implements Serializable {
 	@Setter
 	private String partyIdTo;
 
-	public enum Fields {
-		termAmount, productId, productName, amount, partyIdFrom, quantity, invoiceItemSeqIdFrom, thruDate, fromDate, invoiceIdFrom, invoiceItemSeqIdTo, invoiceItemAssocTypeId, invoiceIdTo, partyIdTo
-	}
-
 	public InvoiceItemAndAssocProduct(GenericValue value) {
-		termAmount = (BigDecimal) value.get(Fields.termAmount.name());
-		productId = (String) value.get(Fields.productId.name());
-		productName = (String) value.get(Fields.productName.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		invoiceItemSeqIdFrom = (String) value.get(Fields.invoiceItemSeqIdFrom
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		invoiceIdFrom = (String) value.get(Fields.invoiceIdFrom.name());
-		invoiceItemSeqIdTo = (String) value.get(Fields.invoiceItemSeqIdTo
-				.name());
+		termAmount = (BigDecimal) value.get(FIELD_TERM_AMOUNT);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		invoiceItemSeqIdFrom = (String) value
+				.get(FIELD_INVOICE_ITEM_SEQ_ID_FROM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		invoiceIdFrom = (String) value.get(FIELD_INVOICE_ID_FROM);
+		invoiceItemSeqIdTo = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID_TO);
 		invoiceItemAssocTypeId = (String) value
-				.get(Fields.invoiceItemAssocTypeId.name());
-		invoiceIdTo = (String) value.get(Fields.invoiceIdTo.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
+				.get(FIELD_INVOICE_ITEM_ASSOC_TYPE_ID);
+		invoiceIdTo = (String) value.get(FIELD_INVOICE_ID_TO);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
 	}
 
 	public static InvoiceItemAndAssocProduct fromValue(

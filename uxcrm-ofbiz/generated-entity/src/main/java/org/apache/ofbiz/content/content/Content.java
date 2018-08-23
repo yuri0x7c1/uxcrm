@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content
  */
+@FieldNameConstants
 public class Content implements Serializable {
 
-	public static final long serialVersionUID = 2511329377935353856L;
+	public static final long serialVersionUID = 3996778039004843008L;
 	public static final String NAME = "Content";
 	/**
 	 * Content Id
@@ -178,46 +180,36 @@ public class Content implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, contentTypeId, ownerContentId, decoratorContentId, instanceOfContentId, dataResourceId, templateDataResourceId, dataSourceId, statusId, privilegeEnumId, serviceName, customMethodId, contentName, description, localeString, mimeTypeId, characterSetId, childLeafCount, childBranchCount, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Content(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		contentTypeId = (String) value.get(Fields.contentTypeId.name());
-		ownerContentId = (String) value.get(Fields.ownerContentId.name());
-		decoratorContentId = (String) value.get(Fields.decoratorContentId
-				.name());
-		instanceOfContentId = (String) value.get(Fields.instanceOfContentId
-				.name());
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentTypeId = (String) value.get(FIELD_CONTENT_TYPE_ID);
+		ownerContentId = (String) value.get(FIELD_OWNER_CONTENT_ID);
+		decoratorContentId = (String) value.get(FIELD_DECORATOR_CONTENT_ID);
+		instanceOfContentId = (String) value.get(FIELD_INSTANCE_OF_CONTENT_ID);
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
 		templateDataResourceId = (String) value
-				.get(Fields.templateDataResourceId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		privilegeEnumId = (String) value.get(Fields.privilegeEnumId.name());
-		serviceName = (String) value.get(Fields.serviceName.name());
-		customMethodId = (String) value.get(Fields.customMethodId.name());
-		contentName = (String) value.get(Fields.contentName.name());
-		description = (String) value.get(Fields.description.name());
-		localeString = (String) value.get(Fields.localeString.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		characterSetId = (String) value.get(Fields.characterSetId.name());
-		childLeafCount = (Long) value.get(Fields.childLeafCount.name());
-		childBranchCount = (Long) value.get(Fields.childBranchCount.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_TEMPLATE_DATA_RESOURCE_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		privilegeEnumId = (String) value.get(FIELD_PRIVILEGE_ENUM_ID);
+		serviceName = (String) value.get(FIELD_SERVICE_NAME);
+		customMethodId = (String) value.get(FIELD_CUSTOM_METHOD_ID);
+		contentName = (String) value.get(FIELD_CONTENT_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		localeString = (String) value.get(FIELD_LOCALE_STRING);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		characterSetId = (String) value.get(FIELD_CHARACTER_SET_ID);
+		childLeafCount = (Long) value.get(FIELD_CHILD_LEAF_COUNT);
+		childBranchCount = (Long) value.get(FIELD_CHILD_BRANCH_COUNT);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Content fromValue(org.apache.ofbiz.entity.GenericValue value) {

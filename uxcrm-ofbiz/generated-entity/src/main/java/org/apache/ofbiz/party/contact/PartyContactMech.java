@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Contact Mech
  */
+@FieldNameConstants
 public class PartyContactMech implements Serializable {
 
-	public static final long serialVersionUID = 2772945336539749376L;
+	public static final long serialVersionUID = 2347295051507180544L;
 	public static final String NAME = "PartyContactMech";
 	/**
 	 * Party Id
@@ -106,30 +108,23 @@ public class PartyContactMech implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, contactMechId, fromDate, thruDate, roleTypeId, allowSolicitation, extension, verified, comments, yearsWithContactMech, monthsWithContactMech, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyContactMech(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		allowSolicitation = (String) value.get(Fields.allowSolicitation.name());
-		extension = (String) value.get(Fields.extension.name());
-		verified = (String) value.get(Fields.verified.name());
-		comments = (String) value.get(Fields.comments.name());
-		yearsWithContactMech = (Long) value.get(Fields.yearsWithContactMech
-				.name());
-		monthsWithContactMech = (Long) value.get(Fields.monthsWithContactMech
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		allowSolicitation = (String) value.get(FIELD_ALLOW_SOLICITATION);
+		extension = (String) value.get(FIELD_EXTENSION);
+		verified = (String) value.get(FIELD_VERIFIED);
+		comments = (String) value.get(FIELD_COMMENTS);
+		yearsWithContactMech = (Long) value.get(FIELD_YEARS_WITH_CONTACT_MECH);
+		monthsWithContactMech = (Long) value
+				.get(FIELD_MONTHS_WITH_CONTACT_MECH);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyContactMech fromValue(

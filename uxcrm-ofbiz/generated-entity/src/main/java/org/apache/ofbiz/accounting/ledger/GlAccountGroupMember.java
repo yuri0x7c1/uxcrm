@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account Group Member
  */
+@FieldNameConstants
 public class GlAccountGroupMember implements Serializable {
 
-	public static final long serialVersionUID = 5132802383780467712L;
+	public static final long serialVersionUID = 659685680623330304L;
 	public static final String NAME = "GlAccountGroupMember";
 	/**
 	 * Gl Account Id
@@ -58,21 +60,15 @@ public class GlAccountGroupMember implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountId, glAccountGroupTypeId, glAccountGroupId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlAccountGroupMember(GenericValue value) {
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		glAccountGroupTypeId = (String) value.get(Fields.glAccountGroupTypeId
-				.name());
-		glAccountGroupId = (String) value.get(Fields.glAccountGroupId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		glAccountGroupTypeId = (String) value
+				.get(FIELD_GL_ACCOUNT_GROUP_TYPE_ID);
+		glAccountGroupId = (String) value.get(FIELD_GL_ACCOUNT_GROUP_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlAccountGroupMember fromValue(

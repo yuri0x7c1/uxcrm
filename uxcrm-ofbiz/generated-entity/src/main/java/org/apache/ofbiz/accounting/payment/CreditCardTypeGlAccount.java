@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Credit Card Type Gl Account
  */
+@FieldNameConstants
 public class CreditCardTypeGlAccount implements Serializable {
 
-	public static final long serialVersionUID = 956953203732491264L;
+	public static final long serialVersionUID = 715332966186368000L;
 	public static final String NAME = "CreditCardTypeGlAccount";
 	/**
 	 * Card Type
@@ -58,21 +60,14 @@ public class CreditCardTypeGlAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		cardType, organizationPartyId, glAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CreditCardTypeGlAccount(GenericValue value) {
-		cardType = (String) value.get(Fields.cardType.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		cardType = (String) value.get(FIELD_CARD_TYPE);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CreditCardTypeGlAccount fromValue(

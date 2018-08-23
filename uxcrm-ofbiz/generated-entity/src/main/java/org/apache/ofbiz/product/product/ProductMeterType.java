@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Meter Type
  */
+@FieldNameConstants
 public class ProductMeterType implements Serializable {
 
-	public static final long serialVersionUID = 6970059660379481088L;
+	public static final long serialVersionUID = 6081346662642895872L;
 	public static final String NAME = "ProductMeterType";
 	/**
 	 * Product Meter Type Id
@@ -58,21 +60,14 @@ public class ProductMeterType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productMeterTypeId, description, defaultUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductMeterType(GenericValue value) {
-		productMeterTypeId = (String) value.get(Fields.productMeterTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		defaultUomId = (String) value.get(Fields.defaultUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productMeterTypeId = (String) value.get(FIELD_PRODUCT_METER_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		defaultUomId = (String) value.get(FIELD_DEFAULT_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductMeterType fromValue(

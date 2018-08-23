@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Gift Card Fulfillment
  */
+@FieldNameConstants
 public class GiftCardFulfillment implements Serializable {
 
-	public static final long serialVersionUID = 1592020022811586560L;
+	public static final long serialVersionUID = 3804788092166774784L;
 	public static final String NAME = "GiftCardFulfillment";
 	/**
 	 * Fulfillment Id
@@ -125,31 +127,25 @@ public class GiftCardFulfillment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fulfillmentId, typeEnumId, merchantId, partyId, orderId, orderItemSeqId, surveyResponseId, cardNumber, pinNumber, amount, responseCode, referenceNum, authCode, fulfillmentDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GiftCardFulfillment(GenericValue value) {
-		fulfillmentId = (String) value.get(Fields.fulfillmentId.name());
-		typeEnumId = (String) value.get(Fields.typeEnumId.name());
-		merchantId = (String) value.get(Fields.merchantId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		pinNumber = (String) value.get(Fields.pinNumber.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		responseCode = (String) value.get(Fields.responseCode.name());
-		referenceNum = (String) value.get(Fields.referenceNum.name());
-		authCode = (String) value.get(Fields.authCode.name());
-		fulfillmentDate = (Timestamp) value.get(Fields.fulfillmentDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fulfillmentId = (String) value.get(FIELD_FULFILLMENT_ID);
+		typeEnumId = (String) value.get(FIELD_TYPE_ENUM_ID);
+		merchantId = (String) value.get(FIELD_MERCHANT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		pinNumber = (String) value.get(FIELD_PIN_NUMBER);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		responseCode = (String) value.get(FIELD_RESPONSE_CODE);
+		referenceNum = (String) value.get(FIELD_REFERENCE_NUM);
+		authCode = (String) value.get(FIELD_AUTH_CODE);
+		fulfillmentDate = (Timestamp) value.get(FIELD_FULFILLMENT_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GiftCardFulfillment fromValue(

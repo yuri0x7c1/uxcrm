@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Return Item Response
  */
+@FieldNameConstants
 public class ReturnItemResponse implements Serializable {
 
-	public static final long serialVersionUID = 7536766300949470208L;
+	public static final long serialVersionUID = 6899061729697036288L;
 	public static final String NAME = "ReturnItemResponse";
 	/**
 	 * Return Item Response Id
@@ -89,28 +91,21 @@ public class ReturnItemResponse implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnItemResponseId, orderPaymentPreferenceId, replacementOrderId, paymentId, billingAccountId, finAccountTransId, responseAmount, responseDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnItemResponse(GenericValue value) {
-		returnItemResponseId = (String) value.get(Fields.returnItemResponseId
-				.name());
+		returnItemResponseId = (String) value
+				.get(FIELD_RETURN_ITEM_RESPONSE_ID);
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		replacementOrderId = (String) value.get(Fields.replacementOrderId
-				.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		responseAmount = (BigDecimal) value.get(Fields.responseAmount.name());
-		responseDate = (Timestamp) value.get(Fields.responseDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		replacementOrderId = (String) value.get(FIELD_REPLACEMENT_ORDER_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		responseAmount = (BigDecimal) value.get(FIELD_RESPONSE_AMOUNT);
+		responseDate = (Timestamp) value.get(FIELD_RESPONSE_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnItemResponse fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Sales Opportunity Competitor
  */
+@FieldNameConstants
 public class SalesOpportunityCompetitor implements Serializable {
 
-	public static final long serialVersionUID = 720148605580644352L;
+	public static final long serialVersionUID = 5954643535225248768L;
 	public static final String NAME = "SalesOpportunityCompetitor";
 	/**
 	 * Sales Opportunity Id
@@ -70,23 +72,16 @@ public class SalesOpportunityCompetitor implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesOpportunityId, competitorPartyId, positionEnumId, strengths, weaknesses, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesOpportunityCompetitor(GenericValue value) {
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
-		competitorPartyId = (String) value.get(Fields.competitorPartyId.name());
-		positionEnumId = (String) value.get(Fields.positionEnumId.name());
-		strengths = (String) value.get(Fields.strengths.name());
-		weaknesses = (String) value.get(Fields.weaknesses.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
+		competitorPartyId = (String) value.get(FIELD_COMPETITOR_PARTY_ID);
+		positionEnumId = (String) value.get(FIELD_POSITION_ENUM_ID);
+		strengths = (String) value.get(FIELD_STRENGTHS);
+		weaknesses = (String) value.get(FIELD_WEAKNESSES);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesOpportunityCompetitor fromValue(

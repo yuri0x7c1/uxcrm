@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Variance
  */
+@FieldNameConstants
 public class InventoryItemVariance implements Serializable {
 
-	public static final long serialVersionUID = 5962270786430272512L;
+	public static final long serialVersionUID = 1739632197145795584L;
 	public static final String NAME = "InventoryItemVariance";
 	/**
 	 * Inventory Item Id
@@ -77,26 +79,18 @@ public class InventoryItemVariance implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		inventoryItemId, physicalInventoryId, varianceReasonId, availableToPromiseVar, quantityOnHandVar, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryItemVariance(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		physicalInventoryId = (String) value.get(Fields.physicalInventoryId
-				.name());
-		varianceReasonId = (String) value.get(Fields.varianceReasonId.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		physicalInventoryId = (String) value.get(FIELD_PHYSICAL_INVENTORY_ID);
+		varianceReasonId = (String) value.get(FIELD_VARIANCE_REASON_ID);
 		availableToPromiseVar = (BigDecimal) value
-				.get(Fields.availableToPromiseVar.name());
-		quantityOnHandVar = (BigDecimal) value.get(Fields.quantityOnHandVar
-				.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_VAR);
+		quantityOnHandVar = (BigDecimal) value.get(FIELD_QUANTITY_ON_HAND_VAR);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryItemVariance fromValue(

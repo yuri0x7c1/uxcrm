@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.config;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Config Item
  */
+@FieldNameConstants
 public class ProductConfigItem implements Serializable {
 
-	public static final long serialVersionUID = 8351018383083825152L;
+	public static final long serialVersionUID = 6568278147418190848L;
 	public static final String NAME = "ProductConfigItem";
 	/**
 	 * Config Item Id
@@ -76,23 +78,17 @@ public class ProductConfigItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		configItemId, configItemTypeId, configItemName, description, longDescription, imageUrl, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductConfigItem(GenericValue value) {
-		configItemId = (String) value.get(Fields.configItemId.name());
-		configItemTypeId = (String) value.get(Fields.configItemTypeId.name());
-		configItemName = (String) value.get(Fields.configItemName.name());
-		description = (String) value.get(Fields.description.name());
-		longDescription = (String) value.get(Fields.longDescription.name());
-		imageUrl = (String) value.get(Fields.imageUrl.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		configItemId = (String) value.get(FIELD_CONFIG_ITEM_ID);
+		configItemTypeId = (String) value.get(FIELD_CONFIG_ITEM_TYPE_ID);
+		configItemName = (String) value.get(FIELD_CONFIG_ITEM_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		longDescription = (String) value.get(FIELD_LONG_DESCRIPTION);
+		imageUrl = (String) value.get(FIELD_IMAGE_URL);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductConfigItem fromValue(

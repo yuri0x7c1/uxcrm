@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payroll Preference
  */
+@FieldNameConstants
 public class PayrollPreference implements Serializable {
 
-	public static final long serialVersionUID = 6104061497365367808L;
+	public static final long serialVersionUID = 3643145433676311552L;
 	public static final String NAME = "PayrollPreference";
 	/**
 	 * Party Id
@@ -119,32 +121,25 @@ public class PayrollPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, roleTypeId, payrollPreferenceSeqId, deductionTypeId, paymentMethodTypeId, periodTypeId, fromDate, thruDate, percentage, flatAmount, routingNumber, accountNumber, bankName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PayrollPreference(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
 		payrollPreferenceSeqId = (String) value
-				.get(Fields.payrollPreferenceSeqId.name());
-		deductionTypeId = (String) value.get(Fields.deductionTypeId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		percentage = (Double) value.get(Fields.percentage.name());
-		flatAmount = (BigDecimal) value.get(Fields.flatAmount.name());
-		routingNumber = (String) value.get(Fields.routingNumber.name());
-		accountNumber = (String) value.get(Fields.accountNumber.name());
-		bankName = (String) value.get(Fields.bankName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYROLL_PREFERENCE_SEQ_ID);
+		deductionTypeId = (String) value.get(FIELD_DEDUCTION_TYPE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		percentage = (Double) value.get(FIELD_PERCENTAGE);
+		flatAmount = (BigDecimal) value.get(FIELD_FLAT_AMOUNT);
+		routingNumber = (String) value.get(FIELD_ROUTING_NUMBER);
+		accountNumber = (String) value.get(FIELD_ACCOUNT_NUMBER);
+		bankName = (String) value.get(FIELD_BANK_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PayrollPreference fromValue(

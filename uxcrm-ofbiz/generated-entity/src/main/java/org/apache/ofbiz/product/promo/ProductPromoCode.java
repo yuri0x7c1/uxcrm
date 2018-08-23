@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Promo Code
  */
+@FieldNameConstants
 public class ProductPromoCode implements Serializable {
 
-	public static final long serialVersionUID = 8816916975430161408L;
+	public static final long serialVersionUID = 5576198242121738240L;
 	public static final String NAME = "ProductPromoCode";
 	/**
 	 * Product Promo Code Id
@@ -112,35 +114,24 @@ public class ProductPromoCode implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoCodeId, productPromoId, userEntered, requireEmailOrParty, useLimitPerCode, useLimitPerCustomer, fromDate, thruDate, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromoCode(GenericValue value) {
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		userEntered = (String) value.get(Fields.userEntered.name());
-		requireEmailOrParty = (String) value.get(Fields.requireEmailOrParty
-				.name());
-		useLimitPerCode = (Long) value.get(Fields.useLimitPerCode.name());
-		useLimitPerCustomer = (Long) value.get(Fields.useLimitPerCustomer
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		userEntered = (String) value.get(FIELD_USER_ENTERED);
+		requireEmailOrParty = (String) value.get(FIELD_REQUIRE_EMAIL_OR_PARTY);
+		useLimitPerCode = (Long) value.get(FIELD_USE_LIMIT_PER_CODE);
+		useLimitPerCustomer = (Long) value.get(FIELD_USE_LIMIT_PER_CUSTOMER);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromoCode fromValue(

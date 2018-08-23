@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing
  */
+@FieldNameConstants
 public class Testing implements Serializable {
 
-	public static final long serialVersionUID = 4744512456756100096L;
+	public static final long serialVersionUID = 214764517031608320L;
 	public static final String NAME = "Testing";
 	/**
 	 * Testing Id
@@ -82,24 +84,18 @@ public class Testing implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testingId, testingTypeId, testingName, description, comments, testingSize, testingDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Testing(GenericValue value) {
-		testingId = (String) value.get(Fields.testingId.name());
-		testingTypeId = (String) value.get(Fields.testingTypeId.name());
-		testingName = (String) value.get(Fields.testingName.name());
-		description = (String) value.get(Fields.description.name());
-		comments = (String) value.get(Fields.comments.name());
-		testingSize = (Long) value.get(Fields.testingSize.name());
-		testingDate = (Timestamp) value.get(Fields.testingDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testingId = (String) value.get(FIELD_TESTING_ID);
+		testingTypeId = (String) value.get(FIELD_TESTING_TYPE_ID);
+		testingName = (String) value.get(FIELD_TESTING_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		testingSize = (Long) value.get(FIELD_TESTING_SIZE);
+		testingDate = (Timestamp) value.get(FIELD_TESTING_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Testing fromValue(org.apache.ofbiz.entity.GenericValue value) {

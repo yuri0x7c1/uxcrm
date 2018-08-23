@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Order Item Inventory Res
  */
+@FieldNameConstants
 public class OldOrderItemInventoryRes implements Serializable {
 
-	public static final long serialVersionUID = 2534377088029425664L;
+	public static final long serialVersionUID = 3073783435674341376L;
 	public static final String NAME = "OldOrderItemInventoryRes";
 	/**
 	 * Order Id
@@ -106,33 +108,23 @@ public class OldOrderItemInventoryRes implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, inventoryItemId, reserveOrderEnumId, quantity, quantityNotAvailable, reservedDatetime, createdDatetime, promisedDatetime, currentPromisedDate, pickStartDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldOrderItemInventoryRes(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		reserveOrderEnumId = (String) value.get(Fields.reserveOrderEnumId
-				.name());
-		quantity = (Double) value.get(Fields.quantity.name());
-		quantityNotAvailable = (Double) value.get(Fields.quantityNotAvailable
-				.name());
-		reservedDatetime = (Timestamp) value
-				.get(Fields.reservedDatetime.name());
-		createdDatetime = (Timestamp) value.get(Fields.createdDatetime.name());
-		promisedDatetime = (Timestamp) value
-				.get(Fields.promisedDatetime.name());
-		currentPromisedDate = (Timestamp) value.get(Fields.currentPromisedDate
-				.name());
-		pickStartDate = (Timestamp) value.get(Fields.pickStartDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		reserveOrderEnumId = (String) value.get(FIELD_RESERVE_ORDER_ENUM_ID);
+		quantity = (Double) value.get(FIELD_QUANTITY);
+		quantityNotAvailable = (Double) value.get(FIELD_QUANTITY_NOT_AVAILABLE);
+		reservedDatetime = (Timestamp) value.get(FIELD_RESERVED_DATETIME);
+		createdDatetime = (Timestamp) value.get(FIELD_CREATED_DATETIME);
+		promisedDatetime = (Timestamp) value.get(FIELD_PROMISED_DATETIME);
+		currentPromisedDate = (Timestamp) value
+				.get(FIELD_CURRENT_PROMISED_DATE);
+		pickStartDate = (Timestamp) value.get(FIELD_PICK_START_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldOrderItemInventoryRes fromValue(

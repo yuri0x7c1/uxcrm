@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Opportunity Stage
  */
+@FieldNameConstants
 public class SalesOpportunityStage implements Serializable {
 
-	public static final long serialVersionUID = 6103894894917131264L;
+	public static final long serialVersionUID = 2889243802028783616L;
 	public static final String NAME = "SalesOpportunityStage";
 	/**
 	 * Opportunity Stage Id
@@ -65,23 +67,15 @@ public class SalesOpportunityStage implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		opportunityStageId, description, defaultProbability, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesOpportunityStage(GenericValue value) {
-		opportunityStageId = (String) value.get(Fields.opportunityStageId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		defaultProbability = (BigDecimal) value.get(Fields.defaultProbability
-				.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		opportunityStageId = (String) value.get(FIELD_OPPORTUNITY_STAGE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		defaultProbability = (BigDecimal) value.get(FIELD_DEFAULT_PROBABILITY);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesOpportunityStage fromValue(

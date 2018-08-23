@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Agreement
  */
+@FieldNameConstants
 public class Agreement implements Serializable {
 
-	public static final long serialVersionUID = 3479193956899928064L;
+	public static final long serialVersionUID = 5268877228709749760L;
 	public static final String NAME = "Agreement";
 	/**
 	 * Agreement Id
@@ -112,29 +114,23 @@ public class Agreement implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		agreementId, productId, partyIdFrom, partyIdTo, roleTypeIdFrom, roleTypeIdTo, agreementTypeId, agreementDate, fromDate, thruDate, description, textData, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Agreement(GenericValue value) {
-		agreementId = (String) value.get(Fields.agreementId.name());
-		productId = (String) value.get(Fields.productId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		agreementTypeId = (String) value.get(Fields.agreementTypeId.name());
-		agreementDate = (Timestamp) value.get(Fields.agreementDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		description = (String) value.get(Fields.description.name());
-		textData = (String) value.get(Fields.textData.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		agreementTypeId = (String) value.get(FIELD_AGREEMENT_TYPE_ID);
+		agreementDate = (Timestamp) value.get(FIELD_AGREEMENT_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		textData = (String) value.get(FIELD_TEXT_DATA);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Agreement fromValue(org.apache.ofbiz.entity.GenericValue value) {

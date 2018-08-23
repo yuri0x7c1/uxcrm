@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Pmt Grp Membr Payment And Fin Acct Trans
  */
+@FieldNameConstants
 public class PmtGrpMembrPaymentAndFinAcctTrans implements Serializable {
 
-	public static final long serialVersionUID = 5237764627050360832L;
+	public static final long serialVersionUID = 260943395803637760L;
 	public static final String NAME = "PmtGrpMembrPaymentAndFinAcctTrans";
 	/**
 	 * Fin Account Id
@@ -185,48 +187,39 @@ public class PmtGrpMembrPaymentAndFinAcctTrans implements Serializable {
 	@Setter
 	private Timestamp effectiveDate;
 
-	public enum Fields {
-		finAccountId, partyId, finAccountTransStatusId, finAccountTransAmount, glReconciliationId, paymentGroupId, fromDate, sequenceNum, paymentId, thruDate, roleTypeIdTo, finAccountTransId, partyIdFrom, amount, paymentPreferenceId, comments, actualCurrencyAmount, overrideGlAccountId, paymentMethodTypeId, actualCurrencyUomId, paymentTypeId, currencyUomId, statusId, paymentMethodId, paymentGatewayResponseId, paymentRefNum, partyIdTo, effectiveDate
-	}
-
 	public PmtGrpMembrPaymentAndFinAcctTrans(GenericValue value) {
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 		finAccountTransStatusId = (String) value
-				.get(Fields.finAccountTransStatusId.name());
+				.get(FIELD_FIN_ACCOUNT_TRANS_STATUS_ID);
 		finAccountTransAmount = (BigDecimal) value
-				.get(Fields.finAccountTransAmount.name());
-		glReconciliationId = (String) value.get(Fields.glReconciliationId
-				.name());
-		paymentGroupId = (String) value.get(Fields.paymentGroupId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		paymentPreferenceId = (String) value.get(Fields.paymentPreferenceId
-				.name());
-		comments = (String) value.get(Fields.comments.name());
+				.get(FIELD_FIN_ACCOUNT_TRANS_AMOUNT);
+		glReconciliationId = (String) value.get(FIELD_GL_RECONCILIATION_ID);
+		paymentGroupId = (String) value.get(FIELD_PAYMENT_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		paymentPreferenceId = (String) value.get(FIELD_PAYMENT_PREFERENCE_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
 		actualCurrencyAmount = (BigDecimal) value
-				.get(Fields.actualCurrencyAmount.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		actualCurrencyUomId = (String) value.get(Fields.actualCurrencyUomId
-				.name());
-		paymentTypeId = (String) value.get(Fields.paymentTypeId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
+				.get(FIELD_ACTUAL_CURRENCY_AMOUNT);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		actualCurrencyUomId = (String) value.get(FIELD_ACTUAL_CURRENCY_UOM_ID);
+		paymentTypeId = (String) value.get(FIELD_PAYMENT_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
-		paymentRefNum = (String) value.get(Fields.paymentRefNum.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
+		paymentRefNum = (String) value.get(FIELD_PAYMENT_REF_NUM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
 	}
 
 	public static PmtGrpMembrPaymentAndFinAcctTrans fromValue(

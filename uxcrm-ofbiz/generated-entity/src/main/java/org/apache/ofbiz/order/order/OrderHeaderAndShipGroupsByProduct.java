@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Header And Ship Groups By Product
  */
+@FieldNameConstants
 public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 
-	public static final long serialVersionUID = 8641061426446020608L;
+	public static final long serialVersionUID = 7790252990363582464L;
 	public static final String NAME = "OrderHeaderAndShipGroupsByProduct";
 	/**
 	 * Product Id
@@ -431,93 +433,82 @@ public class OrderHeaderAndShipGroupsByProduct implements Serializable {
 	@Setter
 	private String internalCode;
 
-	public enum Fields {
-		productId, brandName, internalName, facilityId, giftMessage, orderId, shippingInstructions, maySplit, shipByDate, shipGroupSeqId, estimatedDeliveryDate, vendorPartyId, contactMechId, telecomContactMechId, shipAfterDate, carrierPartyId, carrierRoleTypeId, isGift, estimatedShipDate, supplierPartyId, shipmentMethodTypeId, trackingNumber, countryGeoId, houseNumberExt, address2, city, address1, postalCode, postalCodeGeoId, houseNumber, postalCodeExt, attnName, directions, countyGeoId, toName, cityGeoId, municipalityGeoId, stateProvinceGeoId, geoPointId, roleTypeId, partyId, invoicePerShipment, salesChannelEnumId, orderTypeId, billingAccountId, terminalId, isViewed, visitId, productStoreId, remainingSubTotal, orderName, webSiteId, isRushOrder, entryDate, grandTotal, autoOrderShoppingListId, externalId, priority, transactionId, firstAttemptOrderId, originFacilityId, statusId, createdBy, currencyUom, syncStatusId, pickSheetPrintedDate, needsInventoryIssuance, orderDate, internalCode
-	}
-
 	public OrderHeaderAndShipGroupsByProduct(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		brandName = (String) value.get(Fields.brandName.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		giftMessage = (String) value.get(Fields.giftMessage.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		shippingInstructions = (String) value.get(Fields.shippingInstructions
-				.name());
-		maySplit = (String) value.get(Fields.maySplit.name());
-		shipByDate = (Timestamp) value.get(Fields.shipByDate.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		brandName = (String) value.get(FIELD_BRAND_NAME);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		giftMessage = (String) value.get(FIELD_GIFT_MESSAGE);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		shippingInstructions = (String) value.get(FIELD_SHIPPING_INSTRUCTIONS);
+		maySplit = (String) value.get(FIELD_MAY_SPLIT);
+		shipByDate = (Timestamp) value.get(FIELD_SHIP_BY_DATE);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
 		estimatedDeliveryDate = (Timestamp) value
-				.get(Fields.estimatedDeliveryDate.name());
-		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		telecomContactMechId = (String) value.get(Fields.telecomContactMechId
-				.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
-		isGift = (String) value.get(Fields.isGift.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
-		supplierPartyId = (String) value.get(Fields.supplierPartyId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		trackingNumber = (String) value.get(Fields.trackingNumber.name());
-		countryGeoId = (String) value.get(Fields.countryGeoId.name());
-		houseNumberExt = (String) value.get(Fields.houseNumberExt.name());
-		address2 = (String) value.get(Fields.address2.name());
-		city = (String) value.get(Fields.city.name());
-		address1 = (String) value.get(Fields.address1.name());
-		postalCode = (String) value.get(Fields.postalCode.name());
-		postalCodeGeoId = (String) value.get(Fields.postalCodeGeoId.name());
-		houseNumber = (Long) value.get(Fields.houseNumber.name());
-		postalCodeExt = (String) value.get(Fields.postalCodeExt.name());
-		attnName = (String) value.get(Fields.attnName.name());
-		directions = (String) value.get(Fields.directions.name());
-		countyGeoId = (String) value.get(Fields.countyGeoId.name());
-		toName = (String) value.get(Fields.toName.name());
-		cityGeoId = (String) value.get(Fields.cityGeoId.name());
-		municipalityGeoId = (String) value.get(Fields.municipalityGeoId.name());
-		stateProvinceGeoId = (String) value.get(Fields.stateProvinceGeoId
-				.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		invoicePerShipment = (String) value.get(Fields.invoicePerShipment
-				.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		terminalId = (String) value.get(Fields.terminalId.name());
-		isViewed = (String) value.get(Fields.isViewed.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		remainingSubTotal = (BigDecimal) value.get(Fields.remainingSubTotal
-				.name());
-		orderName = (String) value.get(Fields.orderName.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		isRushOrder = (String) value.get(Fields.isRushOrder.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		grandTotal = (BigDecimal) value.get(Fields.grandTotal.name());
+				.get(FIELD_ESTIMATED_DELIVERY_DATE);
+		vendorPartyId = (String) value.get(FIELD_VENDOR_PARTY_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		telecomContactMechId = (String) value
+				.get(FIELD_TELECOM_CONTACT_MECH_ID);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
+		isGift = (String) value.get(FIELD_IS_GIFT);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
+		supplierPartyId = (String) value.get(FIELD_SUPPLIER_PARTY_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		trackingNumber = (String) value.get(FIELD_TRACKING_NUMBER);
+		countryGeoId = (String) value.get(FIELD_COUNTRY_GEO_ID);
+		houseNumberExt = (String) value.get(FIELD_HOUSE_NUMBER_EXT);
+		address2 = (String) value.get(FIELD_ADDRESS2);
+		city = (String) value.get(FIELD_CITY);
+		address1 = (String) value.get(FIELD_ADDRESS1);
+		postalCode = (String) value.get(FIELD_POSTAL_CODE);
+		postalCodeGeoId = (String) value.get(FIELD_POSTAL_CODE_GEO_ID);
+		houseNumber = (Long) value.get(FIELD_HOUSE_NUMBER);
+		postalCodeExt = (String) value.get(FIELD_POSTAL_CODE_EXT);
+		attnName = (String) value.get(FIELD_ATTN_NAME);
+		directions = (String) value.get(FIELD_DIRECTIONS);
+		countyGeoId = (String) value.get(FIELD_COUNTY_GEO_ID);
+		toName = (String) value.get(FIELD_TO_NAME);
+		cityGeoId = (String) value.get(FIELD_CITY_GEO_ID);
+		municipalityGeoId = (String) value.get(FIELD_MUNICIPALITY_GEO_ID);
+		stateProvinceGeoId = (String) value.get(FIELD_STATE_PROVINCE_GEO_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		invoicePerShipment = (String) value.get(FIELD_INVOICE_PER_SHIPMENT);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		terminalId = (String) value.get(FIELD_TERMINAL_ID);
+		isViewed = (String) value.get(FIELD_IS_VIEWED);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		remainingSubTotal = (BigDecimal) value.get(FIELD_REMAINING_SUB_TOTAL);
+		orderName = (String) value.get(FIELD_ORDER_NAME);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		isRushOrder = (String) value.get(FIELD_IS_RUSH_ORDER);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		grandTotal = (BigDecimal) value.get(FIELD_GRAND_TOTAL);
 		autoOrderShoppingListId = (String) value
-				.get(Fields.autoOrderShoppingListId.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		priority = (String) value.get(Fields.priority.name());
-		transactionId = (String) value.get(Fields.transactionId.name());
-		firstAttemptOrderId = (String) value.get(Fields.firstAttemptOrderId
-				.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		createdBy = (String) value.get(Fields.createdBy.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		syncStatusId = (String) value.get(Fields.syncStatusId.name());
+				.get(FIELD_AUTO_ORDER_SHOPPING_LIST_ID);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		priority = (String) value.get(FIELD_PRIORITY);
+		transactionId = (String) value.get(FIELD_TRANSACTION_ID);
+		firstAttemptOrderId = (String) value.get(FIELD_FIRST_ATTEMPT_ORDER_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		createdBy = (String) value.get(FIELD_CREATED_BY);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		syncStatusId = (String) value.get(FIELD_SYNC_STATUS_ID);
 		pickSheetPrintedDate = (Timestamp) value
-				.get(Fields.pickSheetPrintedDate.name());
+				.get(FIELD_PICK_SHEET_PRINTED_DATE);
 		needsInventoryIssuance = (String) value
-				.get(Fields.needsInventoryIssuance.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		internalCode = (String) value.get(Fields.internalCode.name());
+				.get(FIELD_NEEDS_INVENTORY_ISSUANCE);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		internalCode = (String) value.get(FIELD_INTERNAL_CODE);
 	}
 
 	public static OrderHeaderAndShipGroupsByProduct fromValue(

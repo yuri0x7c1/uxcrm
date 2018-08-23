@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Geo
  */
+@FieldNameConstants
 public class ProductGeo implements Serializable {
 
-	public static final long serialVersionUID = 3658841463186074624L;
+	public static final long serialVersionUID = 4636936655671498752L;
 	public static final String NAME = "ProductGeo";
 	/**
 	 * Product Id
@@ -64,21 +66,15 @@ public class ProductGeo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, geoId, productGeoEnumId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductGeo(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		productGeoEnumId = (String) value.get(Fields.productGeoEnumId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		productGeoEnumId = (String) value.get(FIELD_PRODUCT_GEO_ENUM_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductGeo fromValue(

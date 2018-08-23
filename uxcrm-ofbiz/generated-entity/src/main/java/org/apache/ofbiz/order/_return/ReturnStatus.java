@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Return Status
  */
+@FieldNameConstants
 public class ReturnStatus implements Serializable {
 
-	public static final long serialVersionUID = 6645565929061314560L;
+	public static final long serialVersionUID = 3402890731973560320L;
 	public static final String NAME = "ReturnStatus";
 	/**
 	 * Return Status Id
@@ -76,24 +78,17 @@ public class ReturnStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnStatusId, statusId, returnId, returnItemSeqId, changeByUserLoginId, statusDatetime, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnStatus(GenericValue value) {
-		returnStatusId = (String) value.get(Fields.returnStatusId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		returnId = (String) value.get(Fields.returnId.name());
-		returnItemSeqId = (String) value.get(Fields.returnItemSeqId.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		statusDatetime = (Timestamp) value.get(Fields.statusDatetime.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnStatusId = (String) value.get(FIELD_RETURN_STATUS_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnItemSeqId = (String) value.get(FIELD_RETURN_ITEM_SEQ_ID);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		statusDatetime = (Timestamp) value.get(FIELD_STATUS_DATETIME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnStatus fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.period;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Custom Time Period
  */
+@FieldNameConstants
 public class CustomTimePeriod implements Serializable {
 
-	public static final long serialVersionUID = 3721271901160901632L;
+	public static final long serialVersionUID = 8744327137400802304L;
 	public static final String NAME = "CustomTimePeriod";
 	/**
 	 * Custom Time Period Id
@@ -94,28 +96,20 @@ public class CustomTimePeriod implements Serializable {
 	@Setter
 	private String organizationPartyId;
 
-	public enum Fields {
-		customTimePeriodId, parentPeriodId, periodTypeId, periodNum, periodName, fromDate, thruDate, isClosed, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, organizationPartyId
-	}
-
 	public CustomTimePeriod(GenericValue value) {
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		parentPeriodId = (String) value.get(Fields.parentPeriodId.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		periodNum = (Long) value.get(Fields.periodNum.name());
-		periodName = (String) value.get(Fields.periodName.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		isClosed = (String) value.get(Fields.isClosed.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		parentPeriodId = (String) value.get(FIELD_PARENT_PERIOD_ID);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		periodNum = (Long) value.get(FIELD_PERIOD_NUM);
+		periodName = (String) value.get(FIELD_PERIOD_NAME);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		isClosed = (String) value.get(FIELD_IS_CLOSED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
 	}
 
 	public static CustomTimePeriod fromValue(

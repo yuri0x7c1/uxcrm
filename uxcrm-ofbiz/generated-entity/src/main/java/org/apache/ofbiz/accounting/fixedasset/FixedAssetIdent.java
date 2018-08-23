@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Fixed Asset Ident
  */
+@FieldNameConstants
 public class FixedAssetIdent implements Serializable {
 
-	public static final long serialVersionUID = 3273929070214218752L;
+	public static final long serialVersionUID = 8709914280218161152L;
 	public static final String NAME = "FixedAssetIdent";
 	/**
 	 * Fixed Asset Id
@@ -58,21 +60,15 @@ public class FixedAssetIdent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fixedAssetId, fixedAssetIdentTypeId, idValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FixedAssetIdent(GenericValue value) {
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		fixedAssetIdentTypeId = (String) value.get(Fields.fixedAssetIdentTypeId
-				.name());
-		idValue = (String) value.get(Fields.idValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		fixedAssetIdentTypeId = (String) value
+				.get(FIELD_FIXED_ASSET_IDENT_TYPE_ID);
+		idValue = (String) value.get(FIELD_ID_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FixedAssetIdent fromValue(

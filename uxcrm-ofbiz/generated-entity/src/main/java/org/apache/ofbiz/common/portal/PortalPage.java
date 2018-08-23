@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portal Page
  */
+@FieldNameConstants
 public class PortalPage implements Serializable {
 
-	public static final long serialVersionUID = 3686943321263643648L;
+	public static final long serialVersionUID = 3881170186881098752L;
 	public static final String NAME = "PortalPage";
 	/**
 	 * Portal Page Id
@@ -94,28 +96,21 @@ public class PortalPage implements Serializable {
 	@Setter
 	private String helpContentId;
 
-	public enum Fields {
-		portalPageId, portalPageName, description, ownerUserLoginId, originalPortalPageId, parentPortalPageId, sequenceNum, securityGroupId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, helpContentId
-	}
-
 	public PortalPage(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		portalPageName = (String) value.get(Fields.portalPageName.name());
-		description = (String) value.get(Fields.description.name());
-		ownerUserLoginId = (String) value.get(Fields.ownerUserLoginId.name());
-		originalPortalPageId = (String) value.get(Fields.originalPortalPageId
-				.name());
-		parentPortalPageId = (String) value.get(Fields.parentPortalPageId
-				.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		securityGroupId = (String) value.get(Fields.securityGroupId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		helpContentId = (String) value.get(Fields.helpContentId.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		portalPageName = (String) value.get(FIELD_PORTAL_PAGE_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		ownerUserLoginId = (String) value.get(FIELD_OWNER_USER_LOGIN_ID);
+		originalPortalPageId = (String) value
+				.get(FIELD_ORIGINAL_PORTAL_PAGE_ID);
+		parentPortalPageId = (String) value.get(FIELD_PARENT_PORTAL_PAGE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		securityGroupId = (String) value.get(FIELD_SECURITY_GROUP_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		helpContentId = (String) value.get(FIELD_HELP_CONTENT_ID);
 	}
 
 	public static PortalPage fromValue(

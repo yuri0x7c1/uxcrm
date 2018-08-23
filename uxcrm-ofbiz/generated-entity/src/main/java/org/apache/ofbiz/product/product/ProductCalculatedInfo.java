@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Calculated Info
  */
+@FieldNameConstants
 public class ProductCalculatedInfo implements Serializable {
 
-	public static final long serialVersionUID = 2066981253940258816L;
+	public static final long serialVersionUID = 3575280089612226560L;
 	public static final String NAME = "ProductCalculatedInfo";
 	/**
 	 * Product Id
@@ -65,23 +67,17 @@ public class ProductCalculatedInfo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, totalQuantityOrdered, totalTimesViewed, averageCustomerRating, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductCalculatedInfo(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
 		totalQuantityOrdered = (BigDecimal) value
-				.get(Fields.totalQuantityOrdered.name());
-		totalTimesViewed = (Long) value.get(Fields.totalTimesViewed.name());
+				.get(FIELD_TOTAL_QUANTITY_ORDERED);
+		totalTimesViewed = (Long) value.get(FIELD_TOTAL_TIMES_VIEWED);
 		averageCustomerRating = (BigDecimal) value
-				.get(Fields.averageCustomerRating.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_AVERAGE_CUSTOMER_RATING);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductCalculatedInfo fromValue(

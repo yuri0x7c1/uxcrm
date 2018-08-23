@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.price;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Price Change
  */
+@FieldNameConstants
 public class ProductPriceChange implements Serializable {
 
-	public static final long serialVersionUID = 3933871105760757760L;
+	public static final long serialVersionUID = 8556939628527959040L;
 	public static final String NAME = "ProductPriceChange";
 	/**
 	 * Product Price Change Id
@@ -113,34 +115,25 @@ public class ProductPriceChange implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPriceChangeId, productId, productPriceTypeId, productPricePurposeId, currencyUomId, productStoreGroupId, fromDate, thruDate, price, oldPrice, changedDate, changedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPriceChange(GenericValue value) {
-		productPriceChangeId = (String) value.get(Fields.productPriceChangeId
-				.name());
-		productId = (String) value.get(Fields.productId.name());
-		productPriceTypeId = (String) value.get(Fields.productPriceTypeId
-				.name());
-		productPricePurposeId = (String) value.get(Fields.productPricePurposeId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		price = (BigDecimal) value.get(Fields.price.name());
-		oldPrice = (BigDecimal) value.get(Fields.oldPrice.name());
-		changedDate = (Timestamp) value.get(Fields.changedDate.name());
-		changedByUserLogin = (String) value.get(Fields.changedByUserLogin
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productPriceChangeId = (String) value
+				.get(FIELD_PRODUCT_PRICE_CHANGE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productPriceTypeId = (String) value.get(FIELD_PRODUCT_PRICE_TYPE_ID);
+		productPricePurposeId = (String) value
+				.get(FIELD_PRODUCT_PRICE_PURPOSE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		price = (BigDecimal) value.get(FIELD_PRICE);
+		oldPrice = (BigDecimal) value.get(FIELD_OLD_PRICE);
+		changedDate = (Timestamp) value.get(FIELD_CHANGED_DATE);
+		changedByUserLogin = (String) value.get(FIELD_CHANGED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPriceChange fromValue(

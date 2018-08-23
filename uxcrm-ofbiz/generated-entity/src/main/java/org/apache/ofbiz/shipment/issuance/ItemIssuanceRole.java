@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.issuance;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Item Issuance Role
  */
+@FieldNameConstants
 public class ItemIssuanceRole implements Serializable {
 
-	public static final long serialVersionUID = 7545700875083556864L;
+	public static final long serialVersionUID = 6762394846956740608L;
 	public static final String NAME = "ItemIssuanceRole";
 	/**
 	 * Item Issuance Id
@@ -58,20 +60,14 @@ public class ItemIssuanceRole implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		itemIssuanceId, partyId, roleTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ItemIssuanceRole(GenericValue value) {
-		itemIssuanceId = (String) value.get(Fields.itemIssuanceId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		itemIssuanceId = (String) value.get(FIELD_ITEM_ISSUANCE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ItemIssuanceRole fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Item
  */
+@FieldNameConstants
 public class InvoiceItem implements Serializable {
 
-	public static final long serialVersionUID = 6697732981062218752L;
+	public static final long serialVersionUID = 1994409528421427200L;
 	public static final String NAME = "InvoiceItem";
 	/**
 	 * Invoice Id
@@ -155,41 +157,32 @@ public class InvoiceItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceId, invoiceItemSeqId, invoiceItemTypeId, overrideGlAccountId, overrideOrgPartyId, inventoryItemId, productId, productFeatureId, parentInvoiceId, parentInvoiceItemSeqId, uomId, taxableFlag, quantity, amount, description, taxAuthPartyId, taxAuthGeoId, taxAuthorityRateSeqId, salesOpportunityId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceItem(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		overrideOrgPartyId = (String) value.get(Fields.overrideOrgPartyId
-				.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		productId = (String) value.get(Fields.productId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		parentInvoiceId = (String) value.get(Fields.parentInvoiceId.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		overrideOrgPartyId = (String) value.get(FIELD_OVERRIDE_ORG_PARTY_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		parentInvoiceId = (String) value.get(FIELD_PARENT_INVOICE_ID);
 		parentInvoiceItemSeqId = (String) value
-				.get(Fields.parentInvoiceItemSeqId.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		taxableFlag = (String) value.get(Fields.taxableFlag.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		description = (String) value.get(Fields.description.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthorityRateSeqId = (String) value.get(Fields.taxAuthorityRateSeqId
-				.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PARENT_INVOICE_ITEM_SEQ_ID);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		taxableFlag = (String) value.get(FIELD_TAXABLE_FLAG);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthorityRateSeqId = (String) value
+				.get(FIELD_TAX_AUTHORITY_RATE_SEQ_ID);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceItem fromValue(

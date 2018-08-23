@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Test Blob
  */
+@FieldNameConstants
 public class TestBlob implements Serializable {
 
-	public static final long serialVersionUID = 5262019409042814976L;
+	public static final long serialVersionUID = 7977594869537186816L;
 	public static final String NAME = "TestBlob";
 	/**
 	 * Test Blob Id
@@ -53,19 +55,13 @@ public class TestBlob implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testBlobId, testBlobField, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestBlob(GenericValue value) {
-		testBlobId = (String) value.get(Fields.testBlobId.name());
-		testBlobField = (Blob) value.get(Fields.testBlobField.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testBlobId = (String) value.get(FIELD_TEST_BLOB_ID);
+		testBlobField = (Blob) value.get(FIELD_TEST_BLOB_FIELD);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestBlob fromValue(org.apache.ofbiz.entity.GenericValue value) {

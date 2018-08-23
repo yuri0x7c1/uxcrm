@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Order Item Association
  */
+@FieldNameConstants
 public class OldOrderItemAssociation implements Serializable {
 
-	public static final long serialVersionUID = 6182496298570890240L;
+	public static final long serialVersionUID = 5017652739324285952L;
 	public static final String NAME = "OldOrderItemAssociation";
 	/**
 	 * Sales Order Id
@@ -64,21 +66,15 @@ public class OldOrderItemAssociation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesOrderId, soItemSeqId, purchaseOrderId, poItemSeqId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldOrderItemAssociation(GenericValue value) {
-		salesOrderId = (String) value.get(Fields.salesOrderId.name());
-		soItemSeqId = (String) value.get(Fields.soItemSeqId.name());
-		purchaseOrderId = (String) value.get(Fields.purchaseOrderId.name());
-		poItemSeqId = (String) value.get(Fields.poItemSeqId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		salesOrderId = (String) value.get(FIELD_SALES_ORDER_ID);
+		soItemSeqId = (String) value.get(FIELD_SO_ITEM_SEQ_ID);
+		purchaseOrderId = (String) value.get(FIELD_PURCHASE_ORDER_ID);
+		poItemSeqId = (String) value.get(FIELD_PO_ITEM_SEQ_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldOrderItemAssociation fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Accommodation Map
  */
+@FieldNameConstants
 public class AccommodationMap implements Serializable {
 
-	public static final long serialVersionUID = 601109733780900864L;
+	public static final long serialVersionUID = 8828395381034423296L;
 	public static final String NAME = "AccommodationMap";
 	/**
 	 * Accommodation Map Id
@@ -70,25 +72,17 @@ public class AccommodationMap implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		accommodationMapId, accommodationClassId, fixedAssetId, accommodationMapTypeId, numberOfSpaces, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AccommodationMap(GenericValue value) {
-		accommodationMapId = (String) value.get(Fields.accommodationMapId
-				.name());
-		accommodationClassId = (String) value.get(Fields.accommodationClassId
-				.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
+		accommodationMapId = (String) value.get(FIELD_ACCOMMODATION_MAP_ID);
+		accommodationClassId = (String) value.get(FIELD_ACCOMMODATION_CLASS_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
 		accommodationMapTypeId = (String) value
-				.get(Fields.accommodationMapTypeId.name());
-		numberOfSpaces = (Long) value.get(Fields.numberOfSpaces.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ACCOMMODATION_MAP_TYPE_ID);
+		numberOfSpaces = (Long) value.get(FIELD_NUMBER_OF_SPACES);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AccommodationMap fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Unemployment Claim
  */
+@FieldNameConstants
 public class UnemploymentClaim implements Serializable {
 
-	public static final long serialVersionUID = 1132986542027769856L;
+	public static final long serialVersionUID = 6925457659401151488L;
 	public static final String NAME = "UnemploymentClaim";
 	/**
 	 * Unemployment Claim Id
@@ -100,29 +102,22 @@ public class UnemploymentClaim implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		unemploymentClaimId, unemploymentClaimDate, description, statusId, partyIdFrom, partyIdTo, roleTypeIdFrom, roleTypeIdTo, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UnemploymentClaim(GenericValue value) {
-		unemploymentClaimId = (String) value.get(Fields.unemploymentClaimId
-				.name());
+		unemploymentClaimId = (String) value.get(FIELD_UNEMPLOYMENT_CLAIM_ID);
 		unemploymentClaimDate = (Timestamp) value
-				.get(Fields.unemploymentClaimDate.name());
-		description = (String) value.get(Fields.description.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_UNEMPLOYMENT_CLAIM_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UnemploymentClaim fromValue(

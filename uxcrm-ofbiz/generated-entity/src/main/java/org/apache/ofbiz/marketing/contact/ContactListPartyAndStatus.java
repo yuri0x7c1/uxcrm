@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List Party And Status
  */
+@FieldNameConstants
 public class ContactListPartyAndStatus implements Serializable {
 
-	public static final long serialVersionUID = 8646610101889196032L;
+	public static final long serialVersionUID = 824330358658642944L;
 	public static final String NAME = "ContactListPartyAndStatus";
 	/**
 	 * From Date
@@ -82,22 +84,18 @@ public class ContactListPartyAndStatus implements Serializable {
 	@Setter
 	private String statusCode;
 
-	public enum Fields {
-		fromDate, statusDate, optInVerifyCode, statusId, contactListId, setByUserLoginId, partyId, statusTypeId, description, sequenceId, statusCode
-	}
-
 	public ContactListPartyAndStatus(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		optInVerifyCode = (String) value.get(Fields.optInVerifyCode.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		contactListId = (String) value.get(Fields.contactListId.name());
-		setByUserLoginId = (String) value.get(Fields.setByUserLoginId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		statusTypeId = (String) value.get(Fields.statusTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		statusCode = (String) value.get(Fields.statusCode.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		optInVerifyCode = (String) value.get(FIELD_OPT_IN_VERIFY_CODE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		setByUserLoginId = (String) value.get(FIELD_SET_BY_USER_LOGIN_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		statusTypeId = (String) value.get(FIELD_STATUS_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		statusCode = (String) value.get(FIELD_STATUS_CODE);
 	}
 
 	public static ContactListPartyAndStatus fromValue(

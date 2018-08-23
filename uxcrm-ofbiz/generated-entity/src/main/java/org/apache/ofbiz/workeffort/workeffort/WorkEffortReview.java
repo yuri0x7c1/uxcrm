@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Review
  */
+@FieldNameConstants
 public class WorkEffortReview implements Serializable {
 
-	public static final long serialVersionUID = 8075721529080964096L;
+	public static final long serialVersionUID = 460374528285417472L;
 	public static final String NAME = "WorkEffortReview";
 	/**
 	 * Work Effort Id
@@ -82,24 +84,18 @@ public class WorkEffortReview implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, userLoginId, reviewDate, statusId, postedAnonymous, rating, reviewText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortReview(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		reviewDate = (Timestamp) value.get(Fields.reviewDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		postedAnonymous = (String) value.get(Fields.postedAnonymous.name());
-		rating = (Double) value.get(Fields.rating.name());
-		reviewText = (String) value.get(Fields.reviewText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		reviewDate = (Timestamp) value.get(FIELD_REVIEW_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		postedAnonymous = (String) value.get(FIELD_POSTED_ANONYMOUS);
+		rating = (Double) value.get(FIELD_RATING);
+		reviewText = (String) value.get(FIELD_REVIEW_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortReview fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Pay Pal Payment Method
  */
+@FieldNameConstants
 public class PayPalPaymentMethod implements Serializable {
 
-	public static final long serialVersionUID = 6466152076698389504L;
+	public static final long serialVersionUID = 692593690414240768L;
 	public static final String NAME = "PayPalPaymentMethod";
 	/**
 	 * Payment Method Id
@@ -94,27 +96,20 @@ public class PayPalPaymentMethod implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentMethodId, payerId, expressCheckoutToken, payerStatus, avsAddr, avsZip, correlationId, contactMechId, transactionId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PayPalPaymentMethod(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		payerId = (String) value.get(Fields.payerId.name());
-		expressCheckoutToken = (String) value.get(Fields.expressCheckoutToken
-				.name());
-		payerStatus = (String) value.get(Fields.payerStatus.name());
-		avsAddr = (String) value.get(Fields.avsAddr.name());
-		avsZip = (String) value.get(Fields.avsZip.name());
-		correlationId = (String) value.get(Fields.correlationId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		transactionId = (String) value.get(Fields.transactionId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		payerId = (String) value.get(FIELD_PAYER_ID);
+		expressCheckoutToken = (String) value.get(FIELD_EXPRESS_CHECKOUT_TOKEN);
+		payerStatus = (String) value.get(FIELD_PAYER_STATUS);
+		avsAddr = (String) value.get(FIELD_AVS_ADDR);
+		avsZip = (String) value.get(FIELD_AVS_ZIP);
+		correlationId = (String) value.get(FIELD_CORRELATION_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		transactionId = (String) value.get(FIELD_TRANSACTION_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PayPalPaymentMethod fromValue(

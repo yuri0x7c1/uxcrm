@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Detail For Sum
  */
+@FieldNameConstants
 public class InventoryItemDetailForSum implements Serializable {
 
-	public static final long serialVersionUID = 1410280867157545984L;
+	public static final long serialVersionUID = 5118642724316442624L;
 	public static final String NAME = "InventoryItemDetailForSum";
 	/**
 	 * Quantity On Hand Sum
@@ -89,28 +91,22 @@ public class InventoryItemDetailForSum implements Serializable {
 	@Setter
 	private BigDecimal accountingQuantityDiff;
 
-	public enum Fields {
-		quantityOnHandSum, accountingQuantitySum, inventoryItemTypeId, facilityId, productId, unitCost, currencyUomId, effectiveDate, orderId, ownerPartyId, quantityOnHandDiff, accountingQuantityDiff
-	}
-
 	public InventoryItemDetailForSum(GenericValue value) {
-		quantityOnHandSum = (BigDecimal) value.get(Fields.quantityOnHandSum
-				.name());
+		quantityOnHandSum = (BigDecimal) value.get(FIELD_QUANTITY_ON_HAND_SUM);
 		accountingQuantitySum = (BigDecimal) value
-				.get(Fields.accountingQuantitySum.name());
-		inventoryItemTypeId = (String) value.get(Fields.inventoryItemTypeId
-				.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		productId = (String) value.get(Fields.productId.name());
-		unitCost = (BigDecimal) value.get(Fields.unitCost.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		quantityOnHandDiff = (BigDecimal) value.get(Fields.quantityOnHandDiff
-				.name());
+				.get(FIELD_ACCOUNTING_QUANTITY_SUM);
+		inventoryItemTypeId = (String) value.get(FIELD_INVENTORY_ITEM_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		unitCost = (BigDecimal) value.get(FIELD_UNIT_COST);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		quantityOnHandDiff = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_DIFF);
 		accountingQuantityDiff = (BigDecimal) value
-				.get(Fields.accountingQuantityDiff.name());
+				.get(FIELD_ACCOUNTING_QUANTITY_DIFF);
 	}
 
 	public static InventoryItemDetailForSum fromValue(

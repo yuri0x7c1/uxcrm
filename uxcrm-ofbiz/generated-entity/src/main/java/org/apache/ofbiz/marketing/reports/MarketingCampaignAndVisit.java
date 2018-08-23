@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Marketing Campaign And Visit
  */
+@FieldNameConstants
 public class MarketingCampaignAndVisit implements Serializable {
 
-	public static final long serialVersionUID = 7904846957153267712L;
+	public static final long serialVersionUID = 3204997387837136896L;
 	public static final String NAME = "MarketingCampaignAndVisit";
 	/**
 	 * Marketing Campaign Id
@@ -34,15 +36,10 @@ public class MarketingCampaignAndVisit implements Serializable {
 	@Setter
 	private Timestamp fromDate;
 
-	public enum Fields {
-		marketingCampaignId, visitId, fromDate
-	}
-
 	public MarketingCampaignAndVisit(GenericValue value) {
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		visitId = (Long) value.get(Fields.visitId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		visitId = (Long) value.get(FIELD_VISIT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
 	}
 
 	public static MarketingCampaignAndVisit fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Facility And Contact Mech
  */
+@FieldNameConstants
 public class FacilityAndContactMech implements Serializable {
 
-	public static final long serialVersionUID = 8231343129684483072L;
+	public static final long serialVersionUID = 570726629911262208L;
 	public static final String NAME = "FacilityAndContactMech";
 	/**
 	 * Facility Id
@@ -167,40 +169,35 @@ public class FacilityAndContactMech implements Serializable {
 	@Setter
 	private String contactMechTypeId;
 
-	public enum Fields {
-		facilityId, defaultInventoryItemTypeId, parentFacilityId, description, defaultWeightUomId, primaryFacilityGroupId, openedDate, ownerPartyId, facilitySize, facilitySizeUomId, closedDate, facilityTypeId, defaultDaysToShip, defaultDimensionUomId, facilityName, productStoreId, geoPointId, oldSquareFootage, fromDate, extension, comments, contactMechId, thruDate, infoString, contactMechTypeId
-	}
-
 	public FacilityAndContactMech(GenericValue value) {
-		facilityId = (String) value.get(Fields.facilityId.name());
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
 		defaultInventoryItemTypeId = (String) value
-				.get(Fields.defaultInventoryItemTypeId.name());
-		parentFacilityId = (String) value.get(Fields.parentFacilityId.name());
-		description = (String) value.get(Fields.description.name());
-		defaultWeightUomId = (String) value.get(Fields.defaultWeightUomId
-				.name());
+				.get(FIELD_DEFAULT_INVENTORY_ITEM_TYPE_ID);
+		parentFacilityId = (String) value.get(FIELD_PARENT_FACILITY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		defaultWeightUomId = (String) value.get(FIELD_DEFAULT_WEIGHT_UOM_ID);
 		primaryFacilityGroupId = (String) value
-				.get(Fields.primaryFacilityGroupId.name());
-		openedDate = (Timestamp) value.get(Fields.openedDate.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		facilitySize = (BigDecimal) value.get(Fields.facilitySize.name());
-		facilitySizeUomId = (String) value.get(Fields.facilitySizeUomId.name());
-		closedDate = (Timestamp) value.get(Fields.closedDate.name());
-		facilityTypeId = (String) value.get(Fields.facilityTypeId.name());
-		defaultDaysToShip = (Long) value.get(Fields.defaultDaysToShip.name());
-		defaultDimensionUomId = (String) value.get(Fields.defaultDimensionUomId
-				.name());
-		facilityName = (String) value.get(Fields.facilityName.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		oldSquareFootage = (Long) value.get(Fields.oldSquareFootage.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		extension = (String) value.get(Fields.extension.name());
-		comments = (String) value.get(Fields.comments.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
+				.get(FIELD_PRIMARY_FACILITY_GROUP_ID);
+		openedDate = (Timestamp) value.get(FIELD_OPENED_DATE);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		facilitySize = (BigDecimal) value.get(FIELD_FACILITY_SIZE);
+		facilitySizeUomId = (String) value.get(FIELD_FACILITY_SIZE_UOM_ID);
+		closedDate = (Timestamp) value.get(FIELD_CLOSED_DATE);
+		facilityTypeId = (String) value.get(FIELD_FACILITY_TYPE_ID);
+		defaultDaysToShip = (Long) value.get(FIELD_DEFAULT_DAYS_TO_SHIP);
+		defaultDimensionUomId = (String) value
+				.get(FIELD_DEFAULT_DIMENSION_UOM_ID);
+		facilityName = (String) value.get(FIELD_FACILITY_NAME);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		oldSquareFootage = (Long) value.get(FIELD_OLD_SQUARE_FOOTAGE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		extension = (String) value.get(FIELD_EXTENSION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
 	}
 
 	public static FacilityAndContactMech fromValue(

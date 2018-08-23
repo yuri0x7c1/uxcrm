@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Revision Item
  */
+@FieldNameConstants
 public class ContentRevisionItem implements Serializable {
 
-	public static final long serialVersionUID = 4757328813453839360L;
+	public static final long serialVersionUID = 1662729645261846528L;
 	public static final String NAME = "ContentRevisionItem";
 	/**
 	 * Content Id
@@ -70,23 +72,17 @@ public class ContentRevisionItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, contentRevisionSeqId, itemContentId, oldDataResourceId, newDataResourceId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentRevisionItem(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		contentRevisionSeqId = (String) value.get(Fields.contentRevisionSeqId
-				.name());
-		itemContentId = (String) value.get(Fields.itemContentId.name());
-		oldDataResourceId = (String) value.get(Fields.oldDataResourceId.name());
-		newDataResourceId = (String) value.get(Fields.newDataResourceId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentRevisionSeqId = (String) value
+				.get(FIELD_CONTENT_REVISION_SEQ_ID);
+		itemContentId = (String) value.get(FIELD_ITEM_CONTENT_ID);
+		oldDataResourceId = (String) value.get(FIELD_OLD_DATA_RESOURCE_ID);
+		newDataResourceId = (String) value.get(FIELD_NEW_DATA_RESOURCE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentRevisionItem fromValue(

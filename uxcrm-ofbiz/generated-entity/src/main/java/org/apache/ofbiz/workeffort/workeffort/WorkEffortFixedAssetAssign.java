@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Fixed Asset Assign
  */
+@FieldNameConstants
 public class WorkEffortFixedAssetAssign implements Serializable {
 
-	public static final long serialVersionUID = 5737797728400950272L;
+	public static final long serialVersionUID = 4054077795850277888L;
 	public static final String NAME = "WorkEffortFixedAssetAssign";
 	/**
 	 * Work Effort Id
@@ -89,26 +91,19 @@ public class WorkEffortFixedAssetAssign implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, fixedAssetId, statusId, fromDate, thruDate, availabilityStatusId, allocatedCost, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortFixedAssetAssign(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		availabilityStatusId = (String) value.get(Fields.availabilityStatusId
-				.name());
-		allocatedCost = (BigDecimal) value.get(Fields.allocatedCost.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		availabilityStatusId = (String) value.get(FIELD_AVAILABILITY_STATUS_ID);
+		allocatedCost = (BigDecimal) value.get(FIELD_ALLOCATED_COST);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortFixedAssetAssign fromValue(

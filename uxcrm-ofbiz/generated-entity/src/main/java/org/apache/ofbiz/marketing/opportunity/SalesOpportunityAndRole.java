@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Opportunity And Role
  */
+@FieldNameConstants
 public class SalesOpportunityAndRole implements Serializable {
 
-	public static final long serialVersionUID = 1528161175142931456L;
+	public static final long serialVersionUID = 7999646171893564416L;
 	public static final String NAME = "SalesOpportunityAndRole";
 	/**
 	 * Party Id
@@ -113,33 +115,24 @@ public class SalesOpportunityAndRole implements Serializable {
 	@Setter
 	private String salesOpportunityId;
 
-	public enum Fields {
-		partyId, roleTypeId, estimatedProbability, opportunityName, marketingCampaignId, description, opportunityStageId, typeEnumId, estimatedCloseDate, dataSourceId, currencyUomId, nextStep, nextStepDate, estimatedAmount, createdByUserLogin, salesOpportunityId
-	}
-
 	public SalesOpportunityAndRole(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
 		estimatedProbability = (BigDecimal) value
-				.get(Fields.estimatedProbability.name());
-		opportunityName = (String) value.get(Fields.opportunityName.name());
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		opportunityStageId = (String) value.get(Fields.opportunityStageId
-				.name());
-		typeEnumId = (String) value.get(Fields.typeEnumId.name());
-		estimatedCloseDate = (Timestamp) value.get(Fields.estimatedCloseDate
-				.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		nextStep = (String) value.get(Fields.nextStep.name());
-		nextStepDate = (Timestamp) value.get(Fields.nextStepDate.name());
-		estimatedAmount = (BigDecimal) value.get(Fields.estimatedAmount.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		salesOpportunityId = (String) value.get(Fields.salesOpportunityId
-				.name());
+				.get(FIELD_ESTIMATED_PROBABILITY);
+		opportunityName = (String) value.get(FIELD_OPPORTUNITY_NAME);
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		opportunityStageId = (String) value.get(FIELD_OPPORTUNITY_STAGE_ID);
+		typeEnumId = (String) value.get(FIELD_TYPE_ENUM_ID);
+		estimatedCloseDate = (Timestamp) value.get(FIELD_ESTIMATED_CLOSE_DATE);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		nextStep = (String) value.get(FIELD_NEXT_STEP);
+		nextStepDate = (Timestamp) value.get(FIELD_NEXT_STEP_DATE);
+		estimatedAmount = (BigDecimal) value.get(FIELD_ESTIMATED_AMOUNT);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		salesOpportunityId = (String) value.get(FIELD_SALES_OPPORTUNITY_ID);
 	}
 
 	public static SalesOpportunityAndRole fromValue(

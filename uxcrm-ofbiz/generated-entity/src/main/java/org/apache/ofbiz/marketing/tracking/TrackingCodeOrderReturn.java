@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.tracking;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code Order Return
  */
+@FieldNameConstants
 public class TrackingCodeOrderReturn implements Serializable {
 
-	public static final long serialVersionUID = 8454284618454982656L;
+	public static final long serialVersionUID = 3972583200428376064L;
 	public static final String NAME = "TrackingCodeOrderReturn";
 	/**
 	 * Return Id
@@ -94,28 +96,21 @@ public class TrackingCodeOrderReturn implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnId, orderId, orderItemSeqId, trackingCodeTypeId, trackingCodeId, isBillable, siteId, hasExported, affiliateReferredTimeStamp, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TrackingCodeOrderReturn(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		trackingCodeTypeId = (String) value.get(Fields.trackingCodeTypeId
-				.name());
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
-		isBillable = (String) value.get(Fields.isBillable.name());
-		siteId = (String) value.get(Fields.siteId.name());
-		hasExported = (String) value.get(Fields.hasExported.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		trackingCodeTypeId = (String) value.get(FIELD_TRACKING_CODE_TYPE_ID);
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
+		isBillable = (String) value.get(FIELD_IS_BILLABLE);
+		siteId = (String) value.get(FIELD_SITE_ID);
+		hasExported = (String) value.get(FIELD_HAS_EXPORTED);
 		affiliateReferredTimeStamp = (Timestamp) value
-				.get(Fields.affiliateReferredTimeStamp.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_AFFILIATE_REFERRED_TIME_STAMP);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TrackingCodeOrderReturn fromValue(

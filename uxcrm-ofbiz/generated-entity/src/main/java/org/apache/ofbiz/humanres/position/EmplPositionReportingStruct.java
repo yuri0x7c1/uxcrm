@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.position;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Empl Position Reporting Struct
  */
+@FieldNameConstants
 public class EmplPositionReportingStruct implements Serializable {
 
-	public static final long serialVersionUID = 1504516759518615552L;
+	public static final long serialVersionUID = 3327754384864270336L;
 	public static final String NAME = "EmplPositionReportingStruct";
 	/**
 	 * Empl Position Id Reporting To
@@ -76,25 +78,19 @@ public class EmplPositionReportingStruct implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		emplPositionIdReportingTo, emplPositionIdManagedBy, fromDate, thruDate, comments, primaryFlag, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmplPositionReportingStruct(GenericValue value) {
 		emplPositionIdReportingTo = (String) value
-				.get(Fields.emplPositionIdReportingTo.name());
+				.get(FIELD_EMPL_POSITION_ID_REPORTING_TO);
 		emplPositionIdManagedBy = (String) value
-				.get(Fields.emplPositionIdManagedBy.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		primaryFlag = (String) value.get(Fields.primaryFlag.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EMPL_POSITION_ID_MANAGED_BY);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		primaryFlag = (String) value.get(FIELD_PRIMARY_FLAG);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmplPositionReportingStruct fromValue(

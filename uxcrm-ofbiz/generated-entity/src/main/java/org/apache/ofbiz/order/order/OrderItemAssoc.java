@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Item Assoc
  */
+@FieldNameConstants
 public class OrderItemAssoc implements Serializable {
 
-	public static final long serialVersionUID = 4663845966791714816L;
+	public static final long serialVersionUID = 548707922889745408L;
 	public static final String NAME = "OrderItemAssoc";
 	/**
 	 * Order Id
@@ -89,26 +91,20 @@ public class OrderItemAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, shipGroupSeqId, toOrderId, toOrderItemSeqId, toShipGroupSeqId, orderItemAssocTypeId, quantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderItemAssoc(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		toOrderId = (String) value.get(Fields.toOrderId.name());
-		toOrderItemSeqId = (String) value.get(Fields.toOrderItemSeqId.name());
-		toShipGroupSeqId = (String) value.get(Fields.toShipGroupSeqId.name());
-		orderItemAssocTypeId = (String) value.get(Fields.orderItemAssocTypeId
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		toOrderId = (String) value.get(FIELD_TO_ORDER_ID);
+		toOrderItemSeqId = (String) value.get(FIELD_TO_ORDER_ITEM_SEQ_ID);
+		toShipGroupSeqId = (String) value.get(FIELD_TO_SHIP_GROUP_SEQ_ID);
+		orderItemAssocTypeId = (String) value
+				.get(FIELD_ORDER_ITEM_ASSOC_TYPE_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderItemAssoc fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Application Sandbox
  */
+@FieldNameConstants
 public class ApplicationSandbox implements Serializable {
 
-	public static final long serialVersionUID = 7619589215205330944L;
+	public static final long serialVersionUID = 5768318672631525376L;
 	public static final String NAME = "ApplicationSandbox";
 	/**
 	 * Application Id
@@ -76,23 +78,17 @@ public class ApplicationSandbox implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		applicationId, workEffortId, partyId, roleTypeId, fromDate, runtimeDataId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ApplicationSandbox(GenericValue value) {
-		applicationId = (String) value.get(Fields.applicationId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		runtimeDataId = (String) value.get(Fields.runtimeDataId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		applicationId = (String) value.get(FIELD_APPLICATION_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		runtimeDataId = (String) value.get(FIELD_RUNTIME_DATA_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ApplicationSandbox fromValue(

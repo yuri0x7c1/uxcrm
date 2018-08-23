@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.promo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Promo
  */
+@FieldNameConstants
 public class ProductPromo implements Serializable {
 
-	public static final long serialVersionUID = 6737759807372510208L;
+	public static final long serialVersionUID = 2790396732394919936L;
 	public static final String NAME = "ProductPromo";
 	/**
 	 * Product Promo Id
@@ -131,38 +133,27 @@ public class ProductPromo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productPromoId, promoName, promoText, userEntered, showToCustomer, requireCode, useLimitPerOrder, useLimitPerCustomer, useLimitPerPromotion, billbackFactor, overrideOrgPartyId, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductPromo(GenericValue value) {
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		promoName = (String) value.get(Fields.promoName.name());
-		promoText = (String) value.get(Fields.promoText.name());
-		userEntered = (String) value.get(Fields.userEntered.name());
-		showToCustomer = (String) value.get(Fields.showToCustomer.name());
-		requireCode = (String) value.get(Fields.requireCode.name());
-		useLimitPerOrder = (Long) value.get(Fields.useLimitPerOrder.name());
-		useLimitPerCustomer = (Long) value.get(Fields.useLimitPerCustomer
-				.name());
-		useLimitPerPromotion = (Long) value.get(Fields.useLimitPerPromotion
-				.name());
-		billbackFactor = (BigDecimal) value.get(Fields.billbackFactor.name());
-		overrideOrgPartyId = (String) value.get(Fields.overrideOrgPartyId
-				.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		promoName = (String) value.get(FIELD_PROMO_NAME);
+		promoText = (String) value.get(FIELD_PROMO_TEXT);
+		userEntered = (String) value.get(FIELD_USER_ENTERED);
+		showToCustomer = (String) value.get(FIELD_SHOW_TO_CUSTOMER);
+		requireCode = (String) value.get(FIELD_REQUIRE_CODE);
+		useLimitPerOrder = (Long) value.get(FIELD_USE_LIMIT_PER_ORDER);
+		useLimitPerCustomer = (Long) value.get(FIELD_USE_LIMIT_PER_CUSTOMER);
+		useLimitPerPromotion = (Long) value.get(FIELD_USE_LIMIT_PER_PROMOTION);
+		billbackFactor = (BigDecimal) value.get(FIELD_BILLBACK_FACTOR);
+		overrideOrgPartyId = (String) value.get(FIELD_OVERRIDE_ORG_PARTY_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductPromo fromValue(

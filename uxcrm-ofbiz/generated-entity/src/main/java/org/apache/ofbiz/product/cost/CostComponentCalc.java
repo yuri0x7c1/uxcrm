@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.cost;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Cost Component Calc
  */
+@FieldNameConstants
 public class CostComponentCalc implements Serializable {
 
-	public static final long serialVersionUID = 7205361080135743488L;
+	public static final long serialVersionUID = 5455937069781706752L;
 	public static final String NAME = "CostComponentCalc";
 	/**
 	 * Cost Component Calc Id
@@ -95,30 +97,21 @@ public class CostComponentCalc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		costComponentCalcId, description, costGlAccountTypeId, offsettingGlAccountTypeId, fixedCost, variableCost, perMilliSecond, currencyUomId, costCustomMethodId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CostComponentCalc(GenericValue value) {
-		costComponentCalcId = (String) value.get(Fields.costComponentCalcId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		costGlAccountTypeId = (String) value.get(Fields.costGlAccountTypeId
-				.name());
+		costComponentCalcId = (String) value.get(FIELD_COST_COMPONENT_CALC_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		costGlAccountTypeId = (String) value.get(FIELD_COST_GL_ACCOUNT_TYPE_ID);
 		offsettingGlAccountTypeId = (String) value
-				.get(Fields.offsettingGlAccountTypeId.name());
-		fixedCost = (BigDecimal) value.get(Fields.fixedCost.name());
-		variableCost = (BigDecimal) value.get(Fields.variableCost.name());
-		perMilliSecond = (Long) value.get(Fields.perMilliSecond.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		costCustomMethodId = (String) value.get(Fields.costCustomMethodId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_OFFSETTING_GL_ACCOUNT_TYPE_ID);
+		fixedCost = (BigDecimal) value.get(FIELD_FIXED_COST);
+		variableCost = (BigDecimal) value.get(FIELD_VARIABLE_COST);
+		perMilliSecond = (Long) value.get(FIELD_PER_MILLI_SECOND);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		costCustomMethodId = (String) value.get(FIELD_COST_CUSTOM_METHOD_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CostComponentCalc fromValue(

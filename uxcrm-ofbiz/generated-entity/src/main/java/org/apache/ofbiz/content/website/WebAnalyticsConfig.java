@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Analytics Config
  */
+@FieldNameConstants
 public class WebAnalyticsConfig implements Serializable {
 
-	public static final long serialVersionUID = 8934746477740265472L;
+	public static final long serialVersionUID = 672119728579091456L;
 	public static final String NAME = "WebAnalyticsConfig";
 	/**
 	 * Web Site Id
@@ -58,21 +60,14 @@ public class WebAnalyticsConfig implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webSiteId, webAnalyticsTypeId, webAnalyticsCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebAnalyticsConfig(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		webAnalyticsTypeId = (String) value.get(Fields.webAnalyticsTypeId
-				.name());
-		webAnalyticsCode = (String) value.get(Fields.webAnalyticsCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		webAnalyticsTypeId = (String) value.get(FIELD_WEB_ANALYTICS_TYPE_ID);
+		webAnalyticsCode = (String) value.get(FIELD_WEB_ANALYTICS_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebAnalyticsConfig fromValue(

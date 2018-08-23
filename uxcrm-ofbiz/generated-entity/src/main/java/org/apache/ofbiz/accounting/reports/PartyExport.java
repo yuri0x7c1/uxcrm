@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Export
  */
+@FieldNameConstants
 public class PartyExport implements Serializable {
 
-	public static final long serialVersionUID = 3069841384493780992L;
+	public static final long serialVersionUID = 3960784987833135104L;
 	public static final String NAME = "PartyExport";
 	/**
 	 * Party Id
@@ -160,38 +162,33 @@ public class PartyExport implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		partyId, statusId, preferredCurrencyUomId, groupName, firstName, middleName, lastName, companyPartyId, companyName, roleTypeId, contactMechTypeId, contactMechPurposeTypeId, emailAddress, telCountryCode, telAreaCode, telContactNumber, address1, address2, city, stateProvinceGeoId, postalCode, countryGeoId, fromDate, thruDate
-	}
-
 	public PartyExport(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		statusId = (String) value.get(Fields.statusId.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredCurrencyUomId = (String) value
-				.get(Fields.preferredCurrencyUomId.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		companyPartyId = (String) value.get(Fields.companyPartyId.name());
-		companyName = (String) value.get(Fields.companyName.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
+				.get(FIELD_PREFERRED_CURRENCY_UOM_ID);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		companyPartyId = (String) value.get(FIELD_COMPANY_PARTY_ID);
+		companyName = (String) value.get(FIELD_COMPANY_NAME);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
 		contactMechPurposeTypeId = (String) value
-				.get(Fields.contactMechPurposeTypeId.name());
-		emailAddress = (String) value.get(Fields.emailAddress.name());
-		telCountryCode = (String) value.get(Fields.telCountryCode.name());
-		telAreaCode = (String) value.get(Fields.telAreaCode.name());
-		telContactNumber = (String) value.get(Fields.telContactNumber.name());
-		address1 = (String) value.get(Fields.address1.name());
-		address2 = (String) value.get(Fields.address2.name());
-		city = (String) value.get(Fields.city.name());
-		stateProvinceGeoId = (String) value.get(Fields.stateProvinceGeoId
-				.name());
-		postalCode = (String) value.get(Fields.postalCode.name());
-		countryGeoId = (String) value.get(Fields.countryGeoId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_CONTACT_MECH_PURPOSE_TYPE_ID);
+		emailAddress = (String) value.get(FIELD_EMAIL_ADDRESS);
+		telCountryCode = (String) value.get(FIELD_TEL_COUNTRY_CODE);
+		telAreaCode = (String) value.get(FIELD_TEL_AREA_CODE);
+		telContactNumber = (String) value.get(FIELD_TEL_CONTACT_NUMBER);
+		address1 = (String) value.get(FIELD_ADDRESS1);
+		address2 = (String) value.get(FIELD_ADDRESS2);
+		city = (String) value.get(FIELD_CITY);
+		stateProvinceGeoId = (String) value.get(FIELD_STATE_PROVINCE_GEO_ID);
+		postalCode = (String) value.get(FIELD_POSTAL_CODE);
+		countryGeoId = (String) value.get(FIELD_COUNTRY_GEO_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static PartyExport fromValue(

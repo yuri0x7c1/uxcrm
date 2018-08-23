@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order._return;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Return Header
  */
+@FieldNameConstants
 public class ReturnHeader implements Serializable {
 
-	public static final long serialVersionUID = 1972958992216352768L;
+	public static final long serialVersionUID = 1727830903009327104L;
 	public static final String NAME = "ReturnHeader";
 	/**
 	 * Return Id
@@ -130,36 +132,28 @@ public class ReturnHeader implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		returnId, returnHeaderTypeId, statusId, createdBy, fromPartyId, toPartyId, paymentMethodId, finAccountId, billingAccountId, entryDate, originContactMechId, destinationFacilityId, needsInventoryReceive, currencyUomId, supplierRmaId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ReturnHeader(GenericValue value) {
-		returnId = (String) value.get(Fields.returnId.name());
-		returnHeaderTypeId = (String) value.get(Fields.returnHeaderTypeId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		createdBy = (String) value.get(Fields.createdBy.name());
-		fromPartyId = (String) value.get(Fields.fromPartyId.name());
-		toPartyId = (String) value.get(Fields.toPartyId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		entryDate = (Timestamp) value.get(Fields.entryDate.name());
-		originContactMechId = (String) value.get(Fields.originContactMechId
-				.name());
-		destinationFacilityId = (String) value.get(Fields.destinationFacilityId
-				.name());
-		needsInventoryReceive = (String) value.get(Fields.needsInventoryReceive
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		supplierRmaId = (String) value.get(Fields.supplierRmaId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		returnId = (String) value.get(FIELD_RETURN_ID);
+		returnHeaderTypeId = (String) value.get(FIELD_RETURN_HEADER_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		createdBy = (String) value.get(FIELD_CREATED_BY);
+		fromPartyId = (String) value.get(FIELD_FROM_PARTY_ID);
+		toPartyId = (String) value.get(FIELD_TO_PARTY_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		entryDate = (Timestamp) value.get(FIELD_ENTRY_DATE);
+		originContactMechId = (String) value.get(FIELD_ORIGIN_CONTACT_MECH_ID);
+		destinationFacilityId = (String) value
+				.get(FIELD_DESTINATION_FACILITY_ID);
+		needsInventoryReceive = (String) value
+				.get(FIELD_NEEDS_INVENTORY_RECEIVE);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		supplierRmaId = (String) value.get(FIELD_SUPPLIER_RMA_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ReturnHeader fromValue(

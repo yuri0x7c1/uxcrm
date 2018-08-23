@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.status;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Status Valid Change To Detail
  */
+@FieldNameConstants
 public class StatusValidChangeToDetail implements Serializable {
 
-	public static final long serialVersionUID = 620694916339169280L;
+	public static final long serialVersionUID = 4552745609327928320L;
 	public static final String NAME = "StatusValidChangeToDetail";
 	/**
 	 * Condition Expression
@@ -63,20 +65,15 @@ public class StatusValidChangeToDetail implements Serializable {
 	@Setter
 	private String statusCode;
 
-	public enum Fields {
-		conditionExpression, statusId, statusIdTo, transitionName, statusTypeId, description, sequenceId, statusCode
-	}
-
 	public StatusValidChangeToDetail(GenericValue value) {
-		conditionExpression = (String) value.get(Fields.conditionExpression
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusIdTo = (String) value.get(Fields.statusIdTo.name());
-		transitionName = (String) value.get(Fields.transitionName.name());
-		statusTypeId = (String) value.get(Fields.statusTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		statusCode = (String) value.get(Fields.statusCode.name());
+		conditionExpression = (String) value.get(FIELD_CONDITION_EXPRESSION);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusIdTo = (String) value.get(FIELD_STATUS_ID_TO);
+		transitionName = (String) value.get(FIELD_TRANSITION_NAME);
+		statusTypeId = (String) value.get(FIELD_STATUS_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		statusCode = (String) value.get(FIELD_STATUS_CODE);
 	}
 
 	public static StatusValidChangeToDetail fromValue(

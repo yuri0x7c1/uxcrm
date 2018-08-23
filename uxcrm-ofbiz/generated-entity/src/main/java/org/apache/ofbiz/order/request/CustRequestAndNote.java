@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request And Note
  */
+@FieldNameConstants
 public class CustRequestAndNote implements Serializable {
 
-	public static final long serialVersionUID = 6434667748485861376L;
+	public static final long serialVersionUID = 2386607886988902400L;
 	public static final String NAME = "CustRequestAndNote";
 	/**
 	 * Cust Request Id
@@ -70,20 +72,16 @@ public class CustRequestAndNote implements Serializable {
 	@Setter
 	private String noteParty;
 
-	public enum Fields {
-		custRequestId, noteName, noteDateTime, moreInfoItemName, noteInfo, moreInfoUrl, noteId, moreInfoItemId, noteParty
-	}
-
 	public CustRequestAndNote(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		moreInfoItemName = (String) value.get(Fields.moreInfoItemName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		moreInfoUrl = (String) value.get(Fields.moreInfoUrl.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		moreInfoItemId = (String) value.get(Fields.moreInfoItemId.name());
-		noteParty = (String) value.get(Fields.noteParty.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		moreInfoItemName = (String) value.get(FIELD_MORE_INFO_ITEM_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		moreInfoUrl = (String) value.get(FIELD_MORE_INFO_URL);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		moreInfoItemId = (String) value.get(FIELD_MORE_INFO_ITEM_ID);
+		noteParty = (String) value.get(FIELD_NOTE_PARTY);
 	}
 
 	public static CustRequestAndNote fromValue(

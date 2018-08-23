@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Feature Iactn
  */
+@FieldNameConstants
 public class ProductFeatureIactn implements Serializable {
 
-	public static final long serialVersionUID = 954677336686588928L;
+	public static final long serialVersionUID = 681960679042310144L;
 	public static final String NAME = "ProductFeatureIactn";
 	/**
 	 * Product Feature Id
@@ -64,23 +66,16 @@ public class ProductFeatureIactn implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productFeatureId, productFeatureIdTo, productFeatureIactnTypeId, productId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFeatureIactn(GenericValue value) {
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productFeatureIdTo = (String) value.get(Fields.productFeatureIdTo
-				.name());
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productFeatureIdTo = (String) value.get(FIELD_PRODUCT_FEATURE_ID_TO);
 		productFeatureIactnTypeId = (String) value
-				.get(Fields.productFeatureIactnTypeId.name());
-		productId = (String) value.get(Fields.productId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_FEATURE_IACTN_TYPE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFeatureIactn fromValue(

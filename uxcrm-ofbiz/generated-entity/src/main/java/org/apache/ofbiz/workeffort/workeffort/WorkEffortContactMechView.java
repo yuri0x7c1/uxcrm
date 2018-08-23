@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Contact Mech View
  */
+@FieldNameConstants
 public class WorkEffortContactMechView implements Serializable {
 
-	public static final long serialVersionUID = 4137150067389986816L;
+	public static final long serialVersionUID = 7664129665933007872L;
 	public static final String NAME = "WorkEffortContactMechView";
 	/**
 	 * Work Effort Id
@@ -58,18 +60,14 @@ public class WorkEffortContactMechView implements Serializable {
 	@Setter
 	private String contactMechTypeId;
 
-	public enum Fields {
-		workEffortId, fromDate, comments, contactMechId, thruDate, infoString, contactMechTypeId
-	}
-
 	public WorkEffortContactMechView(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
 	}
 
 	public static WorkEffortContactMechView fromValue(

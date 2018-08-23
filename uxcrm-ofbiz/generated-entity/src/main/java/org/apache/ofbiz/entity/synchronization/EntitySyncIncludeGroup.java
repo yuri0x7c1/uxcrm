@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.synchronization;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Sync Include Group
  */
+@FieldNameConstants
 public class EntitySyncIncludeGroup implements Serializable {
 
-	public static final long serialVersionUID = 1364801853167902720L;
+	public static final long serialVersionUID = 4206714633727052800L;
 	public static final String NAME = "EntitySyncIncludeGroup";
 	/**
 	 * Entity Sync Id
@@ -52,19 +54,13 @@ public class EntitySyncIncludeGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		entitySyncId, entityGroupId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntitySyncIncludeGroup(GenericValue value) {
-		entitySyncId = (String) value.get(Fields.entitySyncId.name());
-		entityGroupId = (String) value.get(Fields.entityGroupId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		entitySyncId = (String) value.get(FIELD_ENTITY_SYNC_ID);
+		entityGroupId = (String) value.get(FIELD_ENTITY_GROUP_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntitySyncIncludeGroup fromValue(

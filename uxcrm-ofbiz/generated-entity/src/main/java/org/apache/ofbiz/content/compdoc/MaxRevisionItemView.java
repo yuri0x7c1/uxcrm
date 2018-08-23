@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.compdoc;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Max Revision Item View
  */
+@FieldNameConstants
 public class MaxRevisionItemView implements Serializable {
 
-	public static final long serialVersionUID = 869208799517752320L;
+	public static final long serialVersionUID = 4179257536941426688L;
 	public static final String NAME = "MaxRevisionItemView";
 	/**
 	 * Root Revision Content Id
@@ -39,17 +41,13 @@ public class MaxRevisionItemView implements Serializable {
 	@Setter
 	private String maxRevisionSeqId;
 
-	public enum Fields {
-		rootRevisionContentId, itemContentId, contentRevisionSeqId, maxRevisionSeqId
-	}
-
 	public MaxRevisionItemView(GenericValue value) {
-		rootRevisionContentId = (String) value.get(Fields.rootRevisionContentId
-				.name());
-		itemContentId = (String) value.get(Fields.itemContentId.name());
-		contentRevisionSeqId = (String) value.get(Fields.contentRevisionSeqId
-				.name());
-		maxRevisionSeqId = (String) value.get(Fields.maxRevisionSeqId.name());
+		rootRevisionContentId = (String) value
+				.get(FIELD_ROOT_REVISION_CONTENT_ID);
+		itemContentId = (String) value.get(FIELD_ITEM_CONTENT_ID);
+		contentRevisionSeqId = (String) value
+				.get(FIELD_CONTENT_REVISION_SEQ_ID);
+		maxRevisionSeqId = (String) value.get(FIELD_MAX_REVISION_SEQ_ID);
 	}
 
 	public static MaxRevisionItemView fromValue(

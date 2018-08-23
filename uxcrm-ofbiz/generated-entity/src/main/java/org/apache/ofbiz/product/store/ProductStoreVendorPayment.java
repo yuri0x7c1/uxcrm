@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Vendor Payment
  */
+@FieldNameConstants
 public class ProductStoreVendorPayment implements Serializable {
 
-	public static final long serialVersionUID = 6989230736016732160L;
+	public static final long serialVersionUID = 979829807373044736L;
 	public static final String NAME = "ProductStoreVendorPayment";
 	/**
 	 * Product Store Id
@@ -64,22 +66,15 @@ public class ProductStoreVendorPayment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, vendorPartyId, paymentMethodTypeId, creditCardEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreVendorPayment(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		creditCardEnumId = (String) value.get(Fields.creditCardEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		vendorPartyId = (String) value.get(FIELD_VENDOR_PARTY_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		creditCardEnumId = (String) value.get(FIELD_CREDIT_CARD_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreVendorPayment fromValue(

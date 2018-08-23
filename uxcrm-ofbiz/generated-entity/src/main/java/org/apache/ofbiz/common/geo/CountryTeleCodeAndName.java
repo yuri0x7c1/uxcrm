@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Country Tele Code And Name
  */
+@FieldNameConstants
 public class CountryTeleCodeAndName implements Serializable {
 
-	public static final long serialVersionUID = 5845171930779502592L;
+	public static final long serialVersionUID = 8389382363914057728L;
 	public static final String NAME = "CountryTeleCodeAndName";
 	/**
 	 * Tele Code
@@ -33,14 +35,10 @@ public class CountryTeleCodeAndName implements Serializable {
 	@Setter
 	private String countryName;
 
-	public enum Fields {
-		teleCode, countryCode, countryName
-	}
-
 	public CountryTeleCodeAndName(GenericValue value) {
-		teleCode = (String) value.get(Fields.teleCode.name());
-		countryCode = (String) value.get(Fields.countryCode.name());
-		countryName = (String) value.get(Fields.countryName.name());
+		teleCode = (String) value.get(FIELD_TELE_CODE);
+		countryCode = (String) value.get(FIELD_COUNTRY_CODE);
+		countryName = (String) value.get(FIELD_COUNTRY_NAME);
 	}
 
 	public static CountryTeleCodeAndName fromValue(

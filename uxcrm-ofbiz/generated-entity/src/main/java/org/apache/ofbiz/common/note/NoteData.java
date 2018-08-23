@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.note;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Note Data
  */
+@FieldNameConstants
 public class NoteData implements Serializable {
 
-	public static final long serialVersionUID = 2578391861276226560L;
+	public static final long serialVersionUID = 5057595158141935616L;
 	public static final String NAME = "NoteData";
 	/**
 	 * Note Id
@@ -88,25 +90,19 @@ public class NoteData implements Serializable {
 	@Setter
 	private String moreInfoItemName;
 
-	public enum Fields {
-		noteId, noteName, noteInfo, noteDateTime, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, noteParty, moreInfoUrl, moreInfoItemId, moreInfoItemName
-	}
-
 	public NoteData(GenericValue value) {
-		noteId = (String) value.get(Fields.noteId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		noteParty = (String) value.get(Fields.noteParty.name());
-		moreInfoUrl = (String) value.get(Fields.moreInfoUrl.name());
-		moreInfoItemId = (String) value.get(Fields.moreInfoItemId.name());
-		moreInfoItemName = (String) value.get(Fields.moreInfoItemName.name());
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		noteParty = (String) value.get(FIELD_NOTE_PARTY);
+		moreInfoUrl = (String) value.get(FIELD_MORE_INFO_URL);
+		moreInfoItemId = (String) value.get(FIELD_MORE_INFO_ITEM_ID);
+		moreInfoItemName = (String) value.get(FIELD_MORE_INFO_ITEM_NAME);
 	}
 
 	public static NoteData fromValue(org.apache.ofbiz.entity.GenericValue value) {

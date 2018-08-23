@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Group
  */
+@FieldNameConstants
 public class ProductStoreGroup implements Serializable {
 
-	public static final long serialVersionUID = 2888485930829189120L;
+	public static final long serialVersionUID = 6450121768328807424L;
 	public static final String NAME = "ProductStoreGroup";
 	/**
 	 * Product Store Group Id
@@ -70,26 +72,19 @@ public class ProductStoreGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreGroupId, productStoreGroupTypeId, primaryParentGroupId, productStoreGroupName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStoreGroup(GenericValue value) {
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
 		productStoreGroupTypeId = (String) value
-				.get(Fields.productStoreGroupTypeId.name());
-		primaryParentGroupId = (String) value.get(Fields.primaryParentGroupId
-				.name());
-		productStoreGroupName = (String) value.get(Fields.productStoreGroupName
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_STORE_GROUP_TYPE_ID);
+		primaryParentGroupId = (String) value
+				.get(FIELD_PRIMARY_PARENT_GROUP_ID);
+		productStoreGroupName = (String) value
+				.get(FIELD_PRODUCT_STORE_GROUP_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStoreGroup fromValue(

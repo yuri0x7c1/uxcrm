@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Search Constraint
  */
+@FieldNameConstants
 public class ContentSearchConstraint implements Serializable {
 
-	public static final long serialVersionUID = 2399036024923952128L;
+	public static final long serialVersionUID = 5868527233644782592L;
 	public static final String NAME = "ContentSearchConstraint";
 	/**
 	 * Content Search Result Id
@@ -106,30 +108,23 @@ public class ContentSearchConstraint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentSearchResultId, constraintSeqId, constraintName, infoString, includeSubCategories, isAnd, anyPrefix, anySuffix, removeStems, lowValue, highValue, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentSearchConstraint(GenericValue value) {
-		contentSearchResultId = (String) value.get(Fields.contentSearchResultId
-				.name());
-		constraintSeqId = (String) value.get(Fields.constraintSeqId.name());
-		constraintName = (String) value.get(Fields.constraintName.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		includeSubCategories = (String) value.get(Fields.includeSubCategories
-				.name());
-		isAnd = (String) value.get(Fields.isAnd.name());
-		anyPrefix = (String) value.get(Fields.anyPrefix.name());
-		anySuffix = (String) value.get(Fields.anySuffix.name());
-		removeStems = (String) value.get(Fields.removeStems.name());
-		lowValue = (String) value.get(Fields.lowValue.name());
-		highValue = (String) value.get(Fields.highValue.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentSearchResultId = (String) value
+				.get(FIELD_CONTENT_SEARCH_RESULT_ID);
+		constraintSeqId = (String) value.get(FIELD_CONSTRAINT_SEQ_ID);
+		constraintName = (String) value.get(FIELD_CONSTRAINT_NAME);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		includeSubCategories = (String) value.get(FIELD_INCLUDE_SUB_CATEGORIES);
+		isAnd = (String) value.get(FIELD_IS_AND);
+		anyPrefix = (String) value.get(FIELD_ANY_PREFIX);
+		anySuffix = (String) value.get(FIELD_ANY_SUFFIX);
+		removeStems = (String) value.get(FIELD_REMOVE_STEMS);
+		lowValue = (String) value.get(FIELD_LOW_VALUE);
+		highValue = (String) value.get(FIELD_HIGH_VALUE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentSearchConstraint fromValue(

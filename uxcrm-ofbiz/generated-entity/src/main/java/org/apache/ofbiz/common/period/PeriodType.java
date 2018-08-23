@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.period;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Period Type
  */
+@FieldNameConstants
 public class PeriodType implements Serializable {
 
-	public static final long serialVersionUID = 4591603473257613312L;
+	public static final long serialVersionUID = 5886526037024952320L;
 	public static final String NAME = "PeriodType";
 	/**
 	 * Period Type Id
@@ -64,21 +66,15 @@ public class PeriodType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		periodTypeId, description, periodLength, uomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PeriodType(GenericValue value) {
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		periodLength = (Long) value.get(Fields.periodLength.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		periodLength = (Long) value.get(FIELD_PERIOD_LENGTH);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PeriodType fromValue(

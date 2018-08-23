@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.tenant;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tenant Key Encrypting Key
  */
+@FieldNameConstants
 public class TenantKeyEncryptingKey implements Serializable {
 
-	public static final long serialVersionUID = 3786000027286518784L;
+	public static final long serialVersionUID = 2274300384796663808L;
 	public static final String NAME = "TenantKeyEncryptingKey";
 	/**
 	 * Tenant Id
@@ -52,19 +54,13 @@ public class TenantKeyEncryptingKey implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		tenantId, kekText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TenantKeyEncryptingKey(GenericValue value) {
-		tenantId = (String) value.get(Fields.tenantId.name());
-		kekText = (String) value.get(Fields.kekText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		tenantId = (String) value.get(FIELD_TENANT_ID);
+		kekText = (String) value.get(FIELD_KEK_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TenantKeyEncryptingKey fromValue(

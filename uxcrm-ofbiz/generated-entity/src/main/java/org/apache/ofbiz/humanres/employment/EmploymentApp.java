@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Employment App
  */
+@FieldNameConstants
 public class EmploymentApp implements Serializable {
 
-	public static final long serialVersionUID = 3325448358316377088L;
+	public static final long serialVersionUID = 5299659893592716288L;
 	public static final String NAME = "EmploymentApp";
 	/**
 	 * Application Id
@@ -94,27 +96,21 @@ public class EmploymentApp implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		applicationId, emplPositionId, statusId, employmentAppSourceTypeId, applyingPartyId, referredByPartyId, applicationDate, approverPartyId, jobRequisitionId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmploymentApp(GenericValue value) {
-		applicationId = (String) value.get(Fields.applicationId.name());
-		emplPositionId = (String) value.get(Fields.emplPositionId.name());
-		statusId = (String) value.get(Fields.statusId.name());
+		applicationId = (String) value.get(FIELD_APPLICATION_ID);
+		emplPositionId = (String) value.get(FIELD_EMPL_POSITION_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		employmentAppSourceTypeId = (String) value
-				.get(Fields.employmentAppSourceTypeId.name());
-		applyingPartyId = (String) value.get(Fields.applyingPartyId.name());
-		referredByPartyId = (String) value.get(Fields.referredByPartyId.name());
-		applicationDate = (Timestamp) value.get(Fields.applicationDate.name());
-		approverPartyId = (String) value.get(Fields.approverPartyId.name());
-		jobRequisitionId = (String) value.get(Fields.jobRequisitionId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EMPLOYMENT_APP_SOURCE_TYPE_ID);
+		applyingPartyId = (String) value.get(FIELD_APPLYING_PARTY_ID);
+		referredByPartyId = (String) value.get(FIELD_REFERRED_BY_PARTY_ID);
+		applicationDate = (Timestamp) value.get(FIELD_APPLICATION_DATE);
+		approverPartyId = (String) value.get(FIELD_APPROVER_PARTY_ID);
+		jobRequisitionId = (String) value.get(FIELD_JOB_REQUISITION_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmploymentApp fromValue(

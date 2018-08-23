@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site Content Type
  */
+@FieldNameConstants
 public class WebSiteContentType implements Serializable {
 
-	public static final long serialVersionUID = 540965294772659200L;
+	public static final long serialVersionUID = 8952944154567306240L;
 	public static final String NAME = "WebSiteContentType";
 	/**
 	 * Web Site Content Type Id
@@ -64,22 +66,16 @@ public class WebSiteContentType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webSiteContentTypeId, description, parentTypeId, hasTable, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebSiteContentType(GenericValue value) {
-		webSiteContentTypeId = (String) value.get(Fields.webSiteContentTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webSiteContentTypeId = (String) value
+				.get(FIELD_WEB_SITE_CONTENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebSiteContentType fromValue(

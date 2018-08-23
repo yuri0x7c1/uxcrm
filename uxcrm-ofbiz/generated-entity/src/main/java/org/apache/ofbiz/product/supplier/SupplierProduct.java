@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.supplier;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Supplier Product
  */
+@FieldNameConstants
 public class SupplierProduct implements Serializable {
 
-	public static final long serialVersionUID = 9052857463504618496L;
+	public static final long serialVersionUID = 3335634858860030976L;
 	public static final String NAME = "SupplierProduct";
 	/**
 	 * Product Id
@@ -161,46 +163,34 @@ public class SupplierProduct implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, partyId, availableFromDate, availableThruDate, supplierPrefOrderId, supplierRatingTypeId, standardLeadTimeDays, minimumOrderQuantity, orderQtyIncrements, unitsIncluded, quantityUomId, agreementId, agreementItemSeqId, lastPrice, shippingPrice, currencyUomId, supplierProductName, supplierProductId, canDropShip, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SupplierProduct(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		availableFromDate = (Timestamp) value.get(Fields.availableFromDate
-				.name());
-		availableThruDate = (Timestamp) value.get(Fields.availableThruDate
-				.name());
-		supplierPrefOrderId = (String) value.get(Fields.supplierPrefOrderId
-				.name());
-		supplierRatingTypeId = (String) value.get(Fields.supplierRatingTypeId
-				.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		availableFromDate = (Timestamp) value.get(FIELD_AVAILABLE_FROM_DATE);
+		availableThruDate = (Timestamp) value.get(FIELD_AVAILABLE_THRU_DATE);
+		supplierPrefOrderId = (String) value.get(FIELD_SUPPLIER_PREF_ORDER_ID);
+		supplierRatingTypeId = (String) value
+				.get(FIELD_SUPPLIER_RATING_TYPE_ID);
 		standardLeadTimeDays = (BigDecimal) value
-				.get(Fields.standardLeadTimeDays.name());
+				.get(FIELD_STANDARD_LEAD_TIME_DAYS);
 		minimumOrderQuantity = (BigDecimal) value
-				.get(Fields.minimumOrderQuantity.name());
-		orderQtyIncrements = (BigDecimal) value.get(Fields.orderQtyIncrements
-				.name());
-		unitsIncluded = (BigDecimal) value.get(Fields.unitsIncluded.name());
-		quantityUomId = (String) value.get(Fields.quantityUomId.name());
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		lastPrice = (BigDecimal) value.get(Fields.lastPrice.name());
-		shippingPrice = (BigDecimal) value.get(Fields.shippingPrice.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		supplierProductName = (String) value.get(Fields.supplierProductName
-				.name());
-		supplierProductId = (String) value.get(Fields.supplierProductId.name());
-		canDropShip = (String) value.get(Fields.canDropShip.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_MINIMUM_ORDER_QUANTITY);
+		orderQtyIncrements = (BigDecimal) value.get(FIELD_ORDER_QTY_INCREMENTS);
+		unitsIncluded = (BigDecimal) value.get(FIELD_UNITS_INCLUDED);
+		quantityUomId = (String) value.get(FIELD_QUANTITY_UOM_ID);
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		lastPrice = (BigDecimal) value.get(FIELD_LAST_PRICE);
+		shippingPrice = (BigDecimal) value.get(FIELD_SHIPPING_PRICE);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		supplierProductName = (String) value.get(FIELD_SUPPLIER_PRODUCT_NAME);
+		supplierProductId = (String) value.get(FIELD_SUPPLIER_PRODUCT_ID);
+		canDropShip = (String) value.get(FIELD_CAN_DROP_SHIP);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SupplierProduct fromValue(

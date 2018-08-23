@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account Organization And Class
  */
+@FieldNameConstants
 public class GlAccountOrganizationAndClass implements Serializable {
 
-	public static final long serialVersionUID = 2279929001517328384L;
+	public static final long serialVersionUID = 4060342266225116160L;
 	public static final String NAME = "GlAccountOrganizationAndClass";
 	/**
 	 * From Date
@@ -106,27 +108,22 @@ public class GlAccountOrganizationAndClass implements Serializable {
 	@Setter
 	private String glXbrlClassId;
 
-	public enum Fields {
-		fromDate, roleTypeId, glAccountId, organizationPartyId, thruDate, accountCode, productId, accountName, description, externalId, glAccountTypeId, glResourceTypeId, parentGlAccountId, glAccountClassId, glXbrlClassId
-	}
-
 	public GlAccountOrganizationAndClass(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		accountCode = (String) value.get(Fields.accountCode.name());
-		productId = (String) value.get(Fields.productId.name());
-		accountName = (String) value.get(Fields.accountName.name());
-		description = (String) value.get(Fields.description.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		glAccountTypeId = (String) value.get(Fields.glAccountTypeId.name());
-		glResourceTypeId = (String) value.get(Fields.glResourceTypeId.name());
-		parentGlAccountId = (String) value.get(Fields.parentGlAccountId.name());
-		glAccountClassId = (String) value.get(Fields.glAccountClassId.name());
-		glXbrlClassId = (String) value.get(Fields.glXbrlClassId.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		accountCode = (String) value.get(FIELD_ACCOUNT_CODE);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		accountName = (String) value.get(FIELD_ACCOUNT_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		glAccountTypeId = (String) value.get(FIELD_GL_ACCOUNT_TYPE_ID);
+		glResourceTypeId = (String) value.get(FIELD_GL_RESOURCE_TYPE_ID);
+		parentGlAccountId = (String) value.get(FIELD_PARENT_GL_ACCOUNT_ID);
+		glAccountClassId = (String) value.get(FIELD_GL_ACCOUNT_CLASS_ID);
+		glXbrlClassId = (String) value.get(FIELD_GL_XBRL_CLASS_ID);
 	}
 
 	public static GlAccountOrganizationAndClass fromValue(

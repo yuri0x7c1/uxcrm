@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.ability;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Resume
  */
+@FieldNameConstants
 public class PartyResume implements Serializable {
 
-	public static final long serialVersionUID = 6240749412119207936L;
+	public static final long serialVersionUID = 4926179745829370880L;
 	public static final String NAME = "PartyResume";
 	/**
 	 * Resume Id
@@ -70,22 +72,16 @@ public class PartyResume implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		resumeId, partyId, contentId, resumeDate, resumeText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyResume(GenericValue value) {
-		resumeId = (String) value.get(Fields.resumeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		resumeDate = (Timestamp) value.get(Fields.resumeDate.name());
-		resumeText = (String) value.get(Fields.resumeText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		resumeId = (String) value.get(FIELD_RESUME_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		resumeDate = (Timestamp) value.get(FIELD_RESUME_DATE);
+		resumeText = (String) value.get(FIELD_RESUME_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyResume fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Resource Content View
  */
+@FieldNameConstants
 public class DataResourceContentView implements Serializable {
 
-	public static final long serialVersionUID = 4609945621801312256L;
+	public static final long serialVersionUID = 5844486434579991552L;
 	public static final String NAME = "DataResourceContentView";
 	/**
 	 * Data Resource Name
@@ -268,64 +270,55 @@ public class DataResourceContentView implements Serializable {
 	@Setter
 	private Long coChildBranchCount;
 
-	public enum Fields {
-		dataResourceName, surveyId, dataTemplateTypeId, lastModifiedDate, mimeTypeId, dataCategoryId, surveyResponseId, characterSetId, dataSourceId, lastModifiedByUserLogin, createdDate, statusId, localeString, relatedDetailId, dataResourceId, isPublic, objectInfo, dataResourceTypeId, createdByUserLogin, coOwnerContentId, coContentId, coContentTypeId, coDescription, coMimeTypeId, coChildLeafCount, coPrivilegeEnumId, coDataSourceId, coLastModifiedByUserLogin, coDataResourceId, coCreatedByUserLogin, coTemplateDataResourceId, coLastModifiedDate, coInstanceOfContentId, coServiceName, coCustomMethodId, coCharacterSetId, coContentName, coCreatedDate, coStatusId, coLocaleString, coDecoratorContentId, coChildBranchCount
-	}
-
 	public DataResourceContentView(GenericValue value) {
-		dataResourceName = (String) value.get(Fields.dataResourceName.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		dataTemplateTypeId = (String) value.get(Fields.dataTemplateTypeId
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		dataCategoryId = (String) value.get(Fields.dataCategoryId.name());
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		characterSetId = (String) value.get(Fields.characterSetId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
+		dataResourceName = (String) value.get(FIELD_DATA_RESOURCE_NAME);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		dataTemplateTypeId = (String) value.get(FIELD_DATA_TEMPLATE_TYPE_ID);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		dataCategoryId = (String) value.get(FIELD_DATA_CATEGORY_ID);
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		characterSetId = (String) value.get(FIELD_CHARACTER_SET_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		localeString = (String) value.get(Fields.localeString.name());
-		relatedDetailId = (String) value.get(Fields.relatedDetailId.name());
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		isPublic = (String) value.get(Fields.isPublic.name());
-		objectInfo = (String) value.get(Fields.objectInfo.name());
-		dataResourceTypeId = (String) value.get(Fields.dataResourceTypeId
-				.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		coOwnerContentId = (String) value.get(Fields.coOwnerContentId.name());
-		coContentId = (String) value.get(Fields.coContentId.name());
-		coContentTypeId = (String) value.get(Fields.coContentTypeId.name());
-		coDescription = (String) value.get(Fields.coDescription.name());
-		coMimeTypeId = (String) value.get(Fields.coMimeTypeId.name());
-		coChildLeafCount = (Long) value.get(Fields.coChildLeafCount.name());
-		coPrivilegeEnumId = (String) value.get(Fields.coPrivilegeEnumId.name());
-		coDataSourceId = (String) value.get(Fields.coDataSourceId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		localeString = (String) value.get(FIELD_LOCALE_STRING);
+		relatedDetailId = (String) value.get(FIELD_RELATED_DETAIL_ID);
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		isPublic = (String) value.get(FIELD_IS_PUBLIC);
+		objectInfo = (String) value.get(FIELD_OBJECT_INFO);
+		dataResourceTypeId = (String) value.get(FIELD_DATA_RESOURCE_TYPE_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		coOwnerContentId = (String) value.get(FIELD_CO_OWNER_CONTENT_ID);
+		coContentId = (String) value.get(FIELD_CO_CONTENT_ID);
+		coContentTypeId = (String) value.get(FIELD_CO_CONTENT_TYPE_ID);
+		coDescription = (String) value.get(FIELD_CO_DESCRIPTION);
+		coMimeTypeId = (String) value.get(FIELD_CO_MIME_TYPE_ID);
+		coChildLeafCount = (Long) value.get(FIELD_CO_CHILD_LEAF_COUNT);
+		coPrivilegeEnumId = (String) value.get(FIELD_CO_PRIVILEGE_ENUM_ID);
+		coDataSourceId = (String) value.get(FIELD_CO_DATA_SOURCE_ID);
 		coLastModifiedByUserLogin = (String) value
-				.get(Fields.coLastModifiedByUserLogin.name());
-		coDataResourceId = (String) value.get(Fields.coDataResourceId.name());
-		coCreatedByUserLogin = (String) value.get(Fields.coCreatedByUserLogin
-				.name());
+				.get(FIELD_CO_LAST_MODIFIED_BY_USER_LOGIN);
+		coDataResourceId = (String) value.get(FIELD_CO_DATA_RESOURCE_ID);
+		coCreatedByUserLogin = (String) value
+				.get(FIELD_CO_CREATED_BY_USER_LOGIN);
 		coTemplateDataResourceId = (String) value
-				.get(Fields.coTemplateDataResourceId.name());
-		coLastModifiedDate = (Timestamp) value.get(Fields.coLastModifiedDate
-				.name());
-		coInstanceOfContentId = (String) value.get(Fields.coInstanceOfContentId
-				.name());
-		coServiceName = (String) value.get(Fields.coServiceName.name());
-		coCustomMethodId = (String) value.get(Fields.coCustomMethodId.name());
-		coCharacterSetId = (String) value.get(Fields.coCharacterSetId.name());
-		coContentName = (String) value.get(Fields.coContentName.name());
-		coCreatedDate = (Timestamp) value.get(Fields.coCreatedDate.name());
-		coStatusId = (String) value.get(Fields.coStatusId.name());
-		coLocaleString = (String) value.get(Fields.coLocaleString.name());
-		coDecoratorContentId = (String) value.get(Fields.coDecoratorContentId
-				.name());
-		coChildBranchCount = (Long) value.get(Fields.coChildBranchCount.name());
+				.get(FIELD_CO_TEMPLATE_DATA_RESOURCE_ID);
+		coLastModifiedDate = (Timestamp) value.get(FIELD_CO_LAST_MODIFIED_DATE);
+		coInstanceOfContentId = (String) value
+				.get(FIELD_CO_INSTANCE_OF_CONTENT_ID);
+		coServiceName = (String) value.get(FIELD_CO_SERVICE_NAME);
+		coCustomMethodId = (String) value.get(FIELD_CO_CUSTOM_METHOD_ID);
+		coCharacterSetId = (String) value.get(FIELD_CO_CHARACTER_SET_ID);
+		coContentName = (String) value.get(FIELD_CO_CONTENT_NAME);
+		coCreatedDate = (Timestamp) value.get(FIELD_CO_CREATED_DATE);
+		coStatusId = (String) value.get(FIELD_CO_STATUS_ID);
+		coLocaleString = (String) value.get(FIELD_CO_LOCALE_STRING);
+		coDecoratorContentId = (String) value
+				.get(FIELD_CO_DECORATOR_CONTENT_ID);
+		coChildBranchCount = (Long) value.get(FIELD_CO_CHILD_BRANCH_COUNT);
 	}
 
 	public static DataResourceContentView fromValue(

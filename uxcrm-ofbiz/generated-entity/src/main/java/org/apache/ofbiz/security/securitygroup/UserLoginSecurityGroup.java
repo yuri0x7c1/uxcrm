@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.securitygroup;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login Security Group
  */
+@FieldNameConstants
 public class UserLoginSecurityGroup implements Serializable {
 
-	public static final long serialVersionUID = 2701717988636325888L;
+	public static final long serialVersionUID = 933662803844790272L;
 	public static final String NAME = "UserLoginSecurityGroup";
 	/**
 	 * User Login Id
@@ -64,21 +66,15 @@ public class UserLoginSecurityGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userLoginId, groupId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserLoginSecurityGroup(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		groupId = (String) value.get(Fields.groupId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserLoginSecurityGroup fromValue(

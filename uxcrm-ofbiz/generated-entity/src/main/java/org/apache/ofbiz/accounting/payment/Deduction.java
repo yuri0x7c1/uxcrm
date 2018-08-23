@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Deduction
  */
+@FieldNameConstants
 public class Deduction implements Serializable {
 
-	public static final long serialVersionUID = 202123135685337088L;
+	public static final long serialVersionUID = 2885854144216552448L;
 	public static final String NAME = "Deduction";
 	/**
 	 * Deduction Id
@@ -65,21 +67,15 @@ public class Deduction implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		deductionId, deductionTypeId, paymentId, amount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Deduction(GenericValue value) {
-		deductionId = (String) value.get(Fields.deductionId.name());
-		deductionTypeId = (String) value.get(Fields.deductionTypeId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		deductionId = (String) value.get(FIELD_DEDUCTION_ID);
+		deductionTypeId = (String) value.get(FIELD_DEDUCTION_TYPE_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Deduction fromValue(org.apache.ofbiz.entity.GenericValue value) {

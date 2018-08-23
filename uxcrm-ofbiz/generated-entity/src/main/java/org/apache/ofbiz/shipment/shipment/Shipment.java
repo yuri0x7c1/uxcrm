@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment
  */
+@FieldNameConstants
 public class Shipment implements Serializable {
 
-	public static final long serialVersionUID = 7842176445620332544L;
+	public static final long serialVersionUID = 3997886590468391936L;
 	public static final String NAME = "Shipment";
 	/**
 	 * Shipment Id
@@ -221,66 +223,52 @@ public class Shipment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentId, shipmentTypeId, statusId, primaryOrderId, primaryReturnId, primaryShipGroupSeqId, picklistBinId, estimatedReadyDate, estimatedShipDate, estimatedShipWorkEffId, estimatedArrivalDate, estimatedArrivalWorkEffId, latestCancelDate, estimatedShipCost, currencyUomId, handlingInstructions, originFacilityId, destinationFacilityId, originContactMechId, originTelecomNumberId, destinationContactMechId, destinationTelecomNumberId, partyIdTo, partyIdFrom, additionalShippingCharge, addtlShippingChargeDesc, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Shipment(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentTypeId = (String) value.get(Fields.shipmentTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		primaryOrderId = (String) value.get(Fields.primaryOrderId.name());
-		primaryReturnId = (String) value.get(Fields.primaryReturnId.name());
-		primaryShipGroupSeqId = (String) value.get(Fields.primaryShipGroupSeqId
-				.name());
-		picklistBinId = (String) value.get(Fields.picklistBinId.name());
-		estimatedReadyDate = (Timestamp) value.get(Fields.estimatedReadyDate
-				.name());
-		estimatedShipDate = (Timestamp) value.get(Fields.estimatedShipDate
-				.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentTypeId = (String) value.get(FIELD_SHIPMENT_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		primaryOrderId = (String) value.get(FIELD_PRIMARY_ORDER_ID);
+		primaryReturnId = (String) value.get(FIELD_PRIMARY_RETURN_ID);
+		primaryShipGroupSeqId = (String) value
+				.get(FIELD_PRIMARY_SHIP_GROUP_SEQ_ID);
+		picklistBinId = (String) value.get(FIELD_PICKLIST_BIN_ID);
+		estimatedReadyDate = (Timestamp) value.get(FIELD_ESTIMATED_READY_DATE);
+		estimatedShipDate = (Timestamp) value.get(FIELD_ESTIMATED_SHIP_DATE);
 		estimatedShipWorkEffId = (String) value
-				.get(Fields.estimatedShipWorkEffId.name());
+				.get(FIELD_ESTIMATED_SHIP_WORK_EFF_ID);
 		estimatedArrivalDate = (Timestamp) value
-				.get(Fields.estimatedArrivalDate.name());
+				.get(FIELD_ESTIMATED_ARRIVAL_DATE);
 		estimatedArrivalWorkEffId = (String) value
-				.get(Fields.estimatedArrivalWorkEffId.name());
-		latestCancelDate = (Timestamp) value
-				.get(Fields.latestCancelDate.name());
-		estimatedShipCost = (BigDecimal) value.get(Fields.estimatedShipCost
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		handlingInstructions = (String) value.get(Fields.handlingInstructions
-				.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		destinationFacilityId = (String) value.get(Fields.destinationFacilityId
-				.name());
-		originContactMechId = (String) value.get(Fields.originContactMechId
-				.name());
-		originTelecomNumberId = (String) value.get(Fields.originTelecomNumberId
-				.name());
+				.get(FIELD_ESTIMATED_ARRIVAL_WORK_EFF_ID);
+		latestCancelDate = (Timestamp) value.get(FIELD_LATEST_CANCEL_DATE);
+		estimatedShipCost = (BigDecimal) value.get(FIELD_ESTIMATED_SHIP_COST);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		handlingInstructions = (String) value.get(FIELD_HANDLING_INSTRUCTIONS);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		destinationFacilityId = (String) value
+				.get(FIELD_DESTINATION_FACILITY_ID);
+		originContactMechId = (String) value.get(FIELD_ORIGIN_CONTACT_MECH_ID);
+		originTelecomNumberId = (String) value
+				.get(FIELD_ORIGIN_TELECOM_NUMBER_ID);
 		destinationContactMechId = (String) value
-				.get(Fields.destinationContactMechId.name());
+				.get(FIELD_DESTINATION_CONTACT_MECH_ID);
 		destinationTelecomNumberId = (String) value
-				.get(Fields.destinationTelecomNumberId.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
+				.get(FIELD_DESTINATION_TELECOM_NUMBER_ID);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
 		additionalShippingCharge = (BigDecimal) value
-				.get(Fields.additionalShippingCharge.name());
+				.get(FIELD_ADDITIONAL_SHIPPING_CHARGE);
 		addtlShippingChargeDesc = (String) value
-				.get(Fields.addtlShippingChargeDesc.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_ADDTL_SHIPPING_CHARGE_DESC);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Shipment fromValue(org.apache.ofbiz.entity.GenericValue value) {

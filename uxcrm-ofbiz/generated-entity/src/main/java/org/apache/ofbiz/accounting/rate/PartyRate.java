@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.rate;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Rate
  */
+@FieldNameConstants
 public class PartyRate implements Serializable {
 
-	public static final long serialVersionUID = 6568081342604759040L;
+	public static final long serialVersionUID = 2895755930472176640L;
 	public static final String NAME = "PartyRate";
 	/**
 	 * Party Id
@@ -76,23 +78,17 @@ public class PartyRate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, rateTypeId, defaultRate, percentageUsed, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyRate(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		defaultRate = (String) value.get(Fields.defaultRate.name());
-		percentageUsed = (Double) value.get(Fields.percentageUsed.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		defaultRate = (String) value.get(FIELD_DEFAULT_RATE);
+		percentageUsed = (Double) value.get(FIELD_PERCENTAGE_USED);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyRate fromValue(org.apache.ofbiz.entity.GenericValue value) {

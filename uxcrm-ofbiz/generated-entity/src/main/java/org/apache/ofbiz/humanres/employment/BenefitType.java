@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Benefit Type
  */
+@FieldNameConstants
 public class BenefitType implements Serializable {
 
-	public static final long serialVersionUID = 6895657856877915136L;
+	public static final long serialVersionUID = 6967182015158742016L;
 	public static final String NAME = "BenefitType";
 	/**
 	 * Benefit Type Id
@@ -76,24 +78,18 @@ public class BenefitType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		benefitTypeId, benefitName, parentTypeId, hasTable, description, employerPaidPercentage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BenefitType(GenericValue value) {
-		benefitTypeId = (String) value.get(Fields.benefitTypeId.name());
-		benefitName = (String) value.get(Fields.benefitName.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
+		benefitTypeId = (String) value.get(FIELD_BENEFIT_TYPE_ID);
+		benefitName = (String) value.get(FIELD_BENEFIT_NAME);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
 		employerPaidPercentage = (Double) value
-				.get(Fields.employerPaidPercentage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EMPLOYER_PAID_PERCENTAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BenefitType fromValue(

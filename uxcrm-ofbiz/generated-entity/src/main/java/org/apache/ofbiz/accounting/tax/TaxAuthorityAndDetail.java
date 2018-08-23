@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority And Detail
  */
+@FieldNameConstants
 public class TaxAuthorityAndDetail implements Serializable {
 
-	public static final long serialVersionUID = 625337774365230080L;
+	public static final long serialVersionUID = 547095983503593472L;
 	public static final String NAME = "TaxAuthorityAndDetail";
 	/**
 	 * Tax Auth Party Id
@@ -142,34 +144,29 @@ public class TaxAuthorityAndDetail implements Serializable {
 	@Setter
 	private String wellKnownText;
 
-	public enum Fields {
-		taxAuthPartyId, requireTaxIdForExemption, includeTaxInPrice, taxAuthGeoId, taxIdFormatPattern, comments, tickerSymbol, logoImageUrl, groupName, groupNameLocal, numEmployees, partyId, officeSiteName, annualRevenue, geoName, geoTypeId, geoId, geoCode, abbreviation, geoSecCode, wellKnownText
-	}
-
 	public TaxAuthorityAndDetail(GenericValue value) {
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
 		requireTaxIdForExemption = (String) value
-				.get(Fields.requireTaxIdForExemption.name());
-		includeTaxInPrice = (String) value.get(Fields.includeTaxInPrice.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxIdFormatPattern = (String) value.get(Fields.taxIdFormatPattern
-				.name());
-		comments = (String) value.get(Fields.comments.name());
-		tickerSymbol = (String) value.get(Fields.tickerSymbol.name());
-		logoImageUrl = (String) value.get(Fields.logoImageUrl.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		numEmployees = (Long) value.get(Fields.numEmployees.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		officeSiteName = (String) value.get(Fields.officeSiteName.name());
-		annualRevenue = (BigDecimal) value.get(Fields.annualRevenue.name());
-		geoName = (String) value.get(Fields.geoName.name());
-		geoTypeId = (String) value.get(Fields.geoTypeId.name());
-		geoId = (String) value.get(Fields.geoId.name());
-		geoCode = (String) value.get(Fields.geoCode.name());
-		abbreviation = (String) value.get(Fields.abbreviation.name());
-		geoSecCode = (String) value.get(Fields.geoSecCode.name());
-		wellKnownText = (String) value.get(Fields.wellKnownText.name());
+				.get(FIELD_REQUIRE_TAX_ID_FOR_EXEMPTION);
+		includeTaxInPrice = (String) value.get(FIELD_INCLUDE_TAX_IN_PRICE);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxIdFormatPattern = (String) value.get(FIELD_TAX_ID_FORMAT_PATTERN);
+		comments = (String) value.get(FIELD_COMMENTS);
+		tickerSymbol = (String) value.get(FIELD_TICKER_SYMBOL);
+		logoImageUrl = (String) value.get(FIELD_LOGO_IMAGE_URL);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		numEmployees = (Long) value.get(FIELD_NUM_EMPLOYEES);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		officeSiteName = (String) value.get(FIELD_OFFICE_SITE_NAME);
+		annualRevenue = (BigDecimal) value.get(FIELD_ANNUAL_REVENUE);
+		geoName = (String) value.get(FIELD_GEO_NAME);
+		geoTypeId = (String) value.get(FIELD_GEO_TYPE_ID);
+		geoId = (String) value.get(FIELD_GEO_ID);
+		geoCode = (String) value.get(FIELD_GEO_CODE);
+		abbreviation = (String) value.get(FIELD_ABBREVIATION);
+		geoSecCode = (String) value.get(FIELD_GEO_SEC_CODE);
+		wellKnownText = (String) value.get(FIELD_WELL_KNOWN_TEXT);
 	}
 
 	public static TaxAuthorityAndDetail fromValue(

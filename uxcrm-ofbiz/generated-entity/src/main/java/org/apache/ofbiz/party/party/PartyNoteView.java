@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Note View
  */
+@FieldNameConstants
 public class PartyNoteView implements Serializable {
 
-	public static final long serialVersionUID = 8046917573623760896L;
+	public static final long serialVersionUID = 4233197151193950208L;
 	public static final String NAME = "PartyNoteView";
 	/**
 	 * Target Party Id
@@ -52,17 +54,13 @@ public class PartyNoteView implements Serializable {
 	@Setter
 	private String noteParty;
 
-	public enum Fields {
-		targetPartyId, noteId, noteName, noteInfo, noteDateTime, noteParty
-	}
-
 	public PartyNoteView(GenericValue value) {
-		targetPartyId = (String) value.get(Fields.targetPartyId.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		noteParty = (String) value.get(Fields.noteParty.name());
+		targetPartyId = (String) value.get(FIELD_TARGET_PARTY_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		noteParty = (String) value.get(FIELD_NOTE_PARTY);
 	}
 
 	public static PartyNoteView fromValue(

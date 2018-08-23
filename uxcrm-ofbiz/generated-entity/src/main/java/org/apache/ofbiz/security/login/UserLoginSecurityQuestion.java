@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.login;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login Security Question
  */
+@FieldNameConstants
 public class UserLoginSecurityQuestion implements Serializable {
 
-	public static final long serialVersionUID = 5320465474993316864L;
+	public static final long serialVersionUID = 4908570467427917824L;
 	public static final String NAME = "UserLoginSecurityQuestion";
 	/**
 	 * Question Enum Id
@@ -58,20 +60,14 @@ public class UserLoginSecurityQuestion implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		questionEnumId, userLoginId, securityAnswer, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserLoginSecurityQuestion(GenericValue value) {
-		questionEnumId = (String) value.get(Fields.questionEnumId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		securityAnswer = (String) value.get(Fields.securityAnswer.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		questionEnumId = (String) value.get(FIELD_QUESTION_ENUM_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		securityAnswer = (String) value.get(FIELD_SECURITY_ANSWER);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserLoginSecurityQuestion fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Role Type And Party
  */
+@FieldNameConstants
 public class RoleTypeAndParty implements Serializable {
 
-	public static final long serialVersionUID = 1836424824467225600L;
+	public static final long serialVersionUID = 940468586130714624L;
 	public static final String NAME = "RoleTypeAndParty";
 	/**
 	 * Party Id
@@ -39,15 +41,11 @@ public class RoleTypeAndParty implements Serializable {
 	@Setter
 	private String description;
 
-	public enum Fields {
-		partyId, roleTypeId, parentTypeId, description
-	}
-
 	public RoleTypeAndParty(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		description = (String) value.get(Fields.description.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
 	}
 
 	public static RoleTypeAndParty fromValue(

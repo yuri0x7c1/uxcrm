@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Cust Request Item View
  */
+@FieldNameConstants
 public class WorkEffortCustRequestItemView implements Serializable {
 
-	public static final long serialVersionUID = 5570477578316265472L;
+	public static final long serialVersionUID = 512704577925664768L;
 	public static final String NAME = "WorkEffortCustRequestItemView";
 	/**
 	 * Status Item Description
@@ -131,33 +133,29 @@ public class WorkEffortCustRequestItemView implements Serializable {
 	@Setter
 	private String story;
 
-	public enum Fields {
-		statusItemDescription, workEffortId, custRequestId, custRequestItemSeqId, custRequestResolutionId, quantity, reservLength, sequenceNum, productId, reservPersons, maximumAmount, requiredByDate, description, priority, statusId, reservStart, configId, selectedAmount, story
-	}
-
 	public WorkEffortCustRequestItemView(GenericValue value) {
-		statusItemDescription = (String) value.get(Fields.statusItemDescription
-				.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
+		statusItemDescription = (String) value
+				.get(FIELD_STATUS_ITEM_DESCRIPTION);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
 		custRequestResolutionId = (String) value
-				.get(Fields.custRequestResolutionId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		reservLength = (BigDecimal) value.get(Fields.reservLength.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		productId = (String) value.get(Fields.productId.name());
-		reservPersons = (BigDecimal) value.get(Fields.reservPersons.name());
-		maximumAmount = (BigDecimal) value.get(Fields.maximumAmount.name());
-		requiredByDate = (Timestamp) value.get(Fields.requiredByDate.name());
-		description = (String) value.get(Fields.description.name());
-		priority = (Long) value.get(Fields.priority.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		reservStart = (Timestamp) value.get(Fields.reservStart.name());
-		configId = (String) value.get(Fields.configId.name());
-		selectedAmount = (BigDecimal) value.get(Fields.selectedAmount.name());
-		story = (String) value.get(Fields.story.name());
+				.get(FIELD_CUST_REQUEST_RESOLUTION_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		reservLength = (BigDecimal) value.get(FIELD_RESERV_LENGTH);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		reservPersons = (BigDecimal) value.get(FIELD_RESERV_PERSONS);
+		maximumAmount = (BigDecimal) value.get(FIELD_MAXIMUM_AMOUNT);
+		requiredByDate = (Timestamp) value.get(FIELD_REQUIRED_BY_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		reservStart = (Timestamp) value.get(FIELD_RESERV_START);
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		selectedAmount = (BigDecimal) value.get(FIELD_SELECTED_AMOUNT);
+		story = (String) value.get(FIELD_STORY);
 	}
 
 	public static WorkEffortCustRequestItemView fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Contact List Party Status
  */
+@FieldNameConstants
 public class ContactListPartyStatus implements Serializable {
 
-	public static final long serialVersionUID = 4819419369003783168L;
+	public static final long serialVersionUID = 7101403491272532992L;
 	public static final String NAME = "ContactListPartyStatus";
 	/**
 	 * Contact List Id
@@ -82,24 +84,18 @@ public class ContactListPartyStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactListId, partyId, fromDate, statusDate, statusId, setByUserLoginId, optInVerifyCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContactListPartyStatus(GenericValue value) {
-		contactListId = (String) value.get(Fields.contactListId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		setByUserLoginId = (String) value.get(Fields.setByUserLoginId.name());
-		optInVerifyCode = (String) value.get(Fields.optInVerifyCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contactListId = (String) value.get(FIELD_CONTACT_LIST_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		setByUserLoginId = (String) value.get(FIELD_SET_BY_USER_LOGIN_ID);
+		optInVerifyCode = (String) value.get(FIELD_OPT_IN_VERIFY_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContactListPartyStatus fromValue(

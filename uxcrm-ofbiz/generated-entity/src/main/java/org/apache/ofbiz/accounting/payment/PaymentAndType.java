@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment And Type
  */
+@FieldNameConstants
 public class PaymentAndType implements Serializable {
 
-	public static final long serialVersionUID = 728736972985507840L;
+	public static final long serialVersionUID = 5765583967529289728L;
 	public static final String NAME = "PaymentAndType";
 	/**
 	 * Role Type Id To
@@ -149,39 +151,31 @@ public class PaymentAndType implements Serializable {
 	@Setter
 	private String description;
 
-	public enum Fields {
-		roleTypeIdTo, finAccountTransId, partyIdFrom, amount, paymentPreferenceId, comments, actualCurrencyAmount, overrideGlAccountId, paymentMethodTypeId, actualCurrencyUomId, paymentTypeId, currencyUomId, statusId, paymentId, paymentMethodId, paymentGatewayResponseId, paymentRefNum, partyIdTo, effectiveDate, parentTypeId, hasTable, description
-	}
-
 	public PaymentAndType(GenericValue value) {
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		paymentPreferenceId = (String) value.get(Fields.paymentPreferenceId
-				.name());
-		comments = (String) value.get(Fields.comments.name());
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		paymentPreferenceId = (String) value.get(FIELD_PAYMENT_PREFERENCE_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
 		actualCurrencyAmount = (BigDecimal) value
-				.get(Fields.actualCurrencyAmount.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		actualCurrencyUomId = (String) value.get(Fields.actualCurrencyUomId
-				.name());
-		paymentTypeId = (String) value.get(Fields.paymentTypeId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paymentId = (String) value.get(Fields.paymentId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
+				.get(FIELD_ACTUAL_CURRENCY_AMOUNT);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		actualCurrencyUomId = (String) value.get(FIELD_ACTUAL_CURRENCY_UOM_ID);
+		paymentTypeId = (String) value.get(FIELD_PAYMENT_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
-		paymentRefNum = (String) value.get(Fields.paymentRefNum.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
+		paymentRefNum = (String) value.get(FIELD_PAYMENT_REF_NUM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
 	}
 
 	public static PaymentAndType fromValue(

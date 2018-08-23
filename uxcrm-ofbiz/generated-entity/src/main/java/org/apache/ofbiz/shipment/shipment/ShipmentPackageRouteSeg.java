@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Package Route Seg
  */
+@FieldNameConstants
 public class ShipmentPackageRouteSeg implements Serializable {
 
-	public static final long serialVersionUID = 1229434744583146496L;
+	public static final long serialVersionUID = 8190554919232997376L;
 	public static final String NAME = "ShipmentPackageRouteSeg";
 	/**
 	 * Shipment Id
@@ -137,40 +139,30 @@ public class ShipmentPackageRouteSeg implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentId, shipmentPackageSeqId, shipmentRouteSegmentId, trackingCode, boxNumber, labelImage, labelIntlSignImage, labelHtml, labelPrinted, internationalInvoice, packageTransportCost, packageServiceCost, packageOtherCost, codAmount, insuredAmount, currencyUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentPackageRouteSeg(GenericValue value) {
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentPackageSeqId = (String) value.get(Fields.shipmentPackageSeqId
-				.name());
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentPackageSeqId = (String) value
+				.get(FIELD_SHIPMENT_PACKAGE_SEQ_ID);
 		shipmentRouteSegmentId = (String) value
-				.get(Fields.shipmentRouteSegmentId.name());
-		trackingCode = (String) value.get(Fields.trackingCode.name());
-		boxNumber = (String) value.get(Fields.boxNumber.name());
-		labelImage = (byte[]) value.get(Fields.labelImage.name());
-		labelIntlSignImage = (byte[]) value.get(Fields.labelIntlSignImage
-				.name());
-		labelHtml = (String) value.get(Fields.labelHtml.name());
-		labelPrinted = (String) value.get(Fields.labelPrinted.name());
-		internationalInvoice = (byte[]) value.get(Fields.internationalInvoice
-				.name());
+				.get(FIELD_SHIPMENT_ROUTE_SEGMENT_ID);
+		trackingCode = (String) value.get(FIELD_TRACKING_CODE);
+		boxNumber = (String) value.get(FIELD_BOX_NUMBER);
+		labelImage = (byte[]) value.get(FIELD_LABEL_IMAGE);
+		labelIntlSignImage = (byte[]) value.get(FIELD_LABEL_INTL_SIGN_IMAGE);
+		labelHtml = (String) value.get(FIELD_LABEL_HTML);
+		labelPrinted = (String) value.get(FIELD_LABEL_PRINTED);
+		internationalInvoice = (byte[]) value.get(FIELD_INTERNATIONAL_INVOICE);
 		packageTransportCost = (BigDecimal) value
-				.get(Fields.packageTransportCost.name());
-		packageServiceCost = (BigDecimal) value.get(Fields.packageServiceCost
-				.name());
-		packageOtherCost = (BigDecimal) value.get(Fields.packageOtherCost
-				.name());
-		codAmount = (BigDecimal) value.get(Fields.codAmount.name());
-		insuredAmount = (BigDecimal) value.get(Fields.insuredAmount.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PACKAGE_TRANSPORT_COST);
+		packageServiceCost = (BigDecimal) value.get(FIELD_PACKAGE_SERVICE_COST);
+		packageOtherCost = (BigDecimal) value.get(FIELD_PACKAGE_OTHER_COST);
+		codAmount = (BigDecimal) value.get(FIELD_COD_AMOUNT);
+		insuredAmount = (BigDecimal) value.get(FIELD_INSURED_AMOUNT);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentPackageRouteSeg fromValue(

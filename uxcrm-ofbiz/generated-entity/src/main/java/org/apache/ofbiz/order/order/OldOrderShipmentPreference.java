@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Order Shipment Preference
  */
+@FieldNameConstants
 public class OldOrderShipmentPreference implements Serializable {
 
-	public static final long serialVersionUID = 1478837389231460352L;
+	public static final long serialVersionUID = 8177539148763761664L;
 	public static final String NAME = "OldOrderShipmentPreference";
 	/**
 	 * Order Id
@@ -112,31 +114,24 @@ public class OldOrderShipmentPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderId, orderItemSeqId, shipmentMethodTypeId, carrierPartyId, carrierRoleTypeId, trackingNumber, shippingInstructions, maySplit, giftMessage, isGift, shipAfterDate, shipBeforeDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldOrderShipmentPreference(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
-		trackingNumber = (String) value.get(Fields.trackingNumber.name());
-		shippingInstructions = (String) value.get(Fields.shippingInstructions
-				.name());
-		maySplit = (String) value.get(Fields.maySplit.name());
-		giftMessage = (String) value.get(Fields.giftMessage.name());
-		isGift = (String) value.get(Fields.isGift.name());
-		shipAfterDate = (Timestamp) value.get(Fields.shipAfterDate.name());
-		shipBeforeDate = (Timestamp) value.get(Fields.shipBeforeDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
+		trackingNumber = (String) value.get(FIELD_TRACKING_NUMBER);
+		shippingInstructions = (String) value.get(FIELD_SHIPPING_INSTRUCTIONS);
+		maySplit = (String) value.get(FIELD_MAY_SPLIT);
+		giftMessage = (String) value.get(FIELD_GIFT_MESSAGE);
+		isGift = (String) value.get(FIELD_IS_GIFT);
+		shipAfterDate = (Timestamp) value.get(FIELD_SHIP_AFTER_DATE);
+		shipBeforeDate = (Timestamp) value.get(FIELD_SHIP_BEFORE_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldOrderShipmentPreference fromValue(

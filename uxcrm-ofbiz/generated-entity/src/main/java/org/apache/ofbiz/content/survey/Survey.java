@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey
  */
+@FieldNameConstants
 public class Survey implements Serializable {
 
-	public static final long serialVersionUID = 3801774243189324800L;
+	public static final long serialVersionUID = 6888483263111522304L;
 	public static final String NAME = "Survey";
 	/**
 	 * Survey Id
@@ -100,27 +102,21 @@ public class Survey implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyId, surveyName, description, comments, submitCaption, responseService, isAnonymous, allowMultiple, allowUpdate, acroFormContentId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Survey(GenericValue value) {
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyName = (String) value.get(Fields.surveyName.name());
-		description = (String) value.get(Fields.description.name());
-		comments = (String) value.get(Fields.comments.name());
-		submitCaption = (String) value.get(Fields.submitCaption.name());
-		responseService = (String) value.get(Fields.responseService.name());
-		isAnonymous = (String) value.get(Fields.isAnonymous.name());
-		allowMultiple = (String) value.get(Fields.allowMultiple.name());
-		allowUpdate = (String) value.get(Fields.allowUpdate.name());
-		acroFormContentId = (String) value.get(Fields.acroFormContentId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyName = (String) value.get(FIELD_SURVEY_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		submitCaption = (String) value.get(FIELD_SUBMIT_CAPTION);
+		responseService = (String) value.get(FIELD_RESPONSE_SERVICE);
+		isAnonymous = (String) value.get(FIELD_IS_ANONYMOUS);
+		allowMultiple = (String) value.get(FIELD_ALLOW_MULTIPLE);
+		allowUpdate = (String) value.get(FIELD_ALLOW_UPDATE);
+		acroFormContentId = (String) value.get(FIELD_ACRO_FORM_CONTENT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Survey fromValue(org.apache.ofbiz.entity.GenericValue value) {

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Quote
  */
+@FieldNameConstants
 public class Quote implements Serializable {
 
-	public static final long serialVersionUID = 1947540596585186304L;
+	public static final long serialVersionUID = 52663233030185984L;
 	public static final String NAME = "Quote";
 	/**
 	 * Quote Id
@@ -112,30 +114,23 @@ public class Quote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		quoteId, quoteTypeId, partyId, issueDate, statusId, currencyUomId, productStoreId, salesChannelEnumId, validFromDate, validThruDate, quoteName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Quote(GenericValue value) {
-		quoteId = (String) value.get(Fields.quoteId.name());
-		quoteTypeId = (String) value.get(Fields.quoteTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		issueDate = (Timestamp) value.get(Fields.issueDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		validFromDate = (Timestamp) value.get(Fields.validFromDate.name());
-		validThruDate = (Timestamp) value.get(Fields.validThruDate.name());
-		quoteName = (String) value.get(Fields.quoteName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		quoteTypeId = (String) value.get(FIELD_QUOTE_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		issueDate = (Timestamp) value.get(FIELD_ISSUE_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		validFromDate = (Timestamp) value.get(FIELD_VALID_FROM_DATE);
+		validThruDate = (Timestamp) value.get(FIELD_VALID_THRU_DATE);
+		quoteName = (String) value.get(FIELD_QUOTE_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Quote fromValue(org.apache.ofbiz.entity.GenericValue value) {

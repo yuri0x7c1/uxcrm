@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Facility
  */
+@FieldNameConstants
 public class ProductFacility implements Serializable {
 
-	public static final long serialVersionUID = 7207320017802510336L;
+	public static final long serialVersionUID = 1013103034650829824L;
 	public static final String NAME = "ProductFacility";
 	/**
 	 * Product Id
@@ -77,24 +79,17 @@ public class ProductFacility implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, facilityId, minimumStock, reorderQuantity, daysToShip, lastInventoryCount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFacility(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		minimumStock = (BigDecimal) value.get(Fields.minimumStock.name());
-		reorderQuantity = (BigDecimal) value.get(Fields.reorderQuantity.name());
-		daysToShip = (Long) value.get(Fields.daysToShip.name());
-		lastInventoryCount = (BigDecimal) value.get(Fields.lastInventoryCount
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		minimumStock = (BigDecimal) value.get(FIELD_MINIMUM_STOCK);
+		reorderQuantity = (BigDecimal) value.get(FIELD_REORDER_QUANTITY);
+		daysToShip = (Long) value.get(FIELD_DAYS_TO_SHIP);
+		lastInventoryCount = (BigDecimal) value.get(FIELD_LAST_INVENTORY_COUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFacility fromValue(

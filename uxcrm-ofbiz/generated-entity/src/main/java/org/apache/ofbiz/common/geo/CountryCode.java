@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Country Code
  */
+@FieldNameConstants
 public class CountryCode implements Serializable {
 
-	public static final long serialVersionUID = 8388021766719520768L;
+	public static final long serialVersionUID = 4716489084848111616L;
 	public static final String NAME = "CountryCode";
 	/**
 	 * Country Code
@@ -64,21 +66,15 @@ public class CountryCode implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		countryCode, countryAbbr, countryNumber, countryName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CountryCode(GenericValue value) {
-		countryCode = (String) value.get(Fields.countryCode.name());
-		countryAbbr = (String) value.get(Fields.countryAbbr.name());
-		countryNumber = (String) value.get(Fields.countryNumber.name());
-		countryName = (String) value.get(Fields.countryName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		countryCode = (String) value.get(FIELD_COUNTRY_CODE);
+		countryAbbr = (String) value.get(FIELD_COUNTRY_ABBR);
+		countryNumber = (String) value.get(FIELD_COUNTRY_NUMBER);
+		countryName = (String) value.get(FIELD_COUNTRY_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CountryCode fromValue(

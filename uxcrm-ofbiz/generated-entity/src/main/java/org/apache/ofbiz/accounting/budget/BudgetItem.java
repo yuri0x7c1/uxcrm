@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Budget Item
  */
+@FieldNameConstants
 public class BudgetItem implements Serializable {
 
-	public static final long serialVersionUID = 7678628682069543936L;
+	public static final long serialVersionUID = 9104993839208103936L;
 	public static final String NAME = "BudgetItem";
 	/**
 	 * Budget Id
@@ -77,23 +79,17 @@ public class BudgetItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, budgetItemSeqId, budgetItemTypeId, amount, purpose, justification, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetItem(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		budgetItemSeqId = (String) value.get(Fields.budgetItemSeqId.name());
-		budgetItemTypeId = (String) value.get(Fields.budgetItemTypeId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		purpose = (String) value.get(Fields.purpose.name());
-		justification = (String) value.get(Fields.justification.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		budgetItemSeqId = (String) value.get(FIELD_BUDGET_ITEM_SEQ_ID);
+		budgetItemTypeId = (String) value.get(FIELD_BUDGET_ITEM_TYPE_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		purpose = (String) value.get(FIELD_PURPOSE);
+		justification = (String) value.get(FIELD_JUSTIFICATION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetItem fromValue(

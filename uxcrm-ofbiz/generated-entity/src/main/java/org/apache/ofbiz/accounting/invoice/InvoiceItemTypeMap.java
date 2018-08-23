@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice Item Type Map
  */
+@FieldNameConstants
 public class InvoiceItemTypeMap implements Serializable {
 
-	public static final long serialVersionUID = 7068036447551070208L;
+	public static final long serialVersionUID = 3182440230086810624L;
 	public static final String NAME = "InvoiceItemTypeMap";
 	/**
 	 * Invoice Item Map Key
@@ -58,20 +60,14 @@ public class InvoiceItemTypeMap implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceItemMapKey, invoiceTypeId, invoiceItemTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceItemTypeMap(GenericValue value) {
-		invoiceItemMapKey = (String) value.get(Fields.invoiceItemMapKey.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceItemMapKey = (String) value.get(FIELD_INVOICE_ITEM_MAP_KEY);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceItemTypeMap fromValue(

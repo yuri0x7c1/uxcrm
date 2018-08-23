@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Empl Leave
  */
+@FieldNameConstants
 public class EmplLeave implements Serializable {
 
-	public static final long serialVersionUID = 2366409506252687360L;
+	public static final long serialVersionUID = 5505837056318340096L;
 	public static final String NAME = "EmplLeave";
 	/**
 	 * Party Id
@@ -88,26 +90,20 @@ public class EmplLeave implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, leaveTypeId, emplLeaveReasonTypeId, fromDate, thruDate, approverPartyId, leaveStatus, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmplLeave(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		leaveTypeId = (String) value.get(Fields.leaveTypeId.name());
-		emplLeaveReasonTypeId = (String) value.get(Fields.emplLeaveReasonTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		approverPartyId = (String) value.get(Fields.approverPartyId.name());
-		leaveStatus = (String) value.get(Fields.leaveStatus.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		leaveTypeId = (String) value.get(FIELD_LEAVE_TYPE_ID);
+		emplLeaveReasonTypeId = (String) value
+				.get(FIELD_EMPL_LEAVE_REASON_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		approverPartyId = (String) value.get(FIELD_APPROVER_PARTY_ID);
+		leaveStatus = (String) value.get(FIELD_LEAVE_STATUS);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmplLeave fromValue(org.apache.ofbiz.entity.GenericValue value) {

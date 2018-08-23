@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.config;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Config Stats
  */
+@FieldNameConstants
 public class ProductConfigStats implements Serializable {
 
-	public static final long serialVersionUID = 7364091706327497728L;
+	public static final long serialVersionUID = 9126609865278620672L;
 	public static final String NAME = "ProductConfigStats";
 	/**
 	 * Config Id
@@ -64,21 +66,15 @@ public class ProductConfigStats implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		configId, productId, numOfConfs, configTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductConfigStats(GenericValue value) {
-		configId = (String) value.get(Fields.configId.name());
-		productId = (String) value.get(Fields.productId.name());
-		numOfConfs = (Long) value.get(Fields.numOfConfs.name());
-		configTypeId = (String) value.get(Fields.configTypeId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		numOfConfs = (Long) value.get(FIELD_NUM_OF_CONFS);
+		configTypeId = (String) value.get(FIELD_CONFIG_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductConfigStats fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Contact Mech Detail
  */
+@FieldNameConstants
 public class ContactMechDetail implements Serializable {
 
-	public static final long serialVersionUID = 2803423331309016064L;
+	public static final long serialVersionUID = 7830379706012722176L;
 	public static final String NAME = "ContactMechDetail";
 	/**
 	 * Info String
@@ -159,37 +161,32 @@ public class ContactMechDetail implements Serializable {
 	@Setter
 	private String tnContactNumber;
 
-	public enum Fields {
-		infoString, contactMechTypeId, contactMechId, paCountryGeoId, paHouseNumberExt, paAddress2, paCity, paAddress1, paPostalCode, paPostalCodeGeoId, paHouseNumber, paPostalCodeExt, paAttnName, paDirections, paCountyGeoId, paToName, paCityGeoId, paMunicipalityGeoId, paStateProvinceGeoId, paGeoPointId, tnAreaCode, tnAskForName, tnCountryCode, tnContactNumber
-	}
-
 	public ContactMechDetail(GenericValue value) {
-		infoString = (String) value.get(Fields.infoString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		paCountryGeoId = (String) value.get(Fields.paCountryGeoId.name());
-		paHouseNumberExt = (String) value.get(Fields.paHouseNumberExt.name());
-		paAddress2 = (String) value.get(Fields.paAddress2.name());
-		paCity = (String) value.get(Fields.paCity.name());
-		paAddress1 = (String) value.get(Fields.paAddress1.name());
-		paPostalCode = (String) value.get(Fields.paPostalCode.name());
-		paPostalCodeGeoId = (String) value.get(Fields.paPostalCodeGeoId.name());
-		paHouseNumber = (Long) value.get(Fields.paHouseNumber.name());
-		paPostalCodeExt = (String) value.get(Fields.paPostalCodeExt.name());
-		paAttnName = (String) value.get(Fields.paAttnName.name());
-		paDirections = (String) value.get(Fields.paDirections.name());
-		paCountyGeoId = (String) value.get(Fields.paCountyGeoId.name());
-		paToName = (String) value.get(Fields.paToName.name());
-		paCityGeoId = (String) value.get(Fields.paCityGeoId.name());
-		paMunicipalityGeoId = (String) value.get(Fields.paMunicipalityGeoId
-				.name());
-		paStateProvinceGeoId = (String) value.get(Fields.paStateProvinceGeoId
-				.name());
-		paGeoPointId = (String) value.get(Fields.paGeoPointId.name());
-		tnAreaCode = (String) value.get(Fields.tnAreaCode.name());
-		tnAskForName = (String) value.get(Fields.tnAskForName.name());
-		tnCountryCode = (String) value.get(Fields.tnCountryCode.name());
-		tnContactNumber = (String) value.get(Fields.tnContactNumber.name());
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		paCountryGeoId = (String) value.get(FIELD_PA_COUNTRY_GEO_ID);
+		paHouseNumberExt = (String) value.get(FIELD_PA_HOUSE_NUMBER_EXT);
+		paAddress2 = (String) value.get(FIELD_PA_ADDRESS2);
+		paCity = (String) value.get(FIELD_PA_CITY);
+		paAddress1 = (String) value.get(FIELD_PA_ADDRESS1);
+		paPostalCode = (String) value.get(FIELD_PA_POSTAL_CODE);
+		paPostalCodeGeoId = (String) value.get(FIELD_PA_POSTAL_CODE_GEO_ID);
+		paHouseNumber = (Long) value.get(FIELD_PA_HOUSE_NUMBER);
+		paPostalCodeExt = (String) value.get(FIELD_PA_POSTAL_CODE_EXT);
+		paAttnName = (String) value.get(FIELD_PA_ATTN_NAME);
+		paDirections = (String) value.get(FIELD_PA_DIRECTIONS);
+		paCountyGeoId = (String) value.get(FIELD_PA_COUNTY_GEO_ID);
+		paToName = (String) value.get(FIELD_PA_TO_NAME);
+		paCityGeoId = (String) value.get(FIELD_PA_CITY_GEO_ID);
+		paMunicipalityGeoId = (String) value.get(FIELD_PA_MUNICIPALITY_GEO_ID);
+		paStateProvinceGeoId = (String) value
+				.get(FIELD_PA_STATE_PROVINCE_GEO_ID);
+		paGeoPointId = (String) value.get(FIELD_PA_GEO_POINT_ID);
+		tnAreaCode = (String) value.get(FIELD_TN_AREA_CODE);
+		tnAskForName = (String) value.get(FIELD_TN_ASK_FOR_NAME);
+		tnCountryCode = (String) value.get(FIELD_TN_COUNTRY_CODE);
+		tnContactNumber = (String) value.get(FIELD_TN_CONTACT_NUMBER);
 	}
 
 	public static ContactMechDetail fromValue(

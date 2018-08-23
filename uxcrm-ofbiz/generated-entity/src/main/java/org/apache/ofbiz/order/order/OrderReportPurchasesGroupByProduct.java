@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Report Purchases Group By Product
  */
+@FieldNameConstants
 public class OrderReportPurchasesGroupByProduct implements Serializable {
 
-	public static final long serialVersionUID = 873232050868332544L;
+	public static final long serialVersionUID = 2839179776502331392L;
 	public static final String NAME = "OrderReportPurchasesGroupByProduct";
 	/**
 	 * Product Id
@@ -89,23 +91,19 @@ public class OrderReportPurchasesGroupByProduct implements Serializable {
 	@Setter
 	private BigDecimal unitPrice;
 
-	public enum Fields {
-		productId, internalName, orderDate, orderStatusId, orderItemStatusId, orderTypeId, toPartyId, toRoleTypeId, fromPartyId, fromRoleTypeId, quantity, unitPrice
-	}
-
 	public OrderReportPurchasesGroupByProduct(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		orderStatusId = (String) value.get(Fields.orderStatusId.name());
-		orderItemStatusId = (String) value.get(Fields.orderItemStatusId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		toPartyId = (String) value.get(Fields.toPartyId.name());
-		toRoleTypeId = (String) value.get(Fields.toRoleTypeId.name());
-		fromPartyId = (String) value.get(Fields.fromPartyId.name());
-		fromRoleTypeId = (String) value.get(Fields.fromRoleTypeId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		unitPrice = (BigDecimal) value.get(Fields.unitPrice.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		orderStatusId = (String) value.get(FIELD_ORDER_STATUS_ID);
+		orderItemStatusId = (String) value.get(FIELD_ORDER_ITEM_STATUS_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		toPartyId = (String) value.get(FIELD_TO_PARTY_ID);
+		toRoleTypeId = (String) value.get(FIELD_TO_ROLE_TYPE_ID);
+		fromPartyId = (String) value.get(FIELD_FROM_PARTY_ID);
+		fromRoleTypeId = (String) value.get(FIELD_FROM_ROLE_TYPE_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		unitPrice = (BigDecimal) value.get(FIELD_UNIT_PRICE);
 	}
 
 	public static OrderReportPurchasesGroupByProduct fromValue(

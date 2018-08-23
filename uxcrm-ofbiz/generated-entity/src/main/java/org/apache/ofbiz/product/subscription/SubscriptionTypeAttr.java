@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.subscription;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Subscription Type Attr
  */
+@FieldNameConstants
 public class SubscriptionTypeAttr implements Serializable {
 
-	public static final long serialVersionUID = 3312934881717667840L;
+	public static final long serialVersionUID = 8611364037965401088L;
 	public static final String NAME = "SubscriptionTypeAttr";
 	/**
 	 * Subscription Type Id
@@ -58,21 +60,14 @@ public class SubscriptionTypeAttr implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		subscriptionTypeId, attrName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SubscriptionTypeAttr(GenericValue value) {
-		subscriptionTypeId = (String) value.get(Fields.subscriptionTypeId
-				.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		subscriptionTypeId = (String) value.get(FIELD_SUBSCRIPTION_TYPE_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SubscriptionTypeAttr fromValue(

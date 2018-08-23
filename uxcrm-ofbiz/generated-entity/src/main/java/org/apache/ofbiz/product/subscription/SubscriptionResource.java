@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.subscription;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Subscription Resource
  */
+@FieldNameConstants
 public class SubscriptionResource implements Serializable {
 
-	public static final long serialVersionUID = 8875246842734418944L;
+	public static final long serialVersionUID = 2699097313058270208L;
 	public static final String NAME = "SubscriptionResource";
 	/**
 	 * Subscription Resource Id
@@ -76,25 +78,18 @@ public class SubscriptionResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		subscriptionResourceId, parentResourceId, description, contentId, webSiteId, serviceNameOnExpiry, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SubscriptionResource(GenericValue value) {
 		subscriptionResourceId = (String) value
-				.get(Fields.subscriptionResourceId.name());
-		parentResourceId = (String) value.get(Fields.parentResourceId.name());
-		description = (String) value.get(Fields.description.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		serviceNameOnExpiry = (String) value.get(Fields.serviceNameOnExpiry
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SUBSCRIPTION_RESOURCE_ID);
+		parentResourceId = (String) value.get(FIELD_PARENT_RESOURCE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		serviceNameOnExpiry = (String) value.get(FIELD_SERVICE_NAME_ON_EXPIRY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SubscriptionResource fromValue(

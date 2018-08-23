@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Quote Term
  */
+@FieldNameConstants
 public class QuoteTerm implements Serializable {
 
-	public static final long serialVersionUID = 2637108908831230976L;
+	public static final long serialVersionUID = 8067739701842466816L;
 	public static final String NAME = "QuoteTerm";
 	/**
 	 * Term Type Id
@@ -88,25 +90,19 @@ public class QuoteTerm implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		termTypeId, quoteId, quoteItemSeqId, termValue, uomId, termDays, textValue, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public QuoteTerm(GenericValue value) {
-		termTypeId = (String) value.get(Fields.termTypeId.name());
-		quoteId = (String) value.get(Fields.quoteId.name());
-		quoteItemSeqId = (String) value.get(Fields.quoteItemSeqId.name());
-		termValue = (Long) value.get(Fields.termValue.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		termDays = (Long) value.get(Fields.termDays.name());
-		textValue = (String) value.get(Fields.textValue.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		termTypeId = (String) value.get(FIELD_TERM_TYPE_ID);
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		quoteItemSeqId = (String) value.get(FIELD_QUOTE_ITEM_SEQ_ID);
+		termValue = (Long) value.get(FIELD_TERM_VALUE);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		termDays = (Long) value.get(FIELD_TERM_DAYS);
+		textValue = (String) value.get(FIELD_TEXT_VALUE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static QuoteTerm fromValue(org.apache.ofbiz.entity.GenericValue value) {

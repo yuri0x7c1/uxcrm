@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Contact With Purpose
  */
+@FieldNameConstants
 public class PartyContactWithPurpose implements Serializable {
 
-	public static final long serialVersionUID = 5090067721785020416L;
+	public static final long serialVersionUID = 2682848228302849024L;
 	public static final String NAME = "PartyContactWithPurpose";
 	/**
 	 * Contact Mech Id
@@ -94,26 +96,21 @@ public class PartyContactWithPurpose implements Serializable {
 	@Setter
 	private String purposeDescription;
 
-	public enum Fields {
-		contactMechId, partyId, contactMechPurposeTypeId, contactFromDate, contactThruDate, purposeFromDate, purposeThruDate, contactMechTypeId, infoString, comments, extension, allowSolicitation, purposeDescription
-	}
-
 	public PartyContactWithPurpose(GenericValue value) {
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 		contactMechPurposeTypeId = (String) value
-				.get(Fields.contactMechPurposeTypeId.name());
-		contactFromDate = (Timestamp) value.get(Fields.contactFromDate.name());
-		contactThruDate = (Timestamp) value.get(Fields.contactThruDate.name());
-		purposeFromDate = (Timestamp) value.get(Fields.purposeFromDate.name());
-		purposeThruDate = (Timestamp) value.get(Fields.purposeThruDate.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		comments = (String) value.get(Fields.comments.name());
-		extension = (String) value.get(Fields.extension.name());
-		allowSolicitation = (String) value.get(Fields.allowSolicitation.name());
-		purposeDescription = (String) value.get(Fields.purposeDescription
-				.name());
+				.get(FIELD_CONTACT_MECH_PURPOSE_TYPE_ID);
+		contactFromDate = (Timestamp) value.get(FIELD_CONTACT_FROM_DATE);
+		contactThruDate = (Timestamp) value.get(FIELD_CONTACT_THRU_DATE);
+		purposeFromDate = (Timestamp) value.get(FIELD_PURPOSE_FROM_DATE);
+		purposeThruDate = (Timestamp) value.get(FIELD_PURPOSE_THRU_DATE);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		comments = (String) value.get(FIELD_COMMENTS);
+		extension = (String) value.get(FIELD_EXTENSION);
+		allowSolicitation = (String) value.get(FIELD_ALLOW_SOLICITATION);
+		purposeDescription = (String) value.get(FIELD_PURPOSE_DESCRIPTION);
 	}
 
 	public static PartyContactWithPurpose fromValue(

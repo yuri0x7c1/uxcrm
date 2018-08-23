@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Pay History
  */
+@FieldNameConstants
 public class PayHistory implements Serializable {
 
-	public static final long serialVersionUID = 2270597998805772288L;
+	public static final long serialVersionUID = 958916376638936064L;
 	public static final String NAME = "PayHistory";
 	/**
 	 * Role Type Id From
@@ -107,28 +109,22 @@ public class PayHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, fromDate, thruDate, salaryStepSeqId, payGradeId, periodTypeId, amount, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PayHistory(GenericValue value) {
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		salaryStepSeqId = (String) value.get(Fields.salaryStepSeqId.name());
-		payGradeId = (String) value.get(Fields.payGradeId.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		salaryStepSeqId = (String) value.get(FIELD_SALARY_STEP_SEQ_ID);
+		payGradeId = (String) value.get(FIELD_PAY_GRADE_ID);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PayHistory fromValue(

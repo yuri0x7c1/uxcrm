@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Group And Member
  */
+@FieldNameConstants
 public class ProductStoreGroupAndMember implements Serializable {
 
-	public static final long serialVersionUID = 6318057887439172608L;
+	public static final long serialVersionUID = 8641385298921337856L;
 	public static final String NAME = "ProductStoreGroupAndMember";
 	/**
 	 * Product Store Group Type Id
@@ -550,151 +552,127 @@ public class ProductStoreGroupAndMember implements Serializable {
 	@Setter
 	private String defaultLocaleString;
 
-	public enum Fields {
-		productStoreGroupTypeId, primaryParentGroupId, productStoreGroupName, description, productStoreGroupId, fromDate, sequenceNum, productStoreId, thruDate, viewCartOnAdd, requireCustomerRole, companyName, headerDeclinedStatus, requireInventory, checkInventory, autoApproveInvoice, addToCartRemoveIncompat, enableAutoSuggestionList, defaultSalesChannelEnumId, autoApproveOrder, allowPassword, showTaxIsExempt, oldHeaderLogo, autoSaveCart, inventoryFacilityId, headerApprovedStatus, oldHeaderMiddleBackground, defaultTimeZoneString, prorateTaxes, showCheckoutGiftOptions, oldStyleSheet, manualAuthIsCapture, itemDeclinedStatus, visualThemeId, storeCreditAccountEnumId, showOutOfStockProducts, itemApprovedStatus, allowComment, storeCreditValidDays, splitPayPrefPerShpGrp, authFraudMessage, managedByLot, reqShipAddrForDigItems, oneInventoryFacility, orderNumberPrefix, autoInvoiceDigitalItems, subtitle, reserveOrderEnumId, isDemoStore, retryFailedAuths, selectPaymentTypePerItem, balanceResOnOrderCreation, autoApproveReviews, explodeOrderItems, usePrimaryEmailUsername, headerCancelStatus, title, primaryStoreGroupId, oldHeaderRightBackground, enableDigProdUpload, autoOrderCcTryOtherCards, autoOrderCcTryLaterMax, digitalItemApprovedStatus, storeName, reserveInventory, isImmediatelyFulfilled, defaultPassword, itemCancelStatus, autoOrderCcTryExp, authDeclinedMessage, prodSearchExcludeVariants, shipIfCaptureFails, showPricesWithVatTax, defaultCurrencyUomId, orderDecimalQuantity, prorateShipping, digProdUploadCategoryId, reqReturnInventoryReceive, authErrorMessage, setOwnerUponIssuance, checkGcBalance, autoOrderCcTryLaterNsf, addToCartReplaceUpsell, vatTaxAuthGeoId, vatTaxAuthPartyId, daysToCancelNonPay, requirementMethodEnumId, payToPartyId, defaultLocaleString
-	}
-
 	public ProductStoreGroupAndMember(GenericValue value) {
 		productStoreGroupTypeId = (String) value
-				.get(Fields.productStoreGroupTypeId.name());
-		primaryParentGroupId = (String) value.get(Fields.primaryParentGroupId
-				.name());
-		productStoreGroupName = (String) value.get(Fields.productStoreGroupName
-				.name());
-		description = (String) value.get(Fields.description.name());
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		viewCartOnAdd = (String) value.get(Fields.viewCartOnAdd.name());
-		requireCustomerRole = (String) value.get(Fields.requireCustomerRole
-				.name());
-		companyName = (String) value.get(Fields.companyName.name());
-		headerDeclinedStatus = (String) value.get(Fields.headerDeclinedStatus
-				.name());
-		requireInventory = (String) value.get(Fields.requireInventory.name());
-		checkInventory = (String) value.get(Fields.checkInventory.name());
-		autoApproveInvoice = (String) value.get(Fields.autoApproveInvoice
-				.name());
+				.get(FIELD_PRODUCT_STORE_GROUP_TYPE_ID);
+		primaryParentGroupId = (String) value
+				.get(FIELD_PRIMARY_PARENT_GROUP_ID);
+		productStoreGroupName = (String) value
+				.get(FIELD_PRODUCT_STORE_GROUP_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		viewCartOnAdd = (String) value.get(FIELD_VIEW_CART_ON_ADD);
+		requireCustomerRole = (String) value.get(FIELD_REQUIRE_CUSTOMER_ROLE);
+		companyName = (String) value.get(FIELD_COMPANY_NAME);
+		headerDeclinedStatus = (String) value.get(FIELD_HEADER_DECLINED_STATUS);
+		requireInventory = (String) value.get(FIELD_REQUIRE_INVENTORY);
+		checkInventory = (String) value.get(FIELD_CHECK_INVENTORY);
+		autoApproveInvoice = (String) value.get(FIELD_AUTO_APPROVE_INVOICE);
 		addToCartRemoveIncompat = (String) value
-				.get(Fields.addToCartRemoveIncompat.name());
+				.get(FIELD_ADD_TO_CART_REMOVE_INCOMPAT);
 		enableAutoSuggestionList = (String) value
-				.get(Fields.enableAutoSuggestionList.name());
+				.get(FIELD_ENABLE_AUTO_SUGGESTION_LIST);
 		defaultSalesChannelEnumId = (String) value
-				.get(Fields.defaultSalesChannelEnumId.name());
-		autoApproveOrder = (String) value.get(Fields.autoApproveOrder.name());
-		allowPassword = (String) value.get(Fields.allowPassword.name());
-		showTaxIsExempt = (String) value.get(Fields.showTaxIsExempt.name());
-		oldHeaderLogo = (String) value.get(Fields.oldHeaderLogo.name());
-		autoSaveCart = (String) value.get(Fields.autoSaveCart.name());
-		inventoryFacilityId = (String) value.get(Fields.inventoryFacilityId
-				.name());
-		headerApprovedStatus = (String) value.get(Fields.headerApprovedStatus
-				.name());
+				.get(FIELD_DEFAULT_SALES_CHANNEL_ENUM_ID);
+		autoApproveOrder = (String) value.get(FIELD_AUTO_APPROVE_ORDER);
+		allowPassword = (String) value.get(FIELD_ALLOW_PASSWORD);
+		showTaxIsExempt = (String) value.get(FIELD_SHOW_TAX_IS_EXEMPT);
+		oldHeaderLogo = (String) value.get(FIELD_OLD_HEADER_LOGO);
+		autoSaveCart = (String) value.get(FIELD_AUTO_SAVE_CART);
+		inventoryFacilityId = (String) value.get(FIELD_INVENTORY_FACILITY_ID);
+		headerApprovedStatus = (String) value.get(FIELD_HEADER_APPROVED_STATUS);
 		oldHeaderMiddleBackground = (String) value
-				.get(Fields.oldHeaderMiddleBackground.name());
-		defaultTimeZoneString = (String) value.get(Fields.defaultTimeZoneString
-				.name());
-		prorateTaxes = (String) value.get(Fields.prorateTaxes.name());
+				.get(FIELD_OLD_HEADER_MIDDLE_BACKGROUND);
+		defaultTimeZoneString = (String) value
+				.get(FIELD_DEFAULT_TIME_ZONE_STRING);
+		prorateTaxes = (String) value.get(FIELD_PRORATE_TAXES);
 		showCheckoutGiftOptions = (String) value
-				.get(Fields.showCheckoutGiftOptions.name());
-		oldStyleSheet = (String) value.get(Fields.oldStyleSheet.name());
-		manualAuthIsCapture = (String) value.get(Fields.manualAuthIsCapture
-				.name());
-		itemDeclinedStatus = (String) value.get(Fields.itemDeclinedStatus
-				.name());
-		visualThemeId = (String) value.get(Fields.visualThemeId.name());
+				.get(FIELD_SHOW_CHECKOUT_GIFT_OPTIONS);
+		oldStyleSheet = (String) value.get(FIELD_OLD_STYLE_SHEET);
+		manualAuthIsCapture = (String) value.get(FIELD_MANUAL_AUTH_IS_CAPTURE);
+		itemDeclinedStatus = (String) value.get(FIELD_ITEM_DECLINED_STATUS);
+		visualThemeId = (String) value.get(FIELD_VISUAL_THEME_ID);
 		storeCreditAccountEnumId = (String) value
-				.get(Fields.storeCreditAccountEnumId.name());
+				.get(FIELD_STORE_CREDIT_ACCOUNT_ENUM_ID);
 		showOutOfStockProducts = (String) value
-				.get(Fields.showOutOfStockProducts.name());
-		itemApprovedStatus = (String) value.get(Fields.itemApprovedStatus
-				.name());
-		allowComment = (String) value.get(Fields.allowComment.name());
-		storeCreditValidDays = (Long) value.get(Fields.storeCreditValidDays
-				.name());
-		splitPayPrefPerShpGrp = (String) value.get(Fields.splitPayPrefPerShpGrp
-				.name());
-		authFraudMessage = (String) value.get(Fields.authFraudMessage.name());
-		managedByLot = (String) value.get(Fields.managedByLot.name());
+				.get(FIELD_SHOW_OUT_OF_STOCK_PRODUCTS);
+		itemApprovedStatus = (String) value.get(FIELD_ITEM_APPROVED_STATUS);
+		allowComment = (String) value.get(FIELD_ALLOW_COMMENT);
+		storeCreditValidDays = (Long) value.get(FIELD_STORE_CREDIT_VALID_DAYS);
+		splitPayPrefPerShpGrp = (String) value
+				.get(FIELD_SPLIT_PAY_PREF_PER_SHP_GRP);
+		authFraudMessage = (String) value.get(FIELD_AUTH_FRAUD_MESSAGE);
+		managedByLot = (String) value.get(FIELD_MANAGED_BY_LOT);
 		reqShipAddrForDigItems = (String) value
-				.get(Fields.reqShipAddrForDigItems.name());
-		oneInventoryFacility = (String) value.get(Fields.oneInventoryFacility
-				.name());
-		orderNumberPrefix = (String) value.get(Fields.orderNumberPrefix.name());
+				.get(FIELD_REQ_SHIP_ADDR_FOR_DIG_ITEMS);
+		oneInventoryFacility = (String) value.get(FIELD_ONE_INVENTORY_FACILITY);
+		orderNumberPrefix = (String) value.get(FIELD_ORDER_NUMBER_PREFIX);
 		autoInvoiceDigitalItems = (String) value
-				.get(Fields.autoInvoiceDigitalItems.name());
-		subtitle = (String) value.get(Fields.subtitle.name());
-		reserveOrderEnumId = (String) value.get(Fields.reserveOrderEnumId
-				.name());
-		isDemoStore = (String) value.get(Fields.isDemoStore.name());
-		retryFailedAuths = (String) value.get(Fields.retryFailedAuths.name());
+				.get(FIELD_AUTO_INVOICE_DIGITAL_ITEMS);
+		subtitle = (String) value.get(FIELD_SUBTITLE);
+		reserveOrderEnumId = (String) value.get(FIELD_RESERVE_ORDER_ENUM_ID);
+		isDemoStore = (String) value.get(FIELD_IS_DEMO_STORE);
+		retryFailedAuths = (String) value.get(FIELD_RETRY_FAILED_AUTHS);
 		selectPaymentTypePerItem = (String) value
-				.get(Fields.selectPaymentTypePerItem.name());
+				.get(FIELD_SELECT_PAYMENT_TYPE_PER_ITEM);
 		balanceResOnOrderCreation = (String) value
-				.get(Fields.balanceResOnOrderCreation.name());
-		autoApproveReviews = (String) value.get(Fields.autoApproveReviews
-				.name());
-		explodeOrderItems = (String) value.get(Fields.explodeOrderItems.name());
+				.get(FIELD_BALANCE_RES_ON_ORDER_CREATION);
+		autoApproveReviews = (String) value.get(FIELD_AUTO_APPROVE_REVIEWS);
+		explodeOrderItems = (String) value.get(FIELD_EXPLODE_ORDER_ITEMS);
 		usePrimaryEmailUsername = (String) value
-				.get(Fields.usePrimaryEmailUsername.name());
-		headerCancelStatus = (String) value.get(Fields.headerCancelStatus
-				.name());
-		title = (String) value.get(Fields.title.name());
-		primaryStoreGroupId = (String) value.get(Fields.primaryStoreGroupId
-				.name());
+				.get(FIELD_USE_PRIMARY_EMAIL_USERNAME);
+		headerCancelStatus = (String) value.get(FIELD_HEADER_CANCEL_STATUS);
+		title = (String) value.get(FIELD_TITLE);
+		primaryStoreGroupId = (String) value.get(FIELD_PRIMARY_STORE_GROUP_ID);
 		oldHeaderRightBackground = (String) value
-				.get(Fields.oldHeaderRightBackground.name());
-		enableDigProdUpload = (String) value.get(Fields.enableDigProdUpload
-				.name());
+				.get(FIELD_OLD_HEADER_RIGHT_BACKGROUND);
+		enableDigProdUpload = (String) value.get(FIELD_ENABLE_DIG_PROD_UPLOAD);
 		autoOrderCcTryOtherCards = (String) value
-				.get(Fields.autoOrderCcTryOtherCards.name());
-		autoOrderCcTryLaterMax = (Long) value.get(Fields.autoOrderCcTryLaterMax
-				.name());
+				.get(FIELD_AUTO_ORDER_CC_TRY_OTHER_CARDS);
+		autoOrderCcTryLaterMax = (Long) value
+				.get(FIELD_AUTO_ORDER_CC_TRY_LATER_MAX);
 		digitalItemApprovedStatus = (String) value
-				.get(Fields.digitalItemApprovedStatus.name());
-		storeName = (String) value.get(Fields.storeName.name());
-		reserveInventory = (String) value.get(Fields.reserveInventory.name());
+				.get(FIELD_DIGITAL_ITEM_APPROVED_STATUS);
+		storeName = (String) value.get(FIELD_STORE_NAME);
+		reserveInventory = (String) value.get(FIELD_RESERVE_INVENTORY);
 		isImmediatelyFulfilled = (String) value
-				.get(Fields.isImmediatelyFulfilled.name());
-		defaultPassword = (String) value.get(Fields.defaultPassword.name());
-		itemCancelStatus = (String) value.get(Fields.itemCancelStatus.name());
-		autoOrderCcTryExp = (String) value.get(Fields.autoOrderCcTryExp.name());
-		authDeclinedMessage = (String) value.get(Fields.authDeclinedMessage
-				.name());
+				.get(FIELD_IS_IMMEDIATELY_FULFILLED);
+		defaultPassword = (String) value.get(FIELD_DEFAULT_PASSWORD);
+		itemCancelStatus = (String) value.get(FIELD_ITEM_CANCEL_STATUS);
+		autoOrderCcTryExp = (String) value.get(FIELD_AUTO_ORDER_CC_TRY_EXP);
+		authDeclinedMessage = (String) value.get(FIELD_AUTH_DECLINED_MESSAGE);
 		prodSearchExcludeVariants = (String) value
-				.get(Fields.prodSearchExcludeVariants.name());
-		shipIfCaptureFails = (String) value.get(Fields.shipIfCaptureFails
-				.name());
-		showPricesWithVatTax = (String) value.get(Fields.showPricesWithVatTax
-				.name());
-		defaultCurrencyUomId = (String) value.get(Fields.defaultCurrencyUomId
-				.name());
-		orderDecimalQuantity = (String) value.get(Fields.orderDecimalQuantity
-				.name());
-		prorateShipping = (String) value.get(Fields.prorateShipping.name());
+				.get(FIELD_PROD_SEARCH_EXCLUDE_VARIANTS);
+		shipIfCaptureFails = (String) value.get(FIELD_SHIP_IF_CAPTURE_FAILS);
+		showPricesWithVatTax = (String) value
+				.get(FIELD_SHOW_PRICES_WITH_VAT_TAX);
+		defaultCurrencyUomId = (String) value
+				.get(FIELD_DEFAULT_CURRENCY_UOM_ID);
+		orderDecimalQuantity = (String) value.get(FIELD_ORDER_DECIMAL_QUANTITY);
+		prorateShipping = (String) value.get(FIELD_PRORATE_SHIPPING);
 		digProdUploadCategoryId = (String) value
-				.get(Fields.digProdUploadCategoryId.name());
+				.get(FIELD_DIG_PROD_UPLOAD_CATEGORY_ID);
 		reqReturnInventoryReceive = (String) value
-				.get(Fields.reqReturnInventoryReceive.name());
-		authErrorMessage = (String) value.get(Fields.authErrorMessage.name());
-		setOwnerUponIssuance = (String) value.get(Fields.setOwnerUponIssuance
-				.name());
-		checkGcBalance = (String) value.get(Fields.checkGcBalance.name());
+				.get(FIELD_REQ_RETURN_INVENTORY_RECEIVE);
+		authErrorMessage = (String) value.get(FIELD_AUTH_ERROR_MESSAGE);
+		setOwnerUponIssuance = (String) value
+				.get(FIELD_SET_OWNER_UPON_ISSUANCE);
+		checkGcBalance = (String) value.get(FIELD_CHECK_GC_BALANCE);
 		autoOrderCcTryLaterNsf = (String) value
-				.get(Fields.autoOrderCcTryLaterNsf.name());
+				.get(FIELD_AUTO_ORDER_CC_TRY_LATER_NSF);
 		addToCartReplaceUpsell = (String) value
-				.get(Fields.addToCartReplaceUpsell.name());
-		vatTaxAuthGeoId = (String) value.get(Fields.vatTaxAuthGeoId.name());
-		vatTaxAuthPartyId = (String) value.get(Fields.vatTaxAuthPartyId.name());
-		daysToCancelNonPay = (Long) value.get(Fields.daysToCancelNonPay.name());
+				.get(FIELD_ADD_TO_CART_REPLACE_UPSELL);
+		vatTaxAuthGeoId = (String) value.get(FIELD_VAT_TAX_AUTH_GEO_ID);
+		vatTaxAuthPartyId = (String) value.get(FIELD_VAT_TAX_AUTH_PARTY_ID);
+		daysToCancelNonPay = (Long) value.get(FIELD_DAYS_TO_CANCEL_NON_PAY);
 		requirementMethodEnumId = (String) value
-				.get(Fields.requirementMethodEnumId.name());
-		payToPartyId = (String) value.get(Fields.payToPartyId.name());
-		defaultLocaleString = (String) value.get(Fields.defaultLocaleString
-				.name());
+				.get(FIELD_REQUIREMENT_METHOD_ENUM_ID);
+		payToPartyId = (String) value.get(FIELD_PAY_TO_PARTY_ID);
+		defaultLocaleString = (String) value.get(FIELD_DEFAULT_LOCALE_STRING);
 	}
 
 	public static ProductStoreGroupAndMember fromValue(

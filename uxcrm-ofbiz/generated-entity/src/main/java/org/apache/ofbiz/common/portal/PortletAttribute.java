@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portlet Attribute
  */
+@FieldNameConstants
 public class PortletAttribute implements Serializable {
 
-	public static final long serialVersionUID = 8309216578479313920L;
+	public static final long serialVersionUID = 8613742169874183168L;
 	public static final String NAME = "PortletAttribute";
 	/**
 	 * Portal Page Id
@@ -82,24 +84,18 @@ public class PortletAttribute implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		portalPageId, portalPortletId, portletSeqId, attrName, attrValue, attrDescription, attrType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PortletAttribute(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		portalPortletId = (String) value.get(Fields.portalPortletId.name());
-		portletSeqId = (String) value.get(Fields.portletSeqId.name());
-		attrName = (String) value.get(Fields.attrName.name());
-		attrValue = (String) value.get(Fields.attrValue.name());
-		attrDescription = (String) value.get(Fields.attrDescription.name());
-		attrType = (String) value.get(Fields.attrType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		portalPortletId = (String) value.get(FIELD_PORTAL_PORTLET_ID);
+		portletSeqId = (String) value.get(FIELD_PORTLET_SEQ_ID);
+		attrName = (String) value.get(FIELD_ATTR_NAME);
+		attrValue = (String) value.get(FIELD_ATTR_VALUE);
+		attrDescription = (String) value.get(FIELD_ATTR_DESCRIPTION);
+		attrType = (String) value.get(FIELD_ATTR_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PortletAttribute fromValue(

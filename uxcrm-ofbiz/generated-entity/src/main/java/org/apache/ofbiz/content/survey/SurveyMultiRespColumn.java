@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Multi Resp Column
  */
+@FieldNameConstants
 public class SurveyMultiRespColumn implements Serializable {
 
-	public static final long serialVersionUID = 682524800480655360L;
+	public static final long serialVersionUID = 8030366293001644032L;
 	public static final String NAME = "SurveyMultiRespColumn";
 	/**
 	 * Survey Id
@@ -70,23 +72,17 @@ public class SurveyMultiRespColumn implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyId, surveyMultiRespId, surveyMultiRespColId, columnTitle, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyMultiRespColumn(GenericValue value) {
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyMultiRespId = (String) value.get(Fields.surveyMultiRespId.name());
-		surveyMultiRespColId = (String) value.get(Fields.surveyMultiRespColId
-				.name());
-		columnTitle = (String) value.get(Fields.columnTitle.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyMultiRespId = (String) value.get(FIELD_SURVEY_MULTI_RESP_ID);
+		surveyMultiRespColId = (String) value
+				.get(FIELD_SURVEY_MULTI_RESP_COL_ID);
+		columnTitle = (String) value.get(FIELD_COLUMN_TITLE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyMultiRespColumn fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.mrp;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Mrp Event Type
  */
+@FieldNameConstants
 public class MrpEventType implements Serializable {
 
-	public static final long serialVersionUID = 7979213385313267712L;
+	public static final long serialVersionUID = 4221363232803232768L;
 	public static final String NAME = "MrpEventType";
 	/**
 	 * Mrp Event Type Id
@@ -52,19 +54,13 @@ public class MrpEventType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		mrpEventTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MrpEventType(GenericValue value) {
-		mrpEventTypeId = (String) value.get(Fields.mrpEventTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		mrpEventTypeId = (String) value.get(FIELD_MRP_EVENT_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MrpEventType fromValue(

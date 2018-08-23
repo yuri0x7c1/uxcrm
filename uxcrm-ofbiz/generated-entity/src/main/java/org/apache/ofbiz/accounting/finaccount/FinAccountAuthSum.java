@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fin Account Auth Sum
  */
+@FieldNameConstants
 public class FinAccountAuthSum implements Serializable {
 
-	public static final long serialVersionUID = 9150471858452929536L;
+	public static final long serialVersionUID = 3872139134249808896L;
 	public static final String NAME = "FinAccountAuthSum";
 	/**
 	 * Fin Account Id
@@ -47,17 +49,12 @@ public class FinAccountAuthSum implements Serializable {
 	@Setter
 	private BigDecimal amount;
 
-	public enum Fields {
-		finAccountId, authorizationDate, fromDate, thruDate, amount
-	}
-
 	public FinAccountAuthSum(GenericValue value) {
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		authorizationDate = (Timestamp) value.get(Fields.authorizationDate
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		authorizationDate = (Timestamp) value.get(FIELD_AUTHORIZATION_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
 	}
 
 	public static FinAccountAuthSum fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.synchronization;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Entity Sync Remove
  */
+@FieldNameConstants
 public class EntitySyncRemove implements Serializable {
 
-	public static final long serialVersionUID = 6015067072086968320L;
+	public static final long serialVersionUID = 8249638461042782208L;
 	public static final String NAME = "EntitySyncRemove";
 	/**
 	 * Entity Sync Remove Id
@@ -52,20 +54,13 @@ public class EntitySyncRemove implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		entitySyncRemoveId, primaryKeyRemoved, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EntitySyncRemove(GenericValue value) {
-		entitySyncRemoveId = (String) value.get(Fields.entitySyncRemoveId
-				.name());
-		primaryKeyRemoved = (String) value.get(Fields.primaryKeyRemoved.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		entitySyncRemoveId = (String) value.get(FIELD_ENTITY_SYNC_REMOVE_ID);
+		primaryKeyRemoved = (String) value.get(FIELD_PRIMARY_KEY_REMOVED);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EntitySyncRemove fromValue(

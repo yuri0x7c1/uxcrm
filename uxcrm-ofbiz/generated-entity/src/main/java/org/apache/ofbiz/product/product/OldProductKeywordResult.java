@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Product Keyword Result
  */
+@FieldNameConstants
 public class OldProductKeywordResult implements Serializable {
 
-	public static final long serialVersionUID = 6690615199060207616L;
+	public static final long serialVersionUID = 1114476470149987328L;
 	public static final String NAME = "OldProductKeywordResult";
 	/**
 	 * Product Keyword Result Id
@@ -94,28 +96,21 @@ public class OldProductKeywordResult implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productKeywordResultId, visitId, productCategoryId, searchString, intraKeywordOperator, anyPrefix, anySuffix, removeStems, numResults, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldProductKeywordResult(GenericValue value) {
 		productKeywordResultId = (String) value
-				.get(Fields.productKeywordResultId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		searchString = (String) value.get(Fields.searchString.name());
-		intraKeywordOperator = (String) value.get(Fields.intraKeywordOperator
-				.name());
-		anyPrefix = (String) value.get(Fields.anyPrefix.name());
-		anySuffix = (String) value.get(Fields.anySuffix.name());
-		removeStems = (String) value.get(Fields.removeStems.name());
-		numResults = (Long) value.get(Fields.numResults.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_KEYWORD_RESULT_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		searchString = (String) value.get(FIELD_SEARCH_STRING);
+		intraKeywordOperator = (String) value.get(FIELD_INTRA_KEYWORD_OPERATOR);
+		anyPrefix = (String) value.get(FIELD_ANY_PREFIX);
+		anySuffix = (String) value.get(FIELD_ANY_SUFFIX);
+		removeStems = (String) value.get(FIELD_REMOVE_STEMS);
+		numResults = (Long) value.get(FIELD_NUM_RESULTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldProductKeywordResult fromValue(

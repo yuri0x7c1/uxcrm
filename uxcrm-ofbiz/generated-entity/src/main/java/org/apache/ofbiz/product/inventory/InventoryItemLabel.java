@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Label
  */
+@FieldNameConstants
 public class InventoryItemLabel implements Serializable {
 
-	public static final long serialVersionUID = 7304181876661777408L;
+	public static final long serialVersionUID = 5530170083426199552L;
 	public static final String NAME = "InventoryItemLabel";
 	/**
 	 * Inventory Item Label Id
@@ -58,22 +60,16 @@ public class InventoryItemLabel implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		inventoryItemLabelId, inventoryItemLabelTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryItemLabel(GenericValue value) {
-		inventoryItemLabelId = (String) value.get(Fields.inventoryItemLabelId
-				.name());
+		inventoryItemLabelId = (String) value
+				.get(FIELD_INVENTORY_ITEM_LABEL_ID);
 		inventoryItemLabelTypeId = (String) value
-				.get(Fields.inventoryItemLabelTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_INVENTORY_ITEM_LABEL_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryItemLabel fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.data;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Resource
  */
+@FieldNameConstants
 public class DataResource implements Serializable {
 
-	public static final long serialVersionUID = 1185930975391126528L;
+	public static final long serialVersionUID = 3685436140999049216L;
 	public static final String NAME = "DataResource";
 	/**
 	 * Data Resource Id
@@ -154,41 +156,31 @@ public class DataResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataResourceId, dataResourceTypeId, dataTemplateTypeId, dataCategoryId, dataSourceId, statusId, dataResourceName, localeString, mimeTypeId, characterSetId, objectInfo, surveyId, surveyResponseId, relatedDetailId, isPublic, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataResource(GenericValue value) {
-		dataResourceId = (String) value.get(Fields.dataResourceId.name());
-		dataResourceTypeId = (String) value.get(Fields.dataResourceTypeId
-				.name());
-		dataTemplateTypeId = (String) value.get(Fields.dataTemplateTypeId
-				.name());
-		dataCategoryId = (String) value.get(Fields.dataCategoryId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		dataResourceName = (String) value.get(Fields.dataResourceName.name());
-		localeString = (String) value.get(Fields.localeString.name());
-		mimeTypeId = (String) value.get(Fields.mimeTypeId.name());
-		characterSetId = (String) value.get(Fields.characterSetId.name());
-		objectInfo = (String) value.get(Fields.objectInfo.name());
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyResponseId = (String) value.get(Fields.surveyResponseId.name());
-		relatedDetailId = (String) value.get(Fields.relatedDetailId.name());
-		isPublic = (String) value.get(Fields.isPublic.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+		dataResourceId = (String) value.get(FIELD_DATA_RESOURCE_ID);
+		dataResourceTypeId = (String) value.get(FIELD_DATA_RESOURCE_TYPE_ID);
+		dataTemplateTypeId = (String) value.get(FIELD_DATA_TEMPLATE_TYPE_ID);
+		dataCategoryId = (String) value.get(FIELD_DATA_CATEGORY_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		dataResourceName = (String) value.get(FIELD_DATA_RESOURCE_NAME);
+		localeString = (String) value.get(FIELD_LOCALE_STRING);
+		mimeTypeId = (String) value.get(FIELD_MIME_TYPE_ID);
+		characterSetId = (String) value.get(FIELD_CHARACTER_SET_ID);
+		objectInfo = (String) value.get(FIELD_OBJECT_INFO);
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyResponseId = (String) value.get(FIELD_SURVEY_RESPONSE_ID);
+		relatedDetailId = (String) value.get(FIELD_RELATED_DETAIL_ID);
+		isPublic = (String) value.get(FIELD_IS_PUBLIC);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataResource fromValue(

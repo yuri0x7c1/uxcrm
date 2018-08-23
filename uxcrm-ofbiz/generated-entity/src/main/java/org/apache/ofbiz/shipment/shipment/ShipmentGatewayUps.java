@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Shipment Gateway Ups
  */
+@FieldNameConstants
 public class ShipmentGatewayUps implements Serializable {
 
-	public static final long serialVersionUID = 6072010251452616704L;
+	public static final long serialVersionUID = 1420042026231043072L;
 	public static final String NAME = "ShipmentGatewayUps";
 	/**
 	 * Shipment Gateway Config Id
@@ -167,49 +169,39 @@ public class ShipmentGatewayUps implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentGatewayConfigId, connectUrl, connectTimeout, shipperNumber, billShipperAccountNumber, accessLicenseNumber, accessUserId, accessPassword, saveCertInfo, saveCertPath, shipperPickupType, customerClassification, maxEstimateWeight, minEstimateWeight, codAllowCod, codSurchargeAmount, codSurchargeCurrencyUomId, codSurchargeApplyToPackage, codFundsCode, defaultReturnLabelMemo, defaultReturnLabelSubject, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentGatewayUps(GenericValue value) {
 		shipmentGatewayConfigId = (String) value
-				.get(Fields.shipmentGatewayConfigId.name());
-		connectUrl = (String) value.get(Fields.connectUrl.name());
-		connectTimeout = (Long) value.get(Fields.connectTimeout.name());
-		shipperNumber = (String) value.get(Fields.shipperNumber.name());
+				.get(FIELD_SHIPMENT_GATEWAY_CONFIG_ID);
+		connectUrl = (String) value.get(FIELD_CONNECT_URL);
+		connectTimeout = (Long) value.get(FIELD_CONNECT_TIMEOUT);
+		shipperNumber = (String) value.get(FIELD_SHIPPER_NUMBER);
 		billShipperAccountNumber = (String) value
-				.get(Fields.billShipperAccountNumber.name());
-		accessLicenseNumber = (String) value.get(Fields.accessLicenseNumber
-				.name());
-		accessUserId = (String) value.get(Fields.accessUserId.name());
-		accessPassword = (String) value.get(Fields.accessPassword.name());
-		saveCertInfo = (String) value.get(Fields.saveCertInfo.name());
-		saveCertPath = (String) value.get(Fields.saveCertPath.name());
-		shipperPickupType = (String) value.get(Fields.shipperPickupType.name());
+				.get(FIELD_BILL_SHIPPER_ACCOUNT_NUMBER);
+		accessLicenseNumber = (String) value.get(FIELD_ACCESS_LICENSE_NUMBER);
+		accessUserId = (String) value.get(FIELD_ACCESS_USER_ID);
+		accessPassword = (String) value.get(FIELD_ACCESS_PASSWORD);
+		saveCertInfo = (String) value.get(FIELD_SAVE_CERT_INFO);
+		saveCertPath = (String) value.get(FIELD_SAVE_CERT_PATH);
+		shipperPickupType = (String) value.get(FIELD_SHIPPER_PICKUP_TYPE);
 		customerClassification = (String) value
-				.get(Fields.customerClassification.name());
-		maxEstimateWeight = (BigDecimal) value.get(Fields.maxEstimateWeight
-				.name());
-		minEstimateWeight = (BigDecimal) value.get(Fields.minEstimateWeight
-				.name());
-		codAllowCod = (String) value.get(Fields.codAllowCod.name());
-		codSurchargeAmount = (BigDecimal) value.get(Fields.codSurchargeAmount
-				.name());
+				.get(FIELD_CUSTOMER_CLASSIFICATION);
+		maxEstimateWeight = (BigDecimal) value.get(FIELD_MAX_ESTIMATE_WEIGHT);
+		minEstimateWeight = (BigDecimal) value.get(FIELD_MIN_ESTIMATE_WEIGHT);
+		codAllowCod = (String) value.get(FIELD_COD_ALLOW_COD);
+		codSurchargeAmount = (BigDecimal) value.get(FIELD_COD_SURCHARGE_AMOUNT);
 		codSurchargeCurrencyUomId = (String) value
-				.get(Fields.codSurchargeCurrencyUomId.name());
+				.get(FIELD_COD_SURCHARGE_CURRENCY_UOM_ID);
 		codSurchargeApplyToPackage = (String) value
-				.get(Fields.codSurchargeApplyToPackage.name());
-		codFundsCode = (String) value.get(Fields.codFundsCode.name());
+				.get(FIELD_COD_SURCHARGE_APPLY_TO_PACKAGE);
+		codFundsCode = (String) value.get(FIELD_COD_FUNDS_CODE);
 		defaultReturnLabelMemo = (String) value
-				.get(Fields.defaultReturnLabelMemo.name());
+				.get(FIELD_DEFAULT_RETURN_LABEL_MEMO);
 		defaultReturnLabelSubject = (String) value
-				.get(Fields.defaultReturnLabelSubject.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_DEFAULT_RETURN_LABEL_SUBJECT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentGatewayUps fromValue(

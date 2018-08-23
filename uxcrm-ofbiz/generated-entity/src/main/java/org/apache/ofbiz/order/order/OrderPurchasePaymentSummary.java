@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Purchase Payment Summary
  */
+@FieldNameConstants
 public class OrderPurchasePaymentSummary implements Serializable {
 
-	public static final long serialVersionUID = 6150913656787726336L;
+	public static final long serialVersionUID = 8315448990050081792L;
 	public static final String NAME = "OrderPurchasePaymentSummary";
 	/**
 	 * Web Site Id
@@ -95,26 +97,20 @@ public class OrderPurchasePaymentSummary implements Serializable {
 	@Setter
 	private String preferenceStatusId;
 
-	public enum Fields {
-		webSiteId, productStoreId, originFacilityId, terminalId, statusId, paymentMethodTypeId, description, maxAmount, orderId, orderTypeId, orderDate, billingAccountId, preferenceStatusId
-	}
-
 	public OrderPurchasePaymentSummary(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		originFacilityId = (String) value.get(Fields.originFacilityId.name());
-		terminalId = (String) value.get(Fields.terminalId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		maxAmount = (BigDecimal) value.get(Fields.maxAmount.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderTypeId = (String) value.get(Fields.orderTypeId.name());
-		orderDate = (Timestamp) value.get(Fields.orderDate.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		preferenceStatusId = (String) value.get(Fields.preferenceStatusId
-				.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		originFacilityId = (String) value.get(FIELD_ORIGIN_FACILITY_ID);
+		terminalId = (String) value.get(FIELD_TERMINAL_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		maxAmount = (BigDecimal) value.get(FIELD_MAX_AMOUNT);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderTypeId = (String) value.get(FIELD_ORDER_TYPE_ID);
+		orderDate = (Timestamp) value.get(FIELD_ORDER_DATE);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		preferenceStatusId = (String) value.get(FIELD_PREFERENCE_STATUS_ID);
 	}
 
 	public static OrderPurchasePaymentSummary fromValue(

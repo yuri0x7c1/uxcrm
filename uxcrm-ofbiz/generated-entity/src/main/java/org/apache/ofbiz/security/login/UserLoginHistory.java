@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.login;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login History
  */
+@FieldNameConstants
 public class UserLoginHistory implements Serializable {
 
-	public static final long serialVersionUID = 5032407919815531520L;
+	public static final long serialVersionUID = 4764667535510536192L;
 	public static final String NAME = "UserLoginHistory";
 	/**
 	 * User Login Id
@@ -82,24 +84,18 @@ public class UserLoginHistory implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		userLoginId, visitId, fromDate, thruDate, passwordUsed, successfulLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, partyId
-	}
-
 	public UserLoginHistory(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		passwordUsed = (String) value.get(Fields.passwordUsed.name());
-		successfulLogin = (String) value.get(Fields.successfulLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		passwordUsed = (String) value.get(FIELD_PASSWORD_USED);
+		successfulLogin = (String) value.get(FIELD_SUCCESSFUL_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static UserLoginHistory fromValue(

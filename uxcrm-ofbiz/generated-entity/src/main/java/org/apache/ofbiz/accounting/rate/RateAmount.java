@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.rate;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Rate Amount
  */
+@FieldNameConstants
 public class RateAmount implements Serializable {
 
-	public static final long serialVersionUID = 1423849988633528320L;
+	public static final long serialVersionUID = 5505156008852110336L;
 	public static final String NAME = "RateAmount";
 	/**
 	 * Rate Type Id
@@ -95,27 +97,20 @@ public class RateAmount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		rateTypeId, rateCurrencyUomId, periodTypeId, workEffortId, partyId, emplPositionTypeId, fromDate, thruDate, rateAmount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RateAmount(GenericValue value) {
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		rateCurrencyUomId = (String) value.get(Fields.rateCurrencyUomId.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		emplPositionTypeId = (String) value.get(Fields.emplPositionTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		rateAmount = (BigDecimal) value.get(Fields.rateAmount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		rateCurrencyUomId = (String) value.get(FIELD_RATE_CURRENCY_UOM_ID);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		emplPositionTypeId = (String) value.get(FIELD_EMPL_POSITION_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		rateAmount = (BigDecimal) value.get(FIELD_RATE_AMOUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RateAmount fromValue(

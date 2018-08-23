@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Testing Status
  */
+@FieldNameConstants
 public class TestingStatus implements Serializable {
 
-	public static final long serialVersionUID = 8971772918089141248L;
+	public static final long serialVersionUID = 605595151494705152L;
 	public static final String NAME = "TestingStatus";
 	/**
 	 * Testing Status Id
@@ -70,23 +72,16 @@ public class TestingStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		testingStatusId, testingId, statusId, statusDate, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TestingStatus(GenericValue value) {
-		testingStatusId = (String) value.get(Fields.testingStatusId.name());
-		testingId = (String) value.get(Fields.testingId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		testingStatusId = (String) value.get(FIELD_TESTING_STATUS_ID);
+		testingId = (String) value.get(FIELD_TESTING_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TestingStatus fromValue(

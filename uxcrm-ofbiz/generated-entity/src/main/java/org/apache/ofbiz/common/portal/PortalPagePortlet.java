@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portal Page Portlet
  */
+@FieldNameConstants
 public class PortalPagePortlet implements Serializable {
 
-	public static final long serialVersionUID = 8659509611167458304L;
+	public static final long serialVersionUID = 2123987395184161792L;
 	public static final String NAME = "PortalPagePortlet";
 	/**
 	 * Portal Page Id
@@ -70,22 +72,16 @@ public class PortalPagePortlet implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		portalPageId, portalPortletId, portletSeqId, columnSeqId, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PortalPagePortlet(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		portalPortletId = (String) value.get(Fields.portalPortletId.name());
-		portletSeqId = (String) value.get(Fields.portletSeqId.name());
-		columnSeqId = (String) value.get(Fields.columnSeqId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		portalPortletId = (String) value.get(FIELD_PORTAL_PORTLET_ID);
+		portletSeqId = (String) value.get(FIELD_PORTLET_SEQ_ID);
+		columnSeqId = (String) value.get(FIELD_COLUMN_SEQ_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PortalPagePortlet fromValue(

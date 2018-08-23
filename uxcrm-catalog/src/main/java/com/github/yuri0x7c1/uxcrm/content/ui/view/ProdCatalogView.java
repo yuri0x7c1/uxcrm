@@ -61,6 +61,6 @@ public class ProdCatalogView extends CommonView implements View {
 				return prodCatalogService.count(null);
 			}
 		)
-		.sort(new Object[] {ProdCatalog.Fields.prodCatalogId.name()}, new boolean[] {true});
+		.sort(new Object[] {ProdCatalog.FIELD_PROD_CATALOG_ID}, new boolean[] {true});
     }
 }

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Note
  */
+@FieldNameConstants
 public class WorkEffortNote implements Serializable {
 
-	public static final long serialVersionUID = 1157100420672456704L;
+	public static final long serialVersionUID = 430346737702408192L;
 	public static final String NAME = "WorkEffortNote";
 	/**
 	 * Work Effort Id
@@ -58,20 +60,14 @@ public class WorkEffortNote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, noteId, internalNote, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortNote(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		internalNote = (String) value.get(Fields.internalNote.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		internalNote = (String) value.get(FIELD_INTERNAL_NOTE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortNote fromValue(

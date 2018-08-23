@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.portal;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Portal Page Column
  */
+@FieldNameConstants
 public class PortalPageColumn implements Serializable {
 
-	public static final long serialVersionUID = 2992577747596502016L;
+	public static final long serialVersionUID = 3864845441301041152L;
 	public static final String NAME = "PortalPageColumn";
 	/**
 	 * Portal Page Id
@@ -64,22 +66,15 @@ public class PortalPageColumn implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		portalPageId, columnSeqId, columnWidthPixels, columnWidthPercentage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PortalPageColumn(GenericValue value) {
-		portalPageId = (String) value.get(Fields.portalPageId.name());
-		columnSeqId = (String) value.get(Fields.columnSeqId.name());
-		columnWidthPixels = (Long) value.get(Fields.columnWidthPixels.name());
-		columnWidthPercentage = (Long) value.get(Fields.columnWidthPercentage
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		portalPageId = (String) value.get(FIELD_PORTAL_PAGE_ID);
+		columnSeqId = (String) value.get(FIELD_COLUMN_SEQ_ID);
+		columnWidthPixels = (Long) value.get(FIELD_COLUMN_WIDTH_PIXELS);
+		columnWidthPercentage = (Long) value.get(FIELD_COLUMN_WIDTH_PERCENTAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PortalPageColumn fromValue(

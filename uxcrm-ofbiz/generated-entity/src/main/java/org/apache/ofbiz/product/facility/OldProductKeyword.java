@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Old Product Keyword
  */
+@FieldNameConstants
 public class OldProductKeyword implements Serializable {
 
-	public static final long serialVersionUID = 6490498582892846080L;
+	public static final long serialVersionUID = 5380451700779085824L;
 	public static final String NAME = "OldProductKeyword";
 	/**
 	 * Product Id
@@ -58,20 +60,14 @@ public class OldProductKeyword implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, keyword, relevancyWeight, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldProductKeyword(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		keyword = (String) value.get(Fields.keyword.name());
-		relevancyWeight = (Long) value.get(Fields.relevancyWeight.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		keyword = (String) value.get(FIELD_KEYWORD);
+		relevancyWeight = (Long) value.get(FIELD_RELEVANCY_WEIGHT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldProductKeyword fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.theme;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Visual Theme
  */
+@FieldNameConstants
 public class VisualTheme implements Serializable {
 
-	public static final long serialVersionUID = 4251403746616497152L;
+	public static final long serialVersionUID = 4099383446523424768L;
 	public static final String NAME = "VisualTheme";
 	/**
 	 * Visual Theme Id
@@ -58,20 +60,14 @@ public class VisualTheme implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		visualThemeId, visualThemeSetId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public VisualTheme(GenericValue value) {
-		visualThemeId = (String) value.get(Fields.visualThemeId.name());
-		visualThemeSetId = (String) value.get(Fields.visualThemeSetId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		visualThemeId = (String) value.get(FIELD_VISUAL_THEME_ID);
+		visualThemeSetId = (String) value.get(FIELD_VISUAL_THEME_SET_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static VisualTheme fromValue(

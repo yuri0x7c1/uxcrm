@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Method
  */
+@FieldNameConstants
 public class PaymentMethod implements Serializable {
 
-	public static final long serialVersionUID = 7447892405096560640L;
+	public static final long serialVersionUID = 2060593857392942080L;
 	public static final String NAME = "PaymentMethod";
 	/**
 	 * Payment Method Id
@@ -88,26 +90,19 @@ public class PaymentMethod implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentMethodId, paymentMethodTypeId, partyId, glAccountId, finAccountId, description, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentMethod(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		description = (String) value.get(Fields.description.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentMethod fromValue(

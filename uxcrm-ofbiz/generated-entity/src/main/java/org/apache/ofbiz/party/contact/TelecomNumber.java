@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Telecom Number
  */
+@FieldNameConstants
 public class TelecomNumber implements Serializable {
 
-	public static final long serialVersionUID = 8135442442804790272L;
+	public static final long serialVersionUID = 3550708586819301376L;
 	public static final String NAME = "TelecomNumber";
 	/**
 	 * Contact Mech Id
@@ -70,22 +72,16 @@ public class TelecomNumber implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contactMechId, countryCode, areaCode, contactNumber, askForName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TelecomNumber(GenericValue value) {
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		countryCode = (String) value.get(Fields.countryCode.name());
-		areaCode = (String) value.get(Fields.areaCode.name());
-		contactNumber = (String) value.get(Fields.contactNumber.name());
-		askForName = (String) value.get(Fields.askForName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		countryCode = (String) value.get(FIELD_COUNTRY_CODE);
+		areaCode = (String) value.get(FIELD_AREA_CODE);
+		contactNumber = (String) value.get(FIELD_CONTACT_NUMBER);
+		askForName = (String) value.get(FIELD_ASK_FOR_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TelecomNumber fromValue(

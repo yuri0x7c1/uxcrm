@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Requirement Party Product Count
  */
+@FieldNameConstants
 public class RequirementPartyProductCount implements Serializable {
 
-	public static final long serialVersionUID = 2935583465949900800L;
+	public static final long serialVersionUID = 3277064361881428992L;
 	public static final String NAME = "RequirementPartyProductCount";
 	/**
 	 * Requirement Type Id
@@ -58,18 +60,14 @@ public class RequirementPartyProductCount implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		requirementTypeId, statusId, productId, partyId, roleTypeId, fromDate, thruDate
-	}
-
 	public RequirementPartyProductCount(GenericValue value) {
-		requirementTypeId = (String) value.get(Fields.requirementTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		productId = (Long) value.get(Fields.productId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		requirementTypeId = (String) value.get(FIELD_REQUIREMENT_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		productId = (Long) value.get(FIELD_PRODUCT_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static RequirementPartyProductCount fromValue(

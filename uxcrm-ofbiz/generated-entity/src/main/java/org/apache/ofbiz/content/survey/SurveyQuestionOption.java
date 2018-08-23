@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Survey Question Option
  */
+@FieldNameConstants
 public class SurveyQuestionOption implements Serializable {
 
-	public static final long serialVersionUID = 285858980249013248L;
+	public static final long serialVersionUID = 9051279929516534784L;
 	public static final String NAME = "SurveyQuestionOption";
 	/**
 	 * Survey Question Id
@@ -95,26 +97,20 @@ public class SurveyQuestionOption implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyQuestionId, surveyOptionSeqId, description, sequenceNum, amountBase, amountBaseUomId, weightFactor, duration, durationUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyQuestionOption(GenericValue value) {
-		surveyQuestionId = (String) value.get(Fields.surveyQuestionId.name());
-		surveyOptionSeqId = (String) value.get(Fields.surveyOptionSeqId.name());
-		description = (String) value.get(Fields.description.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		amountBase = (BigDecimal) value.get(Fields.amountBase.name());
-		amountBaseUomId = (String) value.get(Fields.amountBaseUomId.name());
-		weightFactor = (Double) value.get(Fields.weightFactor.name());
-		duration = (Long) value.get(Fields.duration.name());
-		durationUomId = (String) value.get(Fields.durationUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyQuestionId = (String) value.get(FIELD_SURVEY_QUESTION_ID);
+		surveyOptionSeqId = (String) value.get(FIELD_SURVEY_OPTION_SEQ_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		amountBase = (BigDecimal) value.get(FIELD_AMOUNT_BASE);
+		amountBaseUomId = (String) value.get(FIELD_AMOUNT_BASE_UOM_ID);
+		weightFactor = (Double) value.get(FIELD_WEIGHT_FACTOR);
+		duration = (Long) value.get(FIELD_DURATION);
+		durationUomId = (String) value.get(FIELD_DURATION_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyQuestionOption fromValue(

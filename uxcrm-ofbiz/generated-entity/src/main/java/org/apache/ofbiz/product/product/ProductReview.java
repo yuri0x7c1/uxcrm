@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Review
  */
+@FieldNameConstants
 public class ProductReview implements Serializable {
 
-	public static final long serialVersionUID = 3714173673404869632L;
+	public static final long serialVersionUID = 5931876485231823872L;
 	public static final String NAME = "ProductReview";
 	/**
 	 * Product Review Id
@@ -95,26 +97,20 @@ public class ProductReview implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productReviewId, productStoreId, productId, userLoginId, statusId, postedAnonymous, postedDateTime, productRating, productReview, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductReview(GenericValue value) {
-		productReviewId = (String) value.get(Fields.productReviewId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		productId = (String) value.get(Fields.productId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		postedAnonymous = (String) value.get(Fields.postedAnonymous.name());
-		postedDateTime = (Timestamp) value.get(Fields.postedDateTime.name());
-		productRating = (BigDecimal) value.get(Fields.productRating.name());
-		productReview = (String) value.get(Fields.productReview.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productReviewId = (String) value.get(FIELD_PRODUCT_REVIEW_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		postedAnonymous = (String) value.get(FIELD_POSTED_ANONYMOUS);
+		postedDateTime = (Timestamp) value.get(FIELD_POSTED_DATE_TIME);
+		productRating = (BigDecimal) value.get(FIELD_PRODUCT_RATING);
+		productReview = (String) value.get(FIELD_PRODUCT_REVIEW);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductReview fromValue(

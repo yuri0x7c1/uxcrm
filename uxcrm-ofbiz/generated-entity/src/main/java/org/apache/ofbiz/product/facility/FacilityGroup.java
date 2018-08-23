@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Facility Group
  */
+@FieldNameConstants
 public class FacilityGroup implements Serializable {
 
-	public static final long serialVersionUID = 5973137328287417344L;
+	public static final long serialVersionUID = 1036476497256489984L;
 	public static final String NAME = "FacilityGroup";
 	/**
 	 * Facility Group Id
@@ -70,24 +72,17 @@ public class FacilityGroup implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		facilityGroupId, facilityGroupTypeId, primaryParentGroupId, facilityGroupName, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FacilityGroup(GenericValue value) {
-		facilityGroupId = (String) value.get(Fields.facilityGroupId.name());
-		facilityGroupTypeId = (String) value.get(Fields.facilityGroupTypeId
-				.name());
-		primaryParentGroupId = (String) value.get(Fields.primaryParentGroupId
-				.name());
-		facilityGroupName = (String) value.get(Fields.facilityGroupName.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		facilityGroupId = (String) value.get(FIELD_FACILITY_GROUP_ID);
+		facilityGroupTypeId = (String) value.get(FIELD_FACILITY_GROUP_TYPE_ID);
+		primaryParentGroupId = (String) value
+				.get(FIELD_PRIMARY_PARENT_GROUP_ID);
+		facilityGroupName = (String) value.get(FIELD_FACILITY_GROUP_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FacilityGroup fromValue(

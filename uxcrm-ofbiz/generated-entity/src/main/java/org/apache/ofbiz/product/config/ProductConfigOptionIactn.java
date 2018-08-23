@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.config;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Config Option Iactn
  */
+@FieldNameConstants
 public class ProductConfigOptionIactn implements Serializable {
 
-	public static final long serialVersionUID = 7658322806520136704L;
+	public static final long serialVersionUID = 6599291993613359104L;
 	public static final String NAME = "ProductConfigOptionIactn";
 	/**
 	 * Config Item Id
@@ -82,24 +84,18 @@ public class ProductConfigOptionIactn implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		configItemId, configOptionId, configItemIdTo, configOptionIdTo, sequenceNum, configIactnTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductConfigOptionIactn(GenericValue value) {
-		configItemId = (String) value.get(Fields.configItemId.name());
-		configOptionId = (String) value.get(Fields.configOptionId.name());
-		configItemIdTo = (String) value.get(Fields.configItemIdTo.name());
-		configOptionIdTo = (String) value.get(Fields.configOptionIdTo.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		configIactnTypeId = (String) value.get(Fields.configIactnTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		configItemId = (String) value.get(FIELD_CONFIG_ITEM_ID);
+		configOptionId = (String) value.get(FIELD_CONFIG_OPTION_ID);
+		configItemIdTo = (String) value.get(FIELD_CONFIG_ITEM_ID_TO);
+		configOptionIdTo = (String) value.get(FIELD_CONFIG_OPTION_ID_TO);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		configIactnTypeId = (String) value.get(FIELD_CONFIG_IACTN_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductConfigOptionIactn fromValue(

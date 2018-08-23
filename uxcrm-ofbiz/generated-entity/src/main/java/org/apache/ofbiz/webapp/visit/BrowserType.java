@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Browser Type
  */
+@FieldNameConstants
 public class BrowserType implements Serializable {
 
-	public static final long serialVersionUID = 2672501147373145088L;
+	public static final long serialVersionUID = 4397461083469706240L;
 	public static final String NAME = "BrowserType";
 	/**
 	 * Browser Type Id
@@ -58,20 +60,14 @@ public class BrowserType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		browserTypeId, browserName, browserVersion, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BrowserType(GenericValue value) {
-		browserTypeId = (String) value.get(Fields.browserTypeId.name());
-		browserName = (String) value.get(Fields.browserName.name());
-		browserVersion = (String) value.get(Fields.browserVersion.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		browserTypeId = (String) value.get(FIELD_BROWSER_TYPE_ID);
+		browserName = (String) value.get(FIELD_BROWSER_NAME);
+		browserVersion = (String) value.get(FIELD_BROWSER_VERSION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BrowserType fromValue(

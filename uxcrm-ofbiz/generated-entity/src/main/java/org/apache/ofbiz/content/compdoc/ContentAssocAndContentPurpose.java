@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.compdoc;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Assoc And Content Purpose
  */
+@FieldNameConstants
 public class ContentAssocAndContentPurpose implements Serializable {
 
-	public static final long serialVersionUID = 8186392327021529088L;
+	public static final long serialVersionUID = 5940206878808150016L;
 	public static final String NAME = "ContentAssocAndContentPurpose";
 	/**
 	 * Content Id
@@ -70,22 +72,17 @@ public class ContentAssocAndContentPurpose implements Serializable {
 	@Setter
 	private Long sequenceNum;
 
-	public enum Fields {
-		contentId, contentIdTo, contentAssocTypeId, fromDate, thruDate, dataSourceId, mapKey, contentPurposeTypeId, sequenceNum
-	}
-
 	public ContentAssocAndContentPurpose(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		contentIdTo = (String) value.get(Fields.contentIdTo.name());
-		contentAssocTypeId = (String) value.get(Fields.contentAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		mapKey = (String) value.get(Fields.mapKey.name());
-		contentPurposeTypeId = (String) value.get(Fields.contentPurposeTypeId
-				.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentIdTo = (String) value.get(FIELD_CONTENT_ID_TO);
+		contentAssocTypeId = (String) value.get(FIELD_CONTENT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		mapKey = (String) value.get(FIELD_MAP_KEY);
+		contentPurposeTypeId = (String) value
+				.get(FIELD_CONTENT_PURPOSE_TYPE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
 	}
 
 	public static ContentAssocAndContentPurpose fromValue(

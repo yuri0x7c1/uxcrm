@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.issuance;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Item Issuance
  */
+@FieldNameConstants
 public class ItemIssuance implements Serializable {
 
-	public static final long serialVersionUID = 5659090553562625024L;
+	public static final long serialVersionUID = 4960899281851493376L;
 	public static final String NAME = "ItemIssuance";
 	/**
 	 * Item Issuance Id
@@ -119,31 +121,24 @@ public class ItemIssuance implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		itemIssuanceId, orderId, orderItemSeqId, shipGroupSeqId, inventoryItemId, shipmentId, shipmentItemSeqId, fixedAssetId, maintHistSeqId, issuedDateTime, issuedByUserLoginId, quantity, cancelQuantity, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ItemIssuance(GenericValue value) {
-		itemIssuanceId = (String) value.get(Fields.itemIssuanceId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		shipmentItemSeqId = (String) value.get(Fields.shipmentItemSeqId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		maintHistSeqId = (String) value.get(Fields.maintHistSeqId.name());
-		issuedDateTime = (Timestamp) value.get(Fields.issuedDateTime.name());
-		issuedByUserLoginId = (String) value.get(Fields.issuedByUserLoginId
-				.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		cancelQuantity = (BigDecimal) value.get(Fields.cancelQuantity.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		itemIssuanceId = (String) value.get(FIELD_ITEM_ISSUANCE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		shipmentItemSeqId = (String) value.get(FIELD_SHIPMENT_ITEM_SEQ_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		maintHistSeqId = (String) value.get(FIELD_MAINT_HIST_SEQ_ID);
+		issuedDateTime = (Timestamp) value.get(FIELD_ISSUED_DATE_TIME);
+		issuedByUserLoginId = (String) value.get(FIELD_ISSUED_BY_USER_LOGIN_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		cancelQuantity = (BigDecimal) value.get(FIELD_CANCEL_QUANTITY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ItemIssuance fromValue(

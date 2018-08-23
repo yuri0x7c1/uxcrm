@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Payment Preference
  */
+@FieldNameConstants
 public class OrderPaymentPreference implements Serializable {
 
-	public static final long serialVersionUID = 8840283093692369920L;
+	public static final long serialVersionUID = 187647480788398080L;
 	public static final String NAME = "OrderPaymentPreference";
 	/**
 	 * Order Payment Preference Id
@@ -185,47 +187,38 @@ public class OrderPaymentPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderPaymentPreferenceId, orderId, orderItemSeqId, shipGroupSeqId, productPricePurposeId, paymentMethodTypeId, paymentMethodId, finAccountId, securityCode, track2, presentFlag, swipedFlag, overflowFlag, maxAmount, processAttempt, billingPostalCode, manualAuthCode, manualRefNum, statusId, needsNsfRetry, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderPaymentPreference(GenericValue value) {
 		orderPaymentPreferenceId = (String) value
-				.get(Fields.orderPaymentPreferenceId.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		productPricePurposeId = (String) value.get(Fields.productPricePurposeId
-				.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		securityCode = (String) value.get(Fields.securityCode.name());
-		track2 = (String) value.get(Fields.track2.name());
-		presentFlag = (String) value.get(Fields.presentFlag.name());
-		swipedFlag = (String) value.get(Fields.swipedFlag.name());
-		overflowFlag = (String) value.get(Fields.overflowFlag.name());
-		maxAmount = (BigDecimal) value.get(Fields.maxAmount.name());
-		processAttempt = (Long) value.get(Fields.processAttempt.name());
-		billingPostalCode = (String) value.get(Fields.billingPostalCode.name());
-		manualAuthCode = (String) value.get(Fields.manualAuthCode.name());
-		manualRefNum = (String) value.get(Fields.manualRefNum.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		needsNsfRetry = (String) value.get(Fields.needsNsfRetry.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_ORDER_PAYMENT_PREFERENCE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		productPricePurposeId = (String) value
+				.get(FIELD_PRODUCT_PRICE_PURPOSE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		securityCode = (String) value.get(FIELD_SECURITY_CODE);
+		track2 = (String) value.get(FIELD_TRACK2);
+		presentFlag = (String) value.get(FIELD_PRESENT_FLAG);
+		swipedFlag = (String) value.get(FIELD_SWIPED_FLAG);
+		overflowFlag = (String) value.get(FIELD_OVERFLOW_FLAG);
+		maxAmount = (BigDecimal) value.get(FIELD_MAX_AMOUNT);
+		processAttempt = (Long) value.get(FIELD_PROCESS_ATTEMPT);
+		billingPostalCode = (String) value.get(FIELD_BILLING_POSTAL_CODE);
+		manualAuthCode = (String) value.get(FIELD_MANUAL_AUTH_CODE);
+		manualRefNum = (String) value.get(FIELD_MANUAL_REF_NUM);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		needsNsfRetry = (String) value.get(FIELD_NEEDS_NSF_RETRY);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderPaymentPreference fromValue(

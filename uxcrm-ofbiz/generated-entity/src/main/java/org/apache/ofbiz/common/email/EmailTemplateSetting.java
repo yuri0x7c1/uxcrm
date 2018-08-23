@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.email;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Email Template Setting
  */
+@FieldNameConstants
 public class EmailTemplateSetting implements Serializable {
 
-	public static final long serialVersionUID = 6686629885205767168L;
+	public static final long serialVersionUID = 8965995970202221568L;
 	public static final String NAME = "EmailTemplateSetting";
 	/**
 	 * Email Template Setting Id
@@ -100,30 +102,23 @@ public class EmailTemplateSetting implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		emailTemplateSettingId, emailType, description, bodyScreenLocation, xslfoAttachScreenLocation, fromAddress, ccAddress, bccAddress, subject, contentType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public EmailTemplateSetting(GenericValue value) {
 		emailTemplateSettingId = (String) value
-				.get(Fields.emailTemplateSettingId.name());
-		emailType = (String) value.get(Fields.emailType.name());
-		description = (String) value.get(Fields.description.name());
-		bodyScreenLocation = (String) value.get(Fields.bodyScreenLocation
-				.name());
+				.get(FIELD_EMAIL_TEMPLATE_SETTING_ID);
+		emailType = (String) value.get(FIELD_EMAIL_TYPE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		bodyScreenLocation = (String) value.get(FIELD_BODY_SCREEN_LOCATION);
 		xslfoAttachScreenLocation = (String) value
-				.get(Fields.xslfoAttachScreenLocation.name());
-		fromAddress = (String) value.get(Fields.fromAddress.name());
-		ccAddress = (String) value.get(Fields.ccAddress.name());
-		bccAddress = (String) value.get(Fields.bccAddress.name());
-		subject = (String) value.get(Fields.subject.name());
-		contentType = (String) value.get(Fields.contentType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_XSLFO_ATTACH_SCREEN_LOCATION);
+		fromAddress = (String) value.get(FIELD_FROM_ADDRESS);
+		ccAddress = (String) value.get(FIELD_CC_ADDRESS);
+		bccAddress = (String) value.get(FIELD_BCC_ADDRESS);
+		subject = (String) value.get(FIELD_SUBJECT);
+		contentType = (String) value.get(FIELD_CONTENT_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static EmailTemplateSetting fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Payment Setting
  */
+@FieldNameConstants
 public class ProductStorePaymentSetting implements Serializable {
 
-	public static final long serialVersionUID = 8412827228205787136L;
+	public static final long serialVersionUID = 8102663574331029504L;
 	public static final String NAME = "ProductStorePaymentSetting";
 	/**
 	 * Product Store Id
@@ -88,31 +90,23 @@ public class ProductStorePaymentSetting implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productStoreId, paymentMethodTypeId, paymentServiceTypeEnumId, paymentService, paymentCustomMethodId, paymentGatewayConfigId, paymentPropertiesPath, applyToAllProducts, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductStorePaymentSetting(GenericValue value) {
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
 		paymentServiceTypeEnumId = (String) value
-				.get(Fields.paymentServiceTypeEnumId.name());
-		paymentService = (String) value.get(Fields.paymentService.name());
-		paymentCustomMethodId = (String) value.get(Fields.paymentCustomMethodId
-				.name());
+				.get(FIELD_PAYMENT_SERVICE_TYPE_ENUM_ID);
+		paymentService = (String) value.get(FIELD_PAYMENT_SERVICE);
+		paymentCustomMethodId = (String) value
+				.get(FIELD_PAYMENT_CUSTOM_METHOD_ID);
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		paymentPropertiesPath = (String) value.get(Fields.paymentPropertiesPath
-				.name());
-		applyToAllProducts = (String) value.get(Fields.applyToAllProducts
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		paymentPropertiesPath = (String) value
+				.get(FIELD_PAYMENT_PROPERTIES_PATH);
+		applyToAllProducts = (String) value.get(FIELD_APPLY_TO_ALL_PRODUCTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductStorePaymentSetting fromValue(

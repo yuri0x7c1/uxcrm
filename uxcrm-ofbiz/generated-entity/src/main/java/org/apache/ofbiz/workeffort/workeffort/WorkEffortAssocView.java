@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Assoc View
  */
+@FieldNameConstants
 public class WorkEffortAssocView implements Serializable {
 
-	public static final long serialVersionUID = 4840173915429526528L;
+	public static final long serialVersionUID = 2575994796185612288L;
 	public static final String NAME = "WorkEffortAssocView";
 	/**
 	 * Work Effort To Name
@@ -112,35 +114,31 @@ public class WorkEffortAssocView implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		workEffortToName, workEffortToSetup, workEffortToRun, workEffortToParentId, workEffortToCurrentStatusId, workEffortToWorkEffortPurposeTypeId, workEffortToEstimatedStartDate, workEffortToEstimatedCompletionDate, workEffortToActualStartDate, workEffortToActualCompletionDate, workEffortIdTo, fromDate, workEffortIdFrom, sequenceNum, workEffortAssocTypeId, thruDate
-	}
-
 	public WorkEffortAssocView(GenericValue value) {
-		workEffortToName = (String) value.get(Fields.workEffortToName.name());
-		workEffortToSetup = (Double) value.get(Fields.workEffortToSetup.name());
-		workEffortToRun = (Double) value.get(Fields.workEffortToRun.name());
-		workEffortToParentId = (String) value.get(Fields.workEffortToParentId
-				.name());
+		workEffortToName = (String) value.get(FIELD_WORK_EFFORT_TO_NAME);
+		workEffortToSetup = (Double) value.get(FIELD_WORK_EFFORT_TO_SETUP);
+		workEffortToRun = (Double) value.get(FIELD_WORK_EFFORT_TO_RUN);
+		workEffortToParentId = (String) value
+				.get(FIELD_WORK_EFFORT_TO_PARENT_ID);
 		workEffortToCurrentStatusId = (String) value
-				.get(Fields.workEffortToCurrentStatusId.name());
+				.get(FIELD_WORK_EFFORT_TO_CURRENT_STATUS_ID);
 		workEffortToWorkEffortPurposeTypeId = (String) value
-				.get(Fields.workEffortToWorkEffortPurposeTypeId.name());
+				.get(FIELD_WORK_EFFORT_TO_WORK_EFFORT_PURPOSE_TYPE_ID);
 		workEffortToEstimatedStartDate = (Timestamp) value
-				.get(Fields.workEffortToEstimatedStartDate.name());
+				.get(FIELD_WORK_EFFORT_TO_ESTIMATED_START_DATE);
 		workEffortToEstimatedCompletionDate = (Timestamp) value
-				.get(Fields.workEffortToEstimatedCompletionDate.name());
+				.get(FIELD_WORK_EFFORT_TO_ESTIMATED_COMPLETION_DATE);
 		workEffortToActualStartDate = (Timestamp) value
-				.get(Fields.workEffortToActualStartDate.name());
+				.get(FIELD_WORK_EFFORT_TO_ACTUAL_START_DATE);
 		workEffortToActualCompletionDate = (Timestamp) value
-				.get(Fields.workEffortToActualCompletionDate.name());
-		workEffortIdTo = (String) value.get(Fields.workEffortIdTo.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		workEffortIdFrom = (String) value.get(Fields.workEffortIdFrom.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		workEffortAssocTypeId = (String) value.get(Fields.workEffortAssocTypeId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_WORK_EFFORT_TO_ACTUAL_COMPLETION_DATE);
+		workEffortIdTo = (String) value.get(FIELD_WORK_EFFORT_ID_TO);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		workEffortIdFrom = (String) value.get(FIELD_WORK_EFFORT_ID_FROM);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		workEffortAssocTypeId = (String) value
+				.get(FIELD_WORK_EFFORT_ASSOC_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static WorkEffortAssocView fromValue(

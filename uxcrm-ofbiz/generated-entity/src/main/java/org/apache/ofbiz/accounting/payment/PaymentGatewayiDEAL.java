@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gatewayi Deal
  */
+@FieldNameConstants
 public class PaymentGatewayiDEAL implements Serializable {
 
-	public static final long serialVersionUID = 3898063826265670656L;
+	public static final long serialVersionUID = 337841574975450112L;
 	public static final String NAME = "PaymentGatewayiDEAL";
 	/**
 	 * Payment Gateway Config Id
@@ -112,34 +114,28 @@ public class PaymentGatewayiDEAL implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, merchantId, merchantSubId, merchantReturnURL, acquirerURL, acquirerTimeout, privateCert, acquirerKeyStoreFilename, acquirerKeyStorePassword, merchantKeyStoreFilename, merchantKeyStorePassword, expirationPeriod, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewayiDEAL(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		merchantId = (String) value.get(Fields.merchantId.name());
-		merchantSubId = (String) value.get(Fields.merchantSubId.name());
-		merchantReturnURL = (String) value.get(Fields.merchantReturnURL.name());
-		acquirerURL = (String) value.get(Fields.acquirerURL.name());
-		acquirerTimeout = (String) value.get(Fields.acquirerTimeout.name());
-		privateCert = (String) value.get(Fields.privateCert.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		merchantId = (String) value.get(FIELD_MERCHANT_ID);
+		merchantSubId = (String) value.get(FIELD_MERCHANT_SUB_ID);
+		merchantReturnURL = (String) value.get(FIELD_MERCHANT_RETURN_U_R_L);
+		acquirerURL = (String) value.get(FIELD_ACQUIRER_U_R_L);
+		acquirerTimeout = (String) value.get(FIELD_ACQUIRER_TIMEOUT);
+		privateCert = (String) value.get(FIELD_PRIVATE_CERT);
 		acquirerKeyStoreFilename = (String) value
-				.get(Fields.acquirerKeyStoreFilename.name());
+				.get(FIELD_ACQUIRER_KEY_STORE_FILENAME);
 		acquirerKeyStorePassword = (String) value
-				.get(Fields.acquirerKeyStorePassword.name());
+				.get(FIELD_ACQUIRER_KEY_STORE_PASSWORD);
 		merchantKeyStoreFilename = (String) value
-				.get(Fields.merchantKeyStoreFilename.name());
+				.get(FIELD_MERCHANT_KEY_STORE_FILENAME);
 		merchantKeyStorePassword = (String) value
-				.get(Fields.merchantKeyStorePassword.name());
-		expirationPeriod = (String) value.get(Fields.expirationPeriod.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_MERCHANT_KEY_STORE_PASSWORD);
+		expirationPeriod = (String) value.get(FIELD_EXPIRATION_PERIOD);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewayiDEAL fromValue(

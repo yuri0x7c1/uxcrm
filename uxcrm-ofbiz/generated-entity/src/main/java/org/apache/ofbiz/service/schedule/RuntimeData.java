@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Runtime Data
  */
+@FieldNameConstants
 public class RuntimeData implements Serializable {
 
-	public static final long serialVersionUID = 5409867873947884544L;
+	public static final long serialVersionUID = 2665734172237636608L;
 	public static final String NAME = "RuntimeData";
 	/**
 	 * Runtime Data Id
@@ -52,19 +54,13 @@ public class RuntimeData implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		runtimeDataId, runtimeInfo, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RuntimeData(GenericValue value) {
-		runtimeDataId = (String) value.get(Fields.runtimeDataId.name());
-		runtimeInfo = (String) value.get(Fields.runtimeInfo.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		runtimeDataId = (String) value.get(FIELD_RUNTIME_DATA_ID);
+		runtimeInfo = (String) value.get(FIELD_RUNTIME_INFO);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RuntimeData fromValue(

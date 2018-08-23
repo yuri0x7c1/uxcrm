@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Forecast Detail
  */
+@FieldNameConstants
 public class SalesForecastDetail implements Serializable {
 
-	public static final long serialVersionUID = 4013047625137016832L;
+	public static final long serialVersionUID = 1515259514088236032L;
 	public static final String NAME = "SalesForecastDetail";
 	/**
 	 * Sales Forecast Id
@@ -83,25 +85,19 @@ public class SalesForecastDetail implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		salesForecastId, salesForecastDetailId, amount, quantityUomId, quantity, productId, productCategoryId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SalesForecastDetail(GenericValue value) {
-		salesForecastId = (String) value.get(Fields.salesForecastId.name());
-		salesForecastDetailId = (String) value.get(Fields.salesForecastDetailId
-				.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		quantityUomId = (String) value.get(Fields.quantityUomId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		productId = (String) value.get(Fields.productId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		salesForecastId = (String) value.get(FIELD_SALES_FORECAST_ID);
+		salesForecastDetailId = (String) value
+				.get(FIELD_SALES_FORECAST_DETAIL_ID);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		quantityUomId = (String) value.get(FIELD_QUANTITY_UOM_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SalesForecastDetail fromValue(

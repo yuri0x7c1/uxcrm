@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Party Assign View
  */
+@FieldNameConstants
 public class WorkEffortPartyAssignView implements Serializable {
 
-	public static final long serialVersionUID = 2108421322238883840L;
+	public static final long serialVersionUID = 4942814626488814592L;
 	public static final String NAME = "WorkEffortPartyAssignView";
 	/**
 	 * Assignment Status Id
@@ -172,41 +174,35 @@ public class WorkEffortPartyAssignView implements Serializable {
 	@Setter
 	private String availabilityStatusId;
 
-	public enum Fields {
-		assignmentStatusId, lastName, lastNameLocal, description, suffix, partyTypeId, firstName, groupName, groupNameLocal, statusId, middleName, firstNameLocal, partyId, personalTitle, workEffortId, roleTypeId, facilityId, comments, mustRsvp, assignedByUserLoginId, delegateReasonEnumId, thruDate, fromDate, statusDateTime, expectationEnumId, availabilityStatusId
-	}
-
 	public WorkEffortPartyAssignView(GenericValue value) {
-		assignmentStatusId = (String) value.get(Fields.assignmentStatusId
-				.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		description = (String) value.get(Fields.description.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		comments = (String) value.get(Fields.comments.name());
-		mustRsvp = (String) value.get(Fields.mustRsvp.name());
-		assignedByUserLoginId = (String) value.get(Fields.assignedByUserLoginId
-				.name());
-		delegateReasonEnumId = (String) value.get(Fields.delegateReasonEnumId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		statusDateTime = (Timestamp) value.get(Fields.statusDateTime.name());
-		expectationEnumId = (String) value.get(Fields.expectationEnumId.name());
-		availabilityStatusId = (String) value.get(Fields.availabilityStatusId
-				.name());
+		assignmentStatusId = (String) value.get(FIELD_ASSIGNMENT_STATUS_ID);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		mustRsvp = (String) value.get(FIELD_MUST_RSVP);
+		assignedByUserLoginId = (String) value
+				.get(FIELD_ASSIGNED_BY_USER_LOGIN_ID);
+		delegateReasonEnumId = (String) value
+				.get(FIELD_DELEGATE_REASON_ENUM_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		statusDateTime = (Timestamp) value.get(FIELD_STATUS_DATE_TIME);
+		expectationEnumId = (String) value.get(FIELD_EXPECTATION_ENUM_ID);
+		availabilityStatusId = (String) value.get(FIELD_AVAILABILITY_STATUS_ID);
 	}
 
 	public static WorkEffortPartyAssignView fromValue(

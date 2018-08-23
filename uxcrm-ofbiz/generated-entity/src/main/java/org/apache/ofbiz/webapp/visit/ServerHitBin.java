@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Server Hit Bin
  */
+@FieldNameConstants
 public class ServerHitBin implements Serializable {
 
-	public static final long serialVersionUID = 994809362269258752L;
+	public static final long serialVersionUID = 4813974047726545920L;
 	public static final String NAME = "ServerHitBin";
 	/**
 	 * Server Hit Bin Id
@@ -112,30 +114,23 @@ public class ServerHitBin implements Serializable {
 	@Setter
 	private String internalContentId;
 
-	public enum Fields {
-		serverHitBinId, contentId, hitTypeId, serverIpAddress, serverHostName, binStartDateTime, binEndDateTime, numberHits, totalTimeMillis, minTimeMillis, maxTimeMillis, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, internalContentId
-	}
-
 	public ServerHitBin(GenericValue value) {
-		serverHitBinId = (String) value.get(Fields.serverHitBinId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		hitTypeId = (String) value.get(Fields.hitTypeId.name());
-		serverIpAddress = (String) value.get(Fields.serverIpAddress.name());
-		serverHostName = (String) value.get(Fields.serverHostName.name());
-		binStartDateTime = (Timestamp) value
-				.get(Fields.binStartDateTime.name());
-		binEndDateTime = (Timestamp) value.get(Fields.binEndDateTime.name());
-		numberHits = (Long) value.get(Fields.numberHits.name());
-		totalTimeMillis = (Long) value.get(Fields.totalTimeMillis.name());
-		minTimeMillis = (Long) value.get(Fields.minTimeMillis.name());
-		maxTimeMillis = (Long) value.get(Fields.maxTimeMillis.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		internalContentId = (String) value.get(Fields.internalContentId.name());
+		serverHitBinId = (String) value.get(FIELD_SERVER_HIT_BIN_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		hitTypeId = (String) value.get(FIELD_HIT_TYPE_ID);
+		serverIpAddress = (String) value.get(FIELD_SERVER_IP_ADDRESS);
+		serverHostName = (String) value.get(FIELD_SERVER_HOST_NAME);
+		binStartDateTime = (Timestamp) value.get(FIELD_BIN_START_DATE_TIME);
+		binEndDateTime = (Timestamp) value.get(FIELD_BIN_END_DATE_TIME);
+		numberHits = (Long) value.get(FIELD_NUMBER_HITS);
+		totalTimeMillis = (Long) value.get(FIELD_TOTAL_TIME_MILLIS);
+		minTimeMillis = (Long) value.get(FIELD_MIN_TIME_MILLIS);
+		maxTimeMillis = (Long) value.get(FIELD_MAX_TIME_MILLIS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		internalContentId = (String) value.get(FIELD_INTERNAL_CONTENT_ID);
 	}
 
 	public static ServerHitBin fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site Content
  */
+@FieldNameConstants
 public class WebSiteContent implements Serializable {
 
-	public static final long serialVersionUID = 3290950188167056384L;
+	public static final long serialVersionUID = 1865495718890628096L;
 	public static final String NAME = "WebSiteContent";
 	/**
 	 * Web Site Id
@@ -70,23 +72,17 @@ public class WebSiteContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webSiteId, contentId, webSiteContentTypeId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebSiteContent(GenericValue value) {
-		webSiteId = (String) value.get(Fields.webSiteId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		webSiteContentTypeId = (String) value.get(Fields.webSiteContentTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webSiteId = (String) value.get(FIELD_WEB_SITE_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		webSiteContentTypeId = (String) value
+				.get(FIELD_WEB_SITE_CONTENT_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebSiteContent fromValue(

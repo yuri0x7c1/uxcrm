@@ -1,5 +1,6 @@
 package org.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Party Classification Group And Type
  */
+@FieldNameConstants
 public class PartyClassificationGroupAndType implements Serializable {
 
-	public static final long serialVersionUID = 3209369188951712768L;
+	public static final long serialVersionUID = 4381895261826851840L;
 	public static final String NAME = "PartyClassificationGroupAndType";
 	/**
 	 * Type Description
@@ -51,19 +53,15 @@ public class PartyClassificationGroupAndType implements Serializable {
 	@Setter
 	private String partyClassificationTypeId;
 
-	public enum Fields {
-		typeDescription, parentTypeId, partyClassificationGroupId, parentGroupId, description, partyClassificationTypeId
-	}
-
 	public PartyClassificationGroupAndType(GenericValue value) {
-		typeDescription = (String) value.get(Fields.typeDescription.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
+		typeDescription = (String) value.get(FIELD_TYPE_DESCRIPTION);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
 		partyClassificationGroupId = (String) value
-				.get(Fields.partyClassificationGroupId.name());
-		parentGroupId = (String) value.get(Fields.parentGroupId.name());
-		description = (String) value.get(Fields.description.name());
+				.get(FIELD_PARTY_CLASSIFICATION_GROUP_ID);
+		parentGroupId = (String) value.get(FIELD_PARENT_GROUP_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
 		partyClassificationTypeId = (String) value
-				.get(Fields.partyClassificationTypeId.name());
+				.get(FIELD_PARTY_CLASSIFICATION_TYPE_ID);
 	}
 
 	public static PartyClassificationGroupAndType fromValue(

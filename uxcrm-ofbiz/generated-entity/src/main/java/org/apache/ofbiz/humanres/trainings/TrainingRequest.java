@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.trainings;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Training Request
  */
+@FieldNameConstants
 public class TrainingRequest implements Serializable {
 
-	public static final long serialVersionUID = 1318605029240870912L;
+	public static final long serialVersionUID = 5262258661289445376L;
 	public static final String NAME = "TrainingRequest";
 	/**
 	 * Training Request Id
@@ -46,18 +48,12 @@ public class TrainingRequest implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		trainingRequestId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TrainingRequest(GenericValue value) {
-		trainingRequestId = (String) value.get(Fields.trainingRequestId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		trainingRequestId = (String) value.get(FIELD_TRAINING_REQUEST_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TrainingRequest fromValue(

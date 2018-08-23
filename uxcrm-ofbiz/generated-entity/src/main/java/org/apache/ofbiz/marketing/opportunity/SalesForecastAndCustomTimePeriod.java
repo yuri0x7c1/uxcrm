@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.opportunity;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Sales Forecast And Custom Time Period
  */
+@FieldNameConstants
 public class SalesForecastAndCustomTimePeriod implements Serializable {
 
-	public static final long serialVersionUID = 5625702095785735168L;
+	public static final long serialVersionUID = 1239017908213595136L;
 	public static final String NAME = "SalesForecastAndCustomTimePeriod";
 	/**
 	 * Forecast Amount
@@ -149,40 +151,34 @@ public class SalesForecastAndCustomTimePeriod implements Serializable {
 	@Setter
 	private String isClosed;
 
-	public enum Fields {
-		forecastAmount, pipelineAmount, modifiedByUserLoginId, quotaAmount, bestCaseAmount, createdByUserLoginId, internalPartyId, closedAmount, salesForecastId, percentOfQuotaForecast, currencyUomId, parentSalesForecastId, organizationPartyId, percentOfQuotaClosed, customTimePeriodId, periodNum, periodTypeId, periodName, parentPeriodId, thruDate, fromDate, isClosed
-	}
-
 	public SalesForecastAndCustomTimePeriod(GenericValue value) {
-		forecastAmount = (BigDecimal) value.get(Fields.forecastAmount.name());
-		pipelineAmount = (BigDecimal) value.get(Fields.pipelineAmount.name());
-		modifiedByUserLoginId = (String) value.get(Fields.modifiedByUserLoginId
-				.name());
-		quotaAmount = (BigDecimal) value.get(Fields.quotaAmount.name());
-		bestCaseAmount = (BigDecimal) value.get(Fields.bestCaseAmount.name());
-		createdByUserLoginId = (String) value.get(Fields.createdByUserLoginId
-				.name());
-		internalPartyId = (String) value.get(Fields.internalPartyId.name());
-		closedAmount = (BigDecimal) value.get(Fields.closedAmount.name());
-		salesForecastId = (String) value.get(Fields.salesForecastId.name());
+		forecastAmount = (BigDecimal) value.get(FIELD_FORECAST_AMOUNT);
+		pipelineAmount = (BigDecimal) value.get(FIELD_PIPELINE_AMOUNT);
+		modifiedByUserLoginId = (String) value
+				.get(FIELD_MODIFIED_BY_USER_LOGIN_ID);
+		quotaAmount = (BigDecimal) value.get(FIELD_QUOTA_AMOUNT);
+		bestCaseAmount = (BigDecimal) value.get(FIELD_BEST_CASE_AMOUNT);
+		createdByUserLoginId = (String) value
+				.get(FIELD_CREATED_BY_USER_LOGIN_ID);
+		internalPartyId = (String) value.get(FIELD_INTERNAL_PARTY_ID);
+		closedAmount = (BigDecimal) value.get(FIELD_CLOSED_AMOUNT);
+		salesForecastId = (String) value.get(FIELD_SALES_FORECAST_ID);
 		percentOfQuotaForecast = (BigDecimal) value
-				.get(Fields.percentOfQuotaForecast.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		parentSalesForecastId = (String) value.get(Fields.parentSalesForecastId
-				.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
+				.get(FIELD_PERCENT_OF_QUOTA_FORECAST);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		parentSalesForecastId = (String) value
+				.get(FIELD_PARENT_SALES_FORECAST_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
 		percentOfQuotaClosed = (BigDecimal) value
-				.get(Fields.percentOfQuotaClosed.name());
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		periodNum = (Long) value.get(Fields.periodNum.name());
-		periodTypeId = (String) value.get(Fields.periodTypeId.name());
-		periodName = (String) value.get(Fields.periodName.name());
-		parentPeriodId = (String) value.get(Fields.parentPeriodId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		isClosed = (String) value.get(Fields.isClosed.name());
+				.get(FIELD_PERCENT_OF_QUOTA_CLOSED);
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		periodNum = (Long) value.get(FIELD_PERIOD_NUM);
+		periodTypeId = (String) value.get(FIELD_PERIOD_TYPE_ID);
+		periodName = (String) value.get(FIELD_PERIOD_NAME);
+		parentPeriodId = (String) value.get(FIELD_PARENT_PERIOD_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		isClosed = (String) value.get(FIELD_IS_CLOSED);
 	}
 
 	public static SalesForecastAndCustomTimePeriod fromValue(

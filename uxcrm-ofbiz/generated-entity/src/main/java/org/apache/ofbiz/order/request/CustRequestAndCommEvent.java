@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request And Comm Event
  */
+@FieldNameConstants
 public class CustRequestAndCommEvent implements Serializable {
 
-	public static final long serialVersionUID = 6676137903334201344L;
+	public static final long serialVersionUID = 5393154574058715136L;
 	public static final String NAME = "CustRequestAndCommEvent";
 	/**
 	 * Communication Event Id
@@ -160,44 +162,35 @@ public class CustRequestAndCommEvent implements Serializable {
 	@Setter
 	private String custRequestCategoryId;
 
-	public enum Fields {
-		communicationEventId, reason, fromPartyId, salesChannelEnumId, fulfillContactMechId, description, custRequestDate, internalComment, lastModifiedByUserLogin, custRequestId, productStoreId, createdByUserLogin, closedDateTime, custRequestName, responseRequiredDate, lastModifiedDate, priority, maximumAmountUomId, openDateTime, currencyUomId, createdDate, statusId, custRequestTypeId, custRequestCategoryId
-	}
-
 	public CustRequestAndCommEvent(GenericValue value) {
-		communicationEventId = (String) value.get(Fields.communicationEventId
-				.name());
-		reason = (String) value.get(Fields.reason.name());
-		fromPartyId = (String) value.get(Fields.fromPartyId.name());
-		salesChannelEnumId = (String) value.get(Fields.salesChannelEnumId
-				.name());
-		fulfillContactMechId = (String) value.get(Fields.fulfillContactMechId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		custRequestDate = (Timestamp) value.get(Fields.custRequestDate.name());
-		internalComment = (String) value.get(Fields.internalComment.name());
+		communicationEventId = (String) value.get(FIELD_COMMUNICATION_EVENT_ID);
+		reason = (String) value.get(FIELD_REASON);
+		fromPartyId = (String) value.get(FIELD_FROM_PARTY_ID);
+		salesChannelEnumId = (String) value.get(FIELD_SALES_CHANNEL_ENUM_ID);
+		fulfillContactMechId = (String) value
+				.get(FIELD_FULFILL_CONTACT_MECH_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		custRequestDate = (Timestamp) value.get(FIELD_CUST_REQUEST_DATE);
+		internalComment = (String) value.get(FIELD_INTERNAL_COMMENT);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		closedDateTime = (Timestamp) value.get(Fields.closedDateTime.name());
-		custRequestName = (String) value.get(Fields.custRequestName.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		closedDateTime = (Timestamp) value.get(FIELD_CLOSED_DATE_TIME);
+		custRequestName = (String) value.get(FIELD_CUST_REQUEST_NAME);
 		responseRequiredDate = (Timestamp) value
-				.get(Fields.responseRequiredDate.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		priority = (Long) value.get(Fields.priority.name());
-		maximumAmountUomId = (String) value.get(Fields.maximumAmountUomId
-				.name());
-		openDateTime = (Timestamp) value.get(Fields.openDateTime.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		custRequestTypeId = (String) value.get(Fields.custRequestTypeId.name());
-		custRequestCategoryId = (String) value.get(Fields.custRequestCategoryId
-				.name());
+				.get(FIELD_RESPONSE_REQUIRED_DATE);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		maximumAmountUomId = (String) value.get(FIELD_MAXIMUM_AMOUNT_UOM_ID);
+		openDateTime = (Timestamp) value.get(FIELD_OPEN_DATE_TIME);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		custRequestTypeId = (String) value.get(FIELD_CUST_REQUEST_TYPE_ID);
+		custRequestCategoryId = (String) value
+				.get(FIELD_CUST_REQUEST_CATEGORY_ID);
 	}
 
 	public static CustRequestAndCommEvent fromValue(

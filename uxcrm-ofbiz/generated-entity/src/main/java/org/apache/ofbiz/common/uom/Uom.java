@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.uom;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Uom
  */
+@FieldNameConstants
 public class Uom implements Serializable {
 
-	public static final long serialVersionUID = 3004287400618603520L;
+	public static final long serialVersionUID = 4482541498587563008L;
 	public static final String NAME = "Uom";
 	/**
 	 * Uom Id
@@ -64,21 +66,15 @@ public class Uom implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		uomId, uomTypeId, abbreviation, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Uom(GenericValue value) {
-		uomId = (String) value.get(Fields.uomId.name());
-		uomTypeId = (String) value.get(Fields.uomTypeId.name());
-		abbreviation = (String) value.get(Fields.abbreviation.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		uomId = (String) value.get(FIELD_UOM_ID);
+		uomTypeId = (String) value.get(FIELD_UOM_TYPE_ID);
+		abbreviation = (String) value.get(FIELD_ABBREVIATION);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Uom fromValue(org.apache.ofbiz.entity.GenericValue value) {

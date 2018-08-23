@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Skill Standard
  */
+@FieldNameConstants
 public class WorkEffortSkillStandard implements Serializable {
 
-	public static final long serialVersionUID = 2566920956600371200L;
+	public static final long serialVersionUID = 5983654362760977408L;
 	public static final String NAME = "WorkEffortSkillStandard";
 	/**
 	 * Work Effort Id
@@ -71,23 +73,16 @@ public class WorkEffortSkillStandard implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, skillTypeId, estimatedNumPeople, estimatedDuration, estimatedCost, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortSkillStandard(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		skillTypeId = (String) value.get(Fields.skillTypeId.name());
-		estimatedNumPeople = (Double) value.get(Fields.estimatedNumPeople
-				.name());
-		estimatedDuration = (Double) value.get(Fields.estimatedDuration.name());
-		estimatedCost = (BigDecimal) value.get(Fields.estimatedCost.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		skillTypeId = (String) value.get(FIELD_SKILL_TYPE_ID);
+		estimatedNumPeople = (Double) value.get(FIELD_ESTIMATED_NUM_PEOPLE);
+		estimatedDuration = (Double) value.get(FIELD_ESTIMATED_DURATION);
+		estimatedCost = (BigDecimal) value.get(FIELD_ESTIMATED_COST);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortSkillStandard fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Virtual And Variant Info
  */
+@FieldNameConstants
 public class ProductVirtualAndVariantInfo implements Serializable {
 
-	public static final long serialVersionUID = 6767223255394092032L;
+	public static final long serialVersionUID = 4554724168005218304L;
 	public static final String NAME = "ProductVirtualAndVariantInfo";
 	/**
 	 * Product Id
@@ -137,42 +139,36 @@ public class ProductVirtualAndVariantInfo implements Serializable {
 	@Setter
 	private BigDecimal variantPrice;
 
-	public enum Fields {
-		productId, productName, internalName, productAssocTypeId, fromDate, thruDate, variantProductId, productFeatureApplTypeId, variantFeatureApplFromDate, variantFeatureApplThruDate, productFeatureId, productFeatureTypeId, productFeatureCategoryId, description, variantPriceTypeId, variantCurrencyUomId, variantProductStoreGroupId, variantPriceFromDate, variantPriceThruDate, variantPrice
-	}
-
 	public ProductVirtualAndVariantInfo(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productName = (String) value.get(Fields.productName.name());
-		internalName = (String) value.get(Fields.internalName.name());
-		productAssocTypeId = (String) value.get(Fields.productAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		variantProductId = (String) value.get(Fields.variantProductId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productName = (String) value.get(FIELD_PRODUCT_NAME);
+		internalName = (String) value.get(FIELD_INTERNAL_NAME);
+		productAssocTypeId = (String) value.get(FIELD_PRODUCT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		variantProductId = (String) value.get(FIELD_VARIANT_PRODUCT_ID);
 		productFeatureApplTypeId = (String) value
-				.get(Fields.productFeatureApplTypeId.name());
+				.get(FIELD_PRODUCT_FEATURE_APPL_TYPE_ID);
 		variantFeatureApplFromDate = (Timestamp) value
-				.get(Fields.variantFeatureApplFromDate.name());
+				.get(FIELD_VARIANT_FEATURE_APPL_FROM_DATE);
 		variantFeatureApplThruDate = (Timestamp) value
-				.get(Fields.variantFeatureApplThruDate.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productFeatureTypeId = (String) value.get(Fields.productFeatureTypeId
-				.name());
+				.get(FIELD_VARIANT_FEATURE_APPL_THRU_DATE);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productFeatureTypeId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_TYPE_ID);
 		productFeatureCategoryId = (String) value
-				.get(Fields.productFeatureCategoryId.name());
-		description = (String) value.get(Fields.description.name());
-		variantPriceTypeId = (String) value.get(Fields.variantPriceTypeId
-				.name());
-		variantCurrencyUomId = (String) value.get(Fields.variantCurrencyUomId
-				.name());
+				.get(FIELD_PRODUCT_FEATURE_CATEGORY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		variantPriceTypeId = (String) value.get(FIELD_VARIANT_PRICE_TYPE_ID);
+		variantCurrencyUomId = (String) value
+				.get(FIELD_VARIANT_CURRENCY_UOM_ID);
 		variantProductStoreGroupId = (String) value
-				.get(Fields.variantProductStoreGroupId.name());
+				.get(FIELD_VARIANT_PRODUCT_STORE_GROUP_ID);
 		variantPriceFromDate = (Timestamp) value
-				.get(Fields.variantPriceFromDate.name());
+				.get(FIELD_VARIANT_PRICE_FROM_DATE);
 		variantPriceThruDate = (Timestamp) value
-				.get(Fields.variantPriceThruDate.name());
-		variantPrice = (BigDecimal) value.get(Fields.variantPrice.name());
+				.get(FIELD_VARIANT_PRICE_THRU_DATE);
+		variantPrice = (BigDecimal) value.get(FIELD_VARIANT_PRICE);
 	}
 
 	public static ProductVirtualAndVariantInfo fromValue(

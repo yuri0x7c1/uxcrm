@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.config;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Prod Conf Item Content
  */
+@FieldNameConstants
 public class ProdConfItemContent implements Serializable {
 
-	public static final long serialVersionUID = 9203344843058614272L;
+	public static final long serialVersionUID = 4951870848049887232L;
 	public static final String NAME = "ProdConfItemContent";
 	/**
 	 * Config Item Id
@@ -70,23 +72,17 @@ public class ProdConfItemContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		configItemId, contentId, confItemContentTypeId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProdConfItemContent(GenericValue value) {
-		configItemId = (String) value.get(Fields.configItemId.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		confItemContentTypeId = (String) value.get(Fields.confItemContentTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		configItemId = (String) value.get(FIELD_CONFIG_ITEM_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		confItemContentTypeId = (String) value
+				.get(FIELD_CONF_ITEM_CONTENT_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProdConfItemContent fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party And Contact Mech
  */
+@FieldNameConstants
 public class PartyAndContactMech implements Serializable {
 
-	public static final long serialVersionUID = 5135623180634561536L;
+	public static final long serialVersionUID = 7540729754395113472L;
 	public static final String NAME = "PartyAndContactMech";
 	/**
 	 * Last Modified Date
@@ -298,66 +300,58 @@ public class PartyAndContactMech implements Serializable {
 	@Setter
 	private String tnContactMechId;
 
-	public enum Fields {
-		lastModifiedDate, externalId, description, isUnread, partyTypeId, lastModifiedByUserLogin, dataSourceId, createdDate, statusId, preferredCurrencyUomId, partyId, createdByUserLogin, roleTypeId, extension, comments, verified, monthsWithContactMech, contactMechId, thruDate, fromDate, allowSolicitation, yearsWithContactMech, infoString, contactMechTypeId, paCountryGeoId, paHouseNumberExt, paAddress2, paCity, paAddress1, paPostalCode, paPostalCodeGeoId, paHouseNumber, paPostalCodeExt, paContactMechId, paAttnName, paDirections, paCountyGeoId, paToName, paCityGeoId, paMunicipalityGeoId, paStateProvinceGeoId, paGeoPointId, tnAreaCode, tnAskForName, tnCountryCode, tnContactNumber, tnContactMechId
-	}
-
 	public PartyAndContactMech(GenericValue value) {
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		description = (String) value.get(Fields.description.name());
-		isUnread = (String) value.get(Fields.isUnread.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isUnread = (String) value.get(FIELD_IS_UNREAD);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredCurrencyUomId = (String) value
-				.get(Fields.preferredCurrencyUomId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		extension = (String) value.get(Fields.extension.name());
-		comments = (String) value.get(Fields.comments.name());
-		verified = (String) value.get(Fields.verified.name());
-		monthsWithContactMech = (Long) value.get(Fields.monthsWithContactMech
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		allowSolicitation = (String) value.get(Fields.allowSolicitation.name());
-		yearsWithContactMech = (Long) value.get(Fields.yearsWithContactMech
-				.name());
-		infoString = (String) value.get(Fields.infoString.name());
-		contactMechTypeId = (String) value.get(Fields.contactMechTypeId.name());
-		paCountryGeoId = (String) value.get(Fields.paCountryGeoId.name());
-		paHouseNumberExt = (String) value.get(Fields.paHouseNumberExt.name());
-		paAddress2 = (String) value.get(Fields.paAddress2.name());
-		paCity = (String) value.get(Fields.paCity.name());
-		paAddress1 = (String) value.get(Fields.paAddress1.name());
-		paPostalCode = (String) value.get(Fields.paPostalCode.name());
-		paPostalCodeGeoId = (String) value.get(Fields.paPostalCodeGeoId.name());
-		paHouseNumber = (Long) value.get(Fields.paHouseNumber.name());
-		paPostalCodeExt = (String) value.get(Fields.paPostalCodeExt.name());
-		paContactMechId = (String) value.get(Fields.paContactMechId.name());
-		paAttnName = (String) value.get(Fields.paAttnName.name());
-		paDirections = (String) value.get(Fields.paDirections.name());
-		paCountyGeoId = (String) value.get(Fields.paCountyGeoId.name());
-		paToName = (String) value.get(Fields.paToName.name());
-		paCityGeoId = (String) value.get(Fields.paCityGeoId.name());
-		paMunicipalityGeoId = (String) value.get(Fields.paMunicipalityGeoId
-				.name());
-		paStateProvinceGeoId = (String) value.get(Fields.paStateProvinceGeoId
-				.name());
-		paGeoPointId = (String) value.get(Fields.paGeoPointId.name());
-		tnAreaCode = (String) value.get(Fields.tnAreaCode.name());
-		tnAskForName = (String) value.get(Fields.tnAskForName.name());
-		tnCountryCode = (String) value.get(Fields.tnCountryCode.name());
-		tnContactNumber = (String) value.get(Fields.tnContactNumber.name());
-		tnContactMechId = (String) value.get(Fields.tnContactMechId.name());
+				.get(FIELD_PREFERRED_CURRENCY_UOM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		extension = (String) value.get(FIELD_EXTENSION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		verified = (String) value.get(FIELD_VERIFIED);
+		monthsWithContactMech = (Long) value
+				.get(FIELD_MONTHS_WITH_CONTACT_MECH);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		allowSolicitation = (String) value.get(FIELD_ALLOW_SOLICITATION);
+		yearsWithContactMech = (Long) value.get(FIELD_YEARS_WITH_CONTACT_MECH);
+		infoString = (String) value.get(FIELD_INFO_STRING);
+		contactMechTypeId = (String) value.get(FIELD_CONTACT_MECH_TYPE_ID);
+		paCountryGeoId = (String) value.get(FIELD_PA_COUNTRY_GEO_ID);
+		paHouseNumberExt = (String) value.get(FIELD_PA_HOUSE_NUMBER_EXT);
+		paAddress2 = (String) value.get(FIELD_PA_ADDRESS2);
+		paCity = (String) value.get(FIELD_PA_CITY);
+		paAddress1 = (String) value.get(FIELD_PA_ADDRESS1);
+		paPostalCode = (String) value.get(FIELD_PA_POSTAL_CODE);
+		paPostalCodeGeoId = (String) value.get(FIELD_PA_POSTAL_CODE_GEO_ID);
+		paHouseNumber = (Long) value.get(FIELD_PA_HOUSE_NUMBER);
+		paPostalCodeExt = (String) value.get(FIELD_PA_POSTAL_CODE_EXT);
+		paContactMechId = (String) value.get(FIELD_PA_CONTACT_MECH_ID);
+		paAttnName = (String) value.get(FIELD_PA_ATTN_NAME);
+		paDirections = (String) value.get(FIELD_PA_DIRECTIONS);
+		paCountyGeoId = (String) value.get(FIELD_PA_COUNTY_GEO_ID);
+		paToName = (String) value.get(FIELD_PA_TO_NAME);
+		paCityGeoId = (String) value.get(FIELD_PA_CITY_GEO_ID);
+		paMunicipalityGeoId = (String) value.get(FIELD_PA_MUNICIPALITY_GEO_ID);
+		paStateProvinceGeoId = (String) value
+				.get(FIELD_PA_STATE_PROVINCE_GEO_ID);
+		paGeoPointId = (String) value.get(FIELD_PA_GEO_POINT_ID);
+		tnAreaCode = (String) value.get(FIELD_TN_AREA_CODE);
+		tnAskForName = (String) value.get(FIELD_TN_ASK_FOR_NAME);
+		tnCountryCode = (String) value.get(FIELD_TN_COUNTRY_CODE);
+		tnContactNumber = (String) value.get(FIELD_TN_CONTACT_NUMBER);
+		tnContactMechId = (String) value.get(FIELD_TN_CONTACT_MECH_ID);
 	}
 
 	public static PartyAndContactMech fromValue(

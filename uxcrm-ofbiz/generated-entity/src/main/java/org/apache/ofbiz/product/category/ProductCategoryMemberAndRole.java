@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Category Member And Role
  */
+@FieldNameConstants
 public class ProductCategoryMemberAndRole implements Serializable {
 
-	public static final long serialVersionUID = 506767721480805376L;
+	public static final long serialVersionUID = 8735330579797634048L;
 	public static final String NAME = "ProductCategoryMemberAndRole";
 	/**
 	 * Product Id
@@ -89,23 +91,19 @@ public class ProductCategoryMemberAndRole implements Serializable {
 	@Setter
 	private String roleComments;
 
-	public enum Fields {
-		productId, productCategoryId, fromDate, thruDate, comments, sequenceNum, quantity, partyId, roleTypeId, roleFromDate, roleThruDate, roleComments
-	}
-
 	public ProductCategoryMemberAndRole(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		roleFromDate = (Timestamp) value.get(Fields.roleFromDate.name());
-		roleThruDate = (Timestamp) value.get(Fields.roleThruDate.name());
-		roleComments = (String) value.get(Fields.roleComments.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		roleFromDate = (Timestamp) value.get(FIELD_ROLE_FROM_DATE);
+		roleThruDate = (Timestamp) value.get(FIELD_ROLE_THRU_DATE);
+		roleComments = (String) value.get(FIELD_ROLE_COMMENTS);
 	}
 
 	public static ProductCategoryMemberAndRole fromValue(

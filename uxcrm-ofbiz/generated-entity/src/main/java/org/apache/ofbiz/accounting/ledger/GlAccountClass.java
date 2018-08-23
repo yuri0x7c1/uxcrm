@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Account Class
  */
+@FieldNameConstants
 public class GlAccountClass implements Serializable {
 
-	public static final long serialVersionUID = 8732948357757047808L;
+	public static final long serialVersionUID = 8007492016546562048L;
 	public static final String NAME = "GlAccountClass";
 	/**
 	 * Gl Account Class Id
@@ -64,21 +66,15 @@ public class GlAccountClass implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountClassId, parentClassId, description, isAssetClass, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlAccountClass(GenericValue value) {
-		glAccountClassId = (String) value.get(Fields.glAccountClassId.name());
-		parentClassId = (String) value.get(Fields.parentClassId.name());
-		description = (String) value.get(Fields.description.name());
-		isAssetClass = (String) value.get(Fields.isAssetClass.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glAccountClassId = (String) value.get(FIELD_GL_ACCOUNT_CLASS_ID);
+		parentClassId = (String) value.get(FIELD_PARENT_CLASS_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isAssetClass = (String) value.get(FIELD_IS_ASSET_CLASS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlAccountClass fromValue(

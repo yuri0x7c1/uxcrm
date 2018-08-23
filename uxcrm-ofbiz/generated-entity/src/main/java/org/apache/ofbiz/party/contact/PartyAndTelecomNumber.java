@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.contact;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party And Telecom Number
  */
+@FieldNameConstants
 public class PartyAndTelecomNumber implements Serializable {
 
-	public static final long serialVersionUID = 6463644341550791680L;
+	public static final long serialVersionUID = 2100981765719888896L;
 	public static final String NAME = "PartyAndTelecomNumber";
 	/**
 	 * Last Modified Date
@@ -172,43 +174,36 @@ public class PartyAndTelecomNumber implements Serializable {
 	@Setter
 	private String contactNumber;
 
-	public enum Fields {
-		lastModifiedDate, externalId, description, isUnread, partyTypeId, lastModifiedByUserLogin, dataSourceId, createdDate, statusId, preferredCurrencyUomId, partyId, createdByUserLogin, roleTypeId, extension, comments, verified, monthsWithContactMech, contactMechId, thruDate, fromDate, allowSolicitation, yearsWithContactMech, areaCode, askForName, countryCode, contactNumber
-	}
-
 	public PartyAndTelecomNumber(GenericValue value) {
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		description = (String) value.get(Fields.description.name());
-		isUnread = (String) value.get(Fields.isUnread.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isUnread = (String) value.get(FIELD_IS_UNREAD);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredCurrencyUomId = (String) value
-				.get(Fields.preferredCurrencyUomId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		extension = (String) value.get(Fields.extension.name());
-		comments = (String) value.get(Fields.comments.name());
-		verified = (String) value.get(Fields.verified.name());
-		monthsWithContactMech = (Long) value.get(Fields.monthsWithContactMech
-				.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		allowSolicitation = (String) value.get(Fields.allowSolicitation.name());
-		yearsWithContactMech = (Long) value.get(Fields.yearsWithContactMech
-				.name());
-		areaCode = (String) value.get(Fields.areaCode.name());
-		askForName = (String) value.get(Fields.askForName.name());
-		countryCode = (String) value.get(Fields.countryCode.name());
-		contactNumber = (String) value.get(Fields.contactNumber.name());
+				.get(FIELD_PREFERRED_CURRENCY_UOM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		extension = (String) value.get(FIELD_EXTENSION);
+		comments = (String) value.get(FIELD_COMMENTS);
+		verified = (String) value.get(FIELD_VERIFIED);
+		monthsWithContactMech = (Long) value
+				.get(FIELD_MONTHS_WITH_CONTACT_MECH);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		allowSolicitation = (String) value.get(FIELD_ALLOW_SOLICITATION);
+		yearsWithContactMech = (Long) value.get(FIELD_YEARS_WITH_CONTACT_MECH);
+		areaCode = (String) value.get(FIELD_AREA_CODE);
+		askForName = (String) value.get(FIELD_ASK_FOR_NAME);
+		countryCode = (String) value.get(FIELD_COUNTRY_CODE);
+		contactNumber = (String) value.get(FIELD_CONTACT_NUMBER);
 	}
 
 	public static PartyAndTelecomNumber fromValue(

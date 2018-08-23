@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Assoc
  */
+@FieldNameConstants
 public class ProductAssoc implements Serializable {
 
-	public static final long serialVersionUID = 3738118018705251328L;
+	public static final long serialVersionUID = 2380598794069606400L;
 	public static final String NAME = "ProductAssoc";
 	/**
 	 * Product Id
@@ -119,33 +121,24 @@ public class ProductAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, productIdTo, productAssocTypeId, fromDate, thruDate, sequenceNum, reason, quantity, scrapFactor, instruction, routingWorkEffortId, estimateCalcMethod, recurrenceInfoId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductAssoc(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productIdTo = (String) value.get(Fields.productIdTo.name());
-		productAssocTypeId = (String) value.get(Fields.productAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		reason = (String) value.get(Fields.reason.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		scrapFactor = (BigDecimal) value.get(Fields.scrapFactor.name());
-		instruction = (String) value.get(Fields.instruction.name());
-		routingWorkEffortId = (String) value.get(Fields.routingWorkEffortId
-				.name());
-		estimateCalcMethod = (String) value.get(Fields.estimateCalcMethod
-				.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productIdTo = (String) value.get(FIELD_PRODUCT_ID_TO);
+		productAssocTypeId = (String) value.get(FIELD_PRODUCT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		reason = (String) value.get(FIELD_REASON);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		scrapFactor = (BigDecimal) value.get(FIELD_SCRAP_FACTOR);
+		instruction = (String) value.get(FIELD_INSTRUCTION);
+		routingWorkEffortId = (String) value.get(FIELD_ROUTING_WORK_EFFORT_ID);
+		estimateCalcMethod = (String) value.get(FIELD_ESTIMATE_CALC_METHOD);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductAssoc fromValue(

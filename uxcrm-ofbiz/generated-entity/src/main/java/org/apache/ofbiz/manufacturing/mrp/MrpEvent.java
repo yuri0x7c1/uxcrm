@@ -1,5 +1,6 @@
 package org.apache.ofbiz.manufacturing.mrp;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Mrp Event
  */
+@FieldNameConstants
 public class MrpEvent implements Serializable {
 
-	public static final long serialVersionUID = 8922655188089468928L;
+	public static final long serialVersionUID = 4315790523043084288L;
 	public static final String NAME = "MrpEvent";
 	/**
 	 * Mrp Id
@@ -88,25 +90,19 @@ public class MrpEvent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		mrpId, productId, eventDate, mrpEventTypeId, facilityId, quantity, eventName, isLate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MrpEvent(GenericValue value) {
-		mrpId = (String) value.get(Fields.mrpId.name());
-		productId = (String) value.get(Fields.productId.name());
-		eventDate = (Timestamp) value.get(Fields.eventDate.name());
-		mrpEventTypeId = (String) value.get(Fields.mrpEventTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		quantity = (Double) value.get(Fields.quantity.name());
-		eventName = (String) value.get(Fields.eventName.name());
-		isLate = (String) value.get(Fields.isLate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		mrpId = (String) value.get(FIELD_MRP_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		eventDate = (Timestamp) value.get(FIELD_EVENT_DATE);
+		mrpEventTypeId = (String) value.get(FIELD_MRP_EVENT_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		quantity = (Double) value.get(FIELD_QUANTITY);
+		eventName = (String) value.get(FIELD_EVENT_NAME);
+		isLate = (String) value.get(FIELD_IS_LATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MrpEvent fromValue(org.apache.ofbiz.entity.GenericValue value) {

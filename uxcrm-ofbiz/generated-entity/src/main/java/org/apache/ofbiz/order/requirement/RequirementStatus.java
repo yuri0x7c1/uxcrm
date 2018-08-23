@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.requirement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Requirement Status
  */
+@FieldNameConstants
 public class RequirementStatus implements Serializable {
 
-	public static final long serialVersionUID = 7506775160232002560L;
+	public static final long serialVersionUID = 7001984022528878592L;
 	public static final String NAME = "RequirementStatus";
 	/**
 	 * Requirement Id
@@ -64,22 +66,15 @@ public class RequirementStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		requirementId, statusId, statusDate, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RequirementStatus(GenericValue value) {
-		requirementId = (String) value.get(Fields.requirementId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		requirementId = (String) value.get(FIELD_REQUIREMENT_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RequirementStatus fromValue(

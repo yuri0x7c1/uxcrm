@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Fixed Asset Assign And Role
  */
+@FieldNameConstants
 public class PartyFixedAssetAssignAndRole implements Serializable {
 
-	public static final long serialVersionUID = 3016657033930155008L;
+	public static final long serialVersionUID = 1942294528355010560L;
 	public static final String NAME = "PartyFixedAssetAssignAndRole";
 	/**
 	 * From Date
@@ -82,22 +84,18 @@ public class PartyFixedAssetAssignAndRole implements Serializable {
 	@Setter
 	private String description;
 
-	public enum Fields {
-		fromDate, roleTypeId, comments, allocatedDate, statusId, fixedAssetId, partyId, thruDate, parentTypeId, hasTable, description
-	}
-
 	public PartyFixedAssetAssignAndRole(GenericValue value) {
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		comments = (String) value.get(Fields.comments.name());
-		allocatedDate = (Timestamp) value.get(Fields.allocatedDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		fixedAssetId = (String) value.get(Fields.fixedAssetId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		allocatedDate = (Timestamp) value.get(FIELD_ALLOCATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		fixedAssetId = (String) value.get(FIELD_FIXED_ASSET_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
 	}
 
 	public static PartyFixedAssetAssignAndRole fromValue(

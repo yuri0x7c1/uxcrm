@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Method And Credit Card
  */
+@FieldNameConstants
 public class PaymentMethodAndCreditCard implements Serializable {
 
-	public static final long serialVersionUID = 8416110897871041536L;
+	public static final long serialVersionUID = 7895519718257985536L;
 	public static final String NAME = "PaymentMethodAndCreditCard";
 	/**
 	 * Payment Method Id
@@ -112,28 +114,23 @@ public class PaymentMethodAndCreditCard implements Serializable {
 	@Setter
 	private String contactMechId;
 
-	public enum Fields {
-		paymentMethodId, paymentMethodTypeId, partyId, glAccountId, fromDate, thruDate, description, cardType, cardNumber, expireDate, companyNameOnCard, titleOnCard, firstNameOnCard, lastNameOnCard, suffixOnCard, contactMechId
-	}
-
 	public PaymentMethodAndCreditCard(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		description = (String) value.get(Fields.description.name());
-		cardType = (String) value.get(Fields.cardType.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		expireDate = (String) value.get(Fields.expireDate.name());
-		companyNameOnCard = (String) value.get(Fields.companyNameOnCard.name());
-		titleOnCard = (String) value.get(Fields.titleOnCard.name());
-		firstNameOnCard = (String) value.get(Fields.firstNameOnCard.name());
-		lastNameOnCard = (String) value.get(Fields.lastNameOnCard.name());
-		suffixOnCard = (String) value.get(Fields.suffixOnCard.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		cardType = (String) value.get(FIELD_CARD_TYPE);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		expireDate = (String) value.get(FIELD_EXPIRE_DATE);
+		companyNameOnCard = (String) value.get(FIELD_COMPANY_NAME_ON_CARD);
+		titleOnCard = (String) value.get(FIELD_TITLE_ON_CARD);
+		firstNameOnCard = (String) value.get(FIELD_FIRST_NAME_ON_CARD);
+		lastNameOnCard = (String) value.get(FIELD_LAST_NAME_ON_CARD);
+		suffixOnCard = (String) value.get(FIELD_SUFFIX_ON_CARD);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
 	}
 
 	public static PaymentMethodAndCreditCard fromValue(

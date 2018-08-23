@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.survey;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Survey Question Appl
  */
+@FieldNameConstants
 public class SurveyQuestionAppl implements Serializable {
 
-	public static final long serialVersionUID = 7432081535517020160L;
+	public static final long serialVersionUID = 2403801396909689856L;
 	public static final String NAME = "SurveyQuestionAppl";
 	/**
 	 * Survey Id
@@ -112,32 +114,26 @@ public class SurveyQuestionAppl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		surveyId, surveyQuestionId, fromDate, thruDate, surveyPageSeqId, surveyMultiRespId, surveyMultiRespColId, requiredField, sequenceNum, externalFieldRef, withSurveyQuestionId, withSurveyOptionSeqId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public SurveyQuestionAppl(GenericValue value) {
-		surveyId = (String) value.get(Fields.surveyId.name());
-		surveyQuestionId = (String) value.get(Fields.surveyQuestionId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		surveyPageSeqId = (String) value.get(Fields.surveyPageSeqId.name());
-		surveyMultiRespId = (String) value.get(Fields.surveyMultiRespId.name());
-		surveyMultiRespColId = (String) value.get(Fields.surveyMultiRespColId
-				.name());
-		requiredField = (String) value.get(Fields.requiredField.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		externalFieldRef = (String) value.get(Fields.externalFieldRef.name());
-		withSurveyQuestionId = (String) value.get(Fields.withSurveyQuestionId
-				.name());
-		withSurveyOptionSeqId = (String) value.get(Fields.withSurveyOptionSeqId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		surveyId = (String) value.get(FIELD_SURVEY_ID);
+		surveyQuestionId = (String) value.get(FIELD_SURVEY_QUESTION_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		surveyPageSeqId = (String) value.get(FIELD_SURVEY_PAGE_SEQ_ID);
+		surveyMultiRespId = (String) value.get(FIELD_SURVEY_MULTI_RESP_ID);
+		surveyMultiRespColId = (String) value
+				.get(FIELD_SURVEY_MULTI_RESP_COL_ID);
+		requiredField = (String) value.get(FIELD_REQUIRED_FIELD);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		externalFieldRef = (String) value.get(FIELD_EXTERNAL_FIELD_REF);
+		withSurveyQuestionId = (String) value
+				.get(FIELD_WITH_SURVEY_QUESTION_ID);
+		withSurveyOptionSeqId = (String) value
+				.get(FIELD_WITH_SURVEY_OPTION_SEQ_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static SurveyQuestionAppl fromValue(

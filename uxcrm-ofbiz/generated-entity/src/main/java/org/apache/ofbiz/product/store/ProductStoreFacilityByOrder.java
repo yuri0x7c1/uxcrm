@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.store;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Store Facility By Order
  */
+@FieldNameConstants
 public class ProductStoreFacilityByOrder implements Serializable {
 
-	public static final long serialVersionUID = 1481036132524878848L;
+	public static final long serialVersionUID = 8200337283864923136L;
 	public static final String NAME = "ProductStoreFacilityByOrder";
 	/**
 	 * Order Id
@@ -70,20 +72,16 @@ public class ProductStoreFacilityByOrder implements Serializable {
 	@Setter
 	private String facilityTypeId;
 
-	public enum Fields {
-		orderId, productStoreId, facilityId, fromDate, thruDate, sequenceNum, storeName, facilityName, facilityTypeId
-	}
-
 	public ProductStoreFacilityByOrder(GenericValue value) {
-		orderId = (String) value.get(Fields.orderId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		storeName = (String) value.get(Fields.storeName.name());
-		facilityName = (String) value.get(Fields.facilityName.name());
-		facilityTypeId = (String) value.get(Fields.facilityTypeId.name());
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		storeName = (String) value.get(FIELD_STORE_NAME);
+		facilityName = (String) value.get(FIELD_FACILITY_NAME);
+		facilityTypeId = (String) value.get(FIELD_FACILITY_TYPE_ID);
 	}
 
 	public static ProductStoreFacilityByOrder fromValue(

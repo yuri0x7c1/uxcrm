@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party And User Login
  */
+@FieldNameConstants
 public class PartyAndUserLogin implements Serializable {
 
-	public static final long serialVersionUID = 5683472997947880448L;
+	public static final long serialVersionUID = 2529949486214106112L;
 	public static final String NAME = "PartyAndUserLogin";
 	/**
 	 * Party Id
@@ -64,21 +66,16 @@ public class PartyAndUserLogin implements Serializable {
 	@Setter
 	private Long successiveFailedLogins;
 
-	public enum Fields {
-		partyId, partyTypeId, userLoginId, currentPassword, passwordHint, enabled, disabledDateTime, successiveFailedLogins
-	}
-
 	public PartyAndUserLogin(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		currentPassword = (String) value.get(Fields.currentPassword.name());
-		passwordHint = (String) value.get(Fields.passwordHint.name());
-		enabled = (String) value.get(Fields.enabled.name());
-		disabledDateTime = (Timestamp) value
-				.get(Fields.disabledDateTime.name());
-		successiveFailedLogins = (Long) value.get(Fields.successiveFailedLogins
-				.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		currentPassword = (String) value.get(FIELD_CURRENT_PASSWORD);
+		passwordHint = (String) value.get(FIELD_PASSWORD_HINT);
+		enabled = (String) value.get(FIELD_ENABLED);
+		disabledDateTime = (Timestamp) value.get(FIELD_DISABLED_DATE_TIME);
+		successiveFailedLogins = (Long) value
+				.get(FIELD_SUCCESSIVE_FAILED_LOGINS);
 	}
 
 	public static PartyAndUserLogin fromValue(

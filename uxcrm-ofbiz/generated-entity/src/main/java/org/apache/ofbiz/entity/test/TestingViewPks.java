@@ -1,5 +1,6 @@
 package org.apache.ofbiz.entity.test;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 /**
  * Testing View Pks
  */
+@FieldNameConstants
 public class TestingViewPks implements Serializable {
 
-	public static final long serialVersionUID = 1881889410175185920L;
+	public static final long serialVersionUID = 4866578892789662720L;
 	public static final String NAME = "TestingViewPks";
 	/**
 	 * Testing Type Id
@@ -33,15 +35,10 @@ public class TestingViewPks implements Serializable {
 	@Setter
 	private String subtypeDescription;
 
-	public enum Fields {
-		testingTypeId, description, subtypeDescription
-	}
-
 	public TestingViewPks(GenericValue value) {
-		testingTypeId = (String) value.get(Fields.testingTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		subtypeDescription = (String) value.get(Fields.subtypeDescription
-				.name());
+		testingTypeId = (String) value.get(FIELD_TESTING_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		subtypeDescription = (String) value.get(FIELD_SUBTYPE_DESCRIPTION);
 	}
 
 	public static TestingViewPks fromValue(

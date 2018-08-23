@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Vendor Product
  */
+@FieldNameConstants
 public class VendorProduct implements Serializable {
 
-	public static final long serialVersionUID = 2226354464697317376L;
+	public static final long serialVersionUID = 6672804834897677312L;
 	public static final String NAME = "VendorProduct";
 	/**
 	 * Product Id
@@ -58,21 +60,14 @@ public class VendorProduct implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, vendorPartyId, productStoreGroupId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public VendorProduct(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		vendorPartyId = (String) value.get(Fields.vendorPartyId.name());
-		productStoreGroupId = (String) value.get(Fields.productStoreGroupId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		vendorPartyId = (String) value.get(FIELD_VENDOR_PARTY_ID);
+		productStoreGroupId = (String) value.get(FIELD_PRODUCT_STORE_GROUP_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static VendorProduct fromValue(

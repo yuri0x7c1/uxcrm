@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Payment
  */
+@FieldNameConstants
 public class Payment implements Serializable {
 
-	public static final long serialVersionUID = 8110969637117230080L;
+	public static final long serialVersionUID = 5942911621882327040L;
 	public static final String NAME = "Payment";
 	/**
 	 * Payment Id
@@ -155,42 +157,32 @@ public class Payment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentId, paymentTypeId, paymentMethodTypeId, paymentMethodId, paymentGatewayResponseId, paymentPreferenceId, partyIdFrom, partyIdTo, roleTypeIdTo, statusId, effectiveDate, paymentRefNum, amount, currencyUomId, comments, finAccountTransId, overrideGlAccountId, actualCurrencyAmount, actualCurrencyUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Payment(GenericValue value) {
-		paymentId = (String) value.get(Fields.paymentId.name());
-		paymentTypeId = (String) value.get(Fields.paymentTypeId.name());
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		paymentTypeId = (String) value.get(FIELD_PAYMENT_TYPE_ID);
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
 		paymentGatewayResponseId = (String) value
-				.get(Fields.paymentGatewayResponseId.name());
-		paymentPreferenceId = (String) value.get(Fields.paymentPreferenceId
-				.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		effectiveDate = (Timestamp) value.get(Fields.effectiveDate.name());
-		paymentRefNum = (String) value.get(Fields.paymentRefNum.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		comments = (String) value.get(Fields.comments.name());
-		finAccountTransId = (String) value.get(Fields.finAccountTransId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
+				.get(FIELD_PAYMENT_GATEWAY_RESPONSE_ID);
+		paymentPreferenceId = (String) value.get(FIELD_PAYMENT_PREFERENCE_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		effectiveDate = (Timestamp) value.get(FIELD_EFFECTIVE_DATE);
+		paymentRefNum = (String) value.get(FIELD_PAYMENT_REF_NUM);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		finAccountTransId = (String) value.get(FIELD_FIN_ACCOUNT_TRANS_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
 		actualCurrencyAmount = (BigDecimal) value
-				.get(Fields.actualCurrencyAmount.name());
-		actualCurrencyUomId = (String) value.get(Fields.actualCurrencyUomId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_ACTUAL_CURRENCY_AMOUNT);
+		actualCurrencyUomId = (String) value.get(FIELD_ACTUAL_CURRENCY_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Payment fromValue(org.apache.ofbiz.entity.GenericValue value) {

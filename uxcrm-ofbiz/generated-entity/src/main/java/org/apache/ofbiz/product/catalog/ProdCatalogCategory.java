@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.catalog;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Prod Catalog Category
  */
+@FieldNameConstants
 public class ProdCatalogCategory implements Serializable {
 
-	public static final long serialVersionUID = 7988958925323289600L;
+	public static final long serialVersionUID = 5372816749804621824L;
 	public static final String NAME = "ProdCatalogCategory";
 	/**
 	 * Prod Catalog Id
@@ -76,24 +78,18 @@ public class ProdCatalogCategory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		prodCatalogId, productCategoryId, prodCatalogCategoryTypeId, fromDate, thruDate, sequenceNum, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProdCatalogCategory(GenericValue value) {
-		prodCatalogId = (String) value.get(Fields.prodCatalogId.name());
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
+		prodCatalogId = (String) value.get(FIELD_PROD_CATALOG_ID);
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
 		prodCatalogCategoryTypeId = (String) value
-				.get(Fields.prodCatalogCategoryTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PROD_CATALOG_CATEGORY_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProdCatalogCategory fromValue(

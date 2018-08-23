@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Status
  */
+@FieldNameConstants
 public class InventoryItemStatus implements Serializable {
 
-	public static final long serialVersionUID = 5772499217563671552L;
+	public static final long serialVersionUID = 7467540604964314112L;
 	public static final String NAME = "InventoryItemStatus";
 	/**
 	 * Inventory Item Id
@@ -82,26 +84,18 @@ public class InventoryItemStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		inventoryItemId, statusId, statusDatetime, statusEndDatetime, changeByUserLoginId, ownerPartyId, productId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryItemStatus(GenericValue value) {
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDatetime = (Timestamp) value.get(Fields.statusDatetime.name());
-		statusEndDatetime = (Timestamp) value.get(Fields.statusEndDatetime
-				.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		productId = (String) value.get(Fields.productId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDatetime = (Timestamp) value.get(FIELD_STATUS_DATETIME);
+		statusEndDatetime = (Timestamp) value.get(FIELD_STATUS_END_DATETIME);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryItemStatus fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Temporal Expression Assoc
  */
+@FieldNameConstants
 public class TemporalExpressionAssoc implements Serializable {
 
-	public static final long serialVersionUID = 2755574832996647936L;
+	public static final long serialVersionUID = 6063476753889762304L;
 	public static final String NAME = "TemporalExpressionAssoc";
 	/**
 	 * From Temp Expr Id
@@ -58,20 +60,14 @@ public class TemporalExpressionAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		fromTempExprId, toTempExprId, exprAssocType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TemporalExpressionAssoc(GenericValue value) {
-		fromTempExprId = (String) value.get(Fields.fromTempExprId.name());
-		toTempExprId = (String) value.get(Fields.toTempExprId.name());
-		exprAssocType = (String) value.get(Fields.exprAssocType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		fromTempExprId = (String) value.get(FIELD_FROM_TEMP_EXPR_ID);
+		toTempExprId = (String) value.get(FIELD_TO_TEMP_EXPR_ID);
+		exprAssocType = (String) value.get(FIELD_EXPR_ASSOC_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TemporalExpressionAssoc fromValue(

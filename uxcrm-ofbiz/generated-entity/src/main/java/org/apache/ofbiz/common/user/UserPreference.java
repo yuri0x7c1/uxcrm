@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.user;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Preference
  */
+@FieldNameConstants
 public class UserPreference implements Serializable {
 
-	public static final long serialVersionUID = 7144489764554066944L;
+	public static final long serialVersionUID = 3601787332740810752L;
 	public static final String NAME = "UserPreference";
 	/**
 	 * User Login Id
@@ -70,23 +72,16 @@ public class UserPreference implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userLoginId, userPrefTypeId, userPrefGroupTypeId, userPrefValue, userPrefDataType, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserPreference(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		userPrefTypeId = (String) value.get(Fields.userPrefTypeId.name());
-		userPrefGroupTypeId = (String) value.get(Fields.userPrefGroupTypeId
-				.name());
-		userPrefValue = (String) value.get(Fields.userPrefValue.name());
-		userPrefDataType = (String) value.get(Fields.userPrefDataType.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		userPrefTypeId = (String) value.get(FIELD_USER_PREF_TYPE_ID);
+		userPrefGroupTypeId = (String) value.get(FIELD_USER_PREF_GROUP_TYPE_ID);
+		userPrefValue = (String) value.get(FIELD_USER_PREF_VALUE);
+		userPrefDataType = (String) value.get(FIELD_USER_PREF_DATA_TYPE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserPreference fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.agreement;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Agreement Item
  */
+@FieldNameConstants
 public class AgreementItem implements Serializable {
 
-	public static final long serialVersionUID = 4858620029422022656L;
+	public static final long serialVersionUID = 3146723761172581376L;
 	public static final String NAME = "AgreementItem";
 	/**
 	 * Agreement Id
@@ -76,25 +78,17 @@ public class AgreementItem implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		agreementId, agreementItemSeqId, agreementItemTypeId, currencyUomId, agreementText, agreementImage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AgreementItem(GenericValue value) {
-		agreementId = (String) value.get(Fields.agreementId.name());
-		agreementItemSeqId = (String) value.get(Fields.agreementItemSeqId
-				.name());
-		agreementItemTypeId = (String) value.get(Fields.agreementItemTypeId
-				.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		agreementText = (String) value.get(Fields.agreementText.name());
-		agreementImage = (Object) value.get(Fields.agreementImage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		agreementId = (String) value.get(FIELD_AGREEMENT_ID);
+		agreementItemSeqId = (String) value.get(FIELD_AGREEMENT_ITEM_SEQ_ID);
+		agreementItemTypeId = (String) value.get(FIELD_AGREEMENT_ITEM_TYPE_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		agreementText = (String) value.get(FIELD_AGREEMENT_TEXT);
+		agreementImage = (Object) value.get(FIELD_AGREEMENT_IMAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AgreementItem fromValue(

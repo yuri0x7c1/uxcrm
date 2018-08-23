@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Order Blacklist
  */
+@FieldNameConstants
 public class OrderBlacklist implements Serializable {
 
-	public static final long serialVersionUID = 7921728584340214784L;
+	public static final long serialVersionUID = 9059490525447218176L;
 	public static final String NAME = "OrderBlacklist";
 	/**
 	 * Blacklist String
@@ -52,20 +54,14 @@ public class OrderBlacklist implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		blacklistString, orderBlacklistTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderBlacklist(GenericValue value) {
-		blacklistString = (String) value.get(Fields.blacklistString.name());
-		orderBlacklistTypeId = (String) value.get(Fields.orderBlacklistTypeId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		blacklistString = (String) value.get(FIELD_BLACKLIST_STRING);
+		orderBlacklistTypeId = (String) value
+				.get(FIELD_ORDER_BLACKLIST_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderBlacklist fromValue(

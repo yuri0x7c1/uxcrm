@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.feature;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Feature
  */
+@FieldNameConstants
 public class ProductFeature implements Serializable {
 
-	public static final long serialVersionUID = 7375826022601814016L;
+	public static final long serialVersionUID = 4089498125202863104L;
 	public static final String NAME = "ProductFeature";
 	/**
 	 * Product Feature Id
@@ -101,29 +103,23 @@ public class ProductFeature implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productFeatureId, productFeatureTypeId, productFeatureCategoryId, description, uomId, numberSpecified, defaultAmount, defaultSequenceNum, abbrev, idCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductFeature(GenericValue value) {
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
-		productFeatureTypeId = (String) value.get(Fields.productFeatureTypeId
-				.name());
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
+		productFeatureTypeId = (String) value
+				.get(FIELD_PRODUCT_FEATURE_TYPE_ID);
 		productFeatureCategoryId = (String) value
-				.get(Fields.productFeatureCategoryId.name());
-		description = (String) value.get(Fields.description.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		numberSpecified = (BigDecimal) value.get(Fields.numberSpecified.name());
-		defaultAmount = (BigDecimal) value.get(Fields.defaultAmount.name());
-		defaultSequenceNum = (Long) value.get(Fields.defaultSequenceNum.name());
-		abbrev = (String) value.get(Fields.abbrev.name());
-		idCode = (String) value.get(Fields.idCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PRODUCT_FEATURE_CATEGORY_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		numberSpecified = (BigDecimal) value.get(FIELD_NUMBER_SPECIFIED);
+		defaultAmount = (BigDecimal) value.get(FIELD_DEFAULT_AMOUNT);
+		defaultSequenceNum = (Long) value.get(FIELD_DEFAULT_SEQUENCE_NUM);
+		abbrev = (String) value.get(FIELD_ABBREV);
+		idCode = (String) value.get(FIELD_ID_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductFeature fromValue(

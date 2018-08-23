@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.subscription;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Subscription Resource
  */
+@FieldNameConstants
 public class ProductSubscriptionResource implements Serializable {
 
-	public static final long serialVersionUID = 6842316321714014208L;
+	public static final long serialVersionUID = 3804264929093011456L;
 	public static final String NAME = "ProductSubscriptionResource";
 	/**
 	 * Product Id
@@ -154,43 +156,33 @@ public class ProductSubscriptionResource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, subscriptionResourceId, fromDate, thruDate, purchaseFromDate, purchaseThruDate, maxLifeTime, maxLifeTimeUomId, availableTime, availableTimeUomId, useCountLimit, useTime, useTimeUomId, useRoleTypeId, automaticExtend, canclAutmExtTime, canclAutmExtTimeUomId, gracePeriodOnExpiry, gracePeriodOnExpiryUomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductSubscriptionResource(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
 		subscriptionResourceId = (String) value
-				.get(Fields.subscriptionResourceId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		purchaseFromDate = (Timestamp) value
-				.get(Fields.purchaseFromDate.name());
-		purchaseThruDate = (Timestamp) value
-				.get(Fields.purchaseThruDate.name());
-		maxLifeTime = (Long) value.get(Fields.maxLifeTime.name());
-		maxLifeTimeUomId = (String) value.get(Fields.maxLifeTimeUomId.name());
-		availableTime = (Long) value.get(Fields.availableTime.name());
-		availableTimeUomId = (String) value.get(Fields.availableTimeUomId
-				.name());
-		useCountLimit = (Long) value.get(Fields.useCountLimit.name());
-		useTime = (Long) value.get(Fields.useTime.name());
-		useTimeUomId = (String) value.get(Fields.useTimeUomId.name());
-		useRoleTypeId = (String) value.get(Fields.useRoleTypeId.name());
-		automaticExtend = (String) value.get(Fields.automaticExtend.name());
-		canclAutmExtTime = (Long) value.get(Fields.canclAutmExtTime.name());
-		canclAutmExtTimeUomId = (String) value.get(Fields.canclAutmExtTimeUomId
-				.name());
-		gracePeriodOnExpiry = (Long) value.get(Fields.gracePeriodOnExpiry
-				.name());
+				.get(FIELD_SUBSCRIPTION_RESOURCE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		purchaseFromDate = (Timestamp) value.get(FIELD_PURCHASE_FROM_DATE);
+		purchaseThruDate = (Timestamp) value.get(FIELD_PURCHASE_THRU_DATE);
+		maxLifeTime = (Long) value.get(FIELD_MAX_LIFE_TIME);
+		maxLifeTimeUomId = (String) value.get(FIELD_MAX_LIFE_TIME_UOM_ID);
+		availableTime = (Long) value.get(FIELD_AVAILABLE_TIME);
+		availableTimeUomId = (String) value.get(FIELD_AVAILABLE_TIME_UOM_ID);
+		useCountLimit = (Long) value.get(FIELD_USE_COUNT_LIMIT);
+		useTime = (Long) value.get(FIELD_USE_TIME);
+		useTimeUomId = (String) value.get(FIELD_USE_TIME_UOM_ID);
+		useRoleTypeId = (String) value.get(FIELD_USE_ROLE_TYPE_ID);
+		automaticExtend = (String) value.get(FIELD_AUTOMATIC_EXTEND);
+		canclAutmExtTime = (Long) value.get(FIELD_CANCL_AUTM_EXT_TIME);
+		canclAutmExtTimeUomId = (String) value
+				.get(FIELD_CANCL_AUTM_EXT_TIME_UOM_ID);
+		gracePeriodOnExpiry = (Long) value.get(FIELD_GRACE_PERIOD_ON_EXPIRY);
 		gracePeriodOnExpiryUomId = (String) value
-				.get(Fields.gracePeriodOnExpiryUomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_GRACE_PERIOD_ON_EXPIRY_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductSubscriptionResource fromValue(

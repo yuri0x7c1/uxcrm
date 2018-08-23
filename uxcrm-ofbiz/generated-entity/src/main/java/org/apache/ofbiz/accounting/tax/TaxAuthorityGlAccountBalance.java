@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority Gl Account Balance
  */
+@FieldNameConstants
 public class TaxAuthorityGlAccountBalance implements Serializable {
 
-	public static final long serialVersionUID = 2784961716933049344L;
+	public static final long serialVersionUID = 8362349612899846144L;
 	public static final String NAME = "TaxAuthorityGlAccountBalance";
 	/**
 	 * Base Currency Uom Id
@@ -64,20 +66,15 @@ public class TaxAuthorityGlAccountBalance implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		baseCurrencyUomId, taxAuthPartyId, glAccountId, taxAuthGeoId, organizationPartyId, fromDate, roleTypeId, thruDate
-	}
-
 	public TaxAuthorityGlAccountBalance(GenericValue value) {
-		baseCurrencyUomId = (String) value.get(Fields.baseCurrencyUomId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		baseCurrencyUomId = (String) value.get(FIELD_BASE_CURRENCY_UOM_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static TaxAuthorityGlAccountBalance fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.content;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Content Assoc
  */
+@FieldNameConstants
 public class ContentAssoc implements Serializable {
 
-	public static final long serialVersionUID = 6944908344955868160L;
+	public static final long serialVersionUID = 7557853002394606592L;
 	public static final String NAME = "ContentAssoc";
 	/**
 	 * Content Id
@@ -130,37 +132,28 @@ public class ContentAssoc implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, contentIdTo, contentAssocTypeId, fromDate, thruDate, contentAssocPredicateId, dataSourceId, sequenceNum, mapKey, upperCoordinate, leftCoordinate, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ContentAssoc(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		contentIdTo = (String) value.get(Fields.contentIdTo.name());
-		contentAssocTypeId = (String) value.get(Fields.contentAssocTypeId
-				.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		contentIdTo = (String) value.get(FIELD_CONTENT_ID_TO);
+		contentAssocTypeId = (String) value.get(FIELD_CONTENT_ASSOC_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 		contentAssocPredicateId = (String) value
-				.get(Fields.contentAssocPredicateId.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		mapKey = (String) value.get(Fields.mapKey.name());
-		upperCoordinate = (Long) value.get(Fields.upperCoordinate.name());
-		leftCoordinate = (Long) value.get(Fields.leftCoordinate.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_CONTENT_ASSOC_PREDICATE_ID);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		mapKey = (String) value.get(FIELD_MAP_KEY);
+		upperCoordinate = (Long) value.get(FIELD_UPPER_COORDINATE);
+		leftCoordinate = (Long) value.get(FIELD_LEFT_COORDINATE);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ContentAssoc fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.campaign;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Marketing Campaign Note
  */
+@FieldNameConstants
 public class MarketingCampaignNote implements Serializable {
 
-	public static final long serialVersionUID = 5762596336249102336L;
+	public static final long serialVersionUID = 3641098626425397248L;
 	public static final String NAME = "MarketingCampaignNote";
 	/**
 	 * Marketing Campaign Id
@@ -52,20 +54,13 @@ public class MarketingCampaignNote implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		marketingCampaignId, noteId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public MarketingCampaignNote(GenericValue value) {
-		marketingCampaignId = (String) value.get(Fields.marketingCampaignId
-				.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		marketingCampaignId = (String) value.get(FIELD_MARKETING_CAMPAIGN_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static MarketingCampaignNote fromValue(

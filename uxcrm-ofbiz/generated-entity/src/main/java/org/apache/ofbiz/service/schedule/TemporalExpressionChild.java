@@ -1,5 +1,6 @@
 package org.apache.ofbiz.service.schedule;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Temporal Expression Child
  */
+@FieldNameConstants
 public class TemporalExpressionChild implements Serializable {
 
-	public static final long serialVersionUID = 154996585488178176L;
+	public static final long serialVersionUID = 371911517131707392L;
 	public static final String NAME = "TemporalExpressionChild";
 	/**
 	 * From Temp Expr Id
@@ -82,22 +84,18 @@ public class TemporalExpressionChild implements Serializable {
 	@Setter
 	private String tempExprTypeId;
 
-	public enum Fields {
-		fromTempExprId, exprAssocType, description, integer1, tempExprId, date2, date1, integer2, string1, string2, tempExprTypeId
-	}
-
 	public TemporalExpressionChild(GenericValue value) {
-		fromTempExprId = (String) value.get(Fields.fromTempExprId.name());
-		exprAssocType = (String) value.get(Fields.exprAssocType.name());
-		description = (String) value.get(Fields.description.name());
-		integer1 = (Long) value.get(Fields.integer1.name());
-		tempExprId = (String) value.get(Fields.tempExprId.name());
-		date2 = (Timestamp) value.get(Fields.date2.name());
-		date1 = (Timestamp) value.get(Fields.date1.name());
-		integer2 = (Long) value.get(Fields.integer2.name());
-		string1 = (String) value.get(Fields.string1.name());
-		string2 = (String) value.get(Fields.string2.name());
-		tempExprTypeId = (String) value.get(Fields.tempExprTypeId.name());
+		fromTempExprId = (String) value.get(FIELD_FROM_TEMP_EXPR_ID);
+		exprAssocType = (String) value.get(FIELD_EXPR_ASSOC_TYPE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		integer1 = (Long) value.get(FIELD_INTEGER1);
+		tempExprId = (String) value.get(FIELD_TEMP_EXPR_ID);
+		date2 = (Timestamp) value.get(FIELD_DATE2);
+		date1 = (Timestamp) value.get(FIELD_DATE1);
+		integer2 = (Long) value.get(FIELD_INTEGER2);
+		string1 = (String) value.get(FIELD_STRING1);
+		string2 = (String) value.get(FIELD_STRING2);
+		tempExprTypeId = (String) value.get(FIELD_TEMP_EXPR_TYPE_ID);
 	}
 
 	public static TemporalExpressionChild fromValue(

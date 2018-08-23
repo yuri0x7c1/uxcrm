@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.budget;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Budget Status
  */
+@FieldNameConstants
 public class BudgetStatus implements Serializable {
 
-	public static final long serialVersionUID = 1673175557131022336L;
+	public static final long serialVersionUID = 8653930759305336832L;
 	public static final String NAME = "BudgetStatus";
 	/**
 	 * Budget Id
@@ -70,23 +72,16 @@ public class BudgetStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		budgetId, statusId, statusDate, comments, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BudgetStatus(GenericValue value) {
-		budgetId = (String) value.get(Fields.budgetId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		comments = (String) value.get(Fields.comments.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		budgetId = (String) value.get(FIELD_BUDGET_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		comments = (String) value.get(FIELD_COMMENTS);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BudgetStatus fromValue(

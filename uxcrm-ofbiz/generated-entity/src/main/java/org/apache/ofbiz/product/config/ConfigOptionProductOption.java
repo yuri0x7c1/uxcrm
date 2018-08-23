@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.config;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Config Option Product Option
  */
+@FieldNameConstants
 public class ConfigOptionProductOption implements Serializable {
 
-	public static final long serialVersionUID = 1066470175782453248L;
+	public static final long serialVersionUID = 4810301176288920576L;
 	public static final String NAME = "ConfigOptionProductOption";
 	/**
 	 * Config Id
@@ -82,24 +84,18 @@ public class ConfigOptionProductOption implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		configId, configItemId, sequenceNum, configOptionId, productId, productOptionId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ConfigOptionProductOption(GenericValue value) {
-		configId = (String) value.get(Fields.configId.name());
-		configItemId = (String) value.get(Fields.configItemId.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		configOptionId = (String) value.get(Fields.configOptionId.name());
-		productId = (String) value.get(Fields.productId.name());
-		productOptionId = (String) value.get(Fields.productOptionId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		configId = (String) value.get(FIELD_CONFIG_ID);
+		configItemId = (String) value.get(FIELD_CONFIG_ITEM_ID);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		configOptionId = (String) value.get(FIELD_CONFIG_OPTION_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productOptionId = (String) value.get(FIELD_PRODUCT_OPTION_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ConfigOptionProductOption fromValue(

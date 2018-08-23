@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Billing Account Term
  */
+@FieldNameConstants
 public class BillingAccountTerm implements Serializable {
 
-	public static final long serialVersionUID = 5841794940719777792L;
+	public static final long serialVersionUID = 5264756201265277952L;
 	public static final String NAME = "BillingAccountTerm";
 	/**
 	 * Billing Account Term Id
@@ -77,24 +79,18 @@ public class BillingAccountTerm implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		billingAccountTermId, billingAccountId, termTypeId, termValue, termDays, uomId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public BillingAccountTerm(GenericValue value) {
-		billingAccountTermId = (String) value.get(Fields.billingAccountTermId
-				.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		termTypeId = (String) value.get(Fields.termTypeId.name());
-		termValue = (BigDecimal) value.get(Fields.termValue.name());
-		termDays = (Long) value.get(Fields.termDays.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		billingAccountTermId = (String) value
+				.get(FIELD_BILLING_ACCOUNT_TERM_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		termTypeId = (String) value.get(FIELD_TERM_TYPE_ID);
+		termValue = (BigDecimal) value.get(FIELD_TERM_VALUE);
+		termDays = (Long) value.get(FIELD_TERM_DAYS);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static BillingAccountTerm fromValue(

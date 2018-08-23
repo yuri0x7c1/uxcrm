@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request Status
  */
+@FieldNameConstants
 public class CustRequestStatus implements Serializable {
 
-	public static final long serialVersionUID = 1532054985933145088L;
+	public static final long serialVersionUID = 8108627694639533056L;
 	public static final String NAME = "CustRequestStatus";
 	/**
 	 * Cust Request Status Id
@@ -76,26 +78,18 @@ public class CustRequestStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		custRequestStatusId, statusId, custRequestId, custRequestItemSeqId, statusDate, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CustRequestStatus(GenericValue value) {
-		custRequestStatusId = (String) value.get(Fields.custRequestStatusId
-				.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestItemSeqId = (String) value.get(Fields.custRequestItemSeqId
-				.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		custRequestStatusId = (String) value.get(FIELD_CUST_REQUEST_STATUS_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestItemSeqId = (String) value
+				.get(FIELD_CUST_REQUEST_ITEM_SEQ_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CustRequestStatus fromValue(

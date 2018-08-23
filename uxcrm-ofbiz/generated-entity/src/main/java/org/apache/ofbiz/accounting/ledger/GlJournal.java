@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gl Journal
  */
+@FieldNameConstants
 public class GlJournal implements Serializable {
 
-	public static final long serialVersionUID = 180586643903148032L;
+	public static final long serialVersionUID = 4834898878728997888L;
 	public static final String NAME = "GlJournal";
 	/**
 	 * Gl Journal Id
@@ -70,23 +72,16 @@ public class GlJournal implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glJournalId, glJournalName, organizationPartyId, isPosted, postedDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlJournal(GenericValue value) {
-		glJournalId = (String) value.get(Fields.glJournalId.name());
-		glJournalName = (String) value.get(Fields.glJournalName.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		isPosted = (String) value.get(Fields.isPosted.name());
-		postedDate = (Timestamp) value.get(Fields.postedDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glJournalId = (String) value.get(FIELD_GL_JOURNAL_ID);
+		glJournalName = (String) value.get(FIELD_GL_JOURNAL_NAME);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		isPosted = (String) value.get(FIELD_IS_POSTED);
+		postedDate = (Timestamp) value.get(FIELD_POSTED_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlJournal fromValue(org.apache.ofbiz.entity.GenericValue value) {

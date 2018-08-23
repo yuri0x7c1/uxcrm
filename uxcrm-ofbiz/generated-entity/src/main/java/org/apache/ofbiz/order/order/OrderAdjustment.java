@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.order;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Order Adjustment
  */
+@FieldNameConstants
 public class OrderAdjustment implements Serializable {
 
-	public static final long serialVersionUID = 6052144652280862720L;
+	public static final long serialVersionUID = 6385105323894967296L;
 	public static final String NAME = "OrderAdjustment";
 	/**
 	 * Order Adjustment Id
@@ -251,66 +253,53 @@ public class OrderAdjustment implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		orderAdjustmentId, orderAdjustmentTypeId, orderId, orderItemSeqId, shipGroupSeqId, comments, description, amount, recurringAmount, amountAlreadyIncluded, productPromoId, productPromoRuleId, productPromoActionSeqId, productFeatureId, correspondingProductId, taxAuthorityRateSeqId, sourceReferenceId, sourcePercentage, customerReferenceId, primaryGeoId, secondaryGeoId, exemptAmount, taxAuthGeoId, taxAuthPartyId, overrideGlAccountId, includeInTax, includeInShipping, isManual, createdDate, createdByUserLogin, lastModifiedDate, lastModifiedByUserLogin, originalAdjustmentId, oldAmountPerQuantity, oldPercentage, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OrderAdjustment(GenericValue value) {
-		orderAdjustmentId = (String) value.get(Fields.orderAdjustmentId.name());
-		orderAdjustmentTypeId = (String) value.get(Fields.orderAdjustmentTypeId
-				.name());
-		orderId = (String) value.get(Fields.orderId.name());
-		orderItemSeqId = (String) value.get(Fields.orderItemSeqId.name());
-		shipGroupSeqId = (String) value.get(Fields.shipGroupSeqId.name());
-		comments = (String) value.get(Fields.comments.name());
-		description = (String) value.get(Fields.description.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
-		recurringAmount = (BigDecimal) value.get(Fields.recurringAmount.name());
+		orderAdjustmentId = (String) value.get(FIELD_ORDER_ADJUSTMENT_ID);
+		orderAdjustmentTypeId = (String) value
+				.get(FIELD_ORDER_ADJUSTMENT_TYPE_ID);
+		orderId = (String) value.get(FIELD_ORDER_ID);
+		orderItemSeqId = (String) value.get(FIELD_ORDER_ITEM_SEQ_ID);
+		shipGroupSeqId = (String) value.get(FIELD_SHIP_GROUP_SEQ_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
+		recurringAmount = (BigDecimal) value.get(FIELD_RECURRING_AMOUNT);
 		amountAlreadyIncluded = (BigDecimal) value
-				.get(Fields.amountAlreadyIncluded.name());
-		productPromoId = (String) value.get(Fields.productPromoId.name());
-		productPromoRuleId = (String) value.get(Fields.productPromoRuleId
-				.name());
+				.get(FIELD_AMOUNT_ALREADY_INCLUDED);
+		productPromoId = (String) value.get(FIELD_PRODUCT_PROMO_ID);
+		productPromoRuleId = (String) value.get(FIELD_PRODUCT_PROMO_RULE_ID);
 		productPromoActionSeqId = (String) value
-				.get(Fields.productPromoActionSeqId.name());
-		productFeatureId = (String) value.get(Fields.productFeatureId.name());
+				.get(FIELD_PRODUCT_PROMO_ACTION_SEQ_ID);
+		productFeatureId = (String) value.get(FIELD_PRODUCT_FEATURE_ID);
 		correspondingProductId = (String) value
-				.get(Fields.correspondingProductId.name());
-		taxAuthorityRateSeqId = (String) value.get(Fields.taxAuthorityRateSeqId
-				.name());
-		sourceReferenceId = (String) value.get(Fields.sourceReferenceId.name());
-		sourcePercentage = (BigDecimal) value.get(Fields.sourcePercentage
-				.name());
-		customerReferenceId = (String) value.get(Fields.customerReferenceId
-				.name());
-		primaryGeoId = (String) value.get(Fields.primaryGeoId.name());
-		secondaryGeoId = (String) value.get(Fields.secondaryGeoId.name());
-		exemptAmount = (BigDecimal) value.get(Fields.exemptAmount.name());
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
-		overrideGlAccountId = (String) value.get(Fields.overrideGlAccountId
-				.name());
-		includeInTax = (String) value.get(Fields.includeInTax.name());
-		includeInShipping = (String) value.get(Fields.includeInShipping.name());
-		isManual = (String) value.get(Fields.isManual.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_CORRESPONDING_PRODUCT_ID);
+		taxAuthorityRateSeqId = (String) value
+				.get(FIELD_TAX_AUTHORITY_RATE_SEQ_ID);
+		sourceReferenceId = (String) value.get(FIELD_SOURCE_REFERENCE_ID);
+		sourcePercentage = (BigDecimal) value.get(FIELD_SOURCE_PERCENTAGE);
+		customerReferenceId = (String) value.get(FIELD_CUSTOMER_REFERENCE_ID);
+		primaryGeoId = (String) value.get(FIELD_PRIMARY_GEO_ID);
+		secondaryGeoId = (String) value.get(FIELD_SECONDARY_GEO_ID);
+		exemptAmount = (BigDecimal) value.get(FIELD_EXEMPT_AMOUNT);
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
+		overrideGlAccountId = (String) value.get(FIELD_OVERRIDE_GL_ACCOUNT_ID);
+		includeInTax = (String) value.get(FIELD_INCLUDE_IN_TAX);
+		includeInShipping = (String) value.get(FIELD_INCLUDE_IN_SHIPPING);
+		isManual = (String) value.get(FIELD_IS_MANUAL);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		originalAdjustmentId = (String) value.get(Fields.originalAdjustmentId
-				.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		originalAdjustmentId = (String) value.get(FIELD_ORIGINAL_ADJUSTMENT_ID);
 		oldAmountPerQuantity = (BigDecimal) value
-				.get(Fields.oldAmountPerQuantity.name());
-		oldPercentage = (Double) value.get(Fields.oldPercentage.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_OLD_AMOUNT_PER_QUANTITY);
+		oldPercentage = (Double) value.get(FIELD_OLD_PERCENTAGE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OrderAdjustment fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Content
  */
+@FieldNameConstants
 public class PaymentContent implements Serializable {
 
-	public static final long serialVersionUID = 321372656782578688L;
+	public static final long serialVersionUID = 2477438645742174208L;
 	public static final String NAME = "PaymentContent";
 	/**
 	 * Payment Id
@@ -70,23 +72,17 @@ public class PaymentContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentId, paymentContentTypeId, contentId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentContent(GenericValue value) {
-		paymentId = (String) value.get(Fields.paymentId.name());
-		paymentContentTypeId = (String) value.get(Fields.paymentContentTypeId
-				.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentId = (String) value.get(FIELD_PAYMENT_ID);
+		paymentContentTypeId = (String) value
+				.get(FIELD_PAYMENT_CONTENT_TYPE_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentContent fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.reports;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Invoice Export
  */
+@FieldNameConstants
 public class InvoiceExport implements Serializable {
 
-	public static final long serialVersionUID = 4017871263794202624L;
+	public static final long serialVersionUID = 8221585911644965888L;
 	public static final String NAME = "InvoiceExport";
 	/**
 	 * Invoice Id
@@ -119,28 +121,24 @@ public class InvoiceExport implements Serializable {
 	@Setter
 	private BigDecimal amount;
 
-	public enum Fields {
-		invoiceId, invoiceDate, invoiceTypeId, description, partyIdFrom, partyIdFromTrans, partyId, partyIdTrans, currencyUomId, referenceNumber, invoiceItemSeqId, invoiceItemTypeId, itemDescription, productId, productIdTrans, quantity, amount
-	}
-
 	public InvoiceExport(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceDate = (Timestamp) value.get(Fields.invoiceDate.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyIdFromTrans = (String) value.get(Fields.partyIdFromTrans.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		partyIdTrans = (String) value.get(Fields.partyIdTrans.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		referenceNumber = (String) value.get(Fields.referenceNumber.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		invoiceItemTypeId = (String) value.get(Fields.invoiceItemTypeId.name());
-		itemDescription = (String) value.get(Fields.itemDescription.name());
-		productId = (String) value.get(Fields.productId.name());
-		productIdTrans = (String) value.get(Fields.productIdTrans.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		amount = (BigDecimal) value.get(Fields.amount.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceDate = (Timestamp) value.get(FIELD_INVOICE_DATE);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyIdFromTrans = (String) value.get(FIELD_PARTY_ID_FROM_TRANS);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		partyIdTrans = (String) value.get(FIELD_PARTY_ID_TRANS);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		referenceNumber = (String) value.get(FIELD_REFERENCE_NUMBER);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		invoiceItemTypeId = (String) value.get(FIELD_INVOICE_ITEM_TYPE_ID);
+		itemDescription = (String) value.get(FIELD_ITEM_DESCRIPTION);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productIdTrans = (String) value.get(FIELD_PRODUCT_ID_TRANS);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		amount = (BigDecimal) value.get(FIELD_AMOUNT);
 	}
 
 	public static InvoiceExport fromValue(

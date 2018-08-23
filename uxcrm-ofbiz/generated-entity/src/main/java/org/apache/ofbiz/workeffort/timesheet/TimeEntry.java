@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.timesheet;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Time Entry
  */
+@FieldNameConstants
 public class TimeEntry implements Serializable {
 
-	public static final long serialVersionUID = 3124609486760702976L;
+	public static final long serialVersionUID = 6936844562844041216L;
 	public static final String NAME = "TimeEntry";
 	/**
 	 * Time Entry Id
@@ -106,28 +108,22 @@ public class TimeEntry implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		timeEntryId, partyId, fromDate, thruDate, rateTypeId, workEffortId, timesheetId, invoiceId, invoiceItemSeqId, hours, comments, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TimeEntry(GenericValue value) {
-		timeEntryId = (String) value.get(Fields.timeEntryId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		timesheetId = (String) value.get(Fields.timesheetId.name());
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceItemSeqId = (String) value.get(Fields.invoiceItemSeqId.name());
-		hours = (Double) value.get(Fields.hours.name());
-		comments = (String) value.get(Fields.comments.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		timeEntryId = (String) value.get(FIELD_TIME_ENTRY_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		timesheetId = (String) value.get(FIELD_TIMESHEET_ID);
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceItemSeqId = (String) value.get(FIELD_INVOICE_ITEM_SEQ_ID);
+		hours = (Double) value.get(FIELD_HOURS);
+		comments = (String) value.get(FIELD_COMMENTS);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TimeEntry fromValue(org.apache.ofbiz.entity.GenericValue value) {

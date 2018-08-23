@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Event Reminder
  */
+@FieldNameConstants
 public class WorkEffortEventReminder implements Serializable {
 
-	public static final long serialVersionUID = 8119783738049071104L;
+	public static final long serialVersionUID = 153084130655158272L;
 	public static final String NAME = "WorkEffortEventReminder";
 	/**
 	 * Work Effort Id
@@ -106,29 +108,22 @@ public class WorkEffortEventReminder implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, sequenceId, contactMechId, partyId, reminderDateTime, repeatCount, repeatInterval, currentCount, reminderOffset, localeId, timeZoneId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortEventReminder(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		sequenceId = (String) value.get(Fields.sequenceId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		reminderDateTime = (Timestamp) value
-				.get(Fields.reminderDateTime.name());
-		repeatCount = (Long) value.get(Fields.repeatCount.name());
-		repeatInterval = (Long) value.get(Fields.repeatInterval.name());
-		currentCount = (Long) value.get(Fields.currentCount.name());
-		reminderOffset = (Long) value.get(Fields.reminderOffset.name());
-		localeId = (String) value.get(Fields.localeId.name());
-		timeZoneId = (String) value.get(Fields.timeZoneId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		sequenceId = (String) value.get(FIELD_SEQUENCE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		reminderDateTime = (Timestamp) value.get(FIELD_REMINDER_DATE_TIME);
+		repeatCount = (Long) value.get(FIELD_REPEAT_COUNT);
+		repeatInterval = (Long) value.get(FIELD_REPEAT_INTERVAL);
+		currentCount = (Long) value.get(FIELD_CURRENT_COUNT);
+		reminderOffset = (Long) value.get(FIELD_REMINDER_OFFSET);
+		localeId = (String) value.get(FIELD_LOCALE_ID);
+		timeZoneId = (String) value.get(FIELD_TIME_ZONE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortEventReminder fromValue(

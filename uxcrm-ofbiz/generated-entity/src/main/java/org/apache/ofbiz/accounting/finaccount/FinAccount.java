@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.finaccount;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Fin Account
  */
+@FieldNameConstants
 public class FinAccount implements Serializable {
 
-	public static final long serialVersionUID = 3369861046211293184L;
+	public static final long serialVersionUID = 2630498266127777792L;
 	public static final String NAME = "FinAccount";
 	/**
 	 * Fin Account Id
@@ -143,37 +145,28 @@ public class FinAccount implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		finAccountId, finAccountTypeId, statusId, finAccountName, finAccountCode, finAccountPin, currencyUomId, organizationPartyId, ownerPartyId, postToGlAccountId, fromDate, thruDate, isRefundable, replenishPaymentId, replenishLevel, actualBalance, availableBalance, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public FinAccount(GenericValue value) {
-		finAccountId = (String) value.get(Fields.finAccountId.name());
-		finAccountTypeId = (String) value.get(Fields.finAccountTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		finAccountName = (String) value.get(Fields.finAccountName.name());
-		finAccountCode = (String) value.get(Fields.finAccountCode.name());
-		finAccountPin = (String) value.get(Fields.finAccountPin.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		ownerPartyId = (String) value.get(Fields.ownerPartyId.name());
-		postToGlAccountId = (String) value.get(Fields.postToGlAccountId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		isRefundable = (String) value.get(Fields.isRefundable.name());
-		replenishPaymentId = (String) value.get(Fields.replenishPaymentId
-				.name());
-		replenishLevel = (BigDecimal) value.get(Fields.replenishLevel.name());
-		actualBalance = (BigDecimal) value.get(Fields.actualBalance.name());
-		availableBalance = (BigDecimal) value.get(Fields.availableBalance
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		finAccountId = (String) value.get(FIELD_FIN_ACCOUNT_ID);
+		finAccountTypeId = (String) value.get(FIELD_FIN_ACCOUNT_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		finAccountName = (String) value.get(FIELD_FIN_ACCOUNT_NAME);
+		finAccountCode = (String) value.get(FIELD_FIN_ACCOUNT_CODE);
+		finAccountPin = (String) value.get(FIELD_FIN_ACCOUNT_PIN);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		ownerPartyId = (String) value.get(FIELD_OWNER_PARTY_ID);
+		postToGlAccountId = (String) value.get(FIELD_POST_TO_GL_ACCOUNT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		isRefundable = (String) value.get(FIELD_IS_REFUNDABLE);
+		replenishPaymentId = (String) value.get(FIELD_REPLENISH_PAYMENT_ID);
+		replenishLevel = (BigDecimal) value.get(FIELD_REPLENISH_LEVEL);
+		actualBalance = (BigDecimal) value.get(FIELD_ACTUAL_BALANCE);
+		availableBalance = (BigDecimal) value.get(FIELD_AVAILABLE_BALANCE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static FinAccount fromValue(

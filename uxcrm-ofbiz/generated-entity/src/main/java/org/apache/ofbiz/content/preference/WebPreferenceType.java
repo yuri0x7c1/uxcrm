@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.preference;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Preference Type
  */
+@FieldNameConstants
 public class WebPreferenceType implements Serializable {
 
-	public static final long serialVersionUID = 6727633252315495424L;
+	public static final long serialVersionUID = 1999168848970871808L;
 	public static final String NAME = "WebPreferenceType";
 	/**
 	 * Web Preference Type Id
@@ -52,20 +54,13 @@ public class WebPreferenceType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		webPreferenceTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebPreferenceType(GenericValue value) {
-		webPreferenceTypeId = (String) value.get(Fields.webPreferenceTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		webPreferenceTypeId = (String) value.get(FIELD_WEB_PREFERENCE_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebPreferenceType fromValue(

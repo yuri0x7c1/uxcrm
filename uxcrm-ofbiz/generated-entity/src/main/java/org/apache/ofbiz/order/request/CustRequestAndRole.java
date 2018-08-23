@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Cust Request And Role
  */
+@FieldNameConstants
 public class CustRequestAndRole implements Serializable {
 
-	public static final long serialVersionUID = 5090936720206273536L;
+	public static final long serialVersionUID = 1789410713857165312L;
 	public static final String NAME = "CustRequestAndRole";
 	/**
 	 * Cust Request Id
@@ -112,30 +114,25 @@ public class CustRequestAndRole implements Serializable {
 	@Setter
 	private Timestamp thruDate;
 
-	public enum Fields {
-		custRequestId, custRequestTypeId, statusId, fromPartyId, priority, custRequestDate, responseRequiredDate, custRequestName, description, createdDate, lastModifiedDate, lastModifiedByUserLogin, partyId, roleTypeId, fromDate, thruDate
-	}
-
 	public CustRequestAndRole(GenericValue value) {
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		custRequestTypeId = (String) value.get(Fields.custRequestTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		fromPartyId = (String) value.get(Fields.fromPartyId.name());
-		priority = (Long) value.get(Fields.priority.name());
-		custRequestDate = (Timestamp) value.get(Fields.custRequestDate.name());
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		custRequestTypeId = (String) value.get(FIELD_CUST_REQUEST_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		fromPartyId = (String) value.get(FIELD_FROM_PARTY_ID);
+		priority = (Long) value.get(FIELD_PRIORITY);
+		custRequestDate = (Timestamp) value.get(FIELD_CUST_REQUEST_DATE);
 		responseRequiredDate = (Timestamp) value
-				.get(Fields.responseRequiredDate.name());
-		custRequestName = (String) value.get(Fields.custRequestName.name());
-		description = (String) value.get(Fields.description.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
+				.get(FIELD_RESPONSE_REQUIRED_DATE);
+		custRequestName = (String) value.get(FIELD_CUST_REQUEST_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
 	}
 
 	public static CustRequestAndRole fromValue(

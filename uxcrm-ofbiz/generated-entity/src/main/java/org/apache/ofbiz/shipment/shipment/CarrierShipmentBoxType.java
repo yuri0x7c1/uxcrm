@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Carrier Shipment Box Type
  */
+@FieldNameConstants
 public class CarrierShipmentBoxType implements Serializable {
 
-	public static final long serialVersionUID = 2496706251696706560L;
+	public static final long serialVersionUID = 8161350389218551808L;
 	public static final String NAME = "CarrierShipmentBoxType";
 	/**
 	 * Shipment Box Type Id
@@ -64,21 +66,15 @@ public class CarrierShipmentBoxType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentBoxTypeId, partyId, packagingTypeCode, oversizeCode, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public CarrierShipmentBoxType(GenericValue value) {
-		shipmentBoxTypeId = (String) value.get(Fields.shipmentBoxTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		packagingTypeCode = (String) value.get(Fields.packagingTypeCode.name());
-		oversizeCode = (String) value.get(Fields.oversizeCode.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shipmentBoxTypeId = (String) value.get(FIELD_SHIPMENT_BOX_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		packagingTypeCode = (String) value.get(FIELD_PACKAGING_TYPE_CODE);
+		oversizeCode = (String) value.get(FIELD_OVERSIZE_CODE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static CarrierShipmentBoxType fromValue(

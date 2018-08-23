@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.need;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Need Type
  */
+@FieldNameConstants
 public class NeedType implements Serializable {
 
-	public static final long serialVersionUID = 2305557971952372736L;
+	public static final long serialVersionUID = 5935778444424049664L;
 	public static final String NAME = "NeedType";
 	/**
 	 * Need Type Id
@@ -52,19 +54,13 @@ public class NeedType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		needTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public NeedType(GenericValue value) {
-		needTypeId = (String) value.get(Fields.needTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		needTypeId = (String) value.get(FIELD_NEED_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static NeedType fromValue(org.apache.ofbiz.entity.GenericValue value) {

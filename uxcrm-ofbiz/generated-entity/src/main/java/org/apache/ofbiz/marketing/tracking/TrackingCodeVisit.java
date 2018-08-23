@@ -1,5 +1,6 @@
 package org.apache.ofbiz.marketing.tracking;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tracking Code Visit
  */
+@FieldNameConstants
 public class TrackingCodeVisit implements Serializable {
 
-	public static final long serialVersionUID = 2921120429666401280L;
+	public static final long serialVersionUID = 8465857181007336448L;
 	public static final String NAME = "TrackingCodeVisit";
 	/**
 	 * Tracking Code Id
@@ -64,21 +66,15 @@ public class TrackingCodeVisit implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		trackingCodeId, visitId, fromDate, sourceEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TrackingCodeVisit(GenericValue value) {
-		trackingCodeId = (String) value.get(Fields.trackingCodeId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		sourceEnumId = (String) value.get(Fields.sourceEnumId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		trackingCodeId = (String) value.get(FIELD_TRACKING_CODE_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		sourceEnumId = (String) value.get(FIELD_SOURCE_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TrackingCodeVisit fromValue(

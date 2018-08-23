@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.keyword;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Keyword Thesaurus
  */
+@FieldNameConstants
 public class KeywordThesaurus implements Serializable {
 
-	public static final long serialVersionUID = 249659707558193152L;
+	public static final long serialVersionUID = 6698787750738560000L;
 	public static final String NAME = "KeywordThesaurus";
 	/**
 	 * Entered Keyword
@@ -58,21 +60,14 @@ public class KeywordThesaurus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		enteredKeyword, alternateKeyword, relationshipEnumId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public KeywordThesaurus(GenericValue value) {
-		enteredKeyword = (String) value.get(Fields.enteredKeyword.name());
-		alternateKeyword = (String) value.get(Fields.alternateKeyword.name());
-		relationshipEnumId = (String) value.get(Fields.relationshipEnumId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		enteredKeyword = (String) value.get(FIELD_ENTERED_KEYWORD);
+		alternateKeyword = (String) value.get(FIELD_ALTERNATE_KEYWORD);
+		relationshipEnumId = (String) value.get(FIELD_RELATIONSHIP_ENUM_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static KeywordThesaurus fromValue(

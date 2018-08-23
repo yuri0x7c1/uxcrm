@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.facility;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Facility Location Quantity Test
  */
+@FieldNameConstants
 public class ProductFacilityLocationQuantityTest implements Serializable {
 
-	public static final long serialVersionUID = 4308864423710367744L;
+	public static final long serialVersionUID = 4684668133724352512L;
 	public static final String NAME = "ProductFacilityLocationQuantityTest";
 	/**
 	 * Product Id
@@ -64,22 +66,17 @@ public class ProductFacilityLocationQuantityTest implements Serializable {
 	@Setter
 	private BigDecimal quantityOnHandTotal;
 
-	public enum Fields {
-		productId, facilityId, locationSeqId, minimumStock, moveQuantity, locationTypeEnumId, availableToPromiseTotal, quantityOnHandTotal
-	}
-
 	public ProductFacilityLocationQuantityTest(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		locationSeqId = (String) value.get(Fields.locationSeqId.name());
-		minimumStock = (BigDecimal) value.get(Fields.minimumStock.name());
-		moveQuantity = (BigDecimal) value.get(Fields.moveQuantity.name());
-		locationTypeEnumId = (String) value.get(Fields.locationTypeEnumId
-				.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		locationSeqId = (String) value.get(FIELD_LOCATION_SEQ_ID);
+		minimumStock = (BigDecimal) value.get(FIELD_MINIMUM_STOCK);
+		moveQuantity = (BigDecimal) value.get(FIELD_MOVE_QUANTITY);
+		locationTypeEnumId = (String) value.get(FIELD_LOCATION_TYPE_ENUM_ID);
 		availableToPromiseTotal = (BigDecimal) value
-				.get(Fields.availableToPromiseTotal.name());
-		quantityOnHandTotal = (BigDecimal) value.get(Fields.quantityOnHandTotal
-				.name());
+				.get(FIELD_AVAILABLE_TO_PROMISE_TOTAL);
+		quantityOnHandTotal = (BigDecimal) value
+				.get(FIELD_QUANTITY_ON_HAND_TOTAL);
 	}
 
 	public static ProductFacilityLocationQuantityTest fromValue(

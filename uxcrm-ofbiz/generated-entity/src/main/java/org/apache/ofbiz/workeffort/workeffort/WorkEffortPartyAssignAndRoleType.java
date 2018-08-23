@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Party Assign And Role Type
  */
+@FieldNameConstants
 public class WorkEffortPartyAssignAndRoleType implements Serializable {
 
-	public static final long serialVersionUID = 8603439688015229952L;
+	public static final long serialVersionUID = 8489119005397280768L;
 	public static final String NAME = "WorkEffortPartyAssignAndRoleType";
 	/**
 	 * Work Effort Id
@@ -118,31 +120,26 @@ public class WorkEffortPartyAssignAndRoleType implements Serializable {
 	@Setter
 	private String description;
 
-	public enum Fields {
-		workEffortId, roleTypeId, facilityId, comments, mustRsvp, assignedByUserLoginId, delegateReasonEnumId, thruDate, fromDate, statusId, statusDateTime, expectationEnumId, availabilityStatusId, partyId, parentTypeId, hasTable, description
-	}
-
 	public WorkEffortPartyAssignAndRoleType(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		facilityId = (String) value.get(Fields.facilityId.name());
-		comments = (String) value.get(Fields.comments.name());
-		mustRsvp = (String) value.get(Fields.mustRsvp.name());
-		assignedByUserLoginId = (String) value.get(Fields.assignedByUserLoginId
-				.name());
-		delegateReasonEnumId = (String) value.get(Fields.delegateReasonEnumId
-				.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		statusDateTime = (Timestamp) value.get(Fields.statusDateTime.name());
-		expectationEnumId = (String) value.get(Fields.expectationEnumId.name());
-		availabilityStatusId = (String) value.get(Fields.availabilityStatusId
-				.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		parentTypeId = (String) value.get(Fields.parentTypeId.name());
-		hasTable = (String) value.get(Fields.hasTable.name());
-		description = (String) value.get(Fields.description.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		facilityId = (String) value.get(FIELD_FACILITY_ID);
+		comments = (String) value.get(FIELD_COMMENTS);
+		mustRsvp = (String) value.get(FIELD_MUST_RSVP);
+		assignedByUserLoginId = (String) value
+				.get(FIELD_ASSIGNED_BY_USER_LOGIN_ID);
+		delegateReasonEnumId = (String) value
+				.get(FIELD_DELEGATE_REASON_ENUM_ID);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusDateTime = (Timestamp) value.get(FIELD_STATUS_DATE_TIME);
+		expectationEnumId = (String) value.get(FIELD_EXPECTATION_ENUM_ID);
+		availabilityStatusId = (String) value.get(FIELD_AVAILABILITY_STATUS_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		parentTypeId = (String) value.get(FIELD_PARENT_TYPE_ID);
+		hasTable = (String) value.get(FIELD_HAS_TABLE);
+		description = (String) value.get(FIELD_DESCRIPTION);
 	}
 
 	public static WorkEffortPartyAssignAndRoleType fromValue(

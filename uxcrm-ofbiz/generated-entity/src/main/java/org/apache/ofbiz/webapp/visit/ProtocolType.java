@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Protocol Type
  */
+@FieldNameConstants
 public class ProtocolType implements Serializable {
 
-	public static final long serialVersionUID = 4526242496392299520L;
+	public static final long serialVersionUID = 6855649020894508032L;
 	public static final String NAME = "ProtocolType";
 	/**
 	 * Protocol Type Id
@@ -52,19 +54,13 @@ public class ProtocolType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		protocolTypeId, protocolName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProtocolType(GenericValue value) {
-		protocolTypeId = (String) value.get(Fields.protocolTypeId.name());
-		protocolName = (String) value.get(Fields.protocolName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		protocolTypeId = (String) value.get(FIELD_PROTOCOL_TYPE_ID);
+		protocolName = (String) value.get(FIELD_PROTOCOL_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProtocolType fromValue(

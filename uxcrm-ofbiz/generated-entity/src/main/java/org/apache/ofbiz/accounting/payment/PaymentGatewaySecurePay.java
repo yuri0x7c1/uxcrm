@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Secure Pay
  */
+@FieldNameConstants
 public class PaymentGatewaySecurePay implements Serializable {
 
-	public static final long serialVersionUID = 5674695705412071424L;
+	public static final long serialVersionUID = 8422672469533719552L;
 	public static final String NAME = "PaymentGatewaySecurePay";
 	/**
 	 * Payment Gateway Config Id
@@ -76,24 +78,18 @@ public class PaymentGatewaySecurePay implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, merchantId, pwd, serverURL, processTimeout, enableAmountRound, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewaySecurePay(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		merchantId = (String) value.get(Fields.merchantId.name());
-		pwd = (String) value.get(Fields.pwd.name());
-		serverURL = (String) value.get(Fields.serverURL.name());
-		processTimeout = (Long) value.get(Fields.processTimeout.name());
-		enableAmountRound = (String) value.get(Fields.enableAmountRound.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		merchantId = (String) value.get(FIELD_MERCHANT_ID);
+		pwd = (String) value.get(FIELD_PWD);
+		serverURL = (String) value.get(FIELD_SERVER_U_R_L);
+		processTimeout = (Long) value.get(FIELD_PROCESS_TIMEOUT);
+		enableAmountRound = (String) value.get(FIELD_ENABLE_AMOUNT_ROUND);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewaySecurePay fromValue(

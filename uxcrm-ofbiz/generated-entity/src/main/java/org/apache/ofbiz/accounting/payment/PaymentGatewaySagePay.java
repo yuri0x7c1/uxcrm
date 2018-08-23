@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Gateway Sage Pay
  */
+@FieldNameConstants
 public class PaymentGatewaySagePay implements Serializable {
 
-	public static final long serialVersionUID = 346604745339526144L;
+	public static final long serialVersionUID = 8056153945071000576L;
 	public static final String NAME = "PaymentGatewaySagePay";
 	/**
 	 * Payment Gateway Config Id
@@ -124,34 +126,27 @@ public class PaymentGatewaySagePay implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentGatewayConfigId, vendor, productionHost, testingHost, sagePayMode, protocolVersion, authenticationTransType, authenticationUrl, authoriseTransType, authoriseUrl, releaseTransType, releaseUrl, voidUrl, refundUrl, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentGatewaySagePay(GenericValue value) {
 		paymentGatewayConfigId = (String) value
-				.get(Fields.paymentGatewayConfigId.name());
-		vendor = (String) value.get(Fields.vendor.name());
-		productionHost = (String) value.get(Fields.productionHost.name());
-		testingHost = (String) value.get(Fields.testingHost.name());
-		sagePayMode = (String) value.get(Fields.sagePayMode.name());
-		protocolVersion = (String) value.get(Fields.protocolVersion.name());
+				.get(FIELD_PAYMENT_GATEWAY_CONFIG_ID);
+		vendor = (String) value.get(FIELD_VENDOR);
+		productionHost = (String) value.get(FIELD_PRODUCTION_HOST);
+		testingHost = (String) value.get(FIELD_TESTING_HOST);
+		sagePayMode = (String) value.get(FIELD_SAGE_PAY_MODE);
+		protocolVersion = (String) value.get(FIELD_PROTOCOL_VERSION);
 		authenticationTransType = (String) value
-				.get(Fields.authenticationTransType.name());
-		authenticationUrl = (String) value.get(Fields.authenticationUrl.name());
-		authoriseTransType = (String) value.get(Fields.authoriseTransType
-				.name());
-		authoriseUrl = (String) value.get(Fields.authoriseUrl.name());
-		releaseTransType = (String) value.get(Fields.releaseTransType.name());
-		releaseUrl = (String) value.get(Fields.releaseUrl.name());
-		voidUrl = (String) value.get(Fields.voidUrl.name());
-		refundUrl = (String) value.get(Fields.refundUrl.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_AUTHENTICATION_TRANS_TYPE);
+		authenticationUrl = (String) value.get(FIELD_AUTHENTICATION_URL);
+		authoriseTransType = (String) value.get(FIELD_AUTHORISE_TRANS_TYPE);
+		authoriseUrl = (String) value.get(FIELD_AUTHORISE_URL);
+		releaseTransType = (String) value.get(FIELD_RELEASE_TRANS_TYPE);
+		releaseUrl = (String) value.get(FIELD_RELEASE_URL);
+		voidUrl = (String) value.get(FIELD_VOID_URL);
+		refundUrl = (String) value.get(FIELD_REFUND_URL);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentGatewaySagePay fromValue(

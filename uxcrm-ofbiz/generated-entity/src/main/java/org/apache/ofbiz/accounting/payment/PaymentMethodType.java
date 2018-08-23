@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Payment Method Type
  */
+@FieldNameConstants
 public class PaymentMethodType implements Serializable {
 
-	public static final long serialVersionUID = 7904949219902763008L;
+	public static final long serialVersionUID = 1703320635529688064L;
 	public static final String NAME = "PaymentMethodType";
 	/**
 	 * Payment Method Type Id
@@ -58,22 +60,14 @@ public class PaymentMethodType implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentMethodTypeId, description, defaultGlAccountId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PaymentMethodType(GenericValue value) {
-		paymentMethodTypeId = (String) value.get(Fields.paymentMethodTypeId
-				.name());
-		description = (String) value.get(Fields.description.name());
-		defaultGlAccountId = (String) value.get(Fields.defaultGlAccountId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentMethodTypeId = (String) value.get(FIELD_PAYMENT_METHOD_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		defaultGlAccountId = (String) value.get(FIELD_DEFAULT_GL_ACCOUNT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PaymentMethodType fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.quote;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Quote Note View
  */
+@FieldNameConstants
 public class QuoteNoteView implements Serializable {
 
-	public static final long serialVersionUID = 7539858824316951552L;
+	public static final long serialVersionUID = 1785129554070132736L;
 	public static final String NAME = "QuoteNoteView";
 	/**
 	 * Quote Id
@@ -52,17 +54,13 @@ public class QuoteNoteView implements Serializable {
 	@Setter
 	private String noteParty;
 
-	public enum Fields {
-		quoteId, noteId, noteName, noteInfo, noteDateTime, noteParty
-	}
-
 	public QuoteNoteView(GenericValue value) {
-		quoteId = (String) value.get(Fields.quoteId.name());
-		noteId = (String) value.get(Fields.noteId.name());
-		noteName = (String) value.get(Fields.noteName.name());
-		noteInfo = (String) value.get(Fields.noteInfo.name());
-		noteDateTime = (Timestamp) value.get(Fields.noteDateTime.name());
-		noteParty = (String) value.get(Fields.noteParty.name());
+		quoteId = (String) value.get(FIELD_QUOTE_ID);
+		noteId = (String) value.get(FIELD_NOTE_ID);
+		noteName = (String) value.get(FIELD_NOTE_NAME);
+		noteInfo = (String) value.get(FIELD_NOTE_INFO);
+		noteDateTime = (Timestamp) value.get(FIELD_NOTE_DATE_TIME);
+		noteParty = (String) value.get(FIELD_NOTE_PARTY);
 	}
 
 	public static QuoteNoteView fromValue(

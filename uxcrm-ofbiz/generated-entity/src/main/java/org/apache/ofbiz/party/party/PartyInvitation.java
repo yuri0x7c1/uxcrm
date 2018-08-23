@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Party Invitation
  */
+@FieldNameConstants
 public class PartyInvitation implements Serializable {
 
-	public static final long serialVersionUID = 1392078197553631232L;
+	public static final long serialVersionUID = 5077792031805255680L;
 	public static final String NAME = "PartyInvitation";
 	/**
 	 * Party Invitation Id
@@ -82,24 +84,18 @@ public class PartyInvitation implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyInvitationId, partyIdFrom, partyId, toName, emailAddress, statusId, lastInviteDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public PartyInvitation(GenericValue value) {
-		partyInvitationId = (String) value.get(Fields.partyInvitationId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		toName = (String) value.get(Fields.toName.name());
-		emailAddress = (String) value.get(Fields.emailAddress.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		lastInviteDate = (Timestamp) value.get(Fields.lastInviteDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		partyInvitationId = (String) value.get(FIELD_PARTY_INVITATION_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		toName = (String) value.get(FIELD_TO_NAME);
+		emailAddress = (String) value.get(FIELD_EMAIL_ADDRESS);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		lastInviteDate = (Timestamp) value.get(FIELD_LAST_INVITE_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static PartyInvitation fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.geo;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Geo
  */
+@FieldNameConstants
 public class Geo implements Serializable {
 
-	public static final long serialVersionUID = 3705123544435677184L;
+	public static final long serialVersionUID = 7530373637591324672L;
 	public static final String NAME = "Geo";
 	/**
 	 * Geo Id
@@ -82,24 +84,18 @@ public class Geo implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		geoId, geoTypeId, geoName, geoCode, geoSecCode, abbreviation, wellKnownText, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Geo(GenericValue value) {
-		geoId = (String) value.get(Fields.geoId.name());
-		geoTypeId = (String) value.get(Fields.geoTypeId.name());
-		geoName = (String) value.get(Fields.geoName.name());
-		geoCode = (String) value.get(Fields.geoCode.name());
-		geoSecCode = (String) value.get(Fields.geoSecCode.name());
-		abbreviation = (String) value.get(Fields.abbreviation.name());
-		wellKnownText = (String) value.get(Fields.wellKnownText.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		geoId = (String) value.get(FIELD_GEO_ID);
+		geoTypeId = (String) value.get(FIELD_GEO_TYPE_ID);
+		geoName = (String) value.get(FIELD_GEO_NAME);
+		geoCode = (String) value.get(FIELD_GEO_CODE);
+		geoSecCode = (String) value.get(FIELD_GEO_SEC_CODE);
+		abbreviation = (String) value.get(FIELD_ABBREVIATION);
+		wellKnownText = (String) value.get(FIELD_WELL_KNOWN_TEXT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Geo fromValue(org.apache.ofbiz.entity.GenericValue value) {

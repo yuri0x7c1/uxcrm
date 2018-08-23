@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.payment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Gift Card
  */
+@FieldNameConstants
 public class GiftCard implements Serializable {
 
-	public static final long serialVersionUID = 6470393873472503808L;
+	public static final long serialVersionUID = 7639952326812094464L;
 	public static final String NAME = "GiftCard";
 	/**
 	 * Payment Method Id
@@ -70,22 +72,16 @@ public class GiftCard implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		paymentMethodId, cardNumber, pinNumber, expireDate, contactMechId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GiftCard(GenericValue value) {
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		cardNumber = (String) value.get(Fields.cardNumber.name());
-		pinNumber = (String) value.get(Fields.pinNumber.name());
-		expireDate = (String) value.get(Fields.expireDate.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		cardNumber = (String) value.get(FIELD_CARD_NUMBER);
+		pinNumber = (String) value.get(FIELD_PIN_NUMBER);
+		expireDate = (String) value.get(FIELD_EXPIRE_DATE);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GiftCard fromValue(org.apache.ofbiz.entity.GenericValue value) {

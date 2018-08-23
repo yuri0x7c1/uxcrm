@@ -1,5 +1,6 @@
 package org.apache.ofbiz.webapp.visit;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Agent
  */
+@FieldNameConstants
 public class UserAgent implements Serializable {
 
-	public static final long serialVersionUID = 5732603051997737984L;
+	public static final long serialVersionUID = 3981850475746522112L;
 	public static final String NAME = "UserAgent";
 	/**
 	 * User Agent Id
@@ -76,24 +78,18 @@ public class UserAgent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		userAgentId, browserTypeId, platformTypeId, protocolTypeId, userAgentTypeId, userAgentMethodTypeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public UserAgent(GenericValue value) {
-		userAgentId = (String) value.get(Fields.userAgentId.name());
-		browserTypeId = (String) value.get(Fields.browserTypeId.name());
-		platformTypeId = (String) value.get(Fields.platformTypeId.name());
-		protocolTypeId = (String) value.get(Fields.protocolTypeId.name());
-		userAgentTypeId = (String) value.get(Fields.userAgentTypeId.name());
-		userAgentMethodTypeId = (String) value.get(Fields.userAgentMethodTypeId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		userAgentId = (String) value.get(FIELD_USER_AGENT_ID);
+		browserTypeId = (String) value.get(FIELD_BROWSER_TYPE_ID);
+		platformTypeId = (String) value.get(FIELD_PLATFORM_TYPE_ID);
+		protocolTypeId = (String) value.get(FIELD_PROTOCOL_TYPE_ID);
+		userAgentTypeId = (String) value.get(FIELD_USER_AGENT_TYPE_ID);
+		userAgentMethodTypeId = (String) value
+				.get(FIELD_USER_AGENT_METHOD_TYPE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static UserAgent fromValue(org.apache.ofbiz.entity.GenericValue value) {

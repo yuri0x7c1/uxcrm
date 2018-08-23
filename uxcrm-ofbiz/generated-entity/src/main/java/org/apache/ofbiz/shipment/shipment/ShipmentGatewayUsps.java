@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shipment Gateway Usps
  */
+@FieldNameConstants
 public class ShipmentGatewayUsps implements Serializable {
 
-	public static final long serialVersionUID = 5909203044278130688L;
+	public static final long serialVersionUID = 2702153742802490368L;
 	public static final String NAME = "ShipmentGatewayUsps";
 	/**
 	 * Shipment Gateway Config Id
@@ -88,26 +90,20 @@ public class ShipmentGatewayUsps implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentGatewayConfigId, connectUrl, connectUrlLabels, connectTimeout, accessUserId, accessPassword, maxEstimateWeight, test, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentGatewayUsps(GenericValue value) {
 		shipmentGatewayConfigId = (String) value
-				.get(Fields.shipmentGatewayConfigId.name());
-		connectUrl = (String) value.get(Fields.connectUrl.name());
-		connectUrlLabels = (String) value.get(Fields.connectUrlLabels.name());
-		connectTimeout = (Long) value.get(Fields.connectTimeout.name());
-		accessUserId = (String) value.get(Fields.accessUserId.name());
-		accessPassword = (String) value.get(Fields.accessPassword.name());
-		maxEstimateWeight = (Long) value.get(Fields.maxEstimateWeight.name());
-		test = (String) value.get(Fields.test.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SHIPMENT_GATEWAY_CONFIG_ID);
+		connectUrl = (String) value.get(FIELD_CONNECT_URL);
+		connectUrlLabels = (String) value.get(FIELD_CONNECT_URL_LABELS);
+		connectTimeout = (Long) value.get(FIELD_CONNECT_TIMEOUT);
+		accessUserId = (String) value.get(FIELD_ACCESS_USER_ID);
+		accessPassword = (String) value.get(FIELD_ACCESS_PASSWORD);
+		maxEstimateWeight = (Long) value.get(FIELD_MAX_ESTIMATE_WEIGHT);
+		test = (String) value.get(FIELD_TEST);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentGatewayUsps fromValue(

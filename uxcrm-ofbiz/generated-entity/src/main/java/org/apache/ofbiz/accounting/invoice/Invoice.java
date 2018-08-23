@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice
  */
+@FieldNameConstants
 public class Invoice implements Serializable {
 
-	public static final long serialVersionUID = 2906124452430143488L;
+	public static final long serialVersionUID = 4934313929950760960L;
 	public static final String NAME = "Invoice";
 	/**
 	 * Invoice Id
@@ -136,33 +138,27 @@ public class Invoice implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceId, invoiceTypeId, partyIdFrom, partyId, roleTypeId, statusId, billingAccountId, contactMechId, invoiceDate, dueDate, paidDate, invoiceMessage, referenceNumber, description, currencyUomId, recurrenceInfoId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Invoice(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceTypeId = (String) value.get(Fields.invoiceTypeId.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		statusId = (String) value.get(Fields.statusId.name());
-		billingAccountId = (String) value.get(Fields.billingAccountId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		invoiceDate = (Timestamp) value.get(Fields.invoiceDate.name());
-		dueDate = (Timestamp) value.get(Fields.dueDate.name());
-		paidDate = (Timestamp) value.get(Fields.paidDate.name());
-		invoiceMessage = (String) value.get(Fields.invoiceMessage.name());
-		referenceNumber = (String) value.get(Fields.referenceNumber.name());
-		description = (String) value.get(Fields.description.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceTypeId = (String) value.get(FIELD_INVOICE_TYPE_ID);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		billingAccountId = (String) value.get(FIELD_BILLING_ACCOUNT_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		invoiceDate = (Timestamp) value.get(FIELD_INVOICE_DATE);
+		dueDate = (Timestamp) value.get(FIELD_DUE_DATE);
+		paidDate = (Timestamp) value.get(FIELD_PAID_DATE);
+		invoiceMessage = (String) value.get(FIELD_INVOICE_MESSAGE);
+		referenceNumber = (String) value.get(FIELD_REFERENCE_NUMBER);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Invoice fromValue(org.apache.ofbiz.entity.GenericValue value) {

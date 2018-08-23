@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 /**
  * Party Role And Party Detail
  */
+@FieldNameConstants
 public class PartyRoleAndPartyDetail implements Serializable {
 
-	public static final long serialVersionUID = 1370647282117642240L;
+	public static final long serialVersionUID = 5676505098886943744L;
 	public static final String NAME = "PartyRoleAndPartyDetail";
 	/**
 	 * Person Comments
@@ -330,72 +332,64 @@ public class PartyRoleAndPartyDetail implements Serializable {
 	@Setter
 	private BigDecimal annualRevenue;
 
-	public enum Fields {
-		personComments, partyGroupComments, lastModifiedDate, externalId, description, isUnread, partyTypeId, lastModifiedByUserLogin, dataSourceId, createdDate, statusId, preferredCurrencyUomId, partyId, createdByUserLogin, roleTypeId, yearsWithEmployer, lastName, occupation, gender, employmentStatusEnumId, socialSecurityNumber, suffix, mothersMaidenName, middleNameLocal, existingCustomer, residenceStatusEnumId, nickname, memberId, height, passportNumber, lastNameLocal, monthsWithEmployer, weight, birthDate, otherLocal, firstName, cardId, middleName, firstNameLocal, passportExpireDate, salutation, personalTitle, deceasedDate, totalYearsWorkExperience, maritalStatus, tickerSymbol, logoImageUrl, groupName, groupNameLocal, numEmployees, officeSiteName, annualRevenue
-	}
-
 	public PartyRoleAndPartyDetail(GenericValue value) {
-		personComments = (String) value.get(Fields.personComments.name());
-		partyGroupComments = (String) value.get(Fields.partyGroupComments
-				.name());
-		lastModifiedDate = (Timestamp) value
-				.get(Fields.lastModifiedDate.name());
-		externalId = (String) value.get(Fields.externalId.name());
-		description = (String) value.get(Fields.description.name());
-		isUnread = (String) value.get(Fields.isUnread.name());
-		partyTypeId = (String) value.get(Fields.partyTypeId.name());
+		personComments = (String) value.get(FIELD_PERSON_COMMENTS);
+		partyGroupComments = (String) value.get(FIELD_PARTY_GROUP_COMMENTS);
+		lastModifiedDate = (Timestamp) value.get(FIELD_LAST_MODIFIED_DATE);
+		externalId = (String) value.get(FIELD_EXTERNAL_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isUnread = (String) value.get(FIELD_IS_UNREAD);
+		partyTypeId = (String) value.get(FIELD_PARTY_TYPE_ID);
 		lastModifiedByUserLogin = (String) value
-				.get(Fields.lastModifiedByUserLogin.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		createdDate = (Timestamp) value.get(Fields.createdDate.name());
-		statusId = (String) value.get(Fields.statusId.name());
+				.get(FIELD_LAST_MODIFIED_BY_USER_LOGIN);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		createdDate = (Timestamp) value.get(FIELD_CREATED_DATE);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 		preferredCurrencyUomId = (String) value
-				.get(Fields.preferredCurrencyUomId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		createdByUserLogin = (String) value.get(Fields.createdByUserLogin
-				.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		yearsWithEmployer = (Long) value.get(Fields.yearsWithEmployer.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		occupation = (String) value.get(Fields.occupation.name());
-		gender = (String) value.get(Fields.gender.name());
+				.get(FIELD_PREFERRED_CURRENCY_UOM_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		createdByUserLogin = (String) value.get(FIELD_CREATED_BY_USER_LOGIN);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		yearsWithEmployer = (Long) value.get(FIELD_YEARS_WITH_EMPLOYER);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		occupation = (String) value.get(FIELD_OCCUPATION);
+		gender = (String) value.get(FIELD_GENDER);
 		employmentStatusEnumId = (String) value
-				.get(Fields.employmentStatusEnumId.name());
-		socialSecurityNumber = (String) value.get(Fields.socialSecurityNumber
-				.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		mothersMaidenName = (String) value.get(Fields.mothersMaidenName.name());
-		middleNameLocal = (String) value.get(Fields.middleNameLocal.name());
-		existingCustomer = (String) value.get(Fields.existingCustomer.name());
-		residenceStatusEnumId = (String) value.get(Fields.residenceStatusEnumId
-				.name());
-		nickname = (String) value.get(Fields.nickname.name());
-		memberId = (String) value.get(Fields.memberId.name());
-		height = (Double) value.get(Fields.height.name());
-		passportNumber = (String) value.get(Fields.passportNumber.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		monthsWithEmployer = (Long) value.get(Fields.monthsWithEmployer.name());
-		weight = (Double) value.get(Fields.weight.name());
-		birthDate = (Date) value.get(Fields.birthDate.name());
-		otherLocal = (String) value.get(Fields.otherLocal.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		cardId = (String) value.get(Fields.cardId.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		passportExpireDate = (Date) value.get(Fields.passportExpireDate.name());
-		salutation = (String) value.get(Fields.salutation.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		deceasedDate = (Date) value.get(Fields.deceasedDate.name());
+				.get(FIELD_EMPLOYMENT_STATUS_ENUM_ID);
+		socialSecurityNumber = (String) value.get(FIELD_SOCIAL_SECURITY_NUMBER);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		mothersMaidenName = (String) value.get(FIELD_MOTHERS_MAIDEN_NAME);
+		middleNameLocal = (String) value.get(FIELD_MIDDLE_NAME_LOCAL);
+		existingCustomer = (String) value.get(FIELD_EXISTING_CUSTOMER);
+		residenceStatusEnumId = (String) value
+				.get(FIELD_RESIDENCE_STATUS_ENUM_ID);
+		nickname = (String) value.get(FIELD_NICKNAME);
+		memberId = (String) value.get(FIELD_MEMBER_ID);
+		height = (Double) value.get(FIELD_HEIGHT);
+		passportNumber = (String) value.get(FIELD_PASSPORT_NUMBER);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		monthsWithEmployer = (Long) value.get(FIELD_MONTHS_WITH_EMPLOYER);
+		weight = (Double) value.get(FIELD_WEIGHT);
+		birthDate = (Date) value.get(FIELD_BIRTH_DATE);
+		otherLocal = (String) value.get(FIELD_OTHER_LOCAL);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		cardId = (String) value.get(FIELD_CARD_ID);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		passportExpireDate = (Date) value.get(FIELD_PASSPORT_EXPIRE_DATE);
+		salutation = (String) value.get(FIELD_SALUTATION);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		deceasedDate = (Date) value.get(FIELD_DECEASED_DATE);
 		totalYearsWorkExperience = (Double) value
-				.get(Fields.totalYearsWorkExperience.name());
-		maritalStatus = (String) value.get(Fields.maritalStatus.name());
-		tickerSymbol = (String) value.get(Fields.tickerSymbol.name());
-		logoImageUrl = (String) value.get(Fields.logoImageUrl.name());
-		groupName = (String) value.get(Fields.groupName.name());
-		groupNameLocal = (String) value.get(Fields.groupNameLocal.name());
-		numEmployees = (Long) value.get(Fields.numEmployees.name());
-		officeSiteName = (String) value.get(Fields.officeSiteName.name());
-		annualRevenue = (BigDecimal) value.get(Fields.annualRevenue.name());
+				.get(FIELD_TOTAL_YEARS_WORK_EXPERIENCE);
+		maritalStatus = (String) value.get(FIELD_MARITAL_STATUS);
+		tickerSymbol = (String) value.get(FIELD_TICKER_SYMBOL);
+		logoImageUrl = (String) value.get(FIELD_LOGO_IMAGE_URL);
+		groupName = (String) value.get(FIELD_GROUP_NAME);
+		groupNameLocal = (String) value.get(FIELD_GROUP_NAME_LOCAL);
+		numEmployees = (Long) value.get(FIELD_NUM_EMPLOYEES);
+		officeSiteName = (String) value.get(FIELD_OFFICE_SITE_NAME);
+		annualRevenue = (BigDecimal) value.get(FIELD_ANNUAL_REVENUE);
 	}
 
 	public static PartyRoleAndPartyDetail fromValue(

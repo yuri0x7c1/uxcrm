@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.status;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Status Valid Change
  */
+@FieldNameConstants
 public class StatusValidChange implements Serializable {
 
-	public static final long serialVersionUID = 4839958930246764544L;
+	public static final long serialVersionUID = 7195782579866948608L;
 	public static final String NAME = "StatusValidChange";
 	/**
 	 * Status Id
@@ -64,22 +66,15 @@ public class StatusValidChange implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		statusId, statusIdTo, conditionExpression, transitionName, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public StatusValidChange(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		statusIdTo = (String) value.get(Fields.statusIdTo.name());
-		conditionExpression = (String) value.get(Fields.conditionExpression
-				.name());
-		transitionName = (String) value.get(Fields.transitionName.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		statusIdTo = (String) value.get(FIELD_STATUS_ID_TO);
+		conditionExpression = (String) value.get(FIELD_CONDITION_EXPRESSION);
+		transitionName = (String) value.get(FIELD_TRANSITION_NAME);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static StatusValidChange fromValue(

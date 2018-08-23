@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort And Inventory Assign
  */
+@FieldNameConstants
 public class WorkEffortAndInventoryAssign implements Serializable {
 
-	public static final long serialVersionUID = 5034702862849416192L;
+	public static final long serialVersionUID = 5658010321894240256L;
 	public static final String NAME = "WorkEffortAndInventoryAssign";
 	/**
 	 * Product Id
@@ -64,19 +66,15 @@ public class WorkEffortAndInventoryAssign implements Serializable {
 	@Setter
 	private String statusId;
 
-	public enum Fields {
-		productId, currencyUomId, unitCost, uomId, workEffortId, inventoryItemId, quantity, statusId
-	}
-
 	public WorkEffortAndInventoryAssign(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		currencyUomId = (String) value.get(Fields.currencyUomId.name());
-		unitCost = (BigDecimal) value.get(Fields.unitCost.name());
-		uomId = (String) value.get(Fields.uomId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		inventoryItemId = (String) value.get(Fields.inventoryItemId.name());
-		quantity = (Double) value.get(Fields.quantity.name());
-		statusId = (String) value.get(Fields.statusId.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		currencyUomId = (String) value.get(FIELD_CURRENCY_UOM_ID);
+		unitCost = (BigDecimal) value.get(FIELD_UNIT_COST);
+		uomId = (String) value.get(FIELD_UOM_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		inventoryItemId = (String) value.get(FIELD_INVENTORY_ITEM_ID);
+		quantity = (Double) value.get(FIELD_QUANTITY);
+		statusId = (String) value.get(FIELD_STATUS_ID);
 	}
 
 	public static WorkEffortAndInventoryAssign fromValue(

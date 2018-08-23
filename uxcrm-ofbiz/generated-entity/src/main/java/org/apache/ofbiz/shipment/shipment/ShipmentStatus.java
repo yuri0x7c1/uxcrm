@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shipment Status
  */
+@FieldNameConstants
 public class ShipmentStatus implements Serializable {
 
-	public static final long serialVersionUID = 1146284787220245504L;
+	public static final long serialVersionUID = 8153589021283104768L;
 	public static final String NAME = "ShipmentStatus";
 	/**
 	 * Status Id
@@ -64,22 +66,15 @@ public class ShipmentStatus implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		statusId, shipmentId, statusDate, changeByUserLoginId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentStatus(GenericValue value) {
-		statusId = (String) value.get(Fields.statusId.name());
-		shipmentId = (String) value.get(Fields.shipmentId.name());
-		statusDate = (Timestamp) value.get(Fields.statusDate.name());
-		changeByUserLoginId = (String) value.get(Fields.changeByUserLoginId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		statusId = (String) value.get(FIELD_STATUS_ID);
+		shipmentId = (String) value.get(FIELD_SHIPMENT_ID);
+		statusDate = (Timestamp) value.get(FIELD_STATUS_DATE);
+		changeByUserLoginId = (String) value.get(FIELD_CHANGE_BY_USER_LOGIN_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentStatus fromValue(

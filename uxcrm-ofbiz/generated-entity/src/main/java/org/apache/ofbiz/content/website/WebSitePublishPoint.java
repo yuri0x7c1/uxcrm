@@ -1,5 +1,6 @@
 package org.apache.ofbiz.content.website;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Web Site Publish Point
  */
+@FieldNameConstants
 public class WebSitePublishPoint implements Serializable {
 
-	public static final long serialVersionUID = 1622329691975120896L;
+	public static final long serialVersionUID = 5614367255598195712L;
 	public static final String NAME = "WebSitePublishPoint";
 	/**
 	 * Content Id
@@ -100,27 +102,21 @@ public class WebSitePublishPoint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		contentId, templateTitle, styleSheetFile, logo, medallionLogo, lineLogo, leftBarId, rightBarId, contentDept, aboutContentId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WebSitePublishPoint(GenericValue value) {
-		contentId = (String) value.get(Fields.contentId.name());
-		templateTitle = (String) value.get(Fields.templateTitle.name());
-		styleSheetFile = (String) value.get(Fields.styleSheetFile.name());
-		logo = (String) value.get(Fields.logo.name());
-		medallionLogo = (String) value.get(Fields.medallionLogo.name());
-		lineLogo = (String) value.get(Fields.lineLogo.name());
-		leftBarId = (String) value.get(Fields.leftBarId.name());
-		rightBarId = (String) value.get(Fields.rightBarId.name());
-		contentDept = (String) value.get(Fields.contentDept.name());
-		aboutContentId = (String) value.get(Fields.aboutContentId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		templateTitle = (String) value.get(FIELD_TEMPLATE_TITLE);
+		styleSheetFile = (String) value.get(FIELD_STYLE_SHEET_FILE);
+		logo = (String) value.get(FIELD_LOGO);
+		medallionLogo = (String) value.get(FIELD_MEDALLION_LOGO);
+		lineLogo = (String) value.get(FIELD_LINE_LOGO);
+		leftBarId = (String) value.get(FIELD_LEFT_BAR_ID);
+		rightBarId = (String) value.get(FIELD_RIGHT_BAR_ID);
+		contentDept = (String) value.get(FIELD_CONTENT_DEPT);
+		aboutContentId = (String) value.get(FIELD_ABOUT_CONTENT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WebSitePublishPoint fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.shoppinglist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shopping List Work Effort
  */
+@FieldNameConstants
 public class ShoppingListWorkEffort implements Serializable {
 
-	public static final long serialVersionUID = 327826153193973760L;
+	public static final long serialVersionUID = 1454361469670771712L;
 	public static final String NAME = "ShoppingListWorkEffort";
 	/**
 	 * Shopping List Id
@@ -52,19 +54,13 @@ public class ShoppingListWorkEffort implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shoppingListId, workEffortId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShoppingListWorkEffort(GenericValue value) {
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShoppingListWorkEffort fromValue(

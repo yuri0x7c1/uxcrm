@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Person
  */
+@FieldNameConstants
 public class Person implements Serializable {
 
-	public static final long serialVersionUID = 1546754631189244928L;
+	public static final long serialVersionUID = 3629346668989191168L;
 	public static final String NAME = "Person";
 	/**
 	 * Party Id
@@ -233,53 +235,46 @@ public class Person implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		partyId, salutation, firstName, middleName, lastName, personalTitle, suffix, nickname, firstNameLocal, middleNameLocal, lastNameLocal, otherLocal, memberId, gender, birthDate, deceasedDate, height, weight, mothersMaidenName, maritalStatus, socialSecurityNumber, passportNumber, passportExpireDate, totalYearsWorkExperience, comments, employmentStatusEnumId, residenceStatusEnumId, occupation, yearsWithEmployer, monthsWithEmployer, existingCustomer, cardId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public Person(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		salutation = (String) value.get(Fields.salutation.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		nickname = (String) value.get(Fields.nickname.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		middleNameLocal = (String) value.get(Fields.middleNameLocal.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		otherLocal = (String) value.get(Fields.otherLocal.name());
-		memberId = (String) value.get(Fields.memberId.name());
-		gender = (String) value.get(Fields.gender.name());
-		birthDate = (Date) value.get(Fields.birthDate.name());
-		deceasedDate = (Date) value.get(Fields.deceasedDate.name());
-		height = (Double) value.get(Fields.height.name());
-		weight = (Double) value.get(Fields.weight.name());
-		mothersMaidenName = (String) value.get(Fields.mothersMaidenName.name());
-		maritalStatus = (String) value.get(Fields.maritalStatus.name());
-		socialSecurityNumber = (String) value.get(Fields.socialSecurityNumber
-				.name());
-		passportNumber = (String) value.get(Fields.passportNumber.name());
-		passportExpireDate = (Date) value.get(Fields.passportExpireDate.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		salutation = (String) value.get(FIELD_SALUTATION);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		nickname = (String) value.get(FIELD_NICKNAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		middleNameLocal = (String) value.get(FIELD_MIDDLE_NAME_LOCAL);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		otherLocal = (String) value.get(FIELD_OTHER_LOCAL);
+		memberId = (String) value.get(FIELD_MEMBER_ID);
+		gender = (String) value.get(FIELD_GENDER);
+		birthDate = (Date) value.get(FIELD_BIRTH_DATE);
+		deceasedDate = (Date) value.get(FIELD_DECEASED_DATE);
+		height = (Double) value.get(FIELD_HEIGHT);
+		weight = (Double) value.get(FIELD_WEIGHT);
+		mothersMaidenName = (String) value.get(FIELD_MOTHERS_MAIDEN_NAME);
+		maritalStatus = (String) value.get(FIELD_MARITAL_STATUS);
+		socialSecurityNumber = (String) value.get(FIELD_SOCIAL_SECURITY_NUMBER);
+		passportNumber = (String) value.get(FIELD_PASSPORT_NUMBER);
+		passportExpireDate = (Date) value.get(FIELD_PASSPORT_EXPIRE_DATE);
 		totalYearsWorkExperience = (Double) value
-				.get(Fields.totalYearsWorkExperience.name());
-		comments = (String) value.get(Fields.comments.name());
+				.get(FIELD_TOTAL_YEARS_WORK_EXPERIENCE);
+		comments = (String) value.get(FIELD_COMMENTS);
 		employmentStatusEnumId = (String) value
-				.get(Fields.employmentStatusEnumId.name());
-		residenceStatusEnumId = (String) value.get(Fields.residenceStatusEnumId
-				.name());
-		occupation = (String) value.get(Fields.occupation.name());
-		yearsWithEmployer = (Long) value.get(Fields.yearsWithEmployer.name());
-		monthsWithEmployer = (Long) value.get(Fields.monthsWithEmployer.name());
-		existingCustomer = (String) value.get(Fields.existingCustomer.name());
-		cardId = (String) value.get(Fields.cardId.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_EMPLOYMENT_STATUS_ENUM_ID);
+		residenceStatusEnumId = (String) value
+				.get(FIELD_RESIDENCE_STATUS_ENUM_ID);
+		occupation = (String) value.get(FIELD_OCCUPATION);
+		yearsWithEmployer = (Long) value.get(FIELD_YEARS_WITH_EMPLOYER);
+		monthsWithEmployer = (Long) value.get(FIELD_MONTHS_WITH_EMPLOYER);
+		existingCustomer = (String) value.get(FIELD_EXISTING_CUSTOMER);
+		cardId = (String) value.get(FIELD_CARD_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static Person fromValue(org.apache.ofbiz.entity.GenericValue value) {

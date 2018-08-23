@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.login;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * User Login
  */
+@FieldNameConstants
 public class UserLogin implements Serializable {
 
-	public static final long serialVersionUID = 1398522765771893760L;
+	public static final long serialVersionUID = 6876029763397888000L;
 	public static final String NAME = "UserLogin";
 	/**
 	 * User Login Id
@@ -136,36 +138,29 @@ public class UserLogin implements Serializable {
 	@Setter
 	private String partyId;
 
-	public enum Fields {
-		userLoginId, currentPassword, passwordHint, isSystem, enabled, hasLoggedOut, requirePasswordChange, lastCurrencyUom, lastLocale, lastTimeZone, disabledDateTime, successiveFailedLogins, externalAuthId, userLdapDn, disabledBy, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp, partyId
-	}
-
 	public UserLogin(GenericValue value) {
-		userLoginId = (String) value.get(Fields.userLoginId.name());
-		currentPassword = (String) value.get(Fields.currentPassword.name());
-		passwordHint = (String) value.get(Fields.passwordHint.name());
-		isSystem = (String) value.get(Fields.isSystem.name());
-		enabled = (String) value.get(Fields.enabled.name());
-		hasLoggedOut = (String) value.get(Fields.hasLoggedOut.name());
-		requirePasswordChange = (String) value.get(Fields.requirePasswordChange
-				.name());
-		lastCurrencyUom = (String) value.get(Fields.lastCurrencyUom.name());
-		lastLocale = (String) value.get(Fields.lastLocale.name());
-		lastTimeZone = (String) value.get(Fields.lastTimeZone.name());
-		disabledDateTime = (Timestamp) value
-				.get(Fields.disabledDateTime.name());
-		successiveFailedLogins = (Long) value.get(Fields.successiveFailedLogins
-				.name());
-		externalAuthId = (String) value.get(Fields.externalAuthId.name());
-		userLdapDn = (String) value.get(Fields.userLdapDn.name());
-		disabledBy = (String) value.get(Fields.disabledBy.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
-		partyId = (String) value.get(Fields.partyId.name());
+		userLoginId = (String) value.get(FIELD_USER_LOGIN_ID);
+		currentPassword = (String) value.get(FIELD_CURRENT_PASSWORD);
+		passwordHint = (String) value.get(FIELD_PASSWORD_HINT);
+		isSystem = (String) value.get(FIELD_IS_SYSTEM);
+		enabled = (String) value.get(FIELD_ENABLED);
+		hasLoggedOut = (String) value.get(FIELD_HAS_LOGGED_OUT);
+		requirePasswordChange = (String) value
+				.get(FIELD_REQUIRE_PASSWORD_CHANGE);
+		lastCurrencyUom = (String) value.get(FIELD_LAST_CURRENCY_UOM);
+		lastLocale = (String) value.get(FIELD_LAST_LOCALE);
+		lastTimeZone = (String) value.get(FIELD_LAST_TIME_ZONE);
+		disabledDateTime = (Timestamp) value.get(FIELD_DISABLED_DATE_TIME);
+		successiveFailedLogins = (Long) value
+				.get(FIELD_SUCCESSIVE_FAILED_LOGINS);
+		externalAuthId = (String) value.get(FIELD_EXTERNAL_AUTH_ID);
+		userLdapDn = (String) value.get(FIELD_USER_LDAP_DN);
+		disabledBy = (String) value.get(FIELD_DISABLED_BY);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
+		partyId = (String) value.get(FIELD_PARTY_ID);
 	}
 
 	public static UserLogin fromValue(org.apache.ofbiz.entity.GenericValue value) {

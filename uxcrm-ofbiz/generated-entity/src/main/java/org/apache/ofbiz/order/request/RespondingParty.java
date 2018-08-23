@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.request;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Responding Party
  */
+@FieldNameConstants
 public class RespondingParty implements Serializable {
 
-	public static final long serialVersionUID = 7714269647363120128L;
+	public static final long serialVersionUID = 8349517182784568320L;
 	public static final String NAME = "RespondingParty";
 	/**
 	 * Responding Party Seq Id
@@ -70,23 +72,17 @@ public class RespondingParty implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		respondingPartySeqId, custRequestId, partyId, contactMechId, dateSent, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public RespondingParty(GenericValue value) {
-		respondingPartySeqId = (String) value.get(Fields.respondingPartySeqId
-				.name());
-		custRequestId = (String) value.get(Fields.custRequestId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		dateSent = (Timestamp) value.get(Fields.dateSent.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		respondingPartySeqId = (String) value
+				.get(FIELD_RESPONDING_PARTY_SEQ_ID);
+		custRequestId = (String) value.get(FIELD_CUST_REQUEST_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		dateSent = (Timestamp) value.get(FIELD_DATE_SENT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static RespondingParty fromValue(

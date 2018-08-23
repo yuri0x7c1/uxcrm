@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.fixedasset;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Accommodation Class
  */
+@FieldNameConstants
 public class AccommodationClass implements Serializable {
 
-	public static final long serialVersionUID = 6297127094610412544L;
+	public static final long serialVersionUID = 5890992108787476480L;
 	public static final String NAME = "AccommodationClass";
 	/**
 	 * Accommodation Class Id
@@ -58,21 +60,14 @@ public class AccommodationClass implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		accommodationClassId, parentClassId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public AccommodationClass(GenericValue value) {
-		accommodationClassId = (String) value.get(Fields.accommodationClassId
-				.name());
-		parentClassId = (String) value.get(Fields.parentClassId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		accommodationClassId = (String) value.get(FIELD_ACCOMMODATION_CLASS_ID);
+		parentClassId = (String) value.get(FIELD_PARENT_CLASS_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static AccommodationClass fromValue(

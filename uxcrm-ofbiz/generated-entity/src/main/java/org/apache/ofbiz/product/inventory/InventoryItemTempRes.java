@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.inventory;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Inventory Item Temp Res
  */
+@FieldNameConstants
 public class InventoryItemTempRes implements Serializable {
 
-	public static final long serialVersionUID = 3450633337786070016L;
+	public static final long serialVersionUID = 2494586316957362176L;
 	public static final String NAME = "InventoryItemTempRes";
 	/**
 	 * Visit Id
@@ -71,22 +73,16 @@ public class InventoryItemTempRes implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		visitId, productId, productStoreId, quantity, reservedDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InventoryItemTempRes(GenericValue value) {
-		visitId = (String) value.get(Fields.visitId.name());
-		productId = (String) value.get(Fields.productId.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		quantity = (BigDecimal) value.get(Fields.quantity.name());
-		reservedDate = (Timestamp) value.get(Fields.reservedDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		quantity = (BigDecimal) value.get(FIELD_QUANTITY);
+		reservedDate = (Timestamp) value.get(FIELD_RESERVED_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InventoryItemTempRes fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.common.datasource;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Data Source
  */
+@FieldNameConstants
 public class DataSource implements Serializable {
 
-	public static final long serialVersionUID = 1519640089929925632L;
+	public static final long serialVersionUID = 4853661680737654784L;
 	public static final String NAME = "DataSource";
 	/**
 	 * Data Source Id
@@ -58,20 +60,14 @@ public class DataSource implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		dataSourceId, dataSourceTypeId, description, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public DataSource(GenericValue value) {
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		dataSourceTypeId = (String) value.get(Fields.dataSourceTypeId.name());
-		description = (String) value.get(Fields.description.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		dataSourceTypeId = (String) value.get(FIELD_DATA_SOURCE_TYPE_ID);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static DataSource fromValue(

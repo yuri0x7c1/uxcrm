@@ -1,5 +1,6 @@
 package org.apache.ofbiz.order.shoppinglist;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shopping List
  */
+@FieldNameConstants
 public class ShoppingList implements Serializable {
 
-	public static final long serialVersionUID = 4745801131942014976L;
+	public static final long serialVersionUID = 3144457061355208704L;
 	public static final String NAME = "ShoppingList";
 	/**
 	 * Shopping List Id
@@ -160,42 +162,33 @@ public class ShoppingList implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shoppingListId, shoppingListTypeId, parentShoppingListId, productStoreId, visitorId, partyId, listName, description, isPublic, isActive, currencyUom, shipmentMethodTypeId, carrierPartyId, carrierRoleTypeId, contactMechId, paymentMethodId, recurrenceInfoId, lastOrderedDate, lastAdminModified, productPromoCodeId, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShoppingList(GenericValue value) {
-		shoppingListId = (String) value.get(Fields.shoppingListId.name());
-		shoppingListTypeId = (String) value.get(Fields.shoppingListTypeId
-				.name());
-		parentShoppingListId = (String) value.get(Fields.parentShoppingListId
-				.name());
-		productStoreId = (String) value.get(Fields.productStoreId.name());
-		visitorId = (String) value.get(Fields.visitorId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		listName = (String) value.get(Fields.listName.name());
-		description = (String) value.get(Fields.description.name());
-		isPublic = (String) value.get(Fields.isPublic.name());
-		isActive = (String) value.get(Fields.isActive.name());
-		currencyUom = (String) value.get(Fields.currencyUom.name());
-		shipmentMethodTypeId = (String) value.get(Fields.shipmentMethodTypeId
-				.name());
-		carrierPartyId = (String) value.get(Fields.carrierPartyId.name());
-		carrierRoleTypeId = (String) value.get(Fields.carrierRoleTypeId.name());
-		contactMechId = (String) value.get(Fields.contactMechId.name());
-		paymentMethodId = (String) value.get(Fields.paymentMethodId.name());
-		recurrenceInfoId = (String) value.get(Fields.recurrenceInfoId.name());
-		lastOrderedDate = (Timestamp) value.get(Fields.lastOrderedDate.name());
-		lastAdminModified = (Timestamp) value.get(Fields.lastAdminModified
-				.name());
-		productPromoCodeId = (String) value.get(Fields.productPromoCodeId
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		shoppingListId = (String) value.get(FIELD_SHOPPING_LIST_ID);
+		shoppingListTypeId = (String) value.get(FIELD_SHOPPING_LIST_TYPE_ID);
+		parentShoppingListId = (String) value
+				.get(FIELD_PARENT_SHOPPING_LIST_ID);
+		productStoreId = (String) value.get(FIELD_PRODUCT_STORE_ID);
+		visitorId = (String) value.get(FIELD_VISITOR_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		listName = (String) value.get(FIELD_LIST_NAME);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		isPublic = (String) value.get(FIELD_IS_PUBLIC);
+		isActive = (String) value.get(FIELD_IS_ACTIVE);
+		currencyUom = (String) value.get(FIELD_CURRENCY_UOM);
+		shipmentMethodTypeId = (String) value
+				.get(FIELD_SHIPMENT_METHOD_TYPE_ID);
+		carrierPartyId = (String) value.get(FIELD_CARRIER_PARTY_ID);
+		carrierRoleTypeId = (String) value.get(FIELD_CARRIER_ROLE_TYPE_ID);
+		contactMechId = (String) value.get(FIELD_CONTACT_MECH_ID);
+		paymentMethodId = (String) value.get(FIELD_PAYMENT_METHOD_ID);
+		recurrenceInfoId = (String) value.get(FIELD_RECURRENCE_INFO_ID);
+		lastOrderedDate = (Timestamp) value.get(FIELD_LAST_ORDERED_DATE);
+		lastAdminModified = (Timestamp) value.get(FIELD_LAST_ADMIN_MODIFIED);
+		productPromoCodeId = (String) value.get(FIELD_PRODUCT_PROMO_CODE_ID);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShoppingList fromValue(

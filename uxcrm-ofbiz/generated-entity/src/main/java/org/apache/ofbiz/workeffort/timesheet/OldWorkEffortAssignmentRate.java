@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.timesheet;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Old Work Effort Assignment Rate
  */
+@FieldNameConstants
 public class OldWorkEffortAssignmentRate implements Serializable {
 
-	public static final long serialVersionUID = 8146431993411109888L;
+	public static final long serialVersionUID = 6352295836995505152L;
 	public static final String NAME = "OldWorkEffortAssignmentRate";
 	/**
 	 * Work Effort Id
@@ -77,23 +79,17 @@ public class OldWorkEffortAssignmentRate implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortId, rateTypeId, partyId, fromDate, thruDate, rate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public OldWorkEffortAssignmentRate(GenericValue value) {
-		workEffortId = (String) value.get(Fields.workEffortId.name());
-		rateTypeId = (String) value.get(Fields.rateTypeId.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		rate = (BigDecimal) value.get(Fields.rate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		workEffortId = (String) value.get(FIELD_WORK_EFFORT_ID);
+		rateTypeId = (String) value.get(FIELD_RATE_TYPE_ID);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		rate = (BigDecimal) value.get(FIELD_RATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static OldWorkEffortAssignmentRate fromValue(

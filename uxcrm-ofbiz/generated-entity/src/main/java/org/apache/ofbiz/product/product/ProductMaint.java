@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.product;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Product Maint
  */
+@FieldNameConstants
 public class ProductMaint implements Serializable {
 
-	public static final long serialVersionUID = 1432677174325386240L;
+	public static final long serialVersionUID = 6544249201913036800L;
 	public static final String NAME = "ProductMaint";
 	/**
 	 * Product Id
@@ -95,30 +97,21 @@ public class ProductMaint implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		productId, productMaintSeqId, productMaintTypeId, maintName, maintTemplateWorkEffortId, intervalQuantity, intervalUomId, intervalMeterTypeId, repeatCount, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProductMaint(GenericValue value) {
-		productId = (String) value.get(Fields.productId.name());
-		productMaintSeqId = (String) value.get(Fields.productMaintSeqId.name());
-		productMaintTypeId = (String) value.get(Fields.productMaintTypeId
-				.name());
-		maintName = (String) value.get(Fields.maintName.name());
+		productId = (String) value.get(FIELD_PRODUCT_ID);
+		productMaintSeqId = (String) value.get(FIELD_PRODUCT_MAINT_SEQ_ID);
+		productMaintTypeId = (String) value.get(FIELD_PRODUCT_MAINT_TYPE_ID);
+		maintName = (String) value.get(FIELD_MAINT_NAME);
 		maintTemplateWorkEffortId = (String) value
-				.get(Fields.maintTemplateWorkEffortId.name());
-		intervalQuantity = (BigDecimal) value.get(Fields.intervalQuantity
-				.name());
-		intervalUomId = (String) value.get(Fields.intervalUomId.name());
-		intervalMeterTypeId = (String) value.get(Fields.intervalMeterTypeId
-				.name());
-		repeatCount = (Long) value.get(Fields.repeatCount.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_MAINT_TEMPLATE_WORK_EFFORT_ID);
+		intervalQuantity = (BigDecimal) value.get(FIELD_INTERVAL_QUANTITY);
+		intervalUomId = (String) value.get(FIELD_INTERVAL_UOM_ID);
+		intervalMeterTypeId = (String) value.get(FIELD_INTERVAL_METER_TYPE_ID);
+		repeatCount = (Long) value.get(FIELD_REPEAT_COUNT);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProductMaint fromValue(

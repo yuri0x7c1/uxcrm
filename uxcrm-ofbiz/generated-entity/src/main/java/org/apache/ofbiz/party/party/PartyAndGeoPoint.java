@@ -1,5 +1,6 @@
 package org.apache.ofbiz.party.party;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Party And Geo Point
  */
+@FieldNameConstants
 public class PartyAndGeoPoint implements Serializable {
 
-	public static final long serialVersionUID = 298511995930160128L;
+	public static final long serialVersionUID = 3110469797308552192L;
 	public static final String NAME = "PartyAndGeoPoint";
 	/**
 	 * Party Id
@@ -89,24 +91,19 @@ public class PartyAndGeoPoint implements Serializable {
 	@Setter
 	private String longitude;
 
-	public enum Fields {
-		partyId, fromDate, thruDate, elevation, geoPointTypeEnumId, latitude, description, dataSourceId, elevationUomId, information, geoPointId, longitude
-	}
-
 	public PartyAndGeoPoint(GenericValue value) {
-		partyId = (String) value.get(Fields.partyId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		elevation = (BigDecimal) value.get(Fields.elevation.name());
-		geoPointTypeEnumId = (String) value.get(Fields.geoPointTypeEnumId
-				.name());
-		latitude = (String) value.get(Fields.latitude.name());
-		description = (String) value.get(Fields.description.name());
-		dataSourceId = (String) value.get(Fields.dataSourceId.name());
-		elevationUomId = (String) value.get(Fields.elevationUomId.name());
-		information = (String) value.get(Fields.information.name());
-		geoPointId = (String) value.get(Fields.geoPointId.name());
-		longitude = (String) value.get(Fields.longitude.name());
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		elevation = (BigDecimal) value.get(FIELD_ELEVATION);
+		geoPointTypeEnumId = (String) value.get(FIELD_GEO_POINT_TYPE_ENUM_ID);
+		latitude = (String) value.get(FIELD_LATITUDE);
+		description = (String) value.get(FIELD_DESCRIPTION);
+		dataSourceId = (String) value.get(FIELD_DATA_SOURCE_ID);
+		elevationUomId = (String) value.get(FIELD_ELEVATION_UOM_ID);
+		information = (String) value.get(FIELD_INFORMATION);
+		geoPointId = (String) value.get(FIELD_GEO_POINT_ID);
+		longitude = (String) value.get(FIELD_LONGITUDE);
 	}
 
 	public static PartyAndGeoPoint fromValue(

@@ -1,5 +1,6 @@
 package org.apache.ofbiz.product.category;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Product Category Rollup And Role
  */
+@FieldNameConstants
 public class ProductCategoryRollupAndRole implements Serializable {
 
-	public static final long serialVersionUID = 5106507541750654976L;
+	public static final long serialVersionUID = 6118383108094504960L;
 	public static final String NAME = "ProductCategoryRollupAndRole";
 	/**
 	 * Product Category Id
@@ -76,22 +78,18 @@ public class ProductCategoryRollupAndRole implements Serializable {
 	@Setter
 	private String roleComments;
 
-	public enum Fields {
-		productCategoryId, parentProductCategoryId, fromDate, thruDate, sequenceNum, partyId, roleTypeId, roleFromDate, roleThruDate, roleComments
-	}
-
 	public ProductCategoryRollupAndRole(GenericValue value) {
-		productCategoryId = (String) value.get(Fields.productCategoryId.name());
+		productCategoryId = (String) value.get(FIELD_PRODUCT_CATEGORY_ID);
 		parentProductCategoryId = (String) value
-				.get(Fields.parentProductCategoryId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		sequenceNum = (Long) value.get(Fields.sequenceNum.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		roleTypeId = (String) value.get(Fields.roleTypeId.name());
-		roleFromDate = (Timestamp) value.get(Fields.roleFromDate.name());
-		roleThruDate = (Timestamp) value.get(Fields.roleThruDate.name());
-		roleComments = (String) value.get(Fields.roleComments.name());
+				.get(FIELD_PARENT_PRODUCT_CATEGORY_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		sequenceNum = (Long) value.get(FIELD_SEQUENCE_NUM);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		roleTypeId = (String) value.get(FIELD_ROLE_TYPE_ID);
+		roleFromDate = (Timestamp) value.get(FIELD_ROLE_FROM_DATE);
+		roleThruDate = (Timestamp) value.get(FIELD_ROLE_THRU_DATE);
+		roleComments = (String) value.get(FIELD_ROLE_COMMENTS);
 	}
 
 	public static ProductCategoryRollupAndRole fromValue(

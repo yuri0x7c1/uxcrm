@@ -1,5 +1,6 @@
 package org.apache.ofbiz.workeffort.workeffort;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Work Effort Search Result
  */
+@FieldNameConstants
 public class WorkEffortSearchResult implements Serializable {
 
-	public static final long serialVersionUID = 7036871871272497152L;
+	public static final long serialVersionUID = 2324420746787172352L;
 	public static final String NAME = "WorkEffortSearchResult";
 	/**
 	 * Work Effort Search Result Id
@@ -82,25 +84,19 @@ public class WorkEffortSearchResult implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		workEffortSearchResultId, visitId, orderByName, isAscending, numResults, secondsTotal, searchDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public WorkEffortSearchResult(GenericValue value) {
 		workEffortSearchResultId = (String) value
-				.get(Fields.workEffortSearchResultId.name());
-		visitId = (String) value.get(Fields.visitId.name());
-		orderByName = (String) value.get(Fields.orderByName.name());
-		isAscending = (String) value.get(Fields.isAscending.name());
-		numResults = (Long) value.get(Fields.numResults.name());
-		secondsTotal = (Double) value.get(Fields.secondsTotal.name());
-		searchDate = (Timestamp) value.get(Fields.searchDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_WORK_EFFORT_SEARCH_RESULT_ID);
+		visitId = (String) value.get(FIELD_VISIT_ID);
+		orderByName = (String) value.get(FIELD_ORDER_BY_NAME);
+		isAscending = (String) value.get(FIELD_IS_ASCENDING);
+		numResults = (Long) value.get(FIELD_NUM_RESULTS);
+		secondsTotal = (Double) value.get(FIELD_SECONDS_TOTAL);
+		searchDate = (Timestamp) value.get(FIELD_SEARCH_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static WorkEffortSearchResult fromValue(

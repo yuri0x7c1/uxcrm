@@ -1,5 +1,6 @@
 package org.apache.ofbiz.humanres.employment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Employment And Person
  */
+@FieldNameConstants
 public class EmploymentAndPerson implements Serializable {
 
-	public static final long serialVersionUID = 6401813548247022592L;
+	public static final long serialVersionUID = 2630529288039268352L;
 	public static final String NAME = "EmploymentAndPerson";
 	/**
 	 * Role Type Id To
@@ -257,56 +259,50 @@ public class EmploymentAndPerson implements Serializable {
 	@Setter
 	private String maritalStatus;
 
-	public enum Fields {
-		roleTypeIdTo, fromDate, partyIdFrom, terminationReasonId, terminationTypeId, partyIdTo, roleTypeIdFrom, thruDate, yearsWithEmployer, lastName, occupation, gender, employmentStatusEnumId, socialSecurityNumber, suffix, mothersMaidenName, middleNameLocal, existingCustomer, residenceStatusEnumId, nickname, partyId, memberId, height, passportNumber, lastNameLocal, comments, monthsWithEmployer, weight, birthDate, otherLocal, firstName, cardId, middleName, firstNameLocal, passportExpireDate, salutation, personalTitle, deceasedDate, totalYearsWorkExperience, maritalStatus
-	}
-
 	public EmploymentAndPerson(GenericValue value) {
-		roleTypeIdTo = (String) value.get(Fields.roleTypeIdTo.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		partyIdFrom = (String) value.get(Fields.partyIdFrom.name());
-		terminationReasonId = (String) value.get(Fields.terminationReasonId
-				.name());
-		terminationTypeId = (String) value.get(Fields.terminationTypeId.name());
-		partyIdTo = (String) value.get(Fields.partyIdTo.name());
-		roleTypeIdFrom = (String) value.get(Fields.roleTypeIdFrom.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		yearsWithEmployer = (Long) value.get(Fields.yearsWithEmployer.name());
-		lastName = (String) value.get(Fields.lastName.name());
-		occupation = (String) value.get(Fields.occupation.name());
-		gender = (String) value.get(Fields.gender.name());
+		roleTypeIdTo = (String) value.get(FIELD_ROLE_TYPE_ID_TO);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		partyIdFrom = (String) value.get(FIELD_PARTY_ID_FROM);
+		terminationReasonId = (String) value.get(FIELD_TERMINATION_REASON_ID);
+		terminationTypeId = (String) value.get(FIELD_TERMINATION_TYPE_ID);
+		partyIdTo = (String) value.get(FIELD_PARTY_ID_TO);
+		roleTypeIdFrom = (String) value.get(FIELD_ROLE_TYPE_ID_FROM);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		yearsWithEmployer = (Long) value.get(FIELD_YEARS_WITH_EMPLOYER);
+		lastName = (String) value.get(FIELD_LAST_NAME);
+		occupation = (String) value.get(FIELD_OCCUPATION);
+		gender = (String) value.get(FIELD_GENDER);
 		employmentStatusEnumId = (String) value
-				.get(Fields.employmentStatusEnumId.name());
-		socialSecurityNumber = (String) value.get(Fields.socialSecurityNumber
-				.name());
-		suffix = (String) value.get(Fields.suffix.name());
-		mothersMaidenName = (String) value.get(Fields.mothersMaidenName.name());
-		middleNameLocal = (String) value.get(Fields.middleNameLocal.name());
-		existingCustomer = (String) value.get(Fields.existingCustomer.name());
-		residenceStatusEnumId = (String) value.get(Fields.residenceStatusEnumId
-				.name());
-		nickname = (String) value.get(Fields.nickname.name());
-		partyId = (String) value.get(Fields.partyId.name());
-		memberId = (String) value.get(Fields.memberId.name());
-		height = (Double) value.get(Fields.height.name());
-		passportNumber = (String) value.get(Fields.passportNumber.name());
-		lastNameLocal = (String) value.get(Fields.lastNameLocal.name());
-		comments = (String) value.get(Fields.comments.name());
-		monthsWithEmployer = (Long) value.get(Fields.monthsWithEmployer.name());
-		weight = (Double) value.get(Fields.weight.name());
-		birthDate = (Date) value.get(Fields.birthDate.name());
-		otherLocal = (String) value.get(Fields.otherLocal.name());
-		firstName = (String) value.get(Fields.firstName.name());
-		cardId = (String) value.get(Fields.cardId.name());
-		middleName = (String) value.get(Fields.middleName.name());
-		firstNameLocal = (String) value.get(Fields.firstNameLocal.name());
-		passportExpireDate = (Date) value.get(Fields.passportExpireDate.name());
-		salutation = (String) value.get(Fields.salutation.name());
-		personalTitle = (String) value.get(Fields.personalTitle.name());
-		deceasedDate = (Date) value.get(Fields.deceasedDate.name());
+				.get(FIELD_EMPLOYMENT_STATUS_ENUM_ID);
+		socialSecurityNumber = (String) value.get(FIELD_SOCIAL_SECURITY_NUMBER);
+		suffix = (String) value.get(FIELD_SUFFIX);
+		mothersMaidenName = (String) value.get(FIELD_MOTHERS_MAIDEN_NAME);
+		middleNameLocal = (String) value.get(FIELD_MIDDLE_NAME_LOCAL);
+		existingCustomer = (String) value.get(FIELD_EXISTING_CUSTOMER);
+		residenceStatusEnumId = (String) value
+				.get(FIELD_RESIDENCE_STATUS_ENUM_ID);
+		nickname = (String) value.get(FIELD_NICKNAME);
+		partyId = (String) value.get(FIELD_PARTY_ID);
+		memberId = (String) value.get(FIELD_MEMBER_ID);
+		height = (Double) value.get(FIELD_HEIGHT);
+		passportNumber = (String) value.get(FIELD_PASSPORT_NUMBER);
+		lastNameLocal = (String) value.get(FIELD_LAST_NAME_LOCAL);
+		comments = (String) value.get(FIELD_COMMENTS);
+		monthsWithEmployer = (Long) value.get(FIELD_MONTHS_WITH_EMPLOYER);
+		weight = (Double) value.get(FIELD_WEIGHT);
+		birthDate = (Date) value.get(FIELD_BIRTH_DATE);
+		otherLocal = (String) value.get(FIELD_OTHER_LOCAL);
+		firstName = (String) value.get(FIELD_FIRST_NAME);
+		cardId = (String) value.get(FIELD_CARD_ID);
+		middleName = (String) value.get(FIELD_MIDDLE_NAME);
+		firstNameLocal = (String) value.get(FIELD_FIRST_NAME_LOCAL);
+		passportExpireDate = (Date) value.get(FIELD_PASSPORT_EXPIRE_DATE);
+		salutation = (String) value.get(FIELD_SALUTATION);
+		personalTitle = (String) value.get(FIELD_PERSONAL_TITLE);
+		deceasedDate = (Date) value.get(FIELD_DECEASED_DATE);
 		totalYearsWorkExperience = (Double) value
-				.get(Fields.totalYearsWorkExperience.name());
-		maritalStatus = (String) value.get(Fields.maritalStatus.name());
+				.get(FIELD_TOTAL_YEARS_WORK_EXPERIENCE);
+		maritalStatus = (String) value.get(FIELD_MARITAL_STATUS);
 	}
 
 	public static EmploymentAndPerson fromValue(

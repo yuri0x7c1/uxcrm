@@ -1,5 +1,6 @@
 package org.apache.ofbiz.shipment.shipment;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Shipment Gateway Dhl
  */
+@FieldNameConstants
 public class ShipmentGatewayDhl implements Serializable {
 
-	public static final long serialVersionUID = 716292823933722624L;
+	public static final long serialVersionUID = 7205564076050978816L;
 	public static final String NAME = "ShipmentGatewayDhl";
 	/**
 	 * Shipment Gateway Config Id
@@ -106,30 +108,23 @@ public class ShipmentGatewayDhl implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		shipmentGatewayConfigId, connectUrl, connectTimeout, headVersion, headAction, accessUserId, accessPassword, accessAccountNbr, accessShippingKey, labelImageFormat, rateEstimateTemplate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ShipmentGatewayDhl(GenericValue value) {
 		shipmentGatewayConfigId = (String) value
-				.get(Fields.shipmentGatewayConfigId.name());
-		connectUrl = (String) value.get(Fields.connectUrl.name());
-		connectTimeout = (Long) value.get(Fields.connectTimeout.name());
-		headVersion = (String) value.get(Fields.headVersion.name());
-		headAction = (String) value.get(Fields.headAction.name());
-		accessUserId = (String) value.get(Fields.accessUserId.name());
-		accessPassword = (String) value.get(Fields.accessPassword.name());
-		accessAccountNbr = (String) value.get(Fields.accessAccountNbr.name());
-		accessShippingKey = (String) value.get(Fields.accessShippingKey.name());
-		labelImageFormat = (String) value.get(Fields.labelImageFormat.name());
-		rateEstimateTemplate = (String) value.get(Fields.rateEstimateTemplate
-				.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_SHIPMENT_GATEWAY_CONFIG_ID);
+		connectUrl = (String) value.get(FIELD_CONNECT_URL);
+		connectTimeout = (Long) value.get(FIELD_CONNECT_TIMEOUT);
+		headVersion = (String) value.get(FIELD_HEAD_VERSION);
+		headAction = (String) value.get(FIELD_HEAD_ACTION);
+		accessUserId = (String) value.get(FIELD_ACCESS_USER_ID);
+		accessPassword = (String) value.get(FIELD_ACCESS_PASSWORD);
+		accessAccountNbr = (String) value.get(FIELD_ACCESS_ACCOUNT_NBR);
+		accessShippingKey = (String) value.get(FIELD_ACCESS_SHIPPING_KEY);
+		labelImageFormat = (String) value.get(FIELD_LABEL_IMAGE_FORMAT);
+		rateEstimateTemplate = (String) value.get(FIELD_RATE_ESTIMATE_TEMPLATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ShipmentGatewayDhl fromValue(

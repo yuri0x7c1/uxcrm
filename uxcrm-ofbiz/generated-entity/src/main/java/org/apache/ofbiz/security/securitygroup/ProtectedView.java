@@ -1,5 +1,6 @@
 package org.apache.ofbiz.security.securitygroup;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Protected View
  */
+@FieldNameConstants
 public class ProtectedView implements Serializable {
 
-	public static final long serialVersionUID = 1457643083472740352L;
+	public static final long serialVersionUID = 8528515049609370624L;
 	public static final String NAME = "ProtectedView";
 	/**
 	 * Group Id
@@ -70,22 +72,16 @@ public class ProtectedView implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		groupId, viewNameId, maxHits, maxHitsDuration, tarpitDuration, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public ProtectedView(GenericValue value) {
-		groupId = (String) value.get(Fields.groupId.name());
-		viewNameId = (String) value.get(Fields.viewNameId.name());
-		maxHits = (Long) value.get(Fields.maxHits.name());
-		maxHitsDuration = (Long) value.get(Fields.maxHitsDuration.name());
-		tarpitDuration = (Long) value.get(Fields.tarpitDuration.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		groupId = (String) value.get(FIELD_GROUP_ID);
+		viewNameId = (String) value.get(FIELD_VIEW_NAME_ID);
+		maxHits = (Long) value.get(FIELD_MAX_HITS);
+		maxHitsDuration = (Long) value.get(FIELD_MAX_HITS_DURATION);
+		tarpitDuration = (Long) value.get(FIELD_TARPIT_DURATION);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static ProtectedView fromValue(

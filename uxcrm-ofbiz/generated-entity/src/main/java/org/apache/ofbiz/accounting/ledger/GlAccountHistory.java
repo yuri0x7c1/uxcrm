@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.ledger;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Gl Account History
  */
+@FieldNameConstants
 public class GlAccountHistory implements Serializable {
 
-	public static final long serialVersionUID = 2732682350730987520L;
+	public static final long serialVersionUID = 8372861174917598208L;
 	public static final String NAME = "GlAccountHistory";
 	/**
 	 * Gl Account Id
@@ -83,26 +85,18 @@ public class GlAccountHistory implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		glAccountId, organizationPartyId, customTimePeriodId, openingBalance, postedDebits, postedCredits, endingBalance, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public GlAccountHistory(GenericValue value) {
-		glAccountId = (String) value.get(Fields.glAccountId.name());
-		organizationPartyId = (String) value.get(Fields.organizationPartyId
-				.name());
-		customTimePeriodId = (String) value.get(Fields.customTimePeriodId
-				.name());
-		openingBalance = (BigDecimal) value.get(Fields.openingBalance.name());
-		postedDebits = (BigDecimal) value.get(Fields.postedDebits.name());
-		postedCredits = (BigDecimal) value.get(Fields.postedCredits.name());
-		endingBalance = (BigDecimal) value.get(Fields.endingBalance.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		glAccountId = (String) value.get(FIELD_GL_ACCOUNT_ID);
+		organizationPartyId = (String) value.get(FIELD_ORGANIZATION_PARTY_ID);
+		customTimePeriodId = (String) value.get(FIELD_CUSTOM_TIME_PERIOD_ID);
+		openingBalance = (BigDecimal) value.get(FIELD_OPENING_BALANCE);
+		postedDebits = (BigDecimal) value.get(FIELD_POSTED_DEBITS);
+		postedCredits = (BigDecimal) value.get(FIELD_POSTED_CREDITS);
+		endingBalance = (BigDecimal) value.get(FIELD_ENDING_BALANCE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static GlAccountHistory fromValue(

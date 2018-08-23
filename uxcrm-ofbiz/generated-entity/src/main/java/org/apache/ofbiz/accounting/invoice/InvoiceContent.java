@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.invoice;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Invoice Content
  */
+@FieldNameConstants
 public class InvoiceContent implements Serializable {
 
-	public static final long serialVersionUID = 4958324251893991424L;
+	public static final long serialVersionUID = 494901066883564544L;
 	public static final String NAME = "InvoiceContent";
 	/**
 	 * Invoice Id
@@ -70,23 +72,17 @@ public class InvoiceContent implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		invoiceId, invoiceContentTypeId, contentId, fromDate, thruDate, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public InvoiceContent(GenericValue value) {
-		invoiceId = (String) value.get(Fields.invoiceId.name());
-		invoiceContentTypeId = (String) value.get(Fields.invoiceContentTypeId
-				.name());
-		contentId = (String) value.get(Fields.contentId.name());
-		fromDate = (Timestamp) value.get(Fields.fromDate.name());
-		thruDate = (Timestamp) value.get(Fields.thruDate.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+		invoiceId = (String) value.get(FIELD_INVOICE_ID);
+		invoiceContentTypeId = (String) value
+				.get(FIELD_INVOICE_CONTENT_TYPE_ID);
+		contentId = (String) value.get(FIELD_CONTENT_ID);
+		fromDate = (Timestamp) value.get(FIELD_FROM_DATE);
+		thruDate = (Timestamp) value.get(FIELD_THRU_DATE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static InvoiceContent fromValue(

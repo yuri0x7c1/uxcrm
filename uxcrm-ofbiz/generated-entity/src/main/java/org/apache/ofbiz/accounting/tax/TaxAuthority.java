@@ -1,5 +1,6 @@
 package org.apache.ofbiz.accounting.tax;
 
+import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 /**
  * Tax Authority
  */
+@FieldNameConstants
 public class TaxAuthority implements Serializable {
 
-	public static final long serialVersionUID = 5103810505182314496L;
+	public static final long serialVersionUID = 6062581478276068352L;
 	public static final String NAME = "TaxAuthority";
 	/**
 	 * Tax Auth Geo Id
@@ -70,24 +72,17 @@ public class TaxAuthority implements Serializable {
 	@Setter
 	private Timestamp createdTxStamp;
 
-	public enum Fields {
-		taxAuthGeoId, taxAuthPartyId, requireTaxIdForExemption, taxIdFormatPattern, includeTaxInPrice, lastUpdatedStamp, lastUpdatedTxStamp, createdStamp, createdTxStamp
-	}
-
 	public TaxAuthority(GenericValue value) {
-		taxAuthGeoId = (String) value.get(Fields.taxAuthGeoId.name());
-		taxAuthPartyId = (String) value.get(Fields.taxAuthPartyId.name());
+		taxAuthGeoId = (String) value.get(FIELD_TAX_AUTH_GEO_ID);
+		taxAuthPartyId = (String) value.get(FIELD_TAX_AUTH_PARTY_ID);
 		requireTaxIdForExemption = (String) value
-				.get(Fields.requireTaxIdForExemption.name());
-		taxIdFormatPattern = (String) value.get(Fields.taxIdFormatPattern
-				.name());
-		includeTaxInPrice = (String) value.get(Fields.includeTaxInPrice.name());
-		lastUpdatedStamp = (Timestamp) value
-				.get(Fields.lastUpdatedStamp.name());
-		lastUpdatedTxStamp = (Timestamp) value.get(Fields.lastUpdatedTxStamp
-				.name());
-		createdStamp = (Timestamp) value.get(Fields.createdStamp.name());
-		createdTxStamp = (Timestamp) value.get(Fields.createdTxStamp.name());
+				.get(FIELD_REQUIRE_TAX_ID_FOR_EXEMPTION);
+		taxIdFormatPattern = (String) value.get(FIELD_TAX_ID_FORMAT_PATTERN);
+		includeTaxInPrice = (String) value.get(FIELD_INCLUDE_TAX_IN_PRICE);
+		lastUpdatedStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_STAMP);
+		lastUpdatedTxStamp = (Timestamp) value.get(FIELD_LAST_UPDATED_TX_STAMP);
+		createdStamp = (Timestamp) value.get(FIELD_CREATED_STAMP);
+		createdTxStamp = (Timestamp) value.get(FIELD_CREATED_TX_STAMP);
 	}
 
 	public static TaxAuthority fromValue(
