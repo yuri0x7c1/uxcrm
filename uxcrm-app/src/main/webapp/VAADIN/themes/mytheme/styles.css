@@ -15061,3 +15061,21 @@ div.v-layout.v-horizontal.v-widget {
 	color: white;
 	margin-top: 6px;
 }
+
+.mytheme .common-form {
+	width: 100%;
+	padding: 8px;
+}
+
+.mytheme .common-form .v-widget {
+	width: 100%;
+	margin-bottom: 4px;
+}
+
+.mytheme .common-form .v-widget .v-captiontext {
+	font-weight: bold;
+}
+
+.mytheme .common-form .common-form-toolbar {
+	padding-top: 20px;
+}
