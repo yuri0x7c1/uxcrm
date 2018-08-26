@@ -168,6 +168,12 @@
    			<artifactId>vaadin-grid-util</artifactId>
    			<version>2.1.1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.jarektoro</groupId>
+			<artifactId>responsive-layout</artifactId>
+			<version>2.1.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
