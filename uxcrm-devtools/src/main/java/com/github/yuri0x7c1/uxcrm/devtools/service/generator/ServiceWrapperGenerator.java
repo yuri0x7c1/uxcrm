@@ -19,6 +19,7 @@ import org.jboss.forge.roaster.model.source.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.github.yuri0x7c1.uxcrm.devtools.config.DevtoolsConfiguration.ModelOfbiz;
 import com.github.yuri0x7c1.uxcrm.devtools.generator.util.GeneratorUtil;
@@ -76,7 +77,7 @@ public class ServiceWrapperGenerator implements ServiceGenerator {
 		serviceSource.addImport(Setter.class);
 		serviceSource.addImport(NoArgsConstructor.class);
 
-		serviceSource.addAnnotation(Component.class);
+		serviceSource.addAnnotation(Service.class);
 		serviceSource.addAnnotation(Slf4j.class);
 
 		// add serialization stuff
